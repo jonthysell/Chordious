@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<chordious>
+	<settings>
+		<setting key="chordfinderoptions.instrument" value="Ukulele" />
+    <setting key="chordfinderoptions.tuning" value="Standard C6" />
+    <setting key="chordfinderoptions.itlevel" value="Default" />
+    <setting key="chordfinderoptions.rootnote" value="C" />
+    <setting key="chordfinderoptions.chordquality" value="Major" />
+    <setting key="chordfinderoptions.cqlevel" value="Default" />
+    <setting key="chordfinderoptions.numfrets" value="5" />
+    <setting key="chordfinderoptions.maxfret" value="12" />
+    <setting key="chordfinderoptions.maxreach" value="4" />
+    <setting key="chordfinderoptions.allowopenstrings" value="true" />
+    <setting key="chordfinderoptions.allowmutedstrings" value="true" />
+    <setting key="chordfinderoptions.allowrootlesschords" value="false" />
+    <setting key="chordfinderoptions.mirrorresults" value="false" />
+    <setting key="chordfinderstyle.barretypeoption" value="None" />
+    <setting key="chordfinderstyle.addrootnotes" value="false" />
+    <setting key="chordfinderstyle.marktextoption" value="None" />
+    <setting key="chordfinderstyle.topmarktextoption" value="None" />
+    <setting key="chordfinderstyle.bottommarktextoption" value="ShowNote_ShowBoth" />
+    <setting key="chordfinderstyle.addbottommarks" value="false" />
+	</settings>
+  <styles>
+    <style key="diagram.margin" value="0" />
+    <style key="diagram.orientation" value="UpDown" />
+    <style key="diagram.labellayoutmodel" value="AddPaddingBoth" />
+    <style key="diagram.color" value="#ffffff" />
+    <style key="diagram.opacity" value="0" />
+    <style key="diagram.bordercolor" value="#000000" />
+    <style key="diagram.borderthickness" value="0" />
+    <style key="title.gridpadding" value="20" />
+    <style key="title.textcolor" value="#000000" />
+    <style key="title.textopacity" value="1" />
+    <style key="title.textsize" value="38" />
+    <style key="title.fontfamily" value="serif" />
+    <style key="title.textalignment" value="Center" />
+    <style key="title.textstyle" value="Regular" />
+    <style key="title.textvisible" value="true" />
+    <style key="title.textmodratio" value="0.75" />
+    <style key="title.labelstyle" value="Regular" />
+    <style key="grid.margin" value="30" />
+    <style key="grid.fretspacing" value="30" />
+    <style key="grid.stringspacing" value="37" />
+    <style key="grid.nutvisible" value="false" />
+    <style key="grid.nutratio" value="2.0" />
+    <style key="grid.margin" value="30" />
+    <style key="grid.color" value="#ffffff" />
+    <style key="grid.opacity" value="0" />
+    <style key="grid.linecolor" value="#000000" />
+    <style key="grid.linethickness" value="2" />
+    <style key="mark.shape" value="Circle" />
+    <style key="mark.visible" value="true" />
+    <style key="mark.radiusratio" value="0.67" />
+    <style key="mark.color" value="#000000" />
+    <style key="mark.opacity" value="1" />
+    <style key="mark.textalignment" value="Center" />
+    <style key="mark.textvisible" value="true" />
+    <style key="mark.textcolor" value="#FFFFFF" />
+    <style key="mark.textsizeratio" value="0.5" />
+    <style key="mark.fontfamily" value="serif" />
+    <style key="mark.bordercolor" value="#000000" />
+    <style key="mark.borderthickness" value="2" />
+    <style key="mutedmark.shape" value="X" />
+    <style key="mutedmark.textvisible" value="false" />
+    <style key="rootmark.shape" value="Diamond" />
+    <style key="openmark.opacity" value="0" />
+    <style key="openmark.textcolor" value="#000000" />
+    <style key="openrootmark.shape" value="Diamond" />
+    <style key="openrootmark.opacity" value="0" />
+    <style key="openrootmark.textcolor" value="#000000" />
+    <style key="bottommark.shape" value="None" />
+    <style key="bottommark.textcolor" value="#000000" />
+    <style key="fretlabel.gridpadding" value="10" />
+    <style key="fretlabel.textcolor" value="#000000" />
+    <style key="fretlabel.textopacity" value="1" />
+    <style key="fretlabel.textsizeratio" value="0.67" />
+    <style key="fretlabel.textwidthratio" value="0.5" />
+    <style key="fretlabel.fontfamily" value="serif" />
+    <style key="fretlabel.textalignment" value="Center" />
+    <style key="fretlabel.textstyle" value="Regular" />
+    <style key="fretlabel.textvisible" value="true" />
+    <style key="barre.visible" value="true" />
+    <style key="barre.opacity" value="1" />
+    <style key="barre.linecolor" value="#000000" />
+    <style key="barre.linethickness" value="2" />
+    <style key="barre.verticalalignment" value="Middle" />
+    <style key="barre.stack" value="UnderMarks" />
+    <style key="barre.arcratio" value="0.5" />
+  </styles>
+	<instruments>
+		<instrument name="Banjo" strings="4">
+			<tuning name="Open G" notes="D;G;B;D" />
+			<tuning name="Open A" notes="E;A;C#;E" />
+			<tuning name="Double C" notes="C;G;C;D" />
+			<tuning name="Double D" notes="D;A;D;E" />
+			<tuning name="G Modal" notes="D;G;C;D" />
+			<tuning name="A Modal" notes="E;A;D;E" />
+		</instrument>
+		<instrument name="Greek Trichordo Bouzouki" strings="3">
+			<tuning name="Standard" notes="D;A;D" />
+		</instrument>
+		<instrument name="Greek Tetrachordo Bouzouki" strings="4">
+			<tuning name="Standard" notes="C;F;A;D" />
+		</instrument>
+		<instrument name="Guitar" strings="6">
+			<tuning name="Standard" notes="E;A;D;G;B;E" />
+			<tuning name="Open A" notes="E;A;C#;E;A;E" />
+			<tuning name="Open B" notes="B;F#;B;F#;B;D#" />
+			<tuning name="Open C" notes="C;G;C;G;C;E" />
+			<tuning name="Open D" notes="D;A;D;F#;A;D" />
+			<tuning name="Open E" notes="E;B;E;G#;B;E" />
+			<tuning name="Open F" notes="F;A;C;F;C;F" />
+			<tuning name="Open G" notes="D;G;D;G;B;D" />
+		</instrument>
+		<instrument name="Irish Bouzouki" strings="4">
+			<tuning name="Standard" notes="G;D;A;D" />
+			<tuning name="Octave Mandolin" notes="G;D;A;E" />
+			<tuning name="Open D" notes="A;D;A;D" />
+			<tuning name="Open G" notes="G;D;B;D" />
+		</instrument>
+		<instrument name="Mandola" strings="4">
+			<tuning name="Standard" notes="C;G;D;A" />
+		</instrument>
+		<instrument name="Mandolin" strings="4">
+			<tuning name="Standard" notes="G;D;A;E" />
+		</instrument>
+		<instrument name="Ukulele" strings="4">
+			<tuning name="Standard C6" notes="G;C;E;A" />
+			<tuning name="Standard D6" notes="A;D;F#;B" />
+			<tuning name="Standard Eb6" notes="Bb;Eb;G;C" />
+			<tuning name="Standard F6" notes="C;F;A;D" />
+			<tuning name="Standard G6" notes="D;G;B;E" />
+			<tuning name="Standard A6" notes="E;A;C#;F#" />
+			<tuning name="Standard Bb6" notes="F;Bb;D;G" />
+			<tuning name="Open C" notes="G;C;E;G" />
+			<tuning name="Open D" notes="A;D;F#;A" />
+			<tuning name="Open Eb" notes="Bb;Eb;G;Bb" />
+			<tuning name="Open F" notes="C;F;A;C" />
+			<tuning name="Open G" notes="D;G;B;D" />
+			<tuning name="Open A" notes="E;A;C#;E" />
+			<tuning name="Open Bb" notes="F;Bb;D;F" />
+		</instrument>
+	</instruments>
+	<qualities>
+		<quality name="Major" abbv="" steps="0;4;7" />
+		<quality name="Minor" abbv="m" steps="0;3;7" />
+		<quality name="Diminished" abbv="dim" steps="0;3;6" />
+		<quality name="Augmented" abbv="aug" steps="0;4;8" />
+		<quality name="Major 7th" abbv="maj7" steps="0;4;7;11" />
+		<quality name="Minor 7th" abbv="m7" steps="0;3;7;10" />
+		<quality name="Dominant 7th" abbv="7" steps="0;4;7;10" />
+		<quality name="Minor/Major 7th" abbv="m7/M7" steps="0;3;7;11" />
+		<quality name="Major 6th" abbv="6" steps="0;4;7;9" />
+		<quality name="Minor 6th" abbv="m6" steps="0;3;7;9" />
+	</qualities>
+</chordious>

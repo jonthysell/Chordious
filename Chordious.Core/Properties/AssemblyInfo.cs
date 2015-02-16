@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Chordious.Core")]
-[assembly: AssemblyDescription("Core library for Chordious.")]
+[assembly: AssemblyDescription("Model library for Chordious.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jon Thysell")]
 [assembly: AssemblyProduct("Chordious")]
@@ -26,5 +26,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.15046.0353")]
-[assembly: AssemblyFileVersion("1.1.15046.0353")]
+[assembly: AssemblyVersion("1.9.15047.0143")]
+[assembly: AssemblyFileVersion("1.9.15047.0143")]

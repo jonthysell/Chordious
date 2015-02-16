@@ -470,40 +470,43 @@ namespace com.jonthysell.Chordious.Core
             return false;
         }
 
-        public string Get(string key, string level)
+        public string GetLevel(string key)
         {
             if (String.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
 
-            if (String.IsNullOrWhiteSpace(level))
+            string level;
+            if (TryGetLevel(key, out level))
             {
-                throw new ArgumentNullException("level");
+                return level;
+            }
+
+            throw new InheritableDictionaryKeyNotFoundException(this, key);
+        }
+
+        public bool TryGetLevel(string key, out string level)
+        {
+            if (String.IsNullOrWhiteSpace(key))
+            {
+                throw new ArgumentNullException("key");
             }
 
             key = CleanKey(key);
 
-            if (this.Level == level)
+            if (_localDictionary.ContainsKey(key)) // Check locally
             {
-                if (_localDictionary.ContainsKey(key)) // Check locally
-                {
-                    return _localDictionary[key];
-                }
+                level = this.Level;
+                return true;
             }
-            else
+            else if (null != this.Parent)
             {
-                if (null == this.Parent)
-                {
-                    throw new LevelNotFoundException(level);
-                }
-                else
-                {
-                    return this.Parent.Get(key, level); // Recursively check parent
-                }
+                return this.Parent.TryGetLevel(key, out level);
             }
 
-            return null;
+            level = null;
+            return false;
         }
 
         public void Flatten()

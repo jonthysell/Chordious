@@ -162,6 +162,16 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public void Clear()
+        {
+            if (this.ReadOnly)
+            {
+                throw new ObjectIsReadOnlyException(this);
+            }
+
+            _localDictionary.Clear();
+        }
+
         public void Clear(string key)
         {
             if (String.IsNullOrWhiteSpace(key))

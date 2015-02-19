@@ -125,6 +125,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public double DiagramBorderThickness
+        {
+            get
+            {
+                return Style.DiagramBorderThicknessGet();
+            }
+            set
+            {
+                Style.DiagramBorderThicknessSet(value);
+            }
+        }
+
         #endregion
 
         #region Title Style
@@ -801,6 +813,11 @@ namespace com.jonthysell.Chordious.Core
 
             string baseStyle = this.Style.GetSvgStyle(Diagram._baseStyleMap);
 
+            if (this.DiagramBorderThickness > 0)
+            {
+                baseStyle += this.Style.GetSvgStyle(Diagram._baseStyleMapBorder);
+            }
+
             sb.AppendFormat(SvgConstants.RECTANGLE,
                             baseStyle,
                             totalWidth,
@@ -973,6 +990,10 @@ namespace com.jonthysell.Chordious.Core
         {
             new string[] {"diagram.color", "fill"},
             new string[] {"diagram.opacity", "fill-opacity"},
+        };
+
+        private static string[][] _baseStyleMapBorder =
+        {
             new string[] {"diagram.bordercolor", "stroke"},
             new string[] {"diagram.borderthickness", "stroke-width"},
         };

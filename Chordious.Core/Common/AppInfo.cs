@@ -92,7 +92,7 @@ namespace com.jonthysell.Chordious.Core
         }
 
         /// <summary>
-        /// The product title.
+        /// The full program title.
         /// </summary>
         public static string ProgramTitle
         {
@@ -106,13 +106,24 @@ namespace com.jonthysell.Chordious.Core
         }
 
         /// <summary>
+        /// The product title.
+        /// </summary>
+        public static string Product
+        {
+            get
+            {
+                return AppInfo.Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;
+            }
+        }
+
+        /// <summary>
         /// The product description.
         /// </summary>
         public static string Comments
         {
             get
             {
-                return "Chord diagram generator for stringed instruments.";
+                return "Fretboard diagram generator for stringed instruments.";
             }
         }
 

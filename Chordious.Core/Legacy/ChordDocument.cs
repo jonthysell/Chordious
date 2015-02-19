@@ -102,11 +102,11 @@ namespace com.jonthysell.Chordious.Core.Legacy
             // Setup base
             diagram.Orientation = DiagramOrientation.UpDown;
             diagram.LabelLayoutModel = DiagramLabelLayoutModel.AddPaddingVertical;
+            diagram.DiagramBorderThickness = 0;
             diagram.Style.Set("diagram.margin", "0");
             diagram.Style.Set("diagram.color", "#ffffff");
             diagram.Style.Set("diagram.opacity", "0");
             diagram.Style.Set("diagram.bordercolor", "#000000");
-            diagram.Style.Set("diagram.borderthickness", "0");
 
             // Process title
             diagram.Title = chord.Title;
@@ -161,27 +161,27 @@ namespace com.jonthysell.Chordious.Core.Legacy
             diagram.Style.MarkVisibleSet(true);
             diagram.Style.MarkRadiusRatioSet(0.67);
             diagram.Style.MarkShapeSet(DiagramMarkShape.Circle);
+            diagram.Style.MarkBorderThicknessSet(2);
             diagram.Style.MarkMiscellaneousSet("color", "#000000");
             diagram.Style.MarkMiscellaneousSet("opacity", "1");
             diagram.Style.MarkMiscellaneousSet("bordercolor", "#000000");
-            diagram.Style.MarkMiscellaneousSet("borderthickness", "2");
 
             diagram.Style.MarkVisibleSet(true, DiagramMarkType.Muted);
             diagram.Style.MarkRadiusRatioSet(0.33, DiagramMarkType.Muted);
             diagram.Style.MarkShapeSet(DiagramMarkShape.X, DiagramMarkType.Muted);
+            diagram.Style.MarkBorderThicknessSet(1, DiagramMarkType.Muted);
             diagram.Style.MarkMiscellaneousSet("color", "#000000", DiagramMarkType.Muted);
             diagram.Style.MarkMiscellaneousSet("opacity", "1", DiagramMarkType.Muted);
             diagram.Style.MarkMiscellaneousSet("bordercolor", "#000000", DiagramMarkType.Muted);
-            diagram.Style.MarkMiscellaneousSet("borderthickness", "1", DiagramMarkType.Muted);
 
             bool openCircle = (chordOptions.OpenStringType == OpenStringType.Circle);
             diagram.Style.MarkVisibleSet(openCircle, DiagramMarkType.Open);
             diagram.Style.MarkRadiusRatioSet(0.33, DiagramMarkType.Open);
             diagram.Style.MarkShapeSet(openCircle ? DiagramMarkShape.Circle : DiagramMarkShape.None, DiagramMarkType.Open);
+            diagram.Style.MarkBorderThicknessSet(2, DiagramMarkType.Open);
             diagram.Style.MarkMiscellaneousSet("color", "#ffffff", DiagramMarkType.Open);
             diagram.Style.MarkMiscellaneousSet("opacity", "1", DiagramMarkType.Open);
             diagram.Style.MarkMiscellaneousSet("bordercolor", "#000000", DiagramMarkType.Open);
-            diagram.Style.MarkMiscellaneousSet("borderthickness", "2", DiagramMarkType.Open);
 
             for (int str = 0; str < chord.Marks.Length; str++)
             {

@@ -65,6 +65,21 @@ namespace com.jonthysell.Chordious.Core
             Set("diagram.labellayoutmodel", value);
         }
 
+        public double DiagramBorderThicknessGet()
+        {
+            return GetDouble("diagram.borderthickness");
+        }
+
+        public void DiagramBorderThicknessSet(double value)
+        {
+            if (value < 0)
+            {
+                throw new ArgumentOutOfRangeException("value");
+            }
+
+            Set("diagram.borderthickness", value);
+        }
+
         #endregion
 
         #region Grid-specific Styles
@@ -442,6 +457,30 @@ namespace com.jonthysell.Chordious.Core
             Set(prefix + "mark.radiusratio", value);
         }
 
+        public double MarkBorderThicknessGet(DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+
+            double result;
+            if (TryGet(prefix + "mark.borderthickness", out result))
+            {
+                return result;
+            }
+
+            return GetDouble("mark.borderthickness");
+        }
+
+        public void MarkBorderThicknessSet(double value, DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            if (value < 0)
+            {
+                throw new ArgumentOutOfRangeException("value");
+            }
+
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+            Set(prefix + "mark.borderthickness", value);
+        }
+
         public void MarkMiscellaneousSet(string subKey, object value, DiagramMarkType type = DiagramMarkType.Normal)
         {
             if (String.IsNullOrWhiteSpace(subKey))
@@ -678,6 +717,7 @@ namespace com.jonthysell.Chordious.Core
         {
             string value = rawValue;
 
+            // Check if rawValue needs to be converted into a valid SVG value
             if (key.EndsWith("textstyle") && String.IsNullOrWhiteSpace(svgStyle))
             {
                 DiagramTextStyle dts = (DiagramTextStyle)Enum.Parse(typeof(DiagramTextStyle), rawValue);

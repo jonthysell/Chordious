@@ -28,7 +28,7 @@
     <style key="diagram.color" value="#ffffff" />
     <style key="diagram.opacity" value="0" />
     <style key="diagram.bordercolor" value="#000000" />
-    <style key="diagram.borderthickness" value="0" />
+    <style key="diagram.borderthickness" value="0.0" />
     <style key="title.gridpadding" value="20" />
     <style key="title.textcolor" value="#000000" />
     <style key="title.textopacity" value="1" />
@@ -60,15 +60,17 @@
     <style key="mark.textsizeratio" value="0.5" />
     <style key="mark.fontfamily" value="serif" />
     <style key="mark.bordercolor" value="#000000" />
-    <style key="mark.borderthickness" value="2" />
+    <style key="mark.borderthickness" value="0" />
     <style key="mutedmark.shape" value="X" />
     <style key="mutedmark.textvisible" value="false" />
     <style key="rootmark.shape" value="Diamond" />
     <style key="openmark.opacity" value="0" />
     <style key="openmark.textcolor" value="#000000" />
+    <style key="openmark.borderthickness" value="2" />
     <style key="openrootmark.shape" value="Diamond" />
     <style key="openrootmark.opacity" value="0" />
     <style key="openrootmark.textcolor" value="#000000" />
+    <style key="openrootmark.borderthickness" value="2" />
     <style key="bottommark.shape" value="None" />
     <style key="bottommark.textcolor" value="#000000" />
     <style key="fretlabel.gridpadding" value="10" />

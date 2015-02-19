@@ -131,6 +131,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public double BorderThickness
+        {
+            get
+            {
+                return Style.MarkBorderThicknessGet(this.Type);
+            }
+            set
+            {
+                Style.MarkBorderThicknessSet(value, this.Type);
+            }
+        }
+
         public DiagramMark(Diagram parent, MarkPosition position, string text = "") : base(parent, position, text)
         {
             this.Type = DiagramMarkType.Normal;
@@ -225,6 +237,11 @@ namespace com.jonthysell.Chordious.Core
 
                 string shapeStyle = this.Style.GetSvgStyle(DiagramMark._shapeStyleMap, prefix);
 
+                if (this.BorderThickness > 0)
+                {
+                    shapeStyle += this.Style.GetSvgStyle(DiagramMark._shapeStyleMapBorder, prefix);
+                }
+
                 switch (shape)
                 {
                     case DiagramMarkShape.Circle:
@@ -291,6 +308,10 @@ namespace com.jonthysell.Chordious.Core
         {
             new string[] {"mark.color", "fill"},
             new string[] {"mark.opacity", "fill-opacity"},
+        };
+
+        private static string[][] _shapeStyleMapBorder =
+        {
             new string[] {"mark.bordercolor", "stroke"},
             new string[] {"mark.borderthickness", "stroke-width"},
         };

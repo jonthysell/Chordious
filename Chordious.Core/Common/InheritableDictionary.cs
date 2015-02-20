@@ -121,7 +121,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("xmlReader");
             }
 
-            if (String.IsNullOrWhiteSpace(localName))
+            if (StringUtils.IsNullOrWhiteSpace(localName))
             {
                 throw new ArgumentNullException("localName");
             }
@@ -174,7 +174,7 @@ namespace com.jonthysell.Chordious.Core
 
         public void Clear(string key)
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -194,7 +194,7 @@ namespace com.jonthysell.Chordious.Core
 
         public void Set(string key, Note value)
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -204,7 +204,7 @@ namespace com.jonthysell.Chordious.Core
 
         public void Set(string key, object value)
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -219,12 +219,12 @@ namespace com.jonthysell.Chordious.Core
 
         public void Set(string key, string value)
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
 
-            if (String.IsNullOrWhiteSpace(value))
+            if (StringUtils.IsNullOrWhiteSpace(value))
             {
                 throw new ArgumentNullException("value");
             }
@@ -248,7 +248,7 @@ namespace com.jonthysell.Chordious.Core
 
         public string Get(string key, bool recursive = true)
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -264,7 +264,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool TryGet(string key, out string result, bool recursive = true)
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -287,7 +287,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool GetBoolean(string key, bool recursive = true)
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -326,7 +326,7 @@ namespace com.jonthysell.Chordious.Core
 
         public double GetDouble(string key, bool recursive = true)
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -365,7 +365,7 @@ namespace com.jonthysell.Chordious.Core
 
         public int GetInt32(string key, bool recursive = true)
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -404,7 +404,7 @@ namespace com.jonthysell.Chordious.Core
 
         public TEnum GetEnum<TEnum>(string key, bool recursive = true) where TEnum : struct
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -434,7 +434,12 @@ namespace com.jonthysell.Chordious.Core
             string rawResult;
             if (TryGet(key, out rawResult, recursive))
             {
-                return Enum.TryParse<TEnum>(rawResult, out result);
+                try
+                {
+                    result = (TEnum)Enum.Parse(typeof(TEnum), rawResult);
+                    return true;
+                }
+                catch (Exception) { }
             }
 
             result = default(TEnum);
@@ -443,7 +448,7 @@ namespace com.jonthysell.Chordious.Core
 
         public Note GetNote(string key, bool recursive = true)
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -482,7 +487,7 @@ namespace com.jonthysell.Chordious.Core
 
         public string GetLevel(string key)
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -498,7 +503,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool TryGetLevel(string key, out string level)
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -605,7 +610,7 @@ namespace com.jonthysell.Chordious.Core
         public IEnumerable<string> LocalKeys(string filter = "")
         {
             bool hasFilter = false;
-            if (!String.IsNullOrWhiteSpace(filter))
+            if (!StringUtils.IsNullOrWhiteSpace(filter))
             {
                 filter = CleanKey(filter);
                 hasFilter = true;
@@ -641,7 +646,7 @@ namespace com.jonthysell.Chordious.Core
 
         protected string CleanPrefix(string prefix)
         {
-            if (String.IsNullOrWhiteSpace(prefix))
+            if (StringUtils.IsNullOrWhiteSpace(prefix))
             {
                 return "";
             }
@@ -653,7 +658,7 @@ namespace com.jonthysell.Chordious.Core
 
         protected string CleanKey(string key)
         {
-            if (String.IsNullOrWhiteSpace(key))
+            if (StringUtils.IsNullOrWhiteSpace(key))
             {
                 throw new ArgumentNullException("key");
             }

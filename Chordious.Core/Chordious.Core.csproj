@@ -55,6 +55,7 @@
     <Compile Include="ChordFinding\ChordFinderStyle.cs" />
     <Compile Include="ChordFinding\ChordFinderResult.cs" />
     <Compile Include="Common\AppInfo.cs" />
+    <Compile Include="Common\StringUtils.cs" />
     <Compile Include="Legacy\Chord.cs" />
     <Compile Include="ChordFinding\ChordFinder.cs" />
     <Compile Include="ChordFinding\ChordFinderOptions.cs" />

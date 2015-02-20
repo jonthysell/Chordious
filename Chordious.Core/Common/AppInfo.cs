@@ -40,6 +40,17 @@ namespace com.jonthysell.Chordious.Core
         public static Assembly Assembly { get; set; }
 
         /// <summary>
+        /// Whether or not the app is running on Mono
+        /// </summary>
+        public static bool IsRunningOnMono
+        {
+            get
+            {
+                return Type.GetType("Mono.Runtime") != null;
+            }
+        }
+
+        /// <summary>
         /// Short version string if an official release, full version string otherwise.
         /// </summary>
         public static string Version
@@ -134,7 +145,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
+                return AppInfo.Assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
             }
         }
 

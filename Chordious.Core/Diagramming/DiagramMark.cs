@@ -269,7 +269,7 @@ namespace com.jonthysell.Chordious.Core
                 }
 
                 // Draw text
-                if (!String.IsNullOrWhiteSpace(this.Text) && this.TextVisible)
+                if (!StringUtils.IsNullOrWhiteSpace(this.Text) && this.TextVisible)
                 {
                     double textSize = radius * 2.0 * this.TextSizeRatio;
 

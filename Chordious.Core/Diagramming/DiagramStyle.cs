@@ -483,7 +483,7 @@ namespace com.jonthysell.Chordious.Core
 
         public void MarkMiscellaneousSet(string subKey, object value, DiagramMarkType type = DiagramMarkType.Normal)
         {
-            if (String.IsNullOrWhiteSpace(subKey))
+            if (StringUtils.IsNullOrWhiteSpace(subKey))
             {
                 throw new ArgumentNullException("subKey");
             }
@@ -694,7 +694,7 @@ namespace com.jonthysell.Chordious.Core
 
                 prefix = CleanPrefix(prefix);
 
-                if (!String.IsNullOrWhiteSpace(prefix))
+                if (!StringUtils.IsNullOrWhiteSpace(prefix))
                 {
                     found = TryGet(prefix + key, out rawValue);
                 }
@@ -718,7 +718,7 @@ namespace com.jonthysell.Chordious.Core
             string value = rawValue;
 
             // Check if rawValue needs to be converted into a valid SVG value
-            if (key.EndsWith("textstyle") && String.IsNullOrWhiteSpace(svgStyle))
+            if (key.EndsWith("textstyle") && StringUtils.IsNullOrWhiteSpace(svgStyle))
             {
                 DiagramTextStyle dts = (DiagramTextStyle)Enum.Parse(typeof(DiagramTextStyle), rawValue);
                 string textStyle = "";
@@ -759,7 +759,7 @@ namespace com.jonthysell.Chordious.Core
                 }
             }
 
-            if (!String.IsNullOrWhiteSpace(svgStyle))
+            if (!StringUtils.IsNullOrWhiteSpace(svgStyle))
             {
                 return String.Format("{0}:{1};", svgStyle, value);
             }

@@ -44,7 +44,7 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramCollection Get(string path, string name)
         {
-            if (String.IsNullOrWhiteSpace(name))
+            if (StringUtils.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentNullException("name");
             }
@@ -62,7 +62,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool TryGet(string path, string name, out DiagramCollection diagramCollection)
         {
-            if (String.IsNullOrWhiteSpace(name))
+            if (StringUtils.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentNullException("name");
             }
@@ -139,7 +139,7 @@ namespace com.jonthysell.Chordious.Core
 
         public void Move(string sourcePath, string name, string destinationPath)
         {
-            if (String.IsNullOrWhiteSpace(name))
+            if (StringUtils.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentNullException("name");
             }
@@ -168,12 +168,12 @@ namespace com.jonthysell.Chordious.Core
 
         public void Rename(string path, string name, string newName)
         {
-            if (String.IsNullOrWhiteSpace(name))
+            if (StringUtils.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentNullException("name");
             }
 
-            if (String.IsNullOrWhiteSpace(newName))
+            if (StringUtils.IsNullOrWhiteSpace(newName))
             {
                 throw new ArgumentNullException("newName");
             }
@@ -299,7 +299,7 @@ namespace com.jonthysell.Chordious.Core
 
         private bool TryGetNode(string path, string name, out DiagramLibraryNode diagramLibraryNode)
         {
-            if (String.IsNullOrWhiteSpace(name))
+            if (StringUtils.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentNullException("name");
             }

@@ -43,9 +43,14 @@ namespace com.jonthysell.Chordious.Core
 
         public static bool TryParseNote(string s, out Note note)
         { 
-            if (!String.IsNullOrWhiteSpace(s))
+            if (!StringUtils.IsNullOrWhiteSpace(s))
             {
-                return Enum.TryParse<Note>(s.Replace('#', 's'), out note);
+                try
+                {
+                    note = (Note)Enum.Parse(typeof(Note), s.Replace('#', 's'));
+                    return true;
+                }
+                catch (Exception) { }
             }
 
             note = default(Note);

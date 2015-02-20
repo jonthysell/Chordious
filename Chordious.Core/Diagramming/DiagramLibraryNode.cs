@@ -53,7 +53,7 @@ namespace com.jonthysell.Chordious.Core
             }
             set
             {
-                if (String.IsNullOrWhiteSpace(value))
+                if (StringUtils.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException();
                 }

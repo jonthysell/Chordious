@@ -82,7 +82,7 @@ namespace com.jonthysell.Chordious.Core
 
         public Tuning Get(string name)
         {
-            if (String.IsNullOrWhiteSpace(name))
+            if (StringUtils.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentNullException("name");
             }
@@ -98,7 +98,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool TryGet(string name, out Tuning tuning)
         {
-            if (String.IsNullOrWhiteSpace(name))
+            if (StringUtils.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentNullException("name");
             }

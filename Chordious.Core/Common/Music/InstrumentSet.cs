@@ -43,7 +43,7 @@ namespace com.jonthysell.Chordious.Core
             }
             set
             {
-                if (String.IsNullOrWhiteSpace(value))
+                if (StringUtils.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException();
                 }
@@ -119,7 +119,7 @@ namespace com.jonthysell.Chordious.Core
 
         public Instrument Get(string name)
         {
-            if (String.IsNullOrWhiteSpace(name))
+            if (StringUtils.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentNullException("name");
             }
@@ -135,7 +135,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool TryGet(string name, out Instrument instrument)
         {
-            if (String.IsNullOrWhiteSpace(name))
+            if (StringUtils.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentNullException("name");
             }

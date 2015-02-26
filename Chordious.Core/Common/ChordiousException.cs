@@ -32,11 +32,21 @@ namespace com.jonthysell.Chordious.Core
     public class ChordiousException : Exception
     {
         public ChordiousException() : base() { }
+        public ChordiousException(string message) : base(message) { }
     }
 
     public abstract class ChordiousKeyNotFoundException : KeyNotFoundException
     {
         public string Key { get; protected set; }
+
+        public override string Message
+        {
+            get
+            {
+                return String.Format("The key \"{0}\" could not be found.", Key);
+            }
+        }
+
         public ChordiousKeyNotFoundException(string key) : base()
         {
             this.Key = key;

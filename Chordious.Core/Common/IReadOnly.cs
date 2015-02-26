@@ -36,11 +36,20 @@ namespace com.jonthysell.Chordious.Core
 
     public class ObjectIsReadOnlyException : ChordiousException
     {
-        public Object Object { get; private set; }
+        public IReadOnly ReadOnlyObject { get; private set; }
 
-        public ObjectIsReadOnlyException(object obj) : base()
+        public override string Message
         {
-            Object = obj;
+            get
+            {
+                string name = ReadOnlyObject.GetType().Name;
+                return String.Format("The {0} could not be changed because it is marked read-only.", name);
+            }
+        }
+
+        public ObjectIsReadOnlyException(IReadOnly obj) : base()
+        {
+            ReadOnlyObject = obj;
         }
     }
 }

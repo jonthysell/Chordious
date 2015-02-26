@@ -164,6 +164,8 @@ namespace com.jonthysell.Chordious.Core
 
                 writer.WriteStartElement("chordious");
 
+                writer.WriteAttributeString("version", AppInfo.ProgramTitle);
+
                 writer.WriteStartElement("settings");
                 this.ChordiousSettings.Write(writer);
                 writer.WriteEndElement();

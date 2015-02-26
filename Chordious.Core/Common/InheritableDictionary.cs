@@ -172,7 +172,7 @@ namespace com.jonthysell.Chordious.Core
             _localDictionary.Clear();
         }
 
-        public void Clear(string key)
+        public void Clear(string key, bool recursive = false)
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
@@ -189,6 +189,10 @@ namespace com.jonthysell.Chordious.Core
             if (_localDictionary.ContainsKey(key))
             {
                 _localDictionary.Remove(key);
+            }
+            else if (null != this.Parent && recursive) // Recursively check parent
+            {
+                this.Parent.Clear(key, recursive);
             }
         }
 
@@ -360,6 +364,45 @@ namespace com.jonthysell.Chordious.Core
             }
 
             result = default(double);
+            return false;
+        }
+
+        public float GetFloat(string key, bool recursive = true)
+        {
+            if (StringUtils.IsNullOrWhiteSpace(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            float value;
+            if (TryGet(key, out value, recursive))
+            {
+                return value;
+            }
+
+            throw new InheritableDictionaryKeyNotFoundException(this, key);
+        }
+
+        public float GetFloat(string key, float defaultValue, bool recursive = true)
+        {
+            try
+            {
+                return GetFloat(key, recursive);
+            }
+            catch (InheritableDictionaryKeyNotFoundException) { }
+
+            return defaultValue;
+        }
+
+        public bool TryGet(string key, out float result, bool recursive = true)
+        {
+            string rawResult;
+            if (TryGet(key, out rawResult, recursive))
+            {
+                return float.TryParse(rawResult, out result);
+            }
+
+            result = default(float);
             return false;
         }
 

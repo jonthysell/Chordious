@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2014 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2014, 2015 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -109,10 +109,9 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format("{0} {1} by {2}",
+                return String.Format("{0} {1}",
                                      AppInfo.ProgramName,
-                                     AppInfo.Version,
-                                     "Jon Thysell");
+                                     AppInfo.Version);
             }
         }
 

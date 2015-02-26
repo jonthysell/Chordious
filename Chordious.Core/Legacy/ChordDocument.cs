@@ -169,7 +169,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
             diagram.Style.MarkVisibleSet(true, DiagramMarkType.Muted);
             diagram.Style.MarkRadiusRatioSet(0.33, DiagramMarkType.Muted);
             diagram.Style.MarkShapeSet(DiagramMarkShape.X, DiagramMarkType.Muted);
-            diagram.Style.MarkBorderThicknessSet(1, DiagramMarkType.Muted);
+            diagram.Style.MarkBorderThicknessSet(2, DiagramMarkType.Muted);
             diagram.Style.MarkMiscellaneousSet("color", "#000000", DiagramMarkType.Muted);
             diagram.Style.MarkMiscellaneousSet("opacity", "1", DiagramMarkType.Muted);
             diagram.Style.MarkMiscellaneousSet("bordercolor", "#000000", DiagramMarkType.Muted);

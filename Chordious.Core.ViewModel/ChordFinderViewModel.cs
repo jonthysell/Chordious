@@ -66,6 +66,126 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _isSearching = false;
 
+        public int NumFrets
+        {
+            get
+            {
+                return Options.NumFrets;
+            }
+            set
+            {
+                try
+                {
+                    Options.NumFrets = value;
+                }
+                catch(Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                RaisePropertyChanged("NumFrets");
+                if (NumFrets < MaxReach)
+                {
+                    MaxReach = NumFrets;
+                }
+            }
+        }
+
+        public int MaxReach
+        {
+            get
+            {
+                return Options.MaxReach;
+            }
+            set
+            {
+                try
+                {
+                    Options.MaxReach = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                RaisePropertyChanged("MaxReach");
+                if (MaxReach > NumFrets)
+                {
+                    NumFrets = MaxReach;
+                }
+            }
+        }
+
+        public int MaxFret
+        {
+            get
+            {
+                return Options.MaxFret;
+            }
+            set
+            {
+                try
+                {
+                    Options.MaxFret = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                RaisePropertyChanged("MaxFret");
+            }
+        }
+
+        public bool AllowOpenStrings
+        {
+            get
+            {
+                return Options.AllowOpenStrings;
+            }
+            set
+            {
+                Options.AllowOpenStrings = value;
+                RaisePropertyChanged("AllowOpenStrings");
+            }
+        }
+
+        public bool AllowMutedStrings
+        {
+            get
+            {
+                return Options.AllowMutedStrings;
+            }
+            set
+            {
+                Options.AllowMutedStrings = value;
+                RaisePropertyChanged("AllowMutedStrings");
+            }
+        }
+
+        public bool AllowRootlessChords
+        {
+            get
+            {
+                return Options.AllowRootlessChords;
+            }
+            set
+            {
+                Options.AllowRootlessChords = value;
+                RaisePropertyChanged("AllowRootlessChords");
+            }
+        }
+
+        public bool MirrorResults
+        {
+            get
+            {
+                return Options.MirrorResults;
+            }
+            set
+            {
+                Options.MirrorResults = value;
+                RaisePropertyChanged("MirrorResults");
+            }
+        }
+
         public RelayCommand Search
         {
             get

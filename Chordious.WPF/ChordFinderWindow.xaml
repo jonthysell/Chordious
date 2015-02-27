@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:com.jonthysell.Chordious.Core.ViewModel;assembly=Chordious.Core.ViewModel"
-        Title="{Binding Title}" Height="480" Width="480" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" MinWidth="480" MinHeight="480" Topmost="True" Icon="{DynamicResource ChordiousIcon}">
+        Title="{Binding Title}" Height="600" Width="800" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" MinWidth="480" MinHeight="480" Topmost="True" Icon="{DynamicResource ChordiousIcon}">
     <Window.DataContext>
         <vm:ChordFinderViewModel />
     </Window.DataContext>
@@ -18,16 +18,46 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="230"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button Content="Search" Grid.Row="2" Margin="5" Command="{Binding Search, Mode=OneWay}" />
         <Button Content="Save Selected" Grid.Column="1" Margin="5" Grid.Row="2" Command="{Binding SaveSelected, Mode=OneWay}" />
         <GroupBox Header="Options" Margin="5">
-            
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Margin="5" Content="# of Frets"/>
+                    <TextBox Grid.Column="1" Margin="5" Text="{Binding NumFrets, ValidatesOnDataErrors=True}" MaxLength="2" AcceptsReturn="True" MaxLines="1"/>
+                    <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Max Fret"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding MaxFret, ValidatesOnDataErrors=True}" AcceptsReturn="True" MaxLength="2" MaxLines="1"/>
+                    <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Max Reach"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding MaxReach, ValidatesOnDataErrors=True}" AcceptsReturn="True" MaxLength="2" MaxLines="1"/>
+                    <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Allow Open Strings"/>
+                    <CheckBox Grid.Row="3" Grid.Column="1" Margin="5" IsChecked="{Binding AllowOpenStrings}" VerticalContentAlignment="Center" />
+                    <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Allow Muted Strings"/>
+                    <CheckBox Grid.Row="4" Grid.Column="1" Margin="5" IsChecked="{Binding AllowMutedStrings}" VerticalContentAlignment="Center" />
+                    <Label Grid.Row="5" Grid.Column="0" Margin="5" Content="Allow Rootless Chords"/>
+                    <CheckBox Grid.Row="5" Grid.Column="1" Margin="5" IsChecked="{Binding AllowRootlessChords}" VerticalContentAlignment="Center" />
+                    <Label Grid.Row="6" Grid.Column="0" Margin="5" Content="Mirror Results"/>
+                    <CheckBox Grid.Row="6" Grid.Column="1" Margin="5" IsChecked="{Binding MirrorResults}" VerticalContentAlignment="Center" />
+                </Grid>
+            </ScrollViewer>
         </GroupBox>
         <GroupBox Header="Style" Margin="5" Grid.Row="1">
-            
+
         </GroupBox>
         <ScrollViewer Grid.Column="1" Grid.RowSpan="2">
             <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemTemplate="{StaticResource ResultTemplate}" ItemsSource="{Binding SvgResults, Converter={StaticResource SvgTextToImageConverter}}">

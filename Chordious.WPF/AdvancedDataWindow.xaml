@@ -1,0 +1,23 @@
+﻿<Window x:Class="com.jonthysell.Chordious.WPF.AdvancedDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding Title}" Height="480" Width="480" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" MinWidth="480" MinHeight="480" Topmost="True" Icon="{DynamicResource ChordiousIcon}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="1" FlowDirection="RightToLeft">
+            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5"/>
+            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True"/>
+            <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5"/>
+        </WrapPanel>
+        <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="Auto" Binding="{Binding Key}" CanUserReorder="False" ClipboardContentBinding="{Binding Key}" Header="Key" IsReadOnly="True"/>
+                <DataGridTextColumn Width="*" Binding="{Binding Value}" CanUserSort="False" CanUserReorder="False" ClipboardContentBinding="{Binding Value}" Header="Value"/>
+                <DataGridTextColumn Width="Auto" Binding="{Binding Level}" CanUserReorder="False" ClipboardContentBinding="{Binding Level}" Header="Level" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Chordious.Core")]
-[assembly: AssemblyDescription("Model library for Chordious.")]
+[assembly: AssemblyTitle("Chordious.Core.ViewModel")]
+[assembly: AssemblyDescription("ViewModel library for Chordious")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jon Thysell")]
 [assembly: AssemblyProduct("Chordious")]
-[assembly: AssemblyCopyright("Copyright © 2013, 2014, 2015 Jon Thysell <http://jonthysell.com>")]
+[assembly: AssemblyCopyright("Copyright © 2015 Jon Thysell <http://jonthysell.com>")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]

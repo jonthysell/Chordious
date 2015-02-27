@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chordious.Core", "Chordious.Core\Chordious.Core.csproj", "{3D200375-095F-4AA8-A724-CD23931C4E1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chordious.WPF", "Chordious.WPF\Chordious.WPF.csproj", "{C9562CB0-8AA8-44B9-BFBF-67DDFAC66A00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chordious.Core.ViewModel", "Chordious.Core.ViewModel\Chordious.Core.ViewModel.csproj", "{E36654B9-259B-4A81-B9B3-44BFD1EC0B5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3D200375-095F-4AA8-A724-CD23931C4E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D200375-095F-4AA8-A724-CD23931C4E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D200375-095F-4AA8-A724-CD23931C4E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9562CB0-8AA8-44B9-BFBF-67DDFAC66A00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9562CB0-8AA8-44B9-BFBF-67DDFAC66A00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9562CB0-8AA8-44B9-BFBF-67DDFAC66A00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9562CB0-8AA8-44B9-BFBF-67DDFAC66A00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E36654B9-259B-4A81-B9B3-44BFD1EC0B5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E36654B9-259B-4A81-B9B3-44BFD1EC0B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E36654B9-259B-4A81-B9B3-44BFD1EC0B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E36654B9-259B-4A81-B9B3-44BFD1EC0B5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

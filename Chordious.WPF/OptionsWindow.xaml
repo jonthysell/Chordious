@@ -1,0 +1,30 @@
+﻿<Window x:Class="com.jonthysell.Chordious.WPF.OptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding Title}" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" ShowInTaskbar="False" Topmost="True" Icon="{DynamicResource ChordiousIcon}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Advanced Settings" Margin="5" Grid.Row="0" Grid.Column="0" Command="{Binding ShowAdvancedSettings, Mode=OneWay}"/>
+            <Button Content="Advanced Styles" Margin="5" Grid.Row="1" Grid.Column="0" Command="{Binding ShowAdvancedStyle, Mode=OneWay}"/>
+            <Button Content="Reset Settings" Margin="5" Grid.Row="0" Grid.Column="1" Command="{Binding ResetUserSettings, Mode=OneWay}"/>
+            <Button Content="Reset Styles" Margin="5" Grid.Row="1" Grid.Column="1" Command="{Binding ResetUserStyles, Mode=OneWay}"/>
+        </Grid>
+        <WrapPanel Grid.Row="2" FlowDirection="RightToLeft">
+            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5"/>
+            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True"/>
+            <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5"/>
+        </WrapPanel>
+    </Grid>
+</Window>

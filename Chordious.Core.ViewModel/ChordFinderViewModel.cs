@@ -66,6 +66,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _isSearching = false;
 
+        #region Options
+
         public int NumFrets
         {
             get
@@ -173,18 +175,113 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #endregion
+
+        #region Styles
+
         public bool MirrorResults
         {
             get
             {
-                return Options.MirrorResults;
+                return Style.MirrorResults;
             }
             set
             {
-                Options.MirrorResults = value;
+                Style.MirrorResults = value;
                 RaisePropertyChanged("MirrorResults");
             }
         }
+
+        public int SelectedBarreTypeOptionIndex
+        {
+            get
+            {
+                return (int)Style.BarreTypeOption;
+            }
+            set
+            {
+                Style.BarreTypeOption = (BarreTypeOption)(value);
+                RaisePropertyChanged("SelectedBarreTypeOptionIndex");
+            }
+        }
+
+        public ObservableCollection<string> BarreTypeOptions
+        {
+            get
+            {
+                return GetBarreTypeOptions();
+            }
+        }
+
+        public bool AddRootNotes
+        {
+            get
+            {
+                return Style.AddRootNotes;
+            }
+            set
+            {
+                Style.AddRootNotes = value;
+                RaisePropertyChanged("AddRootNotes");
+            }
+        }
+
+        public int SelectedMarkTextOptionIndex
+        {
+            get
+            {
+                return (int)Style.MarkTextOption;
+            }
+            set
+            {
+                Style.MarkTextOption = (MarkTextOption)(value);
+                RaisePropertyChanged("SelectedMarkTextOptionIndex");
+            }
+        }
+
+        public ObservableCollection<string> MarkTextOptions
+        {
+            get
+            {
+                return GetMarkTextOptions();
+            }
+        }
+
+        public bool AddBottomMarks
+        {
+            get
+            {
+                return Style.AddBottomMarks;
+            }
+            set
+            {
+                Style.AddBottomMarks = value;
+                RaisePropertyChanged("AddBottomMarks");
+            }
+        }
+
+        public int SelectedBottomMarkTextOptionIndex
+        {
+            get
+            {
+                return (int)Style.BottomMarkTextOption;
+            }
+            set
+            {
+                Style.BottomMarkTextOption = (MarkTextOption)(value);
+                RaisePropertyChanged("SelectedBottomMarkTextOptionIndex");
+            }
+        }
+
+        public ObservableCollection<string> BottomMarkTextOptions
+        {
+            get
+            {
+                return GetMarkTextOptions();
+            }
+        }
+
+        #endregion
 
         public RelayCommand Search
         {
@@ -260,6 +357,29 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             _results = ChordFinder.FindChords(Options);
             IsSearching = false;
             RaisePropertyChanged("SvgResults");
+        }
+
+        private ObservableCollection<string> GetBarreTypeOptions()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add("None");
+            collection.Add("Partial");
+            collection.Add("Full");
+
+            return collection;
+        }
+
+        private ObservableCollection<string> GetMarkTextOptions()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add("None");
+            collection.Add("Show Both");
+            collection.Add("Prefer Flats");
+            collection.Add("Prefer Sharps");
+
+            return collection;
         }
     }
 }

@@ -178,18 +178,6 @@ namespace com.jonthysell.Chordious.Core
                 this.Settings.Set("chordfinderoptions.allowrootlesschords", value);
             }
         }
-
-        public bool MirrorResults
-        {
-            get
-            {
-                return this.Settings.GetBoolean("chordfinderoptions.mirrorresults");
-            }
-            set
-            {
-                this.Settings.Set("chordfinderoptions.mirrorresults", value);
-            }
-        }
         
         private ConfigFile _configFile;
 

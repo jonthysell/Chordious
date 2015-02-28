@@ -88,6 +88,12 @@ namespace com.jonthysell.Chordious.Core
             for (int i = 0; i < marks.Length; i++)
             {
                 int @string = i + 1;
+
+                if (chordFinderStyle.MirrorResults)
+                {
+                    @string = marks.Length - i;
+                }
+
                 int fret = Math.Max(marks[i], 0);
                 MarkPosition mp = new MarkPosition(@string, fret);
 

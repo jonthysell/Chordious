@@ -81,18 +81,6 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public MarkTextOption TopMarkTextOption
-        {
-            get
-            {
-                return Settings.GetEnum<MarkTextOption>("chordfinderstyle.topmarktextoption");
-            }
-            set
-            {
-                Settings.Set("chordfinderstyle.topmarktextoption", value);
-            }
-        }
-
         public MarkTextOption BottomMarkTextOption
         {
             get
@@ -102,6 +90,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Settings.Set("chordfinderstyle.bottommarktextoption", value);
+            }
+        }
+
+        public bool MirrorResults
+        {
+            get
+            {
+                return this.Settings.GetBoolean("chordfinderstyle.mirrorresults");
+            }
+            set
+            {
+                this.Settings.Set("chordfinderstyle.mirrorresults", value);
             }
         }
 

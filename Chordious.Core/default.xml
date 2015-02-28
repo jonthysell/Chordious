@@ -13,13 +13,12 @@
     <setting key="chordfinderoptions.allowopenstrings" value="true" />
     <setting key="chordfinderoptions.allowmutedstrings" value="true" />
     <setting key="chordfinderoptions.allowrootlesschords" value="false" />
-    <setting key="chordfinderoptions.mirrorresults" value="false" />
     <setting key="chordfinderstyle.barretypeoption" value="None" />
     <setting key="chordfinderstyle.addrootnotes" value="false" />
     <setting key="chordfinderstyle.marktextoption" value="None" />
-    <setting key="chordfinderstyle.topmarktextoption" value="None" />
-    <setting key="chordfinderstyle.bottommarktextoption" value="ShowNote_ShowBoth" />
     <setting key="chordfinderstyle.addbottommarks" value="false" />
+    <setting key="chordfinderstyle.bottommarktextoption" value="ShowNote_ShowBoth" />
+    <setting key="chordfinderstyle.mirrorresults" value="false" />
 	</settings>
   <styles>
     <style key="diagram.margin" value="0" />

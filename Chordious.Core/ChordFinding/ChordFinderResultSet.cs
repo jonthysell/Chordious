@@ -64,11 +64,6 @@ namespace com.jonthysell.Chordious.Core
         {
             if (IsValid(marks))
             {
-                if (ChordFinderOptions.MirrorResults)
-                {
-                    Array.Reverse(marks);
-                }
-                
                 _results.Add(new ChordFinderResult(this, marks));
                 _results.Sort();
             }

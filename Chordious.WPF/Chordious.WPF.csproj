@@ -125,7 +125,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SvgTextToImageConverter.cs" />
+    <Compile Include="IdleBoolToWaitCursorConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OptionsWindow.xaml.cs">

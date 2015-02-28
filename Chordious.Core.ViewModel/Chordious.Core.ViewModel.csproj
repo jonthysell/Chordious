@@ -54,6 +54,10 @@
     <Compile Include="ExceptionUtils.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="Messages.cs" />
+    <Compile Include="ObservableChordQuality.cs" />
+    <Compile Include="ObservableDiagram.cs" />
+    <Compile Include="ObservableInstrument.cs" />
+    <Compile Include="ObservableTuning.cs" />
     <Compile Include="OptionsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

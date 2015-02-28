@@ -8,6 +8,6 @@
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
     <Application.Resources>
         <BitmapImage x:Key="ChordiousIcon" >pack://siteoforigin:,,,/Resources/chordious.ico</BitmapImage>
-        <local:SvgTextToImageConverter x:Key="SvgTextToImageConverter" />
+        <local:IdleBoolToWaitCursorConverter x:Key="IdleBoolToWaitCursorConverter" />
     </Application.Resources>
 </Application>

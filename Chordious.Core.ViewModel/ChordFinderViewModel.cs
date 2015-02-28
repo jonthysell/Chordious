@@ -26,6 +26,8 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Threading;
+using System.Threading.Tasks;
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -52,21 +54,169 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public bool IsSearching
+        public bool IsIdle
         {
             get
             {
-                return _isSearching;
+                return _isIdle;
             }
             private set
             {
-                _isSearching = value;
-                RaisePropertyChanged("IsSearching");
+                _isIdle = value;
+                RaisePropertyChanged("IsIdle");
+                RaisePropertyChanged("SearchAsync");
             }
         }
-        private bool _isSearching = false;
+        private bool _isIdle = true;
 
         #region Options
+
+        public ObservableInstrument SelectedInstrument
+        {
+            get
+            {
+                return _instrument;
+            }
+            set
+            {
+                try
+                {
+                    if (null != value)
+                    {
+                        _instrument = value;
+                        Tunings = SelectedInstrument.GetTunings();
+                        SelectedTuning = Tunings[0];
+                        Options.SetTarget(SelectedInstrument.Instrument, SelectedTuning.Tuning);
+                        RaisePropertyChanged("SelectedInstrument");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+        private ObservableInstrument _instrument;
+
+        public ObservableCollection<ObservableInstrument> Instruments
+        {
+            get
+            {
+                return _instruments;
+            }
+            private set
+            {
+                _instruments = value;
+                RaisePropertyChanged("Instruments");
+            }
+        }
+        private ObservableCollection<ObservableInstrument> _instruments;
+
+        public ObservableTuning SelectedTuning
+        {
+            get
+            {
+                return _tuning;
+            }
+            set
+            {
+                try
+                {
+                    if (null != value)
+                    {
+                        _tuning = value;
+                        Options.SetTarget(SelectedInstrument.Instrument, SelectedTuning.Tuning);
+                        RaisePropertyChanged("SelectedTuning");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+        private ObservableTuning _tuning;
+
+        public ObservableCollection<ObservableTuning> Tunings
+        {
+            get
+            {
+                return _tunings;
+            }
+            private set
+            {
+                _tunings = value;
+                RaisePropertyChanged("Tunings");
+            }
+        }
+        private ObservableCollection<ObservableTuning> _tunings;
+
+        public string SelectedRootNote
+        {
+            get
+            {
+                return NoteUtils.ToString(Options.RootNote);
+            }
+            set
+            {
+                try
+                {
+                    Options.RootNote = NoteUtils.ParseNote(value);
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                RaisePropertyChanged("SelectedRootNote");
+            }
+        }
+
+        public ObservableCollection<string> RootNotes
+        {
+            get
+            {
+                return AppVM.GetNotes();
+            }
+        }
+
+        public ObservableChordQuality SelectedChordQuality
+        {
+            get
+            {
+                return _chordQuality;
+            }
+            set
+            {
+                try
+                {
+                    if (null != value)
+                    {
+                        _chordQuality = value;
+                        Options.SetTarget(Options.RootNote, SelectedChordQuality.ChordQuality);
+                        RaisePropertyChanged("SelectedChordQuality");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+        private ObservableChordQuality _chordQuality;
+
+        public ObservableCollection<ObservableChordQuality> ChordQualities
+        {
+            get
+            {
+                return _chordQualities;
+            }
+            private set
+            {
+                _chordQualities = value;
+                RaisePropertyChanged("ChordQualities");
+            }
+        }
+        private ObservableCollection<ObservableChordQuality> _chordQualities;
 
         public int NumFrets
         {
@@ -283,20 +433,37 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
-        public RelayCommand Search
+        public RelayCommand SearchAsync
         {
             get
             {
-                return new RelayCommand(() =>
+                return new RelayCommand(async () =>
                 {
                     try
                     {
-                        FindChords();
+                        IsIdle = false;
+                        ChordFinderResultSet results = await FindChordsAsync();
+                        Results.Clear();
+
+                        if (null != results)
+                        {
+                            for (int i = 0; i < results.Count; i++)
+                            {
+                                Results.Add(await RenderChordAsync(results.ResultAt(i)));
+                            }
+                        }
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
+                    finally
+                    {
+                        IsIdle = true;
+                    }
+                }, () =>
+                {
+                    return IsIdle;
                 });
             }
         }
@@ -322,25 +489,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> SvgResults
+        public ObservableCollection<ObservableDiagram> Results
         {
             get
             {
-                ObservableCollection<string> results = new ObservableCollection<string>();
-
-                if (null != _results)
-                {
-                    for (int i = 0; i < _results.Count; i++)
-                    {
-                        results.Add(_results.DiagramAt(i, Style).ToImageMarkup(ImageMarkupType.SVG));
-                    }
-                }
-
-                return results;
+                return _results;
+            }
+            private set
+            {
+                _results = value;
+                RaisePropertyChanged("Results");
             }
         }
-
-        private ChordFinderResultSet _results;
+        public ObservableCollection<ObservableDiagram> _results;
 
         internal ChordFinderOptions Options { get; private set; }
         internal ChordFinderStyle Style { get; private set; }
@@ -349,14 +510,62 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             Options = new ChordFinderOptions(AppVM.UserConfig);
             Style = new ChordFinderStyle(AppVM.UserConfig);
+
+            Instruments = AppVM.GetInstruments();
+
+            foreach (ObservableInstrument oi in Instruments)
+            {
+                if (oi.Instrument == Options.Instrument)
+                {
+                    SelectedInstrument = oi;
+                    break;
+                }
+            }
+
+            Tunings = SelectedInstrument.GetTunings();
+
+            foreach (ObservableTuning ot in Tunings)
+            {
+                if (ot.Tuning == Options.Tuning)
+                {
+                    SelectedTuning = ot;
+                    break;
+                }
+            }
+
+            ChordQualities = AppVM.GetChordQualities();
+
+            foreach (ObservableChordQuality ocq in ChordQualities)
+            {
+                if (ocq.ChordQuality == Options.ChordQuality)
+                {
+                    SelectedChordQuality = ocq;
+                    break;
+                }
+            }
+
+            Results = new ObservableCollection<ObservableDiagram>();
         }
 
-        private void FindChords()
+        private Task<ChordFinderResultSet> FindChordsAsync()
         {
-            IsSearching = true;
-            _results = ChordFinder.FindChords(Options);
-            IsSearching = false;
-            RaisePropertyChanged("SvgResults");
+            return Task<ChordFinderResultSet>.Factory.StartNew(() =>
+            {
+                return ChordFinder.FindChords(Options);
+            });
+        }
+
+        private Task<ObservableDiagram> RenderChordAsync(ChordFinderResult result)
+        {            
+            return Task<ObservableDiagram>.Factory.StartNew(() =>
+            {
+                ObservableDiagram od = null;
+                AppVM.DoOnUIThread(() =>
+                    {
+                        od = new ObservableDiagram(result.ToDiagram(Style));
+                    });
+                return od;
+            });
         }
 
         private ObservableCollection<string> GetBarreTypeOptions()

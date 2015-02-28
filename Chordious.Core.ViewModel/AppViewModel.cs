@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
 
@@ -35,6 +36,9 @@ using com.jonthysell.Chordious.Core;
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public delegate Stream GetConfigStream();
+    public delegate object SvgTextToImage(string svgText);
+
+    public delegate void DoOnUIThread(Action action);
 
     public class AppViewModel : ViewModelBase
     {
@@ -92,17 +96,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private string _userConfigPath = "";
 
-        public static void Init(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, string userConfigPath = "")
+        public SvgTextToImage SvgTextToImage { get; private set; }
+
+        public DoOnUIThread DoOnUIThread { get; private set; }
+
+        public static void Init(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DoOnUIThread doOnUIThread, string userConfigPath = "")
         {
             if (null != Instance)
             {
                 throw new NotSupportedException();
             }
 
-            Instance = new AppViewModel(assembly, loadDefaultConfigStream, loadUserConfigStream, saveUserConfigStream, userConfigPath);
+            Instance = new AppViewModel(assembly, loadDefaultConfigStream, loadUserConfigStream, saveUserConfigStream, svgTextToImage, doOnUIThread, userConfigPath);
         }
 
-        private AppViewModel(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, string userConfigPath)
+        private AppViewModel(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DoOnUIThread doOnUIThread, string userConfigPath)
         {
             if (null == assembly)
             {
@@ -129,6 +137,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             _loadUserConfigStream = loadUserConfigStream;
             _saveUserConfigStream = saveUserConfigStream;
             UserConfigPath = userConfigPath;
+
+            SvgTextToImage = svgTextToImage;
+            DoOnUIThread = doOnUIThread;
 
             DefaultConfig = new ConfigFile("Default");
             UserConfig = new ConfigFile(DefaultConfig, "User");
@@ -164,6 +175,64 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public void Close()
         {
             SaveUserConfig();
+        }
+
+        public ObservableCollection<string> GetNotes()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            for (int i = 0; i < Enum.GetValues(typeof(Note)).Length; i++)
+            {
+                collection.Add(NoteUtils.ToString((Note)i));
+            }
+
+            return collection;
+        }
+
+        public ObservableCollection<string> GetInternalNotes()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            for (int i = 0; i < Enum.GetValues(typeof(InternalNote)).Length; i++)
+            {
+                collection.Add(NoteUtils.ToString((InternalNote)i, InternalNoteStringStyle.ShowBoth));
+            }
+
+            return collection;
+        }
+
+        public ObservableCollection<ObservableInstrument> GetInstruments()
+        {
+            ObservableCollection<ObservableInstrument> collection = new ObservableCollection<ObservableInstrument>();
+
+            foreach (Instrument instrument in UserConfig.Instruments)
+            {
+                collection.Add(new ObservableInstrument(instrument));
+            }
+
+            foreach (Instrument instrument in DefaultConfig.Instruments)
+            {
+                collection.Add(new ObservableInstrument(instrument));
+            }
+
+            return collection;
+        }
+
+        public ObservableCollection<ObservableChordQuality> GetChordQualities()
+        {
+            ObservableCollection<ObservableChordQuality> collection = new ObservableCollection<ObservableChordQuality>();
+
+            foreach (ChordQuality chordQuality in UserConfig.ChordQualities)
+            {
+                collection.Add(new ObservableChordQuality(chordQuality));
+            }
+
+            foreach (ChordQuality chordQuality in DefaultConfig.ChordQualities)
+            {
+                collection.Add(new ObservableChordQuality(chordQuality));
+            }
+
+            return collection;
         }
     }
 }

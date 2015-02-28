@@ -33,6 +33,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 using GalaSoft.MvvmLight.Messaging;
 
@@ -69,7 +70,12 @@ namespace com.jonthysell.Chordious.WPF
             }, () =>
             {
                 return new FileStream(userFile, FileMode.Create);
-            }, userFile);
+            },
+            ImageUtils.SvgTextToBitmapImage, (action) =>
+                {
+                    Dispatcher.Invoke(action);
+                }
+            , userFile);
 
             if (File.Exists(defaultFile))
             {

@@ -1,5 +1,5 @@
 ﻿// 
-// SvgTextToImageConverter.cs
+// IdleBoolToWaitCursorConverter.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -30,20 +30,20 @@ using System.Collections.ObjectModel;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
+using System.Windows.Input;
 using System.Windows.Data;
 using System.Windows.Markup;
-using System.Windows.Media.Imaging;
 
 namespace com.jonthysell.Chordious.WPF
 {
-    public class SvgTextToImageConverter : MarkupExtension, IValueConverter
+    public class IdleBoolToWaitCursorConverter : MarkupExtension, IValueConverter
     {
-        private static SvgTextToImageConverter _converter = null;
+        private static IdleBoolToWaitCursorConverter _converter = null;
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             if (_converter == null)
             {
-                _converter = new SvgTextToImageConverter();
+                _converter = new IdleBoolToWaitCursorConverter();
             }
             return _converter;
         }
@@ -52,25 +52,14 @@ namespace com.jonthysell.Chordious.WPF
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            try
+            if (null != value as bool?)
             {
-                if (null != value as IEnumerable<string>)
+                if (!(bool)value)
                 {
-                    ObservableCollection<DiagramItem> diagramItems = new ObservableCollection<DiagramItem>();
-                    foreach (string svgText in (value as IEnumerable<string>))
-                    {
-                        diagramItems.Add(new DiagramItem(svgText));
-                    }
-                    return diagramItems;
-                }
-                else if (null != value as string)
-                {
-                    return new DiagramItem(value as string);
+                    return Cursors.Wait;
                 }
             }
-            catch { }
-
-            return value;
+            return Cursors.Arrow;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -79,46 +68,5 @@ namespace com.jonthysell.Chordious.WPF
         }
 
         #endregion
-
-        
-    }
-
-    public class DiagramItem
-    {
-        public string SvgText { get; private set; }
-
-        public BitmapImage BitmapImage
-        {
-            get
-            {
-                if (null == _bitmapImage)
-                {
-                    _bitmapImage = ImageUtils.BitmapToBitmapImage(ImageUtils.SvgTextToBitmap(SvgText), ImageFormat.Png);
-                }
-                return _bitmapImage;
-            }
-        }
-        private BitmapImage _bitmapImage;
-
-        public int Height
-        {
-            get
-            {
-                return BitmapImage.PixelHeight;
-            }
-        }
-        
-        public int Width
-        {
-            get
-            {
-                return BitmapImage.PixelWidth;
-            }
-        }
-
-        public DiagramItem(string svgText)
-        {
-            SvgText = svgText;
-        }
     }
 }

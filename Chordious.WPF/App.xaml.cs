@@ -99,6 +99,12 @@ namespace com.jonthysell.Chordious.WPF
         {
             string userFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             userFolder = Path.Combine(userFolder, "Chordious");
+
+            if (!Directory.Exists(userFolder))
+            {
+                Directory.CreateDirectory(userFolder);
+            }
+
             return Path.Combine(userFolder, "user.xml");
         }
 

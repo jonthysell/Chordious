@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
@@ -444,6 +445,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         IsIdle = false;
                         ChordFinderResultSet results = await FindChordsAsync();
                         Results.Clear();
+                        SelectedResults.Clear();
 
                         if (null != results)
                         {
@@ -484,9 +486,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return false;
+                    return SelectedResults.Count > 0;
                 });
             }
+        }
+
+        public ObservableCollection<ObservableDiagram> SelectedResults
+        {
+            get
+            {
+                return _selectedResults;
+            }
+            private set
+            {
+                if (null == value)
+                {
+                    throw new ArgumentNullException();
+                }
+
+                _selectedResults = value;
+                RaisePropertyChanged("SelectedResults");
+            }
+        }
+        private ObservableCollection<ObservableDiagram> _selectedResults;
+
+        private void SelectedResults_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            RaisePropertyChanged("SaveSelected");
         }
 
         public ObservableCollection<ObservableDiagram> Results
@@ -545,6 +571,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
 
             Results = new ObservableCollection<ObservableDiagram>();
+            SelectedResults = new ObservableCollection<ObservableDiagram>();
+
+            SelectedResults.CollectionChanged += SelectedResults_CollectionChanged;
         }
 
         private Task<ChordFinderResultSet> FindChordsAsync()

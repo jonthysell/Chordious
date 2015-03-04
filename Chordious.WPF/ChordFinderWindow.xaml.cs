@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +38,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using com.jonthysell.Chordious.Core.ViewModel;
+
 namespace com.jonthysell.Chordious.WPF
 {
     /// <summary>
@@ -49,6 +50,29 @@ namespace com.jonthysell.Chordious.WPF
         public ChordFinderWindow()
         {
             InitializeComponent();
+
+            // Handle the lack of binding selected listview items in WPF
+            ResultsListView.SelectionChanged += ResultsListView_SelectionChanged;
+        }
+
+        void ResultsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ChordFinderViewModel vm = DataContext as ChordFinderViewModel;
+
+            if (null != vm)
+            {
+                foreach (object item in e.AddedItems)
+                {
+                    ObservableDiagram od = item as ObservableDiagram;
+                    vm.SelectedResults.Add(od);
+                }
+
+                foreach (object item in e.RemovedItems)
+                {
+                    ObservableDiagram od = item as ObservableDiagram;
+                    vm.SelectedResults.Remove(od);
+                }                
+            }
         }
     }
 }

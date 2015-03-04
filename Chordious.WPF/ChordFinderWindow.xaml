@@ -117,7 +117,7 @@
             </ScrollViewer>
         </GroupBox>
         <ScrollViewer Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
-            <ListView Name="ResultsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Results}">
+            <ListView Name="ResultsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Results}" SelectionMode="Multiple">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Margin="5" />
@@ -131,6 +131,6 @@
             </ListView>
         </ScrollViewer>
         <Button Content="Search" Grid.Row="3" Margin="5" Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}" />
-        <Button Content="Save Selected" Grid.Column="1" Margin="5" Grid.Row="3" Command="{Binding SaveSelected, Mode=OneWay}" />
+        <Button Name="SaveSelectedCommand" Content="Save Selected" Grid.Column="1" Margin="5" Grid.Row="3" Command="{Binding SaveSelected}" />
     </Grid>
 </Window>

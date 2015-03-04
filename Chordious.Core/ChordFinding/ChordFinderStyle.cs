@@ -33,6 +33,18 @@ namespace com.jonthysell.Chordious.Core
         public DiagramStyle Style { get; private set; }
         public ChordiousSettings Settings { get; private set; }
 
+        public bool AddTitle
+        {
+            get
+            {
+                return Settings.GetBoolean("chordfinderstyle.addtitle");
+            }
+            set
+            {
+                Settings.Set("chordfinderstyle.addtitle", value);
+            }
+        }
+
         public BarreTypeOption BarreTypeOption
         {
             get

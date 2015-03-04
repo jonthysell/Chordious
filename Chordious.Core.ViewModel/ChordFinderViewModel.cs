@@ -330,6 +330,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region Styles
 
+        public bool AddTitle
+        {
+            get
+            {
+                return Style.AddTitle;
+            }
+            set
+            {
+                Style.AddTitle = value;
+                RaisePropertyChanged("AddTitle");
+            }
+        }
+
         public bool MirrorResults
         {
             get

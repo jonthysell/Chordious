@@ -100,19 +100,22 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Mirror Results"/>
-                    <CheckBox Grid.Row="0" Grid.Column="1" Margin="5" IsChecked="{Binding MirrorResults}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                    <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Add Root Notes"/>
-                    <CheckBox Grid.Row="1" Grid.Column="1" Margin="5" IsChecked="{Binding AddRootNotes}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                    <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Barre Type"/>
-                    <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding BarreTypeOptions}" SelectedIndex="{Binding SelectedBarreTypeOptionIndex}" VerticalAlignment="Center"/>
-                    <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Mark Text"/>
-                    <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding MarkTextOptions}" SelectedIndex="{Binding SelectedMarkTextOptionIndex}" VerticalAlignment="Center"/>
-                    <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Add Bottom Marks"/>
-                    <CheckBox Grid.Row="4" Grid.Column="1" Margin="5" IsChecked="{Binding AddBottomMarks}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                    <Label Grid.Row="5" Grid.Column="0" Margin="5" Content="Bottom Mark Text" IsEnabled="{Binding AddBottomMarks}"/>
-                    <ComboBox Grid.Row="5" Grid.Column="1" ItemsSource="{Binding BottomMarkTextOptions}" SelectedIndex="{Binding SelectedBottomMarkTextOptionIndex}" VerticalAlignment="Center" IsEnabled="{Binding AddBottomMarks}"/>
+                    <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Add Title"/>
+                    <CheckBox Grid.Row="0" Grid.Column="1" Margin="5" IsChecked="{Binding AddTitle}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Mirror Results"/>
+                    <CheckBox Grid.Row="1" Grid.Column="1" Margin="5" IsChecked="{Binding MirrorResults}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Add Root Notes"/>
+                    <CheckBox Grid.Row="2" Grid.Column="1" Margin="5" IsChecked="{Binding AddRootNotes}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Barre Type"/>
+                    <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding BarreTypeOptions}" SelectedIndex="{Binding SelectedBarreTypeOptionIndex}" VerticalAlignment="Center"/>
+                    <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Mark Text"/>
+                    <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding MarkTextOptions}" SelectedIndex="{Binding SelectedMarkTextOptionIndex}" VerticalAlignment="Center"/>
+                    <Label Grid.Row="5" Grid.Column="0" Margin="5" Content="Add Bottom Marks"/>
+                    <CheckBox Grid.Row="5" Grid.Column="1" Margin="5" IsChecked="{Binding AddBottomMarks}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label Grid.Row="6" Grid.Column="0" Margin="5" Content="Bottom Mark Text" IsEnabled="{Binding AddBottomMarks}"/>
+                    <ComboBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding BottomMarkTextOptions}" SelectedIndex="{Binding SelectedBottomMarkTextOptionIndex}" VerticalAlignment="Center" IsEnabled="{Binding AddBottomMarks}"/>
                 </Grid>
             </ScrollViewer>
         </GroupBox>

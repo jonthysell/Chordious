@@ -92,7 +92,7 @@ namespace com.jonthysell.Chordious.WPF
 
         public string GetDefaultConfigPath()
         {
-            return "default.xml";
+            return "Chordious.WPF.xml";
         }
 
         public string GetUserConfigPath()
@@ -105,7 +105,7 @@ namespace com.jonthysell.Chordious.WPF
                 Directory.CreateDirectory(userFolder);
             }
 
-            return Path.Combine(userFolder, "user.xml");
+            return Path.Combine(userFolder, "Chordious.WPF.xml");
         }
 
         private void App_Exit(object sender, ExitEventArgs e)

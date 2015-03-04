@@ -75,14 +75,16 @@ namespace com.jonthysell.Chordious.Core
             int baseLine;
             int[] marks = MarkUtils.AbsoluteToRelativeMarks(this.Marks, out baseLine, this.Parent.ChordFinderOptions.NumFrets);
 
-            string title = NoteUtils.ToString(this.Parent.ChordFinderOptions.RootNote) + this.Parent.ChordFinderOptions.ChordQuality.Abbreviation;
-
             int numStrings = marks.Length;
 
             int numFrets = this.Parent.ChordFinderOptions.NumFrets;
 
             Diagram d = new Diagram(chordFinderStyle.Style, numStrings, numFrets);
-            d.Title = title;
+
+            if (chordFinderStyle.AddTitle)
+            {
+                d.Title = NoteUtils.ToString(this.Parent.ChordFinderOptions.RootNote) + this.Parent.ChordFinderOptions.ChordQuality.Abbreviation;
+            }
 
             // Add marks
             for (int i = 0; i < marks.Length; i++)

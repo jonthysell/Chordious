@@ -1,0 +1,13 @@
+﻿<Window x:Class="com.jonthysell.Chordious.WPF.TextPromptWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding Title}" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" Icon="{DynamicResource ChordiousIcon}" Width="400" Height="150" ResizeMode="NoResize">
+    <StackPanel>
+        <Label Content="{Binding Prompt}" Height="Auto" Margin="5"/>
+        <TextBox Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" Height="Auto" Margin="5" MaxLines="1" />
+        <WrapPanel FlowDirection="RightToLeft" Height="Auto">
+            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5"/>
+            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True"/>
+        </WrapPanel>
+    </StackPanel>
+</Window>

@@ -1,5 +1,5 @@
 ﻿// 
-// PathUtils.cs
+// DiagramLibraryWindow.xaml.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -25,43 +25,29 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
-namespace com.jonthysell.Chordious.Core
+namespace com.jonthysell.Chordious.WPF
 {
-    public class PathUtils
+    /// <summary>
+    /// Interaction logic for DiagramLibraryWindow.xaml
+    /// </summary>
+    public partial class DiagramLibraryWindow : Window
     {
-        public static string Clean(string path)
+        public DiagramLibraryWindow()
         {
-            if (null == path)
-            {
-                path = "";
-            }
-
-            path = path.Trim();
-            path = path.TrimEnd(PathUtils.PathSeperator[0]);
-
-            if (!path.StartsWith(PathUtils.PathSeperator))
-            {
-                path = PathUtils.PathSeperator + path;
-            }
-
-            return path;
+            InitializeComponent();
         }
-
-        public static string Join(string path1, string path2)
-        {
-
-            if (StringUtils.IsNullOrWhiteSpace(path2))
-            {
-                throw new ArgumentNullException("path2");
-            }
-
-            path1 = Clean(path1);
-            path2 = path2.Trim();
-
-            return String.Join(PathSeperator, path1, path2);
-        }
-
-        public static string PathSeperator = "/";
     }
 }

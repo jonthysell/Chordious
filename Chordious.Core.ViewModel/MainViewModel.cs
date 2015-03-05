@@ -132,6 +132,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public RelayCommand ShowDiagramLibrary
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<ShowDiagramLibraryMessage>(new ShowDiagramLibraryMessage());
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                });
+            }
+        }
+
         public RelayCommand ShowOptions
         {
             get

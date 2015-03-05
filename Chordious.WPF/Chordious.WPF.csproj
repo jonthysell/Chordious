@@ -116,6 +116,9 @@
     <Compile Include="ChordFinderWindow.xaml.cs">
       <DependentUpon>ChordFinderWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DiagramLibraryWindow.xaml.cs">
+      <DependentUpon>DiagramLibraryWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImageUtils.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -126,6 +129,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="IdleBoolToWaitCursorConverter.cs" />
+    <Compile Include="TextPromptWindow.xaml.cs">
+      <DependentUpon>TextPromptWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OptionsWindow.xaml.cs">
@@ -169,11 +175,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DiagramLibraryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OptionsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TextPromptWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

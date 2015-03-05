@@ -50,6 +50,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public ConfirmationMessage(string notification, Action<bool> callback) : base(notification, callback) { }
     }
 
+    public class PromptForTextMessage : MessageBase
+    {
+        public TextPromptViewModel TextPromptVM { get; private set; }
+
+        public PromptForTextMessage(string prompt, Action<string> callback) : base()
+        {
+            TextPromptVM = new TextPromptViewModel(prompt, callback);
+        }
+    }
+
     public class ExceptionMessage : MessageBase
     {
         public Exception Exception { get; private set; }
@@ -73,6 +83,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     public class ShowChordFinderMessage : MessageBase
     {
         public ShowChordFinderMessage() : base() { }
+    }
+
+    public class ShowDiagramLibraryMessage : MessageBase
+    {
+        public ShowDiagramLibraryMessage() : base() { }
     }
 
     public class ShowOptionsMessage : MessageBase

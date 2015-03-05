@@ -46,10 +46,12 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Register<ChordiousMessage>(recipient, (message) => MessageHandlers.ShowNotification(message));
             Messenger.Default.Register<ExceptionMessage>(recipient, (message) => MessageHandlers.ShowException(message));
             Messenger.Default.Register<ConfirmationMessage>(recipient, (message) => MessageHandlers.ConfirmAction(message));
+            Messenger.Default.Register<PromptForTextMessage>(recipient, (message) => MessageHandlers.PromptForText(message));
 
             Messenger.Default.Register<LaunchUrlMessage>(recipient, (message) => MessageHandlers.LaunchUrl(message));
 
             Messenger.Default.Register<ShowChordFinderMessage>(recipient, (message) => MessageHandlers.ShowChordFinder(message));
+            Messenger.Default.Register<ShowDiagramLibraryMessage>(recipient, (message) => MessageHandlers.ShowDiagramLibrary(message));
             Messenger.Default.Register<ShowOptionsMessage>(recipient, (message) => MessageHandlers.ShowOptions(message));
             Messenger.Default.Register<ShowAdvancedDataMessage>(recipient, (message) => MessageHandlers.ShowAdvancedData(message));
         }
@@ -59,10 +61,12 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Unregister<ChordiousMessage>(recipient);
             Messenger.Default.Unregister<ExceptionMessage>(recipient);
             Messenger.Default.Unregister<ConfirmationMessage>(recipient);
+            Messenger.Default.Unregister<PromptForTextMessage>(recipient);
 
             Messenger.Default.Unregister<LaunchUrlMessage>(recipient);
 
             Messenger.Default.Unregister<ShowChordFinderMessage>(recipient);
+            Messenger.Default.Unregister<ShowDiagramLibraryMessage>(recipient);
             Messenger.Default.Unregister<ShowOptionsMessage>(recipient);
             Messenger.Default.Unregister<ShowAdvancedDataMessage>(recipient);
         }
@@ -88,9 +92,26 @@ namespace com.jonthysell.Chordious.WPF
             message.Execute(result == MessageBoxResult.Yes);
         }
 
+        private static void PromptForText(PromptForTextMessage message)
+        {
+            TextPromptWindow window = new TextPromptWindow();
+            window.DataContext = message.TextPromptVM;
+            message.TextPromptVM.RequestClose += () =>
+            {
+                window.Close();
+            };
+            window.ShowDialog();
+        }
+
         private static void ShowChordFinder(ShowChordFinderMessage message)
         {
             ChordFinderWindow window = new ChordFinderWindow();
+            window.ShowDialog();
+        }
+
+        private static void ShowDiagramLibrary(ShowDiagramLibraryMessage message)
+        {
+            DiagramLibraryWindow window = new DiagramLibraryWindow();
             window.ShowDialog();
         }
 

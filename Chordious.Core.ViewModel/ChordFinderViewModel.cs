@@ -32,6 +32,7 @@ using System.Threading.Tasks;
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
@@ -491,7 +492,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        throw new NotImplementedException();
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Save selected diagrams to:", (name) =>
+                        {
+                            DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
+                            DiagramCollection targetCollection = null;
+
+                            if (!library.TryGet("", name, out targetCollection))
+                            {
+                                targetCollection = library.Add("", name);
+                            }
+
+                            foreach (ObservableDiagram od in SelectedResults)
+                            {
+                                targetCollection.Add(od.Diagram);
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {

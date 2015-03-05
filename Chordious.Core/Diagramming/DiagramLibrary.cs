@@ -228,17 +228,21 @@ namespace com.jonthysell.Chordious.Core
                     nodePath = nodePath.Substring(path.Length);
 
                     int firstSeperator = nodePath.IndexOf(PathUtils.PathSeperator);
-                    if (firstSeperator >= 0)
+                    if (firstSeperator > 0)
                     {
-                        nodePath.Substring(0, firstSeperator);
+                        nodePath = nodePath.Substring(0, firstSeperator);
                     }
-                    subFolders.Add(nodePath);
+
+                    if (!StringUtils.IsNullOrWhiteSpace(nodePath))
+                    {
+                        subFolders.Add(nodePath);
+                    }
                 }
             }
             return subFolders;
         }
 
-        public IEnumerable<KeyValuePair<string,DiagramCollection>> GetAll(string path)
+        public IEnumerable<KeyValuePair<string, DiagramCollection>> GetAll(string path = "")
         {
             path = PathUtils.Clean(path);
 

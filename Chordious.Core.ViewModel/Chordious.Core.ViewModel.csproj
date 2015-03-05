@@ -51,15 +51,18 @@
     <Compile Include="AdvancedDataViewModel.cs" />
     <Compile Include="AppViewModel.cs" />
     <Compile Include="ChordFinderViewModel.cs" />
+    <Compile Include="DiagramLibraryViewModel.cs" />
     <Compile Include="ExceptionUtils.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="ObservableChordQuality.cs" />
     <Compile Include="ObservableDiagram.cs" />
+    <Compile Include="ObservableDiagramLibraryNode.cs" />
     <Compile Include="ObservableInstrument.cs" />
     <Compile Include="ObservableTuning.cs" />
     <Compile Include="OptionsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextPromptViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight">

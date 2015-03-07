@@ -25,11 +25,13 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
@@ -69,35 +71,86 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                ObservableCollection<ObservableDiagram> collection = new ObservableCollection<ObservableDiagram>();
-                foreach (Diagram diagram in Library.Get(Path, Name))
+                if (firstLoad)
                 {
-                    collection.Add(new ObservableDiagram(diagram));
+                    foreach (Diagram diagram in Library.Get(Path, Name))
+                    {
+                        _diagrams.Add(new ObservableDiagram(diagram));
+                    }
+                    firstLoad = false;
                 }
-                return collection;
+                return _diagrams;
+            }
+            private set
+            {
+                _diagrams = value;
+                RaisePropertyChanged("Diagrams");
             }
         }
+        public ObservableCollection<ObservableDiagram> _diagrams;
 
-        public RelayCommand<string> Rename
+        public ObservableCollection<ObservableDiagram> SelectedDiagrams
         {
             get
             {
-                return new RelayCommand<string>((newName) =>
+                return _selectedDiagrams;
+            }
+            private set
+            {
+                if (null == value)
+                {
+                    throw new ArgumentNullException();
+                }
+
+                _selectedDiagrams = value;
+                RaisePropertyChanged("SelectedDiagrams");
+            }
+        }
+        private ObservableCollection<ObservableDiagram> _selectedDiagrams;
+
+        public RelayCommand DeleteSelected
+        {
+            get
+            {
+                return new RelayCommand(() =>
                 {
                     try
                     {
-                        Library.Rename(Path, Name, newName);
-                        Name = newName.Trim();
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete the {0} selected diagrams. Do you want to continue?", SelectedDiagrams.Count), (confirmed) =>
+                        {
+                            if (confirmed)
+                            {
+                                List<ObservableDiagram> itemsToDelete = new List<ObservableDiagram>(SelectedDiagrams);
+
+                                DiagramCollection collection = Library.Get(Path, Name);
+                                foreach (ObservableDiagram od in itemsToDelete)
+                                {
+                                    collection.Remove(od.Diagram);
+                                    Diagrams.Remove(od);
+                                }
+                                SelectedDiagrams.Clear();
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
+                }, () =>
+                {
+                    return SelectedDiagrams.Count > 0;
                 });
             }
         }
 
+        private void SelectedDiagrams_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            RaisePropertyChanged("DeleteSelected");
+        }
+
         internal DiagramLibrary Library { get; private set; }
+
+        private bool firstLoad = true;
 
         public ObservableDiagramLibraryNode(string path, string name, DiagramLibrary library) : base()
         {
@@ -110,6 +163,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             Name = name;
 
             Library = library;
+
+            Diagrams = new ObservableCollection<ObservableDiagram>();
+
+            SelectedDiagrams = new ObservableCollection<ObservableDiagram>();
+
+            SelectedDiagrams.CollectionChanged += SelectedDiagrams_CollectionChanged;
         }
     }
 }

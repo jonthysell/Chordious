@@ -42,6 +42,11 @@ namespace com.jonthysell.Chordious.Core
             _nodes = new List<DiagramLibraryNode>();
         }
 
+        public DiagramCollection Get(string name)
+        {
+            return Get(PathUtils.PathRoot, name);
+        }
+
         public DiagramCollection Get(string path, string name)
         {
             if (StringUtils.IsNullOrWhiteSpace(name))
@@ -58,6 +63,11 @@ namespace com.jonthysell.Chordious.Core
             }
 
             throw new DiagramCollectionNotFoundException(this, path, name);
+        }
+
+        public bool TryGet(string name, out DiagramCollection diagramCollection)
+        {
+            return TryGet(PathUtils.PathRoot, name, out diagramCollection);
         }
 
         public bool TryGet(string path, string name, out DiagramCollection diagramCollection)
@@ -82,11 +92,21 @@ namespace com.jonthysell.Chordious.Core
             return false;
         }
 
+        public DiagramCollection Add(string name)
+        {
+            return Add(PathUtils.PathRoot, name);
+        }
+
         public DiagramCollection Add(string path, string name)
         {
             DiagramLibraryNode node = new DiagramLibraryNode(this.Style, path, name);
             AddNode(node);
             return node.DiagramCollection;
+        }
+
+        public void Remove(string name)
+        {
+            Remove(PathUtils.PathRoot, name);
         }
 
         public void Remove(string path, string name)
@@ -166,6 +186,11 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public void Rename(string name, string newName)
+        {
+            Rename(PathUtils.PathRoot, name, newName);
+        }
+
         public void Rename(string path, string name, string newName)
         {
             if (StringUtils.IsNullOrWhiteSpace(name))
@@ -181,7 +206,7 @@ namespace com.jonthysell.Chordious.Core
             path = PathUtils.Clean(path);
 
             name = name.Trim();
-            newName = name.Trim();
+            newName = newName.Trim();
 
             DiagramLibraryNode node;
             if (TryGetNode(path, name, out node))
@@ -200,6 +225,37 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public string GetNewCollectionName()
+        {
+            return GetNewCollectionName(PathUtils.PathRoot);
+        }
+
+        public string GetNewCollectionName(string path)
+        {
+            string baseName = "New Collection";
+
+            string name = baseName;
+
+            bool valid = false;
+
+            int count = 1;
+            DiagramLibraryNode node;
+            while (!valid)
+            {
+                if (!TryGetNode(path, name, out node))
+                {
+                    valid = true; // Found an unused name
+                }
+                else
+                {
+                    name = String.Format("{0} ({1})", baseName, count);
+                    count++;
+                }
+            }
+
+            return name;
+        }
+
         public bool PathExists(string path)
         {
             path = PathUtils.Clean(path);
@@ -215,7 +271,12 @@ namespace com.jonthysell.Chordious.Core
             return false;
         }
 
-        public IEnumerable<string> GetSubFolders(string path = "")
+        public IEnumerable<string> GetSubFolders()
+        {
+            return GetSubFolders(PathUtils.PathRoot);
+        }
+
+        public IEnumerable<string> GetSubFolders(string path)
         {
             path = PathUtils.Clean(path);
 
@@ -242,7 +303,12 @@ namespace com.jonthysell.Chordious.Core
             return subFolders;
         }
 
-        public IEnumerable<KeyValuePair<string, DiagramCollection>> GetAll(string path = "")
+        public IEnumerable<KeyValuePair<string, DiagramCollection>> GetAll()
+        {
+            return GetAll(PathUtils.PathRoot);
+        }
+
+        public IEnumerable<KeyValuePair<string, DiagramCollection>> GetAll(string path)
         {
             path = PathUtils.Clean(path);
 
@@ -368,11 +434,27 @@ namespace com.jonthysell.Chordious.Core
 
     public class DiagramCollectionNotFoundException : TargetDiagramCollectionException
     {
+        public override string Message
+        {
+            get
+            {
+                return String.Format("Collection \"{0}\" could not be found.", Name);
+            }
+        }
+
         public DiagramCollectionNotFoundException(DiagramLibrary diagramLibrary, string path, string name) : base(diagramLibrary, path, name) { }
     }
 
     public class DiagramCollectionNameAlreadyExistsException : TargetDiagramCollectionException
     {
+        public override string Message
+        {
+            get
+            {
+                return String.Format("Collection \"{0}\" already exists.", Name);
+            }
+        }
+
         public DiagramCollectionNameAlreadyExistsException(DiagramLibrary diagramLibrary, string path, string name) : base(diagramLibrary, path, name) { }
     }
 

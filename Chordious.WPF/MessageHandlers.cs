@@ -107,12 +107,14 @@ namespace com.jonthysell.Chordious.WPF
         {
             ChordFinderWindow window = new ChordFinderWindow();
             window.ShowDialog();
+            message.Process();
         }
 
         private static void ShowDiagramLibrary(ShowDiagramLibraryMessage message)
         {
             DiagramLibraryWindow window = new DiagramLibraryWindow();
             window.ShowDialog();
+            message.Process();
         }
 
         private static void ShowOptions(ShowOptionsMessage message)

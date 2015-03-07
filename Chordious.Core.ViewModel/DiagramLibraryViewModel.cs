@@ -28,8 +28,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
@@ -53,6 +54,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public bool NodeIsSelected
+        {
+            get
+            {
+                return (null != SelectedNode);
+            }
+        }
+
         public ObservableDiagramLibraryNode SelectedNode
         {
             get
@@ -63,6 +72,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 _selectedNode = value;
                 RaisePropertyChanged("SelectedNode");
+                RaisePropertyChanged("NodeIsSelected");
+                RaisePropertyChanged("CreateNode");
+                RaisePropertyChanged("RenameNode");
+                RaisePropertyChanged("DeleteNode");
             }
         }
         private ObservableDiagramLibraryNode _selectedNode;
@@ -72,8 +85,87 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 ObservableCollection<ObservableDiagramLibraryNode> collection = new ObservableCollection<ObservableDiagramLibraryNode>();
-                GetNodes(collection);
+                GetNodes(collection, PathUtils.PathRoot);
                 return collection;
+            }
+        }
+
+        public RelayCommand CreateNode
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Create new collection named:", Library.GetNewCollectionName(), (name) =>
+                        {
+                            Library.Add(name);
+                            RaisePropertyChanged("Nodes");
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                });
+            }
+        }
+
+        public RelayCommand DeleteNode
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        string path = SelectedNode.Path;
+                        string name = SelectedNode.Name;
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete the collection \"{0}\". Do you want to continue?", name), (confirmed) =>
+                        {
+                            if (confirmed)
+                            {
+                                Library.Remove(path, name);
+                                RaisePropertyChanged("Nodes");
+                            }
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return NodeIsSelected;
+                });
+            }
+        }
+
+        public RelayCommand RenameNode
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        string path = SelectedNode.Path;
+                        string oldName = SelectedNode.Name;
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(String.Format("Rename collection \"{0}\" to:", oldName), oldName, (newName) =>
+                        {
+                            Library.Rename(path, oldName, newName);
+                            RaisePropertyChanged("Nodes");
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return NodeIsSelected;
+                });
             }
         }
 
@@ -84,7 +176,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             Library = AppVM.UserConfig.DiagramLibrary;
         }
 
-        private void GetNodes(ObservableCollection<ObservableDiagramLibraryNode> collection, string path = "")
+        private void GetNodes(ObservableCollection<ObservableDiagramLibraryNode> collection, string path)
         {
             foreach (string subfolder in Library.GetSubFolders(path))
             {

@@ -497,9 +497,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
                             DiagramCollection targetCollection = null;
 
-                            if (!library.TryGet("", name, out targetCollection))
+                            if (!library.TryGet(name, out targetCollection))
                             {
-                                targetCollection = library.Add("", name);
+                                targetCollection = library.Add(name);
                             }
 
                             foreach (ObservableDiagram od in SelectedResults)

@@ -38,6 +38,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using com.jonthysell.Chordious.Core.ViewModel;
+
 namespace com.jonthysell.Chordious.WPF
 {
     /// <summary>
@@ -48,6 +50,29 @@ namespace com.jonthysell.Chordious.WPF
         public DiagramLibraryWindow()
         {
             InitializeComponent();
+
+            // Handle the lack of binding selected listview items in WPF
+            DiagramsListView.SelectionChanged += DiagramsListView_SelectionChanged;
+        }
+
+        void DiagramsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DiagramLibraryViewModel vm = DataContext as DiagramLibraryViewModel;
+
+            if (null != vm)
+            {
+                foreach (object item in e.AddedItems)
+                {
+                    ObservableDiagram od = item as ObservableDiagram;
+                    vm.SelectedNode.SelectedDiagrams.Add(od);
+                }
+
+                foreach (object item in e.RemovedItems)
+                {
+                    ObservableDiagram od = item as ObservableDiagram;
+                    vm.SelectedNode.SelectedDiagrams.Remove(od);
+                }
+            }
         }
     }
 }

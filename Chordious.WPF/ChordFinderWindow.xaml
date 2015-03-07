@@ -29,7 +29,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Margin="5" Content="Instrument"/>
+            <Label Grid.Column="0" Margin="5" Content="Instrument" FontWeight="Bold" />
             <ComboBox Grid.Column="1" ItemsSource="{Binding Instruments}" SelectedItem="{Binding SelectedInstrument}" VerticalAlignment="Center" Margin="5">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -37,7 +37,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Label Grid.Column="2" Margin="5" Content="Tuning"/>
+            <Label Grid.Column="2" Margin="5" Content="Tuning" FontWeight="Bold" />
             <ComboBox Grid.Column="3" ItemsSource="{Binding Tunings}" SelectedItem="{Binding SelectedTuning}" VerticalAlignment="Center" Margin="5">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -45,9 +45,9 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Label Grid.Column="4" Margin="5" Content="Root Note"/>
+            <Label Grid.Column="4" Margin="5" Content="Root Note" FontWeight="Bold" />
             <ComboBox Grid.Column="5" ItemsSource="{Binding RootNotes}" SelectedItem="{Binding SelectedRootNote}" VerticalAlignment="Center" Margin="5" />
-            <Label Grid.Column="6" Margin="5" Content="Quality"/>
+            <Label Grid.Column="6" Margin="5" Content="Quality" FontWeight="Bold" />
             <ComboBox Grid.Column="7" ItemsSource="{Binding ChordQualities}" SelectedItem="{Binding SelectedChordQuality}" VerticalAlignment="Center" Margin="5">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>

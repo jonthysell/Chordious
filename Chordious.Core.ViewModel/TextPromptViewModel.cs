@@ -61,7 +61,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 return _text;
             }
-            private set
+            set
             {
                 _text = value;
                 RaisePropertyChanged("Text");

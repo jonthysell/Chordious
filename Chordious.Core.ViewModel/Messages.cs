@@ -58,6 +58,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             TextPromptVM = new TextPromptViewModel(prompt, callback);
         }
+
+        public PromptForTextMessage(string prompt, string defaultText, Action<string> callback) : this(prompt, callback)            
+        {
+            TextPromptVM.Text = defaultText;
+        }
     }
 
     public class ExceptionMessage : MessageBase
@@ -80,12 +85,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
     }
 
-    public class ShowChordFinderMessage : MessageBase
+    public abstract class SaveUserConfigAfterHandlingMessageBase : MessageBase
+    {
+        public void Process()
+        {
+            AppViewModel.Instance.SaveUserConfig();
+        }
+    }
+
+    public class ShowChordFinderMessage : SaveUserConfigAfterHandlingMessageBase
     {
         public ShowChordFinderMessage() : base() { }
     }
 
-    public class ShowDiagramLibraryMessage : MessageBase
+    public class ShowDiagramLibraryMessage : SaveUserConfigAfterHandlingMessageBase
     {
         public ShowDiagramLibraryMessage() : base() { }
     }

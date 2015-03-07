@@ -40,9 +40,9 @@ namespace com.jonthysell.Chordious.Core
             path = path.Trim();
             path = path.TrimEnd(PathUtils.PathSeperator[0]);
 
-            if (!path.StartsWith(PathUtils.PathSeperator))
+            if (!path.StartsWith(PathUtils.PathRoot))
             {
-                path = PathUtils.PathSeperator + path;
+                path = PathUtils.PathRoot + path;
             }
 
             return path;
@@ -63,5 +63,7 @@ namespace com.jonthysell.Chordious.Core
         }
 
         public static string PathSeperator = "/";
+
+        public static string PathRoot = "/";
     }
 }

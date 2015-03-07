@@ -16,7 +16,9 @@
             <ColumnDefinition Width="260"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Content="Collections" Grid.Row="0" Grid.Column="0"/>
+        <WrapPanel Grid.Row="0" Grid.Column="0">
+            <Label Content="Collections" FontWeight="Bold" Margin="0,5" />
+        </WrapPanel>
         <ListBox Name="NodesListView" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Nodes}" SelectedItem="{Binding SelectedNode}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -24,8 +26,15 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Content="{Binding SelectedNode.Name}" Grid.Row="0" Grid.Column="1" />
-        <ScrollViewer Grid.Row="1" Grid.Column="1" >
+        <WrapPanel Grid.Row="0" Grid.Column="1" IsEnabled="{Binding NodeIsSelected}">
+            <Label Content="Path:" FontWeight="Bold" Margin="0,5" />
+            <Label Content="{Binding SelectedNode.Path}" Margin="0,5" />
+            <Label Content="Name:" FontWeight="Bold" Margin="0,5" />
+            <Label Content="{Binding SelectedNode.Name}" Margin="0,5" />
+            <Label Content="Count:" FontWeight="Bold" Margin="0,5" />
+            <Label Content="{Binding SelectedNode.Diagrams.Count}" Margin="0,5" />
+        </WrapPanel>
+        <ScrollViewer Grid.Row="1" Grid.Column="1" IsEnabled="{Binding NodeIsSelected}">
             <ListView Name="DiagramsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding SelectedNode.Diagrams}" SelectionMode="Multiple">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -39,5 +48,13 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
+        <WrapPanel Grid.Row="2" Grid.Column="0" FlowDirection="RightToLeft">
+            <Button Content="Delete" Command="{Binding DeleteNode}" Margin="5" Width="75" />
+            <Button Content="Rename" Command="{Binding RenameNode}" Margin="5" Width="75" />
+            <Button Content="New" Command="{Binding CreateNode}" Margin="5" Width="75" />
+        </WrapPanel>
+        <WrapPanel Grid.Row="2" Grid.Column="1" FlowDirection="RightToLeft">
+            <Button Content="Delete" Command="{Binding SelectedNode.DeleteSelected}" Margin="5" Width="75" />
+        </WrapPanel>
     </Grid>
 </Window>

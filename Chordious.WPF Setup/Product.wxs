@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="Chordious !(bind.FileVersion.ChordiousWpfApp)" Language="1033" Version="!(bind.FileVersion.ChordiousWpfApp)" Manufacturer="Jon Thysell" UpgradeCode="a49f8d4a-4e86-490d-8b31-282e26ad5ccf">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Languages="1033" />
+	<Product
+    Id="*"
+    Name="Chordious.WPF !(bind.FileVersion.ChordiousWpfApp)"
+    Language="1033" Version="!(bind.FileVersion.ChordiousWpfApp)"
+    Manufacturer="Jon Thysell"
+    UpgradeCode="a49f8d4a-4e86-490d-8b31-282e26ad5ccf">
+    
+		<Package
+      InstallerVersion="200"
+      Compressed="yes"
+      InstallScope="perMachine"
+      Languages="1033" />
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of Chordious is already installed." />
+		<MajorUpgrade
+      AllowSameVersionUpgrades="yes"
+      DowngradeErrorMessage="A newer version of Chordious.WPF is already installed." />
+    
 		<MediaTemplate EmbedCab="yes" />
 
 		<Feature Id="ProductFeature" Title="Chordious.WPF" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
       <ComponentGroupRef Id="ProductResources" />
+      <ComponentGroupRef Id="ProductShortcuts" />
 		</Feature>
+
+    <Icon Id="icon.ico" SourceFile="$(var.Chordious.WPF.TargetDir)\Resources\chordious.ico"/>
+    
+    <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+    <Property Id="ARPHELPLINK" Value="http://chordious.com" />
+    <Property Id="ARPURLINFOABOUT" Value="http://chordious.com" />
+    
 	</Product>
 
 	<Fragment>
@@ -19,6 +40,9 @@
           <Directory Id="ResourcesFolder" Name="Resources" />
         </Directory>
 			</Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="Chordious.WPF"/>
+      </Directory>
 		</Directory>
 	</Fragment>
 
@@ -33,6 +57,8 @@
       <Component Id="ProductComponent.WpfApp">
         <File Id="ChordiousWpfApp" Source="$(var.Chordious.WPF.TargetPath)" KeyPath="yes" />
         <File Id="ChordiousWpfConfig" Source="$(var.Chordious.WPF.TargetDir)\Chordious.WPF.xml" />
+        <File Id="ChordiousWpfReadme" Name="Readme.txt" Source="$(var.SolutionDir)\README.md" />
+        <File Id="ChordiousWpfLicense" Name="License.txt" Source="$(var.SolutionDir)\LICENSE.md" />
       </Component>
       <Component>
         <File Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.dll" />
@@ -80,6 +106,34 @@
     <ComponentGroup Id="ProductResources" Directory="ResourcesFolder">
       <Component>
         <File Source="$(var.Chordious.WPF.TargetDir)\Resources\chordious.ico" />
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="ProductShortcuts" Directory="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="Chordious.WPF"
+                  Description="Freboart diagram generator."
+                  Target="[#ChordiousWpfApp]"
+                  Icon="icon.ico"
+                  WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\Chordious.WPF" Name="application" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+      <Component Id="ReadmeShortcut">
+        <Shortcut Id="ApplicationStartMenuReadmeShortcut"
+                  Name="Readme"
+                  Description="Readme for Chordious."
+                  Target="[#ChordiousWpfReadme]"
+                  WorkingDirectory="INSTALLFOLDER" />
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\Chordious.WPF" Name="readme" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+      <Component Id="LicenseShortcut">
+        <Shortcut Id="ApplicationStartMenuLicenseShortcut"
+                  Name="License"
+                  Description="License for Chordious."
+                  Target="[#ChordiousWpfLicense]"
+                  WorkingDirectory="INSTALLFOLDER" />
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\Chordious.WPF" Name="license" Type="integer" Value="1" KeyPath="yes"/>
       </Component>
     </ComponentGroup>
 	</Fragment>

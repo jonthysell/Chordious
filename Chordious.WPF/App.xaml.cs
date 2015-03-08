@@ -65,7 +65,7 @@ namespace com.jonthysell.Chordious.WPF
 
             AppViewModel.Init(Assembly.GetEntryAssembly(), () =>
             {
-                return new FileStream(defaultFile, FileMode.Open);
+                return new FileStream(defaultFile, FileMode.Open, FileAccess.Read);
             }, () =>
             {
                 return new FileStream(userFile, FileMode.Open);

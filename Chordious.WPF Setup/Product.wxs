@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Chordious !(bind.FileVersion.ChordiousWpfApp)" Language="1033" Version="!(bind.FileVersion.ChordiousWpfApp)" Manufacturer="Jon Thysell" UpgradeCode="a49f8d4a-4e86-490d-8b31-282e26ad5ccf">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Languages="1033" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of Chordious is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+
+		<Feature Id="ProductFeature" Title="Chordious.WPF" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="ProductResources" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="Chordious.WPF">
+          <Directory Id="ResourcesFolder" Name="Resources" />
+        </Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component>
+        <File Source="$(var.Chordious.Core.TargetPath)" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.Core.ViewModel.TargetPath)" />
+      </Component>
+      <Component Id="ProductComponent.WpfApp">
+        <File Id="ChordiousWpfApp" Source="$(var.Chordious.WPF.TargetPath)" KeyPath="yes" />
+        <File Id="ChordiousWpfConfig" Source="$(var.Chordious.WPF.TargetDir)\Chordious.WPF.xml" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.Extras.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.Platform.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Microsoft.Practices.ServiceLocation.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\System.Windows.Interactivity.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\SharpVectors.Core.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\SharpVectors.Converters.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\SharpVectors.Css.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\SharpVectors.Dom.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\SharpVectors.Model.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\SharpVectors.Rendering.Gdi.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\SharpVectors.Rendering.Wpf.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\SharpVectors.Runtime.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Svg.dll" />
+      </Component>
+		</ComponentGroup>
+    <ComponentGroup Id="ProductResources" Directory="ResourcesFolder">
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\chordious.ico" />
+      </Component>
+    </ComponentGroup>
+	</Fragment>
+</Wix>

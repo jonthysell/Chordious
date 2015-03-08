@@ -625,7 +625,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             });
         }
 
-        private ObservableCollection<string> GetBarreTypeOptions()
+        private static ObservableCollection<string> GetBarreTypeOptions()
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
@@ -636,7 +636,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             return collection;
         }
 
-        private ObservableCollection<string> GetMarkTextOptions()
+        private static ObservableCollection<string> GetMarkTextOptions()
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 

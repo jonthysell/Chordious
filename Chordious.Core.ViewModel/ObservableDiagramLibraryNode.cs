@@ -104,9 +104,44 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
                 _selectedDiagrams = value;
                 RaisePropertyChanged("SelectedDiagrams");
+                RaisePropertyChanged("EditSelected");
+                RaisePropertyChanged("DeleteSelected");
             }
         }
         private ObservableCollection<ObservableDiagram> _selectedDiagrams;
+
+        public RelayCommand EditSelected
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        ObservableDiagram originalObservableDiagram = SelectedDiagrams[0];
+
+                        Diagram originalDiagram = originalObservableDiagram.Diagram;
+
+                        Messenger.Default.Send<ShowDiagramEditorMessage>(new ShowDiagramEditorMessage(originalObservableDiagram, (changed) =>
+                        {
+                            if (changed)
+                            {
+                                DiagramCollection collection = Library.Get(Path, Name);
+                                collection.Replace(originalDiagram, originalObservableDiagram.Diagram);
+                                originalObservableDiagram.Refresh();
+                            }
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedDiagrams.Count == 1;
+                });
+            }
+        }
 
         public RelayCommand DeleteSelected
         {
@@ -145,6 +180,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void SelectedDiagrams_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            RaisePropertyChanged("EditSelected");
             RaisePropertyChanged("DeleteSelected");
         }
 

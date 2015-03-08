@@ -96,6 +96,25 @@ namespace com.jonthysell.Chordious.Core
             _diagrams.Remove(diagram);
         }
 
+        public void Replace(Diagram oldDiagram, Diagram newDiagram)
+        {
+            if (null == oldDiagram)
+            {
+                throw new ArgumentNullException("oldDiagram");
+            }
+
+            if (null == newDiagram)
+            {
+                throw new ArgumentNullException("newDiagram");
+            }
+
+            int index = _diagrams.IndexOf(oldDiagram);
+            _diagrams.RemoveAt(index);
+
+            newDiagram.Style.Parent = this.Style;
+            _diagrams.Insert(index, newDiagram);
+        }
+
         public void Clear()
         {
             _diagrams.Clear();

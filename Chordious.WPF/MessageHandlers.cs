@@ -52,6 +52,7 @@ namespace com.jonthysell.Chordious.WPF
 
             Messenger.Default.Register<ShowChordFinderMessage>(recipient, (message) => MessageHandlers.ShowChordFinder(message));
             Messenger.Default.Register<ShowDiagramLibraryMessage>(recipient, (message) => MessageHandlers.ShowDiagramLibrary(message));
+            Messenger.Default.Register<ShowDiagramEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramEditor(message));
             Messenger.Default.Register<ShowOptionsMessage>(recipient, (message) => MessageHandlers.ShowOptions(message));
             Messenger.Default.Register<ShowAdvancedDataMessage>(recipient, (message) => MessageHandlers.ShowAdvancedData(message));
         }
@@ -67,6 +68,7 @@ namespace com.jonthysell.Chordious.WPF
 
             Messenger.Default.Unregister<ShowChordFinderMessage>(recipient);
             Messenger.Default.Unregister<ShowDiagramLibraryMessage>(recipient);
+            Messenger.Default.Unregister<ShowDiagramEditorMessage>(recipient);
             Messenger.Default.Unregister<ShowOptionsMessage>(recipient);
             Messenger.Default.Unregister<ShowAdvancedDataMessage>(recipient);
         }
@@ -113,6 +115,18 @@ namespace com.jonthysell.Chordious.WPF
         private static void ShowDiagramLibrary(ShowDiagramLibraryMessage message)
         {
             DiagramLibraryWindow window = new DiagramLibraryWindow();
+            window.ShowDialog();
+            message.Process();
+        }
+
+        private static void ShowDiagramEditor(ShowDiagramEditorMessage message)
+        {
+            DiagramEditorWindow window = new DiagramEditorWindow();
+            window.DataContext = message.DiagramEditorVM;
+            message.DiagramEditorVM.RequestClose += () =>
+            {
+                window.Close();
+            };
             window.ShowDialog();
             message.Process();
         }

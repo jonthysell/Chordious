@@ -84,6 +84,7 @@ namespace com.jonthysell.Chordious.Core
             if (chordFinderStyle.AddTitle)
             {
                 d.Title = NoteUtils.ToString(this.Parent.ChordFinderOptions.RootNote) + this.Parent.ChordFinderOptions.ChordQuality.Abbreviation;
+                d.TitleLabelStyle = DiagramLabelStyle.ChordName;
             }
 
             // Add marks

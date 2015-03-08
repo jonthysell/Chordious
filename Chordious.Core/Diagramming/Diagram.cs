@@ -445,6 +445,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 DiagramMark clonedMark = clone.NewMark(mark.Position, mark.Text);
                 clonedMark.Style.CopyFrom(mark.Style);
+                clonedMark.Type = mark.Type;
             }
 
             foreach (DiagramBarre barre in this.Barres)

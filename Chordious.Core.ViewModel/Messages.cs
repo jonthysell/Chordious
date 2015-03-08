@@ -103,6 +103,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public ShowDiagramLibraryMessage() : base() { }
     }
 
+    public class ShowDiagramEditorMessage : MessageBase
+    {
+        public DiagramEditorViewModel DiagramEditorVM { get; private set; }
+
+        private Action<bool> Callback;
+
+        public ShowDiagramEditorMessage(ObservableDiagram diagram, Action<bool> callback = null) : base()
+        {
+            DiagramEditorVM = new DiagramEditorViewModel(diagram);
+            Callback = callback;
+        }
+
+        public void Process()
+        {
+            bool saveChanges = DiagramEditorVM.ProcessClose();
+            if (null != Callback)
+            {
+                Callback(saveChanges);
+            }
+        }
+    }
+
     public class ShowOptionsMessage : MessageBase
     {
         public OptionsViewModel OptionsVM { get; private set; }

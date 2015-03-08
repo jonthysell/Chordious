@@ -58,14 +58,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private object _imageObject;
 
-        public int Height
-        {
-            get
-            {
-                return (int)Diagram.TotalHeight();
-            }
-        }
-        
+        #region Dimensions
+
         public int Width
         {
             get
@@ -73,6 +67,137 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 return (int)Diagram.TotalWidth();
             }
         }
+
+        public int Height
+        {
+            get
+            {
+                return (int)Diagram.TotalHeight();
+            }
+        }
+
+        public int NumFrets
+        {
+            get
+            {
+                return Diagram.NumFrets;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.NumFrets = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                
+                RaisePropertyChanged("NumFrets");
+                Refresh();
+            }
+        }
+
+        public int NumStrings
+        {
+            get
+            {
+                return Diagram.NumStrings;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.NumStrings = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("NumStrings");
+                Refresh();
+            }
+        }
+
+        #endregion
+
+
+        #region Title
+
+        public string TitleText
+        {
+            get
+            {
+                return Diagram.Title;
+            }
+            set
+            {
+                Diagram.Title = value;
+                RaisePropertyChanged("TitleText");
+                Refresh();
+            }
+        }
+
+        public double TitleGridPadding
+        {
+            get
+            {
+                return Diagram.TitleGridPadding;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.TitleGridPadding = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("TitleGridPadding");
+                Refresh();
+            }
+        }
+
+        public bool TitleVisible
+        {
+            get
+            {
+                return Diagram.TitleVisible;
+            }
+            set
+            {
+                Diagram.TitleVisible = value;
+                RaisePropertyChanged("TitleVisible");
+                Refresh();
+            }
+        }
+
+        public int SelectedTitleLabelStyleIndex
+        {
+            get
+            {
+                return (int)Diagram.TitleLabelStyle;
+            }
+            set
+            {
+                Diagram.TitleLabelStyle = (DiagramLabelStyle)(value);
+                RaisePropertyChanged("SelectedTitleLabelStyleIndex");
+                Refresh();
+            }
+        }
+
+        public ObservableCollection<string> TitleLabelStyles
+        {
+            get
+            {
+                return GetDiagramLabelStyles();
+            }
+        }
+
+        #endregion
 
         internal Diagram Diagram
         {
@@ -87,10 +212,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     throw new ArgumentNullException();
                 }
                 _diagram = value;
-                RaisePropertyChanged("SvgText");
-                RaisePropertyChanged("Height");
-                RaisePropertyChanged("Width");
-                ImageObject = AppViewModel.Instance.SvgTextToImage(SvgText);
+                Refresh();
             }
         }
         private Diagram _diagram;
@@ -103,6 +225,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
 
             Diagram = diagram;
+        }
+
+        public void Refresh()
+        {
+            RaisePropertyChanged("SvgText");
+            RaisePropertyChanged("Height");
+            RaisePropertyChanged("Width");
+            ImageObject = AppViewModel.Instance.SvgTextToImage(SvgText);
+        }
+
+        private static ObservableCollection<string> GetDiagramLabelStyles()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add("Regular");
+            collection.Add("Chord Name");
+
+            return collection;
         }
     }
 }

@@ -116,6 +116,9 @@
     <Compile Include="ChordFinderWindow.xaml.cs">
       <DependentUpon>ChordFinderWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DiagramEditorWindow.xaml.cs">
+      <DependentUpon>DiagramEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DiagramLibraryWindow.xaml.cs">
       <DependentUpon>DiagramLibraryWindow.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChordFinderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiagramEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

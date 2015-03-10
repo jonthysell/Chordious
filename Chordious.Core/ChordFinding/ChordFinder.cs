@@ -108,7 +108,7 @@ namespace com.jonthysell.Chordious.Core
                 int startingFret = chordFinderOptions.AllowOpenStrings ? 0 : 1;
                 for (int fret = startingFret; fret <= chordFinderOptions.MaxFret; fret++)
                 {
-                    InternalNote note = chordFinderOptions.Tuning.NoteAt(str, fret);
+                    InternalNote note = chordFinderOptions.Tuning.InternalNoteAt(str, fret);
 
                     // See if the note is a target note
                     for (int i = 0; i < targetNotes.Length; i++)

@@ -116,7 +116,7 @@ namespace com.jonthysell.Chordious.Core
             return false;
         }
 
-        public Tuning Add(string name, Note[] rootNotes)
+        public Tuning Add(string name, FullNote[] rootNotes)
         {
             if (this.ReadOnly)
             {

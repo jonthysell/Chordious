@@ -2,7 +2,7 @@
 <chordious>
 	<settings>
 		<setting key="chordfinderoptions.instrument" value="Ukulele" />
-    <setting key="chordfinderoptions.tuning" value="Standard C6" />
+    <setting key="chordfinderoptions.tuning" value="Reentrant C" />
     <setting key="chordfinderoptions.itlevel" value="Default" />
     <setting key="chordfinderoptions.rootnote" value="C" />
     <setting key="chordfinderoptions.chordquality" value="Major" />
@@ -93,56 +93,58 @@
   </styles>
 	<instruments>
 		<instrument name="Banjo" strings="4">
-			<tuning name="Open G" notes="D;G;B;D" />
-			<tuning name="Open A" notes="E;A;C#;E" />
-			<tuning name="Double C" notes="C;G;C;D" />
-			<tuning name="Double D" notes="D;A;D;E" />
-			<tuning name="G Modal" notes="D;G;C;D" />
-			<tuning name="A Modal" notes="E;A;D;E" />
+			<tuning name="Standard" notes="D3;G3;B3;D4" />
+			<tuning name="C" notes="C3;G3;B3;D4" />
+			<tuning name="Double C" notes="C3;G3;C3;D4" />
+			<tuning name="Sawmill" notes="D3;G3;C3;D4" />
+			<tuning name="Open D" notes="D3;F#3;A3;D4" />
+			<tuning name="Guitar" notes="D3;G3;B3;E4" />
+      <tuning name="Willie Moore" notes="D3;G3;A3;D4" />
+      <tuning name="Doc Bog's D" notes="D3;G3;A3;D4" />
+      <tuning name="Cumberland Gap" notes="E3;A3;D3;E4" />
+      <tuning name="G Minor" notes="D3;G3;Bb3;D4" />
+      <tuning name="Open C" notes="C3;G3;C3;E4" />
 		</instrument>
 		<instrument name="Greek Trichordo Bouzouki" strings="3">
-			<tuning name="Standard" notes="D;A;D" />
+			<tuning name="Standard" notes="D3;A3;D4" />
 		</instrument>
 		<instrument name="Greek Tetrachordo Bouzouki" strings="4">
-			<tuning name="Standard" notes="C;F;A;D" />
+			<tuning name="Standard" notes="C3;F3;A3;D4" />
 		</instrument>
+    <instrument name="Guitalele" strings="6">
+      <tuning name="Standard" notes="A2;D3;G3;C4;E4;A4" />
+    </instrument>
 		<instrument name="Guitar" strings="6">
-			<tuning name="Standard" notes="E;A;D;G;B;E" />
-			<tuning name="Open A" notes="E;A;C#;E;A;E" />
-			<tuning name="Open B" notes="B;F#;B;F#;B;D#" />
-			<tuning name="Open C" notes="C;G;C;G;C;E" />
-			<tuning name="Open D" notes="D;A;D;F#;A;D" />
-			<tuning name="Open E" notes="E;B;E;G#;B;E" />
-			<tuning name="Open F" notes="F;A;C;F;C;F" />
-			<tuning name="Open G" notes="D;G;D;G;B;D" />
+			<tuning name="Standard" notes="E2;A2;D3;G3;B3;E4" />
+			<tuning name="Drop D" notes="D2;A2;D3;G3;B3;E4" />
+			<tuning name="Open D" notes="D2;A2;D3;F#3;A3;D4" />
+			<tuning name="Open G" notes="D2;G2;D3;G3;B3;D4" />
+      <tuning name="Open A" notes="E2;A2;E3;A3;C#3;E4" />
+      <tuning name="Lute" notes="E2;A2;D3;F#3;B3;E4" />
+      <tuning name="Irish" notes="D2;A2;D3;G3;A3;D4" />
 		</instrument>
 		<instrument name="Irish Bouzouki" strings="4">
-			<tuning name="Standard" notes="G;D;A;D" />
-			<tuning name="Octave Mandolin" notes="G;D;A;E" />
-			<tuning name="Open D" notes="A;D;A;D" />
-			<tuning name="Open G" notes="G;D;B;D" />
+			<tuning name="Standard" notes="G2;D3;A3;E4" />
+			<tuning name="Mandolin" notes="G2;D3;A3;E4" />
+			<tuning name="Irish" notes="G2;D3;A3;D4" />
+			<tuning name="Modal D" notes="A2;D3;A3;D4" />
 		</instrument>
 		<instrument name="Mandola" strings="4">
-			<tuning name="Standard" notes="C;G;D;A" />
+			<tuning name="Standard" notes="C3;G3;D4;A4" />
 		</instrument>
 		<instrument name="Mandolin" strings="4">
-			<tuning name="Standard" notes="G;D;A;E" />
+			<tuning name="Standard" notes="G3;D4;A4;E5" />
 		</instrument>
 		<instrument name="Ukulele" strings="4">
-			<tuning name="Standard C6" notes="G;C;E;A" />
-			<tuning name="Standard D6" notes="A;D;F#;B" />
-			<tuning name="Standard Eb6" notes="Bb;Eb;G;C" />
-			<tuning name="Standard F6" notes="C;F;A;D" />
-			<tuning name="Standard G6" notes="D;G;B;E" />
-			<tuning name="Standard A6" notes="E;A;C#;F#" />
-			<tuning name="Standard Bb6" notes="F;Bb;D;G" />
-			<tuning name="Open C" notes="G;C;E;G" />
-			<tuning name="Open D" notes="A;D;F#;A" />
-			<tuning name="Open Eb" notes="Bb;Eb;G;Bb" />
-			<tuning name="Open F" notes="C;F;A;C" />
-			<tuning name="Open G" notes="D;G;B;D" />
-			<tuning name="Open A" notes="E;A;C#;E" />
-			<tuning name="Open Bb" notes="F;Bb;D;F" />
+			<tuning name="Reentrant C" notes="G4;C4;E4;A4" />
+			<tuning name="Reentrant D" notes="A4;D4;F#4;B4" />
+			<tuning name="Reentrant G" notes="D4;G3;B3;E4" />
+      <tuning name="Linear C" notes="G3;C4;E4;A4" />
+      <tuning name="Linear D" notes="A3;D4;F#4;B4" />
+      <tuning name="Linear G" notes="D3;G3;B3;E4" />
+			<tuning name="Open C" notes="G3;C4;E4;G4" />
+			<tuning name="Open D" notes="A3;D4;F#4;A4" />
+			<tuning name="Open G" notes="D3;G3;B4;D4" />
 		</instrument>
 	</instruments>
 	<qualities>

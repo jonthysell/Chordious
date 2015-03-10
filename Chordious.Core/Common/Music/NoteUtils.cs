@@ -64,87 +64,25 @@ namespace com.jonthysell.Chordious.Core
 
         public static string ToString(InternalNote note, InternalNoteStringStyle style)
         {
-            switch (note)
+            if (NoteUtils.IsNatural(note) || style != InternalNoteStringStyle.ShowBoth)
             {
-                case InternalNote.C:
-                    return "C";
-                case InternalNote.Cs_Db:
-                    if (style == InternalNoteStringStyle.PreferSharp)
-                    {
-                        return "C#";
-                    }
-                    else if (style == InternalNoteStringStyle.PreferFlat)
-                    {
-                        return "Db";
-                    }
-                    else
-                    {
+                return NoteUtils.ToString(NoteUtils.ToNote(note, style));
+            }
+            else
+            {
+                switch (note)
+                {
+                    case InternalNote.Cs_Db:
                         return "C#/Db";
-                    }
-                case InternalNote.D:
-                    return "D";
-                case InternalNote.Ds_Eb:
-                    if (style == InternalNoteStringStyle.PreferSharp)
-                    {
-                        return "D#";
-                    }
-                    else if (style == InternalNoteStringStyle.PreferFlat)
-                    {
-                        return "Eb";
-                    }
-                    else
-                    {
+                    case InternalNote.Ds_Eb:
                         return "D#/Eb";
-                    }
-                case InternalNote.E:
-                    return "E";
-                case InternalNote.F:
-                    return "F";
-                case InternalNote.Fs_Gb:
-                    if (style == InternalNoteStringStyle.PreferSharp)
-                    {
-                        return "F#";
-                    }
-                    else if (style == InternalNoteStringStyle.PreferFlat)
-                    {
-                        return "Gb";
-                    }
-                    else
-                    {
+                    case InternalNote.Fs_Gb:
                         return "F#/Gb";
-                    }
-                case InternalNote.G:
-                    return "G";
-                case InternalNote.Gs_Ab:
-                    if (style == InternalNoteStringStyle.PreferSharp)
-                    {
-                        return "G#";
-                    }
-                    else if (style == InternalNoteStringStyle.PreferFlat)
-                    {
-                        return "Ab";
-                    }
-                    else
-                    {
+                    case InternalNote.Gs_Ab:
                         return "G#/Ab";
-                    }
-                case InternalNote.A:
-                    return "A";
-                case InternalNote.As_Bb:
-                    if (style == InternalNoteStringStyle.PreferSharp)
-                    {
-                        return "A#";
-                    }
-                    else if (style == InternalNoteStringStyle.PreferFlat)
-                    {
-                        return "Bb";
-                    }
-                    else
-                    {
+                    case InternalNote.As_Bb:
                         return "A#/Bb";
-                    }
-                case InternalNote.B:
-                    return "B";
+                }
             }
 
             throw new ArgumentException();
@@ -188,6 +126,79 @@ namespace com.jonthysell.Chordious.Core
             throw new ArgumentException();
         }
 
+        public static Note ToNote(InternalNote note, InternalNoteStringStyle style)
+        {
+            switch (note)
+            {
+                case InternalNote.C:
+                    return Note.C;
+                case InternalNote.Cs_Db:
+                    if (style == InternalNoteStringStyle.PreferSharp)
+                    {
+                        return Note.Cs;
+                    }
+                    else if (style == InternalNoteStringStyle.PreferFlat)
+                    {
+                        return Note.Db;
+                    }
+                    break;
+                case InternalNote.D:
+                    return Note.D;
+                case InternalNote.Ds_Eb:
+                    if (style == InternalNoteStringStyle.PreferSharp)
+                    {
+                        return Note.Ds;
+                    }
+                    else if (style == InternalNoteStringStyle.PreferFlat)
+                    {
+                        return Note.Eb;
+                    }
+                    break;
+                case InternalNote.E:
+                    return Note.E;
+                case InternalNote.F:
+                    return Note.F;
+                case InternalNote.Fs_Gb:
+                    if (style == InternalNoteStringStyle.PreferSharp)
+                    {
+                        return Note.Fs;
+                    }
+                    else if (style == InternalNoteStringStyle.PreferFlat)
+                    {
+                        return Note.Gb;
+                    }
+                    break;
+                case InternalNote.G:
+                    return Note.G;
+                case InternalNote.Gs_Ab:
+                    if (style == InternalNoteStringStyle.PreferSharp)
+                    {
+                        return Note.Gs;
+                    }
+                    else if (style == InternalNoteStringStyle.PreferFlat)
+                    {
+                        return Note.Ab;
+                    }
+                    break;
+                case InternalNote.A:
+                    return Note.A;
+                case InternalNote.As_Bb:
+                    if (style == InternalNoteStringStyle.PreferSharp)
+                    {
+                        return Note.As;
+                    }
+                    else if (style == InternalNoteStringStyle.PreferFlat)
+                    {
+                        return Note.Bb;
+                    }
+                    break;
+                case InternalNote.B:
+                    return Note.B;
+            }
+
+            throw new ArgumentException();
+        }
+
         public static InternalNote Shift(InternalNote root, int steps)
         {
             int newNote = ((int)root + steps);
@@ -199,6 +210,20 @@ namespace com.jonthysell.Chordious.Core
 
             return (InternalNote)(newNote % 12);
         }
+
+        public static bool IsNatural(Note note)
+        {
+            return Array.IndexOf<Note>(NaturalNotes, note) >= 0;
+        }
+
+        private static Note[] NaturalNotes = { Note.C, Note.D, Note.E, Note.F, Note.G, Note.A, Note.B };
+
+        public static bool IsNatural(InternalNote note)
+        {
+            return Array.IndexOf<InternalNote>(NaturalInternalNotes, note) >= 0;
+        }
+
+        private static InternalNote[] NaturalInternalNotes = { InternalNote.C, InternalNote.D, InternalNote.E, InternalNote.F, InternalNote.G, InternalNote.A, InternalNote.B };
     }
 
     public enum Note

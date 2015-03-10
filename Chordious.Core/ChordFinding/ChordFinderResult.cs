@@ -57,7 +57,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentOutOfRangeException("str");
             }
 
-            return this.Parent.ChordFinderOptions.Tuning.NoteAt(str, Marks[str]);
+            return this.Parent.ChordFinderOptions.Tuning.InternalNoteAt(str, Marks[str]);
         }
 
         public bool IsRoot(int str)

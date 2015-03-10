@@ -93,16 +93,18 @@ namespace com.jonthysell.Chordious.Core
             {
                 string notes = "";
 
-                foreach (Note n in RootNotes)
+                foreach (FullNote n in RootNotes)
                 {
-                    notes += NoteUtils.ToString(n);
+                    notes += n.ToString() + " ";
                 }
+
+                notes = notes.TrimEnd();
 
                 return String.Format("{0} ({1})", Name, notes);
             }
         }
 
-        public Note[] RootNotes
+        public FullNote[] RootNotes
         {
             get
             {
@@ -128,7 +130,7 @@ namespace com.jonthysell.Chordious.Core
                 _rootNotes = value;
             }
         }
-        private Note[] _rootNotes;
+        private FullNote[] _rootNotes;
 
         private Tuning(TuningSet parent)
         {
@@ -141,7 +143,7 @@ namespace com.jonthysell.Chordious.Core
             this.Parent = parent;
         }
 
-        internal Tuning(TuningSet parent, string name, Note[] rootNotes) : this(parent)
+        internal Tuning(TuningSet parent, string name, FullNote[] rootNotes) : this(parent)
         {
             this.Name = name;
             this.RootNotes = rootNotes;
@@ -164,7 +166,7 @@ namespace com.jonthysell.Chordious.Core
 
                     string[] s = notes.Split(';');
 
-                    Note[] rootNotes = new Note[s.Length];
+                    FullNote[] rootNotes = new FullNote[s.Length];
 
                     if (rootNotes.Length != Parent.Instrument.NumStrings)
                     {
@@ -173,7 +175,7 @@ namespace com.jonthysell.Chordious.Core
 
                     for (int i = 0; i < rootNotes.Length; i++)
                     {
-                        rootNotes[i] = NoteUtils.ParseNote(s[i]);
+                        rootNotes[i] = FullNote.Parse(s[i]);
                     }
                     this.RootNotes = rootNotes;
                 }
@@ -185,14 +187,34 @@ namespace com.jonthysell.Chordious.Core
             this.ReadOnly = true;
         }
 
-        public InternalNote NoteAt(int str, int fret)
+        public InternalNote InternalNoteAt(int str, int fret)
         {
             if (str < 0 || str >= RootNotes.Length)
             {
                 throw new ArgumentOutOfRangeException("str");
             }
 
-            return NoteUtils.Shift(NoteUtils.ToInternalNote(RootNotes[str]), fret);
+            if (fret < 0)
+            {
+                throw new ArgumentOutOfRangeException("fret");
+            }
+
+            return NoteUtils.Shift(RootNotes[str].InternalNote, fret);
+        }
+
+        public FullNote FullNoteAt(int str, int fret, InternalNoteStringStyle style)
+        {
+            if (str < 0 || str >= RootNotes.Length)
+            {
+                throw new ArgumentOutOfRangeException("str");
+            }
+
+            if (fret < 0)
+            {
+                throw new ArgumentOutOfRangeException("fret");
+            }
+
+            return RootNotes[str].Shift(fret, style);
         }
 
         public void Write(XmlWriter xmlWriter)
@@ -210,7 +232,7 @@ namespace com.jonthysell.Chordious.Core
 
             for (int i = 0; i < RootNotes.Length; i++)
             {
-                rootNotes += NoteUtils.ToString(RootNotes[i]) + ";";
+                rootNotes += RootNotes[i].ToString() + ";";
             }
 
             rootNotes = rootNotes.TrimEnd(';');

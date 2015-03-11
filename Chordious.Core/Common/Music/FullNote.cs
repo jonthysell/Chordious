@@ -28,7 +28,7 @@ using System;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class FullNote
+    public class FullNote : IComparable
     {
         public Note Note { get; set; }
 
@@ -65,11 +65,58 @@ namespace com.jonthysell.Chordious.Core
 
         public FullNote Shift(int steps, InternalNoteStringStyle style)
         {
-            InternalNote note = NoteUtils.Shift(InternalNote, steps);
+            if (steps == 0)
+            {
+                return new FullNote(NoteUtils.ToNote(InternalNote, style), Octave);
+            }
 
-            int octave = Octave + (steps / 12);
+            int direction = Math.Sign(steps);
+
+            InternalNote note = InternalNote;
+            int octave = Octave;
+
+            for (int i = 0; i < steps; i++)
+            {
+                int noteIndex = (int)note + direction;
+                if (noteIndex < 0)
+                {
+                    noteIndex += 12;
+                }
+
+                note = (InternalNote)(noteIndex % 12);
+
+                if (direction > 0 && note == InternalNote.C)
+                {
+                    octave++;
+                }
+                else if (direction < 0 && note == InternalNote.B)
+                {
+                    octave--;
+                }
+            }
 
             return new FullNote(NoteUtils.ToNote(note, style), octave);
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (null == obj)
+            {
+                throw new ArgumentNullException("obj");
+            }
+
+            FullNote fullNote = obj as FullNote;
+            if (null == fullNote)
+            {
+                throw new ArgumentException();
+            }
+
+            if (Octave == fullNote.Octave)
+            {
+                return InternalNote.CompareTo(fullNote.InternalNote);
+            }
+
+            return Octave.CompareTo(fullNote.Octave);
         }
 
         public override string ToString()

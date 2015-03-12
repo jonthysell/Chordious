@@ -85,6 +85,8 @@ namespace com.jonthysell.Chordious.Core
 
         public ChordQualitySet ChordQualities { get; private set; }
 
+        public ScaleSet Scales { get; private set; }
+
         public DiagramLibrary DiagramLibrary { get; private set; }
 
         public ConfigFile(string level)
@@ -95,6 +97,7 @@ namespace com.jonthysell.Chordious.Core
             this.DiagramStyle = new DiagramStyle(level);
             this.Instruments = new InstrumentSet(level);
             this.ChordQualities = new ChordQualitySet(level);
+            this.Scales = new ScaleSet(level);
             this.DiagramLibrary = new DiagramLibrary(this.DiagramStyle);
         }
 
@@ -140,6 +143,9 @@ namespace com.jonthysell.Chordious.Core
                             case "qualities":
                                 this.ChordQualities.Read(reader.ReadSubtree());
                                 break;
+                            case "scales":
+                                this.Scales.Read(reader.ReadSubtree());
+                                break;
                             case "library":
                                 this.DiagramLibrary.Read(reader.ReadSubtree());
                                 break;
@@ -182,6 +188,10 @@ namespace com.jonthysell.Chordious.Core
                 this.ChordQualities.Write(writer);
                 writer.WriteEndElement();
 
+                writer.WriteStartElement("scales");
+                this.Scales.Write(writer);
+                writer.WriteEndElement();
+
                 writer.WriteStartElement("library");
                 this.DiagramLibrary.Write(writer);
                 writer.WriteEndElement();
@@ -197,6 +207,7 @@ namespace com.jonthysell.Chordious.Core
             this.DiagramStyle.MarkAsReadOnly();
             this.Instruments.MarkAsReadOnly();
             this.ChordQualities.MarkAsReadOnly();
+            this.Scales.MarkAsReadOnly();
         }
 
         private void FixInheritance()
@@ -205,6 +216,7 @@ namespace com.jonthysell.Chordious.Core
             this.DiagramStyle.Parent = (null == this.Parent) ? null : this.Parent.DiagramStyle;
             this.Instruments.Parent = (null == this.Parent) ? null : this.Parent.Instruments;
             this.ChordQualities.Parent = (null == this.Parent) ? null : this.Parent.ChordQualities;
+            this.Scales.Parent = (null == this.Parent) ? null : this.Parent.Scales;
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿// 
-// MarkPosition.cs
+// Scale.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -25,70 +25,73 @@
 // THE SOFTWARE.
 
 using System;
+using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class MarkPosition : ElementPosition
+    public class Scale : NamedInterval
     {
-        public int String
+        public ScaleSet Parent
         {
             get
             {
-                return this._string;
+                return _parent;
             }
             private set
             {
-                if (value < 1)
+                if (null == value)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentNullException();
                 }
-                this._string = value;
+                _parent = value;
             }
         }
-        private int _string;
+        private ScaleSet _parent;
 
-        public int Fret
+        public string Level
         {
             get
             {
-                return this._fret;
+                return Parent.Level;
             }
-            private set
+        }
+
+        private Scale(ScaleSet parent)
+        {
+            this.Parent = parent;
+        }
+
+        internal Scale(ScaleSet parent, string name, int[] intervals) : this(parent)
+        {
+            this.Name = name;            
+            this.Intervals = intervals;
+        }
+
+        internal Scale(ScaleSet parent, XmlReader xmlReader) : this(parent)
+        {
+            if (null == xmlReader)
             {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-                this._fret = value;
+                throw new ArgumentNullException("xmlReader");
+            }
+
+            using (xmlReader)
+            {
+                ReadBase(xmlReader, "scale");
             }
         }
-        private int _fret;
 
-        public MarkPosition(int @string, int fret)
+        public void Write(XmlWriter xmlWriter)
         {
-            this.String = @string;
-            this.Fret = fret;
-        }
+            if (null == xmlWriter)
+            {
+                throw new ArgumentNullException("xmlWriter");
+            }
 
-        public override ElementPosition Clone()
-        {
-            return new MarkPosition(this.String, this.Fret);
-        }
+            xmlWriter.WriteStartElement("scale");
 
-        public override bool Equals(ElementPosition obj)
-        {
-            MarkPosition mp = (obj as MarkPosition);
-            return mp != null && mp.String == this.String && mp.Fret == this.Fret;
-        }
+            WriteBase(xmlWriter);
 
-        public override int GetHashCode()
-        {
-            return ToString().GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return string.Format("{0}:{1}", this.String, this.Fret);
+            xmlWriter.WriteEndElement();
         }
     }
 }

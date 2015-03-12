@@ -113,6 +113,9 @@
     <Compile Include="AdvancedDataWindow.xaml.cs">
       <DependentUpon>AdvancedDataWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ScaleFinderWindow.xaml.cs">
+      <DependentUpon>ScaleFinderWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChordFinderWindow.xaml.cs">
       <DependentUpon>ChordFinderWindow.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
     <Page Include="AdvancedDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScaleFinderWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ChordFinderWindow.xaml">
       <SubType>Designer</SubType>

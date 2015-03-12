@@ -98,6 +98,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public ShowChordFinderMessage() : base() { }
     }
 
+    public class ShowScaleFinderMessage : SaveUserConfigAfterHandlingMessageBase
+    {
+        public ShowScaleFinderMessage() : base() { }
+    }
+
     public class ShowDiagramLibraryMessage : SaveUserConfigAfterHandlingMessageBase
     {
         public ShowDiagramLibraryMessage() : base() { }

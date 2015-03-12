@@ -94,11 +94,7 @@ namespace com.jonthysell.Chordious.Core
 
         private bool IsValid(int[] marks)
         {
-            bool reachPass = MarkUtils.Reach(marks) <= ChordFinderOptions.MaxReach;
-            bool openPass = ChordFinderOptions.AllowOpenStrings ? true : !MarkUtils.HasOpenStrings(marks);
-            bool mutePass = ChordFinderOptions.AllowMutedStrings ? true : !MarkUtils.HasMutedStrings(marks);
-
-            return reachPass && openPass && mutePass;
+            return MarkUtils.ValidateChord(marks, ChordFinderOptions);
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿// 
-// MarkPosition.cs
+// 
+// ScaleFinderResultSet.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -25,70 +25,58 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class MarkPosition : ElementPosition
+    public class ScaleFinderResultSet
     {
-        public int String
+        public ScaleFinderOptions ScaleFinderOptions { get; private set; }
+
+        public int Count
         {
             get
             {
-                return this._string;
-            }
-            private set
-            {
-                if (value < 1)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-                this._string = value;
+                return _results.Count;
             }
         }
-        private int _string;
 
-        public int Fret
+        public IEnumerable<ScaleFinderResult> Results
         {
             get
             {
-                return this._fret;
-            }
-            private set
-            {
-                if (value < 0)
+                foreach (ScaleFinderResult sfr in _results)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    yield return sfr;
                 }
-                this._fret = value;
             }
         }
-        private int _fret;
 
-        public MarkPosition(int @string, int fret)
+        private List<ScaleFinderResult> _results;
+
+        internal ScaleFinderResultSet(ScaleFinderOptions scaleFinderOptions)
         {
-            this.String = @string;
-            this.Fret = fret;
+            this.ScaleFinderOptions = scaleFinderOptions;
+            this._results = new List<ScaleFinderResult>();
         }
 
-        public override ElementPosition Clone()
+        public void AddResult(IEnumerable<MarkPosition> marks)
         {
-            return new MarkPosition(this.String, this.Fret);
+            if (IsValid(marks))
+            {
+                _results.Add(new ScaleFinderResult(this, marks));
+                //_results.Sort();
+            }
         }
 
-        public override bool Equals(ElementPosition obj)
+        public ScaleFinderResult ResultAt(int index)
         {
-            MarkPosition mp = (obj as MarkPosition);
-            return mp != null && mp.String == this.String && mp.Fret == this.Fret;
+            return _results[index];
         }
 
-        public override int GetHashCode()
+        private bool IsValid(IEnumerable<MarkPosition> marks)
         {
-            return ToString().GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return string.Format("{0}:{1}", this.String, this.Fret);
+            return MarkUtils.ValidateScale(marks, ScaleFinderOptions);
         }
     }
 }

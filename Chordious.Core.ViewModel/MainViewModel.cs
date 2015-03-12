@@ -132,6 +132,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public RelayCommand ShowScaleFinder
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<ShowScaleFinderMessage>(new ShowScaleFinderMessage());
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                });
+            }
+        }
+
         public RelayCommand ShowDiagramLibrary
         {
             get

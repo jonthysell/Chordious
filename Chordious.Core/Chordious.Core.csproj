@@ -51,11 +51,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Finding\FinderOptions.cs" />
+    <Compile Include="Common\Music\ScaleSet.cs" />
     <Compile Include="Common\Music\ChordQualitySet.cs" />
     <Compile Include="ChordFinding\ChordFinderStyle.cs" />
     <Compile Include="ChordFinding\ChordFinderResult.cs" />
     <Compile Include="Common\AppInfo.cs" />
     <Compile Include="Common\Music\FullNote.cs" />
+    <Compile Include="Common\Music\NamedInterval.cs" />
+    <Compile Include="Common\Music\Scale.cs" />
+    <Compile Include="Common\Finding\FinderStyle.cs" />
     <Compile Include="Common\StringUtils.cs" />
     <Compile Include="Legacy\Chord.cs" />
     <Compile Include="ChordFinding\ChordFinder.cs" />
@@ -91,6 +96,11 @@
     <Compile Include="Common\InheritableDictionary.cs" />
     <Compile Include="Diagramming\SvgConstants.cs" />
     <Compile Include="Common\Music\Tuning.cs" />
+    <Compile Include="ScaleFinding\ScaleFinderStyle.cs" />
+    <Compile Include="ScaleFinding\ScaleFinderResult.cs" />
+    <Compile Include="ScaleFinding\ScaleFinderResultSet.cs" />
+    <Compile Include="ScaleFinding\ScaleFinder.cs" />
+    <Compile Include="ScaleFinding\ScaleFinderOptions.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

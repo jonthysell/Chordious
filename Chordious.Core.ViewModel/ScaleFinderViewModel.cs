@@ -1,5 +1,5 @@
 ﻿// 
-// ChordFinderViewModel.cs
+// ScaleFinderViewModel.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -38,7 +38,7 @@ using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class ChordFinderViewModel : ViewModelBase
+    public class ScaleFinderViewModel : ViewModelBase
     {
         public AppViewModel AppVM
         {
@@ -52,7 +52,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return "Chord Finder";
+                return "Scale Finder";
             }
         }
 
@@ -181,11 +181,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public ObservableChordQuality SelectedChordQuality
+        public ObservableScale SelectedScale
         {
             get
             {
-                return _chordQuality;
+                return _scale;
             }
             set
             {
@@ -193,9 +193,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     if (null != value)
                     {
-                        _chordQuality = value;
-                        Options.SetTarget(Options.RootNote, SelectedChordQuality.ChordQuality);
-                        RaisePropertyChanged("SelectedChordQuality");
+                        _scale = value;
+                        Options.SetTarget(Options.RootNote, SelectedScale.Scale);
+                        RaisePropertyChanged("SelectedScale");
                     }
                 }
                 catch (Exception ex)
@@ -204,21 +204,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
             }
         }
-        private ObservableChordQuality _chordQuality;
+        private ObservableScale _scale;
 
-        public ObservableCollection<ObservableChordQuality> ChordQualities
+        public ObservableCollection<ObservableScale> Scales
         {
             get
             {
-                return _chordQualities;
+                return _scales;
             }
             private set
             {
-                _chordQualities = value;
-                RaisePropertyChanged("ChordQualities");
+                _scales = value;
+                RaisePropertyChanged("Scales");
             }
         }
-        private ObservableCollection<ObservableChordQuality> _chordQualities;
+        private ObservableCollection<ObservableScale> _scales;
 
         public int NumFrets
         {
@@ -308,19 +308,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public bool AllowRootlessChords
-        {
-            get
-            {
-                return Options.AllowRootlessChords;
-            }
-            set
-            {
-                Options.AllowRootlessChords = value;
-                RaisePropertyChanged("AllowRootlessChords");
-            }
-        }
-
         #endregion
 
         #region Styles
@@ -348,27 +335,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 Style.MirrorResults = value;
                 RaisePropertyChanged("MirrorResults");
-            }
-        }
-
-        public int SelectedBarreTypeOptionIndex
-        {
-            get
-            {
-                return (int)Style.BarreTypeOption;
-            }
-            set
-            {
-                Style.BarreTypeOption = (BarreTypeOption)(value);
-                RaisePropertyChanged("SelectedBarreTypeOptionIndex");
-            }
-        }
-
-        public ObservableCollection<string> BarreTypeOptions
-        {
-            get
-            {
-                return GetBarreTypeOptions();
             }
         }
 
@@ -406,40 +372,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public bool AddBottomMarks
-        {
-            get
-            {
-                return Style.AddBottomMarks;
-            }
-            set
-            {
-                Style.AddBottomMarks = value;
-                RaisePropertyChanged("AddBottomMarks");
-            }
-        }
-
-        public int SelectedBottomMarkTextOptionIndex
-        {
-            get
-            {
-                return (int)Style.BottomMarkTextOption;
-            }
-            set
-            {
-                Style.BottomMarkTextOption = (MarkTextOption)(value);
-                RaisePropertyChanged("SelectedBottomMarkTextOptionIndex");
-            }
-        }
-
-        public ObservableCollection<string> BottomMarkTextOptions
-        {
-            get
-            {
-                return GetMarkTextOptions();
-            }
-        }
-
         #endregion
 
         public RelayCommand SearchAsync
@@ -451,7 +383,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         IsIdle = false;
-                        ChordFinderResultSet results = await FindChordsAsync();
+                        ScaleFinderResultSet results = await FindScalesAsync();
                         Results.Clear();
                         SelectedResults.Clear();
 
@@ -459,7 +391,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         {
                             for (int i = 0; i < results.Count; i++)
                             {
-                                Results.Add(await RenderChordAsync(results.ResultAt(i)));
+                                Results.Add(await RenderScaleAsync(results.ResultAt(i)));
                             }
                         }
                     }
@@ -551,13 +483,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         public ObservableCollection<ObservableDiagram> _results;
 
-        internal ChordFinderOptions Options { get; private set; }
-        internal ChordFinderStyle Style { get; private set; }
+        internal ScaleFinderOptions Options { get; private set; }
+        internal ScaleFinderStyle Style { get; private set; }
 
-        public ChordFinderViewModel()
+        public ScaleFinderViewModel()
         {
-            Options = new ChordFinderOptions(AppVM.UserConfig);
-            Style = new ChordFinderStyle(AppVM.UserConfig);
+            Options = new ScaleFinderOptions(AppVM.UserConfig);
+            Style = new ScaleFinderStyle(AppVM.UserConfig);
 
             Instruments = AppVM.GetInstruments();
 
@@ -581,13 +513,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
             }
 
-            ChordQualities = AppVM.GetChordQualities();
+            Scales = AppVM.GetScales();
 
-            foreach (ObservableChordQuality ocq in ChordQualities)
+            foreach (ObservableScale os in Scales)
             {
-                if (ocq.ChordQuality == Options.ChordQuality)
+                if (os.Scale == Options.Scale)
                 {
-                    SelectedChordQuality = ocq;
+                    SelectedScale = os;
                     break;
                 }
             }
@@ -598,15 +530,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             SelectedResults.CollectionChanged += SelectedResults_CollectionChanged;
         }
 
-        private Task<ChordFinderResultSet> FindChordsAsync()
+        private Task<ScaleFinderResultSet> FindScalesAsync()
         {
-            return Task<ChordFinderResultSet>.Factory.StartNew(() =>
+            return Task<ScaleFinderResultSet>.Factory.StartNew(() =>
             {
-                return ChordFinder.FindChords(Options);
+                return ScaleFinder.FindScales(Options);
             });
         }
 
-        private Task<ObservableDiagram> RenderChordAsync(ChordFinderResult result)
+        private Task<ObservableDiagram> RenderScaleAsync(ScaleFinderResult result)
         {            
             return Task<ObservableDiagram>.Factory.StartNew(() =>
             {
@@ -617,17 +549,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     });
                 return od;
             });
-        }
-
-        private static ObservableCollection<string> GetBarreTypeOptions()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add("None");
-            collection.Add("Partial");
-            collection.Add("Full");
-
-            return collection;
         }
 
         private static ObservableCollection<string> GetMarkTextOptions()

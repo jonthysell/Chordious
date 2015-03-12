@@ -51,6 +51,7 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Register<LaunchUrlMessage>(recipient, (message) => MessageHandlers.LaunchUrl(message));
 
             Messenger.Default.Register<ShowChordFinderMessage>(recipient, (message) => MessageHandlers.ShowChordFinder(message));
+            Messenger.Default.Register<ShowScaleFinderMessage>(recipient, (message) => MessageHandlers.ShowScaleFinder(message));
             Messenger.Default.Register<ShowDiagramLibraryMessage>(recipient, (message) => MessageHandlers.ShowDiagramLibrary(message));
             Messenger.Default.Register<ShowDiagramEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramEditor(message));
             Messenger.Default.Register<ShowOptionsMessage>(recipient, (message) => MessageHandlers.ShowOptions(message));
@@ -67,6 +68,7 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Unregister<LaunchUrlMessage>(recipient);
 
             Messenger.Default.Unregister<ShowChordFinderMessage>(recipient);
+            Messenger.Default.Unregister<ShowScaleFinderMessage>(recipient);
             Messenger.Default.Unregister<ShowDiagramLibraryMessage>(recipient);
             Messenger.Default.Unregister<ShowDiagramEditorMessage>(recipient);
             Messenger.Default.Unregister<ShowOptionsMessage>(recipient);
@@ -108,6 +110,13 @@ namespace com.jonthysell.Chordious.WPF
         private static void ShowChordFinder(ShowChordFinderMessage message)
         {
             ChordFinderWindow window = new ChordFinderWindow();
+            window.ShowDialog();
+            message.Process();
+        }
+
+        private static void ShowScaleFinder(ShowScaleFinderMessage message)
+        {
+            ScaleFinderWindow window = new ScaleFinderWindow();
             window.ShowDialog();
             message.Process();
         }

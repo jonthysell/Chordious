@@ -201,6 +201,11 @@ namespace com.jonthysell.Chordious.Core
 
         public static InternalNote Shift(InternalNote root, int steps)
         {
+            if (steps == 0)
+            {
+                return root;
+            }
+
             int newNote = ((int)root + steps);
 
             while (newNote < 0)

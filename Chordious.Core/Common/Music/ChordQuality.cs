@@ -29,10 +29,8 @@ using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class ChordQuality : IReadOnly
+    public class ChordQuality : NamedInterval
     {
-        public bool ReadOnly { get; private set; }
-
         public ChordQualitySet Parent
         {
             get
@@ -58,23 +56,6 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                if (String.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentNullException();
-                }
-                _name = value;
-            }
-        }
-        private string _name;
-
         public string Abbreviation
         {
             get
@@ -87,28 +68,16 @@ namespace com.jonthysell.Chordious.Core
                 {
                     value = "";
                 }
+
+                if (ReadOnly)
+                {
+                    throw new ObjectIsReadOnlyException(this);
+                }
+
                 _abbreviation = value;
             }
         }
         private string _abbreviation;
-
-        public int[] Intervals
-        {
-            get
-            {
-                return _intervals;
-            }
-            set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-
-                _intervals = value;
-            }
-        }
-        private int[] _intervals;
 
         private ChordQuality(ChordQualitySet parent)
         {
@@ -131,42 +100,11 @@ namespace com.jonthysell.Chordious.Core
 
             using (xmlReader)
             {
-                if (xmlReader.IsStartElement() && xmlReader.Name == "quality")
+                if (ReadBase(xmlReader, "quality"))
                 {
-                    this.Name = xmlReader.GetAttribute("name");
                     this.Abbreviation = xmlReader.GetAttribute("abbv");
-
-                    string steps = xmlReader.GetAttribute("steps");
-
-                    string[] s = steps.Split(';');
-
-                    int[] intervals = new int[s.Length];
-
-                    for (int i = 0; i < intervals.Length; i++)
-                    {
-                        intervals[i] = Int32.Parse(s[i]);
-                    }
-
-                    this.Intervals = intervals;
                 }
             }
-        }
-
-        public InternalNote[] GetNotes(InternalNote root)
-        {
-            InternalNote[] notes = new InternalNote[Intervals.Length];
-
-            for (int i = 0; i < notes.Length; i++)
-            {
-                notes[i] = NoteUtils.Shift(root, Intervals[i]);
-            }
-
-            return notes;
-        }
-
-        public void MarkAsReadOnly()
-        {
-            this.ReadOnly = true;
         }
 
         public void Write(XmlWriter xmlWriter)
@@ -178,19 +116,9 @@ namespace com.jonthysell.Chordious.Core
 
             xmlWriter.WriteStartElement("quality");
 
-            xmlWriter.WriteAttributeString("name", this.Name);
+            WriteBase(xmlWriter);
+
             xmlWriter.WriteAttributeString("abbv", this.Abbreviation);
-
-            string intervals = "";
-
-            for (int i = 0; i < Intervals.Length; i++)
-            {
-                intervals += Intervals[i] + ";";
-            }
-
-            intervals = intervals.TrimEnd(';');
-
-            xmlWriter.WriteAttributeString("steps", intervals);
 
             xmlWriter.WriteEndElement();
         }

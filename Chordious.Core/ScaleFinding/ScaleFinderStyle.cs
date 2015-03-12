@@ -1,5 +1,5 @@
 ﻿// 
-// ChordFinderStyle.cs
+// ScaleFinderStyle.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -28,51 +28,8 @@ using System;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class ChordFinderStyle : FinderStyle
+    public class ScaleFinderStyle : FinderStyle
     {
-        public BarreTypeOption BarreTypeOption
-        {
-            get
-            {
-                return Settings.GetEnum<BarreTypeOption>(Prefix + "barretypeoption");
-            }
-            set
-            {
-                Settings.Set(Prefix + "barretypeoption", value);
-            }
-        }
-
-        public bool AddBottomMarks
-        {
-            get
-            {
-                return Settings.GetBoolean(Prefix + "addbottommarks");
-            }
-            set
-            {
-                Settings.Set(Prefix + "addbottommarks", value);
-            }
-        }
-
-        public MarkTextOption BottomMarkTextOption
-        {
-            get
-            {
-                return Settings.GetEnum<MarkTextOption>(Prefix + "bottommarktextoption");
-            }
-            set
-            {
-                Settings.Set(Prefix + "bottommarktextoption", value);
-            }
-        }
-
-        public ChordFinderStyle(ConfigFile configFile) : base(configFile, "chord") { }
-    }
-
-    public enum BarreTypeOption
-    {
-        None,
-        Partial,
-        Full
+        public ScaleFinderStyle(ConfigFile configFile) : base(configFile, "scale") { }
     }
 }

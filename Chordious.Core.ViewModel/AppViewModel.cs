@@ -234,5 +234,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             return collection;
         }
+
+        public ObservableCollection<ObservableScale> GetScales()
+        {
+            ObservableCollection<ObservableScale> collection = new ObservableCollection<ObservableScale>();
+
+            foreach (Scale scale in UserConfig.Scales)
+            {
+                collection.Add(new ObservableScale(scale));
+            }
+
+            foreach (Scale scale in DefaultConfig.Scales)
+            {
+                collection.Add(new ObservableScale(scale));
+            }
+
+            return collection;
+        }
     }
 }

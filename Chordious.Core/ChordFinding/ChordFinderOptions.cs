@@ -28,52 +28,8 @@ using System;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class ChordFinderOptions
+    public class ChordFinderOptions : FinderOptions
     {
-        public ChordiousSettings Settings { get; private set; }
-
-        public Instrument Instrument
-        {
-            get
-            {
-                return GetInstrument();
-            }
-        }
-        private Instrument _cachedInstrument;
-
-        public Tuning Tuning
-        {
-            get
-            {
-                return GetTuning();
-            }
-        }
-        private Tuning _cachedTuning;
-
-        public string InstrumentTuningLevel
-        {
-            get
-            {
-                return this.Settings["chordfinderoptions.itlevel"];
-            }
-            set
-            {
-                this.Settings["chordfinderoptions.itlevel"] = value;
-            }
-        }
-
-        public Note RootNote
-        {
-            get
-            {
-                return this.Settings.GetNote("chordfinderoptions.rootnote");
-            }
-            set
-            {
-                this.Settings.Set("chordfinderoptions.rootnote", value);
-            }
-        }
-
         public ChordQuality ChordQuality
         {
             get
@@ -87,83 +43,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this.Settings["chordfinderoptions.cqlevel"];
+                return this.Settings[Prefix + "cqlevel"];
             }
             set
             {
-                this.Settings["chordfinderoptions.cqlevel"] = value;
-            }
-        }
-
-        public int NumFrets
-        {
-            get
-            {
-                return this.Settings.GetInt32("chordfinderoptions.numfrets");
-            }
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-                this.Settings.Set("chordfinderoptions.numfrets", value);
-            }
-        }
-
-        public int MaxFret
-        {
-            get
-            {
-                return this.Settings.GetInt32("chordfinderoptions.maxfret");
-            }
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-                this.Settings.Set("chordfinderoptions.maxfret", value);
-            }
-        }
-
-        public int MaxReach
-        {
-            get
-            {
-                return this.Settings.GetInt32("chordfinderoptions.maxreach");
-            }
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-                this.Settings.Set("chordfinderoptions.maxreach", value);
-            }
-        }
-
-        public bool AllowOpenStrings
-        {
-            get
-            {
-                return this.Settings.GetBoolean("chordfinderoptions.allowopenstrings");
-            }
-            set
-            {
-                this.Settings.Set("chordfinderoptions.allowopenstrings", value);
-            }
-        }
-
-        public bool AllowMutedStrings
-        {
-            get
-            {
-                return this.Settings.GetBoolean("chordfinderoptions.allowmutedstrings");
-            }
-            set
-            {
-                this.Settings.Set("chordfinderoptions.allowmutedstrings", value);
+                this.Settings[Prefix + "cqlevel"] = value;
             }
         }
 
@@ -171,78 +55,22 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this.Settings.GetBoolean("chordfinderoptions.allowrootlesschords");
+                return this.Settings.GetBoolean(Prefix + "allowrootlesschords");
             }
             set
             {
-                this.Settings.Set("chordfinderoptions.allowrootlesschords", value);
+                this.Settings.Set(Prefix + "allowrootlesschords", value);
             }
         }
-        
-        private ConfigFile _configFile;
 
-        public ChordFinderOptions(ConfigFile configFile)
+        public ChordFinderOptions(ConfigFile configFile) : base(configFile, "chord")
         {
-            if (null == configFile)
-            {
-                throw new ArgumentNullException("configFile");
-            }
-
-            this._configFile = configFile;
-            this.Settings = new ChordiousSettings(this._configFile.ChordiousSettings, "ChordFinderOptions");
-            this._cachedInstrument = null;
-            this._cachedTuning = null;
             this._cachedChordQuality = null;
-        }
-
-        public Instrument GetInstrument()
-        {
-            string name = this.Settings["chordfinderoptions.instrument"];
-
-            string level = this.InstrumentTuningLevel;
-
-            if (null != this._cachedInstrument)
-            {
-                if (this._cachedInstrument.Name == name && this._cachedInstrument.Level == level)
-                {
-                    return this._cachedInstrument;
-                }
-            }
-
-            InstrumentSet instruments = this._configFile.Instruments;
-            while (null != instruments)
-            {
-                if (instruments.Level == level)
-                {
-                    this._cachedInstrument = instruments.Get(name);
-                    return _cachedInstrument;
-                }
-                instruments = instruments.Parent;
-            }
-
-            throw new LevelNotFoundException(level);
-        }
-
-        public Tuning GetTuning()
-        {
-            string name = this.Settings["chordfinderoptions.tuning"];
-
-            if (null != this._cachedInstrument && null != this._cachedTuning)
-            {
-                string level = this.InstrumentTuningLevel;
-                if (this._cachedInstrument.Level == level && this._cachedTuning.Name == name && this._cachedTuning.Level == level)
-                {
-                    return this._cachedTuning;
-                }
-            }
-
-            this._cachedTuning = Instrument.Tunings.Get(name);
-            return this._cachedTuning;
         }
 
         public ChordQuality GetChordQuality()
         {
-            string name = this.Settings["chordfinderoptions.chordquality"];
+            string name = this.Settings[Prefix + "chordquality"];
 
             string level = this.ChordQualityLevel;
 
@@ -268,31 +96,6 @@ namespace com.jonthysell.Chordious.Core
             throw new LevelNotFoundException(level);
         }
 
-        public void SetTarget(Instrument instrument, Tuning tuning)
-        {
-            if (null == instrument)
-            {
-                throw new ArgumentNullException("instrument");
-            }
-
-            if (null == tuning)
-            {
-                throw new ArgumentNullException("tuning");
-            }
-
-            if (tuning.Parent != instrument.Tunings)
-            {
-                throw new InstrumentTuningMismatchException(instrument, tuning);
-            }
-
-            this.Settings["chordfinderoptions.instrument"] = instrument.Name;
-            this.Settings["chordfinderoptions.tuning"] = tuning.Name;
-            this.InstrumentTuningLevel = instrument.Level;
-
-            this._cachedInstrument = instrument;
-            this._cachedTuning = tuning;
-        }
-
         public void SetTarget(Note rootNote, ChordQuality chordQuality)
         {
             if (null == chordQuality)
@@ -300,8 +103,8 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("chordQuality");
             }
 
-            this.Settings["chordfinderoptions.rootnote"] = NoteUtils.ToString(rootNote);
-            this.Settings["chordfinderoptions.chordquality"] = chordQuality.Name;
+            this.Settings[Prefix + "rootnote"] = NoteUtils.ToString(rootNote);
+            this.Settings[Prefix + "chordquality"] = chordQuality.Name;
             this.ChordQualityLevel = chordQuality.Level;
 
             this._cachedChordQuality = chordQuality;
@@ -312,18 +115,6 @@ namespace com.jonthysell.Chordious.Core
             ChordFinderOptions cfo = new ChordFinderOptions(this._configFile);
             cfo.Settings.CopyFrom(this.Settings);
             return cfo;
-        }
-    }
-
-    public class InstrumentTuningMismatchException : ChordiousException
-    {
-        public Instrument Instrument { get; private set; }
-        public Tuning Tuning { get; private set; }
-
-        public InstrumentTuningMismatchException(Instrument instrument, Tuning tuning) : base()
-        {
-            this.Instrument = instrument;
-            this.Tuning = tuning;
         }
     }
 }

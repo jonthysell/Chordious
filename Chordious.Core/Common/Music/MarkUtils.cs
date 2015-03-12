@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
 
 namespace com.jonthysell.Chordious.Core
 {
@@ -49,34 +50,73 @@ namespace com.jonthysell.Chordious.Core
             return s;
         }
 
-        public static bool HasMutedStrings(int[] marks)
+        public static string ToString(IEnumerable<MarkPosition> marks)
         {
-            MarkAnalysis ma = AnalyzeFrets(marks);
-            return ma.HasMutedStrings;
+            string s = "";
+
+            foreach (MarkPosition mark in marks)
+            {
+                s += mark.ToString() + ",";
+            }
+
+            s = s.TrimEnd(',');
+
+            return s;
         }
 
-        public static bool HasOpenStrings(int[] marks)
+        public static bool ValidateChord(int[] chordMarks, ChordFinderOptions chordFinderOptions)
         {
-            MarkAnalysis ma = AnalyzeFrets(marks);
-            return ma.HasOpenStrings;
+            if (null == chordMarks)
+            {
+                throw new ArgumentNullException("chordMarks");
+            }
+
+            if (null == chordFinderOptions)
+            {
+                throw new ArgumentNullException("chordFinderOptions");
+            }
+
+            MarkAnalysis ma = ChordAnalysis(chordMarks);
+
+            bool reachPass = ma.Reach <= chordFinderOptions.MaxReach;
+            bool openPass = chordFinderOptions.AllowOpenStrings ? true : !ma.HasOpenStrings;
+            bool mutePass = chordFinderOptions.AllowMutedStrings ? true : !ma.HasMutedStrings;
+
+            return reachPass && openPass && mutePass;
         }
 
-        public static int Reach(int[] marks)
+        public static bool ValidateScale(IEnumerable<MarkPosition> scaleMarks, ScaleFinderOptions scaleFinderOptions)
         {
-            MarkAnalysis ma = AnalyzeFrets(marks);
-            return ma.Reach;
+            if (null == scaleMarks)
+            {
+                throw new ArgumentNullException("scaleMarks");
+            }
+
+            if (null == scaleFinderOptions)
+            {
+                throw new ArgumentNullException("scaleFinderOptions");
+            }
+
+            MarkAnalysis ma = ScaleAnalysis(scaleMarks, scaleFinderOptions.Instrument.NumStrings);
+
+            bool reachPass = ma.Reach <= scaleFinderOptions.MaxReach;
+            bool openPass = scaleFinderOptions.AllowOpenStrings ? true : !ma.HasOpenStrings;
+            bool mutePass = scaleFinderOptions.AllowMutedStrings ? true : !ma.HasMutedStrings;
+
+            return reachPass && openPass && mutePass;
         }
 
         public static void MinMaxFrets(int[] marks, out int minFret, out int maxFret)
         {
-            MarkAnalysis ma = AnalyzeFrets(marks);
+            MarkAnalysis ma = ChordAnalysis(marks);
             minFret = ma.MinFret;
             maxFret = ma.MaxFret;
         }
 
         public static BarrePosition AutoBarrePosition(int[] marks)
         {
-            MarkAnalysis ma = AnalyzeFrets(marks);
+            MarkAnalysis ma = ChordAnalysis(marks);
+
             if (ma.AutoBarreFret > 0)
             {
                 return new BarrePosition(ma.AutoBarreFret, ma.AutoBarreStartString + 1, ma.AutoBarreEndString + 1);
@@ -101,8 +141,8 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentException();
             }
 
-            MarkAnalysis analysisA = AnalyzeFrets(marksA);
-            MarkAnalysis analysisB = AnalyzeFrets(marksB);
+            MarkAnalysis analysisA = ChordAnalysis(marksA);
+            MarkAnalysis analysisB = ChordAnalysis(marksB);
 
             return analysisA.CompareTo(analysisB);
         }
@@ -114,18 +154,16 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("absoluteMarks");
             }
 
-            int[] relativeMarks = new int[absoluteMarks.Length];
+            MarkAnalysis ma = ChordAnalysis(absoluteMarks);
 
-            int minFret, maxFret;
-            MinMaxFrets(absoluteMarks, out minFret, out maxFret);
-
-            int reach = (maxFret - minFret) + 1;
-            if (reach > numFrets)
+            if (ma.Reach > numFrets)
             {
                 throw new ArgumentOutOfRangeException("numFrets");
             }
 
-            baseLine = maxFret > numFrets ? minFret : 0;
+            int[] relativeMarks = new int[absoluteMarks.Length];
+
+            baseLine = ma.MaxFret > numFrets ? ma.MinFret : 0;
 
             for (int i = 0; i < absoluteMarks.Length; i++)
             {
@@ -139,7 +177,40 @@ namespace com.jonthysell.Chordious.Core
             return relativeMarks;
         }
 
-        protected static MarkAnalysis AnalyzeFrets(int[] marks)
+        public static IEnumerable<MarkPosition> AbsoluteToRelativeMarks(IEnumerable<MarkPosition> absoluteMarks, out int baseLine, int numFrets, int numStrings)
+        {
+            if (null == absoluteMarks)
+            {
+                throw new ArgumentNullException("absoluteMarks");
+            }
+
+            MarkAnalysis ma = ScaleAnalysis(absoluteMarks, numStrings);
+
+            if (ma.Reach > numFrets)
+            {
+                throw new ArgumentOutOfRangeException("numFrets");
+            }
+
+            List<MarkPosition> relativeMarks = new List<MarkPosition>();
+
+            baseLine = ma.MaxFret > numFrets ? ma.MinFret : 0;
+
+            foreach (MarkPosition absoluteMark in absoluteMarks)
+            {
+                MarkPosition relativeMark = (MarkPosition)absoluteMark.Clone();
+
+                if (relativeMark.Fret > 0 && baseLine > 0)
+                {
+                    relativeMark = new MarkPosition(relativeMark.String, relativeMark.Fret - (baseLine - 1));
+                }
+
+                relativeMarks.Add(relativeMark);
+            }
+
+            return relativeMarks;
+        }
+
+        protected static MarkAnalysis ChordAnalysis(int[] marks)
         {
             if (null == marks)
             {
@@ -205,6 +276,62 @@ namespace com.jonthysell.Chordious.Core
                 ma.AutoBarreFret = Math.Min(marks[firstMark], marks[lastMark]);
                 ma.AutoBarreStartString = firstMark;
                 ma.AutoBarreEndString = lastMark;
+            }
+
+            return ma;
+        }
+
+        protected static MarkAnalysis ScaleAnalysis(IEnumerable<MarkPosition> marks, int numStrings)
+        {
+            if (null == marks)
+            {
+                throw new ArgumentNullException("marks");
+            }
+
+            MarkAnalysis ma = new MarkAnalysis();
+
+            // First pass for basic stats
+            bool[] hasMarks = new bool[numStrings];
+
+            foreach (MarkPosition mark in marks)
+            {
+                int str = mark.String;
+                int fret = mark.Fret;
+
+                if (fret == 0)
+                {
+                    ma.HasOpenStrings = true;
+                }
+
+                if (fret >= 0)
+                {
+                    hasMarks[str - 1] = true;
+
+                    ma.MarkCount++;
+                    ma.MeanFret += fret;
+                    ma.MinFret = Math.Min(ma.MinFret, fret);
+                    ma.MaxFret = Math.Max(ma.MaxFret,fret);
+                }
+            }
+
+            ma.MeanFret /= ma.MarkCount;
+
+            if (ma.MinFret == Int32.MaxValue || ma.MaxFret == Int32.MinValue)
+            {
+                ma.MinFret = 0;
+                ma.MaxFret = 0;
+            }
+
+            ma.Reach = (ma.MaxFret - ma.MinFret) + 1;
+
+            // Check for muted strings
+            for (int i = 0; i < hasMarks.Length; i++)
+            {
+                if (!hasMarks[i])
+                {
+                    ma.HasMutedStrings = true;
+                    break;
+                }
             }
 
             return ma;

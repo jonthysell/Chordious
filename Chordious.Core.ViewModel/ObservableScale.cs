@@ -1,5 +1,5 @@
 ﻿// 
-// ChordFinderStyle.cs
+// ObservableScale.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -25,54 +25,42 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.ObjectModel;
 
-namespace com.jonthysell.Chordious.Core
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+
+using com.jonthysell.Chordious.Core;
+
+namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class ChordFinderStyle : FinderStyle
+    public class ObservableScale : ObservableObject
     {
-        public BarreTypeOption BarreTypeOption
+        public string Name
         {
             get
             {
-                return Settings.GetEnum<BarreTypeOption>(Prefix + "barretypeoption");
-            }
-            set
-            {
-                Settings.Set(Prefix + "barretypeoption", value);
+                return Scale.Name;
             }
         }
 
-        public bool AddBottomMarks
+        public string Level
         {
             get
             {
-                return Settings.GetBoolean(Prefix + "addbottommarks");
-            }
-            set
-            {
-                Settings.Set(Prefix + "addbottommarks", value);
+                return Scale.Level;
             }
         }
 
-        public MarkTextOption BottomMarkTextOption
+        internal Scale Scale { get; private set; }
+
+        public ObservableScale(Scale scale)
         {
-            get
+            if (null == scale)
             {
-                return Settings.GetEnum<MarkTextOption>(Prefix + "bottommarktextoption");
+                throw new ArgumentNullException("scale");
             }
-            set
-            {
-                Settings.Set(Prefix + "bottommarktextoption", value);
-            }
+            Scale = scale;
         }
-
-        public ChordFinderStyle(ConfigFile configFile) : base(configFile, "chord") { }
-    }
-
-    public enum BarreTypeOption
-    {
-        None,
-        Partial,
-        Full
     }
 }

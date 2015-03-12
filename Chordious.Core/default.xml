@@ -20,6 +20,21 @@
     <setting key="chordfinderstyle.addbottommarks" value="false" />
     <setting key="chordfinderstyle.bottommarktextoption" value="ShowNote_ShowBoth" />
     <setting key="chordfinderstyle.mirrorresults" value="false" />
+    <setting key="scalefinderoptions.instrument" value="Ukulele" />
+    <setting key="scalefinderoptions.tuning" value="Reentrant C" />
+    <setting key="scalefinderoptions.itlevel" value="Default" />
+    <setting key="scalefinderoptions.rootnote" value="C" />
+    <setting key="scalefinderoptions.scale" value="Major" />
+    <setting key="scalefinderoptions.slevel" value="Default" />
+    <setting key="scalefinderoptions.numfrets" value="5" />
+    <setting key="scalefinderoptions.maxfret" value="12" />
+    <setting key="scalefinderoptions.maxreach" value="4" />
+    <setting key="scalefinderoptions.allowopenstrings" value="true" />
+    <setting key="scalefinderoptions.allowmutedstrings" value="true" />
+    <setting key="scalefinderstyle.addtitle" value="false" />
+    <setting key="scalefinderstyle.addrootnotes" value="true" />
+    <setting key="scalefinderstyle.marktextoption" value="None" />
+    <setting key="scalefinderstyle.mirrorresults" value="false" />
 	</settings>
   <styles>
     <style key="diagram.margin" value="0" />
@@ -159,4 +174,9 @@
 		<quality name="Major 6th" abbv="6" steps="0;4;7;9" />
 		<quality name="Minor 6th" abbv="m6" steps="0;3;7;9" />
 	</qualities>
+  <scales>
+    <scale name="Major" steps="0;2;4;5;7;9;11;12" />
+    <scale name="Natural Minor" steps="0;2;3;5;7;8;10;12" />
+    <scale name="Harmonic Minor" steps="0;2;3;5;7;8;11;12" />
+  </scales>
 </chordious>

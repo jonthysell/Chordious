@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="AdvancedDataViewModel.cs" />
     <Compile Include="AppViewModel.cs" />
+    <Compile Include="ObservableScale.cs" />
+    <Compile Include="ScaleFinderViewModel.cs" />
     <Compile Include="ChordFinderViewModel.cs" />
     <Compile Include="DiagramEditorViewModel.cs" />
     <Compile Include="DiagramLibraryViewModel.cs" />

@@ -192,11 +192,11 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == obj)
             {
-                throw new ArgumentException();
+                throw new ArgumentNullException("obj");
             }
 
             ChordFinderResult cfr = obj as ChordFinderResult;
-            if ((object)cfr == null)
+            if (null == cfr)
             {
                 throw new ArgumentException();
             }

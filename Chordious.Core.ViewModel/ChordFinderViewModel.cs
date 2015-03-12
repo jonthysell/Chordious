@@ -486,7 +486,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Save selected diagrams to:", (name) =>
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Save selected diagrams to:", LastDiagramCollectionName, (name) =>
                         {
                             DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
                             DiagramCollection targetCollection = null;
@@ -500,6 +500,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             {
                                 targetCollection.Add(od.Diagram);
                             }
+
+                            LastDiagramCollectionName = name.Trim();
                         }));
                     }
                     catch (Exception ex)
@@ -512,6 +514,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 });
             }
         }
+
+        private static string LastDiagramCollectionName = "Chord Finder Results";
 
         public ObservableCollection<ObservableDiagram> SelectedResults
         {

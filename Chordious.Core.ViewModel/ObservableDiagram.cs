@@ -199,6 +199,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        public RelayCommand RenderImage
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    Render();
+                });
+            }
+        }
+
+        public bool AutoRender
+        {
+            get
+            {
+                return _autorender;
+            }
+            set
+            {
+                _autorender = value;
+                RaisePropertyChanged("AutoRender");
+            }
+        }
+        private bool _autorender;
+
         internal Diagram Diagram
         {
             get
@@ -217,13 +242,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private Diagram _diagram;
 
-        public ObservableDiagram(Diagram diagram) : base()
+        public ObservableDiagram(Diagram diagram, bool autoRender = true) : base()
         {
             if (null == diagram)
             {
                 throw new ArgumentNullException("diagram");
             }
 
+            AutoRender = autoRender;
             Diagram = diagram;
         }
 
@@ -232,7 +258,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             RaisePropertyChanged("SvgText");
             RaisePropertyChanged("Height");
             RaisePropertyChanged("Width");
-            ImageObject = AppViewModel.Instance.SvgTextToImage(SvgText);
+
+            if (AutoRender)
+            {
+                Render();
+            }
+        }
+
+        private void Render()
+        {
+            AppViewModel.Instance.DoOnUIThread(() =>
+            {
+                ImageObject = AppViewModel.Instance.SvgTextToImage(SvgText);
+            });
         }
 
         private static ObservableCollection<string> GetDiagramLabelStyles()

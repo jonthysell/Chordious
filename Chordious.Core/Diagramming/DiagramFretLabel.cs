@@ -239,7 +239,16 @@ namespace com.jonthysell.Chordious.Core
                     }
                 }
 
-                svg += String.Format(SvgConstants.TEXT, textStyle, textX, textY, this.Text);
+                string textFormat = SvgConstants.TEXT;
+
+                if (Parent.Orientation == DiagramOrientation.LeftRight)
+                {
+                    textFormat = SvgConstants.ROTATED_TEXT;
+                    textX -= textSize / 2.0;
+                    textY -= textSize / 2.0;
+                }
+
+                svg += String.Format(textFormat, textStyle, textX, textY, this.Text);
             }
 
             return svg;

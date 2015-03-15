@@ -46,8 +46,14 @@ namespace com.jonthysell.Chordious.Core
         public const string TEXT = @"
 <text style=""{0}"" x=""{1}"" y=""{2}"">{3}</text>";
 
+        public const string ROTATED_TEXT = @"
+<text style=""{0}"" x=""{1}"" y=""{2}"" transform=""rotate(90 {1} {2})"">{3}</text>";
+
         public const string TEXT_CHORDNAME = @"
 <text style=""{0}"" x=""{1}"" y=""{2}"">{3}<tspan style=""{4}"">{5}</tspan></text>";
+
+        public const string ROTATED_TEXT_CHORDNAME = @"
+<g transform=""rotate(90 {1} {2})""><text style=""{0}"" x=""{1}"" y=""{2}"">{3}<tspan style=""{4}"">{5}</tspan></text></g>";
 
         public const string RECTANGLE = @"
 <rect style=""{0}"" width=""{1}"" height=""{2}"" x=""{3}"" y=""{4}"" />";

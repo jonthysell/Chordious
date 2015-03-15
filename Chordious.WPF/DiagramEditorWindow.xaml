@@ -25,15 +25,18 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Width (px)"/>
                         <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Diagram.Width, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
                         <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Height (px)"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Diagram.Height, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Frets"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding Diagram.NumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Strings"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding Diagram.NumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Orientation"/>
+                        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" ItemsSource="{Binding Diagram.Orientations}" SelectedIndex="{Binding Diagram.SelectedOrientationIndex}" VerticalAlignment="Center"/>
+                        <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Frets"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding Diagram.NumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Strings"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="5" Text="{Binding Diagram.NumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
                     </Grid>
                 </GroupBox>
                 <GroupBox Header="Title" Margin="5">

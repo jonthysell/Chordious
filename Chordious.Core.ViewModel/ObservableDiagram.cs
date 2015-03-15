@@ -60,6 +60,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region Dimensions
 
+        public int SelectedOrientationIndex
+        {
+            get
+            {
+                return (int)Diagram.Orientation;
+            }
+            set
+            {
+                Diagram.Orientation = (DiagramOrientation)(value);
+                RaisePropertyChanged("SelectedOrientationIndex");
+                Refresh();
+            }
+        }
+
+        public ObservableCollection<string> Orientations
+        {
+            get
+            {
+                return GetOrientations();
+            }
+        }
+
         public int Width
         {
             get
@@ -279,6 +301,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             collection.Add("Regular");
             collection.Add("Chord Name");
+
+            return collection;
+        }
+
+        private static ObservableCollection<string> GetOrientations()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add("Vertical");
+            collection.Add("Horizontal");
 
             return collection;
         }

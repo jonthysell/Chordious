@@ -730,7 +730,8 @@ namespace com.jonthysell.Chordious.Core
 
                 if (this.HasVisibleTitle())
                 {
-                    edge += this.TitleTextSize + this.TitleGridPadding;
+                    edge += this.TitleGridPadding;
+                    edge += Orientation == DiagramOrientation.LeftRight ? this.TitleTextSize * this.Title.Length : this.TitleTextSize;
                 }
             }
 
@@ -763,6 +764,16 @@ namespace com.jonthysell.Chordious.Core
 
         public double TotalHeight()
         {
+            if (Orientation == DiagramOrientation.LeftRight)
+            {
+                return GetWidth();
+            }
+
+            return GetHeight();
+        }
+
+        private double GetHeight()
+        {
             double height = GridBottomEdge() + this.GridMarginBottom;
             
             if (this.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
@@ -778,6 +789,16 @@ namespace com.jonthysell.Chordious.Core
         }
 
         public double TotalWidth()
+        {
+            if (Orientation == DiagramOrientation.LeftRight)
+            {
+                return GetHeight();
+            }
+
+            return GetWidth();
+        }
+
+        private double GetWidth()
         {
             double width = GridRightEdge() + this.GridMarginRight;
 
@@ -807,8 +828,8 @@ namespace com.jonthysell.Chordious.Core
         {
             StringBuilder sb = new StringBuilder();
 
-            double totalWidth = this.TotalWidth();
-            double totalHeight = this.TotalHeight();
+            double totalWidth = this.GetWidth();
+            double totalHeight = this.GetHeight();
 
             // Add background
 
@@ -945,8 +966,16 @@ namespace com.jonthysell.Chordious.Core
                 switch (this.TitleLabelStyle)
                 {
                     case DiagramLabelStyle.ChordName:
-                        string modifierStyle = String.Format("font-size:{0}pt;", this.TitleTextSize * this.TitleTextSizeModRatio);
-                        sb.AppendFormat(SvgConstants.TEXT_CHORDNAME,
+                        double modifierSize = this.TitleTextSize * this.TitleTextSizeModRatio;
+                        string modifierStyle = String.Format("font-size:{0}pt;", modifierSize);
+                        string titleChordNameFormat = SvgConstants.TEXT_CHORDNAME;
+                        if (Orientation == DiagramOrientation.LeftRight)
+                        {
+                            titleChordNameFormat = SvgConstants.ROTATED_TEXT_CHORDNAME;
+                            titleX -= (TitleTextSize - this.TitleGridPadding) / 2.0;
+                            titleY -= (TitleTextSize + (modifierSize * (Title.Length - 1))) / 2.0;
+                        }
+                        sb.AppendFormat(titleChordNameFormat,
                                 titleStyle,
                                 titleX,
                                 titleY,
@@ -956,7 +985,14 @@ namespace com.jonthysell.Chordious.Core
                         break;
                     case DiagramLabelStyle.Regular:
                     default:
-                        sb.AppendFormat(SvgConstants.TEXT,
+                        string titleFormat = SvgConstants.TEXT;
+                        if (Orientation == DiagramOrientation.LeftRight)
+                        {
+                            titleFormat = SvgConstants.ROTATED_TEXT;
+                            titleX -= (TitleTextSize - this.TitleGridPadding) / 2.0;
+                            titleY -= (TitleTextSize * Title.Length) / 2.0;
+                        }
+                        sb.AppendFormat(titleFormat,
                                 titleStyle,
                                 titleX,
                                 titleY,
@@ -976,6 +1012,7 @@ namespace com.jonthysell.Chordious.Core
                     totalWidth / 2.0,
                     totalHeight / 2.0);
 
+                // Need to swap here since we used Gets instead of Totals above
                 double temp = totalHeight;
                 totalHeight = totalWidth;
                 totalWidth = temp;

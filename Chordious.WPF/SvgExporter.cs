@@ -77,8 +77,10 @@ namespace com.jonthysell.Chordious.WPF
                 }
                 else
                 {
-                    BitmapImage bmpImage = (BitmapImage)(observableDiagram.ImageObject);
+                    BitmapImage bmpImage = null;
                     BitmapEncoder encoder = null;
+
+                    Background background = Background.None;
 
                     if (ExportFormat == ExportFormat.Png)
                     {
@@ -91,7 +93,10 @@ namespace com.jonthysell.Chordious.WPF
                     else if (ExportFormat == ExportFormat.Jpg)
                     {
                         encoder = new JpegBitmapEncoder();
+                        background = Background.White;
                     }
+
+                    bmpImage = ImageUtils.SvgTextToBitmapImage(svgText, ImageFormat.Png, background);
 
                     encoder.Frames.Add(BitmapFrame.Create(bmpImage));
                     encoder.Save(fs);

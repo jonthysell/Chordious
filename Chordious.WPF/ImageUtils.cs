@@ -45,12 +45,19 @@ namespace com.jonthysell.Chordious.WPF
     {
         public static BitmapImage SvgTextToBitmapImage(string svgText)
         {
-            return SvgTextToBitmapImage(svgText, ImageFormat.Png);
+            return SvgTextToBitmapImage(svgText, ImageFormat.Png, Background.None);
         }
 
-        public static BitmapImage SvgTextToBitmapImage(string svgText, ImageFormat imageFormat)
+        public static BitmapImage SvgTextToBitmapImage(string svgText, ImageFormat imageFormat, Background background)
         {
-            return BitmapToBitmapImage(SvgTextToBitmap(svgText, 0, 0, SvgRenderer.SvgSharp), imageFormat);
+            Bitmap diagram = SvgTextToBitmap(svgText, 0, 0, SvgRenderer.SvgSharp);
+
+            if (background != Background.None)
+            {
+                diagram = AddBackground(diagram, background);
+            }
+
+            return BitmapToBitmapImage(diagram, imageFormat);
         }
 
         public static Bitmap SvgTextToBitmap(string svgText, int width, int height, SvgRenderer svgRenderer)
@@ -81,6 +88,32 @@ namespace com.jonthysell.Chordious.WPF
             }
 
             return svgBitmap;
+        }
+
+        public static Bitmap AddBackground(Bitmap source, Background background)
+        {
+            if (null == source)
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            if (background == Background.None)
+            {
+                throw new ArgumentOutOfRangeException("background");
+            }
+
+            Bitmap baseImage = new Bitmap(source.Width, source.Height);
+
+            Graphics g = Graphics.FromImage(baseImage);
+
+            if (background == Background.White)
+            {
+                g.Clear(Color.White);
+            }
+
+            g.DrawImage(source, 0, 0, source.Width, source.Height);
+
+            return baseImage;
         }
 
         public static Bitmap CenterAndScale(Bitmap source, float width, float height, SvgRenderer svgRenderer)
@@ -133,5 +166,11 @@ namespace com.jonthysell.Chordious.WPF
     {
         SvgSharp,
         SharpVectors,
+    }
+
+    public enum Background
+    {
+        None,
+        White
     }
 }

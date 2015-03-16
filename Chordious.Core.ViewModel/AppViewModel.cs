@@ -44,6 +44,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         public static AppViewModel Instance { get; private set; }
 
+        public string ProgramTitle
+        {
+            get
+            {
+                return AppInfo.ProgramTitle;
+            }
+        }
+
         internal ConfigFile DefaultConfig { get; private set; }
 
         public bool DefaultConfigLoaded

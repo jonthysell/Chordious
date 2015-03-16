@@ -104,8 +104,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
                 _selectedDiagrams = value;
                 RaisePropertyChanged("SelectedDiagrams");
-                RaisePropertyChanged("EditSelected");
-                RaisePropertyChanged("DeleteSelected");
+                UpdateCommands();
             }
         }
         private ObservableCollection<ObservableDiagram> _selectedDiagrams;
@@ -178,10 +177,42 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public RelayCommand ExportSelected
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<PromptForExportMessage>(new PromptForExportMessage(SelectedDiagrams.Count, (diagramExporter) =>
+                        {
+                            if (null != diagramExporter)
+                            {
+                                List<ObservableDiagram> itemsToExport = new List<ObservableDiagram>(SelectedDiagrams);
+
+                                foreach (ObservableDiagram od in itemsToExport)
+                                {
+                                    diagramExporter.Export(od);
+                                }
+                                SelectedDiagrams.Clear();
+                            }
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedDiagrams.Count > 0;
+                });
+            }
+        }
+
         private void SelectedDiagrams_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            RaisePropertyChanged("EditSelected");
-            RaisePropertyChanged("DeleteSelected");
+            UpdateCommands();
         }
 
         internal DiagramLibrary Library { get; private set; }
@@ -205,6 +236,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             SelectedDiagrams = new ObservableCollection<ObservableDiagram>();
 
             SelectedDiagrams.CollectionChanged += SelectedDiagrams_CollectionChanged;
+        }
+
+        private void UpdateCommands()
+        {
+            RaisePropertyChanged("EditSelected");
+            RaisePropertyChanged("DeleteSelected");
+            RaisePropertyChanged("ExportSelected");
         }
     }
 }

@@ -172,6 +172,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 Callback(itemsChanged);
             }
         }
+    }
 
+    public class PromptForExportMessage : MessageBase
+    {
+        private Action<IDiagramExporter> Callback;
+
+        public int Count { get; private set; }
+
+        public PromptForExportMessage(int count, Action<IDiagramExporter> callback = null) : base()
+        {
+            if (count < 1)
+            {
+                throw new ArgumentOutOfRangeException("count");
+            }
+
+            Count = count;
+            Callback = callback;
+        }
+
+        public void Process(IDiagramExporter diagramExporter)
+        {
+            if (null != Callback)
+            {
+                Callback(diagramExporter);
+            }
+        }
     }
 }

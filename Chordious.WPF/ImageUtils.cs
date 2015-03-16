@@ -45,7 +45,12 @@ namespace com.jonthysell.Chordious.WPF
     {
         public static BitmapImage SvgTextToBitmapImage(string svgText)
         {
-            return BitmapToBitmapImage(SvgTextToBitmap(svgText, 0, 0, SvgRenderer.SvgSharp), ImageFormat.Png);
+            return SvgTextToBitmapImage(svgText, ImageFormat.Png);
+        }
+
+        public static BitmapImage SvgTextToBitmapImage(string svgText, ImageFormat imageFormat)
+        {
+            return BitmapToBitmapImage(SvgTextToBitmap(svgText, 0, 0, SvgRenderer.SvgSharp), imageFormat);
         }
 
         public static Bitmap SvgTextToBitmap(string svgText, int width, int height, SvgRenderer svgRenderer)

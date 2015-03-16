@@ -135,6 +135,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="IdleBoolToWaitCursorConverter.cs" />
+    <Compile Include="SvgExporter.cs" />
     <Compile Include="TextPromptWindow.xaml.cs">
       <DependentUpon>TextPromptWindow.xaml</DependentUpon>
     </Compile>

@@ -28,10 +28,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.Win32;
 
 using GalaSoft.MvvmLight.Messaging;
 
@@ -56,6 +58,7 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Register<ShowDiagramEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramEditor(message));
             Messenger.Default.Register<ShowOptionsMessage>(recipient, (message) => MessageHandlers.ShowOptions(message));
             Messenger.Default.Register<ShowAdvancedDataMessage>(recipient, (message) => MessageHandlers.ShowAdvancedData(message));
+            Messenger.Default.Register<PromptForExportMessage>(recipient, (message) => MessageHandlers.PromptForExport(message));
         }
 
         public static void UnregisterMessageHandlers(object recipient)
@@ -73,6 +76,7 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Unregister<ShowDiagramEditorMessage>(recipient);
             Messenger.Default.Unregister<ShowOptionsMessage>(recipient);
             Messenger.Default.Unregister<ShowAdvancedDataMessage>(recipient);
+            Messenger.Default.Unregister<PromptForExportMessage>(recipient);
         }
 
         private static void ShowNotification(ChordiousMessage message)
@@ -161,6 +165,25 @@ namespace com.jonthysell.Chordious.WPF
             };
             window.ShowDialog();
             message.Process();
+        }
+
+        private static void PromptForExport(PromptForExportMessage message)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.AddExtension = true;
+            dialog.OverwritePrompt = true;
+            dialog.DefaultExt = ".svg";
+            dialog.Filter = "SVG (.svg)|*.svg|PNG (.png)|*.png|GIF (.gif)|*.gif|JPG (.jpg)|*.jpg";
+
+            bool? result = dialog.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+                string filename = dialog.FileName;
+                ExportFormat exportFormat = (ExportFormat)(dialog.FilterIndex - 1);
+
+                message.Process(new SvgExporter(filename, exportFormat, message.Count == 1));
+            }
         }
     }
 }

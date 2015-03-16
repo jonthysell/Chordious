@@ -56,6 +56,7 @@
         <WrapPanel Grid.Row="2" Grid.Column="1" FlowDirection="RightToLeft">
             <Button Content="Delete" Command="{Binding SelectedNode.DeleteSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Width="75" />
             <Button Content="Edit" Command="{Binding SelectedNode.EditSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Width="75" />
+            <Button Content="Export" Command="{Binding SelectedNode.ExportSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Width="75" />
         </WrapPanel>
     </Grid>
 </Window>

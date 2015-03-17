@@ -4,9 +4,9 @@
         Title="{Binding Title}" Height="600" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Icon="{DynamicResource ChordiousIcon}">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="240" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -15,58 +15,67 @@
         <ScrollViewer Grid.Column="0" Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <GroupBox Header="Dimensions" Margin="5">
-                    <Grid Margin="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Width (px)"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Diagram.Width, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Height (px)"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Diagram.Height, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Orientation"/>
-                        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" ItemsSource="{Binding Diagram.Orientations}" SelectedIndex="{Binding Diagram.SelectedOrientationIndex}" VerticalAlignment="Center"/>
-                        <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Frets"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding Diagram.NumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Strings"/>
-                        <TextBox Grid.Row="4" Grid.Column="1" Margin="5" Text="{Binding Diagram.NumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
-                    </Grid>
+                    <StackPanel Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Margin="5" Width="75" Content="Width (px)"/>
+                            <TextBox Margin="5" Width="75" Text="{Binding Diagram.Width, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Margin="5" Width="75" Content="Height (px)"/>
+                            <TextBox Margin="5" Width="75" Text="{Binding Diagram.Height, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
                 </GroupBox>
-                <GroupBox Header="Title" Margin="5">
-                    <Grid Margin="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Visible"/>
-                        <CheckBox Grid.Row="0" Grid.Column="1" Margin="5" IsChecked="{Binding Diagram.TitleVisible}"  VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Text"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Diagram.TitleText, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Label Style"/>
-                        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" ItemsSource="{Binding Diagram.TitleLabelStyles}" SelectedIndex="{Binding Diagram.SelectedTitleLabelStyleIndex}" VerticalAlignment="Center"/>
-                        <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Grid Padding (px)"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding Diagram.TitleGridPadding, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="3" MaxLines="1" HorizontalContentAlignment="Center"/>
-                    </Grid>
+                <GroupBox Header="Layout" Margin="5">
+                    <StackPanel Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Margin="5" Width="75" Content="Orientation"/>
+                            <ComboBox Margin="5" Width="75" ItemsSource="{Binding Diagram.Orientations}" SelectedIndex="{Binding Diagram.SelectedOrientationIndex}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Grid" Margin="5">
+                    <StackPanel Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Margin="5" Width="75" Content="# of Frets"/>
+                            <TextBox Margin="5" Width="75" Text="{Binding Diagram.NumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Margin="5" Width="75" Content="# of Strings"/>
+                            <TextBox Margin="5" Width="75" Text="{Binding Diagram.NumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
                 </GroupBox>
             </StackPanel>
         </ScrollViewer>
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="0" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <Image Source="{Binding Diagram.ImageObject}" Margin="5" Width="{Binding Diagram.Width}" Height="{Binding Diagram.Height}" />
         </ScrollViewer>
-        <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" FlowDirection="RightToLeft">
+        <ScrollViewer Grid.Column="2" Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <GroupBox Header="Title" Margin="5">
+                    <StackPanel Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="110" Margin="5" Content="Visible"/>
+                            <CheckBox Width="65" Margin="5" IsChecked="{Binding Diagram.TitleVisible}"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="110" Margin="5" Content="Text"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleText, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="110" Margin="5" Content="Label Style"/>
+                            <ComboBox Width="65" Margin="5" ItemsSource="{Binding Diagram.TitleLabelStyles}" SelectedIndex="{Binding Diagram.SelectedTitleLabelStyleIndex}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="110" Margin="5" Content="Grid Padding (px)"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleGridPadding, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="3" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </ScrollViewer>
+        <WrapPanel Grid.Row="2" Grid.ColumnSpan="3" FlowDirection="RightToLeft">
             <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5"/>
             <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True"/>
             <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5"/>

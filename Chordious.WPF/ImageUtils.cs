@@ -53,16 +53,16 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
-        public static BitmapImage SvgTextToBitmapImage(string svgText)
+        public static BitmapImage SvgTextToBitmapImage(string svgText, int width, int height)
         {
             Background background = GetDefaultBackground();
-            return SvgTextToBitmapImage(svgText, ImageFormat.Png, background);
+            return SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, background);
         }
 
-        public static BitmapImage SvgTextToBitmapImage(string svgText, ImageFormat imageFormat, Background background)
+        public static BitmapImage SvgTextToBitmapImage(string svgText, int width, int height, ImageFormat imageFormat, Background background)
         {
             SvgRenderer svgRenderer = GetDefaultRenderer();
-            Bitmap diagram = SvgTextToBitmap(svgText, 0, 0, svgRenderer);
+            Bitmap diagram = SvgTextToBitmap(svgText, width, height, svgRenderer);
 
             if (background != Background.None)
             {
@@ -89,14 +89,17 @@ namespace com.jonthysell.Chordious.WPF
             else if (svgRenderer == SvgRenderer.SharpVectors)
             {
                 // make SVG document with associated window so we can render it.
-                SharpVectors.Dom.Svg.SvgWindow window = new SvgPictureBoxWindow(width, height, new GdiGraphicsRenderer());
+
+                GdiGraphicsRenderer renderer = new GdiGraphicsRenderer();
+                SharpVectors.Dom.Svg.SvgWindow window = new SvgPictureBoxWindow(width, height, renderer);
 
                 SharpVectors.Dom.Svg.SvgDocument doc = new SharpVectors.Dom.Svg.SvgDocument(window);
                 doc.LoadXml(svgText);
 
-                window.Renderer.Render(doc);
+                renderer.BackColor = Color.Transparent;
+                renderer.Render(doc);
 
-                svgBitmap = ((GdiGraphicsRenderer)window.Renderer).RasterImage;
+                svgBitmap = renderer.RasterImage;
             }
 
             return svgBitmap;

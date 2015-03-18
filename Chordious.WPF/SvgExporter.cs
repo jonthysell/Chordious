@@ -65,6 +65,8 @@ namespace com.jonthysell.Chordious.WPF
             string fileName = Path.Combine(folder, GenerateFileName(observableDiagram));
 
             string svgText = observableDiagram.SvgText;
+            int width = observableDiagram.TotalWidth;
+            int height = observableDiagram.TotalHeight;
 
             using (FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
             {
@@ -96,7 +98,7 @@ namespace com.jonthysell.Chordious.WPF
                         background = Background.White;
                     }
 
-                    bmpImage = ImageUtils.SvgTextToBitmapImage(svgText, ImageFormat.Png, background);
+                    bmpImage = ImageUtils.SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, background);
 
                     encoder.Frames.Add(BitmapFrame.Create(bmpImage));
                     encoder.Save(fs);

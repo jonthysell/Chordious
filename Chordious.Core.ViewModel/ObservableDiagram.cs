@@ -64,7 +64,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return (int)Diagram.TotalWidth();
+                return (int)(Diagram.TotalWidth() + 0.5);
             }
         }
 
@@ -72,7 +72,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return (int)Diagram.TotalHeight();
+                return (int)(Diagram.TotalHeight() + 0.5);
             }
         }
 
@@ -412,7 +412,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             AppViewModel.Instance.DoOnUIThread(() =>
             {
-                ImageObject = AppViewModel.Instance.SvgTextToImage(SvgText);
+                ImageObject = AppViewModel.Instance.SvgTextToImage(SvgText, TotalWidth, TotalHeight);
             });
         }
 

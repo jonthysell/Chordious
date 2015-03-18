@@ -115,7 +115,7 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate >
-                        <Image Source="{Binding ImageObject}" Margin="5" Width="{Binding Width}" Height="{Binding Height}" />
+                        <Image Source="{Binding ImageObject}" Margin="5" Width="{Binding TotalWidth}" Height="{Binding TotalHeight}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

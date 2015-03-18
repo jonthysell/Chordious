@@ -115,9 +115,9 @@ namespace com.jonthysell.Chordious.WPF
                 return fileName + extension;
             }
 
-            if (observableDiagram.TitleVisible && !String.IsNullOrWhiteSpace(observableDiagram.TitleText))
+            if (observableDiagram.TitleVisible && !String.IsNullOrWhiteSpace(observableDiagram.Title))
             {
-                fileName += " " + observableDiagram.TitleText.Trim();
+                fileName += " " + observableDiagram.Title.Trim();
             }
 
             string testfileName = Path.Combine(folder, fileName + extension);

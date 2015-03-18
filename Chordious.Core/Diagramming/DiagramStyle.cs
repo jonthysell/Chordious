@@ -65,6 +65,41 @@ namespace com.jonthysell.Chordious.Core
             Set("diagram.labellayoutmodel", value);
         }
 
+        public string DiagramColorGet()
+        {
+            return GetColor("diagram.color");
+        }
+
+        public void DiagramColorSet(string value)
+        {
+            SetColor("diagram.color", value);
+        }
+
+        public double DiagramOpacityGet()
+        {
+            return GetDouble("diagram.opacity");
+        }
+
+        public void DiagramOpacitySet(double value)
+        {
+            if (value < 0 || value > 1.0)
+            {
+                throw new ArgumentOutOfRangeException("value");
+            }
+
+            Set("diagram.opacity", value);
+        }
+
+        public string DiagramBorderColorGet()
+        {
+            return GetColor("diagram.bordercolor");
+        }
+
+        public void DiagramBorderColorSet(string value)
+        {
+            SetColor("diagram.bordercolor", value);
+        }
+
         public double DiagramBorderThicknessGet()
         {
             return GetDouble("diagram.borderthickness");
@@ -671,6 +706,103 @@ namespace com.jonthysell.Chordious.Core
         public new DiagramStyle Clone()
         {
             return (DiagramStyle)base.Clone();
+        }
+
+        public void SetColor(string key, string value)
+        {
+            string cleanColor;
+            if (!TryParseColor(value, out cleanColor))
+            {
+                throw new ArgumentException("value");
+            }
+
+            Set(key, cleanColor);
+        }
+
+        public string GetColor(string key, bool recursive = true)
+        {
+            if (StringUtils.IsNullOrWhiteSpace(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            string value;
+            if (TryGet(key, out value, recursive))
+            {
+                return value;
+            }
+
+            throw new InheritableDictionaryKeyNotFoundException(this, key);
+        }
+
+        public string GetColor(string key, string defaultValue, bool recursive = true)
+        {
+            try
+            {
+                return GetColor(key, recursive);
+            }
+            catch (InheritableDictionaryKeyNotFoundException) { }
+
+            if (!IsColor(defaultValue))
+            {
+                throw new ArgumentException("defaultValue");
+            }
+
+            return defaultValue.Trim().ToLower();
+        }
+
+        public bool TryGetColor(string key, out string result, bool recursive = true)
+        {
+            string rawResult;
+            if (TryGet(key, out rawResult, recursive))
+            {
+                return TryParseColor(rawResult, out result);
+            }
+
+            result = default(string);
+            return false;
+        }
+
+        private bool TryParseColor(string s, out string result)
+        {
+            if (IsColor(s))
+            {
+                result = s.Trim().ToLower();
+                return true;
+            }
+
+            result = default(string);
+            return false;
+        }
+
+        public static bool IsColor(string s)
+        {
+            if (!StringUtils.IsNullOrWhiteSpace(s))
+            {
+                s = s.Trim();
+                if (s.StartsWith("#"))
+                {
+                    s = s.TrimStart('#');
+                    if (s.Length == 6)
+                    {
+                        string rawRed = s.Substring(0, 2);
+                        string rawGreen = s.Substring(2, 2);
+                        string rawBlue = s.Substring(4, 2);
+
+                        try
+                        {
+                            byte red, green, blue;
+                            red = Convert.ToByte(rawRed, 16);
+                            green = Convert.ToByte(rawGreen, 16);
+                            blue = Convert.ToByte(rawBlue, 16);
+
+                            return true;
+                        }
+                        catch (Exception) { }
+                    }
+                }
+            }
+            return false;
         }
 
         public string GetSvgStyle(string[][] styleMap, string prefix = "")

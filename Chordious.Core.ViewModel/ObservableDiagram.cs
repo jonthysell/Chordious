@@ -60,6 +60,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region Dimensions
 
+        public int TotalWidth
+        {
+            get
+            {
+                return (int)Diagram.TotalWidth();
+            }
+        }
+
+        public int TotalHeight
+        {
+            get
+            {
+                return (int)Diagram.TotalHeight();
+            }
+        }
+
+        #endregion
+
+        #region Layout
+
         public int SelectedOrientationIndex
         {
             get
@@ -82,21 +102,123 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public int Width
+        public int SelectedLabelLayoutModelIndex
         {
             get
             {
-                return (int)Diagram.TotalWidth();
+                return (int)Diagram.LabelLayoutModel;
+            }
+            set
+            {
+                Diagram.LabelLayoutModel = (DiagramLabelLayoutModel)(value);
+                RaisePropertyChanged("SelectedLabelLayoutModelIndex");
+                Refresh();
             }
         }
 
-        public int Height
+        public ObservableCollection<string> LabelLayoutModels
         {
             get
             {
-                return (int)Diagram.TotalHeight();
+                return GetLabelLayoutModels();
             }
         }
+
+        #endregion
+
+        #region Background
+
+        public string DiagramColor
+        {
+            get
+            {
+                return Diagram.DiagramColor;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.DiagramColor = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("DiagramColor");
+                Refresh();
+            }
+        }
+
+        public double DiagramOpacity
+        {
+            get
+            {
+                return Diagram.DiagramOpacity;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.DiagramOpacity = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("DiagramOpacity");
+                Refresh();
+            }
+        }
+
+        public string DiagramBorderColor
+        {
+            get
+            {
+                return Diagram.DiagramBorderColor;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.DiagramBorderColor = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("DiagramBorderColor");
+                Refresh();
+            }
+        }
+
+        public double DiagramBorderThickness
+        {
+            get
+            {
+                return Diagram.DiagramBorderThickness;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.DiagramBorderThickness = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("DiagramBorderThickness");
+                Refresh();
+            }
+        }
+
+        #endregion
+
+        #region Grid
 
         public int NumFrets
         {
@@ -144,10 +266,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
-
         #region Title
 
-        public string TitleText
+        public string Title
         {
             get
             {
@@ -156,7 +277,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 Diagram.Title = value;
-                RaisePropertyChanged("TitleText");
+                RaisePropertyChanged("Title");
                 Refresh();
             }
         }
@@ -278,8 +399,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public void Refresh()
         {
             RaisePropertyChanged("SvgText");
-            RaisePropertyChanged("Height");
-            RaisePropertyChanged("Width");
+            RaisePropertyChanged("TotalHeight");
+            RaisePropertyChanged("TotalWidth");
 
             if (AutoRender)
             {
@@ -311,6 +432,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             collection.Add("Vertical");
             collection.Add("Horizontal");
+
+            return collection;
+        }
+
+        private static ObservableCollection<string> GetLabelLayoutModels()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add("Overlap");
+            collection.Add("Add Horizontal Padding");
+            collection.Add("Add Vertical Padding");
+            collection.Add("Add Horizonatal & Vertical Padding");
 
             return collection;
         }

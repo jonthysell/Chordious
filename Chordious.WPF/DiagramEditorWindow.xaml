@@ -18,11 +18,11 @@
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="75" Content="Width (px)"/>
-                            <TextBox Margin="5" Width="75" Text="{Binding Diagram.Width, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Margin="5" Width="75" Text="{Binding Diagram.TotalWidth, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="75" Content="Height (px)"/>
-                            <TextBox Margin="5" Width="75" Text="{Binding Diagram.Height, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Margin="5" Width="75" Text="{Binding Diagram.TotalHeight, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -32,27 +32,51 @@
                             <Label Margin="5" Width="75" Content="Orientation"/>
                             <ComboBox Margin="5" Width="75" ItemsSource="{Binding Diagram.Orientations}" SelectedIndex="{Binding Diagram.SelectedOrientationIndex}" VerticalAlignment="Center"/>
                         </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Margin="5" Width="75" Content="Label Model"/>
+                            <ComboBox Margin="5" Width="75" ItemsSource="{Binding Diagram.LabelLayoutModels}" SelectedIndex="{Binding Diagram.SelectedLabelLayoutModelIndex}" VerticalAlignment="Center"/>
+                        </StackPanel>
                     </StackPanel>
                 </GroupBox>
                 <GroupBox Header="Grid" Margin="5">
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="75" Content="# of Frets"/>
-                            <TextBox Margin="5" Width="75" Text="{Binding Diagram.NumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Margin="5" Width="75" Text="{Binding Diagram.NumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="75" Content="# of Strings"/>
-                            <TextBox Margin="5" Width="75" Text="{Binding Diagram.NumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Margin="5" Width="75" Text="{Binding Diagram.NumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
         </ScrollViewer>
         <ScrollViewer Grid.Row="0" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <Image Source="{Binding Diagram.ImageObject}" Margin="5" Width="{Binding Diagram.Width}" Height="{Binding Diagram.Height}" />
+            <Image Source="{Binding Diagram.ImageObject}" Margin="5" Width="{Binding Diagram.TotalWidth}" Height="{Binding Diagram.TotalHeight}" />
         </ScrollViewer>
         <ScrollViewer Grid.Column="2" Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <StackPanel>
+            <StackPanel >
+                <GroupBox Header="Background" Margin="5">
+                    <StackPanel Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="110" Margin="5" Content="Color"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.DiagramColor, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="110" Margin="5" Content="Opacity"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.DiagramOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="110" Margin="5" Content="Border Color"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.DiagramBorderColor, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="110" Margin="5" Content="Border Width (px)"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.DiagramBorderThickness, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="3" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
                 <GroupBox Header="Title" Margin="5">
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
@@ -61,7 +85,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Text"/>
-                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleText, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.Title, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Label Style"/>
@@ -69,7 +93,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Grid Padding (px)"/>
-                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleGridPadding, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="3" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleGridPadding, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="3" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>

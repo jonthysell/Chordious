@@ -125,6 +125,42 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public string DiagramColor
+        {
+            get
+            {
+                return Style.DiagramColorGet();
+            }
+            set
+            {
+                Style.DiagramColorSet(value);
+            }
+        }
+
+        public double DiagramOpacity
+        {
+            get
+            {
+                return Style.DiagramOpacityGet();
+            }
+            set
+            {
+                Style.DiagramOpacitySet(value);
+            }
+        }
+
+        public string DiagramBorderColor
+        {
+            get
+            {
+                return Style.DiagramBorderColorGet();
+            }
+            set
+            {
+                Style.DiagramBorderColorSet(value);
+            }
+        }
+
         public double DiagramBorderThickness
         {
             get
@@ -713,6 +749,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 edge += this.MaxFretLabelWidth(FretLabelSide.Left);
             }
+
             return edge;
         }
 

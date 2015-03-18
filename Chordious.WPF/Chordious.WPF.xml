@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<chordious>
+  <settings>
+    <setting key="app.renderer" value="SvgSharp" />
+    <setting key="app.renderbackground" value="None" />
+  </settings>
+</chordious>

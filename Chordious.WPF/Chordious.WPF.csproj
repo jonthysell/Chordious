@@ -212,9 +212,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Chordious.WPF.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(SolutionDir)\Chordious.Core\default.xml $(ProjectDir)\$(OutDir)\Chordious.WPF.xml</PostBuildEvent>
+    <PostBuildEvent>copy $(SolutionDir)\Chordious.Core\Chordious.Core.xml $(ProjectDir)\$(OutDir)\Chordious.Core.xml</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

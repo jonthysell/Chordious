@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <chordious>
-	<settings>
-		<setting key="chordfinderoptions.instrument" value="Ukulele" />
+  <settings>
+    <setting key="chordfinderoptions.instrument" value="Ukulele" />
     <setting key="chordfinderoptions.tuning" value="Reentrant C" />
     <setting key="chordfinderoptions.itlevel" value="Default" />
     <setting key="chordfinderoptions.rootnote" value="C" />
@@ -35,7 +35,7 @@
     <setting key="scalefinderstyle.addrootnotes" value="true" />
     <setting key="scalefinderstyle.marktextoption" value="None" />
     <setting key="scalefinderstyle.mirrorresults" value="false" />
-	</settings>
+  </settings>
   <styles>
     <style key="diagram.margin" value="0" />
     <style key="diagram.orientation" value="UpDown" />
@@ -106,74 +106,74 @@
     <style key="barre.stack" value="UnderMarks" />
     <style key="barre.arcratio" value="0.5" />
   </styles>
-	<instruments>
-		<instrument name="Banjo" strings="4">
-			<tuning name="Standard" notes="D3;G3;B3;D4" />
-			<tuning name="C" notes="C3;G3;B3;D4" />
-			<tuning name="Double C" notes="C3;G3;C3;D4" />
-			<tuning name="Sawmill" notes="D3;G3;C3;D4" />
-			<tuning name="Open D" notes="D3;F#3;A3;D4" />
-			<tuning name="Guitar" notes="D3;G3;B3;E4" />
+  <instruments>
+    <instrument name="Banjo" strings="4">
+      <tuning name="Standard" notes="D3;G3;B3;D4" />
+      <tuning name="C" notes="C3;G3;B3;D4" />
+      <tuning name="Double C" notes="C3;G3;C3;D4" />
+      <tuning name="Sawmill" notes="D3;G3;C3;D4" />
+      <tuning name="Open D" notes="D3;F#3;A3;D4" />
+      <tuning name="Guitar" notes="D3;G3;B3;E4" />
       <tuning name="Willie Moore" notes="D3;G3;A3;D4" />
       <tuning name="Doc Bog's D" notes="D3;G3;A3;D4" />
       <tuning name="Cumberland Gap" notes="E3;A3;D3;E4" />
       <tuning name="G Minor" notes="D3;G3;Bb3;D4" />
       <tuning name="Open C" notes="C3;G3;C3;E4" />
-		</instrument>
-		<instrument name="Greek Trichordo Bouzouki" strings="3">
-			<tuning name="Standard" notes="D3;A3;D4" />
-		</instrument>
-		<instrument name="Greek Tetrachordo Bouzouki" strings="4">
-			<tuning name="Standard" notes="C3;F3;A3;D4" />
-		</instrument>
+    </instrument>
+    <instrument name="Greek Trichordo Bouzouki" strings="3">
+      <tuning name="Standard" notes="D3;A3;D4" />
+    </instrument>
+    <instrument name="Greek Tetrachordo Bouzouki" strings="4">
+      <tuning name="Standard" notes="C3;F3;A3;D4" />
+    </instrument>
     <instrument name="Guitalele" strings="6">
       <tuning name="Standard" notes="A2;D3;G3;C4;E4;A4" />
     </instrument>
-		<instrument name="Guitar" strings="6">
-			<tuning name="Standard" notes="E2;A2;D3;G3;B3;E4" />
-			<tuning name="Drop D" notes="D2;A2;D3;G3;B3;E4" />
-			<tuning name="Open D" notes="D2;A2;D3;F#3;A3;D4" />
-			<tuning name="Open G" notes="D2;G2;D3;G3;B3;D4" />
+    <instrument name="Guitar" strings="6">
+      <tuning name="Standard" notes="E2;A2;D3;G3;B3;E4" />
+      <tuning name="Drop D" notes="D2;A2;D3;G3;B3;E4" />
+      <tuning name="Open D" notes="D2;A2;D3;F#3;A3;D4" />
+      <tuning name="Open G" notes="D2;G2;D3;G3;B3;D4" />
       <tuning name="Open A" notes="E2;A2;E3;A3;C#3;E4" />
       <tuning name="Lute" notes="E2;A2;D3;F#3;B3;E4" />
       <tuning name="Irish" notes="D2;A2;D3;G3;A3;D4" />
-		</instrument>
-		<instrument name="Irish Bouzouki" strings="4">
-			<tuning name="Standard" notes="G2;D3;A3;E4" />
-			<tuning name="Mandolin" notes="G2;D3;A3;E4" />
-			<tuning name="Irish" notes="G2;D3;A3;D4" />
-			<tuning name="Modal D" notes="A2;D3;A3;D4" />
-		</instrument>
-		<instrument name="Mandola" strings="4">
-			<tuning name="Standard" notes="C3;G3;D4;A4" />
-		</instrument>
-		<instrument name="Mandolin" strings="4">
-			<tuning name="Standard" notes="G3;D4;A4;E5" />
-		</instrument>
-		<instrument name="Ukulele" strings="4">
-			<tuning name="Reentrant C" notes="G4;C4;E4;A4" />
-			<tuning name="Reentrant D" notes="A4;D4;F#4;B4" />
-			<tuning name="Reentrant G" notes="D4;G3;B3;E4" />
+    </instrument>
+    <instrument name="Irish Bouzouki" strings="4">
+      <tuning name="Standard" notes="G2;D3;A3;E4" />
+      <tuning name="Mandolin" notes="G2;D3;A3;E4" />
+      <tuning name="Irish" notes="G2;D3;A3;D4" />
+      <tuning name="Modal D" notes="A2;D3;A3;D4" />
+    </instrument>
+    <instrument name="Mandola" strings="4">
+      <tuning name="Standard" notes="C3;G3;D4;A4" />
+    </instrument>
+    <instrument name="Mandolin" strings="4">
+      <tuning name="Standard" notes="G3;D4;A4;E5" />
+    </instrument>
+    <instrument name="Ukulele" strings="4">
+      <tuning name="Reentrant C" notes="G4;C4;E4;A4" />
+      <tuning name="Reentrant D" notes="A4;D4;F#4;B4" />
+      <tuning name="Reentrant G" notes="D4;G3;B3;E4" />
       <tuning name="Linear C" notes="G3;C4;E4;A4" />
       <tuning name="Linear D" notes="A3;D4;F#4;B4" />
       <tuning name="Linear G" notes="D3;G3;B3;E4" />
-			<tuning name="Open C" notes="G3;C4;E4;G4" />
-			<tuning name="Open D" notes="A3;D4;F#4;A4" />
-			<tuning name="Open G" notes="D3;G3;B4;D4" />
-		</instrument>
-	</instruments>
-	<qualities>
-		<quality name="Major" abbv="" steps="0;4;7" />
-		<quality name="Minor" abbv="m" steps="0;3;7" />
-		<quality name="Diminished" abbv="dim" steps="0;3;6" />
-		<quality name="Augmented" abbv="aug" steps="0;4;8" />
-		<quality name="Major 7th" abbv="maj7" steps="0;4;7;11" />
-		<quality name="Minor 7th" abbv="m7" steps="0;3;7;10" />
-		<quality name="Dominant 7th" abbv="7" steps="0;4;7;10" />
-		<quality name="Minor/Major 7th" abbv="m7/M7" steps="0;3;7;11" />
-		<quality name="Major 6th" abbv="6" steps="0;4;7;9" />
-		<quality name="Minor 6th" abbv="m6" steps="0;3;7;9" />
-	</qualities>
+      <tuning name="Open C" notes="G3;C4;E4;G4" />
+      <tuning name="Open D" notes="A3;D4;F#4;A4" />
+      <tuning name="Open G" notes="D3;G3;B4;D4" />
+    </instrument>
+  </instruments>
+  <qualities>
+    <quality name="Major" abbv="" steps="0;4;7" />
+    <quality name="Minor" abbv="m" steps="0;3;7" />
+    <quality name="Diminished" abbv="dim" steps="0;3;6" />
+    <quality name="Augmented" abbv="aug" steps="0;4;8" />
+    <quality name="Major 7th" abbv="maj7" steps="0;4;7;11" />
+    <quality name="Minor 7th" abbv="m7" steps="0;3;7;10" />
+    <quality name="Dominant 7th" abbv="7" steps="0;4;7;10" />
+    <quality name="Minor/Major 7th" abbv="m7/M7" steps="0;3;7;11" />
+    <quality name="Major 6th" abbv="6" steps="0;4;7;9" />
+    <quality name="Minor 6th" abbv="m6" steps="0;3;7;9" />
+  </qualities>
   <scales>
     <scale name="Major" steps="0;2;4;5;7;9;11;12" />
     <scale name="Natural Minor" steps="0;2;3;5;7;8;10;12" />

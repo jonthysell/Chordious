@@ -61,11 +61,15 @@ namespace com.jonthysell.Chordious.WPF
             MessageHandlers.RegisterMessageHandlers(this);
 
             string defaultFile = GetDefaultConfigPath();
+            string appFile = GetAppConfigPath();
             string userFile = GetUserConfigPath();
 
             AppViewModel.Init(Assembly.GetEntryAssembly(), () =>
             {
                 return new FileStream(defaultFile, FileMode.Open, FileAccess.Read);
+            }, () =>
+            {
+                return new FileStream(appFile, FileMode.Open, FileAccess.Read);
             }, () =>
             {
                 return new FileStream(userFile, FileMode.Open);
@@ -84,6 +88,11 @@ namespace com.jonthysell.Chordious.WPF
                 AppVM.LoadDefaultConfig();
             }
 
+            if (File.Exists(appFile))
+            {
+                AppVM.LoadAppConfig();
+            }
+
             if (File.Exists(userFile))
             {
                 AppVM.LoadUserConfig();
@@ -93,6 +102,11 @@ namespace com.jonthysell.Chordious.WPF
         }
 
         public string GetDefaultConfigPath()
+        {
+            return "Chordious.Core.xml";
+        }
+
+        public string GetAppConfigPath()
         {
             return "Chordious.WPF.xml";
         }

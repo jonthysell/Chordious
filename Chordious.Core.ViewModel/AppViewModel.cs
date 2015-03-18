@@ -70,6 +70,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private GetConfigStream _loadDefaultConfigStream;
 
+        internal ConfigFile AppConfig { get; private set; }
+
+        public bool AppConfigLoaded
+        {
+            get
+            {
+                return _appConfigLoaded;
+            }
+            private set
+            {
+                _appConfigLoaded = value;
+                RaisePropertyChanged("AppConfigLoaded");
+            }
+        }
+        private bool _appConfigLoaded = false;
+
+        private GetConfigStream _loadAppConfigStream;
+
         internal ConfigFile UserConfig { get; private set; }
 
         public bool UserConfigLoaded
@@ -108,17 +126,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public DoOnUIThread DoOnUIThread { get; private set; }
 
-        public static void Init(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DoOnUIThread doOnUIThread, string userConfigPath = "")
+        public static void Init(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DoOnUIThread doOnUIThread, string userConfigPath = "")
         {
             if (null != Instance)
             {
                 throw new NotSupportedException();
             }
 
-            Instance = new AppViewModel(assembly, loadDefaultConfigStream, loadUserConfigStream, saveUserConfigStream, svgTextToImage, doOnUIThread, userConfigPath);
+            Instance = new AppViewModel(assembly, loadDefaultConfigStream, loadAppConfigStream, loadUserConfigStream, saveUserConfigStream, svgTextToImage, doOnUIThread, userConfigPath);
         }
 
-        private AppViewModel(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DoOnUIThread doOnUIThread, string userConfigPath)
+        private AppViewModel(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DoOnUIThread doOnUIThread, string userConfigPath)
         {
             if (null == assembly)
             {
@@ -128,6 +146,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             if (null == loadDefaultConfigStream)
             {
                 throw new ArgumentNullException("loadDefaultConfigStream");
+            }
+
+            if (null == loadAppConfigStream)
+            {
+                throw new ArgumentNullException("loadAppConfigStream");
             }
 
             if (null == loadUserConfigStream)
@@ -142,6 +165,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             AppInfo.Assembly = assembly;
             _loadDefaultConfigStream = loadDefaultConfigStream;
+            _loadAppConfigStream = loadAppConfigStream;
             _loadUserConfigStream = loadUserConfigStream;
             _saveUserConfigStream = saveUserConfigStream;
             UserConfigPath = userConfigPath;
@@ -150,7 +174,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             DoOnUIThread = doOnUIThread;
 
             DefaultConfig = new ConfigFile("Default");
-            UserConfig = new ConfigFile(DefaultConfig, "User");
+            AppConfig = new ConfigFile(DefaultConfig, "App");
+            UserConfig = new ConfigFile(AppConfig, "User");
         }
 
         public void LoadDefaultConfig()
@@ -161,6 +186,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             DefaultConfig.MarkAsReadOnly();
             DefaultConfigLoaded = true;
+        }
+
+        public void LoadAppConfig()
+        {
+            using (Stream inputStream = _loadAppConfigStream())
+            {
+                AppConfig.LoadFile(inputStream);
+            }
+            AppConfig.MarkAsReadOnly();
+            AppConfigLoaded = true;
         }
 
         public void LoadUserConfig()
@@ -183,6 +218,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public void Close()
         {
             SaveUserConfig();
+        }
+
+        public string GetSetting(string key)
+        {
+            return UserConfig.ChordiousSettings.Get(key);
+        }
+
+        public void SetSetting(string key, object value)
+        {
+            UserConfig.ChordiousSettings.Set(key, value);
         }
 
         public ObservableCollection<string> GetNotes()

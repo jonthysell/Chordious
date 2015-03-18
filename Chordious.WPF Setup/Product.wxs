@@ -63,7 +63,8 @@
       </Component>
       <Component Id="ProductComponent.WpfApp">
         <File Id="ChordiousWpfApp" Source="$(var.Chordious.WPF.TargetPath)" KeyPath="yes" />
-        <File Id="ChordiousWpfConfig" Source="$(var.Chordious.WPF.TargetDir)\Chordious.WPF.xml" />
+        <File Id="ChordiousWpfCoreConfig" Source="$(var.Chordious.WPF.TargetDir)\Chordious.Core.xml" />
+        <File Id="ChordiousWpfAppConfig" Source="$(var.Chordious.WPF.TargetDir)\Chordious.WPF.xml" />
         <File Id="ChordiousWpfReadme" Name="Readme.txt" Source="$(var.SolutionDir)\README.md" />
         <File Id="ChordiousWpfLicense" Name="License.txt" Source="$(var.SolutionDir)\LICENSE.md" />
       </Component>

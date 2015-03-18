@@ -39,18 +39,30 @@ using SharpVectors.Dom.Svg;
 using SharpVectors.Renderers.Gdi;
 using SharpVectors.Renderers.Forms;
 
+using com.jonthysell.Chordious.Core.ViewModel;
+
 namespace com.jonthysell.Chordious.WPF
 {
     public class ImageUtils
     {
+        public static AppViewModel AppVM
+        {
+            get
+            {
+                return AppViewModel.Instance;
+            }
+        }
+
         public static BitmapImage SvgTextToBitmapImage(string svgText)
         {
-            return SvgTextToBitmapImage(svgText, ImageFormat.Png, Background.None);
+            Background background = GetDefaultBackground();
+            return SvgTextToBitmapImage(svgText, ImageFormat.Png, background);
         }
 
         public static BitmapImage SvgTextToBitmapImage(string svgText, ImageFormat imageFormat, Background background)
         {
-            Bitmap diagram = SvgTextToBitmap(svgText, 0, 0, SvgRenderer.SvgSharp);
+            SvgRenderer svgRenderer = GetDefaultRenderer();
+            Bitmap diagram = SvgTextToBitmap(svgText, 0, 0, svgRenderer);
 
             if (background != Background.None)
             {
@@ -159,6 +171,30 @@ namespace com.jonthysell.Chordious.WPF
                 bitmapImage.EndInit();
             }
             return bitmapImage;
+        }
+
+        public static SvgRenderer GetDefaultRenderer()
+        {
+            SvgRenderer result;
+
+            if (Enum.TryParse<SvgRenderer>(AppVM.GetSetting("app.renderer"), out result))
+            {
+                return result;
+            }
+
+            return SvgRenderer.SvgSharp;
+        }
+
+        public static Background GetDefaultBackground()
+        {
+            Background result;
+
+            if (Enum.TryParse<Background>(AppVM.GetSetting("app.renderbackground"), out result))
+            {
+                return result;
+            }
+
+            return Background.None;
         }
     }
 

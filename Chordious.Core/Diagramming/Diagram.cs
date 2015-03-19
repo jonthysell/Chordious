@@ -237,6 +237,30 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public string TitleColor
+        {
+            get
+            {
+                return Style.TitleColorGet();
+            }
+            set
+            {
+                Style.TitleColorSet(value);
+            }
+        }
+
+        public double TitleOpacity
+        {
+            get
+            {
+                return Style.TitleOpacityGet();
+            }
+            set
+            {
+                Style.TitleOpacitySet(value);
+            }
+        }
+
         #endregion
 
         #region Grid Style

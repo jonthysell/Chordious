@@ -345,6 +345,31 @@ namespace com.jonthysell.Chordious.Core
             Set("title.labelstyle", value);
         }
 
+        public string TitleColorGet()
+        {
+            return GetColor("title.textcolor");
+        }
+
+        public void TitleColorSet(string value)
+        {
+            SetColor("title.textcolor", value);
+        }
+
+        public double TitleOpacityGet()
+        {
+            return GetDouble("title.textopacity");
+        }
+
+        public void TitleOpacitySet(double value)
+        {
+            if (value < 0 || value > 1.0)
+            {
+                throw new ArgumentOutOfRangeException("value");
+            }
+
+            Set("title.textopacity", value);
+        }
+
         #endregion
 
         #region DiagramMark-specific Styles

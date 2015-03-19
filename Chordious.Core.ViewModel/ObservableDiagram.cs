@@ -340,6 +340,50 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string TitleColor
+        {
+            get
+            {
+                return Diagram.TitleColor;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.TitleColor = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("TitleColor");
+                Refresh();
+            }
+        }
+
+        public double TitleOpacity
+        {
+            get
+            {
+                return Diagram.TitleOpacity;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.TitleOpacity = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("TitleOpacity");
+                Refresh();
+            }
+        }
+
         #endregion
 
         public RelayCommand RenderImage

@@ -88,6 +88,14 @@
                             <TextBox Width="65" Margin="5" Text="{Binding Diagram.Title, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
+                            <Label Width="110" Margin="5" Content="Color"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleColor, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="110" Margin="5" Content="Opacity"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Label Style"/>
                             <ComboBox Width="65" Margin="5" ItemsSource="{Binding Diagram.TitleLabelStyles}" SelectedIndex="{Binding Diagram.SelectedTitleLabelStyleIndex}" VerticalAlignment="Center"/>
                         </StackPanel>

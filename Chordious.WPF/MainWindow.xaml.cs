@@ -38,6 +38,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using com.jonthysell.Chordious.Core.ViewModel;
+
 namespace com.jonthysell.Chordious.WPF
 {
     /// <summary>
@@ -48,6 +50,23 @@ namespace com.jonthysell.Chordious.WPF
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Loaded += MainWindow_Loaded;
+        }
+
+        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (UpdateUtils.GetUpdateCheckOnStart())
+                {
+                    UpdateUtils.UpdateCheck(true, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionUtils.HandleException(ex);
+            }
         }
     }
 }

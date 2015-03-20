@@ -96,7 +96,7 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ConfirmAction(ConfirmationMessage message)
         {
-            MessageBoxResult result = MessageBox.Show(message.Notification, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult result = MessageBox.Show(message.Notification, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             message.Execute(result == MessageBoxResult.Yes);
         }
 

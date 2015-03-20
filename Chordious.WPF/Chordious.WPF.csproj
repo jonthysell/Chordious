@@ -139,6 +139,7 @@
     <Compile Include="TextPromptWindow.xaml.cs">
       <DependentUpon>TextPromptWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OptionsWindow.xaml.cs">

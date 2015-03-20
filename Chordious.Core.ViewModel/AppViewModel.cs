@@ -52,6 +52,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string FullVersion
+        {
+            get
+            {
+                return AppInfo.FullVersion;
+            }
+        }
+
         internal ConfigFile DefaultConfig { get; private set; }
 
         public bool DefaultConfigLoaded

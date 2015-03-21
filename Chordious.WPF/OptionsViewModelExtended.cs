@@ -1,5 +1,5 @@
 ﻿// 
-// OptionsViewModeExtended.cs
+// OptionsViewModelExtended.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>

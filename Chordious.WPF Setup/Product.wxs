@@ -37,8 +37,19 @@
     <Condition Message="This application requires .NET Framework 4.5. Please install the .NET Framework then run this installer again.">
       <![CDATA[Installed OR NETFRAMEWORK45]]>
     </Condition>
-    
-	</Product>
+
+    <Property Id="WixShellExecTarget" Value="[#ChordiousWpfApp]" />
+
+    <CustomAction Id="LaunchApplication"
+        BinaryKey="WixCA"
+        DllEntry="WixShellExec"
+        Impersonate="yes" />
+
+    <InstallExecuteSequence>
+      <Custom Action="LaunchApplication" After="InstallFinalize">NOT Installed</Custom>
+    </InstallExecuteSequence>
+
+  </Product>
 
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">

@@ -55,13 +55,13 @@ namespace com.jonthysell.Chordious.WPF
 
         public static BitmapImage SvgTextToBitmapImage(string svgText, int width, int height)
         {
-            Background background = GetDefaultBackground();
+            Background background = GetRenderBackground();
             return SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, background);
         }
 
         public static BitmapImage SvgTextToBitmapImage(string svgText, int width, int height, ImageFormat imageFormat, Background background)
         {
-            SvgRenderer svgRenderer = GetDefaultRenderer();
+            SvgRenderer svgRenderer = GetRenderer();
             Bitmap diagram = SvgTextToBitmap(svgText, width, height, svgRenderer);
 
             if (background != Background.None)
@@ -176,7 +176,7 @@ namespace com.jonthysell.Chordious.WPF
             return bitmapImage;
         }
 
-        public static SvgRenderer GetDefaultRenderer()
+        public static SvgRenderer GetRenderer()
         {
             SvgRenderer result;
 
@@ -188,7 +188,7 @@ namespace com.jonthysell.Chordious.WPF
             return SvgRenderer.SvgSharp;
         }
 
-        public static Background GetDefaultBackground()
+        public static Background GetRenderBackground()
         {
             Background result;
 

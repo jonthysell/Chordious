@@ -58,7 +58,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             try
             {
-                if (UpdateUtils.GetUpdateCheckOnStart())
+                if (UpdateUtils.GetCheckUpdateOnStart())
                 {
                     UpdateUtils.UpdateCheck(true, false);
                 }

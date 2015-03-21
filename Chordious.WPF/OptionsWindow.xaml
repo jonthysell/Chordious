@@ -7,20 +7,53 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button Content="Advanced Settings" Margin="5" Grid.Row="0" Grid.Column="0" Command="{Binding ShowAdvancedSettings, Mode=OneWay}"/>
-            <Button Content="Advanced Styles" Margin="5" Grid.Row="1" Grid.Column="0" Command="{Binding ShowAdvancedStyle, Mode=OneWay}"/>
-            <Button Content="Reset Settings" Margin="5" Grid.Row="0" Grid.Column="1" Command="{Binding ResetUserSettings, Mode=OneWay}"/>
-            <Button Content="Reset Styles" Margin="5" Grid.Row="1" Grid.Column="1" Command="{Binding ResetUserStyles, Mode=OneWay}"/>
-        </Grid>
+        <TabControl Grid.Row="0" Margin="5">
+            <TabItem Header="Settings">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Width="175" Margin="5" Content="Renderer"/>
+                        <ComboBox Width="65" Margin="5" ItemsSource="{Binding Renderers}" SelectedIndex="{Binding SelectedRendererIndex}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Width="175" Margin="5" Content="Render Background"/>
+                        <ComboBox Width="65" Margin="5" ItemsSource="{Binding RenderBackgrounds}" SelectedIndex="{Binding SelectedRenderBackgroundIndex}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Styles">
+            </TabItem>
+            <TabItem Header="Updates">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="175" Margin="5" Content="Check For Updates On Start"/>
+                            <CheckBox Width="65" Margin="5" IsChecked="{Binding CheckUpdateOnStart}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="175" Margin="5" Content="Release Channel"/>
+                            <ComboBox Width="65" Margin="5" ItemsSource="{Binding ReleaseChannels}" SelectedIndex="{Binding SelectedReleaseChannelIndex}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <Button Command="{Binding CheckForUpdates}" Content="Check For Updates" Margin="5"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Advanced">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Advanced Settings" Margin="5" Grid.Row="0" Grid.Column="0" Command="{Binding ShowAdvancedSettings, Mode=OneWay}"/>
+                    <Button Content="Advanced Styles" Margin="5" Grid.Row="1" Grid.Column="0" Command="{Binding ShowAdvancedStyle, Mode=OneWay}"/>
+                    <Button Content="Reset Settings" Margin="5" Grid.Row="0" Grid.Column="1" Command="{Binding ResetUserSettings, Mode=OneWay}"/>
+                    <Button Content="Reset Styles" Margin="5" Grid.Row="1" Grid.Column="1" Command="{Binding ResetUserStyles, Mode=OneWay}"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
         <WrapPanel Grid.Row="2" FlowDirection="RightToLeft">
             <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5"/>
             <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True"/>

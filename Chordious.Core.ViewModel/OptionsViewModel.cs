@@ -306,6 +306,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             return ItemsChanged;
         }
 
+        protected string GetSetting(string key)
+        {
+            return SettingsBuffer.Get(key);
+        }
+
+        protected void SetSetting(string key, object value)
+        {
+            SettingsBuffer.Set(key, value);
+            Dirty = true;
+        }
+
+        protected string GetStyle(string key)
+        {
+            return StyleBuffer.Get(key);
+        }
+
+        protected void SetStyle(string key, object value)
+        {
+            StyleBuffer.Set(key, value);
+            Dirty = true;
+        }
+
         private void ApplyChanges()
         {
             SettingsBuffer.SetParent();
@@ -336,10 +358,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             ItemsChanged = true;
         }
 
-        private void RefreshProperties()
+        public virtual void RefreshProperties()
         {
-            // Call all the property notifies here
+            // refresh all properties
         }
-
     }
 }

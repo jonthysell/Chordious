@@ -132,13 +132,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
     public class ShowOptionsMessage : MessageBase
     {
-        public OptionsViewModel OptionsVM { get; private set; }
+        public OptionsViewModel OptionsVM { get; set; }
 
         private Action<bool> Callback;
 
         public ShowOptionsMessage(Action<bool> callback = null) : base()
         {
-            OptionsVM = new OptionsViewModel();
             Callback = callback;
         }
 

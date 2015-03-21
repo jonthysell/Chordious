@@ -51,9 +51,9 @@ namespace com.jonthysell.Chordious.WPF
         {
             List<InstallerInfo> installerInfos = GetLatestInstallerInfos();
 
-            ReleaseChannel targetReleaseChannel = GetDefaultReleaseChannel();
+            ReleaseChannel targetReleaseChannel = GetReleaseChannel();
 
-            ulong currentVersion = LongVersion(AppVM.FullVersion);
+            ulong maxVersion = LongVersion(AppVM.FullVersion);
             
             InstallerInfo latestVersion = null;
 
@@ -64,10 +64,11 @@ namespace com.jonthysell.Chordious.WPF
                 {
                     ulong installerVersion = LongVersion(installerInfo.Version);
 
-                    if (installerVersion > currentVersion)
+                    if (installerVersion > maxVersion)
                     {
                         updateAvailable = true;
                         latestVersion = installerInfo;
+                        maxVersion = installerVersion;
                     }
                 }
             }
@@ -177,7 +178,7 @@ namespace com.jonthysell.Chordious.WPF
             return vers;
         }
 
-        public static ReleaseChannel GetDefaultReleaseChannel()
+        public static ReleaseChannel GetReleaseChannel()
         {
             ReleaseChannel result;
 
@@ -189,7 +190,7 @@ namespace com.jonthysell.Chordious.WPF
             return ReleaseChannel.Official;
         }
 
-        public static bool GetUpdateCheckOnStart()
+        public static bool GetCheckUpdateOnStart()
         {
             bool result;
 

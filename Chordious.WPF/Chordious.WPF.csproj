@@ -113,6 +113,7 @@
     <Compile Include="AdvancedDataWindow.xaml.cs">
       <DependentUpon>AdvancedDataWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OptionsViewModelExtended.cs" />
     <Compile Include="ScaleFinderWindow.xaml.cs">
       <DependentUpon>ScaleFinderWindow.xaml</DependentUpon>
     </Compile>

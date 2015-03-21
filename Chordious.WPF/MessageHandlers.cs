@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -96,7 +95,7 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ConfirmAction(ConfirmationMessage message)
         {
-            MessageBoxResult result = MessageBox.Show(message.Notification, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show(message.Notification, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             message.Execute(result == MessageBoxResult.Yes);
         }
 
@@ -147,6 +146,7 @@ namespace com.jonthysell.Chordious.WPF
         private static void ShowOptions(ShowOptionsMessage message)
         {
             OptionsWindow window = new OptionsWindow();
+            message.OptionsVM = new OptionsViewModelExtended();
             window.DataContext = message.OptionsVM;
             message.OptionsVM.RequestClose += () =>
             {
@@ -167,7 +167,7 @@ namespace com.jonthysell.Chordious.WPF
             message.Process();
         }
 
-        private static void PromptForExport(PromptForExportMessage message)
+        public static void PromptForExport(PromptForExportMessage message)
         {
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.AddExtension = true;

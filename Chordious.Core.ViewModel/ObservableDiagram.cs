@@ -264,6 +264,116 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public double GridFretSpacing
+        {
+            get
+            {
+                return Diagram.GridFretSpacing;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridFretSpacing = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridFretSpacing");
+                Refresh();
+            }
+        }
+
+        public double GridStringSpacing
+        {
+            get
+            {
+                return Diagram.GridStringSpacing;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridStringSpacing = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridStringSpacing");
+                Refresh();
+            }
+        }
+
+        public double GridLineThickness
+        {
+            get
+            {
+                return Diagram.GridLineThickness;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridLineThickness = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridLineThickness");
+                Refresh();
+            }
+        }
+
+        public bool GridNutVisible
+        {
+            get
+            {
+                return Diagram.GridNutVisible;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridNutVisible = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridNutVisible");
+                Refresh();
+            }
+        }
+
+        public double GridNutRatio
+        {
+            get
+            {
+                return Diagram.GridNutRatio;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridNutRatio = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridNutRatio");
+                Refresh();
+            }
+        }
+
         #endregion
 
         #region Title

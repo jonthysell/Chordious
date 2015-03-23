@@ -179,20 +179,23 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
-        public RelayCommand CheckForUpdates
+        public RelayCommand CheckForUpdatesAsync
         {
             get
             {
-                return new RelayCommand(() =>
+                return new RelayCommand(async () =>
                 {
                     try
                     {
-                        UpdateUtils.UpdateCheck(true, true);
+                        await UpdateUtils.UpdateCheckAsync(true, true);
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
+                }, () =>
+                {
+                    return !UpdateUtils.IsCheckingforUpdate;
                 });
             }
         }

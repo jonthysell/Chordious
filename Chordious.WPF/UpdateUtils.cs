@@ -47,55 +47,78 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
+        public static bool IsCheckingforUpdate { get; private set; }
+
+        public static Task UpdateCheckAsync(bool confirmUpdate, bool showUpToDate)
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                UpdateCheck(confirmUpdate, showUpToDate);
+            });
+        }
+
         public static void UpdateCheck(bool confirmUpdate, bool showUpToDate)
         {
-            List<InstallerInfo> installerInfos = GetLatestInstallerInfos();
-
-            ReleaseChannel targetReleaseChannel = GetReleaseChannel();
-
-            ulong maxVersion = LongVersion(AppVM.FullVersion);
-            
-            InstallerInfo latestVersion = null;
-
-            bool updateAvailable = false;
-            foreach (InstallerInfo installerInfo in installerInfos)
+            try
             {
-                if (installerInfo.ReleaseChannel == targetReleaseChannel)
-                {
-                    ulong installerVersion = LongVersion(installerInfo.Version);
+                IsCheckingforUpdate = true;
 
-                    if (installerVersion > maxVersion)
+                List<InstallerInfo> installerInfos = GetLatestInstallerInfos();
+
+                ReleaseChannel targetReleaseChannel = GetReleaseChannel();
+
+                ulong maxVersion = LongVersion(AppVM.FullVersion);
+
+                InstallerInfo latestVersion = null;
+
+                bool updateAvailable = false;
+                foreach (InstallerInfo installerInfo in installerInfos)
+                {
+                    if (installerInfo.ReleaseChannel == targetReleaseChannel)
                     {
-                        updateAvailable = true;
-                        latestVersion = installerInfo;
-                        maxVersion = installerVersion;
+                        ulong installerVersion = LongVersion(installerInfo.Version);
+
+                        if (installerVersion > maxVersion)
+                        {
+                            updateAvailable = true;
+                            latestVersion = installerInfo;
+                            maxVersion = installerVersion;
+                        }
                     }
                 }
-            }
 
-            bool doUpdate = false;
+                bool doUpdate = false;
 
-            if (!updateAvailable)
-            {
-                if (showUpToDate)
+                if (!updateAvailable)
                 {
-                    MessageBox.Show("Chordious is up-to-date.", "Chordious", MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (showUpToDate)
+                    {
+                        MessageBox.Show("Chordious is up-to-date.", "Chordious", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                else
+                {
+                    doUpdate = true;
+                    if (confirmUpdate)
+                    {
+                        string message = String.Format("Chordious {0} is available. Would you like to update now?", latestVersion.Version);
+                        MessageBoxResult result = MessageBox.Show(message, "Chordious", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        doUpdate = (result == MessageBoxResult.Yes);
+                    }
+                }
+
+                if (doUpdate)
+                {
+                    Update(latestVersion);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                doUpdate = true;
-                if (confirmUpdate)
-                {
-                    string message = String.Format("Chordious {0} is available. Would you like to update now?", latestVersion.Version);
-                    MessageBoxResult result = MessageBox.Show(message, "Chordious", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    doUpdate = (result == MessageBoxResult.Yes);
-                }
+                ExceptionUtils.HandleException(ex);
             }
-
-            if (doUpdate)
+            finally
             {
-                Update(latestVersion);
+                IsCheckingforUpdate = false;
             }
         }
 
@@ -127,12 +150,15 @@ namespace com.jonthysell.Chordious.WPF
                 sw.WriteLine("msiexec /i \"{0}\"", msiPath);
             }
 
-            Process p = new Process();
-            p.StartInfo = new ProcessStartInfo("cmd.exe", String.Format("/c {0}", cmdFile));
-            p.StartInfo.CreateNoWindow = true;
-            p.Start();
+            AppVM.DoOnUIThread(() =>
+            {
+                Process p = new Process();
+                p.StartInfo = new ProcessStartInfo("cmd.exe", String.Format("/c {0}", cmdFile));
+                p.StartInfo.CreateNoWindow = true;
+                p.Start();
 
-            App.Current.Shutdown();
+                App.Current.Shutdown();
+            });
         }
 
         public static List<InstallerInfo> GetLatestInstallerInfos()

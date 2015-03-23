@@ -33,7 +33,7 @@
                             <Label Width="175" Margin="5" Content="Release Channel"/>
                             <ComboBox Width="65" Margin="5" ItemsSource="{Binding ReleaseChannels}" SelectedIndex="{Binding SelectedReleaseChannelIndex}" VerticalAlignment="Center"/>
                         </StackPanel>
-                        <Button Command="{Binding CheckForUpdates}" Content="Check For Updates" Margin="5"/>
+                        <Button Command="{Binding CheckForUpdatesAsync, IsAsync=True}" Content="Check For Updates" Margin="5"/>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>

@@ -58,9 +58,12 @@ namespace com.jonthysell.Chordious.WPF
         {
             try
             {
+                // Fix annoying Windows 8.1 tablet forced maximization
+                WindowState = WindowState.Normal;
+
                 if (UpdateUtils.GetCheckUpdateOnStart())
                 {
-                    UpdateUtils.UpdateCheck(true, false);
+                    UpdateUtils.UpdateCheckAsync(true, false);
                 }
             }
             catch (Exception ex)

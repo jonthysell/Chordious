@@ -1,5 +1,5 @@
 ﻿// 
-// MainViewModel.cs
+// InstrumentManagerViewModel.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.ObjectModel;
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -34,7 +35,7 @@ using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class MainViewModel : ViewModelBase
+    public class InstrumentManagerViewModel : ViewModelBase
     {
         public AppViewModel AppVM
         {
@@ -48,169 +49,109 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return AppInfo.Product;
+                return "Instruments";
             }
         }
 
-        public string FullProgramName
+        public bool InstrumentIsSelected
         {
             get
             {
-                return AppInfo.Product + " " + AppInfo.FullVersion;
+                return (null != SelectedInstrument);
             }
         }
 
-        public string Description
+        public ObservableInstrument SelectedInstrument
         {
             get
             {
-                string[] descLines = { AppInfo.Comments,
-                                   AppInfo.Copyright
-                                   };
-
-                return String.Join(Environment.NewLine, descLines);
+                return _instrument;
             }
-        }
-
-        public RelayCommand LaunchWebsite
-        {
-            get
+            set
             {
-                return new RelayCommand(() => {
-                    try
-                    {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("This will open the Chordious website in your browser. Do you want to continue?", (confirmed) =>
-                        {
-                            if (confirmed)
-                            {
-                                Messenger.Default.Send<LaunchUrlMessage>(new LaunchUrlMessage(AppInfo.Website));
-                            }
-                        }));
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                });
-            }
-        }
-
-        public RelayCommand ShowLicense
-        {
-            get
-            {
-                return new RelayCommand(() =>
+                try
                 {
-                    try
+                    if (null != value)
                     {
-                        string text = String.Join(Environment.NewLine, AppInfo.Product + " " + AppInfo.Copyright, "", AppInfo.License);
-                        Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(text, "License"));
+                        _instrument = value;
+                        Tunings = SelectedInstrument.GetTunings();
+                        SelectedTuning = Tunings[0];
+                        RaisePropertyChanged("SelectedInstrument");
+                        RaisePropertyChanged("InstrumentIsSelected");
+                        RaisePropertyChanged("EditInstrument");
+                        RaisePropertyChanged("DeleteInstrument");
+                        RaisePropertyChanged("AddTuning");
                     }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                });
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
             }
         }
+        private ObservableInstrument _instrument;
 
-        public RelayCommand ShowChordFinder
+        public ObservableCollection<ObservableInstrument> Instruments
         {
             get
             {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        Messenger.Default.Send<ShowChordFinderMessage>(new ShowChordFinderMessage());
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                });
+                return _instruments;
+            }
+            private set
+            {
+                _instruments = value;
+                RaisePropertyChanged("Instruments");
             }
         }
+        private ObservableCollection<ObservableInstrument> _instruments;
 
-        public RelayCommand ShowScaleFinder
+        public bool TuningIsSelected
         {
             get
             {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        Messenger.Default.Send<ShowScaleFinderMessage>(new ShowScaleFinderMessage());
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                });
+                return (null != SelectedTuning);
             }
         }
 
-        public RelayCommand ShowDiagramLibrary
+        public ObservableTuning SelectedTuning
         {
             get
             {
-                return new RelayCommand(() =>
+                return _tuning;
+            }
+            set
+            {
+                try
                 {
-                    try
-                    {
-                        Messenger.Default.Send<ShowDiagramLibraryMessage>(new ShowDiagramLibraryMessage());
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                });
+                    _tuning = value;
+                    RaisePropertyChanged("SelectedTuning");
+                    RaisePropertyChanged("TuningIsSelected");
+                    RaisePropertyChanged("EditTuning");
+                    RaisePropertyChanged("DeleteTuning");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
             }
         }
+        private ObservableTuning _tuning;
 
-        public RelayCommand ShowInstrumentManager
+        public ObservableCollection<ObservableTuning> Tunings
         {
             get
             {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        Messenger.Default.Send<ShowInstrumentManagerMessage>(new ShowInstrumentManagerMessage());
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                });
+                return _tunings;
             }
-        }
-
-        public RelayCommand ShowOptions
-        {
-            get
+            private set
             {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        Messenger.Default.Send<ShowOptionsMessage>(new ShowOptionsMessage((itemsChanged) =>
-                        {
-                            if (itemsChanged)
-                            {
-                                AppVM.SaveUserConfig();
-                            }
-                        }));
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                });
+                _tunings = value;
+                RaisePropertyChanged("Tunings");
             }
         }
+        private ObservableCollection<ObservableTuning> _tunings;
 
-        public RelayCommand NotImplemented
+        public RelayCommand AddInstrument
         {
             get
             {
@@ -228,9 +169,122 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public MainViewModel()
+        public RelayCommand EditInstrument
         {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        throw new NotImplementedException();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return InstrumentIsSelected && SelectedInstrument.CanEdit;
+                });
+            }
         }
 
+        public RelayCommand DeleteInstrument
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        throw new NotImplementedException();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return InstrumentIsSelected && SelectedInstrument.CanEdit;
+                });
+            }
+        }
+
+        public RelayCommand AddTuning
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        throw new NotImplementedException();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return InstrumentIsSelected && SelectedInstrument.CanEdit;
+                });
+            }
+        }
+
+        public RelayCommand EditTuning
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        throw new NotImplementedException();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return InstrumentIsSelected && SelectedInstrument.CanEdit && TuningIsSelected && SelectedTuning.CanEdit;
+                });
+            }
+        }
+
+        public RelayCommand DeleteTuning
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        throw new NotImplementedException();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return InstrumentIsSelected && SelectedInstrument.CanEdit && TuningIsSelected && SelectedTuning.CanEdit;
+                });
+            }
+        }
+
+        public InstrumentManagerViewModel()
+        {
+            Refresh();
+        }
+
+        public void Refresh()
+        {
+            Instruments = AppVM.GetInstruments();
+            SelectedInstrument = null;
+            Tunings = null;
+            SelectedTuning = null;
+        }
     }
 }

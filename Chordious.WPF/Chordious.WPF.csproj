@@ -113,6 +113,9 @@
     <Compile Include="AdvancedDataWindow.xaml.cs">
       <DependentUpon>AdvancedDataWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InstrumentManagerWindow.xaml.cs">
+      <DependentUpon>InstrumentManagerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OptionsViewModelExtended.cs" />
     <Compile Include="ScaleFinderWindow.xaml.cs">
       <DependentUpon>ScaleFinderWindow.xaml</DependentUpon>
@@ -177,6 +180,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="AdvancedDataWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InstrumentManagerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

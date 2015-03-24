@@ -24,7 +24,7 @@
             <Button Content="Chord Finder" Grid.Row="0" Margin="5" Command="{Binding ShowChordFinder, Mode=OneWay}"/>
             <Button Content="Scale Finder" Grid.Row="0" Grid.Column="1" Margin="5" Command="{Binding ShowScaleFinder, Mode=OneWay}"/>
             <Button Content="Library" Grid.Row="1" Grid.Column="0" Margin="5" Command="{Binding ShowDiagramLibrary, Mode=OneWay}"/>
-            <Button Content="Instruments" Grid.Row="1" Grid.Column="1" Margin="5" Command="{Binding NotImplemented, Mode=OneWay}"/>
+            <Button Content="Instruments" Grid.Row="1" Grid.Column="1" Margin="5" Command="{Binding ShowInstrumentManager, Mode=OneWay}"/>
             <Button Content="Options" Grid.Row="2" Grid.Column="0" Margin="5" Command="{Binding ShowOptions, Mode=OneWay}"/>
             <Button Content="Help" Grid.Row="2" Grid.Column="1" Margin="5" Command="{Binding NotImplemented, Mode=OneWay}"/>
         </Grid>

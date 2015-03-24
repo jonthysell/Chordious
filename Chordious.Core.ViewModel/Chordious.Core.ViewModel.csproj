@@ -51,6 +51,7 @@
     <Compile Include="AdvancedDataViewModel.cs" />
     <Compile Include="AppViewModel.cs" />
     <Compile Include="IDiagramExporter.cs" />
+    <Compile Include="InstrumentManagerViewModel.cs" />
     <Compile Include="ObservableScale.cs" />
     <Compile Include="ScaleFinderViewModel.cs" />
     <Compile Include="ChordFinderViewModel.cs" />

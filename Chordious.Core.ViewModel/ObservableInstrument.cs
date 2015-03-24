@@ -60,6 +60,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public bool CanEdit
+        {
+            get
+            {
+                return !Instrument.ReadOnly;
+            }
+        }
+
         internal Instrument Instrument { get; private set; }
 
         public ObservableInstrument(Instrument instrument)

@@ -17,24 +17,24 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <WrapPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="Collections" FontWeight="Bold" Margin="0,5" />
+            <Label Content="Collections" FontWeight="Bold" Margin="5,0" />
         </WrapPanel>
-        <ListBox Name="NodesListView" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Nodes}" SelectedItem="{Binding SelectedNode}">
+        <ListBox Name="NodesListView" Margin="5,0" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Nodes}" SelectedItem="{Binding SelectedNode}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <WrapPanel Grid.Row="0" Grid.Column="1" IsEnabled="{Binding NodeIsSelected}">
-            <Label Content="Path:" FontWeight="Bold" Margin="0,5" />
-            <Label Content="{Binding SelectedNode.Path}" Margin="0,5" />
-            <Label Content="Name:" FontWeight="Bold" Margin="0,5" />
-            <Label Content="{Binding SelectedNode.Name}" Margin="0,5" />
-            <Label Content="Count:" FontWeight="Bold" Margin="0,5" />
-            <Label Content="{Binding SelectedNode.Diagrams.Count}" Margin="0,5" />
+        <WrapPanel Margin="5,0" Grid.Row="0" Grid.Column="1" IsEnabled="{Binding NodeIsSelected}">
+            <Label Content="Path:" FontWeight="Bold" />
+            <Label Content="{Binding SelectedNode.Path}" />
+            <Label Content="Name:" FontWeight="Bold" />
+            <Label Content="{Binding SelectedNode.Name}" />
+            <Label Content="Count:" FontWeight="Bold" />
+            <Label Content="{Binding SelectedNode.Diagrams.Count}" />
         </WrapPanel>
-        <ScrollViewer Grid.Row="1" Grid.Column="1" IsEnabled="{Binding NodeIsSelected}">
+        <ScrollViewer Margin="5,0" Grid.Row="1" Grid.Column="1" IsEnabled="{Binding NodeIsSelected}">
             <ListView Name="DiagramsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding SelectedNode.Diagrams}" SelectionMode="Multiple">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>

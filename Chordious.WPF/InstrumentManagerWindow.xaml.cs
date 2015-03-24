@@ -1,5 +1,5 @@
 ﻿// 
-// ObservableTuning.cs
+// InstrumentManagerWindow.xaml.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -25,58 +25,29 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-
-using com.jonthysell.Chordious.Core;
-
-namespace com.jonthysell.Chordious.Core.ViewModel
+namespace com.jonthysell.Chordious.WPF
 {
-    public class ObservableTuning : ObservableObject
+    /// <summary>
+    /// Interaction logic for InstrumentManagerWindow.xaml
+    /// </summary>
+    public partial class InstrumentManagerWindow : Window
     {
-        public string Name
+        public InstrumentManagerWindow()
         {
-            get
-            {
-                return Tuning.Name;
-            }
-        }
-
-        public string LongName
-        {
-            get
-            {
-                return Tuning.LongName;
-            }
-        }
-
-        public string Level
-        {
-            get
-            {
-                return Tuning.Level;
-            }
-        }
-
-        public bool CanEdit
-        {
-            get
-            {
-                return !Tuning.ReadOnly;
-            }
-        }
-
-        internal Tuning Tuning { get; private set; }
-
-        public ObservableTuning(Tuning tuning)
-        {
-            if (null == tuning)
-            {
-                throw new ArgumentNullException("tuning");
-            }
-            Tuning = tuning;
+            InitializeComponent();
         }
     }
 }

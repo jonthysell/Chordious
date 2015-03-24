@@ -1,0 +1,57 @@
+﻿<Window x:Class="com.jonthysell.Chordious.WPF.InstrumentManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:com.jonthysell.Chordious.Core.ViewModel;assembly=Chordious.Core.ViewModel"
+        Title="{Binding Title}" Height="600" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Icon="{DynamicResource ChordiousIcon}">
+    <Window.DataContext>
+        <vm:InstrumentManagerViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel Grid.Row="0" Grid.Column="0">
+            <Label Content="Instruments" FontWeight="Bold" Margin="5,0" />
+        </WrapPanel>
+        <ListBox Name="InstrumentsListView" Margin="5,0" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Instruments}" SelectedItem="{Binding SelectedInstrument}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <WrapPanel Grid.Row="0" Grid.Column="1" Margin="5,0" IsEnabled="{Binding InstrumentIsSelected}">
+            <Label Content="Name:" FontWeight="Bold" />
+            <Label Content="{Binding SelectedInstrument.Name}" />
+            <Label Content="# of Strings:" FontWeight="Bold" />
+            <Label Content="{Binding SelectedInstrument.NumStrings}" />
+            <Label Content="Can Edit:" FontWeight="Bold" />
+            <Label Content="{Binding SelectedInstrument.CanEdit}" />
+            <Label Content="Level:" FontWeight="Bold" />
+            <Label Content="{Binding SelectedInstrument.Level}" />
+        </WrapPanel>
+        <ListBox Name="TuningsListView" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Tunings}" SelectedItem="{Binding SelectedTuning}" IsEnabled="{Binding InstrumentIsSelected}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding LongName}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <WrapPanel Grid.Row="2" Grid.Column="0" FlowDirection="RightToLeft">
+            <Button Content="Delete" Command="{Binding DeleteInstrument}" Margin="5" Width="75" />
+            <Button Content="Edit" Command="{Binding EditInstrument}" Margin="5" Width="75" />
+            <Button Content="Add" Command="{Binding AddInstrument}" Margin="5" Width="75" />
+        </WrapPanel>
+        <WrapPanel Grid.Row="2" Grid.Column="1" FlowDirection="RightToLeft">
+            <Button Content="Delete" Command="{Binding DeleteTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Width="75" />
+            <Button Content="Edit" Command="{Binding EditTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Width="75" />
+            <Button Content="Add" Command="{Binding AddTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Width="75" />
+        </WrapPanel>
+    </Grid>
+</Window>

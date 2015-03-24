@@ -108,6 +108,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public ShowDiagramLibraryMessage() : base() { }
     }
 
+    public class ShowInstrumentManagerMessage : SaveUserConfigAfterHandlingMessageBase
+    {
+        public ShowInstrumentManagerMessage() : base() { }
+    }
+
     public class ShowDiagramEditorMessage : MessageBase
     {
         public DiagramEditorViewModel DiagramEditorVM { get; private set; }

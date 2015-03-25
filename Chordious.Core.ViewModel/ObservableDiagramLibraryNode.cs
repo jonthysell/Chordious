@@ -150,7 +150,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete the {0} selected diagrams. Do you want to continue?", SelectedDiagrams.Count), (confirmed) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete the {0} selected diagrams. This cannot be undone. Do you want to continue?", SelectedDiagrams.Count), (confirmed) =>
                         {
                             if (confirmed)
                             {

@@ -113,6 +113,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public ShowInstrumentManagerMessage() : base() { }
     }
 
+    public class ShowInstrumentEditorMessage : MessageBase
+    {
+        public InstrumentEditorViewModel InstrumentEditorVM { get; private set; }
+
+        public ShowInstrumentEditorMessage(bool isNew, Action<string, int> callback) : base()
+        {
+            InstrumentEditorVM = new InstrumentEditorViewModel(isNew, callback);
+        }
+
+        public ShowInstrumentEditorMessage(bool isNew, Action<string, int> callback, string name, int numStrings) : this(isNew, callback)
+        {
+            InstrumentEditorVM.Name = name;
+            InstrumentEditorVM.NumStrings = numStrings;
+        }
+    }
+
     public class ShowDiagramEditorMessage : MessageBase
     {
         public DiagramEditorViewModel DiagramEditorVM { get; private set; }

@@ -55,6 +55,7 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Register<ShowScaleFinderMessage>(recipient, (message) => MessageHandlers.ShowScaleFinder(message));
             Messenger.Default.Register<ShowDiagramLibraryMessage>(recipient, (message) => MessageHandlers.ShowDiagramLibrary(message));
             Messenger.Default.Register<ShowInstrumentManagerMessage>(recipient, (message) => MessageHandlers.ShowInstrumentManager(message));
+            Messenger.Default.Register<ShowInstrumentEditorMessage>(recipient, (message) => MessageHandlers.ShowInstrumentEditor(message));
             Messenger.Default.Register<ShowDiagramEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramEditor(message));
             Messenger.Default.Register<ShowOptionsMessage>(recipient, (message) => MessageHandlers.ShowOptions(message));
             Messenger.Default.Register<ShowAdvancedDataMessage>(recipient, (message) => MessageHandlers.ShowAdvancedData(message));
@@ -74,6 +75,7 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Unregister<ShowScaleFinderMessage>(recipient);
             Messenger.Default.Unregister<ShowDiagramLibraryMessage>(recipient);
             Messenger.Default.Unregister<ShowInstrumentManagerMessage>(recipient);
+            Messenger.Default.Unregister<ShowInstrumentEditorMessage>(recipient);
             Messenger.Default.Unregister<ShowDiagramEditorMessage>(recipient);
             Messenger.Default.Unregister<ShowOptionsMessage>(recipient);
             Messenger.Default.Unregister<ShowAdvancedDataMessage>(recipient);
@@ -138,6 +140,17 @@ namespace com.jonthysell.Chordious.WPF
             InstrumentManagerWindow window = new InstrumentManagerWindow();
             window.ShowDialog();
             message.Process();
+        }
+
+        private static void ShowInstrumentEditor(ShowInstrumentEditorMessage message)
+        {
+            InstrumentEditorWindow window = new InstrumentEditorWindow();
+            window.DataContext = message.InstrumentEditorVM;
+            message.InstrumentEditorVM.RequestClose += () =>
+            {
+                window.Close();
+            };
+            window.ShowDialog();
         }
 
         private static void ShowDiagramEditor(ShowDiagramEditorMessage message)

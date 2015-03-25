@@ -71,17 +71,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 try
                 {
-                    if (null != value)
+                    _instrument = value;
+                    SelectedTuning = null;
+
+                    if (null == SelectedInstrument)
                     {
-                        _instrument = value;
-                        Tunings = SelectedInstrument.GetTunings();
-                        SelectedTuning = Tunings[0];
-                        RaisePropertyChanged("SelectedInstrument");
-                        RaisePropertyChanged("InstrumentIsSelected");
-                        RaisePropertyChanged("EditInstrument");
-                        RaisePropertyChanged("DeleteInstrument");
-                        RaisePropertyChanged("AddTuning");
+                        Tunings = null;
                     }
+                    else
+                    {
+                        Tunings = SelectedInstrument.GetTunings();
+                        if (Tunings.Count > 0)
+                        {
+                            SelectedTuning = Tunings[0];
+                        } 
+                    }
+                    RaisePropertyChanged("SelectedInstrument");
+                    RaisePropertyChanged("InstrumentIsSelected");
+                    RaisePropertyChanged("EditInstrument");
+                    RaisePropertyChanged("DeleteInstrument");
+                    RaisePropertyChanged("AddTuning");
                 }
                 catch (Exception ex)
                 {
@@ -159,7 +168,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        throw new NotImplementedException();
+                        Messenger.Default.Send<ShowInstrumentEditorMessage>(new ShowInstrumentEditorMessage(true, (name, numStrings) =>
+                        {
+                            try
+                            {
+                                AppVM.UserConfig.Instruments.Add(name, numStrings);
+                                Refresh();
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {
@@ -177,7 +197,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        throw new NotImplementedException();
+                        Messenger.Default.Send<ShowInstrumentEditorMessage>(new ShowInstrumentEditorMessage(false, (name, numStrings) =>
+                        {
+                            try
+                            {
+                                SelectedInstrument.Instrument.Name = name;
+                                Refresh();
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
+                        }, SelectedInstrument.Name, SelectedInstrument.NumStrings));
                     }
                     catch (Exception ex)
                     {
@@ -198,7 +229,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        throw new NotImplementedException();
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete the instrument \"{0}\". This cannot be undone. Do you want to continue?", SelectedInstrument.Name), (confirm) =>
+                        {
+                            try
+                            {
+                                if (confirm)
+                                {
+                                    AppVM.UserConfig.Instruments.Remove(SelectedInstrument.Name);
+                                    Refresh();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {

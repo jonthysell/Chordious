@@ -1,5 +1,5 @@
 ﻿// 
-// TextPromptViewModel.cs
+// InstrumentEditorViewModel.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -26,49 +26,92 @@
 
 using System;
 
-using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
+
+using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class TextPromptViewModel : ViewModelBase
+    public class InstrumentEditorViewModel : ViewModelBase
     {
+        public AppViewModel AppVM
+        {
+            get
+            {
+                return AppViewModel.Instance;
+            }
+        }
+
         public string Title
         {
             get
             {
-                return "Prompt";
+                string title = "Instrument";
+
+                title = (IsNew ? "Add " : "Edit ") + title;
+
+                return title;
             }
         }
 
-        public string Prompt
+        public string Name
         {
             get
             {
-                return _prompt;
-            }
-            private set
-            {
-                _prompt = value;
-                RaisePropertyChanged("Prompt");
-            }
-        }
-        private string _prompt;
-
-        public string Text
-        {
-            get
-            {
-                return _text;
+                return _name;
             }
             set
             {
-                _text = value;
-                RaisePropertyChanged("Text");
+                _name = value;
+                RaisePropertyChanged("Name");
                 RaisePropertyChanged("Accept");
             }
         }
-        private string _text;
+        private string _name;
+
+        public int NumStrings
+        {
+            get
+            {
+                return _numStrings;
+            }
+            set
+            {
+                try
+                {
+                    if (value <= 0)
+                    {
+                        throw new ArgumentOutOfRangeException();
+                    }
+
+                    _numStrings = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                RaisePropertyChanged("NumStrings");
+                RaisePropertyChanged("Accept");
+            }
+        }
+        private int _numStrings;
+
+        public bool IsNew
+        {
+            get
+            {
+                return _isNew;
+            }
+            private set
+            {
+                _isNew = value;
+                RaisePropertyChanged("IsNew");
+                RaisePropertyChanged("Title");
+            }
+        }
+        private bool _isNew;
 
         public RelayCommand Accept
         {
@@ -82,7 +125,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         {
                             RequestClose();
                         }
-                        Callback(Text);
+                        Callback(Name, NumStrings);
                     }
                     catch (Exception ex)
                     {
@@ -90,7 +133,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return !String.IsNullOrWhiteSpace(Text);
+                    return IsValid();
                 });
             }
         }
@@ -118,17 +161,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public event Action RequestClose;
 
-        public Action<string> Callback { get; private set; }
+        public Action<string, int> Callback { get; private set; }
 
-        public TextPromptViewModel(string prompt, Action<string> callback)
+        public InstrumentEditorViewModel(bool isNew, Action<string, int> callback)
         {
             if (null == callback)
             {
                 throw new ArgumentNullException("callback");
             }
 
-            Prompt = prompt;
+            IsNew = isNew;
             Callback = callback;
+            NumStrings = 1;
+        }
+
+        private bool IsValid()
+        {
+            return !String.IsNullOrWhiteSpace(Name) && NumStrings >= 0;
         }
     }
 }

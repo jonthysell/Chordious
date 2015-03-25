@@ -77,6 +77,8 @@ namespace com.jonthysell.Chordious.Core
                     throw new ObjectIsReadOnlyException(this);
                 }
 
+                value = value.Trim();
+
                 Instrument instrument;
                 if (Parent.TryGet(value, out instrument) && this != instrument)
                 {

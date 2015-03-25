@@ -208,20 +208,23 @@ namespace com.jonthysell.Chordious.Core
             name = name.Trim();
             newName = newName.Trim();
 
-            DiagramLibraryNode node;
-            if (TryGetNode(path, name, out node))
+            if (name != newName)
             {
-                DiagramLibraryNode existingNode;
-                if (TryGetNode(path, newName, out existingNode))
+                DiagramLibraryNode node;
+                if (TryGetNode(path, name, out node))
                 {
-                    throw new DiagramCollectionNameAlreadyExistsException(this, path, newName);
-                }
+                    DiagramLibraryNode existingNode;
+                    if (TryGetNode(path, newName, out existingNode))
+                    {
+                        throw new DiagramCollectionNameAlreadyExistsException(this, path, newName);
+                    }
 
-                node.Name = newName;
-            }
-            else
-            {
-                throw new DiagramCollectionNotFoundException(this, path, name);
+                    node.Name = newName;
+                }
+                else
+                {
+                    throw new DiagramCollectionNotFoundException(this, path, name);
+                }
             }
         }
 

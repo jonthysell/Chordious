@@ -84,17 +84,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         if (Tunings.Count > 0)
                         {
                             SelectedTuning = Tunings[0];
-                        } 
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
                     RaisePropertyChanged("SelectedInstrument");
                     RaisePropertyChanged("InstrumentIsSelected");
                     RaisePropertyChanged("EditInstrument");
                     RaisePropertyChanged("DeleteInstrument");
                     RaisePropertyChanged("AddTuning");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
                 }
             }
         }
@@ -133,14 +136,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     _tuning = value;
-                    RaisePropertyChanged("SelectedTuning");
-                    RaisePropertyChanged("TuningIsSelected");
-                    RaisePropertyChanged("EditTuning");
-                    RaisePropertyChanged("DeleteTuning");
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("SelectedTuning");
+                    RaisePropertyChanged("TuningIsSelected");
+                    RaisePropertyChanged("EditTuning");
+                    RaisePropertyChanged("DeleteTuning");
                 }
             }
         }

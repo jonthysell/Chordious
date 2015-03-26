@@ -83,18 +83,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 try
                 {
+                    _instrument = value;
+                    SelectedTuning = null;
                     if (null != value)
                     {
-                        _instrument = value;
                         Tunings = SelectedInstrument.GetTunings();
-                        SelectedTuning = Tunings[0];
-                        Options.SetTarget(SelectedInstrument.Instrument, SelectedTuning.Tuning);
-                        RaisePropertyChanged("SelectedInstrument");
+                        if (null != Tunings && Tunings.Count > 0)
+                        {
+                            SelectedTuning = Tunings[0];
+                            Options.SetTarget(SelectedInstrument.Instrument, SelectedTuning.Tuning);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("SelectedInstrument");
+                    RaisePropertyChanged("SearchAsync");
                 }
             }
         }
@@ -124,16 +132,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 try
                 {
+                    _tuning = value;
                     if (null != value)
                     {
-                        _tuning = value;
                         Options.SetTarget(SelectedInstrument.Instrument, SelectedTuning.Tuning);
-                        RaisePropertyChanged("SelectedTuning");
                     }
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("SelectedTuning");
+                    RaisePropertyChanged("SearchAsync");
                 }
             }
         }
@@ -169,7 +181,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-                RaisePropertyChanged("SelectedRootNote");
+                finally
+                {
+                    RaisePropertyChanged("SelectedRootNote");
+                }
             }
         }
 
@@ -191,16 +206,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 try
                 {
+                    _chordQuality = value;
                     if (null != value)
                     {
-                        _chordQuality = value;
                         Options.SetTarget(Options.RootNote, SelectedChordQuality.ChordQuality);
-                        RaisePropertyChanged("SelectedChordQuality");
                     }
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("SelectedChordQuality");
                 }
             }
         }
@@ -232,12 +250,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     Options.NumFrets = value;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-                RaisePropertyChanged("NumFrets");
-                RaisePropertyChanged("MaxReach");
+                finally
+                {
+                    RaisePropertyChanged("NumFrets");
+                    RaisePropertyChanged("MaxReach");
+                }
             }
         }
 
@@ -257,8 +278,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-                RaisePropertyChanged("MaxReach");
-                RaisePropertyChanged("NumFrets");
+                finally
+                {
+                    RaisePropertyChanged("MaxReach");
+                    RaisePropertyChanged("NumFrets");
+                }
             }
         }
 
@@ -278,7 +302,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-                RaisePropertyChanged("MaxFret");
+                finally
+                {
+                    RaisePropertyChanged("MaxFret");
+                }
             }
         }
 
@@ -473,7 +500,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return IsIdle;
+                    return CanSearch();
                 });
             }
         }
@@ -621,6 +648,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     });
                 return od;
             });
+        }
+
+        private bool CanSearch()
+        {
+            return IsIdle && (null != SelectedInstrument) && (null != SelectedTuning);
         }
 
         private static ObservableCollection<string> GetBarreTypeOptions()

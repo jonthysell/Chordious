@@ -53,6 +53,7 @@
     <Compile Include="IDiagramExporter.cs" />
     <Compile Include="InstrumentEditorViewModel.cs" />
     <Compile Include="InstrumentManagerViewModel.cs" />
+    <Compile Include="ObservableNote.cs" />
     <Compile Include="ObservableScale.cs" />
     <Compile Include="ScaleFinderViewModel.cs" />
     <Compile Include="ChordFinderViewModel.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="OptionsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextPromptViewModel.cs" />
+    <Compile Include="TuningEditorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight">

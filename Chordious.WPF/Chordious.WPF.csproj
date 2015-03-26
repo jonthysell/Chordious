@@ -113,6 +113,9 @@
     <Compile Include="AdvancedDataWindow.xaml.cs">
       <DependentUpon>AdvancedDataWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TuningEditorWindow.xaml.cs">
+      <DependentUpon>TuningEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InstrumentManagerWindow.xaml.cs">
       <DependentUpon>InstrumentManagerWindow.xaml</DependentUpon>
     </Compile>
@@ -185,6 +188,10 @@
     <Page Include="AdvancedDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TuningEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="InstrumentManagerWindow.xaml">
       <SubType>Designer</SubType>

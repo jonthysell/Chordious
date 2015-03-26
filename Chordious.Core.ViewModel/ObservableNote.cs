@@ -1,5 +1,5 @@
 ﻿// 
-// ObservableTuning.cs
+// ObservableNote.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -34,69 +34,65 @@ using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class ObservableTuning : ObservableObject
+    public class ObservableNote : ObservableObject
     {
-        public string Name
+        public AppViewModel AppVM
         {
             get
             {
-                return Tuning.Name;
+                return AppViewModel.Instance;
             }
         }
 
-        public string LongName
+        public int SelectedNoteIndex
         {
             get
             {
-                return Tuning.LongName;
+                return (int)(FullNote.Note);
+            }
+            set
+            {
+                FullNote.Note = (Core.Note)(value);
+                RaisePropertyChanged("SelectedNoteIndex");
             }
         }
 
-        public string Level
+        public ObservableCollection<string> Notes
         {
             get
             {
-                return Tuning.Level;
+                return AppVM.GetNotes();
             }
         }
 
-        public bool CanEdit
+        public int Octave
         {
             get
             {
-                return !Tuning.ReadOnly;
+                return FullNote.Octave;
+            }
+            set
+            {
+                FullNote.Octave = value;
+                RaisePropertyChanged("Octave");
             }
         }
 
-        public ObservableCollection<ObservableNote> Notes
+        internal FullNote FullNote { get; private set; }
+
+        public ObservableNote()
         {
-            get
-            {
-                return GetNotes();
-            }
+            FullNote = new FullNote();
         }
 
-        internal Tuning Tuning { get; private set; }
-
-        public ObservableTuning(Tuning tuning)
+        internal ObservableNote(FullNote note)
         {
-            if (null == tuning)
+            if (null == note)
             {
-                throw new ArgumentNullException("tuning");
-            }
-            Tuning = tuning;
-        }
-
-        private ObservableCollection<ObservableNote> GetNotes()
-        {
-            ObservableCollection<ObservableNote> collection = new ObservableCollection<ObservableNote>();
-
-            foreach(FullNote note in Tuning.RootNotes)
-            {
-                collection.Add(new ObservableNote(note));
+                throw new ArgumentNullException("note");
             }
 
-            return collection;
+            FullNote = note;
         }
     }
 }

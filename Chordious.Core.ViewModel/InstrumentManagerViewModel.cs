@@ -178,8 +178,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         {
                             try
                             {
-                                AppVM.UserConfig.Instruments.Add(name, numStrings);
-                                Refresh();
+                                Instrument addedInstrument = AppVM.UserConfig.Instruments.Add(name, numStrings);
+                                Refresh(addedInstrument);
                             }
                             catch (Exception ex)
                             {
@@ -208,7 +208,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             try
                             {
                                 SelectedInstrument.Instrument.Name = name;
-                                Refresh();
+                                Refresh(SelectedInstrument.Instrument);
                             }
                             catch (Exception ex)
                             {
@@ -270,7 +270,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        throw new NotImplementedException();
+                        Messenger.Default.Send<ShowTuningEditorMessage>(new ShowTuningEditorMessage(SelectedInstrument, (accepted) =>
+                        {
+                            if (accepted)
+                            {
+                                Refresh(SelectedInstrument.Instrument);
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {
@@ -291,7 +297,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        throw new NotImplementedException();
+                        Messenger.Default.Send<ShowTuningEditorMessage>(new ShowTuningEditorMessage(SelectedTuning, (accepted) =>
+                        {
+                            if (accepted)
+                            {
+                                Refresh(SelectedInstrument.Instrument, SelectedTuning.Tuning);
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {
@@ -312,7 +324,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        throw new NotImplementedException();
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete the tuning \"{0}\". This cannot be undone. Do you want to continue?", SelectedTuning.Name), (confirm) =>
+                        {
+                            try
+                            {
+                                if (confirm)
+                                {
+                                    SelectedInstrument.Instrument.Tunings.Remove(SelectedTuning.Name);
+                                    Refresh(SelectedInstrument.Instrument);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {
@@ -330,12 +356,37 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             Refresh();
         }
 
-        public void Refresh()
+        internal void Refresh(Instrument selectedInstrument = null, Tuning selectedTuning = null)
         {
             Instruments = AppVM.GetInstruments();
-            SelectedInstrument = null;
-            Tunings = null;
-            SelectedTuning = null;
+
+            if (null == selectedInstrument)
+            {
+                SelectedInstrument = null;
+            }
+            else
+            {
+                foreach (ObservableInstrument oi in Instruments)
+                {
+                    if (oi.Instrument == selectedInstrument)
+                    {
+                        SelectedInstrument = oi;
+                        break;
+                    }
+                }
+
+                if (null != SelectedInstrument && null != selectedTuning)
+                {
+                    foreach (ObservableTuning ot in Tunings)
+                    {
+                        if (ot.Tuning == selectedTuning)
+                        {
+                            SelectedTuning = ot;
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 }

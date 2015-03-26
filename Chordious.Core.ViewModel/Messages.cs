@@ -129,6 +129,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
     }
 
+    public class ShowTuningEditorMessage : MessageBase
+    {
+        public TuningEditorViewModel TuningEditorVM { get; private set; }
+
+        private Action<bool> Callback;
+
+        public ShowTuningEditorMessage(ObservableInstrument instrument, Action<bool> callback = null) : base()
+        {
+            TuningEditorVM = TuningEditorViewModel.AddNewTuning(instrument);
+            Callback = callback;
+        }
+
+        public ShowTuningEditorMessage(ObservableTuning tuning, Action<bool> callback = null) : base()
+        {
+            TuningEditorVM = TuningEditorViewModel.EditExistingTuning(tuning);
+            Callback = callback;
+        }
+
+        public void Process()
+        {
+            if (null != Callback)
+            {
+                Callback(TuningEditorVM.Accepted);
+            }
+        }
+    }
+
     public class ShowDiagramEditorMessage : MessageBase
     {
         public DiagramEditorViewModel DiagramEditorVM { get; private set; }

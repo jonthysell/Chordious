@@ -63,6 +63,8 @@ namespace com.jonthysell.Chordious.Core
             Octave = octave;
         }
 
+        public FullNote() : this(Note.C, 4) { }
+
         public FullNote Shift(int steps, InternalNoteStringStyle style)
         {
             if (steps == 0)
@@ -117,6 +119,11 @@ namespace com.jonthysell.Chordious.Core
             }
 
             return Octave.CompareTo(fullNote.Octave);
+        }
+
+        public FullNote Clone()
+        {
+            return new FullNote(this.Note, this.Octave);
         }
 
         public override string ToString()

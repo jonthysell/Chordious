@@ -1,5 +1,5 @@
 ﻿// 
-// MainWindow.xaml.cs
+// IIdle.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -25,50 +25,11 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-using com.jonthysell.Chordious.Core.ViewModel;
-
-namespace com.jonthysell.Chordious.WPF
+namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public interface IIdle
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-
-            this.DataContext = new MainViewModelExtended();
-
-            this.Loaded += MainWindow_Loaded;
-        }
-
-        void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                // Fix annoying Windows 8.1 tablet forced maximization
-                WindowState = WindowState.Normal;
-
-                ((MainViewModelExtended)this.DataContext).OnLoaded();
-            }
-            catch (Exception ex)
-            {
-                ExceptionUtils.HandleException(ex);
-            }
-        }
+        bool IsIdle { get; }
     }
 }

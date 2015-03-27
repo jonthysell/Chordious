@@ -38,7 +38,7 @@ using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class ChordFinderViewModel : ViewModelBase
+    public class ChordFinderViewModel : ViewModelBase, IIdle
     {
         public AppViewModel AppVM
         {

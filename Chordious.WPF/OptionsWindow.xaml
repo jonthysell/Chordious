@@ -1,8 +1,9 @@
 ﻿<Window x:Class="com.jonthysell.Chordious.WPF.OptionsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="{Binding Title}" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="{DynamicResource ChordiousIcon}">
-    <Grid>
+        Title="{Binding Title}" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="{DynamicResource ChordiousIcon}"
+        Cursor="{Binding IsIdle, Converter={StaticResource IdleBoolToWaitCursorConverter}}" ForceCursor="True">
+    <Grid IsEnabled="{Binding IsIdle}">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>

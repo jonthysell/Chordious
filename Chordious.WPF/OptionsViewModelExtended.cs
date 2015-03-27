@@ -34,8 +34,22 @@ using com.jonthysell.Chordious.Core.ViewModel;
 
 namespace com.jonthysell.Chordious.WPF
 {
-    public class OptionsViewModelExtended : OptionsViewModel
+    public class OptionsViewModelExtended : OptionsViewModel, IIdle
     {
+        public bool IsIdle
+        {
+            get
+            {
+                return _isIdle;
+            }
+            private set
+            {
+                _isIdle = value;
+                RaisePropertyChanged("IsIdle");
+            }
+        }
+        private bool _isIdle;
+
         public int SelectedRendererIndex
         {
             get
@@ -187,11 +201,16 @@ namespace com.jonthysell.Chordious.WPF
                 {
                     try
                     {
+                        IsIdle = false;
                         await UpdateUtils.UpdateCheckAsync(true, true);
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
+                    }
+                    finally
+                    {
+                        IsIdle = true;
                     }
                 }, () =>
                 {
@@ -200,7 +219,10 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
-        public OptionsViewModelExtended() : base() { }
+        public OptionsViewModelExtended() : base()
+        {
+            IsIdle = true;
+        }
 
         private static ObservableCollection<string> GetReleaseChannels()
         {

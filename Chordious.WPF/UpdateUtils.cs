@@ -228,6 +228,11 @@ namespace com.jonthysell.Chordious.WPF
             return false;
         }
 
+        public static void SetCheckUpdateOnStart(bool value)
+        {
+            AppVM.SetSetting("app.checkupdateonstart", value);
+        }
+
         private const string _updateUrl = "http://update.chordious.com";
     }
 
@@ -259,7 +264,7 @@ namespace com.jonthysell.Chordious.WPF
 
     public enum ReleaseChannel
     {
-        Preview,
-        Official
+        Official,
+        Preview
     }
 }

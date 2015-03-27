@@ -206,8 +206,8 @@ namespace com.jonthysell.Chordious.WPF
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
-            collection.Add("Preview");
             collection.Add("Official");
+            collection.Add("Preview");
 
             return collection;
         }

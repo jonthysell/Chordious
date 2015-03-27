@@ -113,6 +113,7 @@
     <Compile Include="AdvancedDataWindow.xaml.cs">
       <DependentUpon>AdvancedDataWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FirstRunUtils.cs" />
     <Compile Include="TuningEditorWindow.xaml.cs">
       <DependentUpon>TuningEditorWindow.xaml</DependentUpon>
     </Compile>

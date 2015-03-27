@@ -1,5 +1,5 @@
 ﻿// 
-// MainWindow.xaml.cs
+// FirstRunUtils.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -25,48 +25,54 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 using com.jonthysell.Chordious.Core.ViewModel;
 
 namespace com.jonthysell.Chordious.WPF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public class FirstRunUtils
     {
-        public MainWindow()
+        public static AppViewModel AppVM
         {
-            InitializeComponent();
-
-            this.Loaded += MainWindow_Loaded;
+            get
+            {
+                return AppViewModel.Instance;
+            }
         }
 
-        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        public static bool IsFirstRun()
         {
-            try
-            {
-                // Fix annoying Windows 8.1 tablet forced maximization
-                WindowState = WindowState.Normal;
+            return Boolean.Parse(AppVM.GetSetting("app.firstrun"));
+        }
 
-                FirstRunUtils.FirstRunAsync();
-            }
-            catch (Exception ex)
+        public static Task FirstRunAsync()
+        {
+            return Task.Factory.StartNew(() =>
             {
-                ExceptionUtils.HandleException(ex);
-            }
+                if (FirstRunUtils.IsFirstRun())
+                {
+                    FirstRun();
+                }
+
+                if (UpdateUtils.GetCheckUpdateOnStart())
+                {
+                    UpdateUtils.UpdateCheckAsync(true, false);
+                }
+            });
+        }
+
+        public static void FirstRun()
+        {
+            // Turn off first-run so it doesn't run next time
+            AppVM.SetSetting("app.firstrun", false);
+
+            string message = "Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? You can change your mind later in Options.";
+            MessageBoxResult result = MessageBox.Show(message, "Chordious", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            bool enableAutoUpdate = (result == MessageBoxResult.Yes);
+
+            UpdateUtils.SetCheckUpdateOnStart(enableAutoUpdate);
         }
     }
 }

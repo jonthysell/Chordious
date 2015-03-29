@@ -34,7 +34,7 @@ using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class NamedIntervalEditorViewModel<T> : ViewModelBase where T : NamedInterval
+    public abstract class NamedIntervalEditorViewModel : ViewModelBase
     {
         public AppViewModel AppVM
         {
@@ -44,24 +44,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public string Title
-        {
-            get
-            {
-                string title = (IsNew ? "Add " : "Edit ");
-
-                if (typeof(T) == typeof(ChordQuality))
-                {
-                    title += "Chord Quality";
-                }
-                else if (typeof(T) == typeof(Scale))
-                {
-                    title += "Scale";
-                }
-
-                return title;
-            }
-        }
+        public abstract string Title { get; }
 
         public string Name
         {
@@ -108,69 +91,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _isNew;
 
-        public RelayCommand Accept
+        public abstract RelayCommand Accept { get; }
+
+        public abstract RelayCommand Cancel { get; }
+
+        public NamedIntervalEditorViewModel(bool isNew)
         {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
-                        Callback(Name, Intervals);
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                }, () =>
-                {
-                    return IsValid();
-                });
-            }
-        }
-
-        public RelayCommand Cancel
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                });
-            }
-        }
-
-        public event Action RequestClose;
-
-        public Action<string, int[]> Callback { get; private set; }
-
-        public NamedIntervalEditorViewModel(bool isNew, Action<string, int[]> callback)
-        {
-            if (null == callback)
-            {
-                throw new ArgumentNullException("callback");
-            }
-
             IsNew = isNew;
-            Callback = callback;
             Intervals = new int[] { 0 };
         }
 
-        private bool IsValid()
+        protected bool IsValid()
         {
             return !String.IsNullOrWhiteSpace(Name) && null != Intervals;
         }

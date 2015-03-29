@@ -1,0 +1,20 @@
+﻿<Window x:Class="com.jonthysell.Chordious.WPF.NamedIntervalManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:com.jonthysell.Chordious.Core.ViewModel;assembly=Chordious.Core.ViewModel"
+        Title="{Binding Title}" Height="300" Width="400" WindowStartupLocation="CenterScreen" MinWidth="400" MinHeight="300" Icon="{DynamicResource ChordiousIcon}">
+    <StackPanel>
+        <ListBox Height="220" Name="NamedIntervalsListView" Margin="5" ItemsSource="{Binding NamedIntervals}" SelectedItem="{Binding SelectedNamedInterval}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <WrapPanel FlowDirection="RightToLeft">
+            <Button Content="Delete" Command="{Binding DeleteNamedInterval}" Margin="5" Width="75" />
+            <Button Content="Edit" Command="{Binding EditNamedInterval}" Margin="5" Width="75" />
+            <Button Content="Add" Command="{Binding AddNamedInterval}" Margin="5" Width="75" />
+        </WrapPanel>
+    </StackPanel>
+</Window>

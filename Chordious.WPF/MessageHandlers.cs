@@ -57,6 +57,8 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Register<ShowInstrumentManagerMessage>(recipient, (message) => MessageHandlers.ShowInstrumentManager(message));
             Messenger.Default.Register<ShowInstrumentEditorMessage>(recipient, (message) => MessageHandlers.ShowInstrumentEditor(message));
             Messenger.Default.Register<ShowTuningEditorMessage>(recipient, (message) => MessageHandlers.ShowTuningEditor(message));
+            Messenger.Default.Register<ShowChordQualityManagerMessage>(recipient, (message) => MessageHandlers.ShowChordQualityManager(message));
+            Messenger.Default.Register<ShowScaleManagerMessage>(recipient, (message) => MessageHandlers.ShowScaleManager(message));
             Messenger.Default.Register<ShowDiagramEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramEditor(message));
             Messenger.Default.Register<ShowOptionsMessage>(recipient, (message) => MessageHandlers.ShowOptions(message));
             Messenger.Default.Register<ShowAdvancedDataMessage>(recipient, (message) => MessageHandlers.ShowAdvancedData(message));
@@ -163,6 +165,22 @@ namespace com.jonthysell.Chordious.WPF
             {
                 window.Close();
             };
+            window.ShowDialog();
+            message.Process();
+        }
+
+        private static void ShowChordQualityManager(ShowChordQualityManagerMessage message)
+        {
+            NamedIntervalManagerWindow window = new NamedIntervalManagerWindow();
+            window.DataContext = message.ChordQualityManagerVM;
+            window.ShowDialog();
+            message.Process();
+        }
+
+        private static void ShowScaleManager(ShowScaleManagerMessage message)
+        {
+            NamedIntervalManagerWindow window = new NamedIntervalManagerWindow();
+            window.DataContext = message.ScaleManagerVM;
             window.ShowDialog();
             message.Process();
         }

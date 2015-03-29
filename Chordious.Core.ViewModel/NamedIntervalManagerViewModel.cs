@@ -36,7 +36,10 @@ using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class NamedIntervalManagerViewModel<T> : ViewModelBase where T : NamedInterval
+    public delegate IEnumerable<ObservableNamedInterval> GetNamedIntervals();
+    public delegate void DeleteNamedInterval(string name);
+
+    public abstract class NamedIntervalManagerViewModel : ViewModelBase
     {
         public AppViewModel AppVM
         {
@@ -46,22 +49,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public string Title
-        {
-            get
-            {
-                if (IsChordQuality())
-                {
-                    return "Chord Qualities";
-                }
-                else if (IsScale())
-                {
-                    return "Scales";
-                }
-
-                return "Named Intervals";
-            }
-        }
+        public abstract string Title { get; }
 
         public bool NamedIntervalIsSelected
         {
@@ -84,7 +72,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 RaisePropertyChanged("NamedIntervalIsSelected");
                 RaisePropertyChanged("EditNamedInterval");
                 RaisePropertyChanged("DeleteNamedInterval");
-                RaisePropertyChanged("AddEditNamedInterval");
+                RaisePropertyChanged("AddNamedInterval");
             }
         }
         private ObservableNamedInterval _namedInterval;
@@ -103,77 +91,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableNamedInterval> _namedIntervals;
 
-        public RelayCommand AddNamedInterval
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        Messenger.Default.Send<ShowNamedIntervalEditorMessage<T>>(new ShowNamedIntervalEditorMessage<T>(true, (name, intervals) =>
-                        {
-                            try
-                            {
-                                NamedInterval ni = null;
+        public abstract RelayCommand AddNamedInterval { get; }
 
-                                if (IsChordQuality())
-                                {
-                                    ni = AppVM.UserConfig.ChordQualities.Add(name, "", intervals);
-                                }
-                                else if (IsScale())
-                                {
-                                    ni = AppVM.UserConfig.Scales.Add(name, intervals);
-                                }
-
-                                Refresh(ni);
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionUtils.HandleException(ex);
-                            }
-                        }));
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                });
-            }
-        }
-
-        public RelayCommand EditNamedInterval
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        Messenger.Default.Send<ShowNamedIntervalEditorMessage<ChordQuality>>(new ShowNamedIntervalEditorMessage<ChordQuality>(false, (name, intervals) =>
-                        {
-                            try
-                            {
-                                SelectedNamedInterval.NamedInterval.Name = name;
-                                SelectedNamedInterval.NamedInterval.Intervals = intervals;
-                                Refresh(SelectedNamedInterval.NamedInterval);
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionUtils.HandleException(ex);
-                            }
-                        }, SelectedNamedInterval.Name, SelectedNamedInterval.Intervals));
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                }, () =>
-                {
-                    return NamedIntervalIsSelected && SelectedNamedInterval.CanEdit;
-                });
-            }
-        }
+        public abstract RelayCommand EditNamedInterval { get; }
 
         public RelayCommand DeleteNamedInterval
         {
@@ -183,24 +103,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        string type = "the named interval";
-
-                        if (IsChordQuality())
-                        {
-                            type = "the chord quality";
-                        }
-                        else if (IsScale())
-                        {
-                            type = "the scale";
-                        }
-
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete {0} \"{1}\". This cannot be undone. Do you want to continue?", type, SelectedNamedInterval.Name), (confirm) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete \"{1}\". This cannot be undone. Do you want to continue?", SelectedNamedInterval.Name), (confirm) =>
                         {
                             try
                             {
                                 if (confirm)
                                 {
-                                    AppVM.UserConfig.ChordQualities.Remove(SelectedNamedInterval.Name);
+                                    _deleteNamedInterval(SelectedNamedInterval.Name);
                                     Refresh();
                                 }
                             }
@@ -221,25 +130,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public NamedIntervalManagerViewModel() : base()
+        private GetNamedIntervals _getNamedIntervals;
+
+        private DeleteNamedInterval _deleteNamedInterval;
+
+        public NamedIntervalManagerViewModel(GetNamedIntervals getNamedIntervals, DeleteNamedInterval deleteNamedInterval) : base()
         {
+            _getNamedIntervals = getNamedIntervals;
+            _deleteNamedInterval = deleteNamedInterval;
             Refresh();
         }
 
         internal void Refresh(NamedInterval selectedNamedInterval = null)
         {
-            IEnumerable<ObservableNamedInterval> namedIntervals = null;
-
-            if (IsChordQuality())
-            {
-                namedIntervals = AppVM.GetChordQualities();
-            }
-            else if (IsScale())
-            {
-                namedIntervals = AppVM.GetScales();
-            }
-
-            NamedIntervals = new ObservableCollection<ObservableNamedInterval>(namedIntervals);
+            NamedIntervals = new ObservableCollection<ObservableNamedInterval>(_getNamedIntervals());
 
             if (null == selectedNamedInterval)
             {
@@ -256,16 +160,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }
             }
-        }
-
-        protected bool IsChordQuality()
-        {
-            return (typeof(T) == typeof(ChordQuality));
-        }
-
-        protected bool IsScale()
-        {
-            return (typeof(T) == typeof(Scale));
         }
     }
 }

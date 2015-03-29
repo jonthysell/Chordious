@@ -91,6 +91,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         protected Action Callback;
 
+        public SaveUserConfigAfterHandlingMessageBase(Action callback = null)
+        {
+            Callback = callback;
+        }
+
         public void Process()
         {
             AppViewModel.Instance.SaveUserConfig();
@@ -103,25 +108,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
     public class ShowChordFinderMessage : SaveUserConfigAfterHandlingMessageBase
     {
-        public ShowChordFinderMessage() : base() { }
+        public ShowChordFinderMessage(Action callback = null) : base(callback) { }
     }
 
     public class ShowScaleFinderMessage : SaveUserConfigAfterHandlingMessageBase
     {
-        public ShowScaleFinderMessage() : base() { }
+        public ShowScaleFinderMessage(Action callback = null) : base(callback) { }
     }
 
     public class ShowDiagramLibraryMessage : SaveUserConfigAfterHandlingMessageBase
     {
-        public ShowDiagramLibraryMessage() : base() { }
+        public ShowDiagramLibraryMessage(Action callback = null) : base(callback) { }
     }
 
     public class ShowInstrumentManagerMessage : SaveUserConfigAfterHandlingMessageBase
     {
-        public ShowInstrumentManagerMessage(Action callback = null) : base()
-        {
-            Callback = callback;
-        }
+        public ShowInstrumentManagerMessage(Action callback = null) : base(callback) { }
     }
 
     public class ShowInstrumentEditorMessage : MessageBase
@@ -167,41 +169,57 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
     }
 
-    public class ShowNamedIntervalManager<T> : SaveUserConfigAfterHandlingMessageBase where T : NamedInterval
+    public class ShowChordQualityManagerMessage : SaveUserConfigAfterHandlingMessageBase
     {
-        public NamedIntervalManagerViewModel<T> NamedIntervalManagerVM { get; private set; }
+        public ChordQualityManagerViewModel ChordQualityManagerVM { get; private set; }
 
-        public ShowNamedIntervalManager(Action callback = null) : base()
+        public ShowChordQualityManagerMessage(Action callback = null) : base(callback)
         {
-            NamedIntervalManagerVM = new NamedIntervalManagerViewModel<T>();
-            Callback = callback;
+            ChordQualityManagerVM = new ChordQualityManagerViewModel();
         }
     }
 
-    public class ShowNamedIntervalEditorMessage<T> : MessageBase where T : NamedInterval
+    public class ShowChordQualityEditorMessage : MessageBase
     {
-        public NamedIntervalEditorViewModel<T> NamedIntervalEditorViewModelVM { get; private set; }
+        public ChordQualityEditorViewModel ChordQualityEditorVM { get; private set; }
 
-        public ShowNamedIntervalEditorMessage(bool isNew, Action<string, int[]> callback) : base()
+        public ShowChordQualityEditorMessage(bool isNew, Action<string, string, int[]> callback) : base()
         {
-            NamedIntervalEditorViewModelVM = new NamedIntervalEditorViewModel<T>(isNew, callback);
+            ChordQualityEditorVM = new ChordQualityEditorViewModel(isNew, callback);
         }
 
-        public ShowNamedIntervalEditorMessage(bool isNew, Action<string, int[]> callback, string name, int[] intervals) : this(isNew, callback)
+        public ShowChordQualityEditorMessage(bool isNew, Action<string, string, int[]> callback, string name, string abbreviation, int[] intervals) : this(isNew, callback)
         {
-            NamedIntervalEditorViewModelVM.Name = name;
-            NamedIntervalEditorViewModelVM.Intervals = intervals;
+            ChordQualityEditorVM.Name = name;
+            ChordQualityEditorVM.Abbreviation = abbreviation;
+            ChordQualityEditorVM.Intervals = intervals;
         }
     }
 
-    public class ShowChordQualityManagerMessage : ShowNamedIntervalManager<ChordQuality>
+    public class ShowScaleManagerMessage : SaveUserConfigAfterHandlingMessageBase
     {
-        public ShowChordQualityManagerMessage(Action callback = null) : base(callback) { }
+        public ScaleManagerViewModel ScaleManagerVM { get; private set; }
+
+        public ShowScaleManagerMessage(Action callback = null) : base(callback)
+        {
+            ScaleManagerVM = new ScaleManagerViewModel();
+        }
     }
 
-    public class ShowScaleManagerMessage : ShowNamedIntervalManager<Scale>
+    public class ShowScaleEditorMessage : MessageBase
     {
-        public ShowScaleManagerMessage(Action callback = null) : base(callback) { }
+        public ScaleEditorViewModel ScaleEditorVM { get; private set; }
+
+        public ShowScaleEditorMessage(bool isNew, Action<string, int[]> callback) : base()
+        {
+            ScaleEditorVM = new ScaleEditorViewModel(isNew, callback);
+        }
+
+        public ShowScaleEditorMessage(bool isNew, Action<string, int[]> callback, string name, string abbreviation, int[] intervals) : this(isNew, callback)
+        {
+            ScaleEditorVM.Name = name;
+            ScaleEditorVM.Intervals = intervals;
+        }
     }
 
     public class ShowDiagramEditorMessage : MessageBase

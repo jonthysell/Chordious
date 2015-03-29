@@ -173,7 +173,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowInstrumentManagerMessage>(new ShowInstrumentManagerMessage());
+                        Messenger.Default.Send<ShowInstrumentManagerMessage>(new ShowInstrumentManagerMessage(() =>
+                        {
+                            RefreshInstruments(SelectedInstrument.Instrument, SelectedTuning.Tuning);
+                        }));
                     }
                     catch (Exception ex)
                     {
@@ -264,7 +267,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowChordQualityManagerMessage>(new ShowChordQualityManagerMessage());
+                        Messenger.Default.Send<ShowChordQualityManagerMessage>(new ShowChordQualityManagerMessage(() =>
+                            {
+                                RefreshChordQualities(SelectedChordQuality.ChordQuality);
+                            }));
                     }
                     catch (Exception ex)
                     {
@@ -626,11 +632,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             Options = new ChordFinderOptions(AppVM.UserConfig);
             Style = new ChordFinderStyle(AppVM.UserConfig);
 
+            RefreshInstruments(Options.Instrument, Options.Tuning);
+
+            RefreshChordQualities(Options.ChordQuality);
+
+            Results = new ObservableCollection<ObservableDiagram>();
+            SelectedResults = new ObservableCollection<ObservableDiagram>();
+
+            SelectedResults.CollectionChanged += SelectedResults_CollectionChanged;
+        }
+
+        private void RefreshInstruments(Instrument selectedInstrument = null, Tuning selectedTuning = null)
+        {
             Instruments = AppVM.GetInstruments();
 
             foreach (ObservableInstrument oi in Instruments)
             {
-                if (oi.Instrument == Options.Instrument)
+                if (oi.Instrument == selectedInstrument)
                 {
                     SelectedInstrument = oi;
                     break;
@@ -641,28 +659,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             foreach (ObservableTuning ot in Tunings)
             {
-                if (ot.Tuning == Options.Tuning)
+                if (ot.Tuning == selectedTuning)
                 {
                     SelectedTuning = ot;
                     break;
                 }
             }
+        }
 
+        private void RefreshChordQualities(ChordQuality selectedChordQuality = null)
+        {
             ChordQualities = AppVM.GetChordQualities();
 
             foreach (ObservableChordQuality ocq in ChordQualities)
             {
-                if (ocq.ChordQuality == Options.ChordQuality)
+                if (ocq.ChordQuality == selectedChordQuality)
                 {
                     SelectedChordQuality = ocq;
                     break;
                 }
             }
-
-            Results = new ObservableCollection<ObservableDiagram>();
-            SelectedResults = new ObservableCollection<ObservableDiagram>();
-
-            SelectedResults.CollectionChanged += SelectedResults_CollectionChanged;
         }
 
         private Task<ChordFinderResultSet> FindChordsAsync()

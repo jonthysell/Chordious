@@ -173,7 +173,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowInstrumentManagerMessage>(new ShowInstrumentManagerMessage());
+                        Messenger.Default.Send<ShowInstrumentManagerMessage>(new ShowInstrumentManagerMessage(() =>
+                            {
+                                RefreshInstruments(SelectedInstrument.Instrument, SelectedTuning.Tuning);
+                            }));
                     }
                     catch (Exception ex)
                     {
@@ -264,7 +267,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowScaleManagerMessage>(new ShowScaleManagerMessage());
+                        Messenger.Default.Send<ShowScaleManagerMessage>(new ShowScaleManagerMessage(() =>
+                            {
+                                RefreshScales(SelectedScale.Scale);
+                            }));
                     }
                     catch (Exception ex)
                     {
@@ -558,11 +564,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             Options = new ScaleFinderOptions(AppVM.UserConfig);
             Style = new ScaleFinderStyle(AppVM.UserConfig);
 
+            RefreshInstruments(Options.Instrument, Options.Tuning);
+
+            RefreshScales(Options.Scale);
+
+            Results = new ObservableCollection<ObservableDiagram>();
+            SelectedResults = new ObservableCollection<ObservableDiagram>();
+
+            SelectedResults.CollectionChanged += SelectedResults_CollectionChanged;
+        }
+
+        private void RefreshInstruments(Instrument selectedInstrument = null, Tuning selectedTuning = null)
+        {
             Instruments = AppVM.GetInstruments();
 
             foreach (ObservableInstrument oi in Instruments)
             {
-                if (oi.Instrument == Options.Instrument)
+                if (oi.Instrument == selectedInstrument)
                 {
                     SelectedInstrument = oi;
                     break;
@@ -573,28 +591,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             foreach (ObservableTuning ot in Tunings)
             {
-                if (ot.Tuning == Options.Tuning)
+                if (ot.Tuning == selectedTuning)
                 {
                     SelectedTuning = ot;
                     break;
                 }
             }
+        }
 
+        private void RefreshScales(Scale selectedScale = null)
+        {
             Scales = AppVM.GetScales();
 
             foreach (ObservableScale os in Scales)
             {
-                if (os.Scale == Options.Scale)
+                if (os.Scale == selectedScale)
                 {
                     SelectedScale = os;
                     break;
                 }
             }
-
-            Results = new ObservableCollection<ObservableDiagram>();
-            SelectedResults = new ObservableCollection<ObservableDiagram>();
-
-            SelectedResults.CollectionChanged += SelectedResults_CollectionChanged;
         }
 
         private Task<ScaleFinderResultSet> FindScalesAsync()

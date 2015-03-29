@@ -75,7 +75,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         {
                             RequestClose();
                         }
-                        Callback(Name, Abbreviation, Intervals);
+                        Callback(Name, Abbreviation, GetIntervalArray());
                     }
                     catch (Exception ex)
                     {
@@ -111,15 +111,32 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public event Action RequestClose;
 
-        public Action<string, string, int[]> Callback { get; private set; }
+        public Action<string, string, int[]> Callback
+        {
+            get
+            {
+                return _callback;
+            }
+            private set
+            {
+                if (null == value)
+                {
+                    throw new ArgumentNullException();
+                }
+
+                _callback = value;
+            }
+        }
+        private Action<string, string, int[]> _callback;
 
         public ChordQualityEditorViewModel(bool isNew, Action<string, string, int[]> callback) : base(isNew)
         {
-            if (null == callback)
-            {
-                throw new ArgumentNullException("callback");
-            }
+            Callback = callback;
+        }
 
+        public ChordQualityEditorViewModel(bool isNew, string name, string abbreviation, int[] intervals, Action<string, string, int[]> callback) : base(isNew, name, intervals)
+        {
+            Abbreviation = abbreviation;
             Callback = callback;
         }
     }

@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.ObjectModel;
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -61,20 +62,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private string _name;
 
-        public int[] Intervals
+        public ObservableCollection<NamedIntervalValue> Intervals
         {
             get
             {
                 return _intervals;
             }
-            set
+            private set
             {
+                if (null == value)
+                {
+                    throw new ArgumentNullException();
+                }
                 _intervals = value;
                 RaisePropertyChanged("Intervals");
                 RaisePropertyChanged("Accept");
             }
         }
-        private int[] _intervals;
+        private ObservableCollection<NamedIntervalValue> _intervals;
 
         public bool IsNew
         {
@@ -91,6 +96,49 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _isNew;
 
+        public RelayCommand AddInterval
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Intervals.Add(new NamedIntervalValue());
+                        RaisePropertyChanged("RemoveInterval");
+                        RaisePropertyChanged("Accept");
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                });
+            }
+        }
+
+        public RelayCommand RemoveInterval
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Intervals.RemoveAt(Intervals.Count - 1);
+                        RaisePropertyChanged("RemoveInterval");
+                        RaisePropertyChanged("Accept");
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return Intervals.Count > 0;
+                });
+            }
+        }
+
         public abstract RelayCommand Accept { get; }
 
         public abstract RelayCommand Cancel { get; }
@@ -98,12 +146,65 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public NamedIntervalEditorViewModel(bool isNew)
         {
             IsNew = isNew;
-            Intervals = new int[] { 0 };
+            Intervals = new ObservableCollection<NamedIntervalValue>();
+        }
+
+        public NamedIntervalEditorViewModel(bool isNew, string name, int[] intervals) : this(isNew)
+        {
+            if (null == intervals)
+            {
+                throw new ArgumentNullException("intervals");
+            }
+
+            Name = name;
+
+            for (int i = 0; i < intervals.Length; i++)
+            {
+                Intervals.Add(new NamedIntervalValue(intervals[i]));
+            }
+        }
+
+        protected int[] GetIntervalArray()
+        {
+            int[] array = new int[Intervals.Count];
+
+            for (int i = 0; i < Intervals.Count; i++)
+            {
+                array[i] = Intervals[i].Value;
+            }
+
+            return array;
         }
 
         protected bool IsValid()
         {
-            return !String.IsNullOrWhiteSpace(Name) && null != Intervals;
+            return !String.IsNullOrWhiteSpace(Name) && (null != Intervals && Intervals.Count > 0);
+        }
+    }
+
+    public class NamedIntervalValue : ObservableObject
+    {
+        public int Value
+        {
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                _value = value;
+                RaisePropertyChanged("Value");
+            }
+        }
+        private int _value;
+
+        public NamedIntervalValue(int value = 0)
+        {
+            Value = value;
         }
     }
 }

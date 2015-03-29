@@ -103,7 +103,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete \"{1}\". This cannot be undone. Do you want to continue?", SelectedNamedInterval.Name), (confirm) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete \"{0}\". This cannot be undone. Do you want to continue?", SelectedNamedInterval.Name), (confirm) =>
                         {
                             try
                             {

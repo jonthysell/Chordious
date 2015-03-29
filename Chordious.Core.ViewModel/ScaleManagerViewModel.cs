@@ -54,15 +54,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowChordQualityEditorMessage>(new ShowChordQualityEditorMessage(true, (name, abbreviation, intervals) =>
+                        Messenger.Default.Send<ShowScaleEditorMessage>(new ShowScaleEditorMessage(true, (name, intervals) =>
                         {
                             try
                             {
-                                NamedInterval ni = null;
-
-                                AppVM.UserConfig.ChordQualities.Add(name, abbreviation, intervals);
-
-                                Refresh(ni);
+                                Scale addedScale = AppVM.UserConfig.Scales.Add(name, intervals);
+                                Refresh(addedScale);
                             }
                             catch (Exception ex)
                             {
@@ -86,12 +83,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowChordQualityEditorMessage>(new ShowChordQualityEditorMessage(false, (name, abbreviation, intervals) =>
+                        Messenger.Default.Send<ShowScaleEditorMessage>(new ShowScaleEditorMessage(false, (name, intervals) =>
                         {
                             try
                             {
                                 SelectedNamedInterval.NamedInterval.Name = name;
-                                ((ChordQuality)(SelectedNamedInterval.NamedInterval)).Abbreviation = abbreviation;
                                 SelectedNamedInterval.NamedInterval.Intervals = intervals;
                                 Refresh(SelectedNamedInterval.NamedInterval);
                             }
@@ -99,7 +95,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             {
                                 ExceptionUtils.HandleException(ex);
                             }
-                        }, SelectedNamedInterval.Name, ((ChordQuality)(SelectedNamedInterval.NamedInterval)).Abbreviation, SelectedNamedInterval.Intervals));
+                        }, SelectedNamedInterval.Name, SelectedNamedInterval.Intervals));
                     }
                     catch (Exception ex)
                     {

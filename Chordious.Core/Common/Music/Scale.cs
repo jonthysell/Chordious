@@ -87,8 +87,6 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("xmlWriter");
             }
 
-            xmlWriter.WriteStartElement("scale");
-
             WriteBase(xmlWriter);
 
             xmlWriter.WriteEndElement();

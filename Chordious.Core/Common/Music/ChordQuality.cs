@@ -79,6 +79,14 @@ namespace com.jonthysell.Chordious.Core
         }
         private string _abbreviation;
 
+        public override string LongName
+        {
+            get
+            {
+                return String.Format("{0} ({1}) ({2})", Name, Abbreviation, GetIntervalString());
+            }
+        }
+
         private ChordQuality(ChordQualitySet parent)
         {
             this.Parent = parent;
@@ -113,8 +121,6 @@ namespace com.jonthysell.Chordious.Core
             {
                 throw new ArgumentNullException("xmlWriter");
             }
-
-            xmlWriter.WriteStartElement("quality");
 
             WriteBase(xmlWriter);
 

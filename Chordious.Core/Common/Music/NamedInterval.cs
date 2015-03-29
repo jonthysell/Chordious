@@ -56,6 +56,14 @@ namespace com.jonthysell.Chordious.Core
         }
         private string _name;
 
+        public virtual string LongName
+        {
+            get
+            {
+                return String.Format("{0} ({1})", Name, GetIntervalString());
+            }
+        }
+
         public int[] Intervals
         {
             get
@@ -99,16 +107,7 @@ namespace com.jonthysell.Chordious.Core
 
                 string steps = xmlReader.GetAttribute("steps");
 
-                string[] s = steps.Split(';');
-
-                int[] intervals = new int[s.Length];
-
-                for (int i = 0; i < intervals.Length; i++)
-                {
-                    intervals[i] = Int32.Parse(s[i]);
-                }
-
-                this.Intervals = intervals;
+                SetIntervals(steps);
 
                 return true;
             }
@@ -127,14 +126,7 @@ namespace com.jonthysell.Chordious.Core
 
             xmlWriter.WriteAttributeString("name", this.Name);
 
-            string intervals = "";
-
-            for (int i = 0; i < Intervals.Length; i++)
-            {
-                intervals += Intervals[i] + ";";
-            }
-
-            intervals = intervals.TrimEnd(';');
+            string intervals = GetIntervalString();
 
             xmlWriter.WriteAttributeString("steps", intervals);
         }
@@ -155,5 +147,47 @@ namespace com.jonthysell.Chordious.Core
         {
             this.ReadOnly = true;
         }
+
+        public void SetIntervals(string intervalString)
+        {
+            this.Intervals = ParseIntervalString(intervalString);
+        }
+
+        public static int[] ParseIntervalString(string intervalString)
+        {
+            if (StringUtils.IsNullOrWhiteSpace(intervalString))
+            {
+                throw new ArgumentNullException("intervalString");
+            }
+
+            intervalString = intervalString.Trim().TrimEnd(_separator);
+
+            string[] s = intervalString.Split(_separator);
+
+            int[] intervals = new int[s.Length];
+
+            for (int i = 0; i < intervals.Length; i++)
+            {
+                intervals[i] = Int32.Parse(s[i]);
+            }
+
+            return intervals;
+        }
+
+        protected string GetIntervalString()
+        {
+            string intervals = "";
+
+            for (int i = 0; i < Intervals.Length; i++)
+            {
+                intervals += Intervals[i] + _separator.ToString();
+            }
+
+            intervals = intervals.TrimEnd(_separator);
+
+            return intervals;
+        }
+
+        private const char _separator = ';';
     }
 }

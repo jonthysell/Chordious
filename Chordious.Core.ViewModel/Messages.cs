@@ -188,11 +188,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             ChordQualityEditorVM = new ChordQualityEditorViewModel(isNew, callback);
         }
 
-        public ShowChordQualityEditorMessage(bool isNew, Action<string, string, int[]> callback, string name, string abbreviation, int[] intervals) : this(isNew, callback)
+        public ShowChordQualityEditorMessage(bool isNew, Action<string, string, int[]> callback, string name, string abbreviation, int[] intervals) : base()
         {
-            ChordQualityEditorVM.Name = name;
-            ChordQualityEditorVM.Abbreviation = abbreviation;
-            ChordQualityEditorVM.Intervals = intervals;
+            ChordQualityEditorVM = new ChordQualityEditorViewModel(isNew, name, abbreviation, intervals, callback);
         }
     }
 
@@ -215,10 +213,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             ScaleEditorVM = new ScaleEditorViewModel(isNew, callback);
         }
 
-        public ShowScaleEditorMessage(bool isNew, Action<string, int[]> callback, string name, string abbreviation, int[] intervals) : this(isNew, callback)
+        public ShowScaleEditorMessage(bool isNew, Action<string, int[]> callback, string name, int[] intervals) : this(isNew, callback)
         {
-            ScaleEditorVM.Name = name;
-            ScaleEditorVM.Intervals = intervals;
+            ScaleEditorVM = new ScaleEditorViewModel(isNew, name, intervals, callback);
         }
     }
 

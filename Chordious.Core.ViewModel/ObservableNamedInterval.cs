@@ -44,6 +44,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string LongName
+        {
+            get
+            {
+                return NamedInterval.LongName;
+            }
+        }
+
         public int[] Intervals
         {
             get

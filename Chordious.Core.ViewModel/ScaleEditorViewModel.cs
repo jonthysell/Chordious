@@ -60,7 +60,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         {
                             RequestClose();
                         }
-                        Callback(Name, Intervals);
+                        Callback(Name, GetIntervalArray());
                     }
                     catch (Exception ex)
                     {
@@ -96,15 +96,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public event Action RequestClose;
 
-        public Action<string, int[]> Callback { get; private set; }
+        public Action<string, int[]> Callback
+        {
+            get
+            {
+                return _callback;
+            }
+            private set
+            {
+                if (null == value)
+                {
+                    throw new ArgumentNullException();
+                }
+
+                _callback = value;
+            }
+        }
+        private Action<string, int[]> _callback;
 
         public ScaleEditorViewModel(bool isNew, Action<string, int[]> callback) : base(isNew)
         {
-            if (null == callback)
-            {
-                throw new ArgumentNullException("callback");
-            }
+            Callback = callback;
+        }
 
+        public ScaleEditorViewModel(bool isNew, string name, int[] intervals, Action<string, int[]> callback) : base(isNew, name, intervals)
+        {
             Callback = callback;
         }
     }

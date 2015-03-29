@@ -7,7 +7,7 @@
         <ListBox Height="220" Name="NamedIntervalsListView" Margin="5" ItemsSource="{Binding NamedIntervals}" SelectedItem="{Binding SelectedNamedInterval}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text="{Binding LongName}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

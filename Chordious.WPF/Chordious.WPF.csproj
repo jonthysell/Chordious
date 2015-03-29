@@ -113,6 +113,12 @@
     <Compile Include="AdvancedDataWindow.xaml.cs">
       <DependentUpon>AdvancedDataWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChordQualityEditorWindow.xaml.cs">
+      <DependentUpon>ChordQualityEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScaleEditorWindow.xaml.cs">
+      <DependentUpon>ScaleEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NamedIntervalManagerWindow.xaml.cs">
       <DependentUpon>NamedIntervalManagerWindow.xaml</DependentUpon>
     </Compile>
@@ -192,6 +198,14 @@
     <Page Include="AdvancedDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChordQualityEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ScaleEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="NamedIntervalManagerWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

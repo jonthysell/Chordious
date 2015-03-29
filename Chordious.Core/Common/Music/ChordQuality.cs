@@ -83,7 +83,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format("{0} ({1}) ({2})", Name, Abbreviation, GetIntervalString());
+                if (!StringUtils.IsNullOrWhiteSpace(Abbreviation))
+                {
+                    return String.Format("{0} \"{1}\" ({2})", Name, Abbreviation, GetIntervalString());
+                }
+                return base.LongName;
             }
         }
 

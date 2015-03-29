@@ -76,10 +76,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
                 _intervals = value;
                 RaisePropertyChanged("Intervals");
+                RaisePropertyChanged("Example");
                 RaisePropertyChanged("Accept");
             }
         }
         private ObservableCollection<NamedIntervalValue> _intervals;
+
+        public string Example
+        {
+            get
+            {
+                string example = "";
+
+                if (Intervals.Count > 0)
+                {
+                    InternalNote[] notes = NamedInterval.GetNotes(InternalNote.C, GetIntervalArray());
+
+                    for (int i = 0; i < notes.Length; i++)
+                    {
+                        example += NoteUtils.ToString(notes[i], InternalNoteStringStyle.ShowBoth) + " ";
+                    }
+
+                    example = example.TrimEnd();
+                }
+
+                return example;
+            }
+        }
 
         public bool IsNew
         {
@@ -104,8 +127,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Intervals.Add(new NamedIntervalValue());
+                        Intervals.Add(CreateNamedIntervalValue());
                         RaisePropertyChanged("RemoveInterval");
+                        RaisePropertyChanged("Example");
                         RaisePropertyChanged("Accept");
                     }
                     catch (Exception ex)
@@ -124,8 +148,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Intervals.RemoveAt(Intervals.Count - 1);
+                        NamedIntervalValue niValue = Intervals[Intervals.Count - 1];
+                        niValue.ValueChanged -= IntervalValueChanged;
+                        Intervals.Remove(niValue);
                         RaisePropertyChanged("RemoveInterval");
+                        RaisePropertyChanged("Example");
                         RaisePropertyChanged("Accept");
                     }
                     catch (Exception ex)
@@ -160,8 +187,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             for (int i = 0; i < intervals.Length; i++)
             {
-                Intervals.Add(new NamedIntervalValue(intervals[i]));
+                Intervals.Add(CreateNamedIntervalValue(intervals[i]));
             }
+        }
+
+        protected NamedIntervalValue CreateNamedIntervalValue(int value = 0)
+        {
+            NamedIntervalValue niValue = new NamedIntervalValue(value);
+            niValue.ValueChanged += IntervalValueChanged;
+            return niValue;
+        }
+
+        protected void IntervalValueChanged()
+        {
+            RaisePropertyChanged("Example");
         }
 
         protected int[] GetIntervalArray()
@@ -197,14 +236,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     throw new ArgumentOutOfRangeException();
                 }
                 _value = value;
-                RaisePropertyChanged("Value");
+                if (null != ValueChanged)
+                {
+                    ValueChanged();
+                }
             }
         }
         private int _value;
 
+        public event Action ValueChanged;
+
         public NamedIntervalValue(int value = 0)
         {
             Value = value;
+            ValueChanged += () =>
+            {
+                RaisePropertyChanged("Value");
+            };
         }
     }
 }

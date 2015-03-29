@@ -133,11 +133,21 @@ namespace com.jonthysell.Chordious.Core
 
         public InternalNote[] GetNotes(InternalNote root)
         {
-            InternalNote[] notes = new InternalNote[Intervals.Length];
+            return NamedInterval.GetNotes(root, Intervals);
+        }
+
+        public static InternalNote[] GetNotes(InternalNote root, int[] intervals)
+        {
+            if (null == intervals || intervals.Length == 0)
+            {
+                throw new ArgumentNullException("intervals");
+            }
+
+            InternalNote[] notes = new InternalNote[intervals.Length];
 
             for (int i = 0; i < notes.Length; i++)
             {
-                notes[i] = NoteUtils.Shift(root, Intervals[i]);
+                notes[i] = NoteUtils.Shift(root, intervals[i]);
             }
 
             return notes;

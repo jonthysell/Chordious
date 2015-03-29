@@ -3,18 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:com.jonthysell.Chordious.Core.ViewModel;assembly=Chordious.Core.ViewModel"
         Title="{Binding Title}" Height="300" Width="400" WindowStartupLocation="CenterScreen" MinWidth="400" MinHeight="300" Icon="{DynamicResource ChordiousIcon}">
-    <StackPanel>
-        <ListBox Height="220" Name="NamedIntervalsListView" Margin="5" ItemsSource="{Binding NamedIntervals}" SelectedItem="{Binding SelectedNamedInterval}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding LongName}" />
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <WrapPanel FlowDirection="RightToLeft">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0" Margin="5,0" IsEnabled="{Binding NamedIntervalIsSelected}">
+            <Label Content="Name:" FontWeight="Bold" />
+            <Label Content="{Binding SelectedNamedInterval.Name}" />
+            <Label Content="Can Edit:" FontWeight="Bold" />
+            <Label Content="{Binding SelectedNamedInterval.CanEdit}" />
+            <Label Content="Level:" FontWeight="Bold" />
+            <Label Content="{Binding SelectedNamedInterval.Level}" />
+        </WrapPanel>
+        <ScrollViewer Grid.Row="1">
+            <ListView Name="NamedIntervalsListView" Margin="5" ItemsSource="{Binding NamedIntervals}" SelectedItem="{Binding SelectedNamedInterval}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding LongName}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+        <WrapPanel Grid.Row="2" FlowDirection="RightToLeft">
             <Button Content="Delete" Command="{Binding DeleteNamedInterval}" Margin="5" Width="75" />
             <Button Content="Edit" Command="{Binding EditNamedInterval}" Margin="5" Width="75" />
             <Button Content="Add" Command="{Binding AddNamedInterval}" Margin="5" Width="75" />
         </WrapPanel>
-    </StackPanel>
+    </Grid>
 </Window>

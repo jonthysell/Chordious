@@ -1,34 +1,50 @@
 ﻿<Window x:Class="com.jonthysell.Chordious.WPF.ChordQualityEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="{Binding Title}" WindowStartupLocation="CenterScreen" Icon="{DynamicResource ChordiousIcon}" Width="600" Height="150" ResizeMode="NoResize">
-    <StackPanel FocusManager.FocusedElement="{Binding ElementName=InputName}">
-        <StackPanel Orientation="Horizontal">
-            <Label Content="Name:" Margin="5" />
-            <TextBox Name="InputName" Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" Width="350" Margin="5" MaxLines="1" />
-            <Label Content="Abbreviation:" Margin="5" />
+        Title="{Binding Title}" WindowStartupLocation="CenterScreen" Icon="{DynamicResource ChordiousIcon}" Width="400" Height="200" MinWidth="400" MinHeight="200" MaxHeight="200" ResizeMode="CanResize">
+    <Grid FocusManager.FocusedElement="{Binding ElementName=InputName}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Label Content="Name:" Margin="5" VerticalAlignment="Center" />
+            <TextBox Name="InputName" Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" Width="150" Margin="5" MaxLines="1" />
+            <Label Content="Abbreviation:" Margin="5" VerticalAlignment="Center" />
             <TextBox Name="InputAbbreviation" Text="{Binding Abbreviation, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" Width="70" Margin="5" MaxLines="1" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Label Content="Intervals:" Margin="5" />
-                        <Button Command="{Binding AddInterval}" Content="+" Width="20" Margin="5,5,0,5" />
-            <Button Command="{Binding RemoveInterval}" Content="-" Width="20" Margin="5" />
-            <ListView Name="IntervalsListView" ItemsSource="{Binding Intervals}" SelectionMode="Single" Margin="5" BorderThickness="0">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBox Text="{Binding Value, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" Width="30" MaxLines="1" MaxLength="2" HorizontalContentAlignment="Center" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+        <StackPanel Grid.Row="1" Grid.Column="0"  Orientation="Horizontal">
+            <Label Content="Intervals:" Margin="5" VerticalAlignment="Center" />
+            <Button Command="{Binding AddInterval}" Content="+" Width="20" Height="20"  Margin="5,5,0,5" VerticalAlignment="Center" />
+            <Button Command="{Binding RemoveInterval}" Content="-" Width="20" Height="20" Margin="5" VerticalAlignment="Center" />
         </StackPanel>
-        <WrapPanel FlowDirection="RightToLeft" Height="Auto">
+        <ListView Grid.Row="1" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" Name="IntervalsListView" ItemsSource="{Binding Intervals}" SelectionMode="Single" Margin="5" BorderThickness="0" VerticalAlignment="Center">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Text="{Binding Value, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" Width="30" MaxLines="1" MaxLength="2" HorizontalContentAlignment="Center" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Label Content="Example in C:" Margin="5" VerticalAlignment="Center" />
+            <Label Content="{Binding Example, UpdateSourceTrigger=PropertyChanged}" Margin="5" VerticalAlignment="Center" />
+        </StackPanel>
+        <WrapPanel Grid.Row="3" Grid.ColumnSpan="2" FlowDirection="RightToLeft" Height="Auto">
             <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5"/>
             <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True"/>
         </WrapPanel>
-    </StackPanel>
+    </Grid>
 </Window>

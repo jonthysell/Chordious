@@ -165,6 +165,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableTuning> _tunings;
 
+        public RelayCommand ShowInstrumentManager
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<ShowInstrumentManagerMessage>(new ShowInstrumentManagerMessage());
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                });
+            }
+        }
+
         public string SelectedRootNote
         {
             get
@@ -237,6 +255,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private ObservableCollection<ObservableScale> _scales;
+
+        public RelayCommand ShowScaleManager
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<ShowScaleManagerMessage>(new ShowScaleManagerMessage());
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                });
+            }
+        }
 
         public int NumFrets
         {

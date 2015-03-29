@@ -48,7 +48,7 @@ namespace com.jonthysell.Chordious.Core
         }
         private ChordQualitySet _parent;
 
-        public string Level
+        public override string Level
         {
             get
             {

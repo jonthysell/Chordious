@@ -24,9 +24,11 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Margin="5" Content="Instrument" FontWeight="Bold" />
             <ComboBox Grid.Column="1" ItemsSource="{Binding Instruments}" SelectedItem="{Binding SelectedInstrument}" VerticalAlignment="Center" Margin="5">
@@ -44,16 +46,18 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Label Grid.Column="4" Margin="5" Content="Root Note" FontWeight="Bold" />
-            <ComboBox Grid.Column="5" ItemsSource="{Binding RootNotes}" SelectedItem="{Binding SelectedRootNote}" VerticalAlignment="Center" Margin="5" />
-            <Label Grid.Column="6" Margin="5" Content="Quality" FontWeight="Bold" />
-            <ComboBox Grid.Column="7" ItemsSource="{Binding ChordQualities}" SelectedItem="{Binding SelectedChordQuality}" VerticalAlignment="Center" Margin="5">
+            <Button Grid.Column="4" Margin="5" Content="Edit" Width="50" Command="{Binding ShowInstrumentManager, Mode=OneWay}" />
+            <Label Grid.Column="5" Margin="5" Content="Root Note" FontWeight="Bold" />
+            <ComboBox Grid.Column="6" ItemsSource="{Binding RootNotes}" SelectedItem="{Binding SelectedRootNote}" Width="50" VerticalAlignment="Center" Margin="5" />
+            <Label Grid.Column="7" Margin="5" Content="Quality" FontWeight="Bold" />
+            <ComboBox Grid.Column="8" ItemsSource="{Binding ChordQualities}" SelectedItem="{Binding SelectedChordQuality}" VerticalAlignment="Center" Margin="5">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" />
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <Button Grid.Column="9" Margin="5" Content="Edit" Width="50" Command="{Binding ShowChordQualityManager}" />
         </Grid>
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel>

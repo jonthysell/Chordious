@@ -1,5 +1,5 @@
 ﻿// 
-// ObservableScale.cs
+// ObservableNamedInterval.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -34,16 +34,49 @@ using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class ObservableScale : ObservableNamedInterval
+    public class ObservableNamedInterval : ObservableObject
     {
-        internal Scale Scale
+        public string Name
         {
             get
             {
-                return NamedInterval as Scale;
+                return NamedInterval.Name;
             }
         }
 
-        public ObservableScale(Scale scale) : base(scale) { }
+        public int[] Intervals
+        {
+            get
+            {
+                return NamedInterval.Intervals;
+            }
+        }
+
+        public string Level
+        {
+            get
+            {
+                return NamedInterval.Level;
+            }
+        }
+
+        public bool CanEdit
+        {
+            get
+            {
+                return !NamedInterval.ReadOnly;
+            }
+        }
+
+        internal NamedInterval NamedInterval { get; private set; }
+
+        public ObservableNamedInterval(NamedInterval namedInterval)
+        {
+            if (null == namedInterval)
+            {
+                throw new ArgumentNullException("namedInterval");
+            }
+            NamedInterval = namedInterval;
+        }
     }
 }

@@ -48,7 +48,7 @@ namespace com.jonthysell.Chordious.Core
         }
         private ScaleSet _parent;
 
-        public string Level
+        public override string Level
         {
             get
             {

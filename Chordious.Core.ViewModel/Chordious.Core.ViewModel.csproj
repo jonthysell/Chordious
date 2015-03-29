@@ -50,10 +50,14 @@
   <ItemGroup>
     <Compile Include="AdvancedDataViewModel.cs" />
     <Compile Include="AppViewModel.cs" />
+    <Compile Include="NamedIntervalManagerViewModel.cs" />
     <Compile Include="IDiagramExporter.cs" />
     <Compile Include="IIdle.cs" />
+    <Compile Include="NamedIntervalEditorViewModel.cs" />
     <Compile Include="InstrumentEditorViewModel.cs" />
     <Compile Include="InstrumentManagerViewModel.cs" />
+    <Compile Include="ObservableChordQuality.cs" />
+    <Compile Include="ObservableNamedInterval.cs" />
     <Compile Include="ObservableNote.cs" />
     <Compile Include="ObservableScale.cs" />
     <Compile Include="ScaleFinderViewModel.cs" />
@@ -63,7 +67,6 @@
     <Compile Include="ExceptionUtils.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="Messages.cs" />
-    <Compile Include="ObservableChordQuality.cs" />
     <Compile Include="ObservableDiagram.cs" />
     <Compile Include="ObservableDiagramLibraryNode.cs" />
     <Compile Include="ObservableInstrument.cs" />

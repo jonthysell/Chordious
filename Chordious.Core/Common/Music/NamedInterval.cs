@@ -79,6 +79,8 @@ namespace com.jonthysell.Chordious.Core
         }
         private int[] _intervals;
 
+        public abstract string Level { get; }
+
         protected bool ReadBase(XmlReader xmlReader, string localName)
         {
             if (null == xmlReader)

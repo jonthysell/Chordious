@@ -34,33 +34,24 @@ using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class ObservableChordQuality : ObservableObject
+    public class ObservableChordQuality : ObservableNamedInterval
     {
-        public string Name
+        public string Abbreviation
         {
             get
             {
-                return ChordQuality.Name;
+                return ChordQuality.Abbreviation;
             }
         }
 
-        public string Level
+        internal ChordQuality ChordQuality
         {
             get
             {
-                return ChordQuality.Level;
+                return NamedInterval as ChordQuality;
             }
         }
 
-        internal ChordQuality ChordQuality { get; private set; }
-
-        public ObservableChordQuality(ChordQuality chordQuality)
-        {
-            if (null == chordQuality)
-            {
-                throw new ArgumentNullException("chordQuality");
-            }
-            ChordQuality = chordQuality;
-        }
+        public ObservableChordQuality(ChordQuality chordQuality) : base(chordQuality) { }
     }
 }

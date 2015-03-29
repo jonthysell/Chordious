@@ -28,6 +28,8 @@ using System;
 
 using GalaSoft.MvvmLight.Messaging;
 
+using com.jonthysell.Chordious.Core;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ChordiousMessage : NotificationMessage
@@ -87,9 +89,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
     public abstract class SaveUserConfigAfterHandlingMessageBase : MessageBase
     {
+        protected Action Callback;
+
         public void Process()
         {
             AppViewModel.Instance.SaveUserConfig();
+            if (null != Callback)
+            {
+                Callback();
+            }
         }
     }
 
@@ -110,7 +118,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
     public class ShowInstrumentManagerMessage : SaveUserConfigAfterHandlingMessageBase
     {
-        public ShowInstrumentManagerMessage() : base() { }
+        public ShowInstrumentManagerMessage(Action callback = null) : base()
+        {
+            Callback = callback;
+        }
     }
 
     public class ShowInstrumentEditorMessage : MessageBase
@@ -154,6 +165,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 Callback(TuningEditorVM.Accepted);
             }
         }
+    }
+
+    public class ShowNamedIntervalManager<T> : SaveUserConfigAfterHandlingMessageBase where T : NamedInterval
+    {
+        public NamedIntervalManagerViewModel<T> NamedIntervalManagerVM { get; private set; }
+
+        public ShowNamedIntervalManager(Action callback = null) : base()
+        {
+            NamedIntervalManagerVM = new NamedIntervalManagerViewModel<T>();
+            Callback = callback;
+        }
+    }
+
+    public class ShowNamedIntervalEditorMessage<T> : MessageBase where T : NamedInterval
+    {
+        public NamedIntervalEditorViewModel<T> NamedIntervalEditorViewModelVM { get; private set; }
+
+        public ShowNamedIntervalEditorMessage(bool isNew, Action<string, int[]> callback) : base()
+        {
+            NamedIntervalEditorViewModelVM = new NamedIntervalEditorViewModel<T>(isNew, callback);
+        }
+
+        public ShowNamedIntervalEditorMessage(bool isNew, Action<string, int[]> callback, string name, int[] intervals) : this(isNew, callback)
+        {
+            NamedIntervalEditorViewModelVM.Name = name;
+            NamedIntervalEditorViewModelVM.Intervals = intervals;
+        }
+    }
+
+    public class ShowChordQualityManagerMessage : ShowNamedIntervalManager<ChordQuality>
+    {
+        public ShowChordQualityManagerMessage(Action callback = null) : base(callback) { }
+    }
+
+    public class ShowScaleManagerMessage : ShowNamedIntervalManager<Scale>
+    {
+        public ShowScaleManagerMessage(Action callback = null) : base(callback) { }
     }
 
     public class ShowDiagramEditorMessage : MessageBase

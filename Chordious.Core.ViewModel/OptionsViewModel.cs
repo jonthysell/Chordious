@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.ObjectModel;
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -64,6 +65,426 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 return AppVM.UserConfigPath;
             }
         }
+
+        #region ChordFinder Defaults
+
+        internal ChordFinderOptions ChordFinderOptionsBuffer { get; private set; }
+
+        public int ChordFinderNumFrets
+        {
+            get
+            {
+                return ChordFinderOptionsBuffer.NumFrets;
+            }
+            set
+            {
+                try
+                {
+                    ChordFinderOptionsBuffer.NumFrets = value;
+                    Dirty = true;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("ChordFinderNumFrets");
+                    RaisePropertyChanged("ChordFinderMaxReach");
+                }
+            }
+        }
+
+        public int ChordFinderMaxFret
+        {
+            get
+            {
+                return ChordFinderOptionsBuffer.MaxFret;
+            }
+            set
+            {
+                try
+                {
+                    ChordFinderOptionsBuffer.MaxFret = value;
+                    Dirty = true;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("ChordFinderMaxFret");
+                }
+            }
+        }
+
+        public int ChordFinderMaxReach
+        {
+            get
+            {
+                return ChordFinderOptionsBuffer.MaxReach;
+            }
+            set
+            {
+                try
+                {
+                    ChordFinderOptionsBuffer.MaxReach = value;
+                    Dirty = true;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("ChordFinderNumFrets");
+                    RaisePropertyChanged("ChordFinderMaxReach");
+                }
+            }
+        }
+
+        public bool ChordFinderAllowOpenStrings
+        {
+            get
+            {
+                return ChordFinderOptionsBuffer.AllowOpenStrings;
+            }
+            set
+            {
+                ChordFinderOptionsBuffer.AllowOpenStrings = value;
+                Dirty = true;
+                RaisePropertyChanged("ChordFinderAllowOpenStrings");
+            }
+        }
+
+        public bool ChordFinderAllowMutedStrings
+        {
+            get
+            {
+                return ChordFinderOptionsBuffer.AllowMutedStrings;
+            }
+            set
+            {
+                ChordFinderOptionsBuffer.AllowMutedStrings = value;
+                Dirty = true;
+                RaisePropertyChanged("ChordFinderAllowMutedStrings");
+            }
+        }
+
+        public bool ChordFinderAllowRootlessChords
+        {
+            get
+            {
+                return ChordFinderOptionsBuffer.AllowRootlessChords;
+            }
+            set
+            {
+                ChordFinderOptionsBuffer.AllowRootlessChords = value;
+                Dirty = true;
+                RaisePropertyChanged("ChordFinderAllowRootlessChords");
+            }
+        }
+
+        internal ChordFinderStyle ChordFinderStyleBuffer { get; private set; }
+
+        public bool ChordFinderAddTitle
+        {
+            get
+            {
+                return ChordFinderStyleBuffer.AddTitle;
+            }
+            set
+            {
+                ChordFinderStyleBuffer.AddTitle = value;
+                Dirty = true;
+                RaisePropertyChanged("ChordFinderAddTitle");
+            }
+        }
+
+        public bool ChordFinderMirrorResults
+        {
+            get
+            {
+                return ChordFinderStyleBuffer.MirrorResults;
+            }
+            set
+            {
+                ChordFinderStyleBuffer.MirrorResults = value;
+                Dirty = true;
+                RaisePropertyChanged("ChordFinderMirrorResults");
+            }
+        }
+
+        public int ChordFinderSelectedBarreTypeOptionIndex
+        {
+            get
+            {
+                return (int)ChordFinderStyleBuffer.BarreTypeOption;
+            }
+            set
+            {
+                ChordFinderStyleBuffer.BarreTypeOption = (BarreTypeOption)(value);
+                Dirty = true;
+                RaisePropertyChanged("ChordFinderSelectedBarreTypeOptionIndex");
+            }
+        }
+
+        public ObservableCollection<string> ChordFinderBarreTypeOptions
+        {
+            get
+            {
+                return GetBarreTypeOptions();
+            }
+        }
+
+        public bool ChordFinderAddRootNotes
+        {
+            get
+            {
+                return ChordFinderStyleBuffer.AddRootNotes;
+            }
+            set
+            {
+                ChordFinderStyleBuffer.AddRootNotes = value;
+                Dirty = true;
+                RaisePropertyChanged("ChordFinderAddRootNotes");
+            }
+        }
+
+        public int ChordFinderSelectedMarkTextOptionIndex
+        {
+            get
+            {
+                return (int)ChordFinderStyleBuffer.MarkTextOption;
+            }
+            set
+            {
+                ChordFinderStyleBuffer.MarkTextOption = (MarkTextOption)(value);
+                Dirty = true;
+                RaisePropertyChanged("ChordFinderSelectedMarkTextOptionIndex");
+            }
+        }
+
+        public ObservableCollection<string> ChordFinderMarkTextOptions
+        {
+            get
+            {
+                return GetMarkTextOptions();
+            }
+        }
+
+        public bool ChordFinderAddBottomMarks
+        {
+            get
+            {
+                return ChordFinderStyleBuffer.AddBottomMarks;
+            }
+            set
+            {
+                ChordFinderStyleBuffer.AddBottomMarks = value;
+                Dirty = true;
+                RaisePropertyChanged("ChordFinderAddBottomMarks");
+            }
+        }
+
+        public int ChordFinderSelectedBottomMarkTextOptionIndex
+        {
+            get
+            {
+                return (int)ChordFinderStyleBuffer.BottomMarkTextOption;
+            }
+            set
+            {
+                ChordFinderStyleBuffer.BottomMarkTextOption = (MarkTextOption)(value);
+                Dirty = true;
+                RaisePropertyChanged("ChordFinderSelectedBottomMarkTextOptionIndex");
+            }
+        }
+
+        public ObservableCollection<string> ChordFinderBottomMarkTextOptions
+        {
+            get
+            {
+                return GetMarkTextOptions();
+            }
+        }
+
+        #endregion
+
+        #region ScaleFinder Defaults
+
+        internal ScaleFinderOptions ScaleFinderOptionsBuffer { get; private set; }
+
+        public int ScaleFinderNumFrets
+        {
+            get
+            {
+                return ScaleFinderOptionsBuffer.NumFrets;
+            }
+            set
+            {
+                try
+                {
+                    ScaleFinderOptionsBuffer.NumFrets = value;
+                    Dirty = true;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("ScaleFinderNumFrets");
+                    RaisePropertyChanged("ScaleFinderMaxReach");
+                }
+            }
+        }
+
+        public int ScaleFinderMaxFret
+        {
+            get
+            {
+                return ScaleFinderOptionsBuffer.MaxFret;
+            }
+            set
+            {
+                try
+                {
+                    ScaleFinderOptionsBuffer.MaxFret = value;
+                    Dirty = true;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("ScaleFinderMaxFret");
+                }
+            }
+        }
+
+        public int ScaleFinderMaxReach
+        {
+            get
+            {
+                return ScaleFinderOptionsBuffer.MaxReach;
+            }
+            set
+            {
+                try
+                {
+                    ScaleFinderOptionsBuffer.MaxReach = value;
+                    Dirty = true;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("ScaleFinderNumFrets");
+                    RaisePropertyChanged("ScaleFinderMaxReach");
+                }
+            }
+        }
+
+        public bool ScaleFinderAllowOpenStrings
+        {
+            get
+            {
+                return ScaleFinderOptionsBuffer.AllowOpenStrings;
+            }
+            set
+            {
+                ScaleFinderOptionsBuffer.AllowOpenStrings = value;
+                Dirty = true;
+                RaisePropertyChanged("ScaleFinderAllowOpenStrings");
+            }
+        }
+
+        public bool ScaleFinderAllowMutedStrings
+        {
+            get
+            {
+                return ScaleFinderOptionsBuffer.AllowMutedStrings;
+            }
+            set
+            {
+                ScaleFinderOptionsBuffer.AllowMutedStrings = value;
+                Dirty = true;
+                RaisePropertyChanged("ScaleFinderAllowMutedStrings");
+            }
+        }
+
+        internal ScaleFinderStyle ScaleFinderStyleBuffer { get; private set; }
+
+        public bool ScaleFinderAddTitle
+        {
+            get
+            {
+                return ScaleFinderStyleBuffer.AddTitle;
+            }
+            set
+            {
+                ScaleFinderStyleBuffer.AddTitle = value;
+                Dirty = true;
+                RaisePropertyChanged("ScaleFinderAddTitle");
+            }
+        }
+
+        public bool ScaleFinderMirrorResults
+        {
+            get
+            {
+                return ScaleFinderStyleBuffer.MirrorResults;
+            }
+            set
+            {
+                ScaleFinderStyleBuffer.MirrorResults = value;
+                Dirty = true;
+                RaisePropertyChanged("ScaleFinderMirrorResults");
+            }
+        }
+
+        public bool ScaleFinderAddRootNotes
+        {
+            get
+            {
+                return ScaleFinderStyleBuffer.AddRootNotes;
+            }
+            set
+            {
+                ScaleFinderStyleBuffer.AddRootNotes = value;
+                Dirty = true;
+                RaisePropertyChanged("ScaleFinderAddRootNotes");
+            }
+        }
+
+        public int ScaleFinderSelectedMarkTextOptionIndex
+        {
+            get
+            {
+                return (int)ScaleFinderStyleBuffer.MarkTextOption;
+            }
+            set
+            {
+                ScaleFinderStyleBuffer.MarkTextOption = (MarkTextOption)(value);
+                Dirty = true;
+                RaisePropertyChanged("ScaleFinderSelectedMarkTextOptionIndex");
+            }
+        }
+
+        public ObservableCollection<string> ScaleFinderMarkTextOptions
+        {
+            get
+            {
+                return GetMarkTextOptions();
+            }
+        }
+
+        #endregion
 
         public RelayCommand ShowAdvancedSettings
         {
@@ -349,6 +770,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             SettingsBuffer = new ChordiousSettings(AppVM.UserConfig.ChordiousSettings, "Options");
             StyleBuffer = new DiagramStyle(AppVM.UserConfig.DiagramStyle, "Options");
+
+            ChordFinderOptionsBuffer = new ChordFinderOptions(AppVM.UserConfig, SettingsBuffer);
+            ChordFinderStyleBuffer = new ChordFinderStyle(AppVM.UserConfig, SettingsBuffer, StyleBuffer);
+
+            ScaleFinderOptionsBuffer = new ScaleFinderOptions(AppVM.UserConfig, SettingsBuffer);
+            ScaleFinderStyleBuffer = new ScaleFinderStyle(AppVM.UserConfig, SettingsBuffer, StyleBuffer);
         }
 
         public bool ProcessClose()
@@ -410,6 +837,29 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             Dirty = false;
             ItemsChanged = true;
+        }
+
+        private static ObservableCollection<string> GetBarreTypeOptions()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add("None");
+            collection.Add("Partial");
+            collection.Add("Full");
+
+            return collection;
+        }
+
+        private static ObservableCollection<string> GetMarkTextOptions()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add("None");
+            collection.Add("Show Both");
+            collection.Add("Prefer Flats");
+            collection.Add("Prefer Sharps");
+
+            return collection;
         }
 
         public virtual void RefreshProperties()

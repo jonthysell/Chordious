@@ -30,8 +30,8 @@ namespace com.jonthysell.Chordious.Core
 {
     public abstract class FinderStyle
     {
-        public DiagramStyle Style { get; private set; }
-        public ChordiousSettings Settings { get; private set; }
+        public DiagramStyle Style { get; protected set; }
+        public ChordiousSettings Settings { get; protected set; }
 
         public bool AddTitle
         {
@@ -81,7 +81,7 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        private ConfigFile _configFile;
+        protected ConfigFile _configFile;
 
         public string Prefix
         {
@@ -108,13 +108,13 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("configFile");
             }
 
+            if (StringUtils.IsNullOrWhiteSpace(prefix))
+            {
+                throw new ArgumentNullException("prefix");
+            }
+
             this._configFile = configFile;
             this.Prefix = prefix;
-
-            string level = Prefix.Substring(0, 1).ToUpper() + Prefix.Substring(1) + "FinderStyle";
-
-            this.Style = new DiagramStyle(this._configFile.DiagramStyle, level);
-            this.Settings = new ChordiousSettings(this._configFile.ChordiousSettings, level);
         }
     }
 

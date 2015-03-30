@@ -30,7 +30,7 @@ namespace com.jonthysell.Chordious.Core
 {
     public abstract class FinderOptions
     {
-        public ChordiousSettings Settings { get; private set; }
+        public ChordiousSettings Settings { get; protected set; }
 
         public Instrument Instrument
         {
@@ -181,11 +181,14 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("configFile");
             }
 
+            if (StringUtils.IsNullOrWhiteSpace(prefix))
+            {
+                throw new ArgumentNullException("prefix");
+            }
+
             this._configFile = configFile;
             this.Prefix = prefix;
 
-            string settingsLevel = Prefix.Substring(0, 1).ToUpper() + Prefix.Substring(1) + "FinderOptions";
-            this.Settings = new ChordiousSettings(this._configFile.ChordiousSettings, settingsLevel);
             this._cachedInstrument = null;
             this._cachedTuning = null;
         }

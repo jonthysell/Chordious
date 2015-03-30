@@ -51,8 +51,17 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public ScaleFinderOptions(ConfigFile configFile) : base(configFile, "scale")
+        public ScaleFinderOptions(ConfigFile configFile, ChordiousSettings chordiousSettings = null) : base(configFile, "scale")
         {
+            if (null != chordiousSettings)
+            {
+                this.Settings = chordiousSettings;
+            }
+            else
+            {
+                string settingsLevel = "ScaleFinderOptions";
+                this.Settings = new ChordiousSettings(this._configFile.ChordiousSettings, settingsLevel);
+            }
             this._cachedScale = null;
         }
 

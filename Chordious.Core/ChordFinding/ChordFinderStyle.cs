@@ -66,7 +66,28 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public ChordFinderStyle(ConfigFile configFile) : base(configFile, "chord") { }
+        public ChordFinderStyle(ConfigFile configFile, ChordiousSettings chordiousSettings = null, DiagramStyle diagramStyle = null) : base(configFile, "chord")
+        {
+            string level = "ChordFinderStyle";
+
+            if (null != chordiousSettings)
+            {
+                this.Settings = chordiousSettings;
+            }
+            else
+            {
+                this.Settings = new ChordiousSettings(this._configFile.ChordiousSettings, level);
+            }
+
+            if (null != diagramStyle)
+            {
+                this.Style = diagramStyle;
+            }
+            else
+            {
+                this.Style = new DiagramStyle(this._configFile.DiagramStyle, level);
+            }
+        }
     }
 
     public enum BarreTypeOption

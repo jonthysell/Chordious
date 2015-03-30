@@ -63,8 +63,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public ChordFinderOptions(ConfigFile configFile) : base(configFile, "chord")
+        public ChordFinderOptions(ConfigFile configFile, ChordiousSettings chordiousSettings = null) : base(configFile, "chord")
         {
+            if (null != chordiousSettings)
+            {
+                this.Settings = chordiousSettings;
+            }
+            else
+            {
+                string settingsLevel = "ChordFinderOptions";
+                this.Settings = new ChordiousSettings(this._configFile.ChordiousSettings, settingsLevel);
+            }
+            
             this._cachedChordQuality = null;
         }
 

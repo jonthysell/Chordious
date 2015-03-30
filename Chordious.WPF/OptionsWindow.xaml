@@ -46,26 +46,122 @@
                     <StackPanel>
                         <Button Content="Edit Instruments" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Margin="5,10,5,5" />
                         <Button Content="Edit Qualities" Command="{Binding ShowChordQualityManager, Mode=OneWay}" Margin="5" />
-                        <GroupBox Header="Default Settings" Margin="5">
-                            
+                        <GroupBox Header="Default Options" Margin="5">
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="# of Frets"/>
+                                <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding ChordFinderNumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Max Fret"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding ChordFinderMaxFret, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Max Reach"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding ChordFinderMaxReach, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Allow Open Strings"/>
+                                <CheckBox Grid.Row="3" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAllowOpenStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Allow Muted Strings"/>
+                                <CheckBox Grid.Row="4" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAllowMutedStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="5" Grid.Column="0" Margin="5" Content="Allow Rootless Chords"/>
+                                <CheckBox Grid.Row="5" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAllowRootlessChords}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </Grid>
                         </GroupBox>
                         <GroupBox Header="Default Style" Margin="5">
-
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Add Title"/>
+                                <CheckBox Grid.Row="0" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAddTitle}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Mirror Results"/>
+                                <CheckBox Grid.Row="1" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderMirrorResults}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Add Root Notes"/>
+                                <CheckBox Grid.Row="2" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAddRootNotes}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Barre Type"/>
+                                <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding ChordFinderBarreTypeOptions}" SelectedIndex="{Binding ChordFinderSelectedBarreTypeOptionIndex}" VerticalAlignment="Center"/>
+                                <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Mark Text"/>
+                                <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding ChordFinderMarkTextOptions}" SelectedIndex="{Binding ChordFinderSelectedMarkTextOptionIndex}" VerticalAlignment="Center"/>
+                                <Label Grid.Row="5" Grid.Column="0" Margin="5" Content="Add Bottom Marks"/>
+                                <CheckBox Grid.Row="5" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAddBottomMarks}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="6" Grid.Column="0" Margin="5" Content="Bottom Mark Text" IsEnabled="{Binding ChordFinderAddBottomMarks}"/>
+                                <ComboBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding ChordFinderBottomMarkTextOptions}" SelectedIndex="{Binding ChordFinderSelectedBottomMarkTextOptionIndex}" VerticalAlignment="Center" IsEnabled="{Binding ChordFinderAddBottomMarks}"/>
+                            </Grid>
                         </GroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Scale Finder">
-                <StackPanel>
-                    <Button Content="Edit Instruments" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Margin="5,10,5,5" />
-                    <Button Content="Edit Scales"  Command="{Binding ShowScaleManager, Mode=OneWay}" Margin="5" />
-                    <GroupBox Header="Default Settings" Margin="5">
-
-                    </GroupBox>
-                    <GroupBox Header="Default Style" Margin="5">
-
-                    </GroupBox>
-                </StackPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <Button Content="Edit Instruments" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Margin="5,10,5,5" />
+                        <Button Content="Edit Scales"  Command="{Binding ShowScaleManager, Mode=OneWay}" Margin="5" />
+                        <GroupBox Header="Default Options" Margin="5">
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="# of Frets"/>
+                                <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding ScaleFinderNumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Max Fret"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding ScaleFinderMaxFret, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Max Reach"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding ScaleFinderMaxReach, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Allow Open Strings"/>
+                                <CheckBox Grid.Row="3" Grid.Column="1" Margin="5" IsChecked="{Binding ScaleFinderAllowOpenStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Allow Muted Strings"/>
+                                <CheckBox Grid.Row="4" Grid.Column="1" Margin="5" IsChecked="{Binding ScaleFinderAllowMutedStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Header="Default Style" Margin="5">
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Add Title"/>
+                                <CheckBox Grid.Row="0" Grid.Column="1" Margin="5" IsChecked="{Binding ScaleFinderAddTitle}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Mirror Results"/>
+                                <CheckBox Grid.Row="1" Grid.Column="1" Margin="5" IsChecked="{Binding ScaleFinderMirrorResults}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Add Root Notes"/>
+                                <CheckBox Grid.Row="2" Grid.Column="1" Margin="5" IsChecked="{Binding ScaleFinderAddRootNotes}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Mark Text"/>
+                                <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding ScaleFinderMarkTextOptions}" SelectedIndex="{Binding ScaleFinderSelectedMarkTextOptionIndex}" VerticalAlignment="Center"/>
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Updates">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">

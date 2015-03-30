@@ -30,6 +30,27 @@ namespace com.jonthysell.Chordious.Core
 {
     public class ScaleFinderStyle : FinderStyle
     {
-        public ScaleFinderStyle(ConfigFile configFile) : base(configFile, "scale") { }
+        public ScaleFinderStyle(ConfigFile configFile, ChordiousSettings chordiousSettings = null, DiagramStyle diagramStyle = null) : base(configFile, "scale")
+        {
+            string level = "ScaleFinderStyle";
+
+            if (null != chordiousSettings)
+            {
+                this.Settings = chordiousSettings;
+            }
+            else
+            {
+                this.Settings = new ChordiousSettings(this._configFile.ChordiousSettings, level);
+            }
+
+            if (null != diagramStyle)
+            {
+                this.Style = diagramStyle;
+            }
+            else
+            {
+                this.Style = new DiagramStyle(this._configFile.DiagramStyle, level);
+            }
+        }
     }
 }

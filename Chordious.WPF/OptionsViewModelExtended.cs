@@ -50,6 +50,8 @@ namespace com.jonthysell.Chordious.WPF
         }
         private bool _isIdle;
 
+        #region Rendering
+
         public int SelectedRendererIndex
         {
             get
@@ -131,6 +133,10 @@ namespace com.jonthysell.Chordious.WPF
                 RaisePropertyChanged("RenderBackground");
             }
         }
+
+        #endregion
+
+        #region Updates
 
         public int SelectedReleaseChannelIndex
         {
@@ -218,6 +224,8 @@ namespace com.jonthysell.Chordious.WPF
                 });
             }
         }
+
+        #endregion
 
         public OptionsViewModelExtended() : base()
         {

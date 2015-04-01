@@ -33,6 +33,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
+using com.jonthysell.Chordious.Core.Legacy;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
@@ -165,6 +166,35 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NodeIsSelected;
+                });
+            }
+        }
+
+        public RelayCommand LegacyImport
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<PromptForLegacyImportMessage>(new PromptForLegacyImportMessage((fileName, inputStream) =>
+                        {
+                            string proposedName = String.IsNullOrWhiteSpace(fileName) ? Library.GetNewCollectionName() : fileName.Trim();
+                            Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Name for the new collection:", proposedName, (name) =>
+                            {
+                                DiagramCollection importedCollection = ChordDocument.Load(Library.Style, inputStream);
+                                DiagramCollection newCollection = Library.Add(name);
+
+                                newCollection.Add(importedCollection);
+                                RaisePropertyChanged("Nodes");
+                            }));
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
                 });
             }
         }

@@ -102,11 +102,11 @@ namespace com.jonthysell.Chordious.Core.Legacy
             // Setup base
             diagram.Orientation = DiagramOrientation.UpDown;
             diagram.LabelLayoutModel = DiagramLabelLayoutModel.AddPaddingVertical;
-            diagram.DiagramBorderThickness = 0;
             diagram.Style.Set("diagram.margin", "0");
-            diagram.Style.Set("diagram.color", "#ffffff");
-            diagram.Style.Set("diagram.opacity", "0");
-            diagram.Style.Set("diagram.bordercolor", "#000000");
+            diagram.DiagramColor = "#ffffff";
+            diagram.DiagramOpacity = 0;
+            diagram.DiagramBorderColor = "#000000";
+            diagram.DiagramBorderThickness = 0;
 
             // Process title
             diagram.Title = chord.Title;
@@ -116,8 +116,8 @@ namespace com.jonthysell.Chordious.Core.Legacy
             diagram.TitleTextSizeModRatio = 0.75;
             diagram.TitleGridPadding = diagram.TitleTextSize / 2.0;
             diagram.Style.Set("title.fontfamily", chordOptions.FontFamily);
-            diagram.Style.Set("title.textcolor", "#000000");
-            diagram.Style.Set("title.textopacity", "1");
+            diagram.TitleColor = "#000000";
+            diagram.TitleOpacity = 1;
             diagram.Style.Set("title.textalignment", DiagramHorizontalAlignment.Center);
 
             // Process grid
@@ -138,7 +138,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
             diagram.GridFretSpacing = rectHeight / chord.NumFrets;
 
             diagram.Style.Set("grid.linecolor", "#ffffff");
-            diagram.Style.Set("grid.opacity", "1");
+            diagram.Style.Set("grid.opacity", "0");
             diagram.Style.Set("grid.linecolor", "#000000");
 
             DiagramTextStyle titleTextStyle = DiagramTextStyle.Regular;

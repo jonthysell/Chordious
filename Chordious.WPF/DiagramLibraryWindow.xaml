@@ -48,10 +48,11 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
-        <WrapPanel Grid.Row="2" Grid.Column="0" FlowDirection="RightToLeft">
-            <Button Content="Delete" Command="{Binding DeleteNode}" Margin="5" Width="75" />
-            <Button Content="Rename" Command="{Binding RenameNode}" Margin="5" Width="75" />
+        <WrapPanel Grid.Row="2" Grid.Column="0" FlowDirection="LeftToRight">
             <Button Content="New" Command="{Binding CreateNode}" Margin="5" Width="75" />
+            <Button Content="Rename" Command="{Binding RenameNode}" Margin="5" Width="75" />
+            <Button Content="Delete" Command="{Binding DeleteNode}" Margin="5" Width="75" />
+            <Button Content="Import ChordLines" Command="{Binding LegacyImport}" Margin="5" Width="125" />
         </WrapPanel>
         <WrapPanel Grid.Row="2" Grid.Column="1" FlowDirection="RightToLeft">
             <Button Content="Delete" Command="{Binding SelectedNode.DeleteSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Width="75" />

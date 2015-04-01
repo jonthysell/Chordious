@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.IO;
 
 using GalaSoft.MvvmLight.Messaging;
 
@@ -306,6 +307,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             if (null != Callback)
             {
                 Callback(diagramExporter);
+            }
+        }
+    }
+
+    public class PromptForLegacyImportMessage : MessageBase
+    {
+        private Action<string, Stream> Callback;
+
+        public PromptForLegacyImportMessage(Action<string, Stream> callback) : base()
+        {
+            if (null == callback)
+            {
+                throw new ArgumentNullException("callback");
+            }
+            Callback = callback;
+        }
+
+        public void Process(string fileName, Stream inputStream)
+        {
+            if (null != Callback)
+            {
+                Callback(fileName, inputStream);
             }
         }
     }

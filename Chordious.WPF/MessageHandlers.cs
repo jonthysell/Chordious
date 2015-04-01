@@ -71,6 +71,8 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Register<ShowAdvancedDataMessage>(recipient, (message) => MessageHandlers.ShowAdvancedData(message));
 
             Messenger.Default.Register<PromptForExportMessage>(recipient, (message) => MessageHandlers.PromptForExport(message));
+
+            Messenger.Default.Register<PromptForLegacyImportMessage>(recipient, (message) => MessageHandlers.PromptForLegacyImport(message));
         }
 
         public static void UnregisterMessageHandlers(object recipient)
@@ -100,7 +102,10 @@ namespace com.jonthysell.Chordious.WPF
             
             Messenger.Default.Unregister<ShowOptionsMessage>(recipient);
             Messenger.Default.Unregister<ShowAdvancedDataMessage>(recipient);
+
             Messenger.Default.Unregister<PromptForExportMessage>(recipient);
+
+            Messenger.Default.Unregister<PromptForLegacyImportMessage>(recipient);
         }
 
         private static void ShowNotification(ChordiousMessage message)
@@ -265,8 +270,8 @@ namespace com.jonthysell.Chordious.WPF
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.AddExtension = true;
             dialog.OverwritePrompt = true;
-            dialog.DefaultExt = ".svg";
-            dialog.Filter = "SVG (.svg)|*.svg|PNG (.png)|*.png|GIF (.gif)|*.gif|JPG (.jpg)|*.jpg";
+            dialog.DefaultExt = "*.svg";
+            dialog.Filter = "SVG|*.svg|PNG|*.png|GIF|*.gif|JPG|*.jpg";
 
             bool? result = dialog.ShowDialog();
 
@@ -276,6 +281,22 @@ namespace com.jonthysell.Chordious.WPF
                 ExportFormat exportFormat = (ExportFormat)(dialog.FilterIndex - 1);
 
                 message.Process(new SvgExporter(filename, exportFormat, message.Count == 1));
+            }
+        }
+
+        public static void PromptForLegacyImport(PromptForLegacyImportMessage message)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.AddExtension = true;
+            dialog.DefaultExt = "*.txt";
+            dialog.Filter = "All Files|*.*|ChordLines|*.txt";
+
+            bool? result = dialog.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+                string filename = dialog.FileName;
+                message.Process(Path.GetFileName(filename), new FileStream(filename, FileMode.Open, FileAccess.Read));
             }
         }
     }

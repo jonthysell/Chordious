@@ -205,6 +205,8 @@ namespace com.jonthysell.Chordious.Core
                 {
                     return this._cachedInstrument;
                 }
+                this._cachedInstrument = null;
+                this._cachedTuning = null;
             }
 
             InstrumentSet instruments = this._configFile.Instruments;
@@ -232,6 +234,7 @@ namespace com.jonthysell.Chordious.Core
                 {
                     return this._cachedTuning;
                 }
+                this._cachedTuning = null;
             }
 
             this._cachedTuning = Instrument.Tunings.Get(name);

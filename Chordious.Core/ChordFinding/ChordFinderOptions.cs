@@ -90,6 +90,7 @@ namespace com.jonthysell.Chordious.Core
                 {
                     return this._cachedChordQuality;
                 }
+                this._cachedChordQuality = null;
             }
 
             ChordQualitySet qualities = this._configFile.ChordQualities;

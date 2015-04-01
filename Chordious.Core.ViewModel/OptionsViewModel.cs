@@ -70,6 +70,96 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         internal ChordFinderOptions ChordFinderOptionsBuffer { get; private set; }
 
+        public ObservableInstrument ChordFinderSelectedInstrument
+        {
+            get
+            {
+                return _chordFinderInstrument;
+            }
+            set
+            {
+                try
+                {
+                    _chordFinderInstrument = value;
+                    ChordFinderSelectedTuning = null;
+                    if (null != value)
+                    {
+                        ChordFinderTunings = ChordFinderSelectedInstrument.GetTunings();
+                        if (null != ChordFinderTunings && ChordFinderTunings.Count > 0)
+                        {
+                            ChordFinderSelectedTuning = ChordFinderTunings[0];
+                            ChordFinderOptionsBuffer.SetTarget(ChordFinderSelectedInstrument.Instrument, ChordFinderSelectedTuning.Tuning);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("ChordFinderSelectedInstrument");
+                }
+            }
+        }
+        private ObservableInstrument _chordFinderInstrument;
+
+        public ObservableCollection<ObservableInstrument> ChordFinderInstruments
+        {
+            get
+            {
+                return _chordFinderInstruments;
+            }
+            private set
+            {
+                _chordFinderInstruments = value;
+                RaisePropertyChanged("ChordFinderInstruments");
+            }
+        }
+        private ObservableCollection<ObservableInstrument> _chordFinderInstruments;
+
+        public ObservableTuning ChordFinderSelectedTuning
+        {
+            get
+            {
+                return _chordFinderTuning;
+            }
+            set
+            {
+                try
+                {
+                    _chordFinderTuning = value;
+                    if (null != value)
+                    {
+                        ChordFinderOptionsBuffer.SetTarget(ChordFinderSelectedInstrument.Instrument, ChordFinderSelectedTuning.Tuning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("ChordFinderSelectedTuning");
+                }
+            }
+        }
+        private ObservableTuning _chordFinderTuning;
+
+        public ObservableCollection<ObservableTuning> ChordFinderTunings
+        {
+            get
+            {
+                return _chordFinderTunings;
+            }
+            private set
+            {
+                _chordFinderTunings = value;
+                RaisePropertyChanged("ChordFinderTunings");
+            }
+        }
+        private ObservableCollection<ObservableTuning> _chordFinderTunings;
+
         public int ChordFinderNumFrets
         {
             get
@@ -316,6 +406,96 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         internal ScaleFinderOptions ScaleFinderOptionsBuffer { get; private set; }
 
+        public ObservableInstrument ScaleFinderSelectedInstrument
+        {
+            get
+            {
+                return _scaleFinderInstrument;
+            }
+            set
+            {
+                try
+                {
+                    _scaleFinderInstrument = value;
+                    ScaleFinderSelectedTuning = null;
+                    if (null != value)
+                    {
+                        ScaleFinderTunings = ScaleFinderSelectedInstrument.GetTunings();
+                        if (null != ScaleFinderTunings && ScaleFinderTunings.Count > 0)
+                        {
+                            ScaleFinderSelectedTuning = ScaleFinderTunings[0];
+                            ScaleFinderOptionsBuffer.SetTarget(ScaleFinderSelectedInstrument.Instrument, ScaleFinderSelectedTuning.Tuning);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("ScaleFinderSelectedInstrument");
+                }
+            }
+        }
+        private ObservableInstrument _scaleFinderInstrument;
+
+        public ObservableCollection<ObservableInstrument> ScaleFinderInstruments
+        {
+            get
+            {
+                return _scaleFinderInstruments;
+            }
+            private set
+            {
+                _scaleFinderInstruments = value;
+                RaisePropertyChanged("ScaleFinderInstruments");
+            }
+        }
+        private ObservableCollection<ObservableInstrument> _scaleFinderInstruments;
+
+        public ObservableTuning ScaleFinderSelectedTuning
+        {
+            get
+            {
+                return _scaleFinderTuning;
+            }
+            set
+            {
+                try
+                {
+                    _scaleFinderTuning = value;
+                    if (null != value)
+                    {
+                        ScaleFinderOptionsBuffer.SetTarget(ScaleFinderSelectedInstrument.Instrument, ScaleFinderSelectedTuning.Tuning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("ScaleFinderSelectedTuning");
+                }
+            }
+        }
+        private ObservableTuning _scaleFinderTuning;
+
+        public ObservableCollection<ObservableTuning> ScaleFinderTunings
+        {
+            get
+            {
+                return _scaleFinderTunings;
+            }
+            private set
+            {
+                _scaleFinderTunings = value;
+                RaisePropertyChanged("ScaleFinderTunings");
+            }
+        }
+        private ObservableCollection<ObservableTuning> _scaleFinderTunings;
+
         public int ScaleFinderNumFrets
         {
             get
@@ -500,10 +680,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             {
                                 Messenger.Default.Send<ShowAdvancedDataMessage>(new ShowAdvancedDataMessage(SettingsBuffer, "", (itemsChanged) =>
                                 {
-                                    if (itemsChanged)
+                                    try
                                     {
-                                        Dirty = true;
-                                        RefreshProperties();
+                                        if (itemsChanged)
+                                        {
+                                            Dirty = true;
+                                            RefreshProperties();
+                                            AdvancedSettingsClean = true;
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        ExceptionUtils.HandleException(new AdvancedDataValidationError(ex));
+                                        AdvancedSettingsClean = false;
                                     }
                                 }));
                             }
@@ -556,10 +745,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             {
                                 Messenger.Default.Send<ShowAdvancedDataMessage>(new ShowAdvancedDataMessage(StyleBuffer, "", (itemsChanged) =>
                                 {
-                                    if (itemsChanged)
+                                    try
                                     {
-                                        Dirty = true;
-                                        RefreshProperties();
+                                        if (itemsChanged)
+                                        {
+                                            Dirty = true;
+                                            RefreshProperties();
+                                            AdvancedStyleClean = true;
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        ExceptionUtils.HandleException(new AdvancedDataValidationError(ex));
+                                        AdvancedStyleClean = false;
                                     }
                                 }));
                             }
@@ -606,7 +804,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowInstrumentManagerMessage>(new ShowInstrumentManagerMessage());
+                        Messenger.Default.Send<ShowInstrumentManagerMessage>(new ShowInstrumentManagerMessage(() =>
+                            {
+                                RefreshChordFinderInstruments(ChordFinderOptionsBuffer.Instrument, ChordFinderOptionsBuffer.Tuning);
+                                RefreshScaleFinderInstruments(ScaleFinderOptionsBuffer.Instrument, ScaleFinderOptionsBuffer.Tuning);
+                            }));
                     }
                     catch (Exception ex)
                     {
@@ -668,7 +870,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return Dirty;
+                    return Dirty && AdvancedSettingsClean && AdvancedStyleClean;
                 });
             }
         }
@@ -691,6 +893,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
+                }, () =>
+                {
+                    return AdvancedSettingsClean && AdvancedStyleClean;
                 });
             }
         }
@@ -763,6 +968,38 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _itemsChanged = false;
 
+        public bool AdvancedSettingsClean
+        {
+            get
+            {
+                return _advancedSettingsClean;
+            }
+            private set
+            {
+                _advancedSettingsClean = value;
+                RaisePropertyChanged("AdvancedSettingsClean");
+                RaisePropertyChanged("Accept");
+                RaisePropertyChanged("Apply");
+            }
+        }
+        private bool _advancedSettingsClean;
+
+        public bool AdvancedStyleClean
+        {
+            get
+            {
+                return _advancedStyleClean;
+            }
+            private set
+            {
+                _advancedStyleClean = value;
+                RaisePropertyChanged("AdvancedStyleClean");
+                RaisePropertyChanged("Accept");
+                RaisePropertyChanged("Apply");
+            }
+        }
+        private bool _advancedStyleClean;
+
         internal ChordiousSettings SettingsBuffer { get; private set; }
         internal DiagramStyle StyleBuffer { get; private set; }
 
@@ -776,6 +1013,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             ScaleFinderOptionsBuffer = new ScaleFinderOptions(AppVM.UserConfig, SettingsBuffer);
             ScaleFinderStyleBuffer = new ScaleFinderStyle(AppVM.UserConfig, SettingsBuffer, StyleBuffer);
+
+            RefreshChordFinderInstruments(ChordFinderOptionsBuffer.Instrument, ChordFinderOptionsBuffer.Tuning, true);
+            RefreshScaleFinderInstruments(ScaleFinderOptionsBuffer.Instrument, ScaleFinderOptionsBuffer.Tuning, true);
+
+            AdvancedSettingsClean = true;
+            AdvancedStyleClean = true;
         }
 
         public bool ProcessClose()
@@ -828,6 +1071,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             Dirty = false;
             ItemsChanged = true;
+            AdvancedSettingsClean = true;
         }
 
         private void ClearUserStyles()
@@ -837,6 +1081,85 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             Dirty = false;
             ItemsChanged = true;
+            AdvancedStyleClean = true;
+        }
+
+        private void RefreshChordFinderInstruments(Instrument selectedInstrument, Tuning selectedTuning, bool refreshPrivates = false)
+        {
+            ChordFinderInstruments = AppVM.GetInstruments();
+
+            foreach (ObservableInstrument oi in ChordFinderInstruments)
+            {
+                if (oi.Instrument == selectedInstrument)
+                {
+                    if (refreshPrivates)
+                    {
+                        _chordFinderInstrument = oi;
+                    }
+                    else
+                    {
+                        ChordFinderSelectedInstrument = oi;
+                    }
+                    break;
+                }
+            }
+
+            ChordFinderTunings = ChordFinderSelectedInstrument.GetTunings();
+
+            foreach (ObservableTuning ot in ChordFinderTunings)
+            {
+                if (ot.Tuning == selectedTuning)
+                {
+                    if (refreshPrivates)
+                    {
+                        _chordFinderTuning = ot;
+                    }
+                    else
+                    {
+                        ChordFinderSelectedTuning = ot;
+                    }
+                    break;
+                }
+            }
+        }
+
+        protected void RefreshScaleFinderInstruments(Instrument selectedInstrument, Tuning selectedTuning, bool refreshPrivates = false)
+        {
+            ScaleFinderInstruments = AppVM.GetInstruments();
+
+            foreach (ObservableInstrument oi in ScaleFinderInstruments)
+            {
+                if (oi.Instrument == selectedInstrument)
+                {
+                    if (refreshPrivates)
+                    {
+                        _scaleFinderInstrument = oi;
+                    }
+                    else
+                    {
+                        ScaleFinderSelectedInstrument = oi;
+                    }
+                    break;
+                }
+            }
+
+            ScaleFinderTunings = ScaleFinderSelectedInstrument.GetTunings();
+
+            foreach (ObservableTuning ot in ScaleFinderTunings)
+            {
+                if (ot.Tuning == selectedTuning)
+                {
+                    if (refreshPrivates)
+                    {
+                        _scaleFinderTuning = ot;
+                    }
+                    else
+                    {
+                        ScaleFinderSelectedTuning = ot;
+                    }
+                    break;
+                }
+            }
         }
 
         private static ObservableCollection<string> GetBarreTypeOptions()
@@ -865,6 +1188,32 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public virtual void RefreshProperties()
         {
             // refresh all properties
+            RaisePropertyChanged("ChordFinderNumFrets");
+            RaisePropertyChanged("ChordFinderMaxFret");
+            RaisePropertyChanged("ChordFinderMaxReach");
+            RaisePropertyChanged("ChordFinderAllowOpenStrings");
+            RaisePropertyChanged("ChordFinderAllowMutedStrings");
+            RaisePropertyChanged("ChordFinderAllowRootlessChords");
+            RaisePropertyChanged("ChordFinderAddTitle");
+            RaisePropertyChanged("ChordFinderMirrorResults");
+            RaisePropertyChanged("ChordFinderSelectedBarreTypeOptionIndex");
+            RaisePropertyChanged("ChordFinderAddRootNotes");
+            RaisePropertyChanged("ChordFinderSelectedMarkTextOptionIndex");
+            RaisePropertyChanged("ChordFinderAddBottomMarks");
+            RaisePropertyChanged("ChordFinderSelectedBottomMarkTextOptionIndex");
+            RaisePropertyChanged("ScaleFinderNumFrets");
+            RaisePropertyChanged("ScaleFinderMaxFret");
+            RaisePropertyChanged("ScaleFinderMaxReach");
+            RaisePropertyChanged("ScaleFinderAllowOpenStrings");
+            RaisePropertyChanged("ScaleFinderAllowMutedStrings");
+            RaisePropertyChanged("ScaleFinderAddTitle");
+            RaisePropertyChanged("ScaleFinderMirrorResults");
+            RaisePropertyChanged("ScaleFinderAddRootNotes");
+            RaisePropertyChanged("ScaleFinderSelectedMarkTextOptionIndex");
+
+            // Refresh instruments and tunings
+            RefreshChordFinderInstruments(ChordFinderOptionsBuffer.Instrument, ChordFinderOptionsBuffer.Tuning);
+            RefreshScaleFinderInstruments(ScaleFinderOptionsBuffer.Instrument, ScaleFinderOptionsBuffer.Tuning);
         }
     }
 }

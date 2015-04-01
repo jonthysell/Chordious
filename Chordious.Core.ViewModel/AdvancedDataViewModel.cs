@@ -323,4 +323,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             AdvancedDataVM = advancedDataVM;
         }
     }
+
+    public class AdvancedDataValidationError : ChordiousException
+    {
+        public Exception InnerException { get; private set; }
+
+        public AdvancedDataValidationError(Exception exception) : base()
+        {
+            InnerException = exception;
+        }
+    }
 }

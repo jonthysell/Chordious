@@ -49,8 +49,8 @@
                         <GroupBox Header="Default Options" Margin="5">
                             <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="80" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -59,26 +59,44 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="# of Frets"/>
-                                <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding ChordFinderNumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Max Fret"/>
-                                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding ChordFinderMaxFret, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Max Reach"/>
-                                <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding ChordFinderMaxReach, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Allow Open Strings"/>
-                                <CheckBox Grid.Row="3" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAllowOpenStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Allow Muted Strings"/>
-                                <CheckBox Grid.Row="4" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAllowMutedStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                <Label Grid.Row="5" Grid.Column="0" Margin="5" Content="Allow Rootless Chords"/>
-                                <CheckBox Grid.Row="5" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAllowRootlessChords}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Instrument" />
+                                <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding ChordFinderInstruments}" SelectedItem="{Binding ChordFinderSelectedInstrument}" VerticalAlignment="Center" Margin="5">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Name}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Tuning" />
+                                <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ChordFinderTunings}" SelectedItem="{Binding ChordFinderSelectedTuning}" VerticalAlignment="Center" Margin="5">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding LongName}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="# of Frets"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding ChordFinderNumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Max Fret"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding ChordFinderMaxFret, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Max Reach"/>
+                                <TextBox Grid.Row="4" Grid.Column="1" Margin="5" Text="{Binding ChordFinderMaxReach, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                <Label Grid.Row="5" Grid.Column="0" Margin="5" Content="Allow Open Strings"/>
+                                <CheckBox Grid.Row="5" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAllowOpenStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="6" Grid.Column="0" Margin="5" Content="Allow Muted Strings"/>
+                                <CheckBox Grid.Row="6" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAllowMutedStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="7" Grid.Column="0" Margin="5" Content="Allow Rootless Chords"/>
+                                <CheckBox Grid.Row="7" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAllowRootlessChords}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                             </Grid>
                         </GroupBox>
                         <GroupBox Header="Default Style" Margin="5">
                             <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="80"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -116,8 +134,8 @@
                         <GroupBox Header="Default Options" Margin="5">
                             <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="80" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -125,24 +143,42 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="# of Frets"/>
-                                <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding ScaleFinderNumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Max Fret"/>
-                                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding ScaleFinderMaxFret, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Max Reach"/>
-                                <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding ScaleFinderMaxReach, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Allow Open Strings"/>
-                                <CheckBox Grid.Row="3" Grid.Column="1" Margin="5" IsChecked="{Binding ScaleFinderAllowOpenStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Allow Muted Strings"/>
-                                <CheckBox Grid.Row="4" Grid.Column="1" Margin="5" IsChecked="{Binding ScaleFinderAllowMutedStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Instrument" />
+                                <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding ScaleFinderInstruments}" SelectedItem="{Binding ScaleFinderSelectedInstrument}" VerticalAlignment="Center" Margin="5">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Name}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Tuning" />
+                                <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ScaleFinderTunings}" SelectedItem="{Binding ScaleFinderSelectedTuning}" VerticalAlignment="Center" Margin="5">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding LongName}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="# of Frets"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding ScaleFinderNumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Max Fret"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding ScaleFinderMaxFret, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Max Reach"/>
+                                <TextBox Grid.Row="4" Grid.Column="1" Margin="5" Text="{Binding ScaleFinderMaxReach, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                <Label Grid.Row="5" Grid.Column="0" Margin="5" Content="Allow Open Strings"/>
+                                <CheckBox Grid.Row="5" Grid.Column="1" Margin="5" IsChecked="{Binding ScaleFinderAllowOpenStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <Label Grid.Row="6" Grid.Column="0" Margin="5" Content="Allow Muted Strings"/>
+                                <CheckBox Grid.Row="6" Grid.Column="1" Margin="5" IsChecked="{Binding ScaleFinderAllowMutedStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                             </Grid>
                         </GroupBox>
                         <GroupBox Header="Default Style" Margin="5">
                             <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="80"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>

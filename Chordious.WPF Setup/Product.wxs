@@ -126,6 +126,33 @@
       <Component>
         <File Source="$(var.Chordious.WPF.TargetDir)\Resources\chordious.ico" />
       </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\chordious128.png" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\chordfinder48.png" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\scalefinder48.png" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\library48.png" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\instruments48.png" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\options48.png" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\help48.png" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\website16.png" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\license16.png" />
+      </Component>
     </ComponentGroup>
     <ComponentGroup Id="ProductShortcuts" Directory="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut">

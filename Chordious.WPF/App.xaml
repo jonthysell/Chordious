@@ -8,6 +8,15 @@
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
     <Application.Resources>
         <BitmapImage x:Key="ChordiousIcon" >pack://siteoforigin:,,,/Resources/chordious.ico</BitmapImage>
+        <BitmapImage x:Key="ChordiousIcon128" >pack://siteoforigin:,,,/Resources/chordious128.png</BitmapImage>
+        <BitmapImage x:Key="ChordFinderIcon48" >pack://siteoforigin:,,,/Resources/chordfinder48.png</BitmapImage>
+        <BitmapImage x:Key="ScaleFinderIcon48" >pack://siteoforigin:,,,/Resources/scalefinder48.png</BitmapImage>
+        <BitmapImage x:Key="LibraryIcon48" >pack://siteoforigin:,,,/Resources/library48.png</BitmapImage>
+        <BitmapImage x:Key="InstrumentsIcon48" >pack://siteoforigin:,,,/Resources/instruments48.png</BitmapImage>
+        <BitmapImage x:Key="OptionsIcon48" >pack://siteoforigin:,,,/Resources/options48.png</BitmapImage>
+        <BitmapImage x:Key="HelpIcon48" >pack://siteoforigin:,,,/Resources/help48.png</BitmapImage>
+        <BitmapImage x:Key="WebsiteIcon16" >pack://siteoforigin:,,,/Resources/website16.png</BitmapImage>
+        <BitmapImage x:Key="LicenseIcon16" >pack://siteoforigin:,,,/Resources/license16.png</BitmapImage>
         <local:IdleBoolToWaitCursorConverter x:Key="IdleBoolToWaitCursorConverter" />
     </Application.Resources>
 </Application>

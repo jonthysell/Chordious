@@ -264,6 +264,208 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public double GridMargin
+        {
+            get
+            {
+                return Diagram.GridMargin;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridMargin = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridMargin");
+                Refresh();
+            }
+        }
+
+        public bool GridMarginLeftOverride
+        {
+            get
+            {
+                return Diagram.GridMarginLeftOverride;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridMarginLeftOverride = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridMarginLeftOverride");
+                RaisePropertyChanged("GridMarginLeft");
+                Refresh();
+            }
+        }
+
+        public double GridMarginLeft
+        {
+            get
+            {
+                return Diagram.GridMarginLeft;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridMarginLeft = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridMarginLeft");
+                Refresh();
+            }
+        }
+
+        public bool GridMarginRightOverride
+        {
+            get
+            {
+                return Diagram.GridMarginRightOverride;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridMarginRightOverride = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridMarginRightOverride");
+                RaisePropertyChanged("GridMarginRight");
+                Refresh();
+            }
+        }
+
+        public double GridMarginRight
+        {
+            get
+            {
+                return Diagram.GridMarginRight;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridMarginRight = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridMarginRight");
+                Refresh();
+            }
+        }
+
+        public bool GridMarginTopOverride
+        {
+            get
+            {
+                return Diagram.GridMarginTopOverride;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridMarginTopOverride = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridMarginTopOverride");
+                RaisePropertyChanged("GridMarginTop");
+                Refresh();
+            }
+        }
+
+        public double GridMarginTop
+        {
+            get
+            {
+                return Diagram.GridMarginTop;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridMarginTop = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridMarginTop");
+                Refresh();
+            }
+        }
+
+        public bool GridMarginBottomOverride
+        {
+            get
+            {
+                return Diagram.GridMarginBottomOverride;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridMarginBottomOverride = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridMarginBottomOverride");
+                RaisePropertyChanged("GridMarginBottom");
+                Refresh();
+            }
+        }
+
+        public double GridMarginBottom
+        {
+            get
+            {
+                return Diagram.GridMarginBottom;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridMarginBottom = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridMarginBottom");
+                Refresh();
+            }
+        }
+
         public double GridFretSpacing
         {
             get
@@ -304,6 +506,72 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
 
                 RaisePropertyChanged("GridStringSpacing");
+                Refresh();
+            }
+        }
+
+        public string GridColor
+        {
+            get
+            {
+                return Diagram.GridColor;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridColor = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridColor");
+                Refresh();
+            }
+        }
+
+        public double GridOpacity
+        {
+            get
+            {
+                return Diagram.GridOpacity;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridOpacity = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridOpacity");
+                Refresh();
+            }
+        }
+
+        public string GridLineColor
+        {
+            get
+            {
+                return Diagram.GridLineColor;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.GridLineColor = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("GridLineColor");
                 Refresh();
             }
         }

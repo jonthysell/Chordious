@@ -650,6 +650,27 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool HasKey(string key, bool recursive = true)
+        {
+            if (String.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            key = CleanKey(key);
+
+            if (_localDictionary.ContainsKey(key))
+            {
+                return true;
+            }
+            else if (null != Parent && recursive)
+            {
+                return Parent.HasKey(key, recursive);
+            }
+
+            return false;
+        }
+
         public IEnumerable<string> LocalKeys(string filter = "")
         {
             bool hasFilter = false;

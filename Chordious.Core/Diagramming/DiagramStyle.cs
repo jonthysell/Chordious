@@ -133,6 +133,16 @@ namespace com.jonthysell.Chordious.Core
             Set("grid.margin", value);
         }
 
+        public bool GridMarginLeftOverrideGet()
+        {
+            return HasKey("grid.marginleft");
+        }
+
+        public void GridMarginLeftOverrideClear()
+        {
+            Clear("grid.marginleft");
+        }
+
         public double GridMarginLeftGet()
         {
             double margin;
@@ -151,6 +161,16 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentOutOfRangeException();
             }
             Set("grid.marginleft", value);
+        }
+
+        public bool GridMarginRightOverrideGet()
+        {
+            return HasKey("grid.marginright");
+        }
+
+        public void GridMarginRightOverrideClear()
+        {
+            Clear("grid.marginright");
         }
 
         public double GridMarginRightGet()
@@ -173,6 +193,16 @@ namespace com.jonthysell.Chordious.Core
             Set("grid.marginright", value);
         }
 
+        public bool GridMarginTopOverrideGet()
+        {
+            return HasKey("grid.margintop");
+        }
+
+        public void GridMarginTopOverrideClear()
+        {
+            Clear("grid.margintop");
+        }
+
         public double GridMarginTopGet()
         {
             double margin;
@@ -191,6 +221,16 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentOutOfRangeException();
             }
             Set("grid.margintop", value);
+        }
+
+        public bool GridMarginBottomOverrideGet()
+        {
+            return HasKey("grid.marginbottom");
+        }
+
+        public void GridMarginBottomOverrideClear()
+        {
+            Clear("grid.marginbottom");
         }
 
         public double GridMarginBottomGet()
@@ -239,6 +279,41 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentOutOfRangeException();
             }
             Set("grid.stringspacing", value);
+        }
+
+        public string GridColorGet()
+        {
+            return GetColor("grid.color");
+        }
+
+        public void GridColorSet(string value)
+        {
+            SetColor("grid.color", value);
+        }
+
+        public double GridOpacityGet()
+        {
+            return GetDouble("grid.opacity");
+        }
+
+        public void GridOpacitySet(double value)
+        {
+            if (value < 0 || value > 1.0)
+            {
+                throw new ArgumentOutOfRangeException("value");
+            }
+
+            Set("grid.opacity", value);
+        }
+
+        public string GridLineColorGet()
+        {
+            return GetColor("grid.linecolor");
+        }
+
+        public void GridLineColorSet(string value)
+        {
+            SetColor("grid.linecolor", value);
         }
 
         public double GridLineThicknessGet()

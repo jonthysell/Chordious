@@ -277,6 +277,25 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool GridMarginLeftOverride
+        {
+            get
+            {
+                return Style.GridMarginLeftOverrideGet();
+            }
+            set
+            {
+                if (value && !Style.GridMarginLeftOverrideGet())
+                {
+                    Style.GridMarginLeftSet(GridMargin);
+                }
+                else if (!value)
+                {
+                    Style.GridMarginLeftOverrideClear();
+                }
+            }
+        }
+
         public double GridMarginLeft
         {
             get
@@ -286,6 +305,25 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Style.GridMarginLeftSet(value);
+            }
+        }
+
+        public bool GridMarginRightOverride
+        {
+            get
+            {
+                return Style.GridMarginRightOverrideGet();
+            }
+            set
+            {
+                if (value && !Style.GridMarginRightOverrideGet())
+                {
+                    Style.GridMarginRightSet(GridMargin);
+                }
+                else if (!value)
+                {
+                    Style.GridMarginRightOverrideClear();
+                }
             }
         }
 
@@ -301,6 +339,25 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool GridMarginTopOverride
+        {
+            get
+            {
+                return Style.GridMarginTopOverrideGet();
+            }
+            set
+            {
+                if (value && !Style.GridMarginTopOverrideGet())
+                {
+                    Style.GridMarginTopSet(GridMargin);
+                }
+                else if (!value)
+                {
+                    Style.GridMarginTopOverrideClear();
+                }
+            }
+        }
+
         public double GridMarginTop
         {
             get
@@ -310,6 +367,25 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Style.GridMarginTopSet(value);
+            }
+        }
+
+        public bool GridMarginBottomOverride
+        {
+            get
+            {
+                return Style.GridMarginBottomOverrideGet();
+            }
+            set
+            {
+                if (value && !Style.GridMarginBottomOverrideGet())
+                {
+                    Style.GridMarginBottomSet(GridMargin);
+                }
+                else if (!value)
+                {
+                    Style.GridMarginBottomOverrideClear();
+                }
             }
         }
 
@@ -346,6 +422,42 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Style.GridStringSpacingSet(value);
+            }
+        }
+
+        public string GridColor
+        {
+            get
+            {
+                return Style.GridColorGet();
+            }
+            set
+            {
+                Style.GridColorSet(value);
+            }
+        }
+
+        public double GridOpacity
+        {
+            get
+            {
+                return Style.GridOpacityGet();
+            }
+            set
+            {
+                Style.GridOpacitySet(value);
+            }
+        }
+
+        public string GridLineColor
+        {
+            get
+            {
+                return Style.GridLineColorGet();
+            }
+            set
+            {
+                Style.GridLineColorSet(value);
             }
         }
 

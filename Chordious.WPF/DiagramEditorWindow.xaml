@@ -29,12 +29,12 @@
                 <GroupBox Header="Layout" Margin="5">
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
-                            <Label Margin="5" Width="110" Content="Orientation"/>
-                            <ComboBox Margin="5" Width="65" ItemsSource="{Binding Diagram.Orientations}" SelectedIndex="{Binding Diagram.SelectedOrientationIndex}" VerticalAlignment="Center"/>
+                            <Label Margin="5" Width="80" Content="Orientation"/>
+                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding Diagram.Orientations}" SelectedIndex="{Binding Diagram.SelectedOrientationIndex}" VerticalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Margin="5" Width="110" Content="Label Model"/>
-                            <ComboBox Margin="5" Width="65" ItemsSource="{Binding Diagram.LabelLayoutModels}" SelectedIndex="{Binding Diagram.SelectedLabelLayoutModelIndex}" VerticalAlignment="Center"/>
+                            <Label Margin="5" Width="80" Content="Label Model"/>
+                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding Diagram.LabelLayoutModels}" SelectedIndex="{Binding Diagram.SelectedLabelLayoutModelIndex}" VerticalAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -56,18 +56,70 @@
                             <Label Margin="5" Width="110" Content="String Spacing (px)"/>
                             <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridStringSpacing, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Margin="5" Width="110" Content="Line Width (px)"/>
-                            <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridLineThickness, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Margin="5" Width="110" Content="Nut Visible"/>
-                            <CheckBox Width="65" Margin="5" IsChecked="{Binding Diagram.GridNutVisible}"  VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Margin="5" Width="110" Content="Nut Ratio"/>
-                            <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridNutRatio, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        </StackPanel>
+                        <Expander Header="Margins" Margin="0,5,0,5" IsExpanded="True" BorderThickness="0">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Margin="5" Width="110" Content="Base (px)"/>
+                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridMargin, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding Diagram.GridMarginLeftOverride}" VerticalAlignment="Center" />
+                                    <Label Margin="0,5,5,5" Width="90" Content="Left (px)" IsEnabled="{Binding Diagram.GridMarginLeftOverride}" />
+                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridMarginLeft, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding Diagram.GridMarginLeftOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding Diagram.GridMarginRightOverride}" VerticalAlignment="Center" />
+                                    <Label Margin="0,5,5,5" Width="90" Content="Right (px)" IsEnabled="{Binding Diagram.GridMarginRightOverride}" />
+                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridMarginRight, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding Diagram.GridMarginRightOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding Diagram.GridMarginTopOverride}" VerticalAlignment="Center" />
+                                    <Label Margin="0,5,5,5" Width="90" Content="Top (px)" IsEnabled="{Binding Diagram.GridMarginTopOverride}" />
+                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridMarginTop, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding Diagram.GridMarginTopOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding Diagram.GridMarginBottomOverride}" VerticalAlignment="Center" />
+                                    <Label Margin="0,5,5,5" Width="90" Content="Bottom (px)" IsEnabled="{Binding Diagram.GridMarginBottomOverride}" />
+                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridMarginBottom, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding Diagram.GridMarginBottomOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Header="Background" Margin="0,5,0,5" IsExpanded="True" BorderThickness="0">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="110" Margin="5" Content="Color"/>
+                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.GridColor, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="110" Margin="5" Content="Opacity"/>
+                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.GridOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Header="Lines" Margin="0,5,0,5" IsExpanded="True" BorderThickness="0">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="110" Margin="5" Content="Color"/>
+                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.GridLineColor, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Margin="5" Width="110" Content="Width (px)"/>
+                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridLineThickness, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Header="Nut" Margin="0,5,0,5" IsExpanded="True" BorderThickness="0">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Margin="5" Width="110" Content="Visible"/>
+                                    <CheckBox Width="65" Margin="5" IsChecked="{Binding Diagram.GridNutVisible}"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Margin="5" Width="110" Content="Ratio"/>
+                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridNutRatio, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Expander>
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
@@ -116,8 +168,8 @@
                             <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Width="110" Margin="5" Content="Label Style"/>
-                            <ComboBox Width="65" Margin="5" ItemsSource="{Binding Diagram.TitleLabelStyles}" SelectedIndex="{Binding Diagram.SelectedTitleLabelStyleIndex}" VerticalAlignment="Center"/>
+                            <Label Width="80" Margin="5" Content="Label Style"/>
+                            <ComboBox Width="95" Margin="5" ItemsSource="{Binding Diagram.TitleLabelStyles}" SelectedIndex="{Binding Diagram.SelectedTitleLabelStyleIndex}" VerticalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Grid Padding (px)"/>
@@ -128,9 +180,9 @@
             </StackPanel>
         </ScrollViewer>
         <WrapPanel Grid.Row="2" Grid.ColumnSpan="3" FlowDirection="RightToLeft">
-            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5"/>
-            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True"/>
-            <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5"/>
+            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" />
+            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" />
+            <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" />
         </WrapPanel>
     </Grid>
 </Window>

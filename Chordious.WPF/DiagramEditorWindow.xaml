@@ -125,7 +125,7 @@
             </StackPanel>
         </ScrollViewer>
         <ScrollViewer Grid.Row="0" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <Image Source="{Binding Diagram.ImageObject}" Margin="5" Width="{Binding Diagram.TotalWidth}" Height="{Binding Diagram.TotalHeight}" />
+            <Image Source="{Binding Diagram.ImageObject}" Margin="5" Width="{Binding Diagram.TotalWidth}" Height="{Binding Diagram.TotalHeight}" MouseMove="Image_MouseMove" MouseLeave="Image_MouseLeave" />
         </ScrollViewer>
         <ScrollViewer Grid.Column="2" Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel >
@@ -183,6 +183,14 @@
             <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" />
             <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" />
             <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" />
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <TextBlock Margin="5" Text="Pos:" />
+                <TextBlock Margin="5" Text="{Binding Diagram.CursorX, StringFormat={}{0:0}}" />
+                <TextBlock Margin="0,5,0,5" Text="," />
+                <TextBlock Margin="5" Text="{Binding Diagram.CursorY, StringFormat={}{0:0}}" />
+                <TextBlock Margin="5" Text="In Grid:" />
+                <TextBlock Margin="5" Text="{Binding Diagram.CursorInGrid}" />
+            </StackPanel>
         </WrapPanel>
     </Grid>
 </Window>

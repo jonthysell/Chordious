@@ -931,6 +931,91 @@ namespace com.jonthysell.Chordious.Core
             return this.GridStringSpacing * (this.NumStrings - 1);
         }
 
+        public bool InGrid(double x, double y)
+        {
+            return (x > GridLeftEdge() && x < GridRightEdge()) && (y > GridTopEdge() && y < GridBottomEdge());
+        }
+
+        public ElementPosition GetPosition<T>(double x, double y) where T : ElementPosition
+        {
+            int @string;
+            int fret;
+            GetPositionInternal(x, y, out @string, out fret);
+
+            try
+            {
+                if (typeof(T) == typeof(MarkPosition))
+                {
+                    MarkPosition mp = new MarkPosition(@string, fret);
+                    if (ValidPosition(mp))
+                    {
+                        return mp;
+                    }
+                }
+                else if (typeof(T) == typeof(FretLabelPosition))
+                {
+                    FretLabelSide? fls = null;
+
+                    if (@string == 0)
+                    {
+                        fls = FretLabelSide.Left;
+                    }
+                    else if (@string == NumStrings + 1)
+                    {
+                        fls = FretLabelSide.Right;
+                    }
+
+                    if (fls.HasValue)
+                    {
+                        FretLabelPosition flp = new FretLabelPosition(fls.Value, fret);
+                        if (ValidPosition(flp))
+                        {
+                            return flp;
+                        }
+                    }
+                }
+                else if (typeof(T) == typeof(BarrePosition))
+                {
+                    BarrePosition bp = new BarrePosition(fret, @string, NumStrings);
+                    if (ValidPosition(bp))
+                    {
+                        return bp;
+                    }
+                }
+            }
+            catch (Exception) { }
+
+            return null;
+        }
+
+        private void GetPositionInternal(double x, double y, out int @string, out int fret)
+        {
+            int[] position = new int[] { -1, -1 };
+
+            double topEdge = GridTopEdge();
+            double bottomEdge = GridBottomEdge();
+            double leftEdge = GridLeftEdge();
+            double rightEdge = GridRightEdge();
+
+            double fretSpacing = this.GridFretSpacing;
+            double stringSpacing = this.GridStringSpacing;
+
+            // String position
+            if (x > (leftEdge - (stringSpacing * 1.5)) && x < (rightEdge + (stringSpacing * 1.5)))
+            {
+                position[0] = (int)Math.Floor(Math.Max((x - leftEdge - (stringSpacing * 1.5)), 0) / stringSpacing);
+            }
+
+            // Fret position
+            if (y > (topEdge - fretSpacing) && y < (bottomEdge + fretSpacing))
+            {
+                position[1] = (int)Math.Floor(Math.Max((y - topEdge - fretSpacing), 0) / fretSpacing);
+            }
+
+            @string = position[0];
+            fret = position[1];
+        }
+
         #endregion
 
         #region Drawing

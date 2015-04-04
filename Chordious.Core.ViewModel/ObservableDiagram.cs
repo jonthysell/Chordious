@@ -764,6 +764,44 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        public double CursorX
+        {
+            get
+            {
+                return _cursorX;
+            }
+            set
+            {
+                _cursorX = value;
+                RaisePropertyChanged("CursorX");
+                RaisePropertyChanged("CursorInGrid");
+            }
+        }
+        private double _cursorX;
+
+        public double CursorY
+        {
+            get
+            {
+                return _cursorY;
+            }
+            set
+            {
+                _cursorY = value;
+                RaisePropertyChanged("CursorY");
+                RaisePropertyChanged("CursorInGrid");
+            }
+        }
+        private double _cursorY;
+
+        public bool CursorInGrid
+        {
+            get
+            {
+                return Diagram.InGrid(CursorX, CursorY);
+            }
+        }
+
         public RelayCommand RenderImage
         {
             get

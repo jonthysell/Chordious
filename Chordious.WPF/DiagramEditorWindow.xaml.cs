@@ -38,6 +38,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using com.jonthysell.Chordious.Core.ViewModel;
+
 namespace com.jonthysell.Chordious.WPF
 {
     /// <summary>
@@ -48,6 +50,37 @@ namespace com.jonthysell.Chordious.WPF
         public DiagramEditorWindow()
         {
             InitializeComponent();
+        }
+
+        private void Image_MouseMove(object sender, MouseEventArgs e)
+        {
+            Image image = sender as Image;
+
+            if (null != image)
+            {
+                ObservableDiagram od = ((DiagramEditorViewModel)(image.DataContext)).Diagram as ObservableDiagram;
+                if (null != od)
+                {
+                    Point p = e.GetPosition((IInputElement)sender);
+                    od.CursorX = p.X;
+                    od.CursorY = p.Y;
+                }
+            }
+        }
+
+        private void Image_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Image image = sender as Image;
+
+            if (null != image)
+            {
+                ObservableDiagram od = ((DiagramEditorViewModel)(image.DataContext)).Diagram as ObservableDiagram;
+                if (null != od)
+                {
+                    od.CursorX = 0.0;
+                    od.CursorY = 0.0;
+                }
+            }
         }
     }
 }

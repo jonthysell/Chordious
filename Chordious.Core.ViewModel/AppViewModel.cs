@@ -36,7 +36,7 @@ using com.jonthysell.Chordious.Core;
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public delegate Stream GetConfigStream();
-    public delegate object SvgTextToImage(string svgText, int width, int height);
+    public delegate object SvgTextToImage(string svgText, int width, int height, bool editMode);
 
     public delegate void DoOnUIThread(Action action);
 

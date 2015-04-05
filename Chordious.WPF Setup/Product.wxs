@@ -153,6 +153,9 @@
       <Component>
         <File Source="$(var.Chordious.WPF.TargetDir)\Resources\license16.png" />
       </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\transparent16.png" />
+      </Component>
     </ComponentGroup>
     <ComponentGroup Id="ProductShortcuts" Directory="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut">

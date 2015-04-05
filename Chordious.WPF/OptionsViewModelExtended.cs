@@ -134,6 +134,47 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
+        public int SelectedEditorRenderBackgroundIndex
+        {
+            get
+            {
+                return (int)EditorRenderBackground;
+            }
+            set
+            {
+                EditorRenderBackground = (Background)(value);
+                RaisePropertyChanged("SelectedEditorRenderBackgroundIndex");
+            }
+        }
+
+        public ObservableCollection<string> EditorRenderBackgrounds
+        {
+            get
+            {
+                return GetBackgrounds();
+            }
+        }
+
+        private Background EditorRenderBackground
+        {
+            get
+            {
+                Background result;
+
+                if (Enum.TryParse<Background>(GetSetting("app.editorrenderbackground"), out result))
+                {
+                    return result;
+                }
+
+                return Background.None;
+            }
+            set
+            {
+                SetSetting("app.editorrenderbackground", value);
+                RaisePropertyChanged("EditorRenderBackground");
+            }
+        }
+
         #endregion
 
         #region Updates
@@ -258,6 +299,7 @@ namespace com.jonthysell.Chordious.WPF
 
             collection.Add("None");
             collection.Add("White");
+            collection.Add("Transparent");
 
             return collection;
         }

@@ -14,12 +14,16 @@
                     <GroupBox Header="Rendering" Margin="5">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Label Width="130" Margin="5" Content="Renderer"/>
-                                <ComboBox Width="95" Margin="5" ItemsSource="{Binding Renderers}" SelectedIndex="{Binding SelectedRendererIndex}" VerticalAlignment="Center"/>
+                                <Label Width="120" Margin="5" Content="Renderer"/>
+                                <ComboBox Width="105" Margin="5" ItemsSource="{Binding Renderers}" SelectedIndex="{Binding SelectedRendererIndex}" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Label Width="130" Margin="5" Content="Render Background"/>
-                                <ComboBox Width="95" Margin="5" ItemsSource="{Binding RenderBackgrounds}" SelectedIndex="{Binding SelectedRenderBackgroundIndex}" VerticalAlignment="Center"/>
+                                <Label Width="120" Margin="5" Content="Background"/>
+                                <ComboBox Width="105" Margin="5" ItemsSource="{Binding RenderBackgrounds}" SelectedIndex="{Binding SelectedRenderBackgroundIndex}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Width="120" Margin="5" Content="Editor Background"/>
+                                <ComboBox Width="105" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>

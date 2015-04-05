@@ -196,6 +196,10 @@
                 <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" />
                 <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" />
             </StackPanel>
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Label Margin="5" Content="Background"/>
+                <ComboBox Width="95" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center"/>
+            </StackPanel>
         </WrapPanel>
     </Grid>
 </Window>

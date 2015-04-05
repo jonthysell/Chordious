@@ -198,6 +198,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             OriginalDiagram = diagram;
 
             Diagram = new ObservableDiagram(diagram.Diagram.Clone());
+            Diagram.IsEditMode = true;
 
             Diagram.PropertyChanged += Diagram_PropertyChanged;
         }

@@ -1062,6 +1062,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        public bool IsEditMode
+        {
+            get
+            {
+                return _isEditMode;
+            }
+            set
+            {
+                _isEditMode = value;
+                RaisePropertyChanged("IsEditMode");
+                Refresh();
+            }
+        }
+        private bool _isEditMode = false;
+
         public RelayCommand RenderImage
         {
             get
@@ -1128,11 +1143,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        private void Render()
+        protected void Render()
         {
             AppViewModel.Instance.DoOnUIThread(() =>
             {
-                ImageObject = AppViewModel.Instance.SvgTextToImage(SvgText, TotalWidth, TotalHeight);
+                ImageObject = AppViewModel.Instance.SvgTextToImage(SvgText, TotalWidth, TotalHeight, IsEditMode);
             });
         }
 

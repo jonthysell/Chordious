@@ -117,6 +117,7 @@
       <DependentUpon>ChordQualityEditorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="BoolToVisibilityConverter.cs" />
+    <Compile Include="DiagramEditorViewModelExtended.cs" />
     <Compile Include="MouseUtils.cs" />
     <Compile Include="ScaleEditorWindow.xaml.cs">
       <DependentUpon>ScaleEditorWindow.xaml</DependentUpon>
@@ -261,6 +262,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Chordious.WPF.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\transparent16.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\chordious128.png">

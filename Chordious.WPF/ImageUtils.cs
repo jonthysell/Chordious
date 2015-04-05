@@ -53,9 +53,9 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
-        public static BitmapImage SvgTextToBitmapImage(string svgText, int width, int height)
+        public static BitmapImage SvgTextToBitmapImage(string svgText, int width, int height, bool editMode = false)
         {
-            Background background = GetRenderBackground();
+            Background background = editMode ? GetEditorRenderBackground() : GetRenderBackground();
             return SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, background);
         }
 
@@ -124,6 +124,17 @@ namespace com.jonthysell.Chordious.WPF
             if (background == Background.White)
             {
                 g.Clear(Color.White);
+            }
+            else if (background == Background.Transparent)
+            {
+                Image transparent = new Bitmap("Resources/transparent16.png");
+                for (int x = 0; x < source.Width; x += transparent.Width)
+                {
+                    for (int y = 0; y < source.Height; y += transparent.Height)
+                    {
+                        g.DrawImage(transparent, x, y, transparent.Width, transparent.Height);
+                    }
+                }
             }
 
             g.DrawImage(source, 0, 0, source.Width, source.Height);
@@ -199,6 +210,18 @@ namespace com.jonthysell.Chordious.WPF
 
             return Background.None;
         }
+
+        public static Background GetEditorRenderBackground()
+        {
+            Background result;
+
+            if (Enum.TryParse<Background>(AppVM.GetSetting("app.editorrenderbackground"), out result))
+            {
+                return result;
+            }
+
+            return Background.None;
+        }
     }
 
     public enum SvgRenderer
@@ -210,6 +233,7 @@ namespace com.jonthysell.Chordious.WPF
     public enum Background
     {
         None,
-        White
+        White,
+        Transparent
     }
 }

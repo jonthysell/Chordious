@@ -223,13 +223,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
     public class ShowDiagramEditorMessage : MessageBase
     {
-        public DiagramEditorViewModel DiagramEditorVM { get; private set; }
+        public DiagramEditorViewModel DiagramEditorVM { get; set; }
+
+        public ObservableDiagram Diagram { get; private set; }
 
         private Action<bool> Callback;
 
         public ShowDiagramEditorMessage(ObservableDiagram diagram, Action<bool> callback = null) : base()
         {
-            DiagramEditorVM = new DiagramEditorViewModel(diagram);
+            Diagram = diagram;
             Callback = callback;
         }
 

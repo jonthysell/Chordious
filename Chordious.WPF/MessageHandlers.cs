@@ -232,6 +232,7 @@ namespace com.jonthysell.Chordious.WPF
         private static void ShowDiagramEditor(ShowDiagramEditorMessage message)
         {
             DiagramEditorWindow window = new DiagramEditorWindow();
+            message.DiagramEditorVM = new DiagramEditorViewModelExtended(message.Diagram);
             window.DataContext = message.DiagramEditorVM;
             message.DiagramEditorVM.RequestClose += () =>
             {

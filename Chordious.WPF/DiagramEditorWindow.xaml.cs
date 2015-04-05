@@ -52,12 +52,16 @@ namespace com.jonthysell.Chordious.WPF
             InitializeComponent();
         }
 
-        private void ImageContextMenu_Opened(object sender, RoutedEventArgs e)
+        private void ImageContextMenu_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
-            UpdateCursorPosition();
+            bool validCommmandsAtCursor = UpdateCursorPosition();
+            if (!validCommmandsAtCursor)
+            {
+                e.Handled = true;
+            }
         }
 
-        private void UpdateCursorPosition()
+        private bool UpdateCursorPosition()
         {
             ObservableDiagram od = ((DiagramEditorViewModel)(DataContext)).Diagram as ObservableDiagram;
             if (null != od)
@@ -65,7 +69,9 @@ namespace com.jonthysell.Chordious.WPF
                 Point p = MouseUtils.CorrectGetPosition(DiagramImage);
                 od.CursorX = p.X;
                 od.CursorY = p.Y;
+                return od.ValidCommandsAtCursor;
             }
+            return false;
         }
     }
 }

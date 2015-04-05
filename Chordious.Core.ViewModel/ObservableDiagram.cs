@@ -879,6 +879,120 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        #region Fret Labels
+
+        public RelayCommand AddFretLabel
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        FretLabelPosition flp = this.FretLabelPosition;
+                        Diagram.NewFretLabel(flp, flp.Fret.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+
+                    Refresh();
+                }, () =>
+                {
+                    return CanAddFretLabel;
+                });
+            }
+        }
+
+        public bool CanAddFretLabel
+        {
+            get
+            {
+                FretLabelPosition flp = this.FretLabelPosition;
+                return (null != flp && Diagram.ValidPosition(flp) && !Diagram.HasElementAt(flp));
+            }
+        }
+
+        public RelayCommand EditFretLabel
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        DiagramFretLabel dfl = (DiagramFretLabel)Diagram.ElementAt(this.FretLabelPosition);
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Label text:", dfl.Text, (text) =>
+                        {
+                            dfl.Text = text;
+                        }, true));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+
+                    Refresh();
+                }, () =>
+                {
+                    return CanEditFretLabel;
+                });
+            }
+        }
+
+        public bool CanEditFretLabel
+        {
+            get
+            {
+                FretLabelPosition flp = this.FretLabelPosition;
+                return (null != flp && Diagram.ValidPosition(flp) && Diagram.HasElementAt(flp));
+            }
+        }
+
+        public RelayCommand RemoveFretLabel
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        FretLabelPosition flp = this.FretLabelPosition;
+                        Diagram.RemoveFretLabel(flp);
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+
+                    Refresh();
+                }, () =>
+                {
+                    return CanRemoveFretLabel;
+                });
+            }
+        }
+
+        public bool CanRemoveFretLabel
+        {
+            get
+            {
+                FretLabelPosition flp = this.FretLabelPosition;
+                return (null != flp && Diagram.ValidPosition(flp) && Diagram.HasElementAt(flp));
+            }
+        }
+
+        internal FretLabelPosition FretLabelPosition
+        {
+            get
+            {
+                return (FretLabelPosition)Diagram.GetPosition<FretLabelPosition>(CursorX, CursorY);
+            }
+        }
+
+        #endregion
+
         #region Cursor Info
 
         public double CursorX
@@ -919,15 +1033,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public bool ValidCommandsAtCursor
+        {
+            get
+            {
+                return (CanAddMark || CanEditMark || CanRemoveMark)
+                    || (CanAddFretLabel || CanEditFretLabel || CanRemoveFretLabel);
+            }
+        }
+
         private void RefreshCursor()
         {
             RaisePropertyChanged("CursorInGrid");
+            RaisePropertyChanged("ValidCommandsAtCursor");
             RaisePropertyChanged("AddMark");
             RaisePropertyChanged("CanAddMark");
             RaisePropertyChanged("EditMark");
             RaisePropertyChanged("CanEditMark");
             RaisePropertyChanged("RemoveMark");
             RaisePropertyChanged("CanRemoveMark");
+            RaisePropertyChanged("AddFretLabel");
+            RaisePropertyChanged("CanAddFretLabel");
+            RaisePropertyChanged("EditFretLabel");
+            RaisePropertyChanged("CanEditFretLabel");
+            RaisePropertyChanged("RemoveFretLabel");
+            RaisePropertyChanged("CanRemoveFretLabel");
         }
 
         #endregion

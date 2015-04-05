@@ -125,12 +125,15 @@
             </StackPanel>
         </ScrollViewer>
         <ScrollViewer Grid.Row="0" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <Image Name="DiagramImage" Source="{Binding Diagram.ImageObject}" Margin="5" Width="{Binding Diagram.TotalWidth}" Height="{Binding Diagram.TotalHeight}">
+            <Image Name="DiagramImage" Source="{Binding Diagram.ImageObject}" Margin="5" Width="{Binding Diagram.TotalWidth}" Height="{Binding Diagram.TotalHeight}" ContextMenuOpening="ImageContextMenu_ContextMenuOpening">
                 <Image.ContextMenu>
-                    <ContextMenu Name="ImageContextMenu" Opened="ImageContextMenu_Opened">
+                    <ContextMenu Name="ImageContextMenu">
                         <MenuItem Command="{Binding Diagram.AddMark}" Header="Add Mark" Visibility="{Binding Diagram.CanAddMark, Converter={StaticResource BoolToVisibilityConverter}}" />
                         <MenuItem Command="{Binding Diagram.EditMark}" Header="Edit Mark" Visibility="{Binding Diagram.CanEditMark, Converter={StaticResource BoolToVisibilityConverter}}" />
                         <MenuItem Command="{Binding Diagram.RemoveMark}" Header="Remove Mark" Visibility="{Binding Diagram.CanRemoveMark, Converter={StaticResource BoolToVisibilityConverter}}" />
+                        <MenuItem Command="{Binding Diagram.AddFretLabel}" Header="Add Fret Label" Visibility="{Binding Diagram.CanAddFretLabel, Converter={StaticResource BoolToVisibilityConverter}}" />
+                        <MenuItem Command="{Binding Diagram.EditFretLabel}" Header="Edit Fret Label" Visibility="{Binding Diagram.CanEditFretLabel, Converter={StaticResource BoolToVisibilityConverter}}" />
+                        <MenuItem Command="{Binding Diagram.RemoveFretLabel}" Header="Remove Fret Label" Visibility="{Binding Diagram.CanRemoveFretLabel, Converter={StaticResource BoolToVisibilityConverter}}" />
                     </ContextMenu>
                 </Image.ContextMenu>
             </Image>

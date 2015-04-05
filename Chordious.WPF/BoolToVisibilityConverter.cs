@@ -1,5 +1,5 @@
 ﻿// 
-// DiagramEditorWindow.xaml.cs
+// BoolToVisibilityConverter.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -26,46 +26,55 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using System.Drawing.Imaging;
+using System.Globalization;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-using com.jonthysell.Chordious.Core.ViewModel;
+using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace com.jonthysell.Chordious.WPF
 {
-    /// <summary>
-    /// Interaction logic for DiagramEditorWindow.xaml
-    /// </summary>
-    public partial class DiagramEditorWindow : Window
+    public class BoolToVisibilityConverter : MarkupExtension, IValueConverter
     {
-        public DiagramEditorWindow()
+        private static BoolToVisibilityConverter _converter = null;
+        public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            InitializeComponent();
-        }
-
-        private void ImageContextMenu_Opened(object sender, RoutedEventArgs e)
-        {
-            UpdateCursorPosition();
-        }
-
-        private void UpdateCursorPosition()
-        {
-            ObservableDiagram od = ((DiagramEditorViewModel)(DataContext)).Diagram as ObservableDiagram;
-            if (null != od)
+            if (_converter == null)
             {
-                Point p = MouseUtils.CorrectGetPosition(DiagramImage);
-                od.CursorX = p.X;
-                od.CursorY = p.Y;
+                _converter = new BoolToVisibilityConverter();
             }
+            return _converter;
         }
+
+        #region IValueConverter Members
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (null != value as bool?)
+            {
+                if (!(bool)value)
+                {
+                    return Visibility.Collapsed;
+                }
+            }
+            return Visibility.Visible;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            Visibility visibility = (Visibility)value;
+
+            if (visibility == Visibility.Visible)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        #endregion
     }
 }

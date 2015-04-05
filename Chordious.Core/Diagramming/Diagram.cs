@@ -845,6 +845,11 @@ namespace com.jonthysell.Chordious.Core
             return mark;
         }
 
+        public void RemoveMark(MarkPosition position)
+        {
+            this._marks.Remove((DiagramMark)ElementAt(position));
+        }
+
         public DiagramFretLabel NewFretLabel(FretLabelPosition position, string text)
         {
             DiagramFretLabel fretLabel = new DiagramFretLabel(this, position, text);
@@ -859,6 +864,11 @@ namespace com.jonthysell.Chordious.Core
             return fretLabel;
         }
 
+        public void RemoveFretLabel(FretLabelPosition position)
+        {
+            this._fretLabels.Remove((DiagramFretLabel)ElementAt(position));
+        }
+
         public DiagramBarre NewBarre(BarrePosition position)
         {
             DiagramBarre barre = new DiagramBarre(this, position);
@@ -871,6 +881,11 @@ namespace com.jonthysell.Chordious.Core
             DiagramBarre barre = new DiagramBarre(this, xmlReader);
             this._barres.Add(barre);
             return barre;
+        }
+
+        public void RemoveBarre(BarrePosition position)
+        {
+            this._barres.Remove((DiagramBarre)ElementAt(position));
         }
 
         #endregion
@@ -956,11 +971,11 @@ namespace com.jonthysell.Chordious.Core
                 {
                     FretLabelSide? fls = null;
 
-                    if (@string == 0)
+                    if (@string == 0 || @string == 1)
                     {
                         fls = FretLabelSide.Left;
                     }
-                    else if (@string == NumStrings + 1)
+                    else if (@string == NumStrings || @string == NumStrings + 1)
                     {
                         fls = FretLabelSide.Right;
                     }
@@ -1001,19 +1016,39 @@ namespace com.jonthysell.Chordious.Core
             double stringSpacing = this.GridStringSpacing;
 
             // String position
-            if (x > (leftEdge - (stringSpacing * 1.5)) && x < (rightEdge + (stringSpacing * 1.5)))
+            double xMin = leftEdge - (stringSpacing * 1.5);
+            double xMax = rightEdge + (stringSpacing * 1.5);
+            if (x >= xMin && x <= xMax)
             {
-                position[0] = (int)Math.Floor(Math.Max((x - leftEdge - (stringSpacing * 1.5)), 0) / stringSpacing);
+                position[0] = (int)(Remap(x, xMin, xMax, 0, NumStrings + 1) + 0.5);
             }
 
             // Fret position
-            if (y > (topEdge - fretSpacing) && y < (bottomEdge + fretSpacing))
+            double yMin = topEdge - fretSpacing;
+            double yMax = bottomEdge + fretSpacing;
+            if (y >= yMin && y <= yMax)
             {
-                position[1] = (int)Math.Floor(Math.Max((y - topEdge - fretSpacing), 0) / fretSpacing);
+                position[1] = (int)(Remap(y, yMin, yMax, 0, NumFrets + 2));
             }
 
             @string = position[0];
             fret = position[1];
+        }
+
+        private double Remap(double value, double sourceMin, double sourceMax, double destMin, double destMax)
+        {
+            if (value <= sourceMin)
+            {
+                return destMin;
+            }
+            else if (value >= sourceMax)
+            {
+                return destMax;
+            }
+
+            double relativeValue = (value - sourceMin) / (sourceMax - sourceMin);
+
+            return destMin + (relativeValue * (destMax - destMin));
         }
 
         #endregion

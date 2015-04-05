@@ -29,6 +29,7 @@ using System.Collections.ObjectModel;
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
@@ -764,6 +765,86 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        #region Marks
+
+        public RelayCommand AddMark
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        MarkPosition mp = this.MarkPosition;
+                        Diagram.NewMark(mp);
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+
+                    Refresh();
+                }, () =>
+                {
+                    return CanAddMark;
+                });
+            }
+        }
+
+        public bool CanAddMark
+        {
+            get
+            {
+                MarkPosition mp = this.MarkPosition;
+                return (null != mp && Diagram.ValidPosition(mp) && !Diagram.HasElementAt(mp));
+            }
+        }
+
+        public RelayCommand RemoveMark
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        MarkPosition mp = this.MarkPosition;
+                        Diagram.RemoveMark(mp);
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+
+                    Refresh();
+                }, () =>
+                {
+                    return CanRemoveMark;
+                });
+            }
+        }
+
+        public bool CanRemoveMark
+        {
+            get
+            {
+                MarkPosition mp = this.MarkPosition;
+                return (null != mp && Diagram.ValidPosition(mp) && Diagram.HasElementAt(mp));
+            }
+        }
+
+        internal MarkPosition MarkPosition
+        {
+            get
+            {
+                return (MarkPosition)Diagram.GetPosition<MarkPosition>(CursorX, CursorY);
+            }
+        }
+
+        #endregion
+
+        #region Cursor Info
+
         public double CursorX
         {
             get
@@ -774,7 +855,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 _cursorX = value;
                 RaisePropertyChanged("CursorX");
-                RaisePropertyChanged("CursorInGrid");
+                RefreshCursor();
             }
         }
         private double _cursorX;
@@ -789,7 +870,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 _cursorY = value;
                 RaisePropertyChanged("CursorY");
-                RaisePropertyChanged("CursorInGrid");
+                RefreshCursor();
             }
         }
         private double _cursorY;
@@ -801,6 +882,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 return Diagram.InGrid(CursorX, CursorY);
             }
         }
+
+        private void RefreshCursor()
+        {
+            RaisePropertyChanged("CursorInGrid");
+            RaisePropertyChanged("AddMark");
+            RaisePropertyChanged("CanAddMark");
+            RaisePropertyChanged("RemoveMark");
+            RaisePropertyChanged("CanRemoveMark");
+        }
+
+        #endregion
 
         public RelayCommand RenderImage
         {

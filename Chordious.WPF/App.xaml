@@ -18,5 +18,6 @@
         <BitmapImage x:Key="WebsiteIcon16" >pack://siteoforigin:,,,/Resources/website16.png</BitmapImage>
         <BitmapImage x:Key="LicenseIcon16" >pack://siteoforigin:,,,/Resources/license16.png</BitmapImage>
         <local:IdleBoolToWaitCursorConverter x:Key="IdleBoolToWaitCursorConverter" />
+        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </Application.Resources>
 </Application>

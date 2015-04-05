@@ -1,5 +1,5 @@
 ﻿// 
-// DiagramEditorWindow.xaml.cs
+// MouseUtils.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -24,48 +24,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+// Borrowed from http://tech.pro/tutorial/893/wpf-snippet-reliably-getting-the-mouse-position
 
-using com.jonthysell.Chordious.Core.ViewModel;
+using System;
+using System.Runtime.InteropServices;
+using System.Windows;
+using System.Windows.Media;
 
 namespace com.jonthysell.Chordious.WPF
 {
-    /// <summary>
-    /// Interaction logic for DiagramEditorWindow.xaml
-    /// </summary>
-    public partial class DiagramEditorWindow : Window
+    public static class MouseUtils
     {
-        public DiagramEditorWindow()
+        public static Point CorrectGetPosition(Visual relativeTo)
         {
-            InitializeComponent();
+            Win32Point w32Mouse = new Win32Point();
+            GetCursorPos(ref w32Mouse);
+            return relativeTo.PointFromScreen(new Point(w32Mouse.X, w32Mouse.Y));
         }
 
-        private void ImageContextMenu_Opened(object sender, RoutedEventArgs e)
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct Win32Point
         {
-            UpdateCursorPosition();
-        }
+            public Int32 X;
+            public Int32 Y;
+        };
 
-        private void UpdateCursorPosition()
-        {
-            ObservableDiagram od = ((DiagramEditorViewModel)(DataContext)).Diagram as ObservableDiagram;
-            if (null != od)
-            {
-                Point p = MouseUtils.CorrectGetPosition(DiagramImage);
-                od.CursorX = p.X;
-                od.CursorY = p.Y;
-            }
-        }
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool GetCursorPos(ref Win32Point pt);
     }
 }

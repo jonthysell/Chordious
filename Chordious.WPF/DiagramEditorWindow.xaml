@@ -129,6 +129,7 @@
                 <Image.ContextMenu>
                     <ContextMenu Name="ImageContextMenu" Opened="ImageContextMenu_Opened">
                         <MenuItem Command="{Binding Diagram.AddMark}" Header="Add Mark" Visibility="{Binding Diagram.CanAddMark, Converter={StaticResource BoolToVisibilityConverter}}" />
+                        <MenuItem Command="{Binding Diagram.EditMark}" Header="Edit Mark" Visibility="{Binding Diagram.CanEditMark, Converter={StaticResource BoolToVisibilityConverter}}" />
                         <MenuItem Command="{Binding Diagram.RemoveMark}" Header="Remove Mark" Visibility="{Binding Diagram.CanRemoveMark, Converter={StaticResource BoolToVisibilityConverter}}" />
                     </ContextMenu>
                 </Image.ContextMenu>

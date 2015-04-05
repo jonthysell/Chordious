@@ -57,12 +57,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         public TextPromptViewModel TextPromptVM { get; private set; }
 
-        public PromptForTextMessage(string prompt, Action<string> callback) : base()
+        public PromptForTextMessage(string prompt, Action<string> callback, bool allowBlank = false) : base()
         {
             TextPromptVM = new TextPromptViewModel(prompt, callback);
+            TextPromptVM.AllowBlank = allowBlank;
         }
 
-        public PromptForTextMessage(string prompt, string defaultText, Action<string> callback) : this(prompt, callback)            
+        public PromptForTextMessage(string prompt, string defaultText, Action<string> callback, bool allowBlank = false) : this(prompt, callback, allowBlank)
         {
             TextPromptVM.Text = defaultText;
         }

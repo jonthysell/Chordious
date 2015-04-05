@@ -70,6 +70,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private string _text;
 
+        public bool AllowBlank
+        {
+            get
+            {
+                return _allowBlank;
+            }
+            set
+            {
+                _allowBlank = value;
+                RaisePropertyChanged("AllowBlank");
+                RaisePropertyChanged("Accept");
+            }
+        }
+        private bool _allowBlank;
+
         public RelayCommand Accept
         {
             get
@@ -90,7 +105,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return !String.IsNullOrWhiteSpace(Text);
+                    return AllowBlank || !String.IsNullOrWhiteSpace(Text);
                 });
             }
         }

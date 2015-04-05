@@ -800,6 +800,42 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public RelayCommand EditMark
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        DiagramMark dm = (DiagramMark)Diagram.ElementAt(this.MarkPosition);
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Mark text:", dm.Text, (text) =>
+                            {
+                                dm.Text = text;
+                            }, true));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+
+                    Refresh();
+                }, () =>
+                {
+                    return CanEditMark;
+                });
+            }
+        }
+
+        public bool CanEditMark
+        {
+            get
+            {
+                MarkPosition mp = this.MarkPosition;
+                return (null != mp && Diagram.ValidPosition(mp) && Diagram.HasElementAt(mp));
+            }
+        }
+
         public RelayCommand RemoveMark
         {
             get
@@ -888,6 +924,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             RaisePropertyChanged("CursorInGrid");
             RaisePropertyChanged("AddMark");
             RaisePropertyChanged("CanAddMark");
+            RaisePropertyChanged("EditMark");
+            RaisePropertyChanged("CanEditMark");
             RaisePropertyChanged("RemoveMark");
             RaisePropertyChanged("CanRemoveMark");
         }

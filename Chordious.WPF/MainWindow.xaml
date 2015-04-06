@@ -18,37 +18,37 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button Grid.Row="0" Margin="5" Command="{Binding ShowChordFinder, Mode=OneWay}" BorderThickness="0" Background="White">
+            <Button Grid.Row="0" Margin="5" Command="{Binding ShowChordFinder, Mode=OneWay}" Style="{DynamicResource CleanButton}">
                 <StackPanel>
                     <Image Source="{DynamicResource ChordFinderIcon48}" Width="48" Height="48" Margin="2" />
                     <TextBlock Text="Chord Finder" HorizontalAlignment="Center" FontWeight="Bold" />
                 </StackPanel>
             </Button>
-            <Button Grid.Row="0" Grid.Column="1" Margin="5" Command="{Binding ShowScaleFinder, Mode=OneWay}" BorderThickness="0" Background="White">
+            <Button Grid.Row="0" Grid.Column="1" Margin="5" Command="{Binding ShowScaleFinder, Mode=OneWay}" Style="{DynamicResource CleanButton}">
                 <StackPanel>
                     <Image Source="{DynamicResource ScaleFinderIcon48}" Width="48" Height="48" Margin="2" />
                     <TextBlock Text="Scale Finder" HorizontalAlignment="Center" FontWeight="Bold" />
                 </StackPanel>
             </Button>
-            <Button Grid.Row="1" Grid.Column="0" Margin="5" Command="{Binding ShowDiagramLibrary, Mode=OneWay}" BorderThickness="0" Background="White">
+            <Button Grid.Row="1" Grid.Column="0" Margin="5" Command="{Binding ShowDiagramLibrary, Mode=OneWay}" Style="{DynamicResource CleanButton}">
                 <StackPanel>
                     <Image Source="{DynamicResource LibraryIcon48}" Width="48" Height="48" Margin="2" />
                     <TextBlock Text="Library" HorizontalAlignment="Center" FontWeight="Bold" />
                 </StackPanel>
             </Button>
-            <Button Grid.Row="1" Grid.Column="1" Margin="5" Command="{Binding ShowInstrumentManager, Mode=OneWay}" BorderThickness="0" Background="White">
+            <Button Grid.Row="1" Grid.Column="1" Margin="5" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Style="{DynamicResource CleanButton}">
                 <StackPanel>
                     <Image Source="{DynamicResource InstrumentsIcon48}" Width="48" Height="48" Margin="2" />
                     <TextBlock Text="Instruments" HorizontalAlignment="Center" FontWeight="Bold" />
                 </StackPanel>
             </Button>
-            <Button Grid.Row="2" Grid.Column="0" Margin="5" Command="{Binding ShowOptions, Mode=OneWay}" BorderThickness="0" Background="White">
+            <Button Grid.Row="2" Grid.Column="0" Margin="5" Command="{Binding ShowOptions, Mode=OneWay}" Style="{DynamicResource CleanButton}">
                 <StackPanel>
                     <Image Source="{DynamicResource OptionsIcon48}" Width="48" Height="48" Margin="2" />
                     <TextBlock Text="Options" HorizontalAlignment="Center" FontWeight="Bold" />
                 </StackPanel>
             </Button>
-            <Button Grid.Row="2" Grid.Column="1" Margin="5" Command="{Binding NotImplemented, Mode=OneWay}" BorderThickness="0" Background="White">
+            <Button Grid.Row="2" Grid.Column="1" Margin="5" Command="{Binding NotImplemented, Mode=OneWay}" Style="{DynamicResource CleanButton}">
                 <StackPanel>
                     <Image Source="{DynamicResource HelpIcon48}" Width="48" Height="48" Margin="2" />
                     <TextBlock Text="Help" HorizontalAlignment="Center" FontWeight="Bold" />
@@ -64,13 +64,13 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Margin="5" Grid.Column="0" Command="{Binding LaunchWebsite, Mode=OneWay}" BorderThickness="0" Background="White">
+                <Button Margin="5" Grid.Column="0" Command="{Binding LaunchWebsite, Mode=OneWay}" Style="{DynamicResource CleanButton}">
                     <StackPanel>
                         <Image Source="{DynamicResource WebsiteIcon16}" Width="16" Height="16" Margin="5" />
                         <TextBlock Text="Website" HorizontalAlignment="Center" FontWeight="Bold" />
                     </StackPanel>
                 </Button>
-                <Button Margin="5" Grid.Column="1" Command="{Binding ShowLicense, Mode=OneWay}" BorderThickness="0" Background="White">
+                <Button Margin="5" Grid.Column="1" Command="{Binding ShowLicense, Mode=OneWay}" Style="{DynamicResource CleanButton}">
                     <StackPanel>
                         <Image Source="{DynamicResource LicenseIcon16}" Width="16" Height="16" Margin="5" />
                         <TextBlock Text="License" HorizontalAlignment="Center" FontWeight="Bold" />

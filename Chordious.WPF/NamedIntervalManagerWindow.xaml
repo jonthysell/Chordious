@@ -27,9 +27,26 @@
             </ListView>
         </ScrollViewer>
         <WrapPanel Grid.Row="2" FlowDirection="RightToLeft">
-            <Button Content="Delete" Command="{Binding DeleteNamedInterval}" Margin="5" Width="75" />
-            <Button Content="Edit" Command="{Binding EditNamedInterval}" Margin="5" Width="75" />
-            <Button Content="Add" Command="{Binding AddNamedInterval}" Margin="5" Width="75" />
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Button Command="{Binding AddNamedInterval}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5" />
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding EditNamedInterval}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5" />
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding DeleteNamedInterval}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </WrapPanel>
     </Grid>
 </Window>

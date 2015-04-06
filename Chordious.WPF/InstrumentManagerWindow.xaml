@@ -44,14 +44,48 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <WrapPanel Grid.Row="2" Grid.Column="0" FlowDirection="RightToLeft">
-            <Button Content="Delete" Command="{Binding DeleteInstrument}" Margin="5" Width="75" />
-            <Button Content="Edit" Command="{Binding EditInstrument}" Margin="5" Width="75" />
-            <Button Content="Add" Command="{Binding AddInstrument}" Margin="5" Width="75" />
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Button Command="{Binding AddInstrument}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5" />
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding EditInstrument}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5" />
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding DeleteInstrument}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </WrapPanel>
         <WrapPanel Grid.Row="2" Grid.Column="1" FlowDirection="RightToLeft">
-            <Button Content="Delete" Command="{Binding DeleteTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Width="75" />
-            <Button Content="Edit" Command="{Binding EditTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Width="75" />
-            <Button Content="Add" Command="{Binding AddTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Width="75" />
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Button Command="{Binding AddTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5" />
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding EditTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5" />
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding DeleteTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </WrapPanel>
     </Grid>
 </Window>

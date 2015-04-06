@@ -128,12 +128,36 @@
             <Image Name="DiagramImage" Source="{Binding Diagram.ImageObject}" Margin="5" Width="{Binding Diagram.TotalWidth}" Height="{Binding Diagram.TotalHeight}" ContextMenuOpening="ImageContextMenu_ContextMenuOpening">
                 <Image.ContextMenu>
                     <ContextMenu Name="ImageContextMenu">
-                        <MenuItem Command="{Binding Diagram.AddMark}" Header="Add Mark" Visibility="{Binding Diagram.CanAddMark, Converter={StaticResource BoolToVisibilityConverter}}" />
-                        <MenuItem Command="{Binding Diagram.EditMark}" Header="Edit Mark" Visibility="{Binding Diagram.CanEditMark, Converter={StaticResource BoolToVisibilityConverter}}" />
-                        <MenuItem Command="{Binding Diagram.RemoveMark}" Header="Remove Mark" Visibility="{Binding Diagram.CanRemoveMark, Converter={StaticResource BoolToVisibilityConverter}}" />
-                        <MenuItem Command="{Binding Diagram.AddFretLabel}" Header="Add Fret Label" Visibility="{Binding Diagram.CanAddFretLabel, Converter={StaticResource BoolToVisibilityConverter}}" />
-                        <MenuItem Command="{Binding Diagram.EditFretLabel}" Header="Edit Fret Label" Visibility="{Binding Diagram.CanEditFretLabel, Converter={StaticResource BoolToVisibilityConverter}}" />
-                        <MenuItem Command="{Binding Diagram.RemoveFretLabel}" Header="Remove Fret Label" Visibility="{Binding Diagram.CanRemoveFretLabel, Converter={StaticResource BoolToVisibilityConverter}}" />
+                        <MenuItem Command="{Binding Diagram.AddMark}" Header="Add Mark" Visibility="{Binding Diagram.CanAddMark, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <MenuItem.Icon>
+                                <Image Source="{DynamicResource AddIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding Diagram.EditMark}" Header="Edit Mark" Visibility="{Binding Diagram.CanEditMark, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <MenuItem.Icon>
+                                <Image Source="{DynamicResource EditIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding Diagram.RemoveMark}" Header="Remove Mark" Visibility="{Binding Diagram.CanRemoveMark, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <MenuItem.Icon>
+                                <Image Source="{DynamicResource RemoveIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding Diagram.AddFretLabel}" Header="Add Fret Label" Visibility="{Binding Diagram.CanAddFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <MenuItem.Icon>
+                                <Image Source="{DynamicResource AddIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding Diagram.EditFretLabel}" Header="Edit Fret Label" Visibility="{Binding Diagram.CanEditFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <MenuItem.Icon>
+                                <Image Source="{DynamicResource EditIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding Diagram.RemoveFretLabel}" Header="Remove Fret Label" Visibility="{Binding Diagram.CanRemoveFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <MenuItem.Icon>
+                                <Image Source="{DynamicResource RemoveIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
                     </ContextMenu>
                 </Image.ContextMenu>
             </Image>

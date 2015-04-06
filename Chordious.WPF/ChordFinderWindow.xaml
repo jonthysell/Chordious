@@ -136,7 +136,17 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
-        <Button Content="Search" Grid.Row="2" Margin="5" Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}" />
-        <Button Name="SaveSelectedCommand" Content="Save Selected" Grid.Column="1" Margin="5" Grid.Row="2" Command="{Binding SaveSelected}" />
+        <Button Grid.Row="2" Margin="5" Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{DynamicResource SearchIcon16}" Width="16" Height="16" Margin="5" />
+                <TextBlock Text="Search" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+            </StackPanel>
+        </Button>
+        <Button Name="SaveSelectedCommand" Grid.Column="1" Margin="5" Grid.Row="2" Command="{Binding SaveSelected}">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
+                <TextBlock Text="Save Selected" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+            </StackPanel>
+        </Button>
     </Grid>
 </Window>

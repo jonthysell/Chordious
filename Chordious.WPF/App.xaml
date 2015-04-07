@@ -72,6 +72,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <SolidColorBrush x:Key="NormalBrush" Color="White"/>
         <SolidColorBrush x:Key="MouseOverBrush" Color="#BEE6FD"/>
         <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="White"/>
         <SolidColorBrush x:Key="DisabledForegroundBrush" Color="DarkGray"/>

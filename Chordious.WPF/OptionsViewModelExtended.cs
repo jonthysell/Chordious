@@ -224,11 +224,18 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                return UpdateUtils.GetCheckUpdateOnStart();
+                bool result;
+
+                if (Boolean.TryParse(GetSetting("app.checkupdateonstart"), out result))
+                {
+                    return result;
+                }
+
+                return false;
             }
             set
             {
-                UpdateUtils.SetCheckUpdateOnStart(value);
+                SetSetting("app.checkupdateonstart", value);
                 RaisePropertyChanged("CheckUpdateOnStart");
             }
         }

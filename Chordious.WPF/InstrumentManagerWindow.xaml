@@ -48,19 +48,19 @@
                 <Button Command="{Binding AddInstrument}" Margin="5" Style="{DynamicResource CleanButton}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5" />
+                        <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
                     </StackPanel>
                 </Button>
                 <Button Command="{Binding EditInstrument}" Margin="5" Style="{DynamicResource CleanButton}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5" />
+                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
                     </StackPanel>
                 </Button>
                 <Button Command="{Binding DeleteInstrument}" Margin="5" Style="{DynamicResource CleanButton}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5"/>
+                        <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
@@ -70,19 +70,19 @@
                 <Button Command="{Binding AddTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5" />
+                        <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
                     </StackPanel>
                 </Button>
                 <Button Command="{Binding EditTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5" />
+                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
                     </StackPanel>
                 </Button>
                 <Button Command="{Binding DeleteTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5"/>
+                        <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
                     </StackPanel>
                 </Button>
             </StackPanel>

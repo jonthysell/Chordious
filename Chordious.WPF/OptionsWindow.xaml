@@ -29,8 +29,8 @@
                     </GroupBox>
                     <GroupBox Header="Advanced" Margin="5">
                         <StackPanel>
-                            <Button Content="Advanced Editor" Margin="5" Command="{Binding ShowAdvancedSettings, Mode=OneWay}"/>
-                            <Button Content="Reset" Margin="5" Command="{Binding ResetUserSettings, Mode=OneWay}"/>
+                            <Button Content="Advanced Editor" Margin="5" Command="{Binding ShowAdvancedSettings, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                            <Button Content="Reset" Margin="5" Command="{Binding ResetUserSettings, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>
@@ -39,7 +39,7 @@
                 <StackPanel>
                     <GroupBox Header="Advanced" Margin="5">
                         <StackPanel>
-                            <Button Content="Advanced Editor" Margin="5" Command="{Binding ShowAdvancedStyle, Mode=OneWay}"/>
+                            <Button Content="Advanced Editor" Margin="5" Command="{Binding ShowAdvancedStyle, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
                             <Button Content="Reset" Margin="5" Command="{Binding ResetUserStyles, Mode=OneWay}"/>
                         </StackPanel>
                     </GroupBox>
@@ -48,8 +48,8 @@
             <TabItem Header="Chord Finder">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                     <StackPanel>
-                        <Button Content="Edit Instruments" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Margin="5,10,5,5" />
-                        <Button Content="Edit Qualities" Command="{Binding ShowChordQualityManager, Mode=OneWay}" Margin="5" />
+                        <Button Content="Edit Instruments" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Margin="5,10,5,5" Style="{DynamicResource CleanButton}"/>
+                        <Button Content="Edit Qualities" Command="{Binding ShowChordQualityManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
                         <GroupBox Header="Default Options" Margin="5">
                             <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
@@ -133,8 +133,8 @@
             <TabItem Header="Scale Finder">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                     <StackPanel>
-                        <Button Content="Edit Instruments" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Margin="5,10,5,5" />
-                        <Button Content="Edit Scales"  Command="{Binding ShowScaleManager, Mode=OneWay}" Margin="5" />
+                        <Button Content="Edit Instruments" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Margin="5,10,5,5" Style="{DynamicResource CleanButton}" />
+                        <Button Content="Edit Scales"  Command="{Binding ShowScaleManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}" />
                         <GroupBox Header="Default Options" Margin="5">
                             <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
@@ -214,15 +214,19 @@
                             <Label Width="160" Margin="5" Content="Release Channel"/>
                             <ComboBox Width="85" Margin="5" ItemsSource="{Binding ReleaseChannels}" SelectedIndex="{Binding SelectedReleaseChannelIndex}" VerticalAlignment="Center"/>
                         </StackPanel>
-                        <Button Command="{Binding CheckForUpdatesAsync, IsAsync=True}" Content="Check For Updates" Margin="5"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Margin="5" Content="Last Checked"/>
+                            <TextBox Margin="5" Text="{Binding LastUpdateCheck, Mode=OneWay}" VerticalAlignment="Center" BorderThickness="0" />
+                        </StackPanel>
+                        <Button Command="{Binding CheckForUpdatesAsync, IsAsync=True}" Content="Check For Updates" Margin="5" Style="{DynamicResource CleanButton}"/>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
         </TabControl>
         <WrapPanel Grid.Row="2" FlowDirection="RightToLeft">
-            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5"/>
-            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True"/>
-            <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5"/>
+            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
+            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True" Style="{DynamicResource CleanButton}"/>
+            <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
         </WrapPanel>
     </Grid>
 </Window>

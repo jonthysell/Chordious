@@ -10,8 +10,8 @@
             <TextBox Name="InputNumStrings" Text="{Binding NumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsNew}" SelectedText="" Width="25" Margin="5" MaxLines="1" MaxLength="3" HorizontalContentAlignment="Center" />
         </StackPanel>
         <WrapPanel FlowDirection="RightToLeft" Height="Auto">
-            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5"/>
-            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True"/>
+            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
+            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True" Style="{DynamicResource CleanButton}"/>
         </WrapPanel>
     </StackPanel>
 </Window>

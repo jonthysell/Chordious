@@ -270,6 +270,12 @@
     <Content Include="Resources\edit16.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\export16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\import16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\remove16.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

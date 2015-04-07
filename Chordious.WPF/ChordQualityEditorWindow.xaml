@@ -21,8 +21,8 @@
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0"  Orientation="Horizontal">
             <Label Content="Intervals:" Margin="5" VerticalAlignment="Center" />
-            <Button Command="{Binding AddInterval}" Content="+" Width="20" Height="20"  Margin="5,5,0,5" VerticalAlignment="Center" />
-            <Button Command="{Binding RemoveInterval}" Content="-" Width="20" Height="20" Margin="5" VerticalAlignment="Center" />
+            <Button Command="{Binding AddInterval}" Content="+" Width="20" Height="20"  Margin="5,5,0,5" VerticalAlignment="Center" FontWeight="Bold" Style="{DynamicResource CleanButton}" />
+            <Button Command="{Binding RemoveInterval}" Content="-" Width="20" Height="20" Margin="5" VerticalAlignment="Center" FontWeight="Bold" Style="{DynamicResource CleanButton}" />
         </StackPanel>
         <ListView Grid.Row="1" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" Name="IntervalsListView" ItemsSource="{Binding Intervals}" SelectionMode="Single" Margin="5" BorderThickness="0" VerticalAlignment="Center">
             <ListView.ItemsPanel>
@@ -43,8 +43,8 @@
             <Label Content="{Binding Example, UpdateSourceTrigger=PropertyChanged}" Margin="5" VerticalAlignment="Center" />
         </StackPanel>
         <WrapPanel Grid.Row="3" Grid.ColumnSpan="2" FlowDirection="RightToLeft" Height="Auto">
-            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5"/>
-            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True"/>
+            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
+            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True" Style="{DynamicResource CleanButton}"/>
         </WrapPanel>
     </Grid>
 </Window>

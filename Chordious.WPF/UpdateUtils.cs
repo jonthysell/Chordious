@@ -27,6 +27,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -86,6 +87,8 @@ namespace com.jonthysell.Chordious.WPF
                         }
                     }
                 }
+
+                SetLastUpdateCheck(DateTime.Now);
 
                 bool doUpdate = false;
 
@@ -231,6 +234,23 @@ namespace com.jonthysell.Chordious.WPF
         public static void SetCheckUpdateOnStart(bool value)
         {
             AppVM.SetSetting("app.checkupdateonstart", value);
+        }
+
+        public static DateTime GetLastUpdateCheck()
+        {
+            DateTime result;
+
+            if (DateTime.TryParse(AppVM.GetSetting("app.lastupdatecheck"), null, DateTimeStyles.AssumeUniversal, out result))
+            {
+                return result;
+            }
+
+            return DateTime.MinValue;
+        }
+
+        public static void SetLastUpdateCheck(DateTime value)
+        {
+            AppVM.SetSetting("app.lastupdatecheck", value.ToUniversalTime().ToString("s"));
         }
 
         private const string _updateUrl = "http://update.chordious.com";

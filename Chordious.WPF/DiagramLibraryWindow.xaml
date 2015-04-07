@@ -49,15 +49,52 @@
             </ListView>
         </ScrollViewer>
         <WrapPanel Grid.Row="2" Grid.Column="0" FlowDirection="LeftToRight">
-            <Button Content="New" Command="{Binding CreateNode}" Margin="5" Width="75" />
-            <Button Content="Rename" Command="{Binding RenameNode}" Margin="5" Width="75" />
-            <Button Content="Delete" Command="{Binding DeleteNode}" Margin="5" Width="75" />
-            <Button Content="Import ChordLines" Command="{Binding LegacyImport}" Margin="5" Width="125" />
+            <Button Command="{Binding CreateNode}" Margin="5" Style="{DynamicResource CleanButton}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
+                    <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding RenameNode}" Margin="5" Style="{DynamicResource CleanButton}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
+                    <TextBlock Text="Rename" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding DeleteNode}" Margin="5" Style="{DynamicResource CleanButton}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
+                    <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding LegacyImport}" Margin="5" Style="{DynamicResource CleanButton}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{DynamicResource ImportIcon16}" Width="16" Height="16" Margin="5" />
+                    <TextBlock Text="Import" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
+                </StackPanel>
+            </Button>
         </WrapPanel>
         <WrapPanel Grid.Row="2" Grid.Column="1" FlowDirection="RightToLeft">
-            <Button Content="Delete" Command="{Binding SelectedNode.DeleteSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Width="75" />
-            <Button Content="Edit" Command="{Binding SelectedNode.EditSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Width="75" />
-            <Button Content="Export" Command="{Binding SelectedNode.ExportSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Width="75" />
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Button Command="{Binding SelectedNode.EditSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding SelectedNode.DeleteSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding SelectedNode.ExportSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource ExportIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Export Images" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </WrapPanel>
     </Grid>
 </Window>

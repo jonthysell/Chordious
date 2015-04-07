@@ -216,12 +216,12 @@
         </ScrollViewer>
         <WrapPanel Grid.Row="2" Grid.ColumnSpan="3" FlowDirection="RightToLeft">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" />
-                <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" />
-                <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" />
+                <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
+                <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
+                <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Label Margin="5" Content="Background"/>
+                <Label Margin="5" Content="Background" FontWeight="Bold"/>
                 <ComboBox Width="95" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center"/>
             </StackPanel>
         </WrapPanel>

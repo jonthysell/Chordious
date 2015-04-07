@@ -6,8 +6,8 @@
         <Label Content="{Binding Prompt}" Height="Auto" Margin="5"/>
         <TextBox Name="InputTextBox" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" SelectedText="" Height="Auto" Margin="5" MaxLines="1" />
         <WrapPanel FlowDirection="RightToLeft" Height="Auto">
-            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5"/>
-            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True"/>
+            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
+            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True" Style="{DynamicResource CleanButton}"/>
         </WrapPanel>
     </StackPanel>
 </Window>

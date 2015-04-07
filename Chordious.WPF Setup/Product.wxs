@@ -17,10 +17,16 @@
 		<MajorUpgrade
       AllowSameVersionUpgrades="yes"
       DowngradeErrorMessage="A newer version of Chordious.WPF is already installed." />
-    
-		<MediaTemplate EmbedCab="yes" />
 
-		<Feature Id="ProductFeature" Title="Chordious.WPF" Level="1">
+    <?if $(var.Chordious.WPF.Configuration) = "Release"?>
+    <MediaTemplate EmbedCab="yes"
+                   CompressionLevel="high" />
+    <?elseif $(var.Chordious.WPF.Configuration) = "Debug"?>
+    <MediaTemplate EmbedCab="yes"
+                   CompressionLevel="none" />
+    <?endif?>
+
+    <Feature Id="ProductFeature" Title="Chordious.WPF" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
       <ComponentGroupRef Id="ProductResources" />
       <ComponentGroupRef Id="ProductShortcuts" />
@@ -167,6 +173,12 @@
       </Component>
       <Component>
         <File Source="$(var.Chordious.WPF.TargetDir)\Resources\search16.png" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\import16.png" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\export16.png" />
       </Component>
     </ComponentGroup>
     <ComponentGroup Id="ProductShortcuts" Directory="ApplicationProgramsFolder">

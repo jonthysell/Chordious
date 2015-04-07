@@ -8,9 +8,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="1" FlowDirection="RightToLeft">
-            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5"/>
-            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True"/>
-            <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5"/>
+            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
+            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True" Style="{DynamicResource CleanButton}"/>
+            <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
         </WrapPanel>
         <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" >
             <DataGrid.Columns>

@@ -224,19 +224,27 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                bool result;
-
-                if (Boolean.TryParse(GetSetting("app.checkupdateonstart"), out result))
-                {
-                    return result;
-                }
-
-                return false;
+                return UpdateUtils.GetCheckUpdateOnStart();
             }
             set
             {
-                SetSetting("app.checkupdateonstart", value);
+                UpdateUtils.SetCheckUpdateOnStart(value);
                 RaisePropertyChanged("CheckUpdateOnStart");
+            }
+        }
+
+        public string LastUpdateCheck
+        {
+            get
+            {
+                DateTime lastCheck = UpdateUtils.GetLastUpdateCheck();
+
+                if (lastCheck == DateTime.MinValue)
+                {
+                    return "Never";
+                }
+
+                return lastCheck.ToLocalTime().ToString("G");
             }
         }
 
@@ -258,6 +266,7 @@ namespace com.jonthysell.Chordious.WPF
                     finally
                     {
                         IsIdle = true;
+                        RaisePropertyChanged("LastUpdateCheck");
                     }
                 }, () =>
                 {
@@ -311,6 +320,7 @@ namespace com.jonthysell.Chordious.WPF
             RaisePropertyChanged("RenderBackground");
             RaisePropertyChanged("ReleaseChannel");
             RaisePropertyChanged("CheckUpdateOnStart");
+            RaisePropertyChanged("LastUpdateCheck");
         }
     }
 }

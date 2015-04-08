@@ -35,7 +35,7 @@
             <Label Content="{Binding SelectedNode.Diagrams.Count}" />
         </WrapPanel>
         <ScrollViewer Margin="5,0" Grid.Row="1" Grid.Column="1" IsEnabled="{Binding NodeIsSelected}">
-            <ListView Name="DiagramsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding SelectedNode.Diagrams}" SelectionMode="Multiple">
+            <ListView Name="DiagramsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding SelectedNode.Diagrams}" SelectionMode="Extended">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Margin="5" />

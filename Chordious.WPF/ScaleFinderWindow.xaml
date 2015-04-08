@@ -31,7 +31,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Margin="5" Content="Instrument" FontWeight="Bold" />
-            <ComboBox Grid.Column="1" ItemsSource="{Binding Instruments}" SelectedItem="{Binding SelectedInstrument}" VerticalAlignment="Center" Margin="5">
+            <ComboBox Grid.Column="1" ItemsSource="{Binding Instruments}" SelectedItem="{Binding SelectedInstrument}" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" />
@@ -39,7 +39,7 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
             <Label Grid.Column="2" Margin="5" Content="Tuning" FontWeight="Bold" />
-            <ComboBox Grid.Column="3" ItemsSource="{Binding Tunings}" SelectedItem="{Binding SelectedTuning}" VerticalAlignment="Center" Margin="5">
+            <ComboBox Grid.Column="3" ItemsSource="{Binding Tunings}" SelectedItem="{Binding SelectedTuning}" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding LongName}" />
@@ -48,9 +48,9 @@
             </ComboBox>
             <Button Grid.Column="4" Margin="5" Content="Edit" Width="50" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
             <Label Grid.Column="5" Margin="5" Content="Root Note" FontWeight="Bold" />
-            <ComboBox Grid.Column="6" ItemsSource="{Binding RootNotes}" SelectedItem="{Binding SelectedRootNote}" Width="50" VerticalAlignment="Center" Margin="5" />
+            <ComboBox Grid.Column="6" ItemsSource="{Binding RootNotes}" SelectedItem="{Binding SelectedRootNote}" Width="50" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}"/>
             <Label Grid.Column="7" Margin="5" Content="Scale" FontWeight="Bold" />
-            <ComboBox Grid.Column="8" ItemsSource="{Binding Scales}" SelectedItem="{Binding SelectedScale}" VerticalAlignment="Center" Margin="5">
+            <ComboBox Grid.Column="8" ItemsSource="{Binding Scales}" SelectedItem="{Binding SelectedScale}" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" />
@@ -105,13 +105,13 @@
                         <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Add Root Notes"/>
                         <CheckBox Grid.Row="2" Grid.Column="1" Margin="5" IsChecked="{Binding AddRootNotes}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Mark Text"/>
-                        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding MarkTextOptions}" SelectedIndex="{Binding SelectedMarkTextOptionIndex}" VerticalAlignment="Center"/>
+                        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding MarkTextOptions}" SelectedIndex="{Binding SelectedMarkTextOptionIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                     </Grid>
                 </GroupBox>
             </StackPanel>
         </ScrollViewer>
         <ScrollViewer Grid.Row="1" Grid.Column="1">
-            <ListView Name="ResultsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Results}" SelectionMode="Multiple">
+            <ListView Name="ResultsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Results}" SelectionMode="Extended">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Margin="5" />

@@ -15,15 +15,15 @@
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Width="120" Margin="5" Content="Renderer"/>
-                                <ComboBox Width="105" Margin="5" ItemsSource="{Binding Renderers}" SelectedIndex="{Binding SelectedRendererIndex}" VerticalAlignment="Center"/>
+                                <ComboBox Width="105" Margin="5" ItemsSource="{Binding Renderers}" SelectedIndex="{Binding SelectedRendererIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Width="120" Margin="5" Content="Background"/>
-                                <ComboBox Width="105" Margin="5" ItemsSource="{Binding RenderBackgrounds}" SelectedIndex="{Binding SelectedRenderBackgroundIndex}" VerticalAlignment="Center"/>
+                                <ComboBox Width="105" Margin="5" ItemsSource="{Binding RenderBackgrounds}" SelectedIndex="{Binding SelectedRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Width="120" Margin="5" Content="Editor Background"/>
-                                <ComboBox Width="105" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center"/>
+                                <ComboBox Width="105" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
@@ -40,7 +40,7 @@
                     <GroupBox Header="Advanced" Margin="5">
                         <StackPanel>
                             <Button Content="Advanced Editor" Margin="5" Command="{Binding ShowAdvancedStyle, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
-                            <Button Content="Reset" Margin="5" Command="{Binding ResetUserStyles, Mode=OneWay}"/>
+                            <Button Content="Reset" Margin="5" Command="{Binding ResetUserStyles, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>
@@ -54,7 +54,7 @@
                             <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition MaxWidth="75" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -67,7 +67,7 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Instrument" />
-                                <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding ChordFinderInstruments}" SelectedItem="{Binding ChordFinderSelectedInstrument}" VerticalAlignment="Center" Margin="5">
+                                <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding ChordFinderInstruments}" SelectedItem="{Binding ChordFinderSelectedInstrument}" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding Name}" />
@@ -75,7 +75,7 @@
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
                                 <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Tuning" />
-                                <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ChordFinderTunings}" SelectedItem="{Binding ChordFinderSelectedTuning}" VerticalAlignment="Center" Margin="5">
+                                <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ChordFinderTunings}" SelectedItem="{Binding ChordFinderSelectedTuning}" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding LongName}" />
@@ -100,7 +100,7 @@
                             <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition MaxWidth="75"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -118,13 +118,13 @@
                                 <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Add Root Notes"/>
                                 <CheckBox Grid.Row="2" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAddRootNotes}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                 <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Barre Type"/>
-                                <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding ChordFinderBarreTypeOptions}" SelectedIndex="{Binding ChordFinderSelectedBarreTypeOptionIndex}" VerticalAlignment="Center"/>
+                                <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding ChordFinderBarreTypeOptions}" SelectedIndex="{Binding ChordFinderSelectedBarreTypeOptionIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                                 <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Mark Text"/>
-                                <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding ChordFinderMarkTextOptions}" SelectedIndex="{Binding ChordFinderSelectedMarkTextOptionIndex}" VerticalAlignment="Center"/>
+                                <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding ChordFinderMarkTextOptions}" SelectedIndex="{Binding ChordFinderSelectedMarkTextOptionIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                                 <Label Grid.Row="5" Grid.Column="0" Margin="5" Content="Add Bottom Marks"/>
                                 <CheckBox Grid.Row="5" Grid.Column="1" Margin="5" IsChecked="{Binding ChordFinderAddBottomMarks}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                 <Label Grid.Row="6" Grid.Column="0" Margin="5" Content="Bottom Mark Text" IsEnabled="{Binding ChordFinderAddBottomMarks}"/>
-                                <ComboBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding ChordFinderBottomMarkTextOptions}" SelectedIndex="{Binding ChordFinderSelectedBottomMarkTextOptionIndex}" VerticalAlignment="Center" IsEnabled="{Binding ChordFinderAddBottomMarks}"/>
+                                <ComboBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding ChordFinderBottomMarkTextOptions}" SelectedIndex="{Binding ChordFinderSelectedBottomMarkTextOptionIndex}" VerticalAlignment="Center" IsEnabled="{Binding ChordFinderAddBottomMarks}" Style="{DynamicResource CleanComboBox}"/>
                             </Grid>
                         </GroupBox>
                     </StackPanel>
@@ -139,7 +139,7 @@
                             <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition MaxWidth="75"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -151,7 +151,7 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Instrument" />
-                                <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding ScaleFinderInstruments}" SelectedItem="{Binding ScaleFinderSelectedInstrument}" VerticalAlignment="Center" Margin="5">
+                                <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding ScaleFinderInstruments}" SelectedItem="{Binding ScaleFinderSelectedInstrument}" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding Name}" />
@@ -159,7 +159,7 @@
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
                                 <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Tuning" />
-                                <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ScaleFinderTunings}" SelectedItem="{Binding ScaleFinderSelectedTuning}" VerticalAlignment="Center" Margin="5">
+                                <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ScaleFinderTunings}" SelectedItem="{Binding ScaleFinderSelectedTuning}" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding LongName}" />
@@ -182,7 +182,7 @@
                             <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition MaxWidth="75"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -197,7 +197,7 @@
                                 <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Add Root Notes"/>
                                 <CheckBox Grid.Row="2" Grid.Column="1" Margin="5" IsChecked="{Binding ScaleFinderAddRootNotes}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                 <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Mark Text"/>
-                                <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding ScaleFinderMarkTextOptions}" SelectedIndex="{Binding ScaleFinderSelectedMarkTextOptionIndex}" VerticalAlignment="Center"/>
+                                <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding ScaleFinderMarkTextOptions}" SelectedIndex="{Binding ScaleFinderSelectedMarkTextOptionIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                             </Grid>
                         </GroupBox>
                     </StackPanel>
@@ -212,7 +212,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="160" Margin="5" Content="Release Channel"/>
-                            <ComboBox Width="85" Margin="5" ItemsSource="{Binding ReleaseChannels}" SelectedIndex="{Binding SelectedReleaseChannelIndex}" VerticalAlignment="Center"/>
+                            <ComboBox Width="85" Margin="5" ItemsSource="{Binding ReleaseChannels}" SelectedIndex="{Binding SelectedReleaseChannelIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Content="Last Checked"/>

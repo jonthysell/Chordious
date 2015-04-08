@@ -1178,7 +1178,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             collection.Add("Overlap");
             collection.Add("Add Horizontal Padding");
             collection.Add("Add Vertical Padding");
-            collection.Add("Add Horizonatal & Vertical Padding");
+            collection.Add("Add Horizontal & Vertical Padding");
 
             return collection;
         }

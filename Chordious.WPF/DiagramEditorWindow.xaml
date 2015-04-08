@@ -30,11 +30,11 @@
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="80" Content="Orientation"/>
-                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding Diagram.Orientations}" SelectedIndex="{Binding Diagram.SelectedOrientationIndex}" VerticalAlignment="Center"/>
+                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding Diagram.Orientations}" SelectedIndex="{Binding Diagram.SelectedOrientationIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="80" Content="Label Model"/>
-                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding Diagram.LabelLayoutModels}" SelectedIndex="{Binding Diagram.SelectedLabelLayoutModelIndex}" VerticalAlignment="Center"/>
+                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding Diagram.LabelLayoutModels}" SelectedIndex="{Binding Diagram.SelectedLabelLayoutModelIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -204,7 +204,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="80" Margin="5" Content="Label Style"/>
-                            <ComboBox Width="95" Margin="5" ItemsSource="{Binding Diagram.TitleLabelStyles}" SelectedIndex="{Binding Diagram.SelectedTitleLabelStyleIndex}" VerticalAlignment="Center"/>
+                            <ComboBox Width="95" Margin="5" ItemsSource="{Binding Diagram.TitleLabelStyles}" SelectedIndex="{Binding Diagram.SelectedTitleLabelStyleIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Grid Padding (px)"/>
@@ -222,7 +222,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
                 <Label Margin="5" Content="Background" FontWeight="Bold"/>
-                <ComboBox Width="95" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center"/>
+                <ComboBox Width="95" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
             </StackPanel>
         </WrapPanel>
     </Grid>

@@ -72,6 +72,12 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="CleanComboBox" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}">
+            <Setter Property="Background" Value="{DynamicResource NormalBrush}"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+        </Style>
         <SolidColorBrush x:Key="NormalBrush" Color="White"/>
         <SolidColorBrush x:Key="MouseOverBrush" Color="#BEE6FD"/>
         <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="White"/>

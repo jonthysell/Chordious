@@ -143,6 +143,7 @@ namespace com.jonthysell.Chordious.WPF
 
             using (WebClient client = new WebClient())
             {
+                client.Headers["User-Agent"] = _userAgent;
                 client.DownloadFile(installerInfo.Url, msiPath);
             }
 
@@ -168,7 +169,10 @@ namespace com.jonthysell.Chordious.WPF
         {
             List<InstallerInfo> installerInfos = new List<InstallerInfo>();
 
-            using (XmlReader reader = XmlReader.Create(WebRequest.Create(_updateUrl).GetResponse().GetResponseStream()))
+            HttpWebRequest request = WebRequest.CreateHttp(_updateUrl);
+            request.UserAgent = _userAgent;
+
+            using (XmlReader reader = XmlReader.Create(request.GetResponse().GetResponseStream()))
             {
                 while (reader.Read())
                 {
@@ -254,6 +258,7 @@ namespace com.jonthysell.Chordious.WPF
         }
 
         private const string _updateUrl = "http://update.chordious.com";
+        private const string _userAgent = "Mozilla/5.0";
     }
 
     public class InstallerInfo

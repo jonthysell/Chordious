@@ -195,6 +195,14 @@
                             <TextBox Width="65" Margin="5" Text="{Binding Diagram.Title, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
+                            <Label Width="110" Margin="5" Content="Text Size (px)"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleTextSize, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="110" Margin="5" Content="Modifier Ratio" IsEnabled="{Binding Diagram.IsTitleTextSizeModRatioEnabled}"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleTextSizeModRatio, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center" IsEnabled="{Binding Diagram.IsTitleTextSizeModRatioEnabled}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Color"/>
                             <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleColor, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>

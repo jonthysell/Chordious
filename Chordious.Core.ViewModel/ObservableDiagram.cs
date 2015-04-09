@@ -661,6 +661,58 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public double TitleTextSize
+        {
+            get
+            {
+                return Diagram.TitleTextSize;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.TitleTextSize = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("TitleTextSize");
+                Refresh();
+            }
+        }
+
+        public bool IsTitleTextSizeModRatioEnabled
+        {
+            get
+            {
+                return (DiagramLabelStyle)SelectedTitleLabelStyleIndex == DiagramLabelStyle.ChordName;
+            }
+        }
+
+        public double TitleTextSizeModRatio
+        {
+            get
+            {
+                return Diagram.TitleTextSizeModRatio;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.TitleTextSizeModRatio = value;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                RaisePropertyChanged("TitleTextSizeModRatio");
+                Refresh();
+            }
+        }
+
         public double TitleGridPadding
         {
             get
@@ -707,6 +759,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 Diagram.TitleLabelStyle = (DiagramLabelStyle)(value);
                 RaisePropertyChanged("SelectedTitleLabelStyleIndex");
+                RaisePropertyChanged("IsTitleTextSizeModRatioEnabled");
                 Refresh();
             }
         }

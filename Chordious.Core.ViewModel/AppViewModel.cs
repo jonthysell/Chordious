@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
@@ -37,6 +38,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public delegate Stream GetConfigStream();
     public delegate object SvgTextToImage(string svgText, int width, int height, bool editMode);
+    public delegate IEnumerable<string> GetSystemFonts();
 
     public delegate void DoOnUIThread(Action action);
 
@@ -132,19 +134,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public SvgTextToImage SvgTextToImage { get; private set; }
 
+        public GetSystemFonts GetSystemFonts { get; private set; }
+
         public DoOnUIThread DoOnUIThread { get; private set; }
 
-        public static void Init(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DoOnUIThread doOnUIThread, string userConfigPath = "")
+        public static void Init(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DoOnUIThread doOnUIThread, GetSystemFonts getSystemFonts, string userConfigPath = "")
         {
             if (null != Instance)
             {
                 throw new NotSupportedException();
             }
 
-            Instance = new AppViewModel(assembly, loadDefaultConfigStream, loadAppConfigStream, loadUserConfigStream, saveUserConfigStream, svgTextToImage, doOnUIThread, userConfigPath);
+            Instance = new AppViewModel(assembly, loadDefaultConfigStream, loadAppConfigStream, loadUserConfigStream, saveUserConfigStream, svgTextToImage, doOnUIThread, getSystemFonts, userConfigPath);
         }
 
-        private AppViewModel(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DoOnUIThread doOnUIThread, string userConfigPath)
+        private AppViewModel(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DoOnUIThread doOnUIThread, GetSystemFonts getSystemFonts, string userConfigPath)
         {
             if (null == assembly)
             {
@@ -171,11 +175,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 throw new ArgumentNullException("saveUserConfigStream");
             }
 
+            if (null == getSystemFonts)
+            {
+                throw new ArgumentNullException("getSystemFonts");
+            }
+
             AppInfo.Assembly = assembly;
             _loadDefaultConfigStream = loadDefaultConfigStream;
             _loadAppConfigStream = loadAppConfigStream;
             _loadUserConfigStream = loadUserConfigStream;
             _saveUserConfigStream = saveUserConfigStream;
+            GetSystemFonts = getSystemFonts;
             UserConfigPath = userConfigPath;
 
             SvgTextToImage = svgTextToImage;

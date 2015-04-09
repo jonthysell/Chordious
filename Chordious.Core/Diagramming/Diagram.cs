@@ -213,6 +213,42 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public string TitleFontFamily
+        {
+            get
+            {
+                return Style.TitleFontFamilyGet();
+            }
+            set
+            {
+                Style.TitleFontFamilySet(value);
+            }
+        }
+
+        public DiagramHorizontalAlignment TitleTextAlignment
+        {
+            get
+            {
+                return Style.TitleTextAlignmentGet();
+            }
+            set
+            {
+                Style.TitleTextAlignmentSet(value);
+            }
+        }
+
+        public DiagramTextStyle TitleTextStyle
+        {
+            get
+            {
+                return Style.TitleTextStyleGet();
+            }
+            set
+            {
+                Style.TitleTextStyleSet(value);
+            }
+        }
+
         public bool TitleVisible
         {
             get
@@ -1244,6 +1280,19 @@ namespace com.jonthysell.Chordious.Core
             {
                 double titleX = rectX + (rectWidth / 2.0);
                 double titleY = rectY - this.TitleGridPadding;
+
+                if (Orientation == DiagramOrientation.UpDown)
+                {
+                    switch (this.TitleTextAlignment)
+                    {
+                        case DiagramHorizontalAlignment.Left:
+                            titleX = rectX;
+                            break;
+                        case DiagramHorizontalAlignment.Right:
+                            titleX = rectX + rectWidth;
+                            break;
+                    }
+                }
 
                 if (this.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
                 || this.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingVertical)

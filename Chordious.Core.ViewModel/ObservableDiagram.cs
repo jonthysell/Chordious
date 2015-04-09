@@ -713,6 +713,104 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public bool IsCustomTitleTextFontFamily
+        {
+            get
+            {
+                return GetFontFamilyIndex(TitleTextFontFamily) == 0;
+            }
+        }
+
+        public string TitleTextFontFamily
+        {
+            get
+            {
+                return Diagram.TitleFontFamily;
+            }
+            set
+            {
+                try
+                {
+                    Diagram.TitleFontFamily = value;
+
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                RaisePropertyChanged("TitleTextFontFamily");
+                RaisePropertyChanged("SelectedTitleTextFontFamilyIndex");
+                RaisePropertyChanged("IsCustomTitleTextFontFamily");
+                Refresh();
+            }
+        }
+
+        public int SelectedTitleTextFontFamilyIndex
+        {
+            get
+            {
+                return GetFontFamilyIndex(TitleTextFontFamily);
+            }
+            set
+            {
+                TitleTextFontFamily = _fontFamilies[value];
+                RaisePropertyChanged("SelectedTitleTextFontFamilyIndex");
+            }
+        }
+
+        public ObservableCollection<string> TitleTextFontFamilies
+        {
+            get
+            {
+                return _fontFamilies;
+            }
+        }
+        private ObservableCollection<string> _fontFamilies;
+
+        public int SelectedTitleTextAlignmentIndex
+        {
+            get
+            {
+                return (int)Diagram.TitleTextAlignment;
+            }
+            set
+            {
+                Diagram.TitleTextAlignment = (DiagramHorizontalAlignment)(value);
+                RaisePropertyChanged("SelectedTitleTextAlignmentIndex");
+                Refresh();
+            }
+        }
+
+        public ObservableCollection<string> TitleTextAlignments
+        {
+            get
+            {
+                return GetTextAlignments();
+            }
+        }
+
+        public int SelectedTitleTextStyleIndex
+        {
+            get
+            {
+                return (int)Diagram.TitleTextStyle;
+            }
+            set
+            {
+                Diagram.TitleTextStyle = (DiagramTextStyle)(value);
+                RaisePropertyChanged("SelectedTitleTextStyleIndex");
+                Refresh();
+            }
+        }
+
+        public ObservableCollection<string> TitleTextStyles
+        {
+            get
+            {
+                return GetTextStyles();
+            }
+        }
+
         public double TitleGridPadding
         {
             get
@@ -1124,6 +1222,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _isEditMode = value;
+
+                if (IsEditMode)
+                {
+                    _fontFamilies = GetFontFamilies();
+                }
+
                 RaisePropertyChanged("IsEditMode");
                 Refresh();
             }
@@ -1232,6 +1336,56 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             collection.Add("Add Horizontal Padding");
             collection.Add("Add Vertical Padding");
             collection.Add("Add Horizontal & Vertical Padding");
+
+            return collection;
+        }
+
+        private static ObservableCollection<string> GetTextAlignments()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add("Left");
+            collection.Add("Center");
+            collection.Add("Right");
+
+            return collection;
+        }
+
+        private static ObservableCollection<string> GetTextStyles()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add("Regular");
+            collection.Add("Bold");
+            collection.Add("Italic");
+            collection.Add("Bold & Italic");
+
+            return collection;
+        }
+
+        private int GetFontFamilyIndex(string fontName)
+        {
+            if (null != _fontFamilies)
+            {
+                int index = _fontFamilies.IndexOf(fontName);
+                if (index >= 0)
+                {
+                    return index;
+                }
+            }
+            return 0;
+        }
+
+        private static ObservableCollection<string> GetFontFamilies()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add("Custom");
+
+            foreach (string value in AppViewModel.Instance.GetSystemFonts())
+            {
+                collection.Add(value);
+            }
 
             return collection;
         }

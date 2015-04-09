@@ -210,7 +210,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public RelayCommand NotImplemented
+        public RelayCommand ShowHelp
         {
             get
             {
@@ -218,7 +218,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        throw new NotImplementedException();
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("This will open the Chordious website in your browser. Do you want to continue?", (confirmed) =>
+                        {
+                            if (confirmed)
+                            {
+                                Messenger.Default.Send<LaunchUrlMessage>(new LaunchUrlMessage("http://chordious.com/help/"));
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {

@@ -48,7 +48,7 @@
                     <TextBlock Text="Options" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
-            <Button Grid.Row="2" Grid.Column="1" Margin="5" Command="{Binding NotImplemented, Mode=OneWay}" Style="{DynamicResource CleanButton}" BorderThickness="0">
+            <Button Grid.Row="2" Grid.Column="1" Margin="5" Command="{Binding ShowHelp, Mode=OneWay}" Style="{DynamicResource CleanButton}" BorderThickness="0">
                 <StackPanel>
                     <Image Source="{DynamicResource HelpIcon48}" Width="48" Height="48" Margin="2" />
                     <TextBlock Text="Help" HorizontalAlignment="Center" />

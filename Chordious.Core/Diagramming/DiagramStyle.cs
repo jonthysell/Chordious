@@ -400,6 +400,36 @@ namespace com.jonthysell.Chordious.Core
             Set("title.textmodratio", value);
         }
 
+        public string TitleFontFamilyGet()
+        {
+            return Get("title.fontfamily");
+        }
+
+        public void TitleFontFamilySet(string value)
+        {
+            Set("title.fontfamily", value);
+        }
+
+        public DiagramHorizontalAlignment TitleTextAlignmentGet()
+        {
+            return GetEnum<DiagramHorizontalAlignment>("title.textalignment");
+        }
+
+        public void TitleTextAlignmentSet(DiagramHorizontalAlignment value)
+        {
+            Set("title.textalignment", value);
+        }
+
+        public DiagramTextStyle TitleTextStyleGet()
+        {
+            return GetEnum<DiagramTextStyle>("title.textstyle");
+        }
+
+        public void TitleTextStyleSet(DiagramTextStyle value)
+        {
+            Set("title.textstyle", value);
+        }
+
         public bool TitleVisibleGet()
         {
             return GetBoolean("title.textvisible");

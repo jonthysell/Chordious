@@ -111,7 +111,7 @@ namespace com.jonthysell.Chordious.WPF
             // Turn off first-run so it doesn't run next time
             IsFirstRun = false;
 
-            string message = "Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? You can change your mind later in Options.";
+            string message = "Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? (Recommended) You can change your mind later in Options.";
 
             Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (enableAutoUpdate) =>
             {

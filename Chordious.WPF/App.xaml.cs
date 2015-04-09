@@ -81,7 +81,8 @@ namespace com.jonthysell.Chordious.WPF
                 {
                     Dispatcher.Invoke(action);
                 }
-            , userFile);
+            , this.GetFonts
+            ,userFile);
 
             if (File.Exists(defaultFile))
             {
@@ -122,6 +123,14 @@ namespace com.jonthysell.Chordious.WPF
             }
 
             return Path.Combine(userFolder, "Chordious.WPF.xml");
+        }
+
+        public IEnumerable<string> GetFonts()
+        {
+            foreach (System.Drawing.FontFamily font in System.Drawing.FontFamily.Families)
+            {
+                yield return font.Name;
+            }
         }
 
         private void App_Exit(object sender, ExitEventArgs e)

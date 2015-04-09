@@ -195,29 +195,49 @@
                             <TextBox Width="65" Margin="5" Text="{Binding Diagram.Title, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Width="110" Margin="5" Content="Text Size (px)"/>
-                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleTextSize, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Width="110" Margin="5" Content="Modifier Ratio" IsEnabled="{Binding Diagram.IsTitleTextSizeModRatioEnabled}"/>
-                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleTextSizeModRatio, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center" IsEnabled="{Binding Diagram.IsTitleTextSizeModRatioEnabled}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Width="110" Margin="5" Content="Color"/>
-                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleColor, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Width="110" Margin="5" Content="Opacity"/>
-                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Width="80" Margin="5" Content="Label Style"/>
-                            <ComboBox Width="95" Margin="5" ItemsSource="{Binding Diagram.TitleLabelStyles}" SelectedIndex="{Binding Diagram.SelectedTitleLabelStyleIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Grid Padding (px)"/>
                             <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleGridPadding, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
+                        <Expander Header="Font" Margin="0,5,0,5" IsExpanded="True" BorderThickness="0">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="80" Margin="5" Content="Family"/>
+                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding Diagram.TitleTextFontFamilies}" SelectedIndex="{Binding Diagram.SelectedTitleTextFontFamilyIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="80" Margin="5" Content="Custom" IsEnabled="{Binding Diagram.IsCustomTitleTextFontFamily}" Visibility="{Binding Diagram.IsCustomTitleTextFontFamily, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                    <TextBox Width="95" Margin="5" Text="{Binding Diagram.TitleTextFontFamily, UpdateSourceTrigger=LostFocus}" MaxLines="1" HorizontalContentAlignment="Center" IsEnabled="{Binding Diagram.IsCustomTitleTextFontFamily}" Visibility="{Binding Diagram.IsCustomTitleTextFontFamily, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="110" Margin="5" Content="Size (pt)"/>
+                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleTextSize, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="80" Margin="5" Content="Style"/>
+                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding Diagram.TitleTextStyles}" SelectedIndex="{Binding Diagram.SelectedTitleTextStyleIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="80" Margin="5" Content="Alignment"/>
+                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding Diagram.TitleTextAlignments}" SelectedIndex="{Binding Diagram.SelectedTitleTextAlignmentIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="110" Margin="5" Content="Color"/>
+                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleColor, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="110" Margin="5" Content="Opacity"/>
+                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="80" Margin="5" Content="Label Style"/>
+                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding Diagram.TitleLabelStyles}" SelectedIndex="{Binding Diagram.SelectedTitleLabelStyleIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="110" Margin="5" Content="Modifier Ratio" IsEnabled="{Binding Diagram.IsTitleTextSizeModRatioEnabled}"/>
+                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleTextSizeModRatio, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center" IsEnabled="{Binding Diagram.IsTitleTextSizeModRatioEnabled}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Expander>
                     </StackPanel>
                 </GroupBox>
             </StackPanel>

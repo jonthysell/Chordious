@@ -3,7 +3,7 @@
      xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
 	<Product
     Id="*"
-    Name="Chordious.WPF !(bind.FileVersion.ChordiousWpfApp)"
+    Name="Chordious !(bind.FileVersion.ChordiousWpfApp)"
     Language="1033" Version="!(bind.FileVersion.ChordiousWpfApp)"
     Manufacturer="Jon Thysell"
     UpgradeCode="a49f8d4a-4e86-490d-8b31-282e26ad5ccf">
@@ -16,7 +16,7 @@
 
 		<MajorUpgrade
       AllowSameVersionUpgrades="yes"
-      DowngradeErrorMessage="A newer version of Chordious.WPF is already installed." />
+      DowngradeErrorMessage="A newer version of Chordious is already installed." />
 
     <?if $(var.Chordious.WPF.Configuration) = "Release"?>
     <MediaTemplate EmbedCab="yes"
@@ -184,7 +184,7 @@
     <ComponentGroup Id="ProductShortcuts" Directory="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut">
         <Shortcut Id="ApplicationStartMenuShortcut"
-                  Name="Chordious.WPF"
+                  Name="Chordious"
                   Description="Freboart diagram generator."
                   Target="[#ChordiousWpfApp]"
                   Icon="icon.ico"

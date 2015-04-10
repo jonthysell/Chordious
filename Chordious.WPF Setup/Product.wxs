@@ -84,6 +84,10 @@
         <File Id="ChordiousWpfAppConfig" Source="$(var.Chordious.WPF.TargetDir)\Chordious.WPF.xml" />
         <File Id="ChordiousWpfReadme" Name="Readme.txt" Source="$(var.SolutionDir)\README.md" />
         <File Id="ChordiousWpfLicense" Name="License.txt" Source="$(var.SolutionDir)\LICENSE.md" />
+        <File Id="SharpVectorsLicense" Name="SharpVectors License.txt" Source="$(var.SolutionDir)\External\SharpVectors\LICENSE.md" />
+        <File Id="SvgNetLicense" Name="SVG.NET License.txt" Source="$(var.SolutionDir)\External\SVG.NET\LICENSE.md" />
+        <File Id="SvgNetReadme" Name="SVG.NET Readme.txt" Source="$(var.SolutionDir)\External\SVG.NET\README.md" />
+        <File Id="MvvmLightLicense" Name="MVVM Light License.txt" Source="$(var.SolutionDir)\External\MVVMLight\LICENSE.md" />
       </Component>
       <Component>
         <File Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.dll" />

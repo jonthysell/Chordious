@@ -110,20 +110,18 @@
                 </GroupBox>
             </StackPanel>
         </ScrollViewer>
-        <ScrollViewer Grid.Row="1" Grid.Column="1">
-            <ListView Name="ResultsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Results}" SelectionMode="Extended">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Margin="5" />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate >
-                        <Image Source="{Binding ImageObject}" Margin="5" Width="{Binding TotalWidth}" Height="{Binding TotalHeight}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ScrollViewer>
+        <ListView Grid.Row="1" Grid.Column="1" Name="ResultsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Results}" SelectionMode="Extended">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Margin="5" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <Image Source="{Binding ImageObject}" Margin="5" Width="{Binding TotalWidth}" Height="{Binding TotalHeight}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <Button Grid.Row="2" Margin="5" Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}" Style="{DynamicResource CleanButton}">
             <StackPanel Orientation="Horizontal">
                 <Image Source="{DynamicResource SearchIcon16}" Width="16" Height="16" Margin="5" />

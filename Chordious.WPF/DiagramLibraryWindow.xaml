@@ -34,20 +34,18 @@
             <Label Content="Count:" FontWeight="Bold" />
             <Label Content="{Binding SelectedNode.Diagrams.Count}" />
         </WrapPanel>
-        <ScrollViewer Margin="5,0" Grid.Row="1" Grid.Column="1" IsEnabled="{Binding NodeIsSelected}">
-            <ListView Name="DiagramsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding SelectedNode.Diagrams}" SelectionMode="Extended">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Margin="5" />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate >
-                        <Image Source="{Binding ImageObject}" Margin="5" Width="{Binding TotalWidth}" Height="{Binding TotalHeight}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ScrollViewer>
+        <ListView Grid.Row="1" Grid.Column="1" Name="DiagramsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding SelectedNode.Diagrams}" SelectionMode="Extended" Margin="5,0" IsEnabled="{Binding NodeIsSelected}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Margin="5" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <Image Source="{Binding ImageObject}" Margin="5" Width="{Binding TotalWidth}" Height="{Binding TotalHeight}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <WrapPanel Grid.Row="2" Grid.Column="0" FlowDirection="LeftToRight">
             <Button Command="{Binding CreateNode}" Margin="5" Style="{DynamicResource CleanButton}">
                 <StackPanel Orientation="Horizontal">

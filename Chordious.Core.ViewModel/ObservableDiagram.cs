@@ -1213,6 +1213,30 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        public RelayCommand ShowEditor
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<ShowDiagramEditorMessage>(new ShowDiagramEditorMessage(this, (changed) =>
+                        {
+                            if (null != PostEditCallback)
+                            {
+                                PostEditCallback(changed);
+                            }
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                });
+            }
+        }
+
         public bool IsEditMode
         {
             get
@@ -1233,6 +1257,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private bool _isEditMode = false;
+
+        public Action<bool> PostEditCallback
+        {
+            get
+            {
+                return _postEditCallback;
+            }
+            set
+            {
+                if (null == value)
+                {
+                    throw new ArgumentNullException();
+                }
+                _postEditCallback = value;
+                RaisePropertyChanged("PostEditCallback");
+            }
+        }
+        public Action<bool> _postEditCallback;
 
         public RelayCommand RenderImage
         {

@@ -42,7 +42,11 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate >
-                    <Image Source="{Binding ImageObject}" Margin="5" Width="{Binding TotalWidth}" Height="{Binding TotalHeight}" />
+                    <Image Source="{Binding ImageObject}" Margin="5" Width="{Binding TotalWidth}" Height="{Binding TotalHeight}">
+                        <Image.InputBindings>
+                            <MouseBinding Gesture="LeftDoubleClick" Command="{Binding ShowEditor}" />
+                        </Image.InputBindings>
+                    </Image>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -74,12 +78,6 @@
         </WrapPanel>
         <WrapPanel Grid.Row="2" Grid.Column="1" FlowDirection="RightToLeft">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Button Command="{Binding SelectedNode.EditSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                    </StackPanel>
-                </Button>
                 <Button Command="{Binding SelectedNode.DeleteSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />

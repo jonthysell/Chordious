@@ -75,7 +75,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     foreach (Diagram diagram in Library.Get(Path, Name))
                     {
-                        _diagrams.Add(new ObservableDiagram(diagram));
+                        _diagrams.Add(CreateObservableDiagram(diagram));
                     }
                     firstLoad = false;
                 }
@@ -88,6 +88,30 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         public ObservableCollection<ObservableDiagram> _diagrams;
+
+        private ObservableDiagram CreateObservableDiagram(Diagram diagram)
+        {
+            ObservableDiagram od = new ObservableDiagram(diagram);
+            od.PostEditCallback = GetDiagramPostEditCallback(od);
+            return od;
+        }
+
+        private Action<bool> GetDiagramPostEditCallback(ObservableDiagram od)
+        {
+            ObservableDiagram originalObservableDiagram = od;
+            Diagram originalDiagram = od.Diagram;
+
+            return (changed) =>
+            {
+                if (changed)
+                {
+                    DiagramCollection collection = Library.Get(Path, Name);
+                    collection.Replace(originalDiagram, originalObservableDiagram.Diagram);
+                    originalObservableDiagram.Refresh();
+                    originalObservableDiagram.PostEditCallback = GetDiagramPostEditCallback(originalObservableDiagram);
+                }
+            };
+        }
 
         public ObservableCollection<ObservableDiagram> SelectedDiagrams
         {
@@ -108,39 +132,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private ObservableCollection<ObservableDiagram> _selectedDiagrams;
-
-        public RelayCommand EditSelected
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        ObservableDiagram originalObservableDiagram = SelectedDiagrams[0];
-
-                        Diagram originalDiagram = originalObservableDiagram.Diagram;
-
-                        Messenger.Default.Send<ShowDiagramEditorMessage>(new ShowDiagramEditorMessage(originalObservableDiagram, (changed) =>
-                        {
-                            if (changed)
-                            {
-                                DiagramCollection collection = Library.Get(Path, Name);
-                                collection.Replace(originalDiagram, originalObservableDiagram.Diagram);
-                                originalObservableDiagram.Refresh();
-                            }
-                        }));
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                }, () =>
-                {
-                    return SelectedDiagrams.Count == 1;
-                });
-            }
-        }
 
         public RelayCommand DeleteSelected
         {

@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## 1.9.15123.2147 ##
+* Added a new DiagramExport dialog
+
 ## 1.9.15110.221 ##
 
 * Bug: Can't scroll lists of diagrams with the mouse wheel

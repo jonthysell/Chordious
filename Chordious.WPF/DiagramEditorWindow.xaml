@@ -112,7 +112,7 @@
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Margin="5" Width="110" Content="Visible"/>
-                                    <CheckBox Width="65" Margin="5" IsChecked="{Binding Diagram.GridNutVisible}"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                    <CheckBox Width="65" Margin="5" IsChecked="{Binding Diagram.GridNutVisible}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Margin="5" Width="110" Content="Ratio"/>

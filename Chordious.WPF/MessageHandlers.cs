@@ -70,7 +70,7 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Register<ShowOptionsMessage>(recipient, (message) => MessageHandlers.ShowOptions(message));
             Messenger.Default.Register<ShowAdvancedDataMessage>(recipient, (message) => MessageHandlers.ShowAdvancedData(message));
 
-            Messenger.Default.Register<PromptForExportMessage>(recipient, (message) => MessageHandlers.PromptForExport(message));
+            Messenger.Default.Register<ShowDiagramExportMessage>(recipient, (message) => MessageHandlers.ShowDiagramExport(message));
 
             Messenger.Default.Register<PromptForLegacyImportMessage>(recipient, (message) => MessageHandlers.PromptForLegacyImport(message));
         }
@@ -103,7 +103,7 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Unregister<ShowOptionsMessage>(recipient);
             Messenger.Default.Unregister<ShowAdvancedDataMessage>(recipient);
 
-            Messenger.Default.Unregister<PromptForExportMessage>(recipient);
+            Messenger.Default.Unregister<ShowDiagramExportMessage>(recipient);
 
             Messenger.Default.Unregister<PromptForLegacyImportMessage>(recipient);
         }
@@ -266,23 +266,12 @@ namespace com.jonthysell.Chordious.WPF
             message.Process();
         }
 
-        public static void PromptForExport(PromptForExportMessage message)
+        public static void ShowDiagramExport(ShowDiagramExportMessage message)
         {
-            SaveFileDialog dialog = new SaveFileDialog();
-            dialog.AddExtension = true;
-            dialog.OverwritePrompt = true;
-            dialog.DefaultExt = "*.svg";
-            dialog.Filter = "SVG|*.svg|PNG|*.png|GIF|*.gif|JPG|*.jpg";
-
-            bool? result = dialog.ShowDialog();
-
-            if (result.HasValue && result.Value)
-            {
-                string filename = dialog.FileName;
-                ExportFormat exportFormat = (ExportFormat)(dialog.FilterIndex - 1);
-
-                message.Process(new SvgExporter(filename, exportFormat, message.Count == 1));
-            }
+            DiagramExportWindow window = new DiagramExportWindow();
+            message.DiagramExportVM = new DiagramExportViewModel(message.DiagramsToExport);
+            window.DataContext = message.DiagramExportVM;
+            window.ShowDialog();
         }
 
         public static void PromptForLegacyImport(PromptForLegacyImportMessage message)

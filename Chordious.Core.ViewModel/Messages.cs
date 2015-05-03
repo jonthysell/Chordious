@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.ObjectModel;
 using System.IO;
 
 using GalaSoft.MvvmLight.Messaging;
@@ -288,29 +289,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
     }
 
-    public class PromptForExportMessage : MessageBase
+    public class ShowDiagramExportMessage : MessageBase
     {
-        private Action<IDiagramExporter> Callback;
+        public DiagramExportViewModelBase DiagramExportVM { get; set; }
 
-        public int Count { get; private set; }
+        public ObservableCollection<ObservableDiagram> DiagramsToExport { get; private set; }
 
-        public PromptForExportMessage(int count, Action<IDiagramExporter> callback = null) : base()
+        public ShowDiagramExportMessage(ObservableCollection<ObservableDiagram> diagramsToExport) : base()
         {
-            if (count < 1)
+            if (null == diagramsToExport)
             {
-                throw new ArgumentOutOfRangeException("count");
+                throw new ArgumentNullException("diagramsToExport");
             }
 
-            Count = count;
-            Callback = callback;
-        }
-
-        public void Process(IDiagramExporter diagramExporter)
-        {
-            if (null != Callback)
-            {
-                Callback(diagramExporter);
-            }
+            DiagramsToExport = diagramsToExport;
         }
     }
 

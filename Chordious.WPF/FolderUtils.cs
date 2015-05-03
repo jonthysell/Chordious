@@ -1,5 +1,5 @@
 ﻿// 
-// IDiagramExporter.cs
+// FolderUtils.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -25,11 +25,29 @@
 // THE SOFTWARE.
 
 using System;
+using System.Windows.Forms;
 
-namespace com.jonthysell.Chordious.Core.ViewModel
+namespace com.jonthysell.Chordious.WPF
 {
-    public interface IDiagramExporter
+    public class FolderUtils
     {
-        void Export(ObservableDiagram observableDiagram);
+        public static bool PromptForFolder(string defaultPath, out string value)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+
+            if (!String.IsNullOrWhiteSpace(defaultPath))
+            {
+                dialog.SelectedPath = defaultPath;
+            }
+
+            if (DialogResult.OK == dialog.ShowDialog())
+            {
+                value = dialog.SelectedPath;
+                return true;
+            }
+
+            value = "";
+            return false;
+        }
     }
 }

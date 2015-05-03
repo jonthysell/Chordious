@@ -176,19 +176,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<PromptForExportMessage>(new PromptForExportMessage(SelectedDiagrams.Count, (diagramExporter) =>
-                        {
-                            if (null != diagramExporter)
-                            {
-                                List<ObservableDiagram> itemsToExport = new List<ObservableDiagram>(SelectedDiagrams);
-
-                                foreach (ObservableDiagram od in itemsToExport)
-                                {
-                                    diagramExporter.Export(od);
-                                }
-                                SelectedDiagrams.Clear();
-                            }
-                        }));
+                        Messenger.Default.Send<ShowDiagramExportMessage>(new ShowDiagramExportMessage(SelectedDiagrams));
                     }
                     catch (Exception ex)
                     {

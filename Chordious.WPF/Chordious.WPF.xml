@@ -8,5 +8,8 @@
     <setting key="app.releasechannel" value="Official" />
     <setting key="app.checkupdateonstart" value="false" />
     <setting key="app.lastupdatecheck" value="0001-01-01T08:00:00" />
+    <setting key="diagramexport.filenameformat" value="%t.%x" />
+    <setting key="diagramexport.exportformat" value="SVG" />
+    <setting key="diagramexport.overwritefiles" value="true" />
   </settings>
 </chordious>

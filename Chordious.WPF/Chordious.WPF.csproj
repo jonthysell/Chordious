@@ -90,6 +90,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.1.1.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -118,6 +119,11 @@
     </Compile>
     <Compile Include="BoolToVisibilityConverter.cs" />
     <Compile Include="DiagramEditorViewModelExtended.cs" />
+    <Compile Include="DiagramExportViewModel.cs" />
+    <Compile Include="DiagramExportWindow.xaml.cs">
+      <DependentUpon>DiagramExportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FolderUtils.cs" />
     <Compile Include="MouseUtils.cs" />
     <Compile Include="ScaleEditorWindow.xaml.cs">
       <DependentUpon>ScaleEditorWindow.xaml</DependentUpon>
@@ -155,7 +161,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="IdleBoolToWaitCursorConverter.cs" />
-    <Compile Include="SvgExporter.cs" />
     <Compile Include="InstrumentEditorWindow.xaml.cs">
       <DependentUpon>InstrumentEditorWindow.xaml</DependentUpon>
     </Compile>
@@ -205,6 +210,10 @@
     <Page Include="ChordQualityEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DiagramExportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ScaleEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

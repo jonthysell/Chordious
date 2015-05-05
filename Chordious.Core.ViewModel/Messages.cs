@@ -294,8 +294,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public DiagramExportViewModelBase DiagramExportVM { get; set; }
 
         public ObservableCollection<ObservableDiagram> DiagramsToExport { get; private set; }
+        public string CollectionName { get; private set; }
 
-        public ShowDiagramExportMessage(ObservableCollection<ObservableDiagram> diagramsToExport) : base()
+        public ShowDiagramExportMessage(ObservableCollection<ObservableDiagram> diagramsToExport, string collectionName) : base()
         {
             if (null == diagramsToExport)
             {
@@ -303,6 +304,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
 
             DiagramsToExport = diagramsToExport;
+            CollectionName = collectionName;
         }
     }
 

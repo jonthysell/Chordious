@@ -269,7 +269,7 @@ namespace com.jonthysell.Chordious.WPF
         public static void ShowDiagramExport(ShowDiagramExportMessage message)
         {
             DiagramExportWindow window = new DiagramExportWindow();
-            message.DiagramExportVM = new DiagramExportViewModel(message.DiagramsToExport);
+            message.DiagramExportVM = new DiagramExportViewModel(message.DiagramsToExport, message.CollectionName);
             window.DataContext = message.DiagramExportVM;
             window.ShowDialog();
         }

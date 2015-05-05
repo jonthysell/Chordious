@@ -21,7 +21,7 @@
         <TextBox Grid.Row="0" Grid.Column="1" Name="OutputPathInput" Text="{Binding OutputPath, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" Margin="5" MaxLines="1" />
         <Button Grid.Row="0" Grid.Column="2" Command="{Binding ChooseOutputPath, Mode=OneWay}" Content="..." Margin="5" Style="{DynamicResource CleanButton}"/>
         <Label Grid.Row="1" Grid.Column="0" Content="Filename:" Margin="5" />
-        <TextBox Grid.Row="1" Grid.Column="1" Name="FilenameFormatInput" Text="{Binding FilenameFormat, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" Margin="5" MaxLines="1" />
+        <ComboBox Grid.Row="1" Grid.Column="1" Name="FilenameFormatInput" IsEditable="True" ItemsSource="{Binding FilenameFormats}" SelectedItem="{Binding SelectedFilenameFormat}" Text="{Binding SelectedFilenameFormat, UpdateSourceTrigger=LostFocus}" Margin="5" Style="{DynamicResource CleanComboBox}" ToolTip="{Binding FilenameFormatHelp}" />
         <ComboBox Grid.Row="1" Grid.Column="3" ItemsSource="{Binding ExportFormats}" SelectedIndex="{Binding SelectedExportFormatIndex}" VerticalAlignment="Center" Margin="5" Width="50" Style="{DynamicResource CleanComboBox}"/>
         <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" FlowDirection="LeftToRight" Height="Auto">
             <Label Content="Example:" Margin="5" />

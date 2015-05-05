@@ -108,6 +108,25 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableDiagram> _diagramsToExport;
 
+        public string CollectionName
+        {
+            get
+            {
+                return _collectionName;
+            }
+            set
+            {
+                if (String.IsNullOrWhiteSpace(value))
+                {
+                    value = "";
+                }
+
+                _collectionName = value.Trim();
+                RaisePropertyChanged("CollectionName");
+            }
+        }
+        private string _collectionName;
+
         public RelayCommand ExportAsync
         {
             get
@@ -143,7 +162,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         internal ChordiousSettings SettingsBuffer { get; private set; }
 
-        public DiagramExportViewModelBase(ObservableCollection<ObservableDiagram> diagramsToExport)
+        public DiagramExportViewModelBase(ObservableCollection<ObservableDiagram> diagramsToExport, string collectionName = "")
         {
             if (null == diagramsToExport)
             {
@@ -151,6 +170,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
 
             DiagramsToExport = diagramsToExport;
+            CollectionName = collectionName;
+
             SettingsBuffer = new ChordiousSettings(AppVM.UserConfig.ChordiousSettings, "DiagramExport");
         }
 

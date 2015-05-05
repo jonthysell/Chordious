@@ -67,7 +67,7 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
-        public string FilenameFormat
+        public string SelectedFilenameFormat
         {
             get
             {
@@ -75,9 +75,52 @@ namespace com.jonthysell.Chordious.WPF
             }
             set
             {
-                SetSetting("diagramexport.filenameformat", value);
-                RaisePropertyChanged("FilenameFormat");
-                RaisePropertyChanged("ExampleFilenameFormat");
+                if (!String.IsNullOrWhiteSpace(value))
+                {
+                    if (!FilenameFormats.Contains(value))
+                    {
+                        FilenameFormats.Add(value);
+                    }
+                    SetSetting("diagramexport.filenameformat", value);
+                    RaisePropertyChanged("SelectedFilenameFormat");
+                    RaisePropertyChanged("ExampleFilenameFormat");
+                }
+            }
+        }
+
+        public ObservableCollection<string> FilenameFormats
+        {
+            get
+            {
+                return _filenameFormats;
+            }
+            set
+            {
+                if (null == value)
+                {
+                    throw new ArgumentNullException();
+                }
+                _filenameFormats = value;
+                RaisePropertyChanged("FilenameFormats");
+            }
+        }
+        private ObservableCollection<string> _filenameFormats; 
+
+        public string FilenameFormatHelp
+        {
+            get
+            {
+                return  String.Join("\n",
+                    "%c - Diagram collection name",
+                    "%t - Diagram title text",
+                    "%h - Diagram height (in pixels)",
+                    "%w - Diagram width (in pixels)",
+                    "%x - Image extension (lowercase)",
+                    "%X - Image extension (uppercase)",
+                    "%0 - Diagram number (starts at 0)",
+                    "%1 - Diagram number (starts at 1)",
+                    "%# - Total number of diagrams to be exported",
+                    "%% - Percent sign");
             }
         }
 
@@ -173,33 +216,36 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
-        public DiagramExportViewModel(ObservableCollection<ObservableDiagram> diagramsToExport) : base(diagramsToExport)
+        public DiagramExportViewModel(ObservableCollection<ObservableDiagram> diagramsToExport, string collectionName) : base(diagramsToExport, collectionName)
         {
+            _filenameFormats = GetDefaultFilenameFormats();
         }
 
         private string GetFullFilePath(int diagramIndex = 0)
         {
             string outputPath = OutputPath;
-            string filenameFormat = FilenameFormat;
+            string filenameFormat = SelectedFilenameFormat;
 
             string filePath = "";
-            for (int i = 0; i < FilenameFormat.Length; i++)
+            for (int i = 0; i < SelectedFilenameFormat.Length; i++)
             {
-                if (FilenameFormat[i] != '%')
+                if (SelectedFilenameFormat[i] != '%')
                 {
-                    filePath += FilenameFormat[i];
+                    filePath += SelectedFilenameFormat[i];
                 }
                 else
                 {
-                    if (i + 1 < FilenameFormat.Length)
+                    if (i + 1 < SelectedFilenameFormat.Length)
                     {
                         i++; // step forward to look at the next character
-                        char nextChar = FilenameFormat[i];
+                        char nextChar = SelectedFilenameFormat[i];
                         switch(nextChar)
                         {
                             case 't':
-                            case 'T':
                                 filePath += DiagramsToExport[diagramIndex].Title.Trim();
+                                break;
+                            case 'c':
+                                filePath += CollectionName;
                                 break;
                             case 'h':
                                 filePath += DiagramsToExport[diagramIndex].TotalHeight.ToString();
@@ -207,13 +253,13 @@ namespace com.jonthysell.Chordious.WPF
                             case 'w':
                                 filePath += DiagramsToExport[diagramIndex].TotalWidth.ToString();
                                 break;
-                            case 'i':
+                            case '0':
                                 filePath += diagramIndex.ToString();
                                 break;
-                            case 'n':
+                            case '1':
                                 filePath += (diagramIndex + 1).ToString();
                                 break;
-                            case 'c':
+                            case '#':
                                 filePath += DiagramsToExport.Count.ToString();
                                 break;
                             case 'x':
@@ -309,6 +355,20 @@ namespace com.jonthysell.Chordious.WPF
                 }
 
             });
+        }
+
+        private ObservableCollection<string> GetDefaultFilenameFormats()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add("%t.%x");
+            collection.Add("%1.%x");
+            collection.Add("diagram (%1 of %#).%x");
+            collection.Add("%c\\%t.%x");
+            collection.Add("%c\\%1.%x");
+            collection.Add("%c\\diagram (%1 of %#).%x");
+
+            return collection;
         }
 
         private ObservableCollection<string> GetExportFormats()

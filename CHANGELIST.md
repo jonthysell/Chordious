@@ -1,5 +1,9 @@
 # Chordious Changelist #
 
+## 1.9.15125.1615 ##
+* Added tooltip to explain export filename format
+* Switched to dropdown to select from multiple filename formats
+
 ## 1.9.15123.2147 ##
 * Added a new DiagramExport dialog
 

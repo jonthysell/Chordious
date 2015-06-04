@@ -1043,6 +1043,14 @@ namespace com.jonthysell.Chordious.Core
         {
             int[] position = new int[] { -1, -1 };
 
+            // Fix for left/right orientation
+            if (Orientation == DiagramOrientation.LeftRight)
+            {
+                double oldY = y;
+                y = x;
+                x = GetWidth() - oldY;
+            }
+
             double topEdge = GridTopEdge();
             double bottomEdge = GridBottomEdge();
             double leftEdge = GridLeftEdge();

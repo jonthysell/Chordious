@@ -273,33 +273,29 @@ namespace com.jonthysell.Chordious.Core
                 {
                     double textSize = radius * 2.0 * this.TextSizeRatio;
 
-                    double textX = 0.0;
-                    double textY = centerY + (textSize / 2.0);
+                    double textX = centerX;
+                    double textY = centerY;
 
                     switch (this.TextAlignment)
                     {
                         case DiagramHorizontalAlignment.Left:
-                            textX = centerX - radius;
+                            textX += (Parent.Orientation == DiagramOrientation.LeftRight) ? -1.0 * textSize * 0.5 : -1.0 * radius; // D <-> U : L <-> R
+                            textY += (Parent.Orientation == DiagramOrientation.LeftRight) ? -1.0 * radius : textSize * 0.5; // L <-> R : U <-> D
                             break;
                         case DiagramHorizontalAlignment.Center:
-                            textX = centerX;
+                            textX += (Parent.Orientation == DiagramOrientation.LeftRight) ? -1.0 * textSize * 0.5 : 0; // D <-> U : L <-> R
+                            textY += (Parent.Orientation == DiagramOrientation.LeftRight) ? 0 : textSize * 0.5; // L <-> R : U <-> D
                             break;
                         case DiagramHorizontalAlignment.Right:
-                            textX = centerX + radius;
+                            textX += (Parent.Orientation == DiagramOrientation.LeftRight) ? -1.0 * textSize * 0.5 : radius; // D <-> U : L <-> R
+                            textY += (Parent.Orientation == DiagramOrientation.LeftRight) ? radius : textSize * 0.5; // L <-> R : U <-> D
                             break;
                     }
 
                     string textStyle = this.Style.GetSvgStyle(DiagramMark._textStyleMap, prefix);
                     textStyle += String.Format("font-size:{0}pt;", textSize);
 
-                    string textFormat = SvgConstants.TEXT;
-
-                    if (Parent.Orientation == DiagramOrientation.LeftRight)
-                    {
-                        textFormat = SvgConstants.ROTATED_TEXT;
-                        textX -= textSize / 2.0;
-                        textY -= textSize / 2.0;
-                    }
+                    string textFormat = (Parent.Orientation == DiagramOrientation.LeftRight) ? SvgConstants.ROTATED_TEXT : SvgConstants.TEXT;
                     
                     svg += String.Format(textFormat, textStyle, textX, textY, this.Text);
                 }

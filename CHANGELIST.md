@@ -1,5 +1,10 @@
 # Chordious Changelist #
 
+## 1.9.15157.1749 ##
+* For left/right diagrams, the mouse will now map to the correct
+coordinates
+* Horizontally oriented diagrams now render mark text and fret labels properly
+
 ## 1.9.15125.1615 ##
 * Added tooltip to explain export filename format
 * Switched to dropdown to select from multiple filename formats

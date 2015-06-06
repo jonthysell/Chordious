@@ -180,7 +180,7 @@ namespace com.jonthysell.Chordious.Core
 
         public double GetTextHeight()
         {
-            return this.Parent.GridFretSpacing * this.TextSizeRatio;
+            return this.TextSizeRatio * Math.Min(this.Parent.GridStringSpacing, this.Parent.GridFretSpacing);
         }
 
         public double GetTextWidth()
@@ -195,7 +195,7 @@ namespace com.jonthysell.Chordious.Core
             // Draw text
             if (IsVisible())
             {
-                double centerY = this.Parent.GridTopEdge() + (this.Parent.GridFretSpacing / 2.0) + (this.Parent.GridFretSpacing * (this.Position.Fret - 1));
+                double centerY = this.Parent.GridTopEdge() + (this.Parent.GridFretSpacing * 0.5) + (this.Parent.GridFretSpacing * (this.Position.Fret - 1));
                 double maxWidth = this.Parent.MaxFretLabelWidth(this.Position.Side);
 
                 double leftGridEdge = this.Parent.GridLeftEdge();
@@ -203,23 +203,24 @@ namespace com.jonthysell.Chordious.Core
 
                 double textSize = GetTextHeight();
 
-                double textX = 0.0;
-                double textY = centerY + (textSize / 2.0);
-                string textStyle = this.Style.GetSvgStyle(DiagramFretLabel._textStyleMap);
-                textStyle += String.Format("font-size:{0}pt;", textSize);
+                double textX = (this.Position.Side == FretLabelSide.Left) ? leftGridEdge : rightGridEdge;
+                double textY = centerY;
 
                 if (this.Position.Side == FretLabelSide.Left)
                 {
                     switch (this.TextAlignment)
                     {
                         case DiagramHorizontalAlignment.Left:
-                            textX = leftGridEdge - (this.GridPadding + maxWidth);
+                            textX += (Parent.Orientation == DiagramOrientation.LeftRight) ? -1.0 * (this.GridPadding + textSize) : -1.0 * (this.GridPadding + maxWidth); // D <-> U : L <-> R
+                            textY += (Parent.Orientation == DiagramOrientation.LeftRight) ? -1.0 * (this.Parent.GridFretSpacing * 0.5) : textSize * 0.5; // L <-> R : U <-> D
                             break;
                         case DiagramHorizontalAlignment.Center:
-                            textX = leftGridEdge - (this.GridPadding + (maxWidth / 2.0));
+                            textX += (Parent.Orientation == DiagramOrientation.LeftRight) ? -1.0 * (this.GridPadding + textSize) : -1.0 * (this.GridPadding + (maxWidth * 0.5)); // D <-> U : L <-> R
+                            textY += (Parent.Orientation == DiagramOrientation.LeftRight) ? 0 : textSize * 0.5; // L <-> R : U <-> D
                             break;
                         case DiagramHorizontalAlignment.Right:
-                            textX = leftGridEdge - this.GridPadding;
+                            textX += (Parent.Orientation == DiagramOrientation.LeftRight) ? -1.0 * (this.GridPadding + textSize) : -1.0 * this.GridPadding; // D <-> U : L <-> R
+                            textY += (Parent.Orientation == DiagramOrientation.LeftRight) ? this.Parent.GridFretSpacing * 0.5 : textSize * 0.5; // L <-> R : U <-> D
                             break;
                     }
                 }
@@ -228,25 +229,24 @@ namespace com.jonthysell.Chordious.Core
                     switch (this.TextAlignment)
                     {
                         case DiagramHorizontalAlignment.Left:
-                            textX = rightGridEdge + this.GridPadding;
+                            textX += (Parent.Orientation == DiagramOrientation.LeftRight) ? this.GridPadding : this.GridPadding; // D <-> U : L <-> R
+                            textY += (Parent.Orientation == DiagramOrientation.LeftRight) ? -1.0 * (this.Parent.GridFretSpacing * 0.5) : textSize * 0.5; // L <-> R : U <-> D
                             break;
                         case DiagramHorizontalAlignment.Center:
-                            textX = rightGridEdge + (this.GridPadding + (maxWidth / 2.0));
+                            textX += (Parent.Orientation == DiagramOrientation.LeftRight) ? this.GridPadding : this.GridPadding + (maxWidth * 0.5); // D <-> U : L <-> R
+                            textY += (Parent.Orientation == DiagramOrientation.LeftRight) ? 0 : textSize * 0.5; // L <-> R : U <-> D
                             break;
                         case DiagramHorizontalAlignment.Right:
-                            textX = rightGridEdge + (this.GridPadding + maxWidth);
+                            textX += (Parent.Orientation == DiagramOrientation.LeftRight) ? this.GridPadding : this.GridPadding + maxWidth; // D <-> U : L <-> R
+                            textY += (Parent.Orientation == DiagramOrientation.LeftRight) ? this.Parent.GridFretSpacing * 0.5 : textSize * 0.5; // L <-> R : U <-> D
                             break;
                     }
                 }
 
-                string textFormat = SvgConstants.TEXT;
+                string textStyle = this.Style.GetSvgStyle(DiagramFretLabel._textStyleMap);
+                textStyle += String.Format("font-size:{0}pt;", textSize);
 
-                if (Parent.Orientation == DiagramOrientation.LeftRight)
-                {
-                    textFormat = SvgConstants.ROTATED_TEXT;
-                    textX -= textSize / 2.0;
-                    textY -= textSize / 2.0;
-                }
+                string textFormat = (Parent.Orientation == DiagramOrientation.LeftRight) ? SvgConstants.ROTATED_TEXT : SvgConstants.TEXT;
 
                 svg += String.Format(textFormat, textStyle, textX, textY, this.Text);
             }

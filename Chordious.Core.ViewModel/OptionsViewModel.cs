@@ -88,6 +88,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         if (null != ChordFinderTunings && ChordFinderTunings.Count > 0)
                         {
                             ChordFinderSelectedTuning = ChordFinderTunings[0];
+                            Dirty = true;
                             ChordFinderOptionsBuffer.SetTarget(ChordFinderSelectedInstrument.Instrument, ChordFinderSelectedTuning.Tuning);
                         }
                     }
@@ -132,6 +133,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     if (null != value)
                     {
                         ChordFinderOptionsBuffer.SetTarget(ChordFinderSelectedInstrument.Instrument, ChordFinderSelectedTuning.Tuning);
+                        Dirty = true;
                     }
                 }
                 catch (Exception ex)
@@ -424,6 +426,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         if (null != ScaleFinderTunings && ScaleFinderTunings.Count > 0)
                         {
                             ScaleFinderSelectedTuning = ScaleFinderTunings[0];
+                            Dirty = true;
                             ScaleFinderOptionsBuffer.SetTarget(ScaleFinderSelectedInstrument.Instrument, ScaleFinderSelectedTuning.Tuning);
                         }
                     }
@@ -468,6 +471,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     if (null != value)
                     {
                         ScaleFinderOptionsBuffer.SetTarget(ScaleFinderSelectedInstrument.Instrument, ScaleFinderSelectedTuning.Tuning);
+                        Dirty = true;
                     }
                 }
                 catch (Exception ex)

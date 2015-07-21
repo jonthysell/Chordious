@@ -511,6 +511,58 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        public RelayCommand SetAsDefaults
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                    {
+                        try
+                        {
+                            Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("This will set your current search parameters as the new default values. Do you want to continue?", (confirmed) =>
+                            {
+                                if (confirmed)
+                                {
+                                    Options.Settings.SetParent();
+                                    Style.Settings.SetParent();
+                                    RefreshSettings();
+                                }
+                            }));
+                        }
+                        catch (Exception ex)
+                        {
+                            ExceptionUtils.HandleException(ex);
+                        }
+                    });
+            }
+        }
+
+        public RelayCommand ResetToDefaults
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("This will reset your current search parameters to the default values. Do you want to continue?", (confirmed) =>
+                        {
+                            if (confirmed)
+                            {
+                                Options.Settings.Clear();
+                                Style.Settings.Clear();
+                                RefreshSettings();
+                            }
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                });
+            }
+        }
+
         public RelayCommand SearchAsync
         {
             get
@@ -679,6 +731,27 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     break;
                 }
             }
+        }
+
+        private void RefreshSettings()
+        {
+            RefreshInstruments(Options.Instrument, Options.Tuning);
+            RefreshChordQualities(Options.ChordQuality);
+
+            RaisePropertyChanged("SelectedRootNote");
+            RaisePropertyChanged("NumFrets");
+            RaisePropertyChanged("MaxReach");
+            RaisePropertyChanged("MaxFret");
+            RaisePropertyChanged("AllowOpenStrings");
+            RaisePropertyChanged("AllowMutedStrings");
+            RaisePropertyChanged("AllowRootlessChords");
+            RaisePropertyChanged("AddTitle");
+            RaisePropertyChanged("MirrorResults");
+            RaisePropertyChanged("SelectedBarreTypeOptionIndex");
+            RaisePropertyChanged("AddRootNotes");
+            RaisePropertyChanged("SelectedMarkTextOptionIndex");
+            RaisePropertyChanged("AddBottomMarks");
+            RaisePropertyChanged("SelectedBottomMarkTextOptionIndex");
         }
 
         private Task<ChordFinderResultSet> FindChordsAsync()

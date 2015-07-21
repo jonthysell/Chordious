@@ -108,6 +108,8 @@
                         <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding MarkTextOptions}" SelectedIndex="{Binding SelectedMarkTextOptionIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                     </Grid>
                 </GroupBox>
+                <Button Margin="5" Content="Set as Defaults" Command="{Binding SetAsDefaults, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                <Button Margin="5" Content="Reset to Defaults" Command="{Binding ResetToDefaults, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
             </StackPanel>
         </ScrollViewer>
         <ListView Grid.Row="1" Grid.Column="1" Name="ResultsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Results}" SelectionMode="Extended">

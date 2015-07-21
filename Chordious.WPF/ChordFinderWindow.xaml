@@ -120,6 +120,8 @@
                         <ComboBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding BottomMarkTextOptions}" SelectedIndex="{Binding SelectedBottomMarkTextOptionIndex}" VerticalAlignment="Center" IsEnabled="{Binding AddBottomMarks}" Style="{DynamicResource CleanComboBox}"/>
                     </Grid>
                 </GroupBox>
+                <Button Margin="5" Content="Set as Defaults" Command="{Binding SetAsDefaults, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                <Button Margin="5" Content="Reset to Defaults" Command="{Binding ResetToDefaults, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
             </StackPanel>
         </ScrollViewer>
         <ListView Grid.Row="1" Grid.Column="1" Name="ResultsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Results}" SelectionMode="Extended">

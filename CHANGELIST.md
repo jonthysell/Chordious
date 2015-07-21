@@ -1,7 +1,9 @@
 # Chordious Changelist #
 
-## master ##
+## 1.9.15202.1600 ##
 * Changing the default instruments / tunings in Options now sets the buffer as dirty so you can save the changes
+* Can now save your search parameters in the Finders as the new defaults
+* Can now reset the search parameters in the Finders to the defaults
 
 ## 1.9.15157.1749 ##
 * For left/right diagrams, the mouse will now map to the correct coordinates

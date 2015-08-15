@@ -196,6 +196,36 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public void ClearByPrefix(string prefix)
+        {
+            if (this.ReadOnly)
+            {
+                throw new ObjectIsReadOnlyException(this);
+            }
+
+            if (StringUtils.IsNullOrWhiteSpace(prefix))
+            {
+                throw new ArgumentNullException("prefix");
+            }
+
+            prefix = CleanPrefix(prefix);
+
+            List<string> keysToRemove = new List<string>();
+
+            foreach (string key in _localDictionary.Keys)
+            {
+                if (key.StartsWith(prefix))
+                {
+                    keysToRemove.Add(key);
+                }
+            }
+
+            foreach (string key in keysToRemove)
+            {
+                _localDictionary.Remove(key);
+            }
+        }
+
         public void Set(string key, Note value)
         {
             if (StringUtils.IsNullOrWhiteSpace(key))

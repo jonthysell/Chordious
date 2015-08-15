@@ -166,10 +166,12 @@
     <quality name="Minor" abbv="m" steps="0;3;7" />
     <quality name="Diminished" abbv="dim" steps="0;3;6" />
     <quality name="Augmented" abbv="aug" steps="0;4;8" />
+    <quality name="Dominant 7th" abbv="7" steps="0;4;7;10" />
     <quality name="Major 7th" abbv="maj7" steps="0;4;7;11" />
     <quality name="Minor 7th" abbv="m7" steps="0;3;7;10" />
-    <quality name="Dominant 7th" abbv="7" steps="0;4;7;10" />
     <quality name="Minor/Major 7th" abbv="m7/M7" steps="0;3;7;11" />
+    <quality name="Diminished 7th" abbv="dim7" steps="0;3;6;9" />
+    <quality name="Augmented 7th" abbv="aug7" steps="0;4;8;10" />
     <quality name="Major 6th" abbv="6" steps="0;4;7;9" />
     <quality name="Minor 6th" abbv="m6" steps="0;3;7;9" />
   </qualities>

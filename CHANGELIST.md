@@ -1,5 +1,10 @@
 # Chordious Changelist #
 
+## 1.9.15227.235 ##
+* Removed settings search defaults in the Options window
+* Added buttons to clear search defaults in the Options window
+* Added Diminished 7th and Augmented 7th chord qualities
+
 ## 1.9.15202.1600 ##
 * Changing the default instruments / tunings in Options now sets the buffer as dirty so you can save the changes
 * Can now save your search parameters in the Finders as the new defaults

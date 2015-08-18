@@ -67,6 +67,12 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentOutOfRangeException("str");
             }
 
+            // Muted strings cannot be the root
+            if (Marks[str] < 0)
+            {
+                return false;
+            }
+
             return NoteAt(str) == NoteUtils.ToInternalNote(this.Parent.ChordFinderOptions.RootNote);
         }
 
@@ -103,18 +109,19 @@ namespace com.jonthysell.Chordious.Core
                 DiagramMark dm = d.NewMark(mp);
 
                 // Set mark type
-                if (chordFinderStyle.AddRootNotes && IsRoot(i))
-                {
-                    dm.Type = DiagramMarkType.Root;
-                }
-
                 if (marks[i] == -1) // Muted string
                 {
                     dm.Type = DiagramMarkType.Muted;
                 }
                 else if (marks[i] == 0) // Open string
                 {
-                    dm.Type = (dm.Type == DiagramMarkType.Root) ? DiagramMarkType.OpenRoot : DiagramMarkType.Open;
+                    dm.Type = DiagramMarkType.Open;
+                }
+
+                // Change to root if necessary
+                if (dm.Type != DiagramMarkType.Muted && chordFinderStyle.AddRootNotes && IsRoot(i))
+                {
+                    dm.Type = (dm.Type == DiagramMarkType.Open) ? DiagramMarkType.OpenRoot : DiagramMarkType.Root;
                 }
 
                 // Add text

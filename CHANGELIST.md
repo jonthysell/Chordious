@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## 1.9.15230.1602 ##
+* Fixed issue #5, where the chord finder would accidentally try to determine if a muted string was a root note
+
 ## 1.9.15227.235 ##
 * Removed settings search defaults in the Options window
 * Added buttons to clear search defaults in the Options window

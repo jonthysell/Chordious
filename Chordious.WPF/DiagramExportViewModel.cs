@@ -141,8 +141,6 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 ExportFormat = (ExportFormat)value;
-                RaisePropertyChanged("SelectedExportFormatIndex");
-                RaisePropertyChanged("ExampleFilenameFormat");
             }
         }
 
@@ -163,6 +161,8 @@ namespace com.jonthysell.Chordious.WPF
             {
                 SetSetting("diagramexport.exportformat", value);
                 RaisePropertyChanged("ExportFormat");
+                RaisePropertyChanged("SelectedExportFormatIndex");
+                RaisePropertyChanged("ExampleFilenameFormat");
             }
         }
 
@@ -218,10 +218,16 @@ namespace com.jonthysell.Chordious.WPF
 
         public DiagramExportViewModel(ObservableCollection<ObservableDiagram> diagramsToExport, string collectionName) : base(diagramsToExport, collectionName)
         {
-            _filenameFormats = GetDefaultFilenameFormats();
+            _filenameFormats = GetFilenameFormats();
         }
 
-        private string GetFullFilePath(int diagramIndex = 0)
+        public override void ProcessClose()
+        {
+            SaveSettingsAsDefault();
+            AppVM.SaveUserConfig();
+        }
+
+        private string GetFullFilePath(int diagramIndex = 0, bool overwriteFiles = true)
         {
             string outputPath = OutputPath;
             string filenameFormat = SelectedFilenameFormat;
@@ -242,7 +248,7 @@ namespace com.jonthysell.Chordious.WPF
                         switch(nextChar)
                         {
                             case 't':
-                                filePath += DiagramsToExport[diagramIndex].Title.Trim();
+                                filePath += CleanTitle(DiagramsToExport[diagramIndex].Title);
                                 break;
                             case 'c':
                                 filePath += CollectionName;
@@ -279,9 +285,9 @@ namespace com.jonthysell.Chordious.WPF
                 }
             }
 
-            string testFilepath = Path.Combine(outputPath, filePath);
+            string testFilepath = FolderUtils.CleanPath(Path.Combine(outputPath, filePath));
 
-            if (OverwriteFiles)
+            if (overwriteFiles)
             {
                 return testFilepath;
             }
@@ -305,11 +311,28 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
+        private string CleanTitle(string title)
+        {
+            if (String.IsNullOrWhiteSpace(title))
+            {
+                return "";
+            }
+
+            return FolderUtils.ReplaceChars(title.Trim(), Path.GetInvalidFileNameChars());
+        }
+
         protected override Task ExportDiagramAsync(int diagramIndex)
         {
             return Task.Factory.StartNew(() =>
             {
-                string filePath = GetFullFilePath(diagramIndex);
+                string filePath = GetFullFilePath(diagramIndex, OverwriteFiles);
+
+                string directoryPath = Path.GetDirectoryName(filePath);
+
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
 
                 ObservableDiagram od = DiagramsToExport[diagramIndex];
 
@@ -357,16 +380,19 @@ namespace com.jonthysell.Chordious.WPF
             });
         }
 
-        private ObservableCollection<string> GetDefaultFilenameFormats()
+        private ObservableCollection<string> GetFilenameFormats()
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
-            collection.Add("%t.%x");
-            collection.Add("%1.%x");
-            collection.Add("diagram (%1 of %#).%x");
-            collection.Add("%c\\%t.%x");
-            collection.Add("%c\\%1.%x");
-            collection.Add("%c\\diagram (%1 of %#).%x");
+            collection.Add(SelectedFilenameFormat);
+
+            foreach(string filenameFormat in DefaultFileNameFormats)
+            {
+                if (!collection.Contains(filenameFormat))
+                {
+                    collection.Add(filenameFormat);
+                }
+            }
 
             return collection;
         }
@@ -382,6 +408,15 @@ namespace com.jonthysell.Chordious.WPF
 
             return collection;
         }
+
+        private static string[] DefaultFileNameFormats = {
+                                                             "%t.%x",
+                                                             "%1.%x",
+                                                             "diagram (%1 of %#).%x",
+                                                             "%c\\%t.%x",
+                                                             "%c\\%1.%x",
+                                                             "%c\\diagram (%1 of %#).%x"
+                                                         };
     }
 
     public enum ExportFormat

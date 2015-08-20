@@ -175,6 +175,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             SettingsBuffer = new ChordiousSettings(AppVM.UserConfig.ChordiousSettings, "DiagramExport");
         }
 
+        public abstract void ProcessClose();
+
         protected string GetSetting(string key)
         {
             return SettingsBuffer.Get(key);
@@ -183,6 +185,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         protected void SetSetting(string key, object value)
         {
             SettingsBuffer.Set(key, value);
+        }
+
+        protected void SaveSettingsAsDefault()
+        {
+            SettingsBuffer.SetParent();
         }
 
         protected void SaveSettingAsDefault(string key)

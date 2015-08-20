@@ -1,5 +1,10 @@
 # Chordious Changelist #
 
+## 1.9.15232.1508 ##
+* Fixed issue #3, exported image filenames are now cleaned before export
+* Fixed issue #4, diagram export settings are remembered
+* Fixed issue #6, missing directories are created when exporting images 
+
 ## 1.9.15230.1602 ##
 * Fixed issue #5, where the chord finder would accidentally try to determine if a muted string was a root note
 

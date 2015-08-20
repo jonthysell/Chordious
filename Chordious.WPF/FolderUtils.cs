@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace com.jonthysell.Chordious.WPF
@@ -48,6 +49,64 @@ namespace com.jonthysell.Chordious.WPF
 
             value = "";
             return false;
+        }
+
+        public static string CleanPath(string path)
+        {
+            if (String.IsNullOrWhiteSpace(path))
+            {
+                throw new ArgumentNullException("path");
+            }
+
+            path = path.Trim();
+
+            bool isUnc = path.StartsWith(@"\\");
+            bool containsFile = !String.IsNullOrEmpty(Path.GetFileName(path));
+
+            string[] split = path.Trim().Split(Path.DirectorySeparatorChar);
+
+            string cleanPath = isUnc ? @"\\" : "";
+
+            for (int i = 0; i < split.Length; i++)
+            {
+                string part = split[i].Trim();
+
+                if (!String.IsNullOrWhiteSpace(part))
+                {
+                    if (i == 0 && !isUnc) // First item, aka root with drive letter
+                    {
+                        cleanPath += ReplaceChars(split[i], Path.GetInvalidPathChars());
+                    }
+                    else
+                    {
+                        cleanPath += ReplaceChars(split[i], Path.GetInvalidFileNameChars());
+                    }
+
+                    cleanPath += Path.DirectorySeparatorChar;
+                }
+            }
+
+            if (containsFile)
+            {
+                cleanPath = cleanPath.TrimEnd(Path.DirectorySeparatorChar);
+            }
+
+            return cleanPath;
+        }
+
+        public static string ReplaceChars(string source, char[] oldValues, char? newValue = null)
+        {
+            if (String.IsNullOrWhiteSpace(source))
+            {
+                throw new ArgumentNullException("source");
+            }
+
+            foreach (char oldValue in oldValues)
+            {
+                source = source.Replace(oldValue.ToString(), (null == newValue) ? "" : newValue.ToString());
+            }
+
+            return source;
         }
     }
 }

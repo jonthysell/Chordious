@@ -272,6 +272,7 @@ namespace com.jonthysell.Chordious.WPF
             message.DiagramExportVM = new DiagramExportViewModel(message.DiagramsToExport, message.CollectionName);
             window.DataContext = message.DiagramExportVM;
             window.ShowDialog();
+            message.Process();
         }
 
         public static void PromptForLegacyImport(PromptForLegacyImportMessage message)

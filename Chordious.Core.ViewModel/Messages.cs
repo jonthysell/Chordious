@@ -306,6 +306,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             DiagramsToExport = diagramsToExport;
             CollectionName = collectionName;
         }
+
+        public void Process()
+        {
+            DiagramExportVM.ProcessClose();
+        }
     }
 
     public class PromptForLegacyImportMessage : MessageBase

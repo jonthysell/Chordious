@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## master ##
+* Fixed issue #7, deselect diagrams when changing the selected library node
+
 ## 1.9.15232.1508 ##
 * Fixed issue #3, exported image filenames are now cleaned before export
 * Fixed issue #4, diagram export settings are remembered

@@ -71,6 +71,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             private set
             {
+                // Make sure to deselect diagrams when selecting a new library node
+                if (null != SelectedNode)
+                {
+                    SelectedNode.SelectedDiagrams.Clear();
+                }
+
                 _selectedNode = value;
                 RaisePropertyChanged("SelectedNode");
                 RaisePropertyChanged("NodeIsSelected");

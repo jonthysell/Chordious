@@ -115,6 +115,16 @@ namespace com.jonthysell.Chordious.Core
             _diagrams.Insert(index, newDiagram);
         }
 
+        public bool Contains(Diagram diagram)
+        {
+            if (null == diagram)
+            {
+                throw new ArgumentNullException("diagram");
+            }
+
+            return _diagrams.Contains(diagram);
+        }
+
         public void Clear()
         {
             _diagrams.Clear();

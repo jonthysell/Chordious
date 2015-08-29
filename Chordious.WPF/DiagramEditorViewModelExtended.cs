@@ -63,7 +63,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 Background result;
 
-                if (Enum.TryParse<Background>(AppVM.GetSetting("app.editorrenderbackground"), out result))
+                if (Enum.TryParse<Background>(AppVM.GetSetting("diagrameditor.renderbackground"), out result))
                 {
                     return result;
                 }
@@ -72,13 +72,13 @@ namespace com.jonthysell.Chordious.WPF
             }
             set
             {
-                AppVM.SetSetting("app.editorrenderbackground", value);
+                AppVM.SetSetting("diagrameditor.renderbackground", value);
                 RaisePropertyChanged("EditorRenderBackground");
                 Diagram.Refresh();
             }
         }
 
-        public DiagramEditorViewModelExtended(ObservableDiagram diagram) : base(diagram) { }
+        public DiagramEditorViewModelExtended(ObservableDiagram diagram, bool isNew) : base(diagram, isNew) { }
 
         private static ObservableCollection<string> GetBackgrounds()
         {

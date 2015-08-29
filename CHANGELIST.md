@@ -1,7 +1,11 @@
 # Chordious Changelist #
 
-## master ##
+## 1.9.15241.2118 ##
 * Fixed issue #7, deselect diagrams when changing the selected library node
+* Added button to add new diagrams to a collection directly
+* Added options to specify the default strings and frets for new diagrams
+* Fixed options window resizing and scroll bars
+* Miscellaneous Core fixes
 
 ## 1.9.15232.1508 ##
 * Fixed issue #3, exported image filenames are now cleaned before export

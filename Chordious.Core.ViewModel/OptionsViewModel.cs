@@ -66,6 +66,56 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public int NewDiagramNumFrets
+        {
+            get
+            {
+
+                return StyleBuffer.NewDiagramNumFretsGet();
+            }
+            set
+            {
+                try
+                {
+                    StyleBuffer.NewDiagramNumFretsSet(value);
+                    Dirty = true;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("NewDiagramNumFrets");
+                }
+            }
+        }
+
+        public int NewDiagramNumStrings
+        {
+            get
+            {
+
+                return StyleBuffer.NewDiagramNumStringsGet();
+            }
+            set
+            {
+                try
+                {
+                    StyleBuffer.NewDiagramNumStringsSet(value);
+                    Dirty = true;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("NewDiagramNumStrings");
+                }
+            }
+        }
+
         public RelayCommand ShowAdvancedSettings
         {
             get
@@ -532,8 +582,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public virtual void RefreshProperties()
         {
             // refresh all properties
-
-
+            RaisePropertyChanged("NewDiagramNumFrets");
+            RaisePropertyChanged("NewDiagramNumStrings");
         }
     }
 }

@@ -37,6 +37,8 @@
     <setting key="scalefinderstyle.mirrorresults" value="false" />
   </settings>
   <styles>
+    <style key="newdiagram.numfrets" value="5" />
+    <style key="newdiagram.numstrings" value="4" />
     <style key="diagram.margin" value="0" />
     <style key="diagram.orientation" value="UpDown" />
     <style key="diagram.labellayoutmodel" value="AddPaddingBoth" />

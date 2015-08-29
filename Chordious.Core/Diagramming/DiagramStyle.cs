@@ -43,6 +43,38 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        #region New Diagram-specific Styles
+
+        public int NewDiagramNumStringsGet()
+        {
+            return GetInt32("newdiagram.numstrings");
+        }
+
+        public void NewDiagramNumStringsSet(int value)
+        {
+            if (value < 2)
+            {
+                throw new ArgumentOutOfRangeException("value");
+            }
+            Set("newdiagram.numstrings", value);
+        }
+
+        public int NewDiagramNumFretsGet()
+        {
+            return GetInt32("newdiagram.numfrets");
+        }
+
+        public void NewDiagramNumFretsSet(int value)
+        {
+            if (value < 1)
+            {
+                throw new ArgumentOutOfRangeException("value");
+            }
+            Set("newdiagram.numfrets", value);
+        }
+
+        #endregion
+
         #region Diagram-specific Styles
 
         public DiagramOrientation DiagramOrientationGet()
@@ -128,7 +160,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (value < 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("value");
             }
             Set("grid.margin", value);
         }
@@ -158,7 +190,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (value < 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("value");
             }
             Set("grid.marginleft", value);
         }
@@ -188,7 +220,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (value < 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("value");
             }
             Set("grid.marginright", value);
         }
@@ -218,7 +250,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (value < 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("value");
             }
             Set("grid.margintop", value);
         }
@@ -248,7 +280,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (value < 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("value");
             }
             Set("grid.marginbottom", value);
         }
@@ -262,7 +294,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (value < 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("value");
             }
             Set("grid.fretspacing", value);
         }
@@ -276,7 +308,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (value < 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("value");
             }
             Set("grid.stringspacing", value);
         }
@@ -325,7 +357,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (value < 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("value");
             }
             Set("grid.linethickness", value);
         }
@@ -349,7 +381,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (value < 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("value");
             }
             Set("grid.nutratio", value);
         }
@@ -367,7 +399,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (value < 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("value");
             }
             Set("title.gridpadding", value);
         }
@@ -381,7 +413,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (value < 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("value");
             }
             Set("title.textsize", value);
         }
@@ -395,7 +427,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (value < 0 || value > 1.0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("value");
             }
             Set("title.textmodratio", value);
         }

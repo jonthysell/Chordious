@@ -1,7 +1,7 @@
 ﻿<Window x:Class="com.jonthysell.Chordious.WPF.OptionsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="{Binding Title}" Height="400" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="{DynamicResource ChordiousIcon}"
+        Title="{Binding Title}" Height="400" MinHeight="300" Width="300" MinWidth="300" MaxWidth="300" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" Icon="{DynamicResource ChordiousIcon}"
         Cursor="{Binding IsIdle, Converter={StaticResource IdleBoolToWaitCursorConverter}}" ForceCursor="True">
     <Grid IsEnabled="{Binding IsIdle}">
         <Grid.RowDefinitions>
@@ -10,43 +10,63 @@
         </Grid.RowDefinitions>
         <TabControl Grid.Row="0" Margin="5">
             <TabItem Header="Settings">
-                <StackPanel>
-                    <GroupBox Header="Rendering" Margin="5">
-                        <StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Width="120" Margin="5" Content="Renderer"/>
-                                <ComboBox Width="105" Margin="5" ItemsSource="{Binding Renderers}" SelectedIndex="{Binding SelectedRendererIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
+                    <StackPanel>
+                        <GroupBox Header="Diagram Editor" Margin="5">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="110" Margin="5" Content="Background"/>
+                                    <ComboBox Width="100" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Width="120" Margin="5" Content="Background"/>
-                                <ComboBox Width="105" Margin="5" ItemsSource="{Binding RenderBackgrounds}" SelectedIndex="{Binding SelectedRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                        </GroupBox>
+                        <GroupBox Header="Rendering" Margin="5">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="110" Margin="5" Content="Renderer"/>
+                                    <ComboBox Width="100" Margin="5" ItemsSource="{Binding Renderers}" SelectedIndex="{Binding SelectedRendererIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="110" Margin="5" Content="Background"/>
+                                    <ComboBox Width="100" Margin="5" ItemsSource="{Binding RenderBackgrounds}" SelectedIndex="{Binding SelectedRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Width="120" Margin="5" Content="Editor Background"/>
-                                <ComboBox Width="105" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                        </GroupBox>
+                        <GroupBox Header="Advanced" Margin="5">
+                            <StackPanel>
+                                <Button Content="Advanced Editor" Margin="5" Command="{Binding ShowAdvancedSettings, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="Reset" Margin="5" Command="{Binding ResetUserSettings, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
                             </StackPanel>
-                        </StackPanel>
-                    </GroupBox>
-                    <GroupBox Header="Advanced" Margin="5">
-                        <StackPanel>
-                            <Button Content="Advanced Editor" Margin="5" Command="{Binding ShowAdvancedSettings, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
-                            <Button Content="Reset" Margin="5" Command="{Binding ResetUserSettings, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
-                        </StackPanel>
-                    </GroupBox>
-                </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Styles">
-                <StackPanel>
-                    <GroupBox Header="Advanced" Margin="5">
-                        <StackPanel>
-                            <Button Content="Advanced Editor" Margin="5" Command="{Binding ShowAdvancedStyle, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
-                            <Button Content="Reset" Margin="5" Command="{Binding ResetUserStyles, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
-                        </StackPanel>
-                    </GroupBox>
-                </StackPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
+                    <StackPanel>
+                        <GroupBox Header="New Diagrams" Margin="5">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="110" Margin="5" Content="# of Frets"/>
+                                    <TextBox Width="100" Margin="5" Text="{Binding NewDiagramNumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="110" Margin="5" Content="# of Strings"/>
+                                    <TextBox Width="100" Margin="5" Text="{Binding NewDiagramNumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="Advanced" Margin="5">
+                            <StackPanel>
+                                <Button Content="Advanced Editor" Margin="5" Command="{Binding ShowAdvancedStyle, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="Reset" Margin="5" Command="{Binding ResetUserStyles, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Finders">
-                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
                     <StackPanel>
                         <GroupBox Header="Targets" Margin="5">
                             <StackPanel>
@@ -65,21 +85,21 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Updates">
-                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="160" Margin="5" Content="Check For Updates On Start"/>
-                            <CheckBox Width="85" Margin="5" IsChecked="{Binding CheckUpdateOnStart}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <CheckBox Width="65" Margin="5" IsChecked="{Binding CheckUpdateOnStart}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Width="160" Margin="5" Content="Release Channel"/>
-                            <ComboBox Width="85" Margin="5" ItemsSource="{Binding ReleaseChannels}" SelectedIndex="{Binding SelectedReleaseChannelIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                            <Label Width="150" Margin="5" Content="Release Channel"/>
+                            <ComboBox Width="75" Margin="5" ItemsSource="{Binding ReleaseChannels}" SelectedIndex="{Binding SelectedReleaseChannelIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Content="Last Checked"/>
                             <TextBox Margin="5" Text="{Binding LastUpdateCheck, Mode=OneWay}" VerticalAlignment="Center" BorderThickness="0" />
                         </StackPanel>
-                        <Button Command="{Binding CheckForUpdatesAsync, IsAsync=True}" Content="Check For Updates" Margin="5" Style="{DynamicResource CleanButton}"/>
+                        <Button Command="{Binding CheckForUpdatesAsync, IsAsync=True}" Content="Check For Updates" Margin="15" Style="{DynamicResource CleanButton}"/>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>

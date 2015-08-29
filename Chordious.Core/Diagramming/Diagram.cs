@@ -535,7 +535,7 @@ namespace com.jonthysell.Chordious.Core
 
         #endregion
 
-        private Diagram(DiagramStyle parentStyle)
+        public Diagram(DiagramStyle parentStyle)
         {
             if (null == parentStyle)
             {
@@ -548,8 +548,8 @@ namespace com.jonthysell.Chordious.Core
 
             this.Style = new DiagramStyle(parentStyle, "Diagram");
 
-            this._numFrets = 1;
-            this._numStrings = 2;
+            this._numFrets = Style.NewDiagramNumFretsGet();
+            this._numStrings = Style.NewDiagramNumStringsGet();
         }
 
         public Diagram(DiagramStyle parentStyle, int numStrings, int numFrets) : this(parentStyle)

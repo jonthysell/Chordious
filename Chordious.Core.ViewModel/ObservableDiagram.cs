@@ -1221,7 +1221,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowDiagramEditorMessage>(new ShowDiagramEditorMessage(this, (changed) =>
+                        Messenger.Default.Send<ShowDiagramEditorMessage>(new ShowDiagramEditorMessage(this, false, (changed) =>
                         {
                             if (null != PostEditCallback)
                             {

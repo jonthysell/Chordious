@@ -78,6 +78,12 @@
         </WrapPanel>
         <WrapPanel Grid.Row="2" Grid.Column="1" FlowDirection="RightToLeft">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Button Command="{Binding SelectedNode.CreateDiagram}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
+                    </StackPanel>
+                </Button>
                 <Button Command="{Binding SelectedNode.DeleteSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />

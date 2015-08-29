@@ -161,7 +161,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 Background result;
 
-                if (Enum.TryParse<Background>(GetSetting("app.editorrenderbackground"), out result))
+                if (Enum.TryParse<Background>(GetSetting("diagrameditor.renderbackground"), out result))
                 {
                     return result;
                 }
@@ -170,7 +170,7 @@ namespace com.jonthysell.Chordious.WPF
             }
             set
             {
-                SetSetting("app.editorrenderbackground", value);
+                SetSetting("diagrameditor.renderbackground", value);
                 RaisePropertyChanged("EditorRenderBackground");
             }
         }

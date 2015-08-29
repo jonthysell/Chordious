@@ -228,11 +228,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ObservableDiagram Diagram { get; private set; }
 
+        public bool IsNew { get; private set; }
+
         private Action<bool> Callback;
 
-        public ShowDiagramEditorMessage(ObservableDiagram diagram, Action<bool> callback = null) : base()
+        public ShowDiagramEditorMessage(ObservableDiagram diagram, bool isNew, Action<bool> callback = null) : base()
         {
             Diagram = diagram;
+            IsNew = isNew;
             Callback = callback;
         }
 

@@ -188,7 +188,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private ObservableDiagram OriginalDiagram;
 
-        public DiagramEditorViewModel(ObservableDiagram diagram)
+        public DiagramEditorViewModel(ObservableDiagram diagram, bool isNew)
         {
             if (null == diagram)
             {
@@ -199,6 +199,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             Diagram = new ObservableDiagram(diagram.Diagram.Clone());
             Diagram.IsEditMode = true;
+
+            if (isNew)
+            {
+                Dirty = true;
+            }
 
             Diagram.PropertyChanged += Diagram_PropertyChanged;
         }

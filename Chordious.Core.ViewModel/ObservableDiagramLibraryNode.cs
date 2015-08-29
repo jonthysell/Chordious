@@ -71,13 +71,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                if (firstLoad)
+                if (_firstLoad)
                 {
                     foreach (Diagram diagram in Library.Get(Path, Name))
                     {
                         _diagrams.Add(CreateObservableDiagram(diagram));
                     }
-                    firstLoad = false;
+                    _firstLoad = false;
                 }
                 return _diagrams;
             }
@@ -87,31 +87,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 RaisePropertyChanged("Diagrams");
             }
         }
-        public ObservableCollection<ObservableDiagram> _diagrams;
-
-        private ObservableDiagram CreateObservableDiagram(Diagram diagram)
-        {
-            ObservableDiagram od = new ObservableDiagram(diagram);
-            od.PostEditCallback = GetDiagramPostEditCallback(od);
-            return od;
-        }
-
-        private Action<bool> GetDiagramPostEditCallback(ObservableDiagram od)
-        {
-            ObservableDiagram originalObservableDiagram = od;
-            Diagram originalDiagram = od.Diagram;
-
-            return (changed) =>
-            {
-                if (changed)
-                {
-                    DiagramCollection collection = Library.Get(Path, Name);
-                    collection.Replace(originalDiagram, originalObservableDiagram.Diagram);
-                    originalObservableDiagram.Refresh();
-                    originalObservableDiagram.PostEditCallback = GetDiagramPostEditCallback(originalObservableDiagram);
-                }
-            };
-        }
+        private ObservableCollection<ObservableDiagram> _diagrams;
 
         public ObservableCollection<ObservableDiagram> SelectedDiagrams
         {
@@ -132,6 +108,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private ObservableCollection<ObservableDiagram> _selectedDiagrams;
+
+        public RelayCommand CreateDiagram
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        ObservableDiagram od = CreateObservableDiagram();
+
+                        Messenger.Default.Send<ShowDiagramEditorMessage>(new ShowDiagramEditorMessage(od, true, od.PostEditCallback));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                });
+            }
+        }
 
         public RelayCommand DeleteSelected
         {
@@ -189,14 +185,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        private void SelectedDiagrams_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            UpdateCommands();
-        }
-
         internal DiagramLibrary Library { get; private set; }
 
-        private bool firstLoad = true;
+        internal DiagramCollection Collection
+        {
+            get
+            {
+                if (null == _collection)
+                {
+                    _collection = Library.Get(Path, Name);
+                }
+                return _collection;
+            }
+        }
+        private DiagramCollection _collection;
+
+        private bool _firstLoad = true;
 
         public ObservableDiagramLibraryNode(string path, string name, DiagramLibrary library) : base()
         {
@@ -217,9 +221,58 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             SelectedDiagrams.CollectionChanged += SelectedDiagrams_CollectionChanged;
         }
 
+        private void SelectedDiagrams_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            UpdateCommands();
+        }
+
+        private ObservableDiagram CreateObservableDiagram()
+        {
+            return CreateObservableDiagram(new Diagram(Collection.Style));
+        }
+
+        private ObservableDiagram CreateObservableDiagram(Diagram diagram)
+        {
+            ObservableDiagram od = new ObservableDiagram(diagram);
+            od.PostEditCallback = GetDiagramPostEditCallback(od);
+            return od;
+        }
+
+        private Action<bool> GetDiagramPostEditCallback(ObservableDiagram od)
+        {
+            ObservableDiagram originalObservableDiagram = od;
+            Diagram originalDiagram = od.Diagram;
+
+            return (changed) =>
+            {
+                if (changed)
+                {
+                    if (Collection.Contains(originalDiagram))
+                    {
+                        // We edited an existing diagram, so we need to replace the pre-edited Diagram still in the library
+                        // with the newly minted Diagram from the editor
+                        Collection.Replace(originalDiagram, originalObservableDiagram.Diagram);
+                    }
+                    else
+                    {
+                        // This was a new diagram, so we need to add it to the library collection
+                        Collection.Add(originalObservableDiagram.Diagram);
+                        // Then add it to the list of visible diagrams
+                        Diagrams.Add(originalObservableDiagram);
+                    }
+
+                    // Now we need to refresh the individual image
+                    originalObservableDiagram.Refresh();
+
+                    // Now that the internal Diagram has changed, we need to rebuild the callback so that the new Diagram is
+                    // cached correctly for any future calls to edit this od
+                    originalObservableDiagram.PostEditCallback = GetDiagramPostEditCallback(originalObservableDiagram);
+                }
+            };
+        }
+
         private void UpdateCommands()
         {
-            RaisePropertyChanged("EditSelected");
             RaisePropertyChanged("DeleteSelected");
             RaisePropertyChanged("ExportSelected");
         }

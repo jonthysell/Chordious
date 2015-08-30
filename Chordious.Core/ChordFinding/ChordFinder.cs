@@ -78,15 +78,20 @@ namespace com.jonthysell.Chordious.Core
                     str--;
                 }
 
-                // The first target note is always the root, so ignore if we want
-                // to allow rootless chords
-                int firstTargetNote = chordFinderOptions.AllowRootlessChords ? 1 : 0;
+                InternalNote rootNote = NoteUtils.ToInternalNote(chordFinderOptions.RootNote);
 
                 // Add result if it had all the target notes
                 bool valid = true;
-                for (int i = firstTargetNote; i < hasNotes.Length; i++)
+                for (int i = 0; i < hasNotes.Length; i++)
                 {
-                    valid = valid && hasNotes[i];
+                    // Validate:
+                    // 1. All notes when !AllowRootlessChords
+                    // 2. Non-root notes only when AllowRootlessChords
+                    if (!chordFinderOptions.AllowRootlessChords ||
+                       (chordFinderOptions.AllowRootlessChords && targetNotes[i] != rootNote))
+                    {
+                        valid = valid && hasNotes[i];
+                    }
                 }
 
                 if (valid)

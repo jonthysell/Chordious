@@ -1323,7 +1323,7 @@ namespace com.jonthysell.Chordious.Core
                         {
                             titleChordNameFormat = SvgConstants.ROTATED_TEXT_CHORDNAME;
                             titleX -= (TitleTextSize - this.TitleGridPadding) / 2.0;
-                            titleY -= (TitleTextSize + (modifierSize * (Title.Length - 1))) / 2.0;
+                            titleY -= (TitleTextSize + (modifierSize * (this.Title.Length - 1))) / 2.0;
                         }
                         sb.AppendFormat(titleChordNameFormat,
                                 titleStyle,

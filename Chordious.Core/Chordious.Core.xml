@@ -166,16 +166,59 @@
   <qualities>
     <quality name="Major" abbv="" steps="0;4;7" />
     <quality name="Minor" abbv="m" steps="0;3;7" />
-    <quality name="Diminished" abbv="dim" steps="0;3;6" />
     <quality name="Augmented" abbv="aug" steps="0;4;8" />
+    <quality name="Diminished" abbv="dim" steps="0;3;6" />
+    
     <quality name="Dominant 7th" abbv="7" steps="0;4;7;10" />
     <quality name="Major 7th" abbv="maj7" steps="0;4;7;11" />
     <quality name="Minor 7th" abbv="m7" steps="0;3;7;10" />
-    <quality name="Minor/Major 7th" abbv="m7/M7" steps="0;3;7;11" />
-    <quality name="Diminished 7th" abbv="dim7" steps="0;3;6;9" />
+    <quality name="Minor/Major 7th" abbv="m/M7" steps="0;3;7;11" />
     <quality name="Augmented 7th" abbv="aug7" steps="0;4;8;10" />
+    <quality name="Diminished 7th" abbv="dim7" steps="0;3;6;9" />
+    <quality name="Dominant 7th Flat 5" abbv="7(b5)" steps="0;4;6;10" />
+    <quality name="Half-Diminished 7th" abbv="m7(b5)" steps="0;3;6;10" />
+    <quality name="Augmented Major 7th" abbv="M7(#5)" steps="0;4;8;11" />
+    
+    <quality name="Dominant 9th" abbv="9" steps="0;4;7;10;14" />
+    <quality name="Major 9th" abbv="M9" steps="0;4;7;11;14" />
+    <quality name="Minor 9th" abbv="m9" steps="0;3;7;10;14" />
+    <quality name="Minor/Major 9th" abbv="m/M9" steps="0;3;7;11;14" />
+    <quality name="Augmented Dominant 9th" abbv="aug9" steps="0;4;8;10;14" />
+    <quality name="Augmented Major 9th" abbv="aug/M9" steps="0;4;8;11;14" />
+    <quality name="Half-Diminished 9th" abbv="Ø9" steps="0;3;6;10;14" />
+    <quality name="Half-Diminished Minor 9th" abbv="Øb9" steps="0;3;6;10;13" />
+    <quality name="Diminished 9th" abbv="dim9" steps="0;3;6;9;14" />
+    <quality name="Diminished Minor 9th" abbv="dim(b9)" steps="0;3;6;9;13" />
+    
+    <quality name="Dominant 11th" abbv="11" steps="0;4;7;10;14;17" />
+    <quality name="Major 11th" abbv="maj11" steps="0;4;7;11;14;17" />
+    <quality name="Minor 11th" abbv="m11" steps="0;3;7;10;14;17" />
+    <quality name="Minor/Major 11th" abbv="m/M11" steps="0;3;7;11;14;17" />
+    <quality name="Augmented Dominant 11th" abbv="aug11" steps="0;4;8;10;14;17" />
+    <quality name="Augmented Major 11th" abbv="aug/M11" steps="0;4;8;11;14;17" />
+    <quality name="Half-Diminished 11th" abbv="Ø11" steps="0;3;6;10;13;17" />
+    <quality name="Diminished 11th" abbv="dim11" steps="0;3;6;9;13;16" />
+    
+    <quality name="Dominant 13th" abbv="13" steps="0;4;7;10;14;17;21" />
+    <quality name="Major 13th" abbv="maj13" steps="0;4;7;11;14;17;21" />
+    <quality name="Minor 13th" abbv="m13" steps="0;3;7;10;14;17;21" />
+    <quality name="Minor/Major 13th" abbv="m/M13" steps="0;3;7;11;14;17;21" />
+    <quality name="Augmented Dominant 13th" abbv="aug13" steps="0;4;8;10;14;17;21" />
+    <quality name="Augmented Major 13th" abbv="aug/M13" steps="0;4;8;11;14;17;21" />
+    <quality name="Half-Diminished 13th" abbv="Ø13" steps="0;3;6;10;14;17;21" />
+    
+    <quality name="Major Added 9th" abbv="add9" steps="0;4;7;14" />
+    <quality name="Minor Added 9th" abbv="madd9" steps="0;3;7;14" />
+    <quality name="Major Added 4th" abbv="add11" steps="0;4;7;17" />
+    <quality name="Minor Added 4th" abbv="madd11" steps="0;3;7;17" />
+    
     <quality name="Major 6th" abbv="6" steps="0;4;7;9" />
     <quality name="Minor 6th" abbv="m6" steps="0;3;7;9" />
+    <quality name="Major 6th 9th" abbv="6/9" steps="0;4;7;9;14" />
+    <quality name="Minor 6th 9th" abbv="m6/9" steps="0;3;7;9;14" />
+    
+    <quality name="Suspended 2nd" abbv="sus2" steps="0;2;7" />
+    <quality name="Suspended 4th" abbv="sus4" steps="0;5;7" />
   </qualities>
   <scales>
     <scale name="Major" steps="0;2;4;5;7;9;11;12" />

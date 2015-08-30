@@ -1,5 +1,9 @@
 # Chordious Changelist #
 
+## 1.9.15242.2314 ##
+* Fixed ChordFinder to not assume the first note in a chord quality is the root
+* Added a bunch of new chord qualities
+
 ## 1.9.15241.2118 ##
 * Fixed issue #7, deselect diagrams when changing the selected library node
 * Added button to add new diagrams to a collection directly

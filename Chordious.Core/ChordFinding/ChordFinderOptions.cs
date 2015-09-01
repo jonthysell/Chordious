@@ -86,7 +86,7 @@ namespace com.jonthysell.Chordious.Core
 
             if (null != this._cachedChordQuality)
             {
-                if (this._cachedChordQuality.Name == name && this._cachedInstrument.Level == level)
+                if (this._cachedChordQuality.Name == name && this._cachedChordQuality.Level == level)
                 {
                     return this._cachedChordQuality;
                 }
@@ -125,6 +125,8 @@ namespace com.jonthysell.Chordious.Core
         {
             ChordFinderOptions cfo = new ChordFinderOptions(this._configFile);
             cfo.Settings.CopyFrom(this.Settings);
+            cfo.SetTarget(this.Instrument, this.Tuning);
+            cfo.SetTarget(this.RootNote, this.ChordQuality);
             return cfo;
         }
     }

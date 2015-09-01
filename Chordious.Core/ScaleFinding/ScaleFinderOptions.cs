@@ -73,7 +73,7 @@ namespace com.jonthysell.Chordious.Core
 
             if (null != this._cachedScale)
             {
-                if (this._cachedScale.Name == name && this._cachedInstrument.Level == level)
+                if (this._cachedScale.Name == name && this._cachedScale.Level == level)
                 {
                     return this._cachedScale;
                 }
@@ -111,6 +111,8 @@ namespace com.jonthysell.Chordious.Core
         {
             ScaleFinderOptions sfo = new ScaleFinderOptions(this._configFile);
             sfo.Settings.CopyFrom(this.Settings);
+            sfo.SetTarget(this.Instrument, this.Tuning);
+            sfo.SetTarget(this.RootNote, this.Scale);
             return sfo;
         }
     }

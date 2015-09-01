@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## 1.9.15244.326 ##
+* Fixed issue #8, where the finders sometimes send the wrong quality/scale
+
 ## 1.9.15242.2314 ##
 * Fixed ChordFinder to not assume the first note in a chord quality is the root
 * Added a bunch of new chord qualities

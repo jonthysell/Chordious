@@ -70,7 +70,6 @@ namespace com.jonthysell.Chordious.Core
                         if (nn.Note == targetNotes[i])
                         {
                             hasNotes[i] = true;
-                            break;
                         }
                     }
 

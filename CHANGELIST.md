@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## master ##
+* Fixed issue #9, chord qualities with repeating notes now work as expected
+
 ## 1.9.15244.326 ##
 * Fixed issue #8, where the finders sometimes send the wrong quality/scale
 

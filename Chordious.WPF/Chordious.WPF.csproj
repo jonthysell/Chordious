@@ -41,7 +41,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>com.jonthysell.Chordious.WPF.App</StartupObject>
+    <StartupObject>com.jonthysell.Chordious.WPF.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight, Version=5.1.1.35049, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
@@ -107,10 +107,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </ApplicationDefinition>
+    </Page>
     <Compile Include="AdvancedDataWindow.xaml.cs">
       <DependentUpon>AdvancedDataWindow.xaml</DependentUpon>
     </Compile>
@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="FolderUtils.cs" />
     <Compile Include="MouseUtils.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="ScaleEditorWindow.xaml.cs">
       <DependentUpon>ScaleEditorWindow.xaml</DependentUpon>
     </Compile>

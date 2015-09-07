@@ -1,6 +1,6 @@
 # Chordious Changelist #
 
-## master ##
+## 1.9.15250.452 ##
 * Fixed issue #9, chord qualities with repeating notes now work as expected
 * Fixed issue #11, where Diagram Export overwrites files as they're made
 * Added context menus and double-click to edit on items in the Library, Quality/Scale Managers, and the Instrument Manager

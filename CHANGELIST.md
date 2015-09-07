@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## 1.9.15250.507 ##
+* Fixed issue #10, Chordious allows multiple instances, which means config file contention
+
 ## 1.9.15250.452 ##
 * Fixed issue #9, chord qualities with repeating notes now work as expected
 * Fixed issue #11, where Diagram Export overwrites files as they're made

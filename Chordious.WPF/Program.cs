@@ -32,12 +32,14 @@ namespace com.jonthysell.Chordious.WPF
 {
     public class Program
     {
+        private static Mutex _mutex;
+
         [STAThread]
         public static void Main(string[] args)
         {
-            Mutex mutex = new Mutex(true, "Chordious.WPF");
+            _mutex = new Mutex(true, "Chordious.WPF");
 
-            if (!mutex.WaitOne(TimeSpan.Zero, false))
+            if (!_mutex.WaitOne(TimeSpan.Zero, false))
             {
                 MessageBox.Show("A copy of Chordious is already running.", "Chordious", MessageBoxButton.OK, MessageBoxImage.Information);
             }

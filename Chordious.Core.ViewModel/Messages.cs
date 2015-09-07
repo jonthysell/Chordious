@@ -99,7 +99,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             Callback = callback;
         }
 
-        public void Process()
+        public virtual void Process()
         {
             AppViewModel.Instance.SaveUserConfig();
             if (null != Callback)
@@ -292,14 +292,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
     }
 
-    public class ShowDiagramExportMessage : MessageBase
+    public class ShowDiagramExportMessage : SaveUserConfigAfterHandlingMessageBase
     {
         public DiagramExportViewModelBase DiagramExportVM { get; set; }
 
         public ObservableCollection<ObservableDiagram> DiagramsToExport { get; private set; }
         public string CollectionName { get; private set; }
 
-        public ShowDiagramExportMessage(ObservableCollection<ObservableDiagram> diagramsToExport, string collectionName) : base()
+        public ShowDiagramExportMessage(ObservableCollection<ObservableDiagram> diagramsToExport, string collectionName, Action callback = null) : base(callback)
         {
             if (null == diagramsToExport)
             {
@@ -310,9 +310,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             CollectionName = collectionName;
         }
 
-        public void Process()
+        public override void Process()
         {
             DiagramExportVM.ProcessClose();
+            base.Process();
         }
     }
 

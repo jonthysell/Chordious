@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -216,15 +217,28 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
+        private List<string> _createdFiles;
+
         public DiagramExportViewModel(ObservableCollection<ObservableDiagram> diagramsToExport, string collectionName) : base(diagramsToExport, collectionName)
         {
             _filenameFormats = GetFilenameFormats();
+
+            _createdFiles = new List<string>();
+
+            this.ExportStart += () =>
+                {
+                    _createdFiles.Clear();
+                };
+
+            this.ExportEnd += () =>
+                {
+                    _createdFiles.Clear();
+                };
         }
 
         public override void ProcessClose()
         {
             SaveSettingsAsDefault();
-            AppVM.SaveUserConfig();
         }
 
         private string GetFullFilePath(int diagramIndex = 0, bool overwriteFiles = true)
@@ -285,30 +299,34 @@ namespace com.jonthysell.Chordious.WPF
                 }
             }
 
-            string testFilepath = FolderUtils.CleanPath(Path.Combine(outputPath, filePath));
+            string rawFileName = FolderUtils.CleanPath(Path.Combine(outputPath, filePath));
 
-            if (overwriteFiles)
+            string folder = Path.GetDirectoryName(rawFileName);
+            string fileName = Path.GetFileNameWithoutExtension(rawFileName);
+            string extension = Path.GetExtension(rawFileName);
+
+            string testfileName = Path.Combine(folder, fileName + extension);
+
+            int attempt = 1;
+            bool foundFilename = false;
+
+            while (!foundFilename)
             {
-                return testFilepath;
-            }
-            else
-            {
-                string folder = Path.GetDirectoryName(testFilepath);
-                string fileName = Path.GetFileNameWithoutExtension(testFilepath);
-                string extension = Path.GetExtension(testFilepath);
+                bool fileAlreadyExists = File.Exists(testfileName);
+                bool fileCreatedThisExport = _createdFiles.Contains(testfileName);
 
-                string testfileName = Path.Combine(folder, fileName + extension);
-
-                int attempt = 1;
-
-                while (File.Exists(testfileName))
+                if (!fileAlreadyExists || (fileAlreadyExists && !fileCreatedThisExport && overwriteFiles))
+                {
+                    foundFilename = true;
+                }
+                else
                 {
                     testfileName = Path.Combine(folder, fileName + " (" + attempt + ")" + extension);
                     attempt++;
                 }
-
-                return testfileName;
             }
+
+            return testfileName;
         }
 
         private string CleanTitle(string title)
@@ -375,6 +393,8 @@ namespace com.jonthysell.Chordious.WPF
                         encoder.Frames.Add(BitmapFrame.Create(bmpImage));
                         encoder.Save(fs);
                     }
+
+                    _createdFiles.Add(filePath);
                 }
 
             });

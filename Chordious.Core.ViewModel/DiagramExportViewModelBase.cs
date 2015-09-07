@@ -138,6 +138,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         IsIdle = false;
                         PercentComplete = 0;
 
+                        OnExportStart();
+
                         for (int i = 0; i < DiagramsToExport.Count; i++)
                         {
                             await ExportDiagramAsync(i);
@@ -150,6 +152,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                     finally
                     {
+                        OnExportEnd();
+
                         IsIdle = true;
                         PercentComplete = 0;
                     }
@@ -159,6 +163,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 });
             }
         }
+
+        public event Action ExportStart;
+
+        public event Action ExportEnd;
 
         internal ChordiousSettings SettingsBuffer { get; private set; }
 
@@ -202,6 +210,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         protected bool CanExport()
         {
             return (null != DiagramsToExport && DiagramsToExport.Count > 0) && IsIdle;
+        }
+
+        private void OnExportStart()
+        {
+            if (null != ExportStart)
+            {
+                ExportStart();
+            }
+        }
+
+        private void OnExportEnd()
+        {
+            if (null != ExportEnd)
+            {
+                ExportEnd();
+            }
         }
     }
 }

@@ -21,9 +21,32 @@
             <ListView Name="NamedIntervalsListView" Margin="5" ItemsSource="{Binding NamedIntervals}" SelectedItem="{Binding SelectedNamedInterval}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding LongName}" />
+                        <TextBlock Text="{Binding LongName}">
+                            <TextBlock.InputBindings>
+                                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.EditNamedInterval, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                            </TextBlock.InputBindings>
+                        </TextBlock>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListView.ContextMenu>
+                    <ContextMenu Name="NamedIntervalContextMenu">
+                        <MenuItem Command="{Binding AddNamedInterval}" Header="Add">
+                            <MenuItem.Icon>
+                                <Image Source="{DynamicResource AddIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding EditNamedInterval}" Header="Edit">
+                            <MenuItem.Icon>
+                                <Image Source="{DynamicResource EditIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding DeleteNamedInterval}" Header="Delete">
+                            <MenuItem.Icon>
+                                <Image Source="{DynamicResource RemoveIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </ListView.ContextMenu>
             </ListView>
         </ScrollViewer>
         <WrapPanel Grid.Row="2" FlowDirection="RightToLeft">

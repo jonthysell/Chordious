@@ -22,9 +22,32 @@
         <ListBox Name="InstrumentsListView" Margin="5,0" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Instruments}" SelectedItem="{Binding SelectedInstrument}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text="{Binding Name}">
+                        <TextBlock.InputBindings>
+                            <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.EditInstrument, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                        </TextBlock.InputBindings>
+                    </TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <ListBox.ContextMenu>
+                <ContextMenu Name="InstrumentsContextMenu">
+                    <MenuItem Command="{Binding AddInstrument}" Header="Add">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource AddIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding EditInstrument}" Header="Edit">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource EditIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding DeleteInstrument}" Header="Delete">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource RemoveIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </ListBox.ContextMenu>
         </ListBox>
         <WrapPanel Grid.Row="0" Grid.Column="1" Margin="5,0" IsEnabled="{Binding InstrumentIsSelected}">
             <Label Content="Name:" FontWeight="Bold" />
@@ -39,9 +62,32 @@
         <ListBox Name="TuningsListView" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Tunings}" SelectedItem="{Binding SelectedTuning}" IsEnabled="{Binding InstrumentIsSelected}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding LongName}" />
+                    <TextBlock Text="{Binding LongName}">
+                        <TextBlock.InputBindings>
+                            <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.EditTuning, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                        </TextBlock.InputBindings>
+                    </TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <ListBox.ContextMenu>
+                <ContextMenu Name="TuningContextMenu">
+                    <MenuItem Command="{Binding AddTuning}" Header="Add">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource AddIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding EditTuning}" Header="Edit">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource EditIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding DeleteTuning}" Header="Delete">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource RemoveIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </ListBox.ContextMenu>
         </ListBox>
         <WrapPanel Grid.Row="2" Grid.Column="0" FlowDirection="RightToLeft">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">

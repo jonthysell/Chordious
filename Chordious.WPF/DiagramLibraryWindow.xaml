@@ -22,9 +22,37 @@
         <ListBox Name="NodesListView" Margin="5,0" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Nodes}" SelectedItem="{Binding SelectedNode}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text="{Binding Name}">
+                        <TextBlock.InputBindings>
+                            <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.RenameNode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                        </TextBlock.InputBindings>
+                    </TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <ListBox.ContextMenu>
+                <ContextMenu Name="NodeContextMenu">
+                    <MenuItem Command="{Binding CreateNode}" Header="Add">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource AddIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding RenameNode}" Header="Rename">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource EditIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding DeleteNode}" Header="Delete">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource RemoveIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding LegacyImport}" Header="Import">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource ImportIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </ListBox.ContextMenu>
         </ListBox>
         <WrapPanel Margin="5,0" Grid.Row="0" Grid.Column="1" IsEnabled="{Binding NodeIsSelected}">
             <Label Content="Path:" FontWeight="Bold" />
@@ -49,6 +77,30 @@
                     </Image>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ContextMenu>
+                <ContextMenu Name="DiagramsListViewContextMenu">
+                    <MenuItem Command="{Binding SelectedNode.CreateDiagram}" Header="Add">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource AddIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding SelectedNode.EditSelected}" Header="Edit">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource EditIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding SelectedNode.DeleteSelected}" Header="Delete">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource RemoveIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding SelectedNode.ExportSelected}" Header="Export Images">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource ExportIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
         <WrapPanel Grid.Row="2" Grid.Column="0" FlowDirection="LeftToRight">
             <Button Command="{Binding CreateNode}" Margin="5" Style="{DynamicResource CleanButton}">
@@ -82,6 +134,12 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
                         <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding SelectedNode.EditSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
                     </StackPanel>
                 </Button>
                 <Button Command="{Binding SelectedNode.DeleteSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">

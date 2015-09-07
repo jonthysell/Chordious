@@ -129,6 +129,34 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public RelayCommand EditSelected
+        {
+            get
+            {
+                // Use the built-in ObservableDiagram's RelayCommand if it's available
+                if (SelectedDiagrams.Count == 1)
+                {
+                    return SelectedDiagrams[0].ShowEditor;
+                }
+
+                // If a single diagram isn't selected, throw an error
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage("Only one diagram can be edited at a time. Please select a single diagram and try again."));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedDiagrams.Count > 0;
+                });
+            }
+        }
+
         public RelayCommand DeleteSelected
         {
             get
@@ -273,6 +301,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void UpdateCommands()
         {
+            RaisePropertyChanged("EditSelected");
             RaisePropertyChanged("DeleteSelected");
             RaisePropertyChanged("ExportSelected");
         }

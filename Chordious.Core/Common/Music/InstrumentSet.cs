@@ -175,6 +175,29 @@ namespace com.jonthysell.Chordious.Core
             _instruments.Remove(Get(name));
         }
 
+        public void CopyFrom(InstrumentSet instrumentSet)
+        {
+            if (null == instrumentSet)
+            {
+                throw new ArgumentNullException("instrumentSet");
+            }
+
+            foreach (Instrument sourceInstrument in instrumentSet)
+            {
+                Instrument instrument = null;
+
+                if (!TryGet(sourceInstrument.Name, out instrument))
+                {
+                    instrument = Add(sourceInstrument.Name, sourceInstrument.NumStrings);
+                }
+
+                if (sourceInstrument.NumStrings == instrument.NumStrings)
+                {
+                    instrument.Tunings.CopyFrom(sourceInstrument.Tunings);
+                }
+            }
+        }
+
         public void Read(XmlReader xmlReader)
         {
             if (null == xmlReader)

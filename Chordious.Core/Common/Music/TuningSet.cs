@@ -138,6 +138,32 @@ namespace com.jonthysell.Chordious.Core
             _tunings.Remove(Get(name));
         }
 
+        public void CopyFrom(TuningSet tuningSet)
+        {
+            if (null == tuningSet)
+            {
+                throw new ArgumentNullException("tuningSet");
+            }
+
+            if (Instrument.NumStrings != tuningSet.Instrument.NumStrings)
+            {
+                throw new ArgumentOutOfRangeException("tuningSet");
+            }
+
+            foreach (Tuning sourceTuning in tuningSet)
+            {
+                Tuning tuning = null;
+
+                if (!TryGet(sourceTuning.Name, out tuning))
+                {
+                    FullNote[] rootNotes = new FullNote[sourceTuning.RootNotes.Length];
+                    sourceTuning.RootNotes.CopyTo(rootNotes, 0);
+
+                    Add(sourceTuning.Name, rootNotes);
+                }
+            }
+        }
+
         public void Read(XmlReader xmlReader)
         {
             if (null == xmlReader)

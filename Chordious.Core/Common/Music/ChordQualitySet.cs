@@ -175,6 +175,33 @@ namespace com.jonthysell.Chordious.Core
             _chordQualities.Remove(Get(name));
         }
 
+        public void CopyFrom(ChordQualitySet chordQualitySet)
+        {
+            if (null == chordQualitySet)
+            {
+                throw new ArgumentNullException("chordQualitySet");
+            }
+
+            foreach (ChordQuality sourceChordQuality in chordQualitySet)
+            {
+                bool found = false;
+                foreach (ChordQuality chordQuality in _chordQualities)
+                {
+                    if (sourceChordQuality.Equals(chordQuality))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                // Only add if it wasn't found
+                if (!found)
+                {
+                    Add(sourceChordQuality.Name, sourceChordQuality.Abbreviation, sourceChordQuality.Intervals);
+                }
+            }
+        }
+
         public void Read(XmlReader xmlReader)
         {
             if (null == xmlReader)

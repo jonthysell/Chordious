@@ -118,6 +118,11 @@ namespace com.jonthysell.Chordious.Core
 
         public void LoadFile(Stream inputStream)
         {
+            LoadFile(inputStream, ConfigParts.All);
+        }
+
+        public void LoadFile(Stream inputStream, ConfigParts configParts)
+        {
             if (null == inputStream)
             {
                 throw new ArgumentNullException("inputStream");
@@ -129,26 +134,29 @@ namespace com.jonthysell.Chordious.Core
                 {
                     if (reader.IsStartElement())
                     {
-                        switch (reader.Name)
+                        if (reader.Name == "settings" && ((configParts & ConfigParts.Settings) == ConfigParts.Settings))
                         {
-                            case "settings":
-                                this.ChordiousSettings.Read(reader.ReadSubtree());
-                                break;
-                            case "styles":
-                                this.DiagramStyle.Read(reader.ReadSubtree());
-                                break;
-                            case "instruments":
-                                this.Instruments.Read(reader.ReadSubtree());
-                                break;
-                            case "qualities":
-                                this.ChordQualities.Read(reader.ReadSubtree());
-                                break;
-                            case "scales":
-                                this.Scales.Read(reader.ReadSubtree());
-                                break;
-                            case "library":
-                                this.DiagramLibrary.Read(reader.ReadSubtree());
-                                break;
+                            this.ChordiousSettings.Read(reader.ReadSubtree());
+                        }
+                        else if (reader.Name == "styles" && ((configParts & ConfigParts.Styles) == ConfigParts.Styles))
+                        {
+                            this.DiagramStyle.Read(reader.ReadSubtree());
+                        }
+                        else if (reader.Name == "instruments" && ((configParts & ConfigParts.Instruments) == ConfigParts.Instruments))
+                        {
+                            this.Instruments.Read(reader.ReadSubtree());
+                        }
+                        else if (reader.Name == "qualities" && ((configParts & ConfigParts.Qualities) == ConfigParts.Qualities))
+                        {
+                            this.ChordQualities.Read(reader.ReadSubtree());
+                        }
+                        else if (reader.Name == "scales" && ((configParts & ConfigParts.Scales) == ConfigParts.Scales))
+                        {
+                            this.Scales.Read(reader.ReadSubtree());
+                        }
+                        else if (reader.Name == "library" && ((configParts & ConfigParts.Library) == ConfigParts.Library))
+                        {
+                            this.DiagramLibrary.Read(reader.ReadSubtree());
                         }
                     }
                 }
@@ -156,6 +164,11 @@ namespace com.jonthysell.Chordious.Core
         }
 
         public void SaveFile(Stream outputStream)
+        {
+            SaveFile(outputStream, ConfigParts.All);
+        }
+
+        public void SaveFile(Stream outputStream, ConfigParts configParts)
         {
             if (null == outputStream)
             {
@@ -167,36 +180,97 @@ namespace com.jonthysell.Chordious.Core
 
             using (XmlWriter writer = XmlWriter.Create(outputStream, settings))
             {
-
                 writer.WriteStartElement("chordious");
 
                 writer.WriteAttributeString("version", AppInfo.ProgramTitle);
+                writer.WriteAttributeString("date", DateTime.UtcNow.ToString());
 
-                writer.WriteStartElement("settings");
-                this.ChordiousSettings.Write(writer);
-                writer.WriteEndElement();
+                if ((configParts & ConfigParts.Settings) == ConfigParts.Settings)
+                {
+                    writer.WriteStartElement("settings");
+                    this.ChordiousSettings.Write(writer);
+                    writer.WriteEndElement();
+                }
 
-                writer.WriteStartElement("styles");
-                this.DiagramStyle.Write(writer);
-                writer.WriteEndElement();
+                if ((configParts & ConfigParts.Styles) == ConfigParts.Styles)
+                {
+                    writer.WriteStartElement("styles");
+                    this.DiagramStyle.Write(writer);
+                    writer.WriteEndElement();
+                }
 
-                writer.WriteStartElement("instruments");
-                this.Instruments.Write(writer);
-                writer.WriteEndElement();
+                if ((configParts & ConfigParts.Instruments) == ConfigParts.Instruments)
+                {
+                    writer.WriteStartElement("instruments");
+                    this.Instruments.Write(writer);
+                    writer.WriteEndElement();
+                }
 
-                writer.WriteStartElement("qualities");
-                this.ChordQualities.Write(writer);
-                writer.WriteEndElement();
+                if ((configParts & ConfigParts.Qualities) == ConfigParts.Qualities)
+                {
+                    writer.WriteStartElement("qualities");
+                    this.ChordQualities.Write(writer);
+                    writer.WriteEndElement();
+                }
 
-                writer.WriteStartElement("scales");
-                this.Scales.Write(writer);
-                writer.WriteEndElement();
+                if ((configParts & ConfigParts.Scales) == ConfigParts.Scales)
+                {
+                    writer.WriteStartElement("scales");
+                    this.Scales.Write(writer);
+                    writer.WriteEndElement();
+                }
 
-                writer.WriteStartElement("library");
-                this.DiagramLibrary.Write(writer);
-                writer.WriteEndElement();
+                if ((configParts & ConfigParts.Library) == ConfigParts.Library)
+                {
+                    writer.WriteStartElement("library");
+                    this.DiagramLibrary.Write(writer);
+                    writer.WriteEndElement();
+                }
 
                 writer.WriteEndElement();
+            }
+        }
+
+        public void ImportConfig(ConfigFile configFile)
+        {
+            ImportConfig(configFile, ConfigParts.All);
+        }
+
+        public void ImportConfig(ConfigFile configFile, ConfigParts configParts)
+        {
+            if (null == configFile)
+            {
+                throw new ArgumentNullException("configFile");
+            }
+
+            if ((configParts & ConfigParts.Settings) == ConfigParts.Settings)
+            {
+                ChordiousSettings.CopyFrom(configFile.ChordiousSettings);
+            }
+
+            if ((configParts & ConfigParts.Styles) == ConfigParts.Styles)
+            {
+                DiagramStyle.CopyFrom(configFile.DiagramStyle);
+            }
+
+            if ((configParts & ConfigParts.Instruments) == ConfigParts.Instruments)
+            {
+                Instruments.CopyFrom(configFile.Instruments);
+            }
+
+            if ((configParts & ConfigParts.Qualities) == ConfigParts.Qualities)
+            {
+                ChordQualities.CopyFrom(configFile.ChordQualities);
+            }
+
+            if ((configParts & ConfigParts.Scales) == ConfigParts.Scales)
+            {
+                Scales.CopyFrom(configFile.Scales);
+            }
+
+            if ((configParts & ConfigParts.Library) == ConfigParts.Library)
+            {
+                DiagramLibrary.CopyFrom(configFile.DiagramLibrary);
             }
         }
 
@@ -218,5 +292,18 @@ namespace com.jonthysell.Chordious.Core
             this.ChordQualities.Parent = (null == this.Parent) ? null : this.Parent.ChordQualities;
             this.Scales.Parent = (null == this.Parent) ? null : this.Parent.Scales;
         }
+    }
+
+    [Flags]
+    public enum ConfigParts
+    {
+        None = 0,
+        Settings = 1,
+        Styles = 2,
+        Instruments = 4,
+        Qualities = 8,
+        Scales = 16,
+        Library = 32,
+        All = 63
     }
 }

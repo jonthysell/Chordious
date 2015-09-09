@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.IO;
 using System.Collections.ObjectModel;
 
 using GalaSoft.MvvmLight;
@@ -32,6 +33,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
+using com.jonthysell.Chordious.Core.Legacy;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
@@ -65,6 +67,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 return AppVM.UserConfigPath;
             }
         }
+
+        public bool IsIdle
+        {
+            get
+            {
+                return _isIdle;
+            }
+            protected set
+            {
+                _isIdle = value;
+                RaisePropertyChanged("IsIdle");
+            }
+        }
+        private bool _isIdle;
 
         public int NewDiagramNumFrets
         {
@@ -340,6 +356,85 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                                 ResetByPrefix("scalefinder");
                                 RefreshProperties();
                             }
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                });
+            }
+        }
+
+        public RelayCommand ShowConfigImport
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<PromptForConfigInputStreamMessage>(new PromptForConfigInputStreamMessage((inputStream) =>
+                        {
+                            try
+                            {
+                                if (null != inputStream)
+                                {
+                                    Messenger.Default.Send<ShowConfigImportMessage>(new ShowConfigImportMessage(inputStream));
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
+                        }));                        
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                });
+            }
+        }
+
+        public RelayCommand ShowConfigExport
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<ShowConfigExportMessage>(new ShowConfigExportMessage());
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                });
+            }
+        }
+
+        public RelayCommand LegacyImport
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
+                        Messenger.Default.Send<PromptForLegacyImportMessage>(new PromptForLegacyImportMessage((fileName, inputStream) =>
+                        {
+                            string proposedName = String.IsNullOrWhiteSpace(fileName) ? library.GetNewCollectionName() : fileName.Trim();
+                            Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Name for the new collection:", proposedName, (name) =>
+                            {
+                                DiagramCollection importedCollection = ChordDocument.Load(library.Style, inputStream);
+                                DiagramCollection newCollection = library.Add(name);
+
+                                newCollection.Add(importedCollection);
+                                ItemsChanged = true;
+                            }));
                         }));
                     }
                     catch (Exception ex)

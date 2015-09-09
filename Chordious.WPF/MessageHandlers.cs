@@ -72,6 +72,12 @@ namespace com.jonthysell.Chordious.WPF
 
             Messenger.Default.Register<ShowDiagramExportMessage>(recipient, (message) => MessageHandlers.ShowDiagramExport(message));
 
+            Messenger.Default.Register<ShowConfigImportMessage>(recipient, (message) => MessageHandlers.ShowConfigImport(message));
+            Messenger.Default.Register<PromptForConfigInputStreamMessage>(recipient, (message) => MessageHandlers.PromptForConfigInputStream(message));
+
+            Messenger.Default.Register<ShowConfigExportMessage>(recipient, (message) => MessageHandlers.ShowConfigExport(message));
+            Messenger.Default.Register<PromptForConfigOutputStreamMessage>(recipient, (message) => MessageHandlers.PromptForConfigOutputStream(message));
+            
             Messenger.Default.Register<PromptForLegacyImportMessage>(recipient, (message) => MessageHandlers.PromptForLegacyImport(message));
         }
 
@@ -104,6 +110,12 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Unregister<ShowAdvancedDataMessage>(recipient);
 
             Messenger.Default.Unregister<ShowDiagramExportMessage>(recipient);
+
+            Messenger.Default.Unregister<ShowConfigImportMessage>(recipient);
+            Messenger.Default.Unregister<PromptForConfigInputStreamMessage>(recipient);
+
+            Messenger.Default.Unregister<ShowConfigExportMessage>(recipient);
+            Messenger.Default.Unregister<PromptForConfigOutputStreamMessage>(recipient);
 
             Messenger.Default.Unregister<PromptForLegacyImportMessage>(recipient);
         }
@@ -273,6 +285,62 @@ namespace com.jonthysell.Chordious.WPF
             window.DataContext = message.DiagramExportVM;
             window.ShowDialog();
             message.Process();
+        }
+
+        private static void ShowConfigExport(ShowConfigExportMessage message)
+        {
+            ConfigPartsWindow window = new ConfigPartsWindow();
+            window.DataContext = message.ConfigExportVM;
+            message.ConfigExportVM.RequestClose += () =>
+            {
+                window.Close();
+            };
+            window.ShowDialog();
+            message.Process();
+        }
+
+        public static void PromptForConfigOutputStream(PromptForConfigOutputStreamMessage message)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.AddExtension = true;
+            dialog.DefaultExt = "*.xml";
+            dialog.Filter = "Chordious Config|*.xml";
+
+            bool? result = dialog.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+                string filename = dialog.FileName;
+                message.Process(new FileStream(filename, FileMode.Create));
+            }
+        }
+
+        private static void ShowConfigImport(ShowConfigImportMessage message)
+        {
+            ConfigPartsWindow window = new ConfigPartsWindow();
+            window.DataContext = message.ConfigImportVM;
+            message.ConfigImportVM.RequestClose += () =>
+            {
+                window.Close();
+            };
+            window.ShowDialog();
+            message.Process();
+        }
+
+        public static void PromptForConfigInputStream(PromptForConfigInputStreamMessage message)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.AddExtension = true;
+            dialog.DefaultExt = "*.xml";
+            dialog.Filter = "Chordious Config|*.xml";
+
+            bool? result = dialog.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+                string filename = dialog.FileName;
+                message.Process(new FileStream(filename, FileMode.Open, FileAccess.Read));
+            }
         }
 
         public static void PromptForLegacyImport(PromptForLegacyImportMessage message)

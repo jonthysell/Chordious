@@ -175,6 +175,33 @@ namespace com.jonthysell.Chordious.Core
             _scales.Remove(Get(name));
         }
 
+        public void CopyFrom(ScaleSet scaleSet)
+        {
+            if (null == scaleSet)
+            {
+                throw new ArgumentNullException("scaleSet");
+            }
+
+            foreach (Scale sourceScale in scaleSet)
+            {
+                bool found = false;
+                foreach (Scale scale in _scales)
+                {
+                    if (sourceScale.Equals(scale))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                // Only add if it wasn't found
+                if (!found)
+                {
+                    Add(sourceScale.Name, sourceScale.Intervals);
+                }
+            }
+        }
+
         public void Read(XmlReader xmlReader)
         {
             if (null == xmlReader)

@@ -133,6 +133,9 @@
       <DependentUpon>NamedIntervalManagerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainViewModelExtended.cs" />
+    <Compile Include="ConfigPartsWindow.xaml.cs">
+      <DependentUpon>ConfigPartsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TuningEditorWindow.xaml.cs">
       <DependentUpon>TuningEditorWindow.xaml</DependentUpon>
     </Compile>
@@ -221,6 +224,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="NamedIntervalManagerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ConfigPartsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

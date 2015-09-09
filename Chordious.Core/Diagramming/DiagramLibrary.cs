@@ -327,6 +327,26 @@ namespace com.jonthysell.Chordious.Core
             return collections;
         }
 
+        public void CopyFrom(DiagramLibrary diagramLibrary)
+        {
+            if (null == diagramLibrary)
+            {
+                throw new ArgumentNullException("diagramLibrary");
+            }
+
+            foreach (KeyValuePair<string, DiagramCollection> sourceKVP in diagramLibrary.GetAll())
+            {
+                DiagramCollection collection = null;
+
+                if (!TryGet(sourceKVP.Key, out collection))
+                {
+                    collection = Add(sourceKVP.Key); 
+                }
+
+                collection.Add(sourceKVP.Value);
+            }
+        }
+
         public void Read(XmlReader xmlReader)
         {
             if (null == xmlReader)

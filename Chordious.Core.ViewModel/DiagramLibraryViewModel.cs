@@ -81,7 +81,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 RaisePropertyChanged("SelectedNode");
                 RaisePropertyChanged("NodeIsSelected");
                 RaisePropertyChanged("CreateNode");
-                RaisePropertyChanged("RenameNode");
+                RaisePropertyChanged("EditNode");
                 RaisePropertyChanged("DeleteNode");
             }
         }
@@ -149,7 +149,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public RelayCommand RenameNode
+        public RelayCommand EditNode
         {
             get
             {
@@ -172,35 +172,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NodeIsSelected;
-                });
-            }
-        }
-
-        public RelayCommand LegacyImport
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        Messenger.Default.Send<PromptForLegacyImportMessage>(new PromptForLegacyImportMessage((fileName, inputStream) =>
-                        {
-                            string proposedName = String.IsNullOrWhiteSpace(fileName) ? Library.GetNewCollectionName() : fileName.Trim();
-                            Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Name for the new collection:", proposedName, (name) =>
-                            {
-                                DiagramCollection importedCollection = ChordDocument.Load(Library.Style, inputStream);
-                                DiagramCollection newCollection = Library.Add(name);
-
-                                newCollection.Add(importedCollection);
-                                RaisePropertyChanged("Nodes");
-                            }));
-                        }));
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
                 });
             }
         }

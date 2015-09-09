@@ -24,7 +24,7 @@
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}">
                         <TextBlock.InputBindings>
-                            <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.RenameNode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                            <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.EditNode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
                         </TextBlock.InputBindings>
                     </TextBlock>
                 </DataTemplate>
@@ -36,7 +36,7 @@
                             <Image Source="{DynamicResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding RenameNode}" Header="Rename">
+                    <MenuItem Command="{Binding EditNode}" Header="Edit">
                         <MenuItem.Icon>
                             <Image Source="{DynamicResource EditIcon16}" />
                         </MenuItem.Icon>
@@ -44,11 +44,6 @@
                     <MenuItem Command="{Binding DeleteNode}" Header="Delete">
                         <MenuItem.Icon>
                             <Image Source="{DynamicResource RemoveIcon16}" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Command="{Binding LegacyImport}" Header="Import">
-                        <MenuItem.Icon>
-                            <Image Source="{DynamicResource ImportIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
@@ -109,22 +104,16 @@
                     <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
                 </StackPanel>
             </Button>
-            <Button Command="{Binding RenameNode}" Margin="5" Style="{DynamicResource CleanButton}">
+            <Button Command="{Binding EditNode}" Margin="5" Style="{DynamicResource CleanButton}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
-                    <TextBlock Text="Rename" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
+                    <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
                 </StackPanel>
             </Button>
             <Button Command="{Binding DeleteNode}" Margin="5" Style="{DynamicResource CleanButton}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
                     <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                </StackPanel>
-            </Button>
-            <Button Command="{Binding LegacyImport}" Margin="5" Style="{DynamicResource CleanButton}">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="{DynamicResource ImportIcon16}" Width="16" Height="16" Margin="5" />
-                    <TextBlock Text="Import" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
                 </StackPanel>
             </Button>
         </WrapPanel>

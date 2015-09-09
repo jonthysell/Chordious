@@ -1,5 +1,10 @@
 # Chordious Changelist #
 
+## 1.9.15252.1938 ##
+* Implemented basic config import / export
+* Moved legacy ChordLine import into Options
+* Can now selectively load / save only parts of ConfigFiles
+
 ## 1.9.15250.507 ##
 * Fixed issue #10, Chordious allows multiple instances, which means config file contention
 

@@ -36,20 +36,6 @@ namespace com.jonthysell.Chordious.WPF
 {
     public class OptionsViewModelExtended : OptionsViewModel, IIdle
     {
-        public bool IsIdle
-        {
-            get
-            {
-                return _isIdle;
-            }
-            private set
-            {
-                _isIdle = value;
-                RaisePropertyChanged("IsIdle");
-            }
-        }
-        private bool _isIdle;
-
         #region Rendering
 
         public int SelectedRendererIndex

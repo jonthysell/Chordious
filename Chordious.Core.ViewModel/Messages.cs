@@ -317,6 +317,58 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
     }
 
+    public class ShowConfigExportMessage : SaveUserConfigAfterHandlingMessageBase
+    {
+        public ConfigExportViewModel ConfigExportVM { get; private set; }
+
+        public ShowConfigExportMessage(Action callback = null) : base(callback)
+        {
+            ConfigExportVM = new ConfigExportViewModel();
+        }
+    }
+
+    public class ShowConfigImportMessage : SaveUserConfigAfterHandlingMessageBase
+    {
+        public ConfigImportViewModel ConfigImportVM { get; private set; }
+
+        public ShowConfigImportMessage(Stream inputStream, Action callback = null) : base(callback)
+        {
+            ConfigImportVM = new ConfigImportViewModel(inputStream);
+        }
+    }
+
+    public abstract class PromptForStreamMessage : MessageBase
+    {
+        private Action<Stream> Callback;
+
+        public PromptForStreamMessage(Action<Stream> callback) : base()
+        {
+            if (null == callback)
+            {
+                throw new ArgumentNullException("callback");
+            }
+            Callback = callback;
+        }
+
+        public void Process(Stream stream)
+        {
+            if (null != Callback)
+            {
+                Callback(stream);
+            }
+        }
+    }
+
+    public class PromptForConfigOutputStreamMessage : PromptForStreamMessage
+    {
+        public PromptForConfigOutputStreamMessage(Action<Stream> callback) : base(callback) { }
+    }
+
+    public class PromptForConfigInputStreamMessage : PromptForStreamMessage
+    {
+        public PromptForConfigInputStreamMessage(Action<Stream> callback) : base(callback) { }
+    }
+
     public class PromptForLegacyImportMessage : MessageBase
     {
         private Action<string, Stream> Callback;

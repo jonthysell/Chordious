@@ -102,7 +102,6 @@ namespace com.jonthysell.Chordious.Core.Legacy
             // Setup base
             diagram.Orientation = DiagramOrientation.UpDown;
             diagram.LabelLayoutModel = DiagramLabelLayoutModel.AddPaddingVertical;
-            diagram.Style.Set("diagram.margin", "0");
             diagram.DiagramColor = "#ffffff";
             diagram.DiagramOpacity = 0;
             diagram.DiagramBorderColor = "#000000";
@@ -115,10 +114,10 @@ namespace com.jonthysell.Chordious.Core.Legacy
             diagram.TitleVisible = true;
             diagram.TitleTextSizeModRatio = 0.75;
             diagram.TitleGridPadding = diagram.TitleTextSize / 2.0;
-            diagram.Style.Set("title.fontfamily", chordOptions.FontFamily);
+            diagram.TitleFontFamily = chordOptions.FontFamily;
             diagram.TitleColor = "#000000";
             diagram.TitleOpacity = 1;
-            diagram.Style.Set("title.textalignment", DiagramHorizontalAlignment.Center);
+            diagram.TitleTextAlignment = DiagramHorizontalAlignment.Center;
 
             // Process grid
             double margin = chordOptions.Margin;
@@ -137,9 +136,9 @@ namespace com.jonthysell.Chordious.Core.Legacy
             diagram.GridStringSpacing = rectWidth / (chord.NumStrings - 1);
             diagram.GridFretSpacing = rectHeight / chord.NumFrets;
 
-            diagram.Style.Set("grid.linecolor", "#ffffff");
-            diagram.Style.Set("grid.opacity", "0");
-            diagram.Style.Set("grid.linecolor", "#000000");
+            diagram.GridLineColor = "#ffffff";
+            diagram.GridOpacity = 0;
+            diagram.GridLineColor = "#000000";
 
             DiagramTextStyle titleTextStyle = DiagramTextStyle.Regular;
             switch (chordOptions.FontStyle)
@@ -154,7 +153,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
                     titleTextStyle = DiagramTextStyle.BoldItalic;
                     break;
             }
-            diagram.Style.Set("title.textstyle", titleTextStyle);
+            diagram.TitleTextStyle = titleTextStyle;
 
             // Process marks
 

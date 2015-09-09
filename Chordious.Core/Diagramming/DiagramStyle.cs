@@ -47,7 +47,7 @@ namespace com.jonthysell.Chordious.Core
 
         public int NewDiagramNumStringsGet()
         {
-            return GetInt32("newdiagram.numstrings");
+            return GetInt32("newdiagram.numstrings", 2);
         }
 
         public void NewDiagramNumStringsSet(int value)
@@ -61,7 +61,7 @@ namespace com.jonthysell.Chordious.Core
 
         public int NewDiagramNumFretsGet()
         {
-            return GetInt32("newdiagram.numfrets");
+            return GetInt32("newdiagram.numfrets", 1);
         }
 
         public void NewDiagramNumFretsSet(int value)

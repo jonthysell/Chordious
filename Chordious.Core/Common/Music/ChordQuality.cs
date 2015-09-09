@@ -126,7 +126,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("xmlWriter");
             }
 
-            WriteBase(xmlWriter);
+            WriteBase(xmlWriter, "quality");
 
             xmlWriter.WriteAttributeString("abbv", this.Abbreviation);
 

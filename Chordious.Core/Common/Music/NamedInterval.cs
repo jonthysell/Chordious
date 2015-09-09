@@ -115,14 +115,19 @@ namespace com.jonthysell.Chordious.Core
             return false;
         }
 
-        protected void WriteBase(XmlWriter xmlWriter)
+        protected void WriteBase(XmlWriter xmlWriter, string localName)
         {
             if (null == xmlWriter)
             {
                 throw new ArgumentNullException("xmlWriter");
             }
 
-            xmlWriter.WriteStartElement("quality");
+            if (StringUtils.IsNullOrWhiteSpace(localName))
+            {
+                throw new ArgumentNullException("localName");
+            }
+
+            xmlWriter.WriteStartElement(localName);
 
             xmlWriter.WriteAttributeString("name", this.Name);
 
@@ -182,6 +187,23 @@ namespace com.jonthysell.Chordious.Core
             }
 
             return intervals;
+        }
+
+        public override bool Equals(object obj)
+        {
+            NamedInterval namedInterval = obj as NamedInterval;
+
+            if (null == namedInterval)
+            {
+                return false;
+            }
+
+            return this.LongName == namedInterval.LongName;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.LongName.GetHashCode();
         }
 
         protected string GetIntervalString()

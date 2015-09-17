@@ -232,7 +232,7 @@ namespace com.jonthysell.Chordious.Core
         }
     }
 
-    public class InstrumentSetException : ChordiousException
+    public abstract class InstrumentSetException : ChordiousException
     {
         public InstrumentSet InstrumentSet { get; private set; }
 
@@ -254,11 +254,27 @@ namespace com.jonthysell.Chordious.Core
 
     public class InstrumentNotFoundException : TargetInstrumentException
     {
+        public override string Message
+        {
+            get
+            {
+                return String.Format(Resources.Strings.InstrumentNotFoundExceptionMessage, Name);
+            }
+        }
+
         public InstrumentNotFoundException(InstrumentSet instrumentSet, string name) : base(instrumentSet, name) { }
     }
 
     public class InstrumentNameAlreadyExistsException : TargetInstrumentException
     {
+        public override string Message
+        {
+            get
+            {
+                return String.Format(Resources.Strings.InstrumentNameAlreadyExistsMessage, Name);
+            }
+        }
+
         public InstrumentNameAlreadyExistsException(InstrumentSet instrumentSet, string name) : base(instrumentSet, name) { }
     }
 }

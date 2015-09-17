@@ -43,7 +43,7 @@ namespace com.jonthysell.Chordious.Core
             get
             {
                 string name = ReadOnlyObject.GetType().Name;
-                return String.Format("The {0} could not be changed because it is marked read-only.", name);
+                return String.Format(Resources.Strings.ObjectIsReadOnlyExceptionMessage, name);
             }
         }
 

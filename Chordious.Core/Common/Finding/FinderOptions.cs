@@ -272,6 +272,14 @@ namespace com.jonthysell.Chordious.Core
         public Instrument Instrument { get; private set; }
         public Tuning Tuning { get; private set; }
 
+        public override string Message
+        {
+            get
+            {
+                return String.Format(Resources.Strings.InstrumentTuningMismatchExceptionMessage, Instrument.Name, Tuning.Name);
+            }
+        }
+
         public InstrumentTuningMismatchException(Instrument instrument, Tuning tuning) : base()
         {
             this.Instrument = instrument;

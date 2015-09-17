@@ -43,7 +43,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format("The key \"{0}\" could not be found.", Key);
+                return String.Format(Resources.Strings.ChordiousKeyNotFoundExceptionMessage, Key);
             }
         }
 

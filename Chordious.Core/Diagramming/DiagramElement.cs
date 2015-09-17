@@ -128,11 +128,27 @@ namespace com.jonthysell.Chordious.Core
 
     public class ElementAlreadyExistsAtPositionException : ElementPositionException
     {
+        public override string Message
+        {
+            get
+            {
+                return Resources.Strings.ElementAlreadyExistsAtPositionExceptionMessage;
+            }
+        }
+
         public ElementAlreadyExistsAtPositionException(ElementPosition position) : base(position) { }
     }
 
     public class ElementPositionOffFretboardException : ElementPositionException
     {
+        public override string Message
+        {
+            get
+            {
+                return Resources.Strings.ElementPositionOffFretboardExceptionMessage;
+            }
+        }
+
         public ElementPositionOffFretboardException(ElementPosition position) : base(position) { }
     }
 }

@@ -185,7 +185,7 @@ namespace com.jonthysell.Chordious.Core
         }
     }
 
-    public class TuningSetException : ChordiousException
+    public abstract class TuningSetException : ChordiousException
     {
         public TuningSet TuningSet { get; private set; }
 
@@ -207,11 +207,27 @@ namespace com.jonthysell.Chordious.Core
 
     public class TuningNotFoundException : TargetTuningException
     {
+        public override string Message
+        {
+            get
+            {
+                return String.Format(Resources.Strings.TuningNotFoundExceptionMessage, Name);
+            }
+        }
+
         public TuningNotFoundException(TuningSet tuningSet, string name) : base(tuningSet, name) { }
     }
 
     public class TuningNameAlreadyExistsException : TargetTuningException
     {
+        public override string Message
+        {
+            get
+            {
+                return String.Format(Resources.Strings.TuningNameAlreadyExistsMessage, Name);
+            }
+        }
+
         public TuningNameAlreadyExistsException(TuningSet tuningSet, string name) : base(tuningSet, name) { }
     }
 }

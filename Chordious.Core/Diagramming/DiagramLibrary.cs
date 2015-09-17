@@ -433,7 +433,7 @@ namespace com.jonthysell.Chordious.Core
         }
     }
 
-    public class DiagramLibraryException : ChordiousException
+    public abstract class DiagramLibraryException : ChordiousException
     {
         public DiagramLibrary DiagramLibrary { get; private set; }
 
@@ -461,7 +461,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format("Collection \"{0}\" could not be found.", Name);
+                return String.Format(Resources.Strings.DiagramCollectionNotFoundExceptionMessage, Name);
             }
         }
 
@@ -474,7 +474,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format("Collection \"{0}\" already exists.", Name);
+                return String.Format(Resources.Strings.DiagramCollectionNameAlreadyExistsMessage, Name);
             }
         }
 
@@ -493,6 +493,14 @@ namespace com.jonthysell.Chordious.Core
 
     public class PathNotFoundException : TargetPathException
     {
+        public override string Message
+        {
+            get
+            {
+                return String.Format(Resources.Strings.PathNotFoundExceptionMessage, Path);
+            }
+        }
+
         public PathNotFoundException(DiagramLibrary diagramLibrary, string path) : base(diagramLibrary, path) { }
     }
 }

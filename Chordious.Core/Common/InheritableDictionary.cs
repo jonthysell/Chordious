@@ -777,6 +777,14 @@ namespace com.jonthysell.Chordious.Core
     {
         public string Level { get; protected set; }
 
+        public override string Message
+        {
+            get
+            {
+                return String.Format(Resources.Strings.LevelNotFoundExceptionMessage, Level);
+            }
+        }
+
         public LevelNotFoundException(string level) : base()
         {
             this.Level = level;
@@ -785,6 +793,14 @@ namespace com.jonthysell.Chordious.Core
 
     public class ParentNotFoundException : ChordiousException
     {
+        public override string Message
+        {
+            get
+            {
+                return Resources.Strings.ParentNotFoundExceptionMessage;
+            }
+        }
+
         public ParentNotFoundException() : base() { }
     }
 }

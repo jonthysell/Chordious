@@ -236,7 +236,7 @@ namespace com.jonthysell.Chordious.Core
         }
     }
 
-    public class ChordQualitySetException : ChordiousException
+    public abstract class ChordQualitySetException : ChordiousException
     {
         public ChordQualitySet ChordQualitySet { get; private set; }
 
@@ -258,11 +258,27 @@ namespace com.jonthysell.Chordious.Core
 
     public class ChordQualityNotFoundException : TargetChordQualityException
     {
+        public override string Message
+        {
+            get
+            {
+                return String.Format(Resources.Strings.ChordQualityNotFoundExceptionMessage, Name);
+            }
+        }
+
         public ChordQualityNotFoundException(ChordQualitySet chordQualitySet, string name) : base(chordQualitySet, name) { }
     }
 
     public class ChordQualityNameAlreadyExistsException : TargetChordQualityException
     {
+        public override string Message
+        {
+            get
+            {
+                return String.Format(Resources.Strings.ChordQualityNameAlreadyExistsMessage, Name);
+            }
+        }
+
         public ChordQualityNameAlreadyExistsException(ChordQualitySet chordQualitySet, string name) : base(chordQualitySet, name) { }
     }
 }

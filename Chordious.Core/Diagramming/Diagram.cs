@@ -1425,6 +1425,14 @@ namespace com.jonthysell.Chordious.Core
 
     public class CantResizeDiagramException : ChordiousException
     {
+        public override string Message
+        {
+            get
+            {
+                return Resources.Strings.CantResizeDiagramExceptionMessage;
+            }
+        }
+
         public CantResizeDiagramException() : base() { }
     }
 

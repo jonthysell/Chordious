@@ -236,7 +236,7 @@ namespace com.jonthysell.Chordious.Core
         }
     }
 
-    public class ScaleSetException : ChordiousException
+    public abstract class ScaleSetException : ChordiousException
     {
         public ScaleSet ScaleSet { get; private set; }
 
@@ -258,11 +258,27 @@ namespace com.jonthysell.Chordious.Core
 
     public class ScaleNotFoundException : TargetScaleException
     {
+        public override string Message
+        {
+            get
+            {
+                return String.Format(Resources.Strings.ScaleNotFoundExceptionMessage, Name);
+            }
+        }
+
         public ScaleNotFoundException(ScaleSet scaleSet, string name) : base(scaleSet, name) { }
     }
 
     public class ScaleNameAlreadyExistsException : TargetScaleException
     {
+        public override string Message
+        {
+            get
+            {
+                return String.Format(Resources.Strings.ScaleNameAlreadyExistsMessage, Name);
+            }
+        }
+
         public ScaleNameAlreadyExistsException(ScaleSet scaleSet, string name) : base(scaleSet, name) { }
     }
 }

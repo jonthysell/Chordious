@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## next ##
+* Added better error messages for Core exceptions
+
 ## 1.9.15252.1938 ##
 * Implemented basic config import / export
 * Moved legacy ChordLine import into Options

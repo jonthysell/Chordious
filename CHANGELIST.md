@@ -1,7 +1,11 @@
 # Chordious Changelist #
 
-## next ##
-* Added better error messages for Core exceptions
+## 1.9.15265.239 ##
+* Added better error messages for Chordious exceptions
+* Removed all dependency on MessageBox.Show
+* Added a new error dialog that exposes details for bug filing
+* Added a new confirmation dialog
+* Added a new information dialog
 
 ## 1.9.15252.1938 ##
 * Implemented basic config import / export

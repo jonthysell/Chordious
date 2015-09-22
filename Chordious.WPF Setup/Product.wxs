@@ -184,6 +184,15 @@
       <Component>
         <File Source="$(var.Chordious.WPF.TargetDir)\Resources\export16.png" />
       </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\error32.png" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\warning32.png" />
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\information32.png" />
+      </Component>
     </ComponentGroup>
     <ComponentGroup Id="ProductShortcuts" Directory="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut">

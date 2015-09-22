@@ -122,12 +122,25 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowNotification(ChordiousMessage message)
         {
-            MessageBox.Show(message.Notification, message.Title, MessageBoxButton.OK, MessageBoxImage.Information);
+            InformationWindow window = new InformationWindow();
+            window.DataContext = message.InformationVM;
+            message.InformationVM.RequestClose += () =>
+            {
+                window.Close();
+            };
+            window.ShowDialog();
+            message.Process();
         }
 
         private static void ShowException(ExceptionMessage message)
         {
-            MessageBox.Show(message.Exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            ExceptionWindow window = new ExceptionWindow();
+            window.DataContext = message.ExceptionVM;
+            message.ExceptionVM.RequestClose += () =>
+            {
+                window.Close();
+            };
+            window.ShowDialog();
         }
 
         private static void LaunchUrl(LaunchUrlMessage message)
@@ -137,8 +150,14 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ConfirmAction(ConfirmationMessage message)
         {
-            MessageBoxResult result = MessageBox.Show(message.Notification, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            message.Execute(result == MessageBoxResult.Yes);
+            ConfirmationWindow window = new ConfirmationWindow();
+            window.DataContext = message.ConfirmationVM;
+            message.ConfirmationVM.RequestClose += () =>
+            {
+                window.Close();
+            };
+            window.ShowDialog();
+            message.Process();
         }
 
         private static void PromptForText(PromptForTextMessage message)

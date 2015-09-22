@@ -326,11 +326,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
     public class AdvancedDataValidationError : ChordiousException
     {
+        public override string Message
+        {
+            get
+            {
+                return String.Format(Resources.Strings.AdvancedDataValidationErrorMessage, InnerException.Message);
+            }
+        }
+
         public new Exception InnerException { get; private set; }
 
         public AdvancedDataValidationError(Exception exception) : base()
         {
             InnerException = exception;
+        }
+
+        public override string ToString()
+        {
+            return String.Join(Environment.NewLine, Message, InnerException.StackTrace);
         }
     }
 }

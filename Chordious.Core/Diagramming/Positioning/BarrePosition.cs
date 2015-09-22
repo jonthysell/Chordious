@@ -152,6 +152,15 @@ namespace com.jonthysell.Chordious.Core
     {
         public int AttemptedStartString { get; private set; }
         public int AttemptedEndString { get; private set; }
+
+        public override string Message
+        {
+            get
+            {
+                return String.Format(Resources.Strings.BarrePositionInvalidSpanExceptionMessage, AttemptedStartString, AttemptedEndString);
+            }
+        }
+
         public BarrePositionInvalidSpanException(BarrePosition position, int startString, int endString) : base(position)
         {
             this.AttemptedStartString = startString;

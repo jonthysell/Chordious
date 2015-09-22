@@ -62,6 +62,15 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A barre cannot span from string {0} to string {1}..
+        /// </summary>
+        internal static string BarrePositionInvalidSpanExceptionMessage {
+            get {
+                return ResourceManager.GetString("BarrePositionInvalidSpanExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot resize the diagram due to existing marks and/or fret labels..
         /// </summary>
         internal static string CantResizeDiagramExceptionMessage {

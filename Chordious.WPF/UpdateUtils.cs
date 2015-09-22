@@ -34,6 +34,8 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Windows;
 
+using GalaSoft.MvvmLight.Messaging;
+
 using com.jonthysell.Chordious.Core.ViewModel;
 
 namespace com.jonthysell.Chordious.WPF
@@ -90,29 +92,36 @@ namespace com.jonthysell.Chordious.WPF
 
                 SetLastUpdateCheck(DateTime.Now);
 
-                bool doUpdate = false;
-
-                if (!updateAvailable)
+                if (updateAvailable)
                 {
-                    if (showUpToDate)
+                    if (confirmUpdate)
                     {
-                        MessageBox.Show("Chordious is up-to-date.", "Chordious", MessageBoxButton.OK, MessageBoxImage.Information);
+                        string message = String.Format("Chordious {0} is available. Would you like to update now?", latestVersion.Version);
+                        AppVM.DoOnUIThread(() =>
+                        {
+                            Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (confirmed) =>
+                            {
+                                if (confirmed)
+                                {
+                                    Update(latestVersion);
+                                }
+                            }));
+                        });
+                    }
+                    else
+                    {
+                        Update(latestVersion);
                     }
                 }
                 else
                 {
-                    doUpdate = true;
-                    if (confirmUpdate)
+                    if (showUpToDate)
                     {
-                        string message = String.Format("Chordious {0} is available. Would you like to update now?", latestVersion.Version);
-                        MessageBoxResult result = MessageBox.Show(message, "Chordious", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                        doUpdate = (result == MessageBoxResult.Yes);
+                        AppVM.DoOnUIThread(() =>
+                        {
+                            Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage("Chordious is up-to-date."));
+                        });
                     }
-                }
-
-                if (doUpdate)
-                {
-                    Update(latestVersion);
                 }
             }
             catch (Exception ex)

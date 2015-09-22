@@ -34,24 +34,34 @@ using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class ChordiousMessage : NotificationMessage
+    public class ChordiousMessage : MessageBase
     {
-        public string Title { get; private set; }
+        public InformationViewModel InformationVM { get; private set; }
 
-        public ChordiousMessage(string message) : base(message)
+        public ChordiousMessage(string message, string title = "Chordious", Action callback = null) : base()
         {
-            Title = "Chordious";
+            InformationVM = new InformationViewModel(message, title, callback);
         }
 
-        public ChordiousMessage(string message, string title) : this(message)
+        public void Process()
         {
-            Title = title;
+            InformationVM.ProcessClose();
         }
     }
 
-    public class ConfirmationMessage : NotificationMessageAction<bool>
+    public class ConfirmationMessage : MessageBase
     {
-        public ConfirmationMessage(string notification, Action<bool> callback) : base(notification, callback) { }
+        public ConfirmationViewModel ConfirmationVM { get; private set; }
+
+        public ConfirmationMessage(string message, Action<bool> callback) : base()
+        {
+            ConfirmationVM = new ConfirmationViewModel(message, callback);
+        }
+
+        public void Process()
+        {
+            ConfirmationVM.ProcessClose();
+        }
     }
 
     public class PromptForTextMessage : MessageBase
@@ -72,11 +82,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
     public class ExceptionMessage : MessageBase
     {
-        public Exception Exception { get; private set; }
+        public ExceptionViewModel ExceptionVM { get; private set; }
 
         public ExceptionMessage(Exception exception) : base()
         {
-            Exception = exception;
+            ExceptionVM = new ExceptionViewModel(exception);
         }
     }
 

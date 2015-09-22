@@ -24,6 +24,9 @@
         <BitmapImage x:Key="SearchIcon16" >pack://siteoforigin:,,,/Resources/search16.png</BitmapImage>
         <BitmapImage x:Key="ImportIcon16" >pack://siteoforigin:,,,/Resources/import16.png</BitmapImage>
         <BitmapImage x:Key="ExportIcon16" >pack://siteoforigin:,,,/Resources/export16.png</BitmapImage>
+        <BitmapImage x:Key="ErrorIcon32" >pack://siteoforigin:,,,/Resources/error32.png</BitmapImage>
+        <BitmapImage x:Key="WarningIcon32" >pack://siteoforigin:,,,/Resources/warning32.png</BitmapImage>
+        <BitmapImage x:Key="InformationIcon32" >pack://siteoforigin:,,,/Resources/information32.png</BitmapImage>
         <local:IdleBoolToWaitCursorConverter x:Key="IdleBoolToWaitCursorConverter" />
         <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <!-- Adapted from http://www.infosysblogs.com/microsoft/2010/07/wpf_-_disabled_look_for_button.html -->

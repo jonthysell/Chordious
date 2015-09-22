@@ -1,5 +1,5 @@
 ﻿// 
-// ExceptionUtils.cs
+// ExceptionWindow.xaml.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -25,27 +25,29 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
-using GalaSoft.MvvmLight.Messaging;
-
-namespace com.jonthysell.Chordious.Core.ViewModel
+namespace com.jonthysell.Chordious.WPF
 {
-    public class ExceptionUtils
+    /// <summary>
+    /// Interaction logic for ExceptionWindow.xaml
+    /// </summary>
+    public partial class ExceptionWindow : Window
     {
-        public static AppViewModel AppVM
+        public ExceptionWindow()
         {
-            get
-            {
-                return AppViewModel.Instance;
-            }
-        }
-
-        public static void HandleException(Exception exception)
-        {
-            AppVM.DoOnUIThread(() =>
-            {
-                Messenger.Default.Send<ExceptionMessage>(new ExceptionMessage(exception));
-            });
+            InitializeComponent();
         }
     }
 }

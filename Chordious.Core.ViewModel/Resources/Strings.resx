@@ -117,64 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CantResizeDiagramExceptionMessage" xml:space="preserve">
-    <value>Cannot resize the diagram due to existing marks and/or fret labels.</value>
+  <data name="AdvancedDataValidationErrorMessage" xml:space="preserve">
+    <value>The data could not be validated: {0}</value>
   </data>
-  <data name="ChordiousKeyNotFoundExceptionMessage" xml:space="preserve">
-    <value>The key "{0}" could not be found.</value>
-  </data>
-  <data name="ChordQualityNameAlreadyExistsMessage" xml:space="preserve">
-    <value>A chord quality named "{0}" already exists.</value>
-  </data>
-  <data name="ChordQualityNotFoundExceptionMessage" xml:space="preserve">
-    <value>The chord quality "{0}" could not be found.</value>
-  </data>
-  <data name="DiagramCollectionNameAlreadyExistsMessage" xml:space="preserve">
-    <value>A diagram collection named "{0}" already exists.</value>
-  </data>
-  <data name="DiagramCollectionNotFoundExceptionMessage" xml:space="preserve">
-    <value>The diagram collection "{0}" could not be found.</value>
-  </data>
-  <data name="InstrumentNameAlreadyExistsMessage" xml:space="preserve">
-    <value>An instrument named "{0}" already exists.</value>
-  </data>
-  <data name="InstrumentNotFoundExceptionMessage" xml:space="preserve">
-    <value>The instrument "{0}" could not be found.</value>
-  </data>
-  <data name="InstrumentTuningMismatchExceptionMessage" xml:space="preserve">
-    <value>The tuning "{1}" does not belong to the instrument "{0}".</value>
-  </data>
-  <data name="LevelNotFoundExceptionMessage" xml:space="preserve">
-    <value>The level "{0}" could not be found.</value>
-  </data>
-  <data name="ObjectIsReadOnlyExceptionMessage" xml:space="preserve">
-    <value>The {0} could not be modified because it is marked read-only.</value>
-  </data>
-  <data name="ParentNotFoundExceptionMessage" xml:space="preserve">
-    <value>Object does not have a parent.</value>
-  </data>
-  <data name="PathNotFoundExceptionMessage" xml:space="preserve">
-    <value>The library path "{0}" could not be found.</value>
-  </data>
-  <data name="ScaleNameAlreadyExistsMessage" xml:space="preserve">
-    <value>A scale named "{0}" already exists.</value>
-  </data>
-  <data name="ScaleNotFoundExceptionMessage" xml:space="preserve">
-    <value>The scale "{0}" could not be found.</value>
-  </data>
-  <data name="TuningNameAlreadyExistsMessage" xml:space="preserve">
-    <value>A tuning named "{0}" already exists.</value>
-  </data>
-  <data name="TuningNotFoundExceptionMessage" xml:space="preserve">
-    <value>The tuning "{0}" could not be found.</value>
-  </data>
-  <data name="ElementAlreadyExistsAtPositionExceptionMessage" xml:space="preserve">
-    <value>An element already exists at this position.</value>
-  </data>
-  <data name="ElementPositionOffFretboardExceptionMessage" xml:space="preserve">
-    <value>The element position is off of the fretboard.</value>
-  </data>
-  <data name="BarrePositionInvalidSpanExceptionMessage" xml:space="preserve">
-    <value>A barre cannot span from string {0} to string {1}.</value>
+  <data name="ExceptionViewModelDetailsFormat" xml:space="preserve">
+    <value>Exception details: {0}</value>
   </data>
 </root>

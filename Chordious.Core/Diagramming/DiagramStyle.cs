@@ -549,6 +549,49 @@ namespace com.jonthysell.Chordious.Core
             Set(prefix + "mark.visible", value);
         }
 
+        public string MarkColorGet(DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+
+            string result;
+            if (TryGetColor(prefix + "mark.color", out result))
+            {
+                return result;
+            }
+
+            return GetColor("mark.color");
+        }
+
+        public void MarkColorSet(string value, DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+            SetColor(prefix + "mark.color", value);
+        }
+
+        public double MarkOpacityGet(DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+
+            double result;
+            if (TryGet(prefix + "mark.opacity", out result))
+            {
+                return result;
+            }
+
+            return GetDouble("mark.opacity");
+        }
+
+        public void MarkOpacitySet(double value, DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            if (value < 0 || value > 1.0)
+            {
+                throw new ArgumentOutOfRangeException("value");
+            }
+
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+            Set(prefix + "mark.opacity", value);
+        }
+
         public DiagramTextStyle MarkTextStyleGet(DiagramMarkType type = DiagramMarkType.Normal)
         {
             string prefix = DiagramStyle.MarkStylePrefix(type);
@@ -630,6 +673,68 @@ namespace com.jonthysell.Chordious.Core
             Set(prefix + "mark.textvisible", value);
         }
 
+        public string MarkTextColorGet(DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+
+            string result;
+            if (TryGetColor(prefix + "mark.textcolor", out result))
+            {
+                return result;
+            }
+
+            return GetColor("mark.textcolor");
+        }
+
+        public void MarkTextColorSet(string value, DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+            SetColor(prefix + "mark.textcolor", value);
+        }
+
+        public double MarkTextOpacityGet(DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+
+            double result;
+            if (TryGet(prefix + "mark.textopacity", out result))
+            {
+                return result;
+            }
+
+            return GetDouble("mark.textopacity");
+        }
+
+        public void MarkTextOpacitySet(double value, DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            if (value < 0 || value > 1.0)
+            {
+                throw new ArgumentOutOfRangeException("value");
+            }
+
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+            Set(prefix + "mark.textopacity", value);
+        }
+
+        public string MarkFontFamilyGet(DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+
+            string result;
+            if (TryGet(prefix + "mark.fontfamily", out result))
+            {
+                return result;
+            }
+
+            return Get("mark.fontfamily");
+        }
+
+        public void MarkFontFamilySet(string value, DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+            Set(prefix + "mark.fontfamily", value);
+        }
+
         public double MarkRadiusRatioGet(DiagramMarkType type = DiagramMarkType.Normal)
         {
             string prefix = DiagramStyle.MarkStylePrefix(type);
@@ -654,6 +759,25 @@ namespace com.jonthysell.Chordious.Core
             Set(prefix + "mark.radiusratio", value);
         }
 
+        public string MarkBorderColorGet(DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+
+            string result;
+            if (TryGetColor(prefix + "mark.bordercolor", out result))
+            {
+                return result;
+            }
+
+            return GetColor("mark.bordercolor");
+        }
+
+        public void MarkBorderColorSet(string value, DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = DiagramStyle.MarkStylePrefix(type);
+            SetColor(prefix + "mark.bordercolor", value);
+        }
+
         public double MarkBorderThicknessGet(DiagramMarkType type = DiagramMarkType.Normal)
         {
             string prefix = DiagramStyle.MarkStylePrefix(type);
@@ -676,25 +800,6 @@ namespace com.jonthysell.Chordious.Core
 
             string prefix = DiagramStyle.MarkStylePrefix(type);
             Set(prefix + "mark.borderthickness", value);
-        }
-
-        public void MarkMiscellaneousSet(string subKey, object value, DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            if (StringUtils.IsNullOrWhiteSpace(subKey))
-            {
-                throw new ArgumentNullException("subKey");
-            }
-
-            if (null == value)
-            {
-                throw new ArgumentNullException("value");
-            }
-
-            subKey = CleanKey(subKey);
-
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            string key = prefix + "mark." + subKey;
-            Set(key, value);
         }
 
         public static string MarkStylePrefix(DiagramMarkType type)

@@ -71,6 +71,30 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public string Color
+        {
+            get
+            {
+                return Style.MarkColorGet(this.Type);
+            }
+            set
+            {
+                Style.MarkColorSet(value, this.Type);
+            }
+        }
+
+        public double Opacity
+        {
+            get
+            {
+                return Style.MarkOpacityGet(this.Type);
+            }
+            set
+            {
+                Style.MarkOpacitySet(value, this.Type);
+            }
+        }
+
         public DiagramTextStyle TextStyle
         {
             get
@@ -119,6 +143,42 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public string TextColor
+        {
+            get
+            {
+                return Style.MarkTextColorGet(this.Type);
+            }
+            set
+            {
+                Style.MarkTextColorSet(value, this.Type);
+            }
+        }
+
+        public double TextOpacity
+        {
+            get
+            {
+                return Style.MarkTextOpacityGet(this.Type);
+            }
+            set
+            {
+                Style.MarkTextOpacitySet(value, this.Type);
+            }
+        }
+
+        public string FontFamily
+        {
+            get
+            {
+                return Style.MarkFontFamilyGet(this.Type);
+            }
+            set
+            {
+                Style.MarkFontFamilySet(value, this.Type);
+            }
+        }
+
         public double RadiusRatio
         {
             get
@@ -128,6 +188,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Style.MarkRadiusRatioSet(value, this.Type);
+            }
+        }
+
+        public string BorderColor
+        {
+            get
+            {
+                return Style.MarkBorderColorGet(this.Type);
+            }
+            set
+            {
+                Style.MarkBorderColorSet(value, this.Type);
             }
         }
 

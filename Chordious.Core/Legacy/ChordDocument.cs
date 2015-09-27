@@ -161,26 +161,26 @@ namespace com.jonthysell.Chordious.Core.Legacy
             diagram.Style.MarkRadiusRatioSet(0.67);
             diagram.Style.MarkShapeSet(DiagramMarkShape.Circle);
             diagram.Style.MarkBorderThicknessSet(2);
-            diagram.Style.MarkMiscellaneousSet("color", "#000000");
-            diagram.Style.MarkMiscellaneousSet("opacity", "1");
-            diagram.Style.MarkMiscellaneousSet("bordercolor", "#000000");
+            diagram.Style.MarkColorSet("#000000");
+            diagram.Style.MarkOpacitySet(1.0);
+            diagram.Style.MarkBorderColorSet("#000000");
 
             diagram.Style.MarkVisibleSet(true, DiagramMarkType.Muted);
             diagram.Style.MarkRadiusRatioSet(0.33, DiagramMarkType.Muted);
             diagram.Style.MarkShapeSet(DiagramMarkShape.X, DiagramMarkType.Muted);
             diagram.Style.MarkBorderThicknessSet(2, DiagramMarkType.Muted);
-            diagram.Style.MarkMiscellaneousSet("color", "#000000", DiagramMarkType.Muted);
-            diagram.Style.MarkMiscellaneousSet("opacity", "1", DiagramMarkType.Muted);
-            diagram.Style.MarkMiscellaneousSet("bordercolor", "#000000", DiagramMarkType.Muted);
+            diagram.Style.MarkColorSet("#000000", DiagramMarkType.Muted);
+            diagram.Style.MarkOpacitySet(1.0, DiagramMarkType.Muted);
+            diagram.Style.MarkBorderColorSet("#000000", DiagramMarkType.Muted);
 
             bool openCircle = (chordOptions.OpenStringType == OpenStringType.Circle);
             diagram.Style.MarkVisibleSet(openCircle, DiagramMarkType.Open);
             diagram.Style.MarkRadiusRatioSet(0.33, DiagramMarkType.Open);
             diagram.Style.MarkShapeSet(openCircle ? DiagramMarkShape.Circle : DiagramMarkShape.None, DiagramMarkType.Open);
             diagram.Style.MarkBorderThicknessSet(2, DiagramMarkType.Open);
-            diagram.Style.MarkMiscellaneousSet("color", "#ffffff", DiagramMarkType.Open);
-            diagram.Style.MarkMiscellaneousSet("opacity", "1", DiagramMarkType.Open);
-            diagram.Style.MarkMiscellaneousSet("bordercolor", "#000000", DiagramMarkType.Open);
+            diagram.Style.MarkColorSet("#ffffff", DiagramMarkType.Open);
+            diagram.Style.MarkOpacitySet(1.0, DiagramMarkType.Open);
+            diagram.Style.MarkBorderColorSet("#000000", DiagramMarkType.Open);
 
             for (int str = 0; str < chord.Marks.Length; str++)
             {

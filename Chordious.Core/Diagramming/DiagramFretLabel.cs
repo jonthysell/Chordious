@@ -45,6 +45,42 @@ namespace com.jonthysell.Chordious.Core
 
         #region Style
 
+        public string TextColor
+        {
+            get
+            {
+                return Style.FretLabelTextColorGet();
+            }
+            set
+            {
+                Style.FretLabelTextColorSet(value);
+            }
+        }
+
+        public double TextOpacity
+        {
+            get
+            {
+                return Style.FretLabelTextOpacityGet();
+            }
+            set
+            {
+                Style.FretLabelTextOpacitySet(value);
+            }
+        }
+
+        public string FontFamily
+        {
+            get
+            {
+                return Style.FretLabelFontFamilyGet();
+            }
+            set
+            {
+                Style.FretLabelFontFamilySet(value);
+            }
+        }
+
         public DiagramTextStyle TextStyle
         {
             get

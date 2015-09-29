@@ -278,9 +278,9 @@ namespace com.jonthysell.Chordious.Core.Legacy
             double padding = margin / 4.0;
             diagram.Style.FretLabelGridPaddingSet(padding);
 
-            diagram.Style.Set("fretlabel.textcolor", "#000000");
-            diagram.Style.Set("fretlabel.textopacity", "1");
-            diagram.Style.Set("fretlabel.fontfamily", chordOptions.FontFamily);
+            diagram.Style.FretLabelTextColorSet("#000000");
+            diagram.Style.FretLabelTextOpacitySet(1.0);
+            diagram.Style.FretLabelFontFamilySet(chordOptions.FontFamily);
 
             int baseLine = chord.BaseLine;
 

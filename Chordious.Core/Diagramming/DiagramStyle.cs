@@ -830,6 +830,41 @@ namespace com.jonthysell.Chordious.Core
 
         #region DiagramFretLabel-specific Styles
 
+        public string FretLabelTextColorGet()
+        {
+            return GetColor("fretlabel.textcolor");
+        }
+
+        public void FretLabelTextColorSet(string value)
+        {
+            SetColor("fretlabel.textcolor", value);
+        }
+
+        public double FretLabelTextOpacityGet()
+        {
+            return GetDouble("fretlabel.textopacity");
+        }
+
+        public void FretLabelTextOpacitySet(double value)
+        {
+            if (value < 0 || value > 1.0)
+            {
+                throw new ArgumentOutOfRangeException("value");
+            }
+
+            Set("fretlabel.textopacity", value);
+        }
+
+        public string FretLabelFontFamilyGet()
+        {
+            return Get("fretlabel.fontfamily");
+        }
+
+        public void FretLabelFontFamilySet(string value)
+        {
+            Set("fretlabel.fontfamily", value);
+        }
+
         public DiagramTextStyle FretLabelTextStyleGet()
         {
             return GetEnum<DiagramTextStyle>("fretlabel.textstyle");

@@ -38,7 +38,7 @@ namespace com.jonthysell.Chordious.Core
                 return note;
             }
 
-            throw new ArgumentException("s");
+            throw new ArgumentException(Resources.Strings.InvalidNoteArgumentExceptionMessage);
         }
 
         public static bool TryParseNote(string s, out Note note)

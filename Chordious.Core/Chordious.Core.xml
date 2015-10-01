@@ -41,12 +41,12 @@
     <style key="newdiagram.numstrings" value="4" />
     <style key="diagram.orientation" value="UpDown" />
     <style key="diagram.labellayoutmodel" value="AddPaddingBoth" />
-    <style key="diagram.color" value="#ffffff" />
+    <style key="diagram.color" value="White" />
     <style key="diagram.opacity" value="0" />
-    <style key="diagram.bordercolor" value="#000000" />
+    <style key="diagram.bordercolor" value="Black" />
     <style key="diagram.borderthickness" value="0.0" />
     <style key="title.gridpadding" value="20" />
-    <style key="title.textcolor" value="#000000" />
+    <style key="title.textcolor" value="Black" />
     <style key="title.textopacity" value="1" />
     <style key="title.textsize" value="38" />
     <style key="title.fontfamily" value="serif" />
@@ -60,37 +60,39 @@
     <style key="grid.stringspacing" value="37" />
     <style key="grid.nutvisible" value="false" />
     <style key="grid.nutratio" value="2.0" />
-    <style key="grid.color" value="#ffffff" />
+    <style key="grid.color" value="White" />
     <style key="grid.opacity" value="0" />
-    <style key="grid.linecolor" value="#000000" />
+    <style key="grid.linecolor" value="Black" />
     <style key="grid.linethickness" value="2" />
     <style key="mark.shape" value="Circle" />
     <style key="mark.visible" value="true" />
     <style key="mark.radiusratio" value="0.67" />
-    <style key="mark.color" value="#000000" />
+    <style key="mark.color" value="Black" />
     <style key="mark.opacity" value="1" />
     <style key="mark.textalignment" value="Center" />
+    <style key="mark.textstyle" value="Regular" />
     <style key="mark.textvisible" value="true" />
-    <style key="mark.textcolor" value="#FFFFFF" />
+    <style key="mark.textcolor" value="White" />
+    <style key="mark.textopacity" value="1" />
     <style key="mark.textsizeratio" value="0.5" />
     <style key="mark.fontfamily" value="serif" />
-    <style key="mark.bordercolor" value="#000000" />
+    <style key="mark.bordercolor" value="Black" />
     <style key="mark.borderthickness" value="0" />
     <style key="mutedmark.shape" value="X" />
     <style key="mutedmark.textvisible" value="false" />
     <style key="mutedmark.borderthickness" value="2" />
     <style key="rootmark.shape" value="Diamond" />
     <style key="openmark.opacity" value="0" />
-    <style key="openmark.textcolor" value="#000000" />
+    <style key="openmark.textcolor" value="Black" />
     <style key="openmark.borderthickness" value="2" />
     <style key="openrootmark.shape" value="Diamond" />
     <style key="openrootmark.opacity" value="0" />
-    <style key="openrootmark.textcolor" value="#000000" />
+    <style key="openrootmark.textcolor" value="Black" />
     <style key="openrootmark.borderthickness" value="2" />
     <style key="bottommark.shape" value="None" />
-    <style key="bottommark.textcolor" value="#000000" />
+    <style key="bottommark.textcolor" value="Black" />
     <style key="fretlabel.gridpadding" value="10" />
-    <style key="fretlabel.textcolor" value="#000000" />
+    <style key="fretlabel.textcolor" value="Black" />
     <style key="fretlabel.textopacity" value="1" />
     <style key="fretlabel.textsizeratio" value="0.67" />
     <style key="fretlabel.textwidthratio" value="0.5" />
@@ -100,7 +102,7 @@
     <style key="fretlabel.textvisible" value="true" />
     <style key="barre.visible" value="true" />
     <style key="barre.opacity" value="1" />
-    <style key="barre.linecolor" value="#000000" />
+    <style key="barre.linecolor" value="Black" />
     <style key="barre.linethickness" value="2" />
     <style key="barre.verticalalignment" value="Middle" />
     <style key="barre.stack" value="UnderMarks" />

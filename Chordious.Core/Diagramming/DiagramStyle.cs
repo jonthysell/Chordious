@@ -1012,12 +1012,7 @@ namespace com.jonthysell.Chordious.Core
 
         public void SetColor(string key, string value)
         {
-            string cleanColor;
-            if (!TryParseColor(value, out cleanColor))
-            {
-                throw new ArgumentException("value");
-            }
-
+            string cleanColor = ColorUtils.ParseColor(value);
             Set(key, cleanColor);
         }
 
@@ -1045,12 +1040,7 @@ namespace com.jonthysell.Chordious.Core
             }
             catch (InheritableDictionaryKeyNotFoundException) { }
 
-            if (!IsColor(defaultValue))
-            {
-                throw new ArgumentException("defaultValue");
-            }
-
-            return defaultValue.Trim().ToLower();
+            return ColorUtils.ParseColor(defaultValue);
         }
 
         public bool TryGetColor(string key, out string result, bool recursive = true)
@@ -1058,52 +1048,10 @@ namespace com.jonthysell.Chordious.Core
             string rawResult;
             if (TryGet(key, out rawResult, recursive))
             {
-                return TryParseColor(rawResult, out result);
+                return ColorUtils.TryParseColor(rawResult, out result);
             }
 
             result = default(string);
-            return false;
-        }
-
-        private bool TryParseColor(string s, out string result)
-        {
-            if (IsColor(s))
-            {
-                result = s.Trim().ToLower();
-                return true;
-            }
-
-            result = default(string);
-            return false;
-        }
-
-        public static bool IsColor(string s)
-        {
-            if (!StringUtils.IsNullOrWhiteSpace(s))
-            {
-                s = s.Trim();
-                if (s.StartsWith("#"))
-                {
-                    s = s.TrimStart('#');
-                    if (s.Length == 6)
-                    {
-                        string rawRed = s.Substring(0, 2);
-                        string rawGreen = s.Substring(2, 2);
-                        string rawBlue = s.Substring(4, 2);
-
-                        try
-                        {
-                            byte red, green, blue;
-                            red = Convert.ToByte(rawRed, 16);
-                            green = Convert.ToByte(rawGreen, 16);
-                            blue = Convert.ToByte(rawBlue, 16);
-
-                            return true;
-                        }
-                        catch (Exception) { }
-                    }
-                }
-            }
             return false;
         }
 
@@ -1191,6 +1139,10 @@ namespace com.jonthysell.Chordious.Core
                         value = "end";
                         break;
                 }
+            }
+            else if (svgStyle == "fill" || svgStyle == "stroke")
+            {
+                value = value.ToLower();
             }
 
             if (!StringUtils.IsNullOrWhiteSpace(svgStyle))

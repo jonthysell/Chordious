@@ -62,6 +62,7 @@
     <Compile Include="Common\Music\Scale.cs" />
     <Compile Include="Common\Finding\FinderStyle.cs" />
     <Compile Include="Common\StringUtils.cs" />
+    <Compile Include="Diagramming\ColorUtils.cs" />
     <Compile Include="Legacy\Chord.cs" />
     <Compile Include="ChordFinding\ChordFinder.cs" />
     <Compile Include="ChordFinding\ChordFinderOptions.cs" />

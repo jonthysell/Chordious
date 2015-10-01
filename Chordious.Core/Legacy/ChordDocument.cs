@@ -102,9 +102,9 @@ namespace com.jonthysell.Chordious.Core.Legacy
             // Setup base
             diagram.Orientation = DiagramOrientation.UpDown;
             diagram.LabelLayoutModel = DiagramLabelLayoutModel.AddPaddingVertical;
-            diagram.DiagramColor = "#ffffff";
+            diagram.DiagramColor = "White";
             diagram.DiagramOpacity = 0;
-            diagram.DiagramBorderColor = "#000000";
+            diagram.DiagramBorderColor = "Black";
             diagram.DiagramBorderThickness = 0;
 
             // Process title
@@ -115,7 +115,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
             diagram.TitleTextSizeModRatio = 0.75;
             diagram.TitleGridPadding = diagram.TitleTextSize / 2.0;
             diagram.TitleFontFamily = chordOptions.FontFamily;
-            diagram.TitleColor = "#000000";
+            diagram.TitleColor = "Black";
             diagram.TitleOpacity = 1;
             diagram.TitleTextAlignment = DiagramHorizontalAlignment.Center;
 
@@ -136,9 +136,9 @@ namespace com.jonthysell.Chordious.Core.Legacy
             diagram.GridStringSpacing = rectWidth / (chord.NumStrings - 1);
             diagram.GridFretSpacing = rectHeight / chord.NumFrets;
 
-            diagram.GridLineColor = "#ffffff";
+            diagram.GridLineColor = "White";
             diagram.GridOpacity = 0;
-            diagram.GridLineColor = "#000000";
+            diagram.GridLineColor = "Black";
 
             DiagramTextStyle titleTextStyle = DiagramTextStyle.Regular;
             switch (chordOptions.FontStyle)
@@ -161,26 +161,26 @@ namespace com.jonthysell.Chordious.Core.Legacy
             diagram.Style.MarkRadiusRatioSet(0.67);
             diagram.Style.MarkShapeSet(DiagramMarkShape.Circle);
             diagram.Style.MarkBorderThicknessSet(2);
-            diagram.Style.MarkColorSet("#000000");
+            diagram.Style.MarkColorSet("Black");
             diagram.Style.MarkOpacitySet(1.0);
-            diagram.Style.MarkBorderColorSet("#000000");
+            diagram.Style.MarkBorderColorSet("Black");
 
             diagram.Style.MarkVisibleSet(true, DiagramMarkType.Muted);
             diagram.Style.MarkRadiusRatioSet(0.33, DiagramMarkType.Muted);
             diagram.Style.MarkShapeSet(DiagramMarkShape.X, DiagramMarkType.Muted);
             diagram.Style.MarkBorderThicknessSet(2, DiagramMarkType.Muted);
-            diagram.Style.MarkColorSet("#000000", DiagramMarkType.Muted);
+            diagram.Style.MarkColorSet("Black", DiagramMarkType.Muted);
             diagram.Style.MarkOpacitySet(1.0, DiagramMarkType.Muted);
-            diagram.Style.MarkBorderColorSet("#000000", DiagramMarkType.Muted);
+            diagram.Style.MarkBorderColorSet("Black", DiagramMarkType.Muted);
 
             bool openCircle = (chordOptions.OpenStringType == OpenStringType.Circle);
             diagram.Style.MarkVisibleSet(openCircle, DiagramMarkType.Open);
             diagram.Style.MarkRadiusRatioSet(0.33, DiagramMarkType.Open);
             diagram.Style.MarkShapeSet(openCircle ? DiagramMarkShape.Circle : DiagramMarkShape.None, DiagramMarkType.Open);
             diagram.Style.MarkBorderThicknessSet(2, DiagramMarkType.Open);
-            diagram.Style.MarkColorSet("#ffffff", DiagramMarkType.Open);
+            diagram.Style.MarkColorSet("White", DiagramMarkType.Open);
             diagram.Style.MarkOpacitySet(1.0, DiagramMarkType.Open);
-            diagram.Style.MarkBorderColorSet("#000000", DiagramMarkType.Open);
+            diagram.Style.MarkBorderColorSet("Black", DiagramMarkType.Open);
 
             for (int str = 0; str < chord.Marks.Length; str++)
             {
@@ -209,7 +209,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
             diagram.Style.BarreArcRatioSet(0.5);
             diagram.Style.BarreStackSet(DiagramBarreStack.UnderMarks);
             diagram.Style.Set("barre.opacity", "1");
-            diagram.Style.Set("barre.linecolor", "#000000");
+            diagram.Style.Set("barre.linecolor", "Black");
             diagram.Style.Set("barre.linethickness", "2");
 
             // Process barres
@@ -278,7 +278,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
             double padding = margin / 4.0;
             diagram.Style.FretLabelGridPaddingSet(padding);
 
-            diagram.Style.FretLabelTextColorSet("#000000");
+            diagram.Style.FretLabelTextColorSet("Black");
             diagram.Style.FretLabelTextOpacitySet(1.0);
             diagram.Style.FretLabelFontFamilySet(chordOptions.FontFamily);
 

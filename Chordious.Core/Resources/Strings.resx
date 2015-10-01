@@ -177,4 +177,10 @@
   <data name="BarrePositionInvalidSpanExceptionMessage" xml:space="preserve">
     <value>A barre cannot span from string {0} to string {1}.</value>
   </data>
+  <data name="InvalidColorArgumentExceptionMessage" xml:space="preserve">
+    <value>The value specified is not a valid color.</value>
+  </data>
+  <data name="InvalidNoteArgumentExceptionMessage" xml:space="preserve">
+    <value>The value specified is not a valid note.</value>
+  </data>
 </root>

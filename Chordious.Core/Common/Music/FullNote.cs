@@ -144,7 +144,7 @@ namespace com.jonthysell.Chordious.Core
 
             if (splitIndex <= 0)
             {
-                throw new ArgumentException("s");
+                throw new ArgumentException(Resources.Strings.InvalidNoteArgumentExceptionMessage);
             }
 
             string notePortion = s.Substring(0, splitIndex);

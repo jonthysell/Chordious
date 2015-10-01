@@ -170,6 +170,24 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The value specified is not a valid color..
+        /// </summary>
+        internal static string InvalidColorArgumentExceptionMessage {
+            get {
+                return ResourceManager.GetString("InvalidColorArgumentExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value specified is not a valid note..
+        /// </summary>
+        internal static string InvalidNoteArgumentExceptionMessage {
+            get {
+                return ResourceManager.GetString("InvalidNoteArgumentExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The level &quot;{0}&quot; could not be found..
         /// </summary>
         internal static string LevelNotFoundExceptionMessage {

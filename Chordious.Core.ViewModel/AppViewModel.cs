@@ -248,30 +248,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             UserConfig.ChordiousSettings.Set(key, value);
         }
 
-        public ObservableCollection<string> GetNotes()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            for (int i = 0; i < Enum.GetValues(typeof(Note)).Length; i++)
-            {
-                collection.Add(NoteUtils.ToString((Note)i));
-            }
-
-            return collection;
-        }
-
-        public ObservableCollection<string> GetInternalNotes()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            for (int i = 0; i < Enum.GetValues(typeof(InternalNote)).Length; i++)
-            {
-                collection.Add(NoteUtils.ToString((InternalNote)i, InternalNoteStringStyle.ShowBoth));
-            }
-
-            return collection;
-        }
-
         public ObservableCollection<ObservableInstrument> GetInstruments()
         {
             ObservableCollection<ObservableInstrument> collection = new ObservableCollection<ObservableInstrument>();

@@ -61,7 +61,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return AppVM.GetNotes();
+                return ObservableEnums.GetNotes();
             }
         }
 

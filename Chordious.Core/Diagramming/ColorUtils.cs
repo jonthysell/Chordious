@@ -30,7 +30,7 @@ namespace com.jonthysell.Chordious.Core
 {
     public class ColorUtils
     {
-        public static string ParseColor(string s)
+        public static string ParseColor(string s, HexadecimalColorCase hexadecimalColorCase = DefaultHexadecimalColorCase)
         {
             if (StringUtils.IsNullOrWhiteSpace(s))
             {
@@ -46,7 +46,16 @@ namespace com.jonthysell.Chordious.Core
 
             if (s.StartsWith("#"))
             {
-                return s.ToUpper();
+                switch (hexadecimalColorCase)
+                {
+                    case HexadecimalColorCase.Lower:
+                        return s.ToLower();
+                    case HexadecimalColorCase.Upper:
+                        return s.ToUpper();
+                    case HexadecimalColorCase.None:
+                    default:
+                        return s;
+                }
             }
             else
             {
@@ -154,5 +163,14 @@ namespace com.jonthysell.Chordious.Core
             "White",
             "Yellow"
         };
+
+        private const HexadecimalColorCase DefaultHexadecimalColorCase = HexadecimalColorCase.Upper;
+    }
+
+    public enum HexadecimalColorCase
+    {
+        None,
+        Lower,
+        Upper
     }
 }

@@ -1,5 +1,5 @@
 ﻿// 
-// DiagramEditorWindow.xaml.cs
+// DiagramMarkEditorWindow.xaml.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -38,45 +38,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-using com.jonthysell.Chordious.Core.ViewModel;
-
 namespace com.jonthysell.Chordious.WPF
 {
     /// <summary>
-    /// Interaction logic for DiagramEditorWindow.xaml
+    /// Interaction logic for DiagramMarkEditorWindow.xaml
     /// </summary>
-    public partial class DiagramEditorWindow : Window
+    public partial class DiagramMarkEditorWindow : Window
     {
-        public DiagramEditorWindow()
+        public DiagramMarkEditorWindow()
         {
             InitializeComponent();
-        }
-
-        private void ImageContextMenu_ContextMenuOpening(object sender, ContextMenuEventArgs e)
-        {
-            bool validCommmandsAtCursor = UpdateCursorPosition();
-            if (!validCommmandsAtCursor)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void DiagramImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            UpdateCursorPosition();
-        }
-
-        private bool UpdateCursorPosition()
-        {
-            ObservableDiagram od = ((DiagramEditorViewModel)(DataContext)).ObservableDiagram as ObservableDiagram;
-            if (null != od)
-            {
-                Point p = MouseUtils.CorrectGetPosition(DiagramImage);
-                od.CursorX = p.X;
-                od.CursorY = p.Y;
-                return od.ValidCommandsAtCursor;
-            }
-            return false;
         }
     }
 }

@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 using GalaSoft.MvvmLight;
@@ -89,9 +90,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             set
             {
-                Diagram.Orientation = (DiagramOrientation)(value);
-                RaisePropertyChanged("SelectedOrientationIndex");
-                Refresh();
+                try
+                {
+                    Diagram.Orientation = (DiagramOrientation)(value);
+                    RaisePropertyChanged("SelectedOrientationIndex");
+                    Refresh();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
             }
         }
 
@@ -99,7 +107,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return GetOrientations();
+                return ObservableEnums.GetOrientations();
             }
         }
 
@@ -111,9 +119,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             set
             {
-                Diagram.LabelLayoutModel = (DiagramLabelLayoutModel)(value);
-                RaisePropertyChanged("SelectedLabelLayoutModelIndex");
-                Refresh();
+                try
+                {
+                    Diagram.LabelLayoutModel = (DiagramLabelLayoutModel)(value);
+                    RaisePropertyChanged("SelectedLabelLayoutModelIndex");
+                    Refresh();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
             }
         }
 
@@ -121,7 +136,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return GetLabelLayoutModels();
+                return ObservableEnums.GetLabelLayoutModels();
             }
         }
 
@@ -139,15 +154,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 try
                 {
-                    Diagram.DiagramColor = value;
+                    if (null != value)
+                    {
+                        Diagram.DiagramColor = value;
+                        ObservableEnums.SortedInsert(Colors, DiagramColor);
+                        RaisePropertyChanged("DiagramColor");
+                        Refresh();
+                    }
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("DiagramColor");
-                Refresh();
             }
         }
 
@@ -162,14 +180,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.DiagramOpacity = value;
+                    RaisePropertyChanged("DiagramOpacity");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("DiagramOpacity");
-                Refresh();
             }
         }
 
@@ -183,15 +200,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 try
                 {
-                    Diagram.DiagramBorderColor = value;
+                    if (null != value)
+                    {
+                        Diagram.DiagramBorderColor = value;
+                        ObservableEnums.SortedInsert(Colors, DiagramBorderColor);
+                        RaisePropertyChanged("DiagramBorderColor");
+                        Refresh();
+                    }
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("DiagramBorderColor");
-                Refresh();
             }
         }
 
@@ -206,14 +226,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.DiagramBorderThickness = value;
+                    RaisePropertyChanged("DiagramBorderThickness");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("DiagramBorderThickness");
-                Refresh();
             }
         }
 
@@ -232,14 +251,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.NumFrets = value;
+                    RaisePropertyChanged("NumFrets");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-                
-                RaisePropertyChanged("NumFrets");
-                Refresh();
             }
         }
 
@@ -254,14 +272,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.NumStrings = value;
+                    RaisePropertyChanged("NumStrings");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("NumStrings");
-                Refresh();
             }
         }
 
@@ -276,14 +293,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridMargin = value;
+                    RaisePropertyChanged("GridMargin");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridMargin");
-                Refresh();
             }
         }
 
@@ -298,15 +314,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridMarginLeftOverride = value;
+                    RaisePropertyChanged("GridMarginLeftOverride");
+                    RaisePropertyChanged("GridMarginLeft");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridMarginLeftOverride");
-                RaisePropertyChanged("GridMarginLeft");
-                Refresh();
             }
         }
 
@@ -321,14 +336,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridMarginLeft = value;
+                    RaisePropertyChanged("GridMarginLeft");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridMarginLeft");
-                Refresh();
             }
         }
 
@@ -343,15 +357,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridMarginRightOverride = value;
+                    RaisePropertyChanged("GridMarginRightOverride");
+                    RaisePropertyChanged("GridMarginRight");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridMarginRightOverride");
-                RaisePropertyChanged("GridMarginRight");
-                Refresh();
             }
         }
 
@@ -366,14 +379,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridMarginRight = value;
+                    RaisePropertyChanged("GridMarginRight");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridMarginRight");
-                Refresh();
             }
         }
 
@@ -388,15 +400,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridMarginTopOverride = value;
+                    RaisePropertyChanged("GridMarginTopOverride");
+                    RaisePropertyChanged("GridMarginTop");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridMarginTopOverride");
-                RaisePropertyChanged("GridMarginTop");
-                Refresh();
             }
         }
 
@@ -411,14 +422,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridMarginTop = value;
+                    RaisePropertyChanged("GridMarginTop");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridMarginTop");
-                Refresh();
             }
         }
 
@@ -433,15 +443,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridMarginBottomOverride = value;
+                    RaisePropertyChanged("GridMarginBottomOverride");
+                    RaisePropertyChanged("GridMarginBottom");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridMarginBottomOverride");
-                RaisePropertyChanged("GridMarginBottom");
-                Refresh();
             }
         }
 
@@ -456,14 +465,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridMarginBottom = value;
+                    RaisePropertyChanged("GridMarginBottom");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridMarginBottom");
-                Refresh();
             }
         }
 
@@ -478,14 +486,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridFretSpacing = value;
+                    RaisePropertyChanged("GridFretSpacing");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridFretSpacing");
-                Refresh();
             }
         }
 
@@ -500,14 +507,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridStringSpacing = value;
+                    RaisePropertyChanged("GridStringSpacing");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridStringSpacing");
-                Refresh();
             }
         }
 
@@ -521,15 +527,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 try
                 {
-                    Diagram.GridColor = value;
+                    if (null != value)
+                    {
+                        Diagram.GridColor = value;
+                        ObservableEnums.SortedInsert(Colors, GridColor);
+                        RaisePropertyChanged("GridColor");
+                        Refresh();
+                    }
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridColor");
-                Refresh();
             }
         }
 
@@ -544,14 +553,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridOpacity = value;
+                    RaisePropertyChanged("GridOpacity");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridOpacity");
-                Refresh();
             }
         }
 
@@ -565,15 +573,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 try
                 {
-                    Diagram.GridLineColor = value;
+                    if (null != value)
+                    {
+                        Diagram.GridLineColor = value;
+                        ObservableEnums.SortedInsert(Colors, GridLineColor);
+                        RaisePropertyChanged("GridLineColor");
+                        Refresh();
+                    }
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridLineColor");
-                Refresh();
             }
         }
 
@@ -588,14 +599,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridLineThickness = value;
+                    RaisePropertyChanged("GridLineThickness");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridLineThickness");
-                Refresh();
             }
         }
 
@@ -610,14 +620,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridNutVisible = value;
+                    RaisePropertyChanged("GridNutVisible");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridNutVisible");
-                Refresh();
             }
         }
 
@@ -632,14 +641,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.GridNutRatio = value;
+                    RaisePropertyChanged("GridNutRatio");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("GridNutRatio");
-                Refresh();
             }
         }
 
@@ -655,9 +663,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             set
             {
-                Diagram.Title = value;
-                RaisePropertyChanged("Title");
-                Refresh();
+                try
+                {
+                    Diagram.Title = value;
+                    RaisePropertyChanged("Title");
+                    Refresh();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
             }
         }
 
@@ -672,14 +687,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.TitleTextSize = value;
+                    RaisePropertyChanged("TitleTextSize");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("TitleTextSize");
-                Refresh();
             }
         }
 
@@ -702,22 +716,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.TitleTextSizeModRatio = value;
+                    RaisePropertyChanged("TitleTextSizeModRatio");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("TitleTextSizeModRatio");
-                Refresh();
-            }
-        }
-
-        public bool IsCustomTitleTextFontFamily
-        {
-            get
-            {
-                return GetFontFamilyIndex(TitleTextFontFamily) == 0;
             }
         }
 
@@ -731,41 +736,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 try
                 {
-                    Diagram.TitleFontFamily = value;
-
+                    if (null != value)
+                    {
+                        Diagram.TitleFontFamily = value;
+                        ObservableEnums.SortedInsert(FontFamilies, TitleTextFontFamily);
+                        RaisePropertyChanged("TitleTextFontFamily");
+                        Refresh();
+                    }
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-                RaisePropertyChanged("TitleTextFontFamily");
-                RaisePropertyChanged("SelectedTitleTextFontFamilyIndex");
-                RaisePropertyChanged("IsCustomTitleTextFontFamily");
-                Refresh();
             }
         }
-
-        public int SelectedTitleTextFontFamilyIndex
-        {
-            get
-            {
-                return GetFontFamilyIndex(TitleTextFontFamily);
-            }
-            set
-            {
-                TitleTextFontFamily = _fontFamilies[value];
-                RaisePropertyChanged("SelectedTitleTextFontFamilyIndex");
-            }
-        }
-
-        public ObservableCollection<string> TitleTextFontFamilies
-        {
-            get
-            {
-                return _fontFamilies;
-            }
-        }
-        private ObservableCollection<string> _fontFamilies;
 
         public int SelectedTitleTextAlignmentIndex
         {
@@ -775,9 +759,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             set
             {
-                Diagram.TitleTextAlignment = (DiagramHorizontalAlignment)(value);
-                RaisePropertyChanged("SelectedTitleTextAlignmentIndex");
-                Refresh();
+                try
+                {
+                    Diagram.TitleTextAlignment = (DiagramHorizontalAlignment)(value);
+                    RaisePropertyChanged("SelectedTitleTextAlignmentIndex");
+                    Refresh();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
             }
         }
 
@@ -785,7 +776,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return GetTextAlignments();
+                return ObservableEnums.GetTextAlignments();
             }
         }
 
@@ -797,9 +788,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             set
             {
-                Diagram.TitleTextStyle = (DiagramTextStyle)(value);
-                RaisePropertyChanged("SelectedTitleTextStyleIndex");
-                Refresh();
+                try
+                {
+                    Diagram.TitleTextStyle = (DiagramTextStyle)(value);
+                    RaisePropertyChanged("SelectedTitleTextStyleIndex");
+                    Refresh();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
             }
         }
 
@@ -807,7 +805,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return GetTextStyles();
+                return ObservableEnums.GetTextStyles();
             }
         }
 
@@ -822,14 +820,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.TitleGridPadding = value;
+                    RaisePropertyChanged("TitleGridPadding");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("TitleGridPadding");
-                Refresh();
             }
         }
 
@@ -841,9 +838,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             set
             {
-                Diagram.TitleVisible = value;
-                RaisePropertyChanged("TitleVisible");
-                Refresh();
+                try
+                {
+                    Diagram.TitleVisible = value;
+                    RaisePropertyChanged("TitleVisible");
+                    Refresh();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
             }
         }
 
@@ -855,10 +859,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             set
             {
-                Diagram.TitleLabelStyle = (DiagramLabelStyle)(value);
-                RaisePropertyChanged("SelectedTitleLabelStyleIndex");
-                RaisePropertyChanged("IsTitleTextSizeModRatioEnabled");
-                Refresh();
+                try
+                {
+                    Diagram.TitleLabelStyle = (DiagramLabelStyle)(value);
+                    RaisePropertyChanged("SelectedTitleLabelStyleIndex");
+                    RaisePropertyChanged("IsTitleTextSizeModRatioEnabled");
+                    Refresh();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
             }
         }
 
@@ -866,7 +877,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return GetDiagramLabelStyles();
+                return ObservableEnums.GetDiagramLabelStyles();
             }
         }
 
@@ -880,15 +891,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 try
                 {
-                    Diagram.TitleColor = value;
+                    if (null != value)
+                    {
+                        Diagram.TitleColor = value;
+                        ObservableEnums.SortedInsert(Colors, TitleColor);
+                        RaisePropertyChanged("TitleColor");
+                        Refresh();
+                    }
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("TitleColor");
-                Refresh();
             }
         }
 
@@ -903,16 +917,91 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.TitleOpacity = value;
+                    RaisePropertyChanged("TitleOpacity");
+                    Refresh();
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-
-                RaisePropertyChanged("TitleOpacity");
-                Refresh();
             }
         }
+
+        #endregion
+
+        #region Shared
+
+        public ObservableCollection<string> FontFamilies
+        {
+            get
+            {
+                if (null == _fontFamiles)
+                {
+                    _fontFamiles = new ObservableCollection<string>(ObservableEnums.FontFamilies);
+                }
+                return _fontFamiles;
+            }
+        }
+        private ObservableCollection<string> _fontFamiles;
+
+        public ObservableCollection<string> Colors
+        {
+            get
+            {
+                if (null == _colors)
+                {
+                    _colors = ObservableEnums.GetColors();
+                }
+                return _colors;
+            }
+        }
+        private ObservableCollection<string> _colors;
+
+        public RelayCommand EditElement
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        MarkPosition mp = this.MarkPosition;
+                        FretLabelPosition flp = this.FretLabelPosition;
+
+                        if (null != mp)
+                        {
+                            DiagramMark dm = (DiagramMark)Diagram.ElementAt(mp);
+                            Messenger.Default.Send<ShowDiagramMarkEditorMessage>(new ShowDiagramMarkEditorMessage(dm, false, (changed) =>
+                            {
+                                if (changed)
+                                {
+                                    Refresh();
+                                }
+                            }));
+                        }
+                        else if (null != flp)
+                        {
+                            DiagramFretLabel dfl = (DiagramFretLabel)Diagram.ElementAt(flp);
+                            Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Label text:", dfl.Text, (text) =>
+                            {
+                                dfl.Text = text;
+                                Refresh();
+                            }, true));
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+
+                }, () =>
+                {
+                    return (CanEditMark || CanEditFretLabel);
+                });
+            }
+        }
+
 
         #endregion
 
@@ -927,14 +1016,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         MarkPosition mp = this.MarkPosition;
-                        Diagram.NewMark(mp);
+                        DiagramMark dm = Diagram.NewMark(mp);
+                        Messenger.Default.Send<ShowDiagramMarkEditorMessage>(new ShowDiagramMarkEditorMessage(dm, true, (changed) =>
+                        {
+                            if (changed)
+                            {
+                                Refresh();
+                            }
+                            else
+                            {
+                                Diagram.RemoveMark(mp);
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-
-                    Refresh();
                 }, () =>
                 {
                     return CanAddMark;
@@ -960,17 +1058,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         DiagramMark dm = (DiagramMark)Diagram.ElementAt(this.MarkPosition);
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Mark text:", dm.Text, (text) =>
+                        Messenger.Default.Send<ShowDiagramMarkEditorMessage>(new ShowDiagramMarkEditorMessage(dm, false, (changed) =>
                             {
-                                dm.Text = text;
-                            }, true));
+                                if (changed)
+                                {
+                                    Refresh();
+                                }
+                            }));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-
-                    Refresh();
                 }, () =>
                 {
                     return CanEditMark;
@@ -997,13 +1096,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         MarkPosition mp = this.MarkPosition;
                         Diagram.RemoveMark(mp);
+                        Refresh();
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-
-                    Refresh();
                 }, () =>
                 {
                     return CanRemoveMark;
@@ -1042,13 +1140,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         FretLabelPosition flp = this.FretLabelPosition;
                         Diagram.NewFretLabel(flp, flp.Fret.ToString());
+                        Refresh();
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-
-                    Refresh();
                 }, () =>
                 {
                     return CanAddFretLabel;
@@ -1077,14 +1174,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Label text:", dfl.Text, (text) =>
                         {
                             dfl.Text = text;
+                            Refresh();
                         }, true));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-
-                    Refresh();
                 }, () =>
                 {
                     return CanEditFretLabel;
@@ -1111,13 +1207,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         FretLabelPosition flp = this.FretLabelPosition;
                         Diagram.RemoveFretLabel(flp);
+                        Refresh();
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-
-                    Refresh();
                 }, () =>
                 {
                     return CanRemoveFretLabel;
@@ -1195,21 +1290,50 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void RefreshCursor()
         {
-            RaisePropertyChanged("CursorInGrid");
-            RaisePropertyChanged("ValidCommandsAtCursor");
-            RaisePropertyChanged("AddMark");
-            RaisePropertyChanged("CanAddMark");
-            RaisePropertyChanged("EditMark");
-            RaisePropertyChanged("CanEditMark");
-            RaisePropertyChanged("RemoveMark");
-            RaisePropertyChanged("CanRemoveMark");
-            RaisePropertyChanged("AddFretLabel");
-            RaisePropertyChanged("CanAddFretLabel");
-            RaisePropertyChanged("EditFretLabel");
-            RaisePropertyChanged("CanEditFretLabel");
-            RaisePropertyChanged("RemoveFretLabel");
-            RaisePropertyChanged("CanRemoveFretLabel");
+            foreach (string property in _cursorProperties)
+            {
+                RaisePropertyChanged(property);
+            }
         }
+
+        public static bool IsCursorProperty(string property)
+        {
+            if (String.IsNullOrWhiteSpace(property))
+            {
+                throw new ArgumentNullException("property");
+            }
+
+            if (property == "CursorX" || property == "CursorY")
+            {
+                return true;
+            }
+
+            foreach (string cursorProperty in _cursorProperties)
+            {
+                if (property == cursorProperty)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private static string[] _cursorProperties = new string[] {
+            "CursorInGrid",
+            "ValidCommandsAtCursor",
+            "AddMark",
+            "CanAddMark",
+            "EditMark",
+            "CanEditMark",
+            "RemoveMark",
+            "CanRemoveMark",
+            "AddFretLabel",
+            "CanAddFretLabel",
+            "EditFretLabel",
+            "CanEditFretLabel",
+            "RemoveFretLabel",
+            "CanRemoveFretLabel"
+        };
 
         #endregion
 
@@ -1246,12 +1370,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _isEditMode = value;
-
-                if (IsEditMode)
-                {
-                    _fontFamilies = GetFontFamilies();
-                }
-
                 RaisePropertyChanged("IsEditMode");
                 Refresh();
             }
@@ -1348,88 +1466,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 ImageObject = AppViewModel.Instance.SvgTextToImage(SvgText, TotalWidth, TotalHeight, IsEditMode);
             });
-        }
-
-        private static ObservableCollection<string> GetDiagramLabelStyles()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add("Regular");
-            collection.Add("Chord Name");
-
-            return collection;
-        }
-
-        private static ObservableCollection<string> GetOrientations()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add("Vertical");
-            collection.Add("Horizontal");
-
-            return collection;
-        }
-
-        private static ObservableCollection<string> GetLabelLayoutModels()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add("Overlap");
-            collection.Add("Add Horizontal Padding");
-            collection.Add("Add Vertical Padding");
-            collection.Add("Add Horizontal & Vertical Padding");
-
-            return collection;
-        }
-
-        private static ObservableCollection<string> GetTextAlignments()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add("Left");
-            collection.Add("Center");
-            collection.Add("Right");
-
-            return collection;
-        }
-
-        private static ObservableCollection<string> GetTextStyles()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add("Regular");
-            collection.Add("Bold");
-            collection.Add("Italic");
-            collection.Add("Bold & Italic");
-
-            return collection;
-        }
-
-        private int GetFontFamilyIndex(string fontName)
-        {
-            if (null != _fontFamilies)
-            {
-                int index = _fontFamilies.IndexOf(fontName);
-                if (index >= 0)
-                {
-                    return index;
-                }
-            }
-            return 0;
-        }
-
-        private static ObservableCollection<string> GetFontFamilies()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add("Custom");
-
-            foreach (string value in AppViewModel.Instance.GetSystemFonts())
-            {
-                collection.Add(value);
-            }
-
-            return collection;
         }
     }
 }

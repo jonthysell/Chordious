@@ -1,0 +1,97 @@
+﻿<Window x:Class="com.jonthysell.Chordious.WPF.DiagramMarkEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding Title}" WindowStartupLocation="CenterScreen" Icon="{DynamicResource ChordiousIcon}" MinWidth="320" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Width="175" Margin="5" Content="Mark Type" FontWeight="Bold" />
+            <ComboBox Width="175" Margin="5" ItemsSource="{Binding MarkTypes}" SelectedIndex="{Binding SelectedMarkTypeIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <GroupBox Header="General" Margin="5">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Visible"/>
+                            <CheckBox Width="75" Margin="5" IsChecked="{Binding Visible}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Shape"/>
+                            <ComboBox Width="75" Margin="5" ItemsSource="{Binding MarkShapes}" SelectedIndex="{Binding SelectedMarkShapeIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Radius Ratio"/>
+                            <TextBox Width="75" Margin="5" Text="{Binding RadiusRatio, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Color"/>
+                            <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding Colors}" SelectedItem="{Binding Color}" Text="{Binding Color, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Opacity"/>
+                            <TextBox Width="75" Margin="5" Text="{Binding Opacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Border" Margin="5">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Color"/>
+                            <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding Colors}" SelectedItem="{Binding BorderColor}" Text="{Binding BorderColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Width (px)"/>
+                            <TextBox Width="75" Margin="5" Text="{Binding BorderThickness, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <GroupBox Header="Text" Margin="5">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Visible"/>
+                            <CheckBox Width="75" Margin="5" IsChecked="{Binding TextVisible}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Text"/>
+                            <TextBox Width="75" Margin="5" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" SelectedText="" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Color"/>
+                            <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding Colors}" SelectedItem="{Binding TextColor}" Text="{Binding TextColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Opacity"/>
+                            <TextBox Width="75" Margin="5" Text="{Binding TextOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Font Family"/>
+                            <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding FontFamilies}" SelectedItem="{Binding TextFontFamily}" Text="{Binding TextFontFamily, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Size Ratio"/>
+                            <TextBox Width="75" Margin="5" Text="{Binding TextSizeRatio, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Style"/>
+                            <ComboBox Width="75" Margin="5" ItemsSource="{Binding TextStyles}" SelectedIndex="{Binding SelectedTextStyleIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="75" Margin="5" Content="Alignment"/>
+                            <ComboBox Width="75" Margin="5" ItemsSource="{Binding TextAlignments}" SelectedIndex="{Binding SelectedTextAlignmentIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </StackPanel>
+        
+        <WrapPanel FlowDirection="RightToLeft" Height="Auto">
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
+                <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
+                <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
+            </StackPanel>
+        </WrapPanel>
+    </StackPanel>
+</Window>

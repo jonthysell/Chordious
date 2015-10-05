@@ -406,7 +406,7 @@ namespace com.jonthysell.Chordious.WPF
 
             collection.Add(SelectedFilenameFormat);
 
-            foreach(string filenameFormat in DefaultFileNameFormats)
+            foreach (string filenameFormat in DefaultFileNameFormats)
             {
                 if (!collection.Contains(filenameFormat))
                 {

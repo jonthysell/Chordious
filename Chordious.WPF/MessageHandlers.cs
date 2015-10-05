@@ -55,7 +55,9 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Register<ShowScaleFinderMessage>(recipient, (message) => MessageHandlers.ShowScaleFinder(message));
 
             Messenger.Default.Register<ShowDiagramLibraryMessage>(recipient, (message) => MessageHandlers.ShowDiagramLibrary(message));
+
             Messenger.Default.Register<ShowDiagramEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramEditor(message));
+            Messenger.Default.Register<ShowDiagramMarkEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramMarkEditor(message));
 
             Messenger.Default.Register<ShowInstrumentManagerMessage>(recipient, (message) => MessageHandlers.ShowInstrumentManager(message));
             Messenger.Default.Register<ShowInstrumentEditorMessage>(recipient, (message) => MessageHandlers.ShowInstrumentEditor(message));
@@ -95,8 +97,10 @@ namespace com.jonthysell.Chordious.WPF
 
             Messenger.Default.Unregister<ShowDiagramLibraryMessage>(recipient);
             Messenger.Default.Unregister<ShowDiagramEditorMessage>(recipient);
+            Messenger.Default.Unregister<ShowDiagramMarkEditorMessage>(recipient);
 
             Messenger.Default.Unregister<ShowInstrumentManagerMessage>(recipient);
+
             Messenger.Default.Unregister<ShowInstrumentEditorMessage>(recipient);
             Messenger.Default.Unregister<ShowTuningEditorMessage>(recipient);
 
@@ -266,6 +270,18 @@ namespace com.jonthysell.Chordious.WPF
             message.DiagramEditorVM = new DiagramEditorViewModelExtended(message.Diagram, message.IsNew);
             window.DataContext = message.DiagramEditorVM;
             message.DiagramEditorVM.RequestClose += () =>
+            {
+                window.Close();
+            };
+            window.ShowDialog();
+            message.Process();
+        }
+
+        private static void ShowDiagramMarkEditor(ShowDiagramMarkEditorMessage message)
+        {
+            DiagramMarkEditorWindow window = new DiagramMarkEditorWindow();
+            window.DataContext = message.DiagramMarkEditorVM;
+            message.DiagramMarkEditorVM.RequestClose += () =>
             {
                 window.Close();
             };

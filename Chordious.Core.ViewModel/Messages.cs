@@ -259,6 +259,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
     }
 
+    public class ShowDiagramMarkEditorMessage : MessageBase
+    {
+        public DiagramMarkEditorViewModel DiagramMarkEditorVM { get; set; }
+
+        private Action<bool> Callback;
+
+        public ShowDiagramMarkEditorMessage(DiagramMark diagramMark, bool isNew, Action<bool> callback = null) : base()
+        {
+            DiagramMarkEditorVM = new DiagramMarkEditorViewModel(diagramMark, isNew);
+            Callback = callback;
+        }
+
+        public void Process()
+        {
+            bool saveChanges = DiagramMarkEditorVM.ProcessClose();
+            if (null != Callback)
+            {
+                Callback(saveChanges);
+            }
+        }
+    }
+
     public class ShowOptionsMessage : MessageBase
     {
         public OptionsViewModel OptionsVM { get; set; }

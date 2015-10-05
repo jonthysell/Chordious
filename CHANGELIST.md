@@ -1,5 +1,14 @@
 # Chordious Changelist #
 
+## 1.9.15278.1540 ##
+* New DiagramMarkEditor lets you customize mark styles in the DiagramEditor
+* Launch via right-click menu or double-click
+* Improved color selection (choose by name, 3-digit RGB or 6-digit RGB)
+* Improved font selection (auto-complete and custom)
+* Refactoring dropdown choices into ObservableEnums
+* Better error handling in DiagramEditor
+* Many core bugfixes and improvements around colors, marks, and fret labels
+
 ## 1.9.15265.239 ##
 * Added better error messages for Chordious exceptions
 * Removed all dependency on MessageBox.Show

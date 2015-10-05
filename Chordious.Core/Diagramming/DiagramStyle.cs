@@ -1024,7 +1024,7 @@ namespace com.jonthysell.Chordious.Core
             }
 
             string value;
-            if (TryGet(key, out value, recursive))
+            if (TryGetColor(key, out value, recursive))
             {
                 return value;
             }

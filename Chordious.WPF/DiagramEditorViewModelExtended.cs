@@ -74,7 +74,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 AppVM.SetSetting("diagrameditor.renderbackground", value);
                 RaisePropertyChanged("EditorRenderBackground");
-                Diagram.Refresh();
+                ObservableDiagram.Refresh();
             }
         }
 

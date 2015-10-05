@@ -168,11 +168,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _diagramChanged = false;
 
-        public ObservableDiagram Diagram
+        public ObservableDiagram ObservableDiagram
         {
             get
             {
-                return _diagram;
+                return _observableDiagram;
             }
             private set
             {
@@ -180,13 +180,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     throw new ArgumentNullException();
                 }
-                _diagram = value;
+                _observableDiagram = value;
                 RaisePropertyChanged("Diagram");
             }
         }
-        private ObservableDiagram _diagram;
+        private ObservableDiagram _observableDiagram;
 
-        private ObservableDiagram OriginalDiagram;
+        private ObservableDiagram OriginalObservableDiagram;
 
         public DiagramEditorViewModel(ObservableDiagram diagram, bool isNew)
         {
@@ -195,22 +195,35 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 throw new ArgumentNullException("diagram");
             }
 
-            OriginalDiagram = diagram;
+            OriginalObservableDiagram = diagram;
 
-            Diagram = new ObservableDiagram(diagram.Diagram.Clone());
-            Diagram.IsEditMode = true;
+            ObservableDiagram = new ObservableDiagram(diagram.Diagram.Clone());
+            ObservableDiagram.IsEditMode = true;
+
+            // Pre-seed used fonts
+            ObservableEnums.SortedInsert(ObservableDiagram.FontFamilies, ObservableDiagram.TitleTextFontFamily);
+
+            // Pre-seed used colors
+            ObservableEnums.SortedInsert(ObservableDiagram.Colors, ObservableDiagram.DiagramColor);
+            ObservableEnums.SortedInsert(ObservableDiagram.Colors, ObservableDiagram.DiagramBorderColor);
+            ObservableEnums.SortedInsert(ObservableDiagram.Colors, ObservableDiagram.GridColor);
+            ObservableEnums.SortedInsert(ObservableDiagram.Colors, ObservableDiagram.GridLineColor);
+            ObservableEnums.SortedInsert(ObservableDiagram.Colors, ObservableDiagram.TitleColor);
 
             if (isNew)
             {
                 Dirty = true;
             }
 
-            Diagram.PropertyChanged += Diagram_PropertyChanged;
+            ObservableDiagram.PropertyChanged += ObservableDiagram_PropertyChanged;
         }
 
-        void Diagram_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        void ObservableDiagram_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            Dirty = true;
+            if (!ObservableDiagram.IsCursorProperty(e.PropertyName))
+            {
+                Dirty = true;
+            }
         }
 
         public bool ProcessClose()
@@ -224,7 +237,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void ApplyChanges()
         {
-            OriginalDiagram.Diagram = Diagram.Diagram.Clone();
+            OriginalObservableDiagram.Diagram = ObservableDiagram.Diagram.Clone();
             Dirty = false;
             DiagramChanged = true;
         }

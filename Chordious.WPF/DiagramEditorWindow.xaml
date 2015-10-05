@@ -18,11 +18,11 @@
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="110" Content="Width (px)"/>
-                            <TextBox Margin="5" Width="65" Text="{Binding Diagram.TotalWidth, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.TotalWidth, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="110" Content="Height (px)"/>
-                            <TextBox Margin="5" Width="65" Text="{Binding Diagram.TotalHeight, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.TotalHeight, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -30,11 +30,11 @@
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="80" Content="Orientation"/>
-                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding Diagram.Orientations}" SelectedIndex="{Binding Diagram.SelectedOrientationIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding ObservableDiagram.Orientations}" SelectedIndex="{Binding ObservableDiagram.SelectedOrientationIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="80" Content="Label Model"/>
-                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding Diagram.LabelLayoutModels}" SelectedIndex="{Binding Diagram.SelectedLabelLayoutModelIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding ObservableDiagram.LabelLayoutModels}" SelectedIndex="{Binding ObservableDiagram.SelectedLabelLayoutModelIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -42,69 +42,69 @@
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="110" Content="# of Frets"/>
-                            <TextBox Margin="5" Width="65" Text="{Binding Diagram.NumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.NumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="110" Content="# of Strings"/>
-                            <TextBox Margin="5" Width="65" Text="{Binding Diagram.NumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.NumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="110" Content="Fret Spacing (px)"/>
-                            <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridFretSpacing, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.GridFretSpacing, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="110" Content="String Spacing (px)"/>
-                            <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridStringSpacing, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.GridStringSpacing, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <Expander Header="Margins" Margin="0,5,0,5" IsExpanded="True" BorderThickness="0">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Margin="5" Width="110" Content="Base (px)"/>
-                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridMargin, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                    <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.GridMargin, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding Diagram.GridMarginLeftOverride}" VerticalAlignment="Center" />
-                                    <Label Margin="0,5,5,5" Width="90" Content="Left (px)" IsEnabled="{Binding Diagram.GridMarginLeftOverride}" />
-                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridMarginLeft, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding Diagram.GridMarginLeftOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding ObservableDiagram.GridMarginLeftOverride}" VerticalAlignment="Center" />
+                                    <Label Margin="0,5,5,5" Width="90" Content="Left (px)" IsEnabled="{Binding ObservableDiagram.GridMarginLeftOverride}" />
+                                    <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.GridMarginLeft, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding ObservableDiagram.GridMarginLeftOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding Diagram.GridMarginRightOverride}" VerticalAlignment="Center" />
-                                    <Label Margin="0,5,5,5" Width="90" Content="Right (px)" IsEnabled="{Binding Diagram.GridMarginRightOverride}" />
-                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridMarginRight, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding Diagram.GridMarginRightOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding ObservableDiagram.GridMarginRightOverride}" VerticalAlignment="Center" />
+                                    <Label Margin="0,5,5,5" Width="90" Content="Right (px)" IsEnabled="{Binding ObservableDiagram.GridMarginRightOverride}" />
+                                    <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.GridMarginRight, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding ObservableDiagram.GridMarginRightOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding Diagram.GridMarginTopOverride}" VerticalAlignment="Center" />
-                                    <Label Margin="0,5,5,5" Width="90" Content="Top (px)" IsEnabled="{Binding Diagram.GridMarginTopOverride}" />
-                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridMarginTop, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding Diagram.GridMarginTopOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding ObservableDiagram.GridMarginTopOverride}" VerticalAlignment="Center" />
+                                    <Label Margin="0,5,5,5" Width="90" Content="Top (px)" IsEnabled="{Binding ObservableDiagram.GridMarginTopOverride}" />
+                                    <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.GridMarginTop, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding ObservableDiagram.GridMarginTopOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding Diagram.GridMarginBottomOverride}" VerticalAlignment="Center" />
-                                    <Label Margin="0,5,5,5" Width="90" Content="Bottom (px)" IsEnabled="{Binding Diagram.GridMarginBottomOverride}" />
-                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridMarginBottom, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding Diagram.GridMarginBottomOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding ObservableDiagram.GridMarginBottomOverride}" VerticalAlignment="Center" />
+                                    <Label Margin="0,5,5,5" Width="90" Content="Bottom (px)" IsEnabled="{Binding ObservableDiagram.GridMarginBottomOverride}" />
+                                    <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.GridMarginBottom, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding ObservableDiagram.GridMarginBottomOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
                                 </StackPanel>
                             </StackPanel>
                         </Expander>
                         <Expander Header="Background" Margin="0,5,0,5" IsExpanded="True" BorderThickness="0">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Width="110" Margin="5" Content="Color"/>
-                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.GridColor, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                    <Label Width="100" Margin="5" Content="Color"/>
+                                    <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.GridColor}" Text="{Binding ObservableDiagram.GridColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="110" Margin="5" Content="Opacity"/>
-                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.GridOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                    <TextBox Width="65" Margin="5" Text="{Binding ObservableDiagram.GridOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
                                 </StackPanel>
                             </StackPanel>
                         </Expander>
                         <Expander Header="Lines" Margin="0,5,0,5" IsExpanded="True" BorderThickness="0">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Width="110" Margin="5" Content="Color"/>
-                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.GridLineColor, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                    <Label Width="100" Margin="5" Content="Color"/>
+                                    <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.GridLineColor}" Text="{Binding ObservableDiagram.GridLineColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Margin="5" Width="110" Content="Width (px)"/>
-                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridLineThickness, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                    <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.GridLineThickness, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
                                 </StackPanel>
                             </StackPanel>
                         </Expander>
@@ -112,11 +112,11 @@
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Margin="5" Width="110" Content="Visible"/>
-                                    <CheckBox Width="65" Margin="5" IsChecked="{Binding Diagram.GridNutVisible}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                    <CheckBox Width="65" Margin="5" IsChecked="{Binding ObservableDiagram.GridNutVisible}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Margin="5" Width="110" Content="Ratio"/>
-                                    <TextBox Margin="5" Width="65" Text="{Binding Diagram.GridNutRatio, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                    <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.GridNutRatio, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
                                 </StackPanel>
                             </StackPanel>
                         </Expander>
@@ -125,41 +125,44 @@
             </StackPanel>
         </ScrollViewer>
         <ScrollViewer Grid.Row="0" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <Image Name="DiagramImage" Source="{Binding Diagram.ImageObject}" Margin="5" Width="{Binding Diagram.TotalWidth}" Height="{Binding Diagram.TotalHeight}" ContextMenuOpening="ImageContextMenu_ContextMenuOpening">
+            <Image Name="DiagramImage" Source="{Binding ObservableDiagram.ImageObject}" Margin="5" Width="{Binding ObservableDiagram.TotalWidth}" Height="{Binding ObservableDiagram.TotalHeight}" MouseLeftButtonDown="DiagramImage_MouseLeftButtonDown" ContextMenuOpening="ImageContextMenu_ContextMenuOpening">
                 <Image.ContextMenu>
                     <ContextMenu Name="ImageContextMenu">
-                        <MenuItem Command="{Binding Diagram.AddMark}" Header="Add Mark" Visibility="{Binding Diagram.CanAddMark, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <MenuItem Command="{Binding ObservableDiagram.AddMark}" Header="Add Mark" Visibility="{Binding ObservableDiagram.CanAddMark, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
                                 <Image Source="{DynamicResource AddIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Command="{Binding Diagram.EditMark}" Header="Edit Mark" Visibility="{Binding Diagram.CanEditMark, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <MenuItem Command="{Binding ObservableDiagram.EditMark}" Header="Edit Mark" Visibility="{Binding ObservableDiagram.CanEditMark, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
                                 <Image Source="{DynamicResource EditIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Command="{Binding Diagram.RemoveMark}" Header="Remove Mark" Visibility="{Binding Diagram.CanRemoveMark, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <MenuItem Command="{Binding ObservableDiagram.RemoveMark}" Header="Remove Mark" Visibility="{Binding ObservableDiagram.CanRemoveMark, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
                                 <Image Source="{DynamicResource RemoveIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Command="{Binding Diagram.AddFretLabel}" Header="Add Fret Label" Visibility="{Binding Diagram.CanAddFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <MenuItem Command="{Binding ObservableDiagram.AddFretLabel}" Header="Add Fret Label" Visibility="{Binding ObservableDiagram.CanAddFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
                                 <Image Source="{DynamicResource AddIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Command="{Binding Diagram.EditFretLabel}" Header="Edit Fret Label" Visibility="{Binding Diagram.CanEditFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <MenuItem Command="{Binding ObservableDiagram.EditFretLabel}" Header="Edit Fret Label" Visibility="{Binding ObservableDiagram.CanEditFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
                                 <Image Source="{DynamicResource EditIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Command="{Binding Diagram.RemoveFretLabel}" Header="Remove Fret Label" Visibility="{Binding Diagram.CanRemoveFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <MenuItem Command="{Binding ObservableDiagram.RemoveFretLabel}" Header="Remove Fret Label" Visibility="{Binding ObservableDiagram.CanRemoveFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
                                 <Image Source="{DynamicResource RemoveIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                     </ContextMenu>
                 </Image.ContextMenu>
+                <Image.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.ObservableDiagram.EditElement, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                </Image.InputBindings>
             </Image>
         </ScrollViewer>
         <ScrollViewer Grid.Column="2" Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
@@ -167,20 +170,20 @@
                 <GroupBox Header="Background" Margin="5">
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
-                            <Label Width="110" Margin="5" Content="Color"/>
-                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.DiagramColor, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <Label Width="100" Margin="5" Content="Color"/>
+                            <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.DiagramColor}" Text="{Binding ObservableDiagram.DiagramColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Opacity"/>
-                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.DiagramOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding ObservableDiagram.DiagramOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Border Color"/>
-                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.DiagramBorderColor, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <ComboBox Width="65" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.DiagramBorderColor}" Text="{Binding ObservableDiagram.DiagramBorderColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Border Width (px)"/>
-                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.DiagramBorderThickness, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="3" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding ObservableDiagram.DiagramBorderThickness, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="3" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -188,53 +191,49 @@
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Visible"/>
-                            <CheckBox Width="65" Margin="5" IsChecked="{Binding Diagram.TitleVisible}"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <CheckBox Width="65" Margin="5" IsChecked="{Binding ObservableDiagram.TitleVisible}"  VerticalAlignment="Center" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Text"/>
-                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.Title, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding ObservableDiagram.Title, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Grid Padding (px)"/>
-                            <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleGridPadding, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="65" Margin="5" Text="{Binding ObservableDiagram.TitleGridPadding, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <Expander Header="Font" Margin="0,5,0,5" IsExpanded="True" BorderThickness="0">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="80" Margin="5" Content="Family"/>
-                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding Diagram.TitleTextFontFamilies}" SelectedIndex="{Binding Diagram.SelectedTitleTextFontFamilyIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Width="80" Margin="5" Content="Custom" IsEnabled="{Binding Diagram.IsCustomTitleTextFontFamily}" Visibility="{Binding Diagram.IsCustomTitleTextFontFamily, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                    <TextBox Width="95" Margin="5" Text="{Binding Diagram.TitleTextFontFamily, UpdateSourceTrigger=LostFocus}" MaxLines="1" HorizontalContentAlignment="Center" IsEnabled="{Binding Diagram.IsCustomTitleTextFontFamily}" Visibility="{Binding Diagram.IsCustomTitleTextFontFamily, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                    <ComboBox Width="95" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.FontFamilies}" SelectedItem="{Binding ObservableDiagram.TitleTextFontFamily}" Text="{Binding ObservableDiagram.TitleTextFontFamily, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="110" Margin="5" Content="Size (pt)"/>
-                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleTextSize, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                    <TextBox Width="65" Margin="5" Text="{Binding ObservableDiagram.TitleTextSize, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="80" Margin="5" Content="Style"/>
-                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding Diagram.TitleTextStyles}" SelectedIndex="{Binding Diagram.SelectedTitleTextStyleIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding ObservableDiagram.TitleTextStyles}" SelectedIndex="{Binding ObservableDiagram.SelectedTitleTextStyleIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="80" Margin="5" Content="Alignment"/>
-                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding Diagram.TitleTextAlignments}" SelectedIndex="{Binding Diagram.SelectedTitleTextAlignmentIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding ObservableDiagram.TitleTextAlignments}" SelectedIndex="{Binding ObservableDiagram.SelectedTitleTextAlignmentIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Width="110" Margin="5" Content="Color"/>
-                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleColor, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="7" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                    <Label Width="100" Margin="5" Content="Color"/>
+                                    <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.TitleColor}" Text="{Binding ObservableDiagram.TitleColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="110" Margin="5" Content="Opacity"/>
-                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                                    <TextBox Width="65" Margin="5" Text="{Binding ObservableDiagram.TitleOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="80" Margin="5" Content="Label Style"/>
-                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding Diagram.TitleLabelStyles}" SelectedIndex="{Binding Diagram.SelectedTitleLabelStyleIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding ObservableDiagram.TitleLabelStyles}" SelectedIndex="{Binding ObservableDiagram.SelectedTitleLabelStyleIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Width="110" Margin="5" Content="Modifier Ratio" IsEnabled="{Binding Diagram.IsTitleTextSizeModRatioEnabled}"/>
-                                    <TextBox Width="65" Margin="5" Text="{Binding Diagram.TitleTextSizeModRatio, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center" IsEnabled="{Binding Diagram.IsTitleTextSizeModRatioEnabled}"/>
+                                    <Label Width="110" Margin="5" Content="Modifier Ratio" IsEnabled="{Binding ObservableDiagram.IsTitleTextSizeModRatioEnabled}"/>
+                                    <TextBox Width="65" Margin="5" Text="{Binding ObservableDiagram.TitleTextSizeModRatio, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center" IsEnabled="{Binding ObservableDiagram.IsTitleTextSizeModRatioEnabled}"/>
                                 </StackPanel>
                             </StackPanel>
                         </Expander>

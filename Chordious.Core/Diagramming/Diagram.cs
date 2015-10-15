@@ -1368,10 +1368,7 @@ namespace com.jonthysell.Chordious.Core
                 totalWidth = temp;
             }
 
-            // Add watermark
-            string watermark = String.Format("Created with {0}.", AppInfo.ProgramTitle);
-
-            return String.Format(SvgConstants.BASE, totalWidth, totalHeight, watermark, imageText);
+            return String.Format(SvgConstants.BASE, totalWidth, totalHeight, AppInfo.Watermark, imageText);
         }
 
         private static string[][] _baseStyleMap =

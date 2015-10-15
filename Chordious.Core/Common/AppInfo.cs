@@ -149,13 +149,13 @@ namespace com.jonthysell.Chordious.Core
         }
 
         /// <summary>
-        /// The product website.
+        /// The watermark text to put in images.
         /// </summary>
-        public static string WebsiteLabel
+        public static string Watermark
         {
             get
             {
-                return "Chordious Website";
+                return String.Format(Resources.Strings.WatermarkFormat, ProgramTitle);
             }
         }
 

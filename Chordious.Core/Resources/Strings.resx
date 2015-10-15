@@ -183,4 +183,7 @@
   <data name="InvalidNoteArgumentExceptionMessage" xml:space="preserve">
     <value>The value specified is not a valid note.</value>
   </data>
+  <data name="WatermarkFormat" xml:space="preserve">
+    <value>Created with {0}.</value>
+  </data>
 </root>

@@ -258,5 +258,14 @@ namespace com.jonthysell.Chordious.Core.Resources {
                 return ResourceManager.GetString("TuningNotFoundExceptionMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created with {0}..
+        /// </summary>
+        internal static string WatermarkFormat {
+            get {
+                return ResourceManager.GetString("WatermarkFormat", resourceCulture);
+            }
+        }
     }
 }

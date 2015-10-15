@@ -53,6 +53,8 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
+        #region SVG Rendering
+
         public static BitmapImage SvgTextToBitmapImage(string svgText, int width, int height, bool editMode = false)
         {
             Background background = editMode ? GetEditorRenderBackground() : GetRenderBackground();
@@ -104,6 +106,10 @@ namespace com.jonthysell.Chordious.WPF
 
             return svgBitmap;
         }
+
+        #endregion
+
+        #region Manipulations
 
         public static Bitmap AddBackground(Bitmap source, Background background)
         {
@@ -187,6 +193,149 @@ namespace com.jonthysell.Chordious.WPF
             return bitmapImage;
         }
 
+        #endregion
+
+        #region Export
+
+        public static void ExportImageFile(string svgText, int width, int height, ExportFormat exportFormat, string filePath)
+        {
+            if (String.IsNullOrWhiteSpace(svgText))
+            {
+                throw new ArgumentNullException("svgText");
+            }
+
+            if (width <= 0)
+            {
+                throw new ArgumentOutOfRangeException("width");
+            }
+
+            if (height <= 0)
+            {
+                throw new ArgumentOutOfRangeException("height");
+            }
+
+            if (String.IsNullOrWhiteSpace(filePath))
+            {
+                throw new ArgumentNullException("filePath");
+            }
+
+            string directoryPath = Path.GetDirectoryName(filePath);
+
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            {
+                if (exportFormat == ExportFormat.SVG)
+                {
+                    using (StreamWriter sw = new StreamWriter(fs))
+                    {
+                        sw.Write(svgText);
+                    }
+                }
+                else
+                {
+                    BitmapEncoder encoder = null;
+
+                    Background background = Background.None;
+
+                    if (exportFormat == ExportFormat.PNG)
+                    {
+                        encoder = new PngBitmapEncoder();
+                    }
+                    else if (exportFormat == ExportFormat.GIF)
+                    {
+                        encoder = new GifBitmapEncoder();
+                    }
+                    else if (exportFormat == ExportFormat.JPG)
+                    {
+                        encoder = new JpegBitmapEncoder();
+                        background = Background.White;
+                    }
+
+                    BitmapImage bmpImage = SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, background);
+                    BitmapMetadata frameMetadata = GetExportMetadata(exportFormat);
+
+                    BitmapFrame frame = BitmapFrame.Create(bmpImage, null, frameMetadata, null);
+
+                    encoder.Frames.Add(frame);
+                    encoder.Save(fs);
+                }
+            }
+        }
+
+        private static BitmapMetadata GetExportMetadata(ExportFormat exportFormat)
+        {
+            BitmapMetadata metadata = null;
+
+            string appName = AppVM.ProgramTitle;
+            string comment = AppVM.Watermark;
+
+            if (exportFormat == ExportFormat.PNG)
+            {
+                metadata = new BitmapMetadata("png");
+
+                AddMetaData(metadata, _pngAppNameTags, appName);
+                AddMetaData(metadata, _pngCommentTags, comment);
+            }
+            else if (exportFormat == ExportFormat.GIF)
+            {
+                metadata = new BitmapMetadata("gif");
+
+                AddMetaData(metadata, _gifAppNameTags, appName);
+                AddMetaData(metadata, _gifCommentTags, comment);
+            }
+            else if (exportFormat == ExportFormat.JPG)
+            {
+                metadata = new BitmapMetadata("jpg");
+
+                AddMetaData(metadata, _jpgAppNameTags, appName);
+                AddMetaData(metadata, _jpgCommentTags, comment);
+            }
+
+            return metadata;
+        }
+
+        private static void AddMetaData(BitmapMetadata metadata, string[] tags, string value)
+        {
+            if (null == metadata)
+            {
+                throw new ArgumentNullException("metadata");
+            }
+           
+            if (null == tags)
+            {
+                throw new ArgumentNullException("tags");
+            }
+
+            if (String.IsNullOrWhiteSpace(value))
+            {
+                throw new ArgumentNullException("value");
+            }
+
+            value = value.Trim();
+
+            foreach (string tag in tags)
+            {
+                metadata.SetQuery(tag, value);
+            }
+        }
+
+        private static string[] _pngAppNameTags = { "/tEXt/Software" };
+        private static string[] _pngCommentTags = { "/tEXt/Comment" };
+
+        private static string[] _gifAppNameTags = { "/xmp/xmp:CreatorTool" };
+        private static string[] _gifCommentTags = { "/xmp/dc:description" };
+
+        private static string[] _jpgAppNameTags = { "/app1/ifd/{ushort=305}" };
+        private static string[] _jpgCommentTags = { "/app1/ifd/exif/{ushort=37510}" };
+
+        #endregion
+
+        #region Settings
+
         public static SvgRenderer GetRenderer()
         {
             SvgRenderer result;
@@ -222,6 +371,8 @@ namespace com.jonthysell.Chordious.WPF
 
             return Background.None;
         }
+
+        #endregion
     }
 
     public enum SvgRenderer
@@ -235,5 +386,13 @@ namespace com.jonthysell.Chordious.WPF
         None,
         White,
         Transparent
+    }
+
+    public enum ExportFormat
+    {
+        SVG = 0,
+        PNG,
+        GIF,
+        JPG
     }
 }

@@ -968,7 +968,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         MarkPosition mp = this.MarkPosition;
                         FretLabelPosition flp = this.FretLabelPosition;
 
-                        if (null != mp)
+                        if (null != mp && Diagram.HasElementAt(mp))
                         {
                             DiagramMark dm = (DiagramMark)Diagram.ElementAt(mp);
                             Messenger.Default.Send<ShowDiagramMarkEditorMessage>(new ShowDiagramMarkEditorMessage(dm, false, (changed) =>
@@ -979,7 +979,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                                 }
                             }));
                         }
-                        else if (null != flp)
+                        else if (null != flp && Diagram.HasElementAt(flp))
                         {
                             DiagramFretLabel dfl = (DiagramFretLabel)Diagram.ElementAt(flp);
                             Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Label text:", dfl.Text, (text) =>

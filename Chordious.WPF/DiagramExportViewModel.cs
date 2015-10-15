@@ -29,11 +29,9 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -343,60 +341,17 @@ namespace com.jonthysell.Chordious.WPF
         {
             return Task.Factory.StartNew(() =>
             {
-                string filePath = GetFullFilePath(diagramIndex, OverwriteFiles);
-
-                string directoryPath = Path.GetDirectoryName(filePath);
-
-                if (!Directory.Exists(directoryPath))
-                {
-                    Directory.CreateDirectory(directoryPath);
-                }
-
                 ObservableDiagram od = DiagramsToExport[diagramIndex];
 
                 string svgText = od.SvgText;
                 int width = od.TotalWidth;
                 int height = od.TotalHeight;
 
-                using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
-                {
-                    if (ExportFormat == ExportFormat.SVG)
-                    {
-                        using (StreamWriter sw = new StreamWriter(fs))
-                        {
-                            sw.Write(svgText);
-                        }
-                    }
-                    else
-                    {
-                        BitmapImage bmpImage = null;
-                        BitmapEncoder encoder = null;
+                string filePath = GetFullFilePath(diagramIndex, OverwriteFiles);
 
-                        Background background = Background.None;
+                ImageUtils.ExportImageFile(svgText, width, height, ExportFormat, filePath);
 
-                        if (ExportFormat == ExportFormat.PNG)
-                        {
-                            encoder = new PngBitmapEncoder();
-                        }
-                        else if (ExportFormat == ExportFormat.GIF)
-                        {
-                            encoder = new GifBitmapEncoder();
-                        }
-                        else if (ExportFormat == ExportFormat.JPG)
-                        {
-                            encoder = new JpegBitmapEncoder();
-                            background = Background.White;
-                        }
-
-                        bmpImage = ImageUtils.SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, background);
-
-                        encoder.Frames.Add(BitmapFrame.Create(bmpImage));
-                        encoder.Save(fs);
-                    }
-
-                    _createdFiles.Add(filePath);
-                }
-
+                _createdFiles.Add(filePath);
             });
         }
 
@@ -437,13 +392,5 @@ namespace com.jonthysell.Chordious.WPF
                                                              "%c\\%1.%x",
                                                              "%c\\diagram (%1 of %#).%x"
                                                          };
-    }
-
-    public enum ExportFormat
-    {
-        SVG = 0,
-        PNG,
-        GIF,
-        JPG
-    }
+    }   
 }

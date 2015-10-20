@@ -340,11 +340,13 @@ namespace com.jonthysell.Chordious.WPF
             dialog.AddExtension = true;
             dialog.DefaultExt = "*.xml";
             dialog.Filter = "Chordious Config|*.xml";
+            dialog.InitialDirectory = LastPath;
 
             bool? result = dialog.ShowDialog();
 
             if (result.HasValue && result.Value)
             {
+                LastPath = Path.GetFullPath(dialog.FileName);
                 string filename = dialog.FileName;
                 message.Process(new FileStream(filename, FileMode.Create));
             }
@@ -368,11 +370,13 @@ namespace com.jonthysell.Chordious.WPF
             dialog.AddExtension = true;
             dialog.DefaultExt = "*.xml";
             dialog.Filter = "Chordious Config|*.xml";
+            dialog.InitialDirectory = LastPath;
 
             bool? result = dialog.ShowDialog();
 
             if (result.HasValue && result.Value)
             {
+                LastPath = Path.GetFullPath(dialog.FileName);
                 string filename = dialog.FileName;
                 message.Process(new FileStream(filename, FileMode.Open, FileAccess.Read));
             }
@@ -384,13 +388,36 @@ namespace com.jonthysell.Chordious.WPF
             dialog.AddExtension = true;
             dialog.DefaultExt = "*.txt";
             dialog.Filter = "All Files|*.*|ChordLines|*.txt";
+            dialog.InitialDirectory = LastPath;
 
             bool? result = dialog.ShowDialog();
 
             if (result.HasValue && result.Value)
             {
+                LastPath = Path.GetFullPath(dialog.FileName);
                 string filename = dialog.FileName;
                 message.Process(Path.GetFileName(filename), new FileStream(filename, FileMode.Open, FileAccess.Read));
+            }
+        }
+
+        private static string LastPath
+        {
+            get
+            {
+                string lastPath = "";
+                try
+                {
+                    lastPath = AppViewModel.Instance.GetSetting("app.lastpath");
+                }
+                catch (Exception)
+                {
+                    lastPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                }
+                return lastPath;
+            }
+            set
+            {
+                AppViewModel.Instance.SetSetting("app.lastpath", value);
             }
         }
     }

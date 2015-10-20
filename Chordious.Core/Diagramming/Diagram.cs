@@ -1313,41 +1313,39 @@ namespace com.jonthysell.Chordious.Core
 
                 string titleStyle = this.Style.GetSvgStyle(Diagram._titleStyleMap);
 
-                switch (this.TitleLabelStyle)
+                if (this.TitleLabelStyle == DiagramLabelStyle.ChordName && this.Title.Length > 1)
                 {
-                    case DiagramLabelStyle.ChordName:
-                        double modifierSize = this.TitleTextSize * this.TitleTextSizeModRatio;
-                        string modifierStyle = String.Format("font-size:{0}pt;", modifierSize);
-                        string titleChordNameFormat = SvgConstants.TEXT_CHORDNAME;
-                        if (Orientation == DiagramOrientation.LeftRight)
-                        {
-                            titleChordNameFormat = SvgConstants.ROTATED_TEXT_CHORDNAME;
-                            titleX -= (TitleTextSize - this.TitleGridPadding) / 2.0;
-                            titleY -= (TitleTextSize + (modifierSize * (this.Title.Length - 1))) / 2.0;
-                        }
-                        sb.AppendFormat(titleChordNameFormat,
-                                titleStyle,
-                                titleX,
-                                titleY,
-                                this.Title[0].ToString(),
-                                modifierStyle,
-                                this.Title.Substring(1));
-                        break;
-                    case DiagramLabelStyle.Regular:
-                    default:
-                        string titleFormat = SvgConstants.TEXT;
-                        if (Orientation == DiagramOrientation.LeftRight)
-                        {
-                            titleFormat = SvgConstants.ROTATED_TEXT;
-                            titleX -= (TitleTextSize - this.TitleGridPadding) / 2.0;
-                            titleY -= (TitleTextSize * Title.Length) / 2.0;
-                        }
-                        sb.AppendFormat(titleFormat,
-                                titleStyle,
-                                titleX,
-                                titleY,
-                                this.Title);
-                        break;
+                    double modifierSize = this.TitleTextSize * this.TitleTextSizeModRatio;
+                    string modifierStyle = String.Format("font-size:{0}pt;", modifierSize);
+                    string titleChordNameFormat = SvgConstants.TEXT_CHORDNAME;
+                    if (Orientation == DiagramOrientation.LeftRight)
+                    {
+                        titleChordNameFormat = SvgConstants.ROTATED_TEXT_CHORDNAME;
+                        titleX -= (TitleTextSize - this.TitleGridPadding) / 2.0;
+                        titleY -= (TitleTextSize + (modifierSize * (this.Title.Length - 1))) / 2.0;
+                    }
+                    sb.AppendFormat(titleChordNameFormat,
+                            titleStyle,
+                            titleX,
+                            titleY,
+                            this.Title[0].ToString(),
+                            modifierStyle,
+                            this.Title.Substring(1));
+                }
+                else
+                {
+                    string titleFormat = SvgConstants.TEXT;
+                    if (Orientation == DiagramOrientation.LeftRight)
+                    {
+                        titleFormat = SvgConstants.ROTATED_TEXT;
+                        titleX -= (TitleTextSize - this.TitleGridPadding) / 2.0;
+                        titleY -= (TitleTextSize * Title.Length) / 2.0;
+                    }
+                    sb.AppendFormat(titleFormat,
+                            titleStyle,
+                            titleX,
+                            titleY,
+                            this.Title);
                 }
             }
 

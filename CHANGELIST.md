@@ -1,5 +1,10 @@
 # Chordious Changelist #
 
+## 1.9.15293.247 ##
+* Added metadata to exported images
+* Default config import/export is now the Desktop, and is now persisted
+* Other bugfixes
+
 ## 1.9.15278.1540 ##
 * New DiagramMarkEditor lets you customize mark styles in the DiagramEditor
 * Launch via right-click menu or double-click

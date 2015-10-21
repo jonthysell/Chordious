@@ -346,7 +346,7 @@ namespace com.jonthysell.Chordious.WPF
 
             if (result.HasValue && result.Value)
             {
-                LastPath = Path.GetFullPath(dialog.FileName);
+                LastPath = Path.GetDirectoryName(dialog.FileName);
                 string filename = dialog.FileName;
                 message.Process(new FileStream(filename, FileMode.Create));
             }
@@ -376,7 +376,7 @@ namespace com.jonthysell.Chordious.WPF
 
             if (result.HasValue && result.Value)
             {
-                LastPath = Path.GetFullPath(dialog.FileName);
+                LastPath = Path.GetDirectoryName(dialog.FileName);
                 string filename = dialog.FileName;
                 message.Process(new FileStream(filename, FileMode.Open, FileAccess.Read));
             }
@@ -394,7 +394,7 @@ namespace com.jonthysell.Chordious.WPF
 
             if (result.HasValue && result.Value)
             {
-                LastPath = Path.GetFullPath(dialog.FileName);
+                LastPath = Path.GetDirectoryName(dialog.FileName);
                 string filename = dialog.FileName;
                 message.Process(Path.GetFileName(filename), new FileStream(filename, FileMode.Open, FileAccess.Read));
             }

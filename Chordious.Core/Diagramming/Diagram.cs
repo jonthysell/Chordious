@@ -1007,11 +1007,11 @@ namespace com.jonthysell.Chordious.Core
                 {
                     FretLabelSide? fls = null;
 
-                    if (@string == 0 || @string == 1)
+                    if (@string == 0)
                     {
                         fls = FretLabelSide.Left;
                     }
-                    else if (@string == NumStrings || @string == NumStrings + 1)
+                    else if (@string == NumStrings + 1)
                     {
                         fls = FretLabelSide.Right;
                     }
@@ -1041,7 +1041,8 @@ namespace com.jonthysell.Chordious.Core
 
         private void GetPositionInternal(double x, double y, out int @string, out int fret)
         {
-            int[] position = new int[] { -1, -1 };
+            @string = -1;
+            fret = -1;
 
             // Fix for left/right orientation
             if (Orientation == DiagramOrientation.LeftRight)
@@ -1056,27 +1057,57 @@ namespace com.jonthysell.Chordious.Core
             double leftEdge = GridLeftEdge();
             double rightEdge = GridRightEdge();
 
+            double leftMargin = leftEdge;
+            double rightMargin = GetWidth() - rightEdge;
+
             double fretSpacing = this.GridFretSpacing;
             double stringSpacing = this.GridStringSpacing;
 
-            // String position
-            double xMin = leftEdge - (stringSpacing * 1.5);
-            double xMax = rightEdge + (stringSpacing * 1.5);
-            if (x >= xMin && x <= xMax)
+            double stringRange = stringSpacing / 3.0;
+
+            // Determine buffered grid edges
+            double xGridMin = leftEdge - Math.Min(stringRange, leftMargin / 3.0);
+            double xGridMax = rightEdge + Math.Min(stringRange, rightMargin / 3.0);
+
+            // Find string position
+            if (x < xGridMin) // left of grid
             {
-                position[0] = (int)(Remap(x, xMin, xMax, 0, NumStrings + 1) + 0.5);
+                @string = 0;
+            }
+            else if (x > xGridMax) // right of grid
+            {
+                @string = NumStrings + 1;
+            }
+            else // in grid
+            {
+                for (int str = 0; str < NumStrings; str++)
+                {
+                    double stringX = leftEdge + (stringSpacing * str);
+                    if (Within(x, stringX, stringRange))
+                    {
+                        @string = str + 1;
+                        break;
+                    }
+                }
             }
 
-            // Fret position
-            double yMin = topEdge - fretSpacing;
-            double yMax = bottomEdge + fretSpacing;
+            // Find fret position
+            double yMin = Math.Max(0, topEdge - fretSpacing);
+            double yMax = Math.Min(GetHeight(), bottomEdge + fretSpacing);
             if (y >= yMin && y <= yMax)
             {
-                position[1] = (int)(Remap(y, yMin, yMax, 0, NumFrets + 2));
+                fret = (int)(Remap(y, yMin, yMax, 0, NumFrets + 2));
+            }
+        }
+
+        private bool Within(double value, double center, double range)
+        {
+            if (range < 0)
+            {
+                throw new ArgumentOutOfRangeException("range");
             }
 
-            @string = position[0];
-            fret = position[1];
+            return (value >= (center - range)) && (value <= (center + range));
         }
 
         private double Remap(double value, double sourceMin, double sourceMax, double destMin, double destMax)

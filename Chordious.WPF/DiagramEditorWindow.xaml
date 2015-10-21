@@ -248,7 +248,7 @@
                 <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Label Margin="5" Content="Background" FontWeight="Bold"/>
+                <Label Margin="5" Content="Editor Background" FontWeight="Bold"/>
                 <ComboBox Width="95" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
             </StackPanel>
         </WrapPanel>

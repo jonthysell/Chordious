@@ -982,11 +982,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         else if (null != flp && Diagram.HasElementAt(flp))
                         {
                             DiagramFretLabel dfl = (DiagramFretLabel)Diagram.ElementAt(flp);
-                            Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Label text:", dfl.Text, (text) =>
+                            Messenger.Default.Send<ShowDiagramFretLabelEditorMessage>(new ShowDiagramFretLabelEditorMessage(dfl, false, (changed) =>
                             {
-                                dfl.Text = text;
-                                Refresh();
-                            }, true));
+                                if (changed)
+                                {
+                                    Refresh();
+                                }
+                            }));
                         }
 
                     }
@@ -1139,8 +1141,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         FretLabelPosition flp = this.FretLabelPosition;
-                        Diagram.NewFretLabel(flp, flp.Fret.ToString());
-                        Refresh();
+                        DiagramFretLabel dfl = Diagram.NewFretLabel(flp, "");
+                        Messenger.Default.Send<ShowDiagramFretLabelEditorMessage>(new ShowDiagramFretLabelEditorMessage(dfl, true, (changed) =>
+                        {
+                            if (changed)
+                            {
+                                Refresh();
+                            }
+                            else
+                            {
+                                Diagram.RemoveFretLabel(flp);
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {
@@ -1171,11 +1183,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         DiagramFretLabel dfl = (DiagramFretLabel)Diagram.ElementAt(this.FretLabelPosition);
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Label text:", dfl.Text, (text) =>
+                        Messenger.Default.Send<ShowDiagramFretLabelEditorMessage>(new ShowDiagramFretLabelEditorMessage(dfl, false, (changed) =>
                         {
-                            dfl.Text = text;
-                            Refresh();
-                        }, true));
+                            if (changed)
+                            {
+                                Refresh();
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {

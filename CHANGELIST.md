@@ -1,5 +1,11 @@
 # Chordious Changelist #
 
+## 1.9.15295.1615 ##
+* Added F5 to "refresh" the Finders
+* New DiagramFretLabelEditor lets you customize fret label styles in the DiagramEditor
+* Fixed issues when selecting thew wrong marks/fret labels in the editor
+* Other minor bugfixes
+
 ## 1.9.15293.247 ##
 * Added metadata to exported images
 * Default config import/export is now the Desktop, and is now persisted

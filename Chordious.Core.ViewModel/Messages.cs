@@ -281,6 +281,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
     }
 
+    public class ShowDiagramFretLabelEditorMessage : MessageBase
+    {
+        public DiagramFretLabelEditorViewModel DiagramFretLabelEditorVM { get; set; }
+
+        private Action<bool> Callback;
+
+        public ShowDiagramFretLabelEditorMessage(DiagramFretLabel diagramFretLabel, bool isNew, Action<bool> callback = null) : base()
+        {
+            DiagramFretLabelEditorVM = new DiagramFretLabelEditorViewModel(diagramFretLabel, isNew);
+            Callback = callback;
+        }
+
+        public void Process()
+        {
+            bool saveChanges = DiagramFretLabelEditorVM.ProcessClose();
+            if (null != Callback)
+            {
+                Callback(saveChanges);
+            }
+        }
+    }
+
     public class ShowOptionsMessage : MessageBase
     {
         public OptionsViewModel OptionsVM { get; set; }

@@ -58,6 +58,7 @@ namespace com.jonthysell.Chordious.WPF
 
             Messenger.Default.Register<ShowDiagramEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramEditor(message));
             Messenger.Default.Register<ShowDiagramMarkEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramMarkEditor(message));
+            Messenger.Default.Register<ShowDiagramFretLabelEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramFretLabelEditor(message));
 
             Messenger.Default.Register<ShowInstrumentManagerMessage>(recipient, (message) => MessageHandlers.ShowInstrumentManager(message));
             Messenger.Default.Register<ShowInstrumentEditorMessage>(recipient, (message) => MessageHandlers.ShowInstrumentEditor(message));
@@ -96,8 +97,10 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Unregister<ShowScaleFinderMessage>(recipient);
 
             Messenger.Default.Unregister<ShowDiagramLibraryMessage>(recipient);
+
             Messenger.Default.Unregister<ShowDiagramEditorMessage>(recipient);
             Messenger.Default.Unregister<ShowDiagramMarkEditorMessage>(recipient);
+            Messenger.Default.Unregister<ShowDiagramFretLabelEditorMessage>(recipient);
 
             Messenger.Default.Unregister<ShowInstrumentManagerMessage>(recipient);
 
@@ -282,6 +285,18 @@ namespace com.jonthysell.Chordious.WPF
             DiagramMarkEditorWindow window = new DiagramMarkEditorWindow();
             window.DataContext = message.DiagramMarkEditorVM;
             message.DiagramMarkEditorVM.RequestClose += () =>
+            {
+                window.Close();
+            };
+            window.ShowDialog();
+            message.Process();
+        }
+
+        private static void ShowDiagramFretLabelEditor(ShowDiagramFretLabelEditorMessage message)
+        {
+            DiagramFretLabelEditorWindow window = new DiagramFretLabelEditorWindow();
+            window.DataContext = message.DiagramFretLabelEditorVM;
+            message.DiagramFretLabelEditorVM.RequestClose += () =>
             {
                 window.Close();
             };

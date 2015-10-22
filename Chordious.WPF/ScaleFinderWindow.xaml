@@ -7,6 +7,9 @@
     <Window.DataContext>
         <vm:ScaleFinderViewModel />
     </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Key="F5" Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}" />
+    </Window.InputBindings>
     <Grid IsEnabled="{Binding IsIdle}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

@@ -105,13 +105,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             return collection;
         }
 
-        public static ObservableCollection<string> GetTextAlignments()
+        public static ObservableCollection<string> GetHorizontalAlignments()
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
             collection.Add("Left");
             collection.Add("Center");
             collection.Add("Right");
+
+            return collection;
+        }
+
+        public static ObservableCollection<string> GetVerticalAlignments()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add("Top");
+            collection.Add("Middle");
+            collection.Add("Bottom");
 
             return collection;
         }
@@ -163,6 +174,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             collection.Add("Square");
             collection.Add("Diamond");
             collection.Add("X");
+
+            return collection;
+        }
+
+        public static ObservableCollection<string> GetBarreStacks()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add("Under Marks");
+            collection.Add("Over Marks");
 
             return collection;
         }

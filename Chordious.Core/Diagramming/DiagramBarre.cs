@@ -94,6 +94,42 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public double Opacity
+        {
+            get
+            {
+                return Style.BarreOpacityGet();
+            }
+            set
+            {
+                Style.BarreOpacitySet(value);
+            }
+        }
+
+        public string LineColor
+        {
+            get
+            {
+                return Style.BarreLineColorGet();
+            }
+            set
+            {
+                Style.BarreLineColorSet(value);
+            }
+        }
+
+        public double LineThickness
+        {
+            get
+            {
+                return Style.BarreLineThicknessGet();
+            }
+            set
+            {
+                Style.BarreLineThicknessSet(value);
+            }
+        }
+
         public DiagramBarre(Diagram parent, BarrePosition position) : base(parent, position) { }
 
         public DiagramBarre(Diagram parent, XmlReader xmlReader) : base(parent)

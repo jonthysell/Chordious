@@ -1,5 +1,5 @@
 ﻿// 
-// DiagramFretLabelEditorViewModel.cs
+// DiagramBarreEditorViewModel.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -39,7 +39,7 @@ using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class DiagramFretLabelEditorViewModel : ViewModelBase
+    public class DiagramBarreEditorViewModel : ViewModelBase
     {
         public AppViewModel AppVM
         {
@@ -53,23 +53,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return "Diagram Fret Label Editor" + (Dirty ? "*" : "");
+                return "Diagram Barre Editor" + (Dirty ? "*" : "");
             }
         }
 
-        public string Text
+        public bool Visible
         {
             get
             {
-                return _text;
+                return StyleBuffer.BarreVisibleGet();
             }
             set
             {
                 try
                 {
-                    _text = value;
+                    StyleBuffer.BarreVisibleSet(value);
                     Dirty = true;
-                    RaisePropertyChanged("Text");
+                    RaisePropertyChanged("Visible");
                 }
                 catch (Exception ex)
                 {
@@ -77,13 +77,112 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
             }
         }
-        private string _text;
 
-        public string TextColor
+        public int SelectedVerticalAlignmentIndex
         {
             get
             {
-                return StyleBuffer.FretLabelTextColorGet();
+                return (int)StyleBuffer.BarreVerticalAlignmentGet();
+            }
+            set
+            {
+                try
+                {
+                    StyleBuffer.BarreVerticalAlignmentSet((DiagramVerticalAlignment)value);
+                    Dirty = true;
+                    RaisePropertyChanged("SelectedVerticalAlignmentIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public ObservableCollection<string> VerticalAlignments
+        {
+            get
+            {
+                return ObservableEnums.GetVerticalAlignments();
+            }
+        }
+
+        public int SelectedBarreStackIndex
+        {
+            get
+            {
+                return (int)StyleBuffer.BarreStackGet();
+            }
+            set
+            {
+                try
+                {
+                    StyleBuffer.BarreStackSet((DiagramBarreStack)value);
+                    Dirty = true;
+                    RaisePropertyChanged("SelectedBarreStackIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public ObservableCollection<string> BarreStacks
+        {
+            get
+            {
+                return ObservableEnums.GetBarreStacks();
+            }
+        }
+
+        public double ArcRatio
+        {
+            get
+            {
+                return StyleBuffer.BarreArcRatioGet();
+            }
+            set
+            {
+                try
+                {
+                    StyleBuffer.BarreArcRatioSet(value);
+                    Dirty = true;
+                    RaisePropertyChanged("ArcRatio");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+        
+        public double Opacity
+        {
+            get
+            {
+                return StyleBuffer.BarreOpacityGet();
+            }
+            set
+            {
+                try
+                {
+                    StyleBuffer.BarreOpacitySet(value);
+                    Dirty = true;
+                    RaisePropertyChanged("Opacity");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string LineColor
+        {
+            get
+            {
+                return StyleBuffer.BarreLineColorGet();
             }
             set
             {
@@ -91,10 +190,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     if (null != value)
                     {
-                        StyleBuffer.FretLabelTextColorSet(value);
-                        ObservableEnums.SortedInsert(Colors, TextColor);
+                        StyleBuffer.BarreLineColorSet(value);
+                        ObservableEnums.SortedInsert(Colors, LineColor);
                         Dirty = true;
-                        RaisePropertyChanged("TextColor");
+                        RaisePropertyChanged("LineColor");
                     }
                 }
                 catch (Exception ex)
@@ -104,19 +203,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public double TextOpacity
+        public double LineThickness
         {
             get
             {
-                return StyleBuffer.FretLabelTextOpacityGet();
+                return StyleBuffer.BarreLineThicknessGet();
             }
             set
             {
                 try
                 {
-                    StyleBuffer.FretLabelTextOpacitySet(value);
+                    StyleBuffer.BarreLineThicknessSet(value);
                     Dirty = true;
-                    RaisePropertyChanged("TextOpacity");
+                    RaisePropertyChanged("LineThickness");
                 }
                 catch (Exception ex)
                 {
@@ -124,187 +223,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
             }
         }
-
-        public string TextFontFamily
-        {
-            get
-            {
-                return StyleBuffer.FretLabelFontFamilyGet();
-            }
-            set
-            {
-                try
-                {
-                    if (null != value)
-                    {
-                        StyleBuffer.FretLabelFontFamilySet(value);
-                        ObservableEnums.SortedInsert(FontFamilies, TextFontFamily);
-                        Dirty = true;
-                        RaisePropertyChanged("TextFontFamily");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public int SelectedTextStyleIndex
-        {
-            get
-            {
-                return (int)StyleBuffer.FretLabelTextStyleGet();
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.FretLabelTextStyleSet((DiagramTextStyle)value);
-                    Dirty = true;
-                    RaisePropertyChanged("SelectedTextStyleIndex");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public ObservableCollection<string> TextStyles
-        {
-            get
-            {
-                return ObservableEnums.GetTextStyles();
-            }
-        }
-
-        public int SelectedTextAlignmentIndex
-        {
-            get
-            {
-                return (int)StyleBuffer.FretLabelTextAlignmentGet();
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.FretLabelTextAlignmentSet((DiagramHorizontalAlignment)value);
-                    Dirty = true;
-                    RaisePropertyChanged("SelectedTextAlignmentIndex");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public ObservableCollection<string> TextAlignments
-        {
-            get
-            {
-                return ObservableEnums.GetHorizontalAlignments();
-            }
-        }
-
-        public double TextSizeRatio
-        {
-            get
-            {
-                return StyleBuffer.FretLabelTextSizeRatioGet();
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.FretLabelTextSizeRatioSet(value);
-                    Dirty = true;
-                    RaisePropertyChanged("TextSizeRatio");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public bool TextVisible
-        {
-            get
-            {
-                return StyleBuffer.FretLabelTextVisibleGet();
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.FretLabelTextVisibleSet(value);
-                    Dirty = true;
-                    RaisePropertyChanged("TextVisible");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public double GridPadding
-        {
-            get
-            {
-                return StyleBuffer.FretLabelGridPaddingGet();
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.FretLabelGridPaddingSet(value);
-                    Dirty = true;
-                    RaisePropertyChanged("GridPadding");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public double TextWidthRatio
-        {
-            get
-            {
-                return StyleBuffer.FretLabelTextWidthRatioGet();
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.FretLabelTextWidthRatioSet(value);
-                    Dirty = true;
-                    RaisePropertyChanged("TextWidthRatio");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public ObservableCollection<string> FontFamilies
-        {
-            get
-            {
-                if (null == _fontFamiles)
-                {
-                    _fontFamiles = new ObservableCollection<string>(ObservableEnums.FontFamilies);
-                }
-                return _fontFamiles;
-            }
-        }
-        private ObservableCollection<string> _fontFamiles;
-
+        
         public ObservableCollection<string> Colors
         {
             get
@@ -429,28 +348,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _diagramFretLabelChanged = false;
 
-        internal DiagramFretLabel DiagramFretLabel { get; private set; }
+        internal DiagramBarre DiagramBarre { get; private set; }
         internal DiagramStyle StyleBuffer { get; private set; }
 
-        public DiagramFretLabelEditorViewModel(DiagramFretLabel diagrmFretLabel, bool isNew)
+        public DiagramBarreEditorViewModel(DiagramBarre diagramBarre, bool isNew)
         {
-            if (null == diagrmFretLabel)
+            if (null == diagramBarre)
             {
-                throw new ArgumentNullException("diagrmFretLabel");
+                throw new ArgumentNullException("diagramBarre");
             }
 
-            DiagramFretLabel = diagrmFretLabel;
+            DiagramBarre = diagramBarre;
 
-            // Buffer values
-            _text = DiagramFretLabel.Text;
-
-            StyleBuffer = new DiagramStyle(DiagramFretLabel.Style, "DiagramFretLabelEditor");
-
-            // Pre-seed used fonts
-            ObservableEnums.SortedInsert(FontFamilies, TextFontFamily);
+            StyleBuffer = new DiagramStyle(DiagramBarre.Style, "DiagramBarreEditor");
 
             // Pre-seed used colors
-            ObservableEnums.SortedInsert(Colors, TextColor);
+            ObservableEnums.SortedInsert(Colors, LineColor);
 
             if (isNew)
             {
@@ -469,8 +382,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void ApplyChanges()
         {
-            DiagramFretLabel.Text = _text;
-
             StyleBuffer.SetParent();
             StyleBuffer.Clear();
 
@@ -480,15 +391,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void RefreshProperties()
         {
-            RaisePropertyChanged("TextColor");
-            RaisePropertyChanged("TextOpacity");
-            RaisePropertyChanged("SelectedFontFamily");
-            RaisePropertyChanged("SelectedTextStyleIndex");
-            RaisePropertyChanged("SelectedTextAlignmentIndex");
-            RaisePropertyChanged("TextSizeRatio");
-            RaisePropertyChanged("TextVisible");
-            RaisePropertyChanged("GridPadding");
-            RaisePropertyChanged("TextWidthRatio");
+            RaisePropertyChanged("Visible");
+            RaisePropertyChanged("SelectedVerticalAlignmentIndex");
+            RaisePropertyChanged("SelectedBarreStackIndex");
+            RaisePropertyChanged("ArcRatio");
+            RaisePropertyChanged("Opacity");
+            RaisePropertyChanged("LineColor");
+            RaisePropertyChanged("LineThickness");
         }
     }
 }

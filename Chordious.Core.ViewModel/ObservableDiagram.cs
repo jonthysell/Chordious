@@ -776,7 +776,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return ObservableEnums.GetTextAlignments();
+                return ObservableEnums.GetHorizontalAlignments();
             }
         }
 

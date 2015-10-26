@@ -985,6 +985,46 @@ namespace com.jonthysell.Chordious.Core
             Set("barre.arcratio", value);
         }
 
+        public double BarreOpacityGet()
+        {
+            return GetDouble("barre.opacity");
+        }
+
+        public void BarreOpacitySet(double value)
+        {
+            if (value < 0 || value > 1.0)
+            {
+                throw new ArgumentOutOfRangeException("value");
+            }
+
+            Set("barre.opacity", value);
+        }
+
+        public string BarreLineColorGet()
+        {
+            return GetColor("barre.linecolor");
+        }
+
+        public void BarreLineColorSet(string value)
+        {
+            SetColor("barre.linecolor", value);
+        }
+
+        public double BarreLineThicknessGet()
+        {
+            return GetDouble("barre.linethickness");
+        }
+
+        public void BarreLineThicknessSet(double value)
+        {
+            if (value < 0)
+            {
+                throw new ArgumentOutOfRangeException("value");
+            }
+
+            Set("barre.linethickness", value);
+        }
+
         #endregion
 
         public DiagramStyle() : base() { }

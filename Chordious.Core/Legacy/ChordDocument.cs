@@ -208,9 +208,9 @@ namespace com.jonthysell.Chordious.Core.Legacy
             diagram.Style.BarreVerticalAlignmentSet(DiagramVerticalAlignment.Middle);
             diagram.Style.BarreArcRatioSet(0.5);
             diagram.Style.BarreStackSet(DiagramBarreStack.UnderMarks);
-            diagram.Style.Set("barre.opacity", "1");
-            diagram.Style.Set("barre.linecolor", "Black");
-            diagram.Style.Set("barre.linethickness", "2");
+            diagram.Style.BarreOpacitySet(1.0);
+            diagram.Style.BarreLineColorSet("Black");
+            diagram.Style.BarreLineThicknessSet(2.0);
 
             // Process barres
             if (chordOptions.BarreType == BarreType.None)

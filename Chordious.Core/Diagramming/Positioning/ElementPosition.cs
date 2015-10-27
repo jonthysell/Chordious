@@ -45,6 +45,11 @@ namespace com.jonthysell.Chordious.Core
     {
         public ElementPosition Position { get; protected set; }
 
+        public ElementPositionException() : base()
+        {
+            this.Position = null;
+        }
+
         public ElementPositionException(ElementPosition position) : base()
         {
             this.Position = position.Clone();

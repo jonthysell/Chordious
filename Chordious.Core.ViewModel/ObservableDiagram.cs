@@ -967,6 +967,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         MarkPosition mp = this.MarkPosition;
                         FretLabelPosition flp = this.FretLabelPosition;
+                        BarrePosition bp = this.BarrePosition;
 
                         if (null != mp && Diagram.HasElementAt(mp))
                         {
@@ -990,6 +991,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                                 }
                             }));
                         }
+                        else if (null != bp && Diagram.HasElementAt(bp))
+                        {
+                            DiagramBarre db = (DiagramBarre)Diagram.ElementAt(bp);
+                            Messenger.Default.Send<ShowDiagramBarreEditorMessage>(new ShowDiagramBarreEditorMessage(db, false, (changed) =>
+                            {
+                                if (changed)
+                                {
+                                    Refresh();
+                                }
+                            }));
+                        }
 
                     }
                     catch (Exception ex)
@@ -999,7 +1011,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
                 }, () =>
                 {
-                    return (CanEditMark || CanEditFretLabel);
+                    return (CanEditMark || CanEditFretLabel || CanEditBarre);
                 });
             }
         }
@@ -1047,7 +1059,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 MarkPosition mp = this.MarkPosition;
-                return (null != mp && Diagram.ValidPosition(mp) && !Diagram.HasElementAt(mp));
+                return (null != mp && Diagram.CanAddNewMarkAt(mp));
             }
         }
 
@@ -1116,7 +1128,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 MarkPosition mp = this.MarkPosition;
-                return (null != mp && Diagram.ValidPosition(mp) && Diagram.HasElementAt(mp));
+                return (null != mp && Diagram.CanRemoveMarkAt(mp));
             }
         }
 
@@ -1170,7 +1182,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 FretLabelPosition flp = this.FretLabelPosition;
-                return (null != flp && Diagram.ValidPosition(flp) && !Diagram.HasElementAt(flp));
+                return (null != flp && Diagram.CanAddNewFretLabelAt(flp));
             }
         }
 
@@ -1239,7 +1251,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 FretLabelPosition flp = this.FretLabelPosition;
-                return (null != flp && Diagram.ValidPosition(flp) && Diagram.HasElementAt(flp));
+                return (null != flp && Diagram.CanRemoveFretLabelAt(flp));
             }
         }
 
@@ -1248,6 +1260,129 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 return (FretLabelPosition)Diagram.GetPosition<FretLabelPosition>(CursorX, CursorY);
+            }
+        }
+
+        #endregion
+
+        #region Barres
+
+        public RelayCommand AddBarre
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        BarrePosition bp = this.BarrePosition;
+                        DiagramBarre db = Diagram.NewBarre(bp);
+                        Messenger.Default.Send<ShowDiagramBarreEditorMessage>(new ShowDiagramBarreEditorMessage(db, true, (changed) =>
+                        {
+                            if (changed)
+                            {
+                                Refresh();
+                            }
+                            else
+                            {
+                                Diagram.RemoveBarre(bp);
+                            }
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return CanAddBarre;
+                });
+            }
+        }
+
+        public bool CanAddBarre
+        {
+            get
+            {
+                BarrePosition bp = this.BarrePosition;
+                return (null != bp && Diagram.CanAddNewBarreAt(bp));
+            }
+        }
+
+        public RelayCommand EditBarre
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        DiagramBarre db = (DiagramBarre)Diagram.ElementAt(this.BarrePosition);
+                        Messenger.Default.Send<ShowDiagramBarreEditorMessage>(new ShowDiagramBarreEditorMessage(db, false, (changed) =>
+                        {
+                            if (changed)
+                            {
+                                Refresh();
+                            }
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return CanEditBarre;
+                });
+            }
+        }
+
+        public bool CanEditBarre
+        {
+            get
+            {
+                BarrePosition bp = this.BarrePosition;
+                return (null != bp && Diagram.ValidPosition(bp) && Diagram.HasElementAt(bp));
+            }
+        }
+
+        public RelayCommand RemoveBarre
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        BarrePosition bp = this.BarrePosition;
+                        Diagram.RemoveBarre(bp);
+                        Refresh();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return CanRemoveBarre;
+                });
+            }
+        }
+
+        public bool CanRemoveBarre
+        {
+            get
+            {
+                BarrePosition bp = this.BarrePosition;
+                return (null != bp && Diagram.CanRemoveBarreAt(bp));
+            }
+        }
+
+        internal BarrePosition BarrePosition
+        {
+            get
+            {
+                return (BarrePosition)Diagram.GetPosition<BarrePosition>(CursorX, CursorY);
             }
         }
 
@@ -1298,7 +1433,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 return (CanAddMark || CanEditMark || CanRemoveMark)
-                    || (CanAddFretLabel || CanEditFretLabel || CanRemoveFretLabel);
+                    || (CanAddFretLabel || CanEditFretLabel || CanRemoveFretLabel)
+                    || (CanAddBarre || CanEditBarre || CanRemoveBarre);
             }
         }
 
@@ -1346,7 +1482,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             "EditFretLabel",
             "CanEditFretLabel",
             "RemoveFretLabel",
-            "CanRemoveFretLabel"
+            "CanRemoveFretLabel",
+            "AddBarre",
+            "CanAddBarre",
+            "EditBarre",
+            "CanEditBarre",
+            "RemoveBarre",
+            "CanRemoveBarre"
         };
 
         #endregion

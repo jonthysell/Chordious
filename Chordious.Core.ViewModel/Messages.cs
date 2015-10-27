@@ -261,7 +261,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
     public class ShowDiagramMarkEditorMessage : MessageBase
     {
-        public DiagramMarkEditorViewModel DiagramMarkEditorVM { get; set; }
+        public DiagramMarkEditorViewModel DiagramMarkEditorVM { get; private set; }
 
         private Action<bool> Callback;
 
@@ -283,7 +283,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
     public class ShowDiagramFretLabelEditorMessage : MessageBase
     {
-        public DiagramFretLabelEditorViewModel DiagramFretLabelEditorVM { get; set; }
+        public DiagramFretLabelEditorViewModel DiagramFretLabelEditorVM { get; private set; }
 
         private Action<bool> Callback;
 
@@ -296,6 +296,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public void Process()
         {
             bool saveChanges = DiagramFretLabelEditorVM.ProcessClose();
+            if (null != Callback)
+            {
+                Callback(saveChanges);
+            }
+        }
+    }
+
+    public class ShowDiagramBarreEditorMessage : MessageBase
+    {
+        public DiagramBarreEditorViewModel DiagramBarreEditorVM { get; private set; }
+
+        private Action<bool> Callback;
+
+        public ShowDiagramBarreEditorMessage(DiagramBarre diagrmBarre, bool isNew, Action<bool> callback = null) : base()
+        {
+            DiagramBarreEditorVM = new DiagramBarreEditorViewModel(diagrmBarre, isNew);
+            Callback = callback;
+        }
+
+        public void Process()
+        {
+            bool saveChanges = DiagramBarreEditorVM.ProcessClose();
             if (null != Callback)
             {
                 Callback(saveChanges);

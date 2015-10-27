@@ -87,7 +87,7 @@ namespace com.jonthysell.Chordious.Core
 
             if (startString >= endString)
             {
-                throw new BarrePositionInvalidSpanException(this, startString, endString);
+                throw new BarrePositionInvalidSpanException(startString, endString);
             }
 
             this.StartString = startString;
@@ -97,6 +97,29 @@ namespace com.jonthysell.Chordious.Core
         public override ElementPosition Clone()
         {
             return new BarrePosition(this.Fret, this.StartString, this.EndString);
+        }
+
+        public bool Contains(int fret, int @string)
+        {
+            if (fret < 1)
+            {
+                throw new ArgumentOutOfRangeException("fret");
+            }
+
+            if (@string < 1)
+            {
+                throw new ArgumentOutOfRangeException("string");
+            }
+
+            if (this.Fret == fret)
+            {
+                if (this.StartString <= @string && this.EndString >= @string)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public bool Overlaps(BarrePosition position)
@@ -161,7 +184,7 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public BarrePositionInvalidSpanException(BarrePosition position, int startString, int endString) : base(position)
+        public BarrePositionInvalidSpanException(int startString, int endString) : base()
         {
             this.AttemptedStartString = startString;
             this.AttemptedEndString = endString;

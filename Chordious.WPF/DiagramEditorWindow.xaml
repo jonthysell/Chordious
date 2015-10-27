@@ -2,6 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="{Binding Title}" Height="600" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Icon="{DynamicResource ChordiousIcon}">
+    <Window.InputBindings>
+        <KeyBinding Key="F5" Command="{Binding ObservableDiagram.RenderImage}" />
+    </Window.InputBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -154,6 +157,21 @@
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.RemoveFretLabel}" Header="Remove Fret Label" Visibility="{Binding ObservableDiagram.CanRemoveFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <MenuItem.Icon>
+                                <Image Source="{DynamicResource RemoveIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding ObservableDiagram.AddBarre}" Header="Add Barre" Visibility="{Binding ObservableDiagram.CanAddBarre, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <MenuItem.Icon>
+                                <Image Source="{DynamicResource AddIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding ObservableDiagram.EditBarre}" Header="Edit Barre" Visibility="{Binding ObservableDiagram.CanEditBarre, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <MenuItem.Icon>
+                                <Image Source="{DynamicResource EditIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding ObservableDiagram.RemoveBarre}" Header="Remove Barre" Visibility="{Binding ObservableDiagram.CanRemoveBarre, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
                                 <Image Source="{DynamicResource RemoveIcon16}" />
                             </MenuItem.Icon>

@@ -43,8 +43,7 @@ namespace com.jonthysell.Chordious.Core
             }
             set
             {
-                DiagramElement de = this.Parent.ElementAt(value);
-                if (null != de && de != this)
+                if (!Parent.CanPositionElementAt(this, value))
                 {
                     throw new ElementAlreadyExistsAtPositionException(value);
                 }

@@ -791,7 +791,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 foreach (DiagramBarre barre in this.Barres)
                 {
-                    if (barre.Position.Overlaps((BarrePosition)position))
+                    if (barre.Position.Equals(position))
                     {
                         return barre;
                     }
@@ -799,6 +799,55 @@ namespace com.jonthysell.Chordious.Core
             }
 
             return null;
+        }
+
+        public bool CanPositionElementAt(DiagramElement element, ElementPosition position)
+        {
+            if (null == element)
+            {
+                throw new ArgumentNullException("element");
+            }
+
+            if (null == position)
+            {
+                throw new ArgumentNullException("position");
+            }
+
+            // Warning: Do not use element.Position as this method can be called during
+            // element creation before element.Position is defined
+
+            if (position.GetType() == typeof(MarkPosition))
+            {
+                foreach (DiagramMark mark in this._marks)
+                {
+                    if (mark.Position.Equals(position) && element != mark)
+                    {
+                        return false;
+                    }
+                }
+            }
+            else if (position.GetType() == typeof(FretLabelPosition))
+            {
+                foreach (DiagramFretLabel fretLabel in this.FretLabels)
+                {
+                    if (fretLabel.Position.Equals(position) && element != fretLabel)
+                    {
+                        return false;
+                    }
+                }
+            }
+            else if (position.GetType() == typeof(BarrePosition))
+            {
+                foreach (DiagramBarre barre in this.Barres)
+                {
+                    if (barre.Position.Overlaps((BarrePosition)position) && element != barre)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         public bool HasVisibleTitle()
@@ -867,6 +916,21 @@ namespace com.jonthysell.Chordious.Core
 
         #region New Elements
 
+        public bool CanAddNewMarkAt(MarkPosition position)
+        {
+            if (null == position)
+            {
+                throw new ArgumentNullException("position");
+            }
+
+            if (ValidPosition(position) && !HasElementAt(position))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public DiagramMark NewMark(MarkPosition position, string text = "")
         {
             DiagramMark mark = new DiagramMark(this, position, text);
@@ -881,9 +945,34 @@ namespace com.jonthysell.Chordious.Core
             return mark;
         }
 
+        public bool CanRemoveMarkAt(MarkPosition position)
+        {
+            if (null == position)
+            {
+                throw new ArgumentNullException("position");
+            }
+
+            return HasElementAt(position);
+        }
+
         public void RemoveMark(MarkPosition position)
         {
             this._marks.Remove((DiagramMark)ElementAt(position));
+        }
+
+        public bool CanAddNewFretLabelAt(FretLabelPosition position)
+        {
+            if (null == position)
+            {
+                throw new ArgumentNullException("position");
+            }
+
+            if (ValidPosition(position) && !HasElementAt(position))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public DiagramFretLabel NewFretLabel(FretLabelPosition position, string text)
@@ -900,9 +989,41 @@ namespace com.jonthysell.Chordious.Core
             return fretLabel;
         }
 
+        public bool CanRemoveFretLabelAt(FretLabelPosition position)
+        {
+            if (null == position)
+            {
+                throw new ArgumentNullException("position");
+            }
+
+            return HasElementAt(position);
+        }
+
         public void RemoveFretLabel(FretLabelPosition position)
         {
             this._fretLabels.Remove((DiagramFretLabel)ElementAt(position));
+        }
+
+        public bool CanAddNewBarreAt(BarrePosition position)
+        {
+            if (null == position)
+            {
+                throw new ArgumentNullException("position");
+            }
+
+            if (ValidPosition(position) && !HasElementAt(position))
+            {
+                foreach (DiagramBarre barre in Barres)
+                {
+                    if (barre.Position.Overlaps(position))
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            return false;
         }
 
         public DiagramBarre NewBarre(BarrePosition position)
@@ -917,6 +1038,16 @@ namespace com.jonthysell.Chordious.Core
             DiagramBarre barre = new DiagramBarre(this, xmlReader);
             this._barres.Add(barre);
             return barre;
+        }
+
+        public bool CanRemoveBarreAt(BarrePosition position)
+        {
+            if (null == position)
+            {
+                throw new ArgumentNullException("position");
+            }
+
+            return HasElementAt(position);
         }
 
         public void RemoveBarre(BarrePosition position)
@@ -1027,10 +1158,24 @@ namespace com.jonthysell.Chordious.Core
                 }
                 else if (typeof(T) == typeof(BarrePosition))
                 {
-                    BarrePosition bp = new BarrePosition(fret, @string, NumStrings);
-                    if (ValidPosition(bp))
+                    // Try to find existing barre covering @string
+                    foreach (DiagramBarre barre in Barres)
                     {
-                        return bp;
+                        if (barre.Position.Contains(fret, @string))
+                        {
+                            return barre.Position.Clone();
+                        }
+                    }
+
+                    // Find the largest clear range
+                    int startString = @string;
+                    for (int endString = NumStrings; endString > startString; endString--)
+                    {
+                        BarrePosition bp = new BarrePosition(fret, startString, endString);
+                        if (CanAddNewBarreAt(bp))
+                        {
+                            return bp;
+                        }
                     }
                 }
             }

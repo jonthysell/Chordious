@@ -81,6 +81,14 @@ namespace com.jonthysell.Chordious.Core
         }
         private int _endString;
 
+        public int Width
+        {
+            get
+            {
+                return (EndString - StartString) + 1;
+            }
+        }
+
         public BarrePosition(int fret, int startString, int endString)
         {
             this.Fret = fret;

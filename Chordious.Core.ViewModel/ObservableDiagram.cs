@@ -1276,17 +1276,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         BarrePosition bp = this.BarrePosition;
-                        DiagramBarre db = Diagram.NewBarre(bp);
-                        Messenger.Default.Send<ShowDiagramBarreEditorMessage>(new ShowDiagramBarreEditorMessage(db, true, (changed) =>
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Barre across how many strings?", bp.Width.ToString(), (widthText) =>
                         {
-                            if (changed)
+                            int width = Int32.Parse(widthText);
+                            bp = new BarrePosition(bp.Fret, bp.StartString, bp.StartString + width - 1);
+
+                            DiagramBarre db = Diagram.NewBarre(bp);
+                            Messenger.Default.Send<ShowDiagramBarreEditorMessage>(new ShowDiagramBarreEditorMessage(db, true, (changed) =>
                             {
-                                Refresh();
-                            }
-                            else
-                            {
-                                Diagram.RemoveBarre(bp);
-                            }
+                                if (changed)
+                                {
+                                    Refresh();
+                                }
+                                else
+                                {
+                                    Diagram.RemoveBarre(bp);
+                                }
+                            }));
                         }));
                     }
                     catch (Exception ex)

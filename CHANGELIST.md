@@ -1,5 +1,9 @@
 # Chordious Changelist #
 
+## 1.9.15300.1631 ##
+* Added prompt for barre width when adding barres (can now support shorter barres)
+* Fixed bug where resizing diagram doesn't respect existing barres
+
 ## 1.9.15300.1608 ##
 * New DiagramBarredEditor lets you customize barre styles in the DiagramEditor
 * Added F5 to "refresh" the DiagramEditor

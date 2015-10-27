@@ -715,6 +715,17 @@ namespace com.jonthysell.Chordious.Core
                 }
             }
 
+            // Check through barres
+            foreach (DiagramBarre barre in this.Barres)
+            {
+                if (barre.Position.Fret > newNumFrets ||
+                    barre.Position.StartString > newNumStrings ||
+                    barre.Position.EndString > newNumStrings)
+                {
+                    throw new CantResizeDiagramException();
+                }
+            }
+
             this._numStrings = newNumStrings;
             this._numFrets = newNumFrets;
 
@@ -749,7 +760,7 @@ namespace com.jonthysell.Chordious.Core
             else if (position.GetType() == typeof(BarrePosition))
             {
                 BarrePosition bp = (BarrePosition)position;
-                return (bp.EndString <= this.NumStrings);
+                return (bp.Fret <= this.NumFrets && bp.StartString <= this.NumStrings && bp.EndString <= this.NumStrings);
             }
 
             return false;

@@ -1208,7 +1208,7 @@ namespace com.jonthysell.Chordious.Core
             double fretSpacing = this.GridFretSpacing;
             double stringSpacing = this.GridStringSpacing;
 
-            double stringRange = stringSpacing / 3.0;
+            double stringRange = stringSpacing / 2.0;
 
             // Determine buffered grid edges
             double xGridMin = leftEdge - Math.Min(stringRange, leftMargin / 3.0);

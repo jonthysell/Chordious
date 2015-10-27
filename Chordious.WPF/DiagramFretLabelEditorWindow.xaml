@@ -47,8 +47,8 @@
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
-                        <Label Width="80" Margin="5" Content="Grid Padding"/>
-                        <TextBox Width="70" Margin="5" Text="{Binding GridPadding, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        <Label Width="105" Margin="5" Content="Grid Padding (px)"/>
+                        <TextBox Width="45" Margin="5" Text="{Binding GridPadding, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">

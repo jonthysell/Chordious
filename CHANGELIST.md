@@ -1,5 +1,10 @@
 # Chordious Changelist #
 
+## 1.9.15300.1608 ##
+* New DiagramBarredEditor lets you customize barre styles in the DiagramEditor
+* Added F5 to "refresh" the DiagramEditor
+* Fixed multiple bugs related to creating/editing barres
+
 ## 1.9.15295.1615 ##
 * Added F5 to "refresh" the Finders
 * New DiagramFretLabelEditor lets you customize fret label styles in the DiagramEditor

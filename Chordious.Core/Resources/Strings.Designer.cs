@@ -71,7 +71,7 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot resize the diagram due to existing marks and/or fret labels..
+        ///   Looks up a localized string similar to Cannot resize the diagram due to existing marks, fret labels, and/or barres..
         /// </summary>
         internal static string CantResizeDiagramExceptionMessage {
             get {

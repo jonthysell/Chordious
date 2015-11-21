@@ -1276,7 +1276,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         BarrePosition bp = this.BarrePosition;
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Barre across how many strings?", bp.Width.ToString(), (widthText) =>
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(String.Format("Barre across how many strings? ({0}-{1})", 2, bp.Width), bp.Width.ToString(), (widthText) =>
                         {
                             int width = Int32.Parse(widthText);
                             bp = new BarrePosition(bp.Fret, bp.StartString, bp.StartString + width - 1);

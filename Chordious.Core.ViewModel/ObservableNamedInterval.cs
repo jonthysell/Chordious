@@ -34,12 +34,16 @@ using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class ObservableNamedInterval : ObservableObject
+    public class ObservableNamedInterval : ObservableHeaderObject
     {
         public string Name
         {
             get
             {
+                if (IsHeader)
+                {
+                    return HeaderName;
+                }
                 return NamedInterval.Name;
             }
         }
@@ -48,6 +52,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
+                if (IsHeader)
+                {
+                    return HeaderName;
+                }
                 return NamedInterval.LongName;
             }
         }
@@ -78,7 +86,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         internal NamedInterval NamedInterval { get; private set; }
 
-        public ObservableNamedInterval(NamedInterval namedInterval)
+        public ObservableNamedInterval(NamedInterval namedInterval) : base()
         {
             if (null == namedInterval)
             {
@@ -86,5 +94,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             NamedInterval = namedInterval;
         }
+
+        public ObservableNamedInterval(string headerName) : base(headerName) { }
     }
 }

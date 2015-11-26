@@ -46,6 +46,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public override string DefaultNamedIntervalHeader
+        {
+            get
+            {
+                return "Default Scales";
+            }
+        }
+
+        public override string UserNamedIntervalHeader
+        {
+            get
+            {
+                return "User Scales";
+            }
+        }
+
         public override RelayCommand AddNamedInterval
         {
             get
@@ -56,15 +72,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Messenger.Default.Send<ShowScaleEditorMessage>(new ShowScaleEditorMessage(true, (name, intervals) =>
                         {
-                            try
-                            {
-                                Scale addedScale = AppVM.UserConfig.Scales.Add(name, intervals);
-                                Refresh(addedScale);
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionUtils.HandleException(ex);
-                            }
+                            Scale addedScale = AppVM.UserConfig.Scales.Add(name, intervals);
+                            Refresh(addedScale);
                         }));
                     }
                     catch (Exception ex)
@@ -85,16 +94,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Messenger.Default.Send<ShowScaleEditorMessage>(new ShowScaleEditorMessage(false, (name, intervals) =>
                         {
-                            try
-                            {
-                                SelectedNamedInterval.NamedInterval.Name = name;
-                                SelectedNamedInterval.NamedInterval.Intervals = intervals;
-                                Refresh(SelectedNamedInterval.NamedInterval);
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionUtils.HandleException(ex);
-                            }
+                            SelectedNamedInterval.NamedInterval.Update(name, intervals);
+                            Refresh(SelectedNamedInterval.NamedInterval);
                         }, SelectedNamedInterval.Name, SelectedNamedInterval.Intervals));
                     }
                     catch (Exception ex)
@@ -108,6 +109,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public ScaleManagerViewModel() : base(AppViewModel.Instance.GetScales, AppViewModel.Instance.UserConfig.Scales.Remove) { }
+        public ScaleManagerViewModel() : base(AppViewModel.Instance.GetDefaultScales, AppViewModel.Instance.GetUserScales, AppViewModel.Instance.UserConfig.Scales.Remove) { }
     }
 }

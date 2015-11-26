@@ -31,44 +31,26 @@ namespace com.jonthysell.Chordious.Core
 {
     public class Scale : NamedInterval
     {
-        public ScaleSet Parent
+        internal Scale(ScaleSet parent, string name, int[] intervals) : base(parent)
         {
-            get
+            if (null == parent)
             {
-                return _parent;
+                throw new ArgumentNullException("parent");
             }
-            private set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-                _parent = value;
-            }
-        }
-        private ScaleSet _parent;
 
-        public override string Level
-        {
-            get
-            {
-                return Parent.Level;
-            }
-        }
-
-        private Scale(ScaleSet parent)
-        {
-            this.Parent = parent;
-        }
-
-        internal Scale(ScaleSet parent, string name, int[] intervals) : this(parent)
-        {
-            this.Name = name;            
+            this.Name = name;
             this.Intervals = intervals;
+
+            this.UpdateParent = true;
         }
 
-        internal Scale(ScaleSet parent, XmlReader xmlReader) : this(parent)
+        internal Scale(ScaleSet parent, XmlReader xmlReader) : base(parent)
         {
+            if (null == parent)
+            {
+                throw new ArgumentNullException("parent");
+            }
+
             if (null == xmlReader)
             {
                 throw new ArgumentNullException("xmlReader");
@@ -78,6 +60,8 @@ namespace com.jonthysell.Chordious.Core
             {
                 ReadBase(xmlReader, "scale");
             }
+
+            this.UpdateParent = true;
         }
 
         public void Write(XmlWriter xmlWriter)

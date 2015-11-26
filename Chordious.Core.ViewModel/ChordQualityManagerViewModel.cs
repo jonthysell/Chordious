@@ -46,6 +46,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public override string DefaultNamedIntervalHeader
+        {
+            get
+            {
+                return "Default Qualities";
+            }
+        }
+
+        public override string UserNamedIntervalHeader
+        {
+            get
+            {
+                return "User Qualities";
+            }
+        }
+
         public override RelayCommand AddNamedInterval
         {
             get
@@ -56,18 +72,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Messenger.Default.Send<ShowChordQualityEditorMessage>(new ShowChordQualityEditorMessage(true, (name, abbreviation, intervals) =>
                         {
-                            try
-                            {
-                                NamedInterval ni = null;
-
-                                AppVM.UserConfig.ChordQualities.Add(name, abbreviation, intervals);
-
-                                Refresh(ni);
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionUtils.HandleException(ex);
-                            }
+                            ChordQuality addedChordQuality = AppVM.UserConfig.ChordQualities.Add(name, abbreviation, intervals);
+                            Refresh(addedChordQuality);
                         }));
                     }
                     catch (Exception ex)
@@ -88,17 +94,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Messenger.Default.Send<ShowChordQualityEditorMessage>(new ShowChordQualityEditorMessage(false, (name, abbreviation, intervals) =>
                         {
-                            try
-                            {
-                                SelectedNamedInterval.NamedInterval.Name = name;
-                                ((ChordQuality)(SelectedNamedInterval.NamedInterval)).Abbreviation = abbreviation;
-                                SelectedNamedInterval.NamedInterval.Intervals = intervals;
-                                Refresh(SelectedNamedInterval.NamedInterval);
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionUtils.HandleException(ex);
-                            }
+                            ChordQuality cq = (ChordQuality)(SelectedNamedInterval.NamedInterval);
+                            cq.Update(name, abbreviation, intervals);
+                            Refresh(SelectedNamedInterval.NamedInterval);
                         }, SelectedNamedInterval.Name, ((ChordQuality)(SelectedNamedInterval.NamedInterval)).Abbreviation, SelectedNamedInterval.Intervals));
                     }
                     catch (Exception ex)
@@ -112,6 +110,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public ChordQualityManagerViewModel() : base(AppViewModel.Instance.GetChordQualities, AppViewModel.Instance.UserConfig.ChordQualities.Remove) { }
+        public ChordQualityManagerViewModel() : base(AppViewModel.Instance.GetDefaultChordQualities, AppViewModel.Instance.GetUserChordQualities, AppViewModel.Instance.UserConfig.ChordQualities.Remove) { }
     }
 }

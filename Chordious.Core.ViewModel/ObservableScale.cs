@@ -45,5 +45,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
 
         public ObservableScale(Scale scale) : base(scale) { }
+
+        public ObservableScale(string headerName) : base(headerName) { }
     }
 }

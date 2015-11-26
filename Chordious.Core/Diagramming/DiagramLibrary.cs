@@ -219,7 +219,9 @@ namespace com.jonthysell.Chordious.Core
                         throw new DiagramCollectionNameAlreadyExistsException(this, path, newName);
                     }
 
+                    _nodes.Remove(node);
                     node.Name = newName;
+                    AddNode(node);
                 }
                 else
                 {
@@ -429,7 +431,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new DiagramCollectionNameAlreadyExistsException(this, path, name);
             }
 
-            _nodes.Add(node);
+            ListUtils.SortedInsert<DiagramLibraryNode>(_nodes, node);
         }
     }
 

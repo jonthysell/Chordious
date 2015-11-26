@@ -161,8 +161,23 @@ namespace com.jonthysell.Chordious.Core
             }
 
             Instrument instrument = new Instrument(this, name, numStrings);
-            _instruments.Add(instrument);
+            Add(instrument);
             return instrument;
+        }
+
+        private void Add(Instrument instrument)
+        {
+            if (null == instrument)
+            {
+                throw new ArgumentNullException("instrument");
+            }
+
+            if (instrument.Parent != this)
+            {
+                throw new ArgumentOutOfRangeException("instrument");
+            }
+
+            ListUtils.SortedInsert<Instrument>(_instruments, instrument);
         }
 
         public void Remove(string name)
@@ -173,6 +188,24 @@ namespace com.jonthysell.Chordious.Core
             }
 
             _instruments.Remove(Get(name));
+        }
+
+        internal void Resort(Instrument instrument)
+        {
+            if (null == instrument)
+            {
+                throw new ArgumentNullException("instrument");
+            }
+
+            if (this.ReadOnly)
+            {
+                throw new ObjectIsReadOnlyException(this);
+            }
+
+            if (_instruments.Remove(instrument))
+            {
+                Add(instrument);
+            }
         }
 
         public void CopyFrom(InstrumentSet instrumentSet)
@@ -212,7 +245,7 @@ namespace com.jonthysell.Chordious.Core
                     if (xmlReader.IsStartElement() && xmlReader.Name == "instrument")
                     {
                         Instrument instrument = new Instrument(this, xmlReader.ReadSubtree());
-                        _instruments.Add(instrument);
+                        Add(instrument);
                     }
                 } while (xmlReader.Read());
             }

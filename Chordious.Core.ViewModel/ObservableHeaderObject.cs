@@ -1,5 +1,5 @@
 ﻿// 
-// ObservableChordQuality.cs
+// ObservableHeaderObject.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -28,32 +28,42 @@ using System;
 using System.Collections.ObjectModel;
 
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-
-using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class ObservableChordQuality : ObservableNamedInterval
+    public abstract class ObservableHeaderObject : ObservableObject
     {
-        public string Abbreviation
+        protected string HeaderName
         {
             get
             {
-                return ChordQuality.Abbreviation;
+                return _headerName;
+            }
+            private set
+            {
+                if (String.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentNullException();
+                }
+                _headerName = value.Trim();
+                RaisePropertyChanged("HeaderName");
             }
         }
+        private string _headerName = null;
 
-        internal ChordQuality ChordQuality
+        public bool IsHeader
         {
             get
             {
-                return NamedInterval as ChordQuality;
+                return !String.IsNullOrWhiteSpace(_headerName);
             }
         }
 
-        public ObservableChordQuality(ChordQuality chordQuality) : base(chordQuality) { }
+        public ObservableHeaderObject() : base() { }
 
-        public ObservableChordQuality(string headerName) : base(headerName) { }
+        public ObservableHeaderObject(string headerName)
+        {
+            HeaderName = headerName;
+        }
     }
 }

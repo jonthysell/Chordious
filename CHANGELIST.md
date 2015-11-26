@@ -1,5 +1,10 @@
 # Chordious Changelist #
 
+## 1.9.15330.0833 ##
+* Custom user instruments, tunings, chord qualities, and scales are all now clearly separated from the default built-in ones in editors
+* Lists of such items are now all sorted alphabetically
+* You can now have tunings, chord qualities, and scales with the same names but different other attributes (ie. two different Open G tunings, two different Dominant 11th variants)
+
 ## 1.9.15300.1631 ##
 * Added prompt for barre width when adding barres (can now support shorter barres)
 * Fixed bug where resizing diagram doesn't respect existing barres

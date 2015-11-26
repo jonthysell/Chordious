@@ -109,12 +109,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
+                        Callback(Name, RootNotes);
+
                         Accepted = true;
                         if (null != RequestClose)
                         {
                             RequestClose();
                         }
-                        Callback(Name, RootNotes);
                     }
                     catch (Exception ex)
                     {
@@ -205,12 +206,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             TuningEditorViewModel tuningEditorVM = new TuningEditorViewModel(false, (name, notes) =>
             {
-                tuning.Tuning.Name = name;
+                FullNote[] rootNotes = new FullNote[notes.Count];
 
                 for (int i = 0; i < notes.Count; i++)
                 {
-                    tuning.Tuning.RootNotes[i] = notes[i].FullNote;
+                    rootNotes[i] = notes[i].FullNote;
                 }
+
+                tuning.Tuning.Update(name, rootNotes);
             });
 
             tuningEditorVM.Name = tuning.Name;

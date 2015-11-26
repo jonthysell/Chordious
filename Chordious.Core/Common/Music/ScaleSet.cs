@@ -31,122 +31,36 @@ using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class ScaleSet : IReadOnly, IEnumerable<Scale>
+    public class ScaleSet : NamedIntervalSet
     {
-        public bool ReadOnly { get; private set; }
-
-        public string Level
+        public new ScaleSet Parent
         {
             get
             {
-                return this._level;
+                return (ScaleSet)base.Parent;
             }
             set
             {
-                if (StringUtils.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentNullException();
-                }
-
-                if (this.ReadOnly)
-                {
-                    throw new ObjectIsReadOnlyException(this);
-                }
-
-                this._level = value;
-            }
-        }
-        private string _level;
-
-        public ScaleSet Parent
-        {
-            get
-            {
-                return this._parent;
-            }
-            set
-            {
-                if (this.ReadOnly)
-                {
-                    throw new ObjectIsReadOnlyException(this);
-                }
-
-                this._parent = value;
-            }
-        }
-        private ScaleSet _parent;
-
-        private List<Scale> _scales;
-
-        internal ScaleSet(string level)
-        {
-            Level = level;
-            ReadOnly = false;
-            _scales = new List<Scale>();
-        }
-
-        internal ScaleSet(ScaleSet parent, string level) : this(level)
-        {
-            if (null == parent)
-            {
-                throw new ArgumentNullException("parent");
-            }
-
-            Parent = parent;
-        }
-
-        public void MarkAsReadOnly()
-        {
-            ReadOnly = true;
-            foreach (Scale s in _scales)
-            {
-                s.MarkAsReadOnly();
+                base.Parent = value;
             }
         }
 
-        public IEnumerator<Scale> GetEnumerator()
+        internal ScaleSet(string level) : base(level) { }
+
+        internal ScaleSet(ScaleSet parent, string level) : base(parent, level) { }
+
+        public new Scale Get(string longName)
         {
-            foreach (Scale scale in _scales)
-            {
-                yield return scale;
-            }
+            return (Scale)(base.Get(longName));
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        public bool TryGet(string longName, out Scale scale)
         {
-            return this.GetEnumerator();
-        }
-
-        public Scale Get(string name)
-        {
-            if (StringUtils.IsNullOrWhiteSpace(name))
+            NamedInterval namedInterval;
+            if (base.TryGet(longName, out namedInterval))
             {
-                throw new ArgumentNullException("name");
-            }
-
-            Scale scale;
-            if (TryGet(name, out scale))
-            {
-                return scale;
-            }
-
-            throw new ScaleNotFoundException(this, name);
-        }
-
-        public bool TryGet(string name, out Scale scale)
-        {
-            if (StringUtils.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentNullException("name");
-            }
-
-            foreach (Scale s in _scales)
-            {
-                if (s.Name == name)
-                {
-                    scale = s;
-                    return true;
-                }
+                scale = (Scale)namedInterval;
+                return true;
             }
 
             scale = null;
@@ -161,18 +75,8 @@ namespace com.jonthysell.Chordious.Core
             }
 
             Scale scale = new Scale(this, name, intervals);
-            _scales.Add(scale);
+            Add(scale);
             return scale;
-        }
-
-        public void Remove(string name)
-        {
-            if (this.ReadOnly)
-            {
-                throw new ObjectIsReadOnlyException(this);
-            }
-
-            _scales.Remove(Get(name));
         }
 
         public void CopyFrom(ScaleSet scaleSet)
@@ -185,8 +89,9 @@ namespace com.jonthysell.Chordious.Core
             foreach (Scale sourceScale in scaleSet)
             {
                 bool found = false;
-                foreach (Scale scale in _scales)
+                foreach (NamedInterval namedInterval in _namedIntervals)
                 {
+                    Scale scale = (Scale)namedInterval;
                     if (sourceScale.Equals(scale))
                     {
                         found = true;
@@ -202,7 +107,7 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public void Read(XmlReader xmlReader)
+        public override void Read(XmlReader xmlReader)
         {
             if (null == xmlReader)
             {
@@ -216,69 +121,24 @@ namespace com.jonthysell.Chordious.Core
                     if (xmlReader.IsStartElement() && xmlReader.Name == "scale")
                     {
                         Scale scale = new Scale(this, xmlReader.ReadSubtree());
-                        _scales.Add(scale);
+                        Add(scale);
                     }
                 } while (xmlReader.Read());
             }
         }
 
-        public void Write(XmlWriter xmlWriter)
+        public override void Write(XmlWriter xmlWriter)
         {
             if (null == xmlWriter)
             {
                 throw new ArgumentNullException("xmlWriter");
             }
 
-            foreach (Scale scale in _scales)
+            foreach (NamedInterval namedInterval in _namedIntervals)
             {
+                Scale scale = (Scale)namedInterval;
                 scale.Write(xmlWriter);
             }
         }
-    }
-
-    public abstract class ScaleSetException : ChordiousException
-    {
-        public ScaleSet ScaleSet { get; private set; }
-
-        public ScaleSetException(ScaleSet scaleSet) : base()
-        {
-            this.ScaleSet = scaleSet;
-        }
-    }
-
-    public abstract class TargetScaleException : ScaleSetException
-    {
-        public string Name { get; private set; }
-
-        public TargetScaleException(ScaleSet scaleSet, string name) : base(scaleSet)
-        {
-            this.Name = name;
-        }
-    }
-
-    public class ScaleNotFoundException : TargetScaleException
-    {
-        public override string Message
-        {
-            get
-            {
-                return String.Format(Resources.Strings.ScaleNotFoundExceptionMessage, Name);
-            }
-        }
-
-        public ScaleNotFoundException(ScaleSet scaleSet, string name) : base(scaleSet, name) { }
-    }
-
-    public class ScaleNameAlreadyExistsException : TargetScaleException
-    {
-        public override string Message
-        {
-            get
-            {
-                return String.Format(Resources.Strings.ScaleNameAlreadyExistsMessage, Name);
-            }
-        }
-
-        public ScaleNameAlreadyExistsException(ScaleSet scaleSet, string name) : base(scaleSet, name) { }
     }
 }

@@ -80,13 +80,13 @@ namespace com.jonthysell.Chordious.Core
 
         public ChordQuality GetChordQuality()
         {
-            string name = this.Settings[Prefix + "chordquality"];
+            string longName = this.Settings[Prefix + "chordquality"];
 
             string level = this.ChordQualityLevel;
 
             if (null != this._cachedChordQuality)
             {
-                if (this._cachedChordQuality.Name == name && this._cachedChordQuality.Level == level)
+                if (this._cachedChordQuality.LongName == longName && this._cachedChordQuality.Level == level)
                 {
                     return this._cachedChordQuality;
                 }
@@ -98,13 +98,18 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (qualities.Level == level)
                 {
-                    this._cachedChordQuality = qualities.Get(name);
-                    return _cachedChordQuality;
+                    ChordQuality cq;
+                    if (qualities.TryGet(longName, out cq))
+                    {
+                        this._cachedChordQuality = cq;
+                        break;
+                    }
                 }
+
                 qualities = qualities.Parent;
             }
 
-            throw new LevelNotFoundException(level);
+            return this._cachedChordQuality;
         }
 
         public void SetTarget(Note rootNote, ChordQuality chordQuality)
@@ -115,7 +120,7 @@ namespace com.jonthysell.Chordious.Core
             }
 
             this.Settings[Prefix + "rootnote"] = NoteUtils.ToString(rootNote);
-            this.Settings[Prefix + "chordquality"] = chordQuality.Name;
+            this.Settings[Prefix + "chordquality"] = chordQuality.LongName;
             this.ChordQualityLevel = chordQuality.Level;
 
             this._cachedChordQuality = chordQuality;

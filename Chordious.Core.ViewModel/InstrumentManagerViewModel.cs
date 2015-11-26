@@ -103,19 +103,79 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private ObservableInstrument _instrument;
 
-        public ObservableCollection<ObservableInstrument> Instruments
+        public int SelectedDefaultInstrumentIndex
         {
             get
             {
-                return _instruments;
+                return _selectedDefaultInstrumentIndex;
+            }
+            set
+            {
+                if (value < 0 || value >= DefaultInstruments.Count)
+                {
+                    _selectedDefaultInstrumentIndex = -1;
+                }
+                else
+                {
+                    _selectedDefaultInstrumentIndex = value;
+                    SelectedInstrument = DefaultInstruments[_selectedDefaultInstrumentIndex];
+                    SelectedUserInstrumentIndex = -1; // Unselect user instrument
+                }
+                RaisePropertyChanged("SelectedDefaultInstrumentIndex");
+            }
+        }
+        private int _selectedDefaultInstrumentIndex = -1;
+
+        public ObservableCollection<ObservableInstrument> DefaultInstruments
+        {
+            get
+            {
+                return _defaultInstruments;
             }
             private set
             {
-                _instruments = value;
-                RaisePropertyChanged("Instruments");
+                _defaultInstruments = value;
+                RaisePropertyChanged("DefaultInstruments");
             }
         }
-        private ObservableCollection<ObservableInstrument> _instruments;
+        private ObservableCollection<ObservableInstrument> _defaultInstruments;
+
+        public int SelectedUserInstrumentIndex
+        {
+            get
+            {
+                return _selectedUserInstrumentIndex;
+            }
+            set
+            {
+                if (value < 0 || value >= UserInstruments.Count)
+                {
+                    _selectedUserInstrumentIndex = -1;
+                }
+                else
+                {
+                    _selectedUserInstrumentIndex = value;
+                    SelectedInstrument = UserInstruments[_selectedUserInstrumentIndex];
+                    SelectedDefaultInstrumentIndex = -1; // Unselect default instrument
+                }
+                RaisePropertyChanged("SelectedUserInstrumentIndex");
+            }
+        }
+        private int _selectedUserInstrumentIndex = -1;
+
+        public ObservableCollection<ObservableInstrument> UserInstruments
+        {
+            get
+            {
+                return _userInstruments;
+            }
+            private set
+            {
+                _userInstruments = value;
+                RaisePropertyChanged("UserInstruments");
+            }
+        }
+        private ObservableCollection<ObservableInstrument> _userInstruments;
 
         public bool TuningIsSelected
         {
@@ -176,15 +236,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Messenger.Default.Send<ShowInstrumentEditorMessage>(new ShowInstrumentEditorMessage(true, (name, numStrings) =>
                         {
-                            try
-                            {
-                                Instrument addedInstrument = AppVM.UserConfig.Instruments.Add(name, numStrings);
-                                Refresh(addedInstrument);
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionUtils.HandleException(ex);
-                            }
+                            Instrument addedInstrument = AppVM.UserConfig.Instruments.Add(name, numStrings);
+                            Refresh(addedInstrument);
                         }));
                     }
                     catch (Exception ex)
@@ -205,15 +258,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Messenger.Default.Send<ShowInstrumentEditorMessage>(new ShowInstrumentEditorMessage(false, (name, numStrings) =>
                         {
-                            try
-                            {
-                                SelectedInstrument.Instrument.Name = name;
-                                Refresh(SelectedInstrument.Instrument);
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionUtils.HandleException(ex);
-                            }
+                            SelectedInstrument.Instrument.Name = name;
+                            Refresh(SelectedInstrument.Instrument);
                         }, SelectedInstrument.Name, SelectedInstrument.NumStrings));
                     }
                     catch (Exception ex)
@@ -330,7 +376,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             {
                                 if (confirm)
                                 {
-                                    SelectedInstrument.Instrument.Tunings.Remove(SelectedTuning.Name);
+                                    SelectedInstrument.Instrument.Tunings.Remove(SelectedTuning.Tuning);
                                     Refresh(SelectedInstrument.Instrument);
                                 }
                             }
@@ -358,7 +404,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         internal void Refresh(Instrument selectedInstrument = null, Tuning selectedTuning = null)
         {
-            Instruments = AppVM.GetInstruments();
+            DefaultInstruments = AppVM.GetDefaultInstruments();
+            UserInstruments = AppVM.GetUserInstruments();
 
             if (null == selectedInstrument)
             {
@@ -366,12 +413,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             else
             {
-                foreach (ObservableInstrument oi in Instruments)
+                foreach (ObservableInstrument oi in UserInstruments)
                 {
                     if (oi.Instrument == selectedInstrument)
                     {
                         SelectedInstrument = oi;
                         break;
+                    }
+                }
+
+                if (null != SelectedInstrument)
+                {
+                    foreach (ObservableInstrument oi in DefaultInstruments)
+                    {
+                        if (oi.Instrument == selectedInstrument)
+                        {
+                            SelectedInstrument = oi;
+                            break;
+                        }
                     }
                 }
 

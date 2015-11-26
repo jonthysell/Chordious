@@ -37,7 +37,7 @@ using com.jonthysell.Chordious.Core;
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public delegate IEnumerable<ObservableNamedInterval> GetNamedIntervals();
-    public delegate void DeleteNamedInterval(string name);
+    public delegate bool DeleteNamedInterval(NamedInterval namedInterval);
 
     public abstract class NamedIntervalManagerViewModel : ViewModelBase
     {
@@ -50,6 +50,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
 
         public abstract string Title { get; }
+
+        public abstract string DefaultNamedIntervalHeader { get; }
+
+        public abstract string UserNamedIntervalHeader { get; }
 
         public bool NamedIntervalIsSelected
         {
@@ -77,19 +81,79 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private ObservableNamedInterval _namedInterval;
 
-        public ObservableCollection<ObservableNamedInterval> NamedIntervals
+        public int SelectedDefaultNamedIntervalIndex
         {
             get
             {
-                return _namedIntervals;
+                return _selectedDefaultNamedIntervalIndex;
+            }
+            set
+            {
+                if (value < 0 || value >= DefaultNamedIntervals.Count)
+                {
+                    _selectedDefaultNamedIntervalIndex = -1;
+                }
+                else
+                {
+                    _selectedDefaultNamedIntervalIndex = value;
+                    SelectedNamedInterval = DefaultNamedIntervals[_selectedDefaultNamedIntervalIndex];
+                    SelectedUserNamedIntervalIndex = -1; // Unselect user named interval
+                }
+                RaisePropertyChanged("SelectedDefaultNamedIntervalIndex");
+            }
+        }
+        private int _selectedDefaultNamedIntervalIndex = -1;
+
+        public ObservableCollection<ObservableNamedInterval> DefaultNamedIntervals
+        {
+            get
+            {
+                return _defaultNamedIntervals;
             }
             private set
             {
-                _namedIntervals = value;
-                RaisePropertyChanged("NamedIntervals");
+                _defaultNamedIntervals = value;
+                RaisePropertyChanged("DefaultNamedIntervals");
             }
         }
-        private ObservableCollection<ObservableNamedInterval> _namedIntervals;
+        private ObservableCollection<ObservableNamedInterval> _defaultNamedIntervals;
+
+        public int SelectedUserNamedIntervalIndex
+        {
+            get
+            {
+                return _selectedUserNamedIntervalIndex;
+            }
+            set
+            {
+                if (value < 0 || value >= UserNamedIntervals.Count)
+                {
+                    _selectedUserNamedIntervalIndex = -1;
+                }
+                else
+                {
+                    _selectedUserNamedIntervalIndex = value;
+                    SelectedNamedInterval = UserNamedIntervals[_selectedUserNamedIntervalIndex];
+                    SelectedDefaultNamedIntervalIndex = -1; // Unselect default named interval
+                }
+                RaisePropertyChanged("SelectedUserNamedIntervalIndex");
+            }
+        }
+        private int _selectedUserNamedIntervalIndex = -1;
+
+        public ObservableCollection<ObservableNamedInterval> UserNamedIntervals
+        {
+            get
+            {
+                return _userNamedIntervals;
+            }
+            private set
+            {
+                _userNamedIntervals = value;
+                RaisePropertyChanged("UserNamedIntervals");
+            }
+        }
+        private ObservableCollection<ObservableNamedInterval> _userNamedIntervals;
 
         public abstract RelayCommand AddNamedInterval { get; }
 
@@ -103,13 +167,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete \"{0}\". This cannot be undone. Do you want to continue?", SelectedNamedInterval.Name), (confirm) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete \"{0}\". This cannot be undone. Do you want to continue?", SelectedNamedInterval.LongName), (confirm) =>
                         {
                             try
                             {
                                 if (confirm)
                                 {
-                                    _deleteNamedInterval(SelectedNamedInterval.Name);
+                                    _deleteUserNamedInterval(SelectedNamedInterval.NamedInterval);
                                     Refresh();
                                 }
                             }
@@ -130,20 +194,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        private GetNamedIntervals _getNamedIntervals;
+        private GetNamedIntervals _getUserNamedIntervals;
+        private GetNamedIntervals _getDefaultNamedIntervals;
 
-        private DeleteNamedInterval _deleteNamedInterval;
+        private DeleteNamedInterval _deleteUserNamedInterval;
 
-        public NamedIntervalManagerViewModel(GetNamedIntervals getNamedIntervals, DeleteNamedInterval deleteNamedInterval) : base()
+        public NamedIntervalManagerViewModel(GetNamedIntervals getDefaultNamedIntervals, GetNamedIntervals getUserNamedIntervals, DeleteNamedInterval deleteUserNamedInterval): base()
         {
-            _getNamedIntervals = getNamedIntervals;
-            _deleteNamedInterval = deleteNamedInterval;
+            _getDefaultNamedIntervals = getDefaultNamedIntervals;
+            _getUserNamedIntervals = getUserNamedIntervals;
+            _deleteUserNamedInterval = deleteUserNamedInterval;
             Refresh();
         }
 
         internal void Refresh(NamedInterval selectedNamedInterval = null)
         {
-            NamedIntervals = new ObservableCollection<ObservableNamedInterval>(_getNamedIntervals());
+            DefaultNamedIntervals = new ObservableCollection<ObservableNamedInterval>(_getDefaultNamedIntervals());
+            UserNamedIntervals = new ObservableCollection<ObservableNamedInterval>(_getUserNamedIntervals());
 
             if (null == selectedNamedInterval)
             {
@@ -151,7 +218,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             else
             {
-                foreach (ObservableNamedInterval oni in NamedIntervals)
+                foreach (ObservableNamedInterval oni in UserNamedIntervals)
+                {
+                    if (oni.NamedInterval == selectedNamedInterval)
+                    {
+                        SelectedNamedInterval = oni;
+                        break;
+                    }
+                }
+
+                foreach (ObservableNamedInterval oni in DefaultNamedIntervals)
                 {
                     if (oni.NamedInterval == selectedNamedInterval)
                     {

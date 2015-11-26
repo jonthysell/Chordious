@@ -48,7 +48,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                string title = "Instrument";
+                string title = "User Instrument";
 
                 title = (IsNew ? "Add " : "Edit ") + title;
 
@@ -121,11 +121,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
+                        Callback(Name, NumStrings);
                         if (null != RequestClose)
                         {
                             RequestClose();
                         }
-                        Callback(Name, NumStrings);
                     }
                     catch (Exception ex)
                     {

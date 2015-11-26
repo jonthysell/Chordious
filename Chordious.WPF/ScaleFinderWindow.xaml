@@ -35,6 +35,17 @@
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Margin="5" Content="Instrument" FontWeight="Bold" />
             <ComboBox Grid.Column="1" ItemsSource="{Binding Instruments}" SelectedItem="{Binding SelectedInstrument}" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}">
+                <ComboBox.ItemContainerStyle>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding ="{Binding IsHeader}" Value="True">
+                                <Setter Property="ComboBoxItem.Focusable" Value="False"/>
+                                <Setter Property="ComboBoxItem.IsEnabled" Value="False"/>
+                                <Setter Property="ComboBoxItem.FontWeight" Value="Bold"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.ItemContainerStyle>
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" />
@@ -54,9 +65,20 @@
             <ComboBox Grid.Column="6" ItemsSource="{Binding RootNotes}" SelectedItem="{Binding SelectedRootNote}" Width="50" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}"/>
             <Label Grid.Column="7" Margin="5" Content="Scale" FontWeight="Bold" />
             <ComboBox Grid.Column="8" ItemsSource="{Binding Scales}" SelectedItem="{Binding SelectedScale}" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}">
+                <ComboBox.ItemContainerStyle>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding ="{Binding IsHeader}" Value="True">
+                                <Setter Property="ComboBoxItem.Focusable" Value="False"/>
+                                <Setter Property="ComboBoxItem.IsEnabled" Value="False"/>
+                                <Setter Property="ComboBoxItem.FontWeight" Value="Bold"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.ItemContainerStyle>
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding LongName}" />
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>

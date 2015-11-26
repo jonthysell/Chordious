@@ -42,7 +42,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 string title = (IsNew ? "Add " : "Edit ");
 
-                title += "Chord Quality";
+                title += "User Chord Quality";
 
                 return title;
             }
@@ -71,11 +71,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
+                        Callback(Name, Abbreviation, GetIntervalArray());
                         if (null != RequestClose)
                         {
                             RequestClose();
                         }
-                        Callback(Name, Abbreviation, GetIntervalArray());
                     }
                     catch (Exception ex)
                     {

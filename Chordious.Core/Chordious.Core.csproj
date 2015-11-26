@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Finding\FinderOptions.cs" />
+    <Compile Include="Common\ListUtils.cs" />
+    <Compile Include="Common\Music\NamedIntervalSet.cs" />
     <Compile Include="Common\Music\ScaleSet.cs" />
     <Compile Include="Common\Music\ChordQualitySet.cs" />
     <Compile Include="ChordFinding\ChordFinderStyle.cs" />

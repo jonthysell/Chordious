@@ -29,7 +29,7 @@ using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class Tuning : IReadOnly
+    public class Tuning : IReadOnly, IComparable
     {
         public bool ReadOnly { get; private set; }
 
@@ -66,7 +66,7 @@ namespace com.jonthysell.Chordious.Core
             }
             set
             {
-                if (String.IsNullOrEmpty(value))
+                if (StringUtils.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException();
                 }
@@ -76,13 +76,19 @@ namespace com.jonthysell.Chordious.Core
                     throw new ObjectIsReadOnlyException(this);
                 }
 
-                Tuning tuning;
-                if (Parent.TryGet(value, out tuning) && this != tuning)
-                {
-                    throw new TuningNameAlreadyExistsException(Parent, value);
-                }
+                value = value.Trim();
 
+                string oldValue = _name;
                 _name = value;
+
+                // Resort with parent
+                if (UpdateParent)
+                {
+                    Parent.Resort(this, () =>
+                    {
+                        _name = oldValue;
+                    });
+                }
             }
         }
         private string _name;
@@ -127,10 +133,22 @@ namespace com.jonthysell.Chordious.Core
                     throw new ObjectIsReadOnlyException(this);
                 }
 
+                FullNote[] oldValue = _rootNotes;
                 _rootNotes = value;
+
+                // Resort with parent
+                if (UpdateParent)
+                {
+                    Parent.Resort(this, () =>
+                    {
+                        _rootNotes = oldValue;
+                    });
+                }
             }
         }
         private FullNote[] _rootNotes;
+
+        private bool UpdateParent = false;
 
         private Tuning(TuningSet parent)
         {
@@ -147,6 +165,8 @@ namespace com.jonthysell.Chordious.Core
         {
             this.Name = name;
             this.RootNotes = rootNotes;
+
+            this.UpdateParent = true;
         }
 
         internal Tuning(TuningSet parent, XmlReader xmlReader) : this(parent)
@@ -180,6 +200,46 @@ namespace com.jonthysell.Chordious.Core
                     this.RootNotes = rootNotes;
                 }
             }
+
+            this.UpdateParent = true;
+        }
+
+        public void Update(string name, FullNote[] rootNotes)
+        {
+            if (StringUtils.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("name");
+            }
+
+            if (null == rootNotes)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (rootNotes.Length != Parent.Instrument.NumStrings)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            if (this.ReadOnly)
+            {
+                throw new ObjectIsReadOnlyException(this);
+            }
+
+            this.UpdateParent = false;
+
+            string oldName = this.Name;
+            FullNote[] oldRootNotes = this.RootNotes;
+
+            this.Name = name;
+            this.RootNotes = rootNotes;
+
+            Parent.Resort(this, () =>
+            {
+                this.Name = oldName;
+                this.RootNotes = oldRootNotes;
+                UpdateParent = true;
+            });
         }
 
         public void MarkAsReadOnly()
@@ -240,6 +300,22 @@ namespace com.jonthysell.Chordious.Core
             xmlWriter.WriteAttributeString("notes", rootNotes);
 
             xmlWriter.WriteEndElement();
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (null == obj)
+            {
+                throw new ArgumentNullException("obj");
+            }
+
+            Tuning tuning = obj as Tuning;
+            if (null == tuning)
+            {
+                throw new ArgumentException();
+            }
+
+            return this.LongName.CompareTo(tuning.LongName);
         }
     }
 }

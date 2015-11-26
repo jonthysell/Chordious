@@ -89,11 +89,11 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A chord quality named &quot;{0}&quot; already exists..
+        ///   Looks up a localized string similar to The chord quality &quot;{0}&quot; already exists..
         /// </summary>
-        internal static string ChordQualityNameAlreadyExistsMessage {
+        internal static string ChordQualityAlreadyExistsExceptionMessage {
             get {
-                return ResourceManager.GetString("ChordQualityNameAlreadyExistsMessage", resourceCulture);
+                return ResourceManager.GetString("ChordQualityAlreadyExistsExceptionMessage", resourceCulture);
             }
         }
         
@@ -197,6 +197,24 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The named interval &quot;{0}&quot; already exists..
+        /// </summary>
+        internal static string NamedIntervalAlreadyExistsExceptionMessage {
+            get {
+                return ResourceManager.GetString("NamedIntervalAlreadyExistsExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The named interval &quot;{0}&quot; could not be found..
+        /// </summary>
+        internal static string NamedIntervalNotFoundExceptionMessage {
+            get {
+                return ResourceManager.GetString("NamedIntervalNotFoundExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} could not be modified because it is marked read-only..
         /// </summary>
         internal static string ObjectIsReadOnlyExceptionMessage {
@@ -224,11 +242,11 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A scale named &quot;{0}&quot; already exists..
+        ///   Looks up a localized string similar to The scale &quot;{0}&quot; already exists..
         /// </summary>
-        internal static string ScaleNameAlreadyExistsMessage {
+        internal static string ScaleAlreadyExistsExceptionMessage {
             get {
-                return ResourceManager.GetString("ScaleNameAlreadyExistsMessage", resourceCulture);
+                return ResourceManager.GetString("ScaleAlreadyExistsExceptionMessage", resourceCulture);
             }
         }
         
@@ -242,11 +260,11 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tuning named &quot;{0}&quot; already exists..
+        ///   Looks up a localized string similar to The tuning &quot;{0}&quot; already exists..
         /// </summary>
-        internal static string TuningNameAlreadyExistsMessage {
+        internal static string TuningAlreadyExistsMessage {
             get {
-                return ResourceManager.GetString("TuningNameAlreadyExistsMessage", resourceCulture);
+                return ResourceManager.GetString("TuningAlreadyExistsMessage", resourceCulture);
             }
         }
         

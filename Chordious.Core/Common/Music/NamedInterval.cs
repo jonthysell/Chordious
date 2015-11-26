@@ -29,9 +29,34 @@ using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public abstract class NamedInterval : IReadOnly
+    public abstract class NamedInterval : IReadOnly, IComparable
     {
         public bool ReadOnly { get; protected set; }
+
+        public NamedIntervalSet Parent
+        {
+            get
+            {
+                return _parent;
+            }
+            protected set
+            {
+                if (null == value)
+                {
+                    throw new ArgumentNullException();
+                }
+                _parent = value;
+            }
+        }
+        private NamedIntervalSet _parent;
+
+        public string Level
+        {
+            get
+            {
+                return Parent.Level;
+            }
+        }
 
         public string Name
         {
@@ -41,7 +66,7 @@ namespace com.jonthysell.Chordious.Core
             }
             set
             {
-                if (String.IsNullOrEmpty(value))
+                if (StringUtils.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException();
                 }
@@ -51,16 +76,28 @@ namespace com.jonthysell.Chordious.Core
                     throw new ObjectIsReadOnlyException(this);
                 }
 
+                value = value.Trim();
+
+                string oldValue = _name;
                 _name = value;
+
+                // Resort with parent
+                if (UpdateParent)
+                {
+                    Parent.Resort(this, () =>
+                    {
+                        _name = oldValue;
+                    });
+                }
             }
         }
-        private string _name;
+        private string _name = "";
 
-        public virtual string LongName
+        public string LongName
         {
             get
             {
-                return String.Format("{0} ({1})", Name, GetIntervalString());
+                return GetLongName();
             }
         }
 
@@ -82,12 +119,33 @@ namespace com.jonthysell.Chordious.Core
                     throw new ObjectIsReadOnlyException(this);
                 }
 
+                int[] oldValue = _intervals;
                 _intervals = value;
+
+                // Resort with parent
+                if (UpdateParent)
+                {
+                    Parent.Resort(this, () =>
+                    {
+                        _intervals = oldValue;
+                    });
+                }
             }
         }
         private int[] _intervals;
 
-        public abstract string Level { get; }
+        protected bool UpdateParent = false;
+
+        protected NamedInterval(NamedIntervalSet parent)
+        {
+            ReadOnly = false;
+            Parent = parent;
+        }
+
+        protected virtual string GetLongName()
+        {
+            return String.Format("{0} ({1})", Name, GetIntervalString());
+        }
 
         protected bool ReadBase(XmlReader xmlReader, string localName)
         {
@@ -104,14 +162,13 @@ namespace com.jonthysell.Chordious.Core
             if (xmlReader.IsStartElement() && xmlReader.Name == localName)
             {
                 this.Name = xmlReader.GetAttribute("name");
-
                 string steps = xmlReader.GetAttribute("steps");
 
                 SetIntervals(steps);
 
                 return true;
             }
-
+            
             return false;
         }
 
@@ -134,6 +191,39 @@ namespace com.jonthysell.Chordious.Core
             string intervals = GetIntervalString();
 
             xmlWriter.WriteAttributeString("steps", intervals);
+        }
+
+        public void Update(string name, int[] intervals)
+        {
+            if (StringUtils.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("name");
+            }
+
+            if (null == intervals)
+            {
+                throw new ArgumentNullException("intervals");
+            }
+
+            if (ReadOnly)
+            {
+                throw new ObjectIsReadOnlyException(this);
+            }
+
+            this.UpdateParent = false;
+
+            string oldName = this.Name;
+            int[] oldIntervals = this.Intervals;
+
+            this.Name = name;
+            this.Intervals = intervals;
+
+            Parent.Resort(this, () =>
+            {
+                this.Name = oldName;
+                this.Intervals = oldIntervals;
+                UpdateParent = true;
+            });
         }
 
         public InternalNote[] GetNotes(InternalNote root)
@@ -189,30 +279,16 @@ namespace com.jonthysell.Chordious.Core
             return intervals;
         }
 
-        public override bool Equals(object obj)
-        {
-            NamedInterval namedInterval = obj as NamedInterval;
-
-            if (null == namedInterval)
-            {
-                return false;
-            }
-
-            return this.LongName == namedInterval.LongName;
-        }
-
-        public override int GetHashCode()
-        {
-            return this.LongName.GetHashCode();
-        }
-
         protected string GetIntervalString()
         {
             string intervals = "";
 
-            for (int i = 0; i < Intervals.Length; i++)
+            if (null != Intervals)
             {
-                intervals += Intervals[i] + _separator.ToString();
+                for (int i = 0; i < Intervals.Length; i++)
+                {
+                    intervals += Intervals[i] + _separator.ToString();
+                }
             }
 
             intervals = intervals.TrimEnd(_separator);
@@ -221,5 +297,21 @@ namespace com.jonthysell.Chordious.Core
         }
 
         private const char _separator = ';';
+
+        public int CompareTo(object obj)
+        {
+            if (null == obj)
+            {
+                throw new ArgumentNullException("obj");
+            }
+
+            NamedInterval namedInterval = obj as NamedInterval;
+            if (null == namedInterval)
+            {
+                throw new ArgumentException();
+            }
+
+            return this.LongName.CompareTo(namedInterval.LongName);
+        }
     }
 }

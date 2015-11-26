@@ -31,122 +31,36 @@ using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class ChordQualitySet : IReadOnly, IEnumerable<ChordQuality>
+    public class ChordQualitySet : NamedIntervalSet
     {
-        public bool ReadOnly { get; private set; }
-
-        public string Level
+        public new ChordQualitySet Parent
         {
             get
             {
-                return this._level;
+                return (ChordQualitySet)base.Parent;
             }
             set
             {
-                if (StringUtils.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentNullException();
-                }
-
-                if (this.ReadOnly)
-                {
-                    throw new ObjectIsReadOnlyException(this);
-                }
-
-                this._level = value;
-            }
-        }
-        private string _level;
-
-        public ChordQualitySet Parent
-        {
-            get
-            {
-                return this._parent;
-            }
-            set
-            {
-                if (this.ReadOnly)
-                {
-                    throw new ObjectIsReadOnlyException(this);
-                }
-
-                this._parent = value;
-            }
-        }
-        private ChordQualitySet _parent;
-
-        private List<ChordQuality> _chordQualities;
-
-        internal ChordQualitySet(string level)
-        {
-            Level = level;
-            ReadOnly = false;
-            _chordQualities = new List<ChordQuality>();
-        }
-
-        internal ChordQualitySet(ChordQualitySet parent, string level) : this(level)
-        {
-            if (null == parent)
-            {
-                throw new ArgumentNullException("parent");
-            }
-
-            Parent = parent;
-        }
-
-        public void MarkAsReadOnly()
-        {
-            ReadOnly = true;
-            foreach (ChordQuality cq in _chordQualities)
-            {
-                cq.MarkAsReadOnly();
+                base.Parent = value;
             }
         }
 
-        public IEnumerator<ChordQuality> GetEnumerator()
+        internal ChordQualitySet(string level) : base(level) { }
+
+        internal ChordQualitySet(ChordQualitySet parent, string level) : base(parent, level) { }
+
+        public new ChordQuality Get(string longName)
         {
-            foreach (ChordQuality chordQuality in _chordQualities)
-            {
-                yield return chordQuality;
-            }
+            return (ChordQuality)(base.Get(longName));
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        public bool TryGet(string longName, out ChordQuality chordQuality)
         {
-            return this.GetEnumerator();
-        }
-
-        public ChordQuality Get(string name)
-        {
-            if (StringUtils.IsNullOrWhiteSpace(name))
+            NamedInterval namedInterval;
+            if (base.TryGet(longName, out namedInterval))
             {
-                throw new ArgumentNullException("name");
-            }
-
-            ChordQuality chordQuality;
-            if (TryGet(name, out chordQuality))
-            {
-                return chordQuality;
-            }
-
-            throw new ChordQualityNotFoundException(this, name);
-        }
-
-        public bool TryGet(string name, out ChordQuality chordQuality)
-        {
-            if (StringUtils.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentNullException("name");
-            }
-
-            foreach (ChordQuality cq in _chordQualities)
-            {
-                if (cq.Name == name)
-                {
-                    chordQuality = cq;
-                    return true;
-                }
+                chordQuality = (ChordQuality)namedInterval;
+                return true;
             }
 
             chordQuality = null;
@@ -161,18 +75,8 @@ namespace com.jonthysell.Chordious.Core
             }
 
             ChordQuality chordQuality = new ChordQuality(this, name, abbreviation, intervals);
-            _chordQualities.Add(chordQuality);
+            Add(chordQuality);
             return chordQuality;
-        }
-
-        public void Remove(string name)
-        {
-            if (this.ReadOnly)
-            {
-                throw new ObjectIsReadOnlyException(this);
-            }
-
-            _chordQualities.Remove(Get(name));
         }
 
         public void CopyFrom(ChordQualitySet chordQualitySet)
@@ -185,8 +89,9 @@ namespace com.jonthysell.Chordious.Core
             foreach (ChordQuality sourceChordQuality in chordQualitySet)
             {
                 bool found = false;
-                foreach (ChordQuality chordQuality in _chordQualities)
+                foreach (NamedInterval ni in _namedIntervals)
                 {
+                    ChordQuality chordQuality = (ChordQuality)ni;
                     if (sourceChordQuality.Equals(chordQuality))
                     {
                         found = true;
@@ -202,7 +107,7 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public void Read(XmlReader xmlReader)
+        public override void Read(XmlReader xmlReader)
         {
             if (null == xmlReader)
             {
@@ -216,69 +121,24 @@ namespace com.jonthysell.Chordious.Core
                     if (xmlReader.IsStartElement() && xmlReader.Name == "quality")
                     {
                         ChordQuality chordQuality = new ChordQuality(this, xmlReader.ReadSubtree());
-                        _chordQualities.Add(chordQuality);
+                        Add(chordQuality);
                     }
                 } while (xmlReader.Read());
             }
         }
 
-        public void Write(XmlWriter xmlWriter)
+        public override void Write(XmlWriter xmlWriter)
         {
             if (null == xmlWriter)
             {
                 throw new ArgumentNullException("xmlWriter");
             }
 
-            foreach (ChordQuality cq in _chordQualities)
+            foreach (NamedInterval namedInterval in _namedIntervals)
             {
-                cq.Write(xmlWriter);
+                ChordQuality chordQuality = (ChordQuality)namedInterval;
+                chordQuality.Write(xmlWriter);
             }
         }
-    }
-
-    public abstract class ChordQualitySetException : ChordiousException
-    {
-        public ChordQualitySet ChordQualitySet { get; private set; }
-
-        public ChordQualitySetException(ChordQualitySet chordQualitySet) : base()
-        {
-            this.ChordQualitySet = chordQualitySet;
-        }
-    }
-
-    public abstract class TargetChordQualityException : ChordQualitySetException
-    {
-        public string Name { get; private set; }
-
-        public TargetChordQualityException(ChordQualitySet chordQualitySet, string name) : base(chordQualitySet)
-        {
-            this.Name = name;
-        }
-    }
-
-    public class ChordQualityNotFoundException : TargetChordQualityException
-    {
-        public override string Message
-        {
-            get
-            {
-                return String.Format(Resources.Strings.ChordQualityNotFoundExceptionMessage, Name);
-            }
-        }
-
-        public ChordQualityNotFoundException(ChordQualitySet chordQualitySet, string name) : base(chordQualitySet, name) { }
-    }
-
-    public class ChordQualityNameAlreadyExistsException : TargetChordQualityException
-    {
-        public override string Message
-        {
-            get
-            {
-                return String.Format(Resources.Strings.ChordQualityNameAlreadyExistsMessage, Name);
-            }
-        }
-
-        public ChordQualityNameAlreadyExistsException(ChordQualitySet chordQualitySet, string name) : base(chordQualitySet, name) { }
     }
 }

@@ -30,7 +30,7 @@ using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class Instrument : IReadOnly
+    public class Instrument : IReadOnly, IComparable
     {
         public bool ReadOnly { get; private set; }
 
@@ -86,6 +86,7 @@ namespace com.jonthysell.Chordious.Core
                 }
 
                 _name = value;
+                Parent.Resort(this);
             }
         }
         private string _name;
@@ -185,6 +186,22 @@ namespace com.jonthysell.Chordious.Core
             }
 
             xmlWriter.WriteEndElement();
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (null == obj)
+            {
+                throw new ArgumentNullException("obj");
+            }
+
+            Instrument instrument = obj as Instrument;
+            if (null == instrument)
+            {
+                throw new ArgumentException();
+            }
+
+            return this.Name.CompareTo(instrument.Name);
         }
     }
 }

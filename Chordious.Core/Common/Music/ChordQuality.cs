@@ -31,31 +31,6 @@ namespace com.jonthysell.Chordious.Core
 {
     public class ChordQuality : NamedInterval
     {
-        public ChordQualitySet Parent
-        {
-            get
-            {
-                return _parent;
-            }
-            private set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-                _parent = value;
-            }
-        }
-        private ChordQualitySet _parent;
-
-        public override string Level
-        {
-            get
-            {
-                return Parent.Level;
-            }
-        }
-
         public string Abbreviation
         {
             get
@@ -64,7 +39,7 @@ namespace com.jonthysell.Chordious.Core
             }
             set
             {
-                if (null == value)
+                if (StringUtils.IsNullOrWhiteSpace(value))
                 {
                     value = "";
                 }
@@ -74,37 +49,42 @@ namespace com.jonthysell.Chordious.Core
                     throw new ObjectIsReadOnlyException(this);
                 }
 
+                string oldValue = _abbreviation;
                 _abbreviation = value;
+
+                // Resort with parent
+                if (UpdateParent)
+                {
+                    Parent.Resort(this, () =>
+                    {
+                        _abbreviation = oldValue;
+                    });
+                }
             }
         }
         private string _abbreviation;
 
-        public override string LongName
+        internal ChordQuality(ChordQualitySet parent, string name, string abbreviation, int[] intervals) : base(parent)
         {
-            get
+            if (null == parent)
             {
-                if (!StringUtils.IsNullOrWhiteSpace(Abbreviation))
-                {
-                    return String.Format("{0} \"{1}\" ({2})", Name, Abbreviation, GetIntervalString());
-                }
-                return base.LongName;
+                throw new ArgumentNullException("parent");
             }
-        }
 
-        private ChordQuality(ChordQualitySet parent)
-        {
-            this.Parent = parent;
-        }
-
-        internal ChordQuality(ChordQualitySet parent, string name, string abbreviation, int[] intervals) : this(parent)
-        {
             this.Name = name;
             this.Abbreviation = abbreviation;
             this.Intervals = intervals;
+
+            this.UpdateParent = true;
         }
 
-        internal ChordQuality(ChordQualitySet parent, XmlReader xmlReader) : this(parent)
+        internal ChordQuality(ChordQualitySet parent, XmlReader xmlReader) : base(parent)
         {
+            if (null == parent)
+            {
+                throw new ArgumentNullException("parent");
+            }
+
             if (null == xmlReader)
             {
                 throw new ArgumentNullException("xmlReader");
@@ -117,6 +97,54 @@ namespace com.jonthysell.Chordious.Core
                     this.Abbreviation = xmlReader.GetAttribute("abbv");
                 }
             }
+
+            this.UpdateParent = true;
+        }
+
+        protected override string GetLongName()
+        {
+            if (!StringUtils.IsNullOrWhiteSpace(Abbreviation))
+            {
+                return String.Format("{0} \"{1}\" ({2})", Name, Abbreviation, GetIntervalString());
+            }
+
+            return base.GetLongName();
+        }
+
+        public void Update(string name, string abbreviation, int[] intervals)
+        {
+            if (StringUtils.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("name");
+            }
+
+            if (null == intervals)
+            {
+                throw new ArgumentNullException("intervals");
+            }
+
+            if (ReadOnly)
+            {
+                throw new ObjectIsReadOnlyException(this);
+            }
+
+            this.UpdateParent = false;
+
+            string oldName = this.Name;
+            string oldAbbreviation = this.Abbreviation;
+            int[] oldIntervals = this.Intervals;
+
+            this.Name = name;
+            this.Abbreviation = abbreviation;
+            this.Intervals = intervals;
+
+            Parent.Resort(this, () =>
+            {
+                this.Name = oldName;
+                this.Abbreviation = oldAbbreviation;
+                this.Intervals = oldIntervals;
+                UpdateParent = true;
+            });
         }
 
         public void Write(XmlWriter xmlWriter)

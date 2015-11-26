@@ -8,48 +8,53 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <WrapPanel Grid.Row="0" Margin="5,0" IsEnabled="{Binding NamedIntervalIsSelected}">
-            <Label Content="Name:" FontWeight="Bold" />
-            <Label Content="{Binding SelectedNamedInterval.Name}" />
-            <Label Content="Can Edit:" FontWeight="Bold" />
-            <Label Content="{Binding SelectedNamedInterval.CanEdit}" />
-            <Label Content="Level:" FontWeight="Bold" />
-            <Label Content="{Binding SelectedNamedInterval.Level}" />
+        <WrapPanel Grid.Row="0" Margin="5,0">
+            <Label Content="{Binding UserNamedIntervalHeader}" FontWeight="Bold" />
         </WrapPanel>
-        <ScrollViewer Grid.Row="1">
-            <ListView Name="NamedIntervalsListView" Margin="5" ItemsSource="{Binding NamedIntervals}" SelectedItem="{Binding SelectedNamedInterval}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding LongName}">
-                            <TextBlock.InputBindings>
-                                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.EditNamedInterval, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
-                            </TextBlock.InputBindings>
-                        </TextBlock>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.ContextMenu>
-                    <ContextMenu Name="NamedIntervalContextMenu">
-                        <MenuItem Command="{Binding AddNamedInterval}" Header="Add">
-                            <MenuItem.Icon>
-                                <Image Source="{DynamicResource AddIcon16}" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Command="{Binding EditNamedInterval}" Header="Edit">
-                            <MenuItem.Icon>
-                                <Image Source="{DynamicResource EditIcon16}" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Command="{Binding DeleteNamedInterval}" Header="Delete">
-                            <MenuItem.Icon>
-                                <Image Source="{DynamicResource RemoveIcon16}" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                    </ContextMenu>
-                </ListView.ContextMenu>
-            </ListView>
-        </ScrollViewer>
-        <WrapPanel Grid.Row="2" FlowDirection="RightToLeft">
+        <ListView Grid.Row="1" Name="UserNamedIntervalsListView" Margin="5" ItemsSource="{Binding UserNamedIntervals}" SelectedIndex="{Binding SelectedUserNamedIntervalIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding LongName}">
+                        <TextBlock.InputBindings>
+                            <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.EditNamedInterval, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                        </TextBlock.InputBindings>
+                    </TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ContextMenu>
+                <ContextMenu Name="UserNamedIntervalContextMenu">
+                    <MenuItem Command="{Binding AddNamedInterval}" Header="Add">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource AddIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding EditNamedInterval}" Header="Edit">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource EditIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding DeleteNamedInterval}" Header="Delete">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource RemoveIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+        <WrapPanel Grid.Row="2" Margin="5,0">
+            <Label Content="{Binding DefaultNamedIntervalHeader}" FontWeight="Bold" />
+        </WrapPanel>
+        <ListView Grid.Row="3" Name="DefaultNamedIntervalsListView" Margin="5" ItemsSource="{Binding DefaultNamedIntervals}" SelectedIndex="{Binding SelectedDefaultNamedIntervalIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding LongName}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <WrapPanel Grid.Row="4" FlowDirection="RightToLeft">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
                 <Button Command="{Binding AddNamedInterval}" Margin="5" Style="{DynamicResource CleanButton}">
                     <StackPanel Orientation="Horizontal">

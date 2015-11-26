@@ -60,6 +60,7 @@
     <Compile Include="DiagramExportViewModelBase.cs" />
     <Compile Include="ConfirmationViewModel.cs" />
     <Compile Include="ObservableEnums.cs" />
+    <Compile Include="ObservableHeaderObject.cs" />
     <Compile Include="Resources\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -214,30 +214,40 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (instruments.Level == level)
                 {
-                    this._cachedInstrument = instruments.Get(name);
-                    return _cachedInstrument;
+                    Instrument i;
+                    if (instruments.TryGet(name, out i))
+                    {
+                        this._cachedInstrument = i;
+                        break;
+                    }
                 }
+
                 instruments = instruments.Parent;
             }
 
-            throw new LevelNotFoundException(level);
+            return this._cachedInstrument;
         }
 
         public Tuning GetTuning()
         {
-            string name = this.Settings[Prefix + "tuning"];
+            string longName = this.Settings[Prefix + "tuning"];
 
             if (null != this._cachedInstrument && null != this._cachedTuning)
             {
                 string level = this.InstrumentTuningLevel;
-                if (this._cachedInstrument.Level == level && this._cachedTuning.Name == name && this._cachedTuning.Level == level)
+                if (this._cachedInstrument.Level == level && this._cachedTuning.LongName == longName && this._cachedTuning.Level == level)
                 {
                     return this._cachedTuning;
                 }
                 this._cachedTuning = null;
             }
 
-            this._cachedTuning = Instrument.Tunings.Get(name);
+            Tuning t;
+            if (null != Instrument && Instrument.Tunings.TryGet(longName, out t))
+            {
+                this._cachedTuning = t;
+            }
+
             return this._cachedTuning;
         }
 
@@ -259,7 +269,7 @@ namespace com.jonthysell.Chordious.Core
             }
 
             this.Settings[Prefix + "instrument"] = instrument.Name;
-            this.Settings[Prefix + "tuning"] = tuning.Name;
+            this.Settings[Prefix + "tuning"] = tuning.LongName;
             this.InstrumentTuningLevel = instrument.Level;
 
             this._cachedInstrument = instrument;
@@ -276,7 +286,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Resources.Strings.InstrumentTuningMismatchExceptionMessage, Instrument.Name, Tuning.Name);
+                return String.Format(Resources.Strings.InstrumentTuningMismatchExceptionMessage, Instrument.Name, Tuning.LongName);
             }
         }
 

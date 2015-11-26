@@ -34,12 +34,16 @@ using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class ObservableInstrument : ObservableObject
+    public class ObservableInstrument : ObservableHeaderObject
     {
         public string Name
         {
             get
             {
+                if (IsHeader)
+                {
+                    return HeaderName;
+                }
                 return Instrument.Name;
             }
         }
@@ -70,7 +74,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         internal Instrument Instrument { get; private set; }
 
-        public ObservableInstrument(Instrument instrument)
+        public ObservableInstrument(Instrument instrument) : base()
         {
             if (null == instrument)
             {
@@ -78,6 +82,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             Instrument = instrument;
         }
+
+        public ObservableInstrument(string headerName) : base(headerName) { }
 
         public ObservableCollection<ObservableTuning> GetTunings()
         {

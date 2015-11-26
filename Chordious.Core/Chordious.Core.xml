@@ -2,10 +2,10 @@
 <chordious>
   <settings>
     <setting key="chordfinderoptions.instrument" value="Ukulele" />
-    <setting key="chordfinderoptions.tuning" value="Reentrant C" />
+    <setting key="chordfinderoptions.tuning" value="Reentrant C (G4 C4 E4 A4)" />
     <setting key="chordfinderoptions.itlevel" value="Default" />
     <setting key="chordfinderoptions.rootnote" value="C" />
-    <setting key="chordfinderoptions.chordquality" value="Major" />
+    <setting key="chordfinderoptions.chordquality" value="Major (0;4;7)" />
     <setting key="chordfinderoptions.cqlevel" value="Default" />
     <setting key="chordfinderoptions.numfrets" value="5" />
     <setting key="chordfinderoptions.maxfret" value="12" />
@@ -21,10 +21,10 @@
     <setting key="chordfinderstyle.bottommarktextoption" value="ShowNote_ShowBoth" />
     <setting key="chordfinderstyle.mirrorresults" value="false" />
     <setting key="scalefinderoptions.instrument" value="Ukulele" />
-    <setting key="scalefinderoptions.tuning" value="Reentrant C" />
+    <setting key="scalefinderoptions.tuning" value="Reentrant C (G4 C4 E4 A4)" />
     <setting key="scalefinderoptions.itlevel" value="Default" />
     <setting key="scalefinderoptions.rootnote" value="C" />
-    <setting key="scalefinderoptions.scale" value="Major" />
+    <setting key="scalefinderoptions.scale" value="Major (0;2;4;5;7;9;11;12)" />
     <setting key="scalefinderoptions.slevel" value="Default" />
     <setting key="scalefinderoptions.numfrets" value="5" />
     <setting key="scalefinderoptions.maxfret" value="12" />

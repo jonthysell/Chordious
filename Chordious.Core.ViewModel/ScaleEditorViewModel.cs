@@ -42,7 +42,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 string title = (IsNew ? "Add " : "Edit ");
 
-                title += "Scale";
+                title += "User Scale";
 
                 return title;
             }
@@ -56,11 +56,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
+                        Callback(Name, GetIntervalArray());
                         if (null != RequestClose)
                         {
                             RequestClose();
                         }
-                        Callback(Name, GetIntervalArray());
                     }
                     catch (Exception ex)
                     {

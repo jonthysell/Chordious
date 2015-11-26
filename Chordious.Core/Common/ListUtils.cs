@@ -1,5 +1,5 @@
 ﻿// 
-// ObservableChordQuality.cs
+// ListUtils.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -25,35 +25,45 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-
-using com.jonthysell.Chordious.Core;
-
-namespace com.jonthysell.Chordious.Core.ViewModel
+namespace com.jonthysell.Chordious.Core
 {
-    public class ObservableChordQuality : ObservableNamedInterval
+    public class ListUtils
     {
-        public string Abbreviation
+        public static bool SortedInsert<T>(List<T> sortedList, T value) where T : IComparable
         {
-            get
+            if (null == sortedList)
             {
-                return ChordQuality.Abbreviation;
+                throw new ArgumentNullException("sortedList");
             }
-        }
 
-        internal ChordQuality ChordQuality
-        {
-            get
+            if (null == value)
             {
-                return NamedInterval as ChordQuality;
+                throw new ArgumentNullException("value");
             }
+
+            List<T> tempList = new List<T>(sortedList);
+
+            int index = Array.BinarySearch<T>(tempList.ToArray(), value);
+
+            if (index < 0)
+            {
+                index = ~index;
+
+                if (index == sortedList.Count)
+                {
+                    sortedList.Add(value);
+                }
+                else
+                {
+                    sortedList.Insert(index, value);
+                }
+
+                return true;
+            }
+
+            return false;
         }
-
-        public ObservableChordQuality(ChordQuality chordQuality) : base(chordQuality) { }
-
-        public ObservableChordQuality(string headerName) : base(headerName) { }
     }
 }

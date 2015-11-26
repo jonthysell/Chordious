@@ -80,32 +80,32 @@ namespace com.jonthysell.Chordious.Core
             return this.GetEnumerator();
         }
 
-        public Tuning Get(string name)
+        public Tuning Get(string longName)
         {
-            if (StringUtils.IsNullOrWhiteSpace(name))
+            if (StringUtils.IsNullOrWhiteSpace(longName))
             {
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException("longName");
             }
 
             Tuning tuning;
-            if (TryGet(name, out tuning))
+            if (TryGet(longName, out tuning))
             {
                 return tuning;
             }
 
-            throw new TuningNotFoundException(this, name);
+            throw new TuningNotFoundException(this, longName);
         }
 
-        public bool TryGet(string name, out Tuning tuning)
+        public bool TryGet(string longName, out Tuning tuning)
         {
-            if (StringUtils.IsNullOrWhiteSpace(name))
+            if (StringUtils.IsNullOrWhiteSpace(longName))
             {
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException("longName");
             }
 
             foreach (Tuning t in _tunings)
             {
-                if (t.Name == name)
+                if (t.LongName == longName)
                 {
                     tuning = t;
                     return true;
@@ -124,18 +124,66 @@ namespace com.jonthysell.Chordious.Core
             }
 
             Tuning tuning = new Tuning(this, name, rootNotes);
-            _tunings.Add(tuning);
+            Add(tuning);
             return tuning;
         }
 
-        public void Remove(string name)
+        private void Add(Tuning tuning)
         {
+            if (null == tuning)
+            {
+                throw new ArgumentNullException("tuning");
+            }
+
+            if (tuning.Parent != this)
+            {
+                throw new ArgumentOutOfRangeException("tuning");
+            }
+
+            if (!ListUtils.SortedInsert<Tuning>(_tunings, tuning))
+            {
+                throw new TuningAlreadyExistsException(this, tuning.LongName);
+            }
+        }
+
+        public bool Remove(Tuning tuning)
+        {
+            if (null == tuning)
+            {
+                throw new ArgumentNullException("tuning");
+            }
+
             if (this.ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
 
-            _tunings.Remove(Get(name));
+            return _tunings.Remove(tuning);
+        }
+
+        internal void Resort(Tuning tuning, Action rollback)
+        {
+            if (Remove(tuning))
+            {
+                try
+                {
+                    Add(tuning);
+                }
+                catch (Exception ex)
+                {
+                    if (null != rollback)
+                    {
+                        rollback();
+
+                        // Re-add since remove succeeded but re-add failed
+                        if (null != (ex as TuningAlreadyExistsException))
+                        {
+                            Add(tuning);
+                        }
+                    }
+                    throw ex;
+                }
+            }
         }
 
         public void CopyFrom(TuningSet tuningSet)
@@ -154,7 +202,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 Tuning tuning = null;
 
-                if (!TryGet(sourceTuning.Name, out tuning))
+                if (!TryGet(sourceTuning.LongName, out tuning))
                 {
                     FullNote[] rootNotes = new FullNote[sourceTuning.RootNotes.Length];
                     sourceTuning.RootNotes.CopyTo(rootNotes, 0);
@@ -178,7 +226,7 @@ namespace com.jonthysell.Chordious.Core
                     if (xmlReader.IsStartElement() && xmlReader.Name == "tuning")
                     {
                         Tuning tuning = new Tuning(this, xmlReader.ReadSubtree());
-                        _tunings.Add(tuning);
+                        Add(tuning);
                     }
                 } while (xmlReader.Read());
             }
@@ -197,11 +245,11 @@ namespace com.jonthysell.Chordious.Core
 
     public abstract class TargetTuningException : TuningSetException
     {
-        public string Name { get; private set; }
+        public string LongName { get; private set; }
 
-        public TargetTuningException(TuningSet tuningSet, string name): base(tuningSet)
+        public TargetTuningException(TuningSet tuningSet, string longName) : base(tuningSet)
         {
-            this.Name = name;
+            this.LongName = longName;
         }
     }
 
@@ -211,23 +259,23 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Resources.Strings.TuningNotFoundExceptionMessage, Name);
+                return String.Format(Resources.Strings.TuningNotFoundExceptionMessage, LongName);
             }
         }
 
-        public TuningNotFoundException(TuningSet tuningSet, string name) : base(tuningSet, name) { }
+        public TuningNotFoundException(TuningSet tuningSet, string longName) : base(tuningSet, longName) { }
     }
 
-    public class TuningNameAlreadyExistsException : TargetTuningException
+    public class TuningAlreadyExistsException : TargetTuningException
     {
         public override string Message
         {
             get
             {
-                return String.Format(Resources.Strings.TuningNameAlreadyExistsMessage, Name);
+                return String.Format(Resources.Strings.TuningAlreadyExistsMessage, LongName);
             }
         }
 
-        public TuningNameAlreadyExistsException(TuningSet tuningSet, string name) : base(tuningSet, name) { }
+        public TuningAlreadyExistsException(TuningSet tuningSet, string longName) : base(tuningSet, longName) { }
     }
 }

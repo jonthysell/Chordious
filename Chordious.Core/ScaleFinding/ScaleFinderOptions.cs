@@ -67,13 +67,13 @@ namespace com.jonthysell.Chordious.Core
 
         public Scale GetScale()
         {
-            string name = this.Settings[Prefix + "scale"];
+            string longName = this.Settings[Prefix + "scale"];
 
             string level = this.ScaleLevel;
 
             if (null != this._cachedScale)
             {
-                if (this._cachedScale.Name == name && this._cachedScale.Level == level)
+                if (this._cachedScale.LongName == longName && this._cachedScale.Level == level)
                 {
                     return this._cachedScale;
                 }
@@ -84,13 +84,18 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (scales.Level == level)
                 {
-                    this._cachedScale = scales.Get(name);
-                    return _cachedScale;
+                    Scale scale;
+                    if (scales.TryGet(longName, out scale))
+                    {
+                        this._cachedScale = scale;
+                        break;
+                    }
                 }
+
                 scales = scales.Parent;
             }
 
-            throw new LevelNotFoundException(level);
+            return this._cachedScale;
         }
 
         public void SetTarget(Note rootNote, Scale scale)
@@ -101,7 +106,7 @@ namespace com.jonthysell.Chordious.Core
             }
 
             this.Settings[Prefix + "rootnote"] = NoteUtils.ToString(rootNote);
-            this.Settings[Prefix + "scale"] = scale.Name;
+            this.Settings[Prefix + "scale"] = scale.LongName;
             this.ScaleLevel = scale.Level;
 
             this._cachedScale = scale;

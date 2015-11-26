@@ -11,15 +11,17 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="260"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <WrapPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="Instruments" FontWeight="Bold" Margin="5,0" />
+            <Label Content="User Instruments" FontWeight="Bold" Margin="5,0" />
         </WrapPanel>
-        <ListBox Name="InstrumentsListView" Margin="5,0" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Instruments}" SelectedItem="{Binding SelectedInstrument}">
+        <ListBox Name="UserInstrumentsListView" Margin="5,0" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding UserInstruments}" SelectedIndex="{Binding SelectedUserInstrumentIndex}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}">
@@ -30,7 +32,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
             <ListBox.ContextMenu>
-                <ContextMenu Name="InstrumentsContextMenu">
+                <ContextMenu Name="UserInstrumentsContextMenu">
                     <MenuItem Command="{Binding AddInstrument}" Header="Add">
                         <MenuItem.Icon>
                             <Image Source="{DynamicResource AddIcon16}" />
@@ -49,17 +51,20 @@
                 </ContextMenu>
             </ListBox.ContextMenu>
         </ListBox>
-        <WrapPanel Grid.Row="0" Grid.Column="1" Margin="5,0" IsEnabled="{Binding InstrumentIsSelected}">
-            <Label Content="Name:" FontWeight="Bold" />
-            <Label Content="{Binding SelectedInstrument.Name}" />
-            <Label Content="# of Strings:" FontWeight="Bold" />
-            <Label Content="{Binding SelectedInstrument.NumStrings}" />
-            <Label Content="Can Edit:" FontWeight="Bold" />
-            <Label Content="{Binding SelectedInstrument.CanEdit}" />
-            <Label Content="Level:" FontWeight="Bold" />
-            <Label Content="{Binding SelectedInstrument.Level}" />
+        <WrapPanel Grid.Row="2" Grid.Column="0">
+            <Label Content="Default Instruments" FontWeight="Bold" Margin="5,0" />
         </WrapPanel>
-        <ListBox Name="TuningsListView" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Tunings}" SelectedItem="{Binding SelectedTuning}" IsEnabled="{Binding InstrumentIsSelected}">
+        <ListBox Name="DefaultInstrumentsListView" Margin="5,0" Grid.Row="3" Grid.Column="0" ItemsSource="{Binding DefaultInstruments}" SelectedIndex="{Binding SelectedDefaultInstrumentIndex}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <WrapPanel Grid.Row="0" Grid.Column="1">
+            <Label Content="Tunings" FontWeight="Bold" />
+        </WrapPanel>
+        <ListBox Name="TuningsListView" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" ItemsSource="{Binding Tunings}" SelectedItem="{Binding SelectedTuning}" IsEnabled="{Binding InstrumentIsSelected}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding LongName}">
@@ -89,7 +94,7 @@
                 </ContextMenu>
             </ListBox.ContextMenu>
         </ListBox>
-        <WrapPanel Grid.Row="2" Grid.Column="0" FlowDirection="RightToLeft">
+        <WrapPanel Grid.Row="4" Grid.Column="0" FlowDirection="RightToLeft">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
                 <Button Command="{Binding AddInstrument}" Margin="5" Style="{DynamicResource CleanButton}">
                     <StackPanel Orientation="Horizontal">
@@ -111,7 +116,7 @@
                 </Button>
             </StackPanel>
         </WrapPanel>
-        <WrapPanel Grid.Row="2" Grid.Column="1" FlowDirection="RightToLeft">
+        <WrapPanel Grid.Row="4" Grid.Column="1" FlowDirection="RightToLeft">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
                 <Button Command="{Binding AddTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
                     <StackPanel Orientation="Horizontal">

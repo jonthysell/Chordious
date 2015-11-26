@@ -123,8 +123,8 @@
   <data name="ChordiousKeyNotFoundExceptionMessage" xml:space="preserve">
     <value>The key "{0}" could not be found.</value>
   </data>
-  <data name="ChordQualityNameAlreadyExistsMessage" xml:space="preserve">
-    <value>A chord quality named "{0}" already exists.</value>
+  <data name="ChordQualityAlreadyExistsExceptionMessage" xml:space="preserve">
+    <value>The chord quality "{0}" already exists.</value>
   </data>
   <data name="ChordQualityNotFoundExceptionMessage" xml:space="preserve">
     <value>The chord quality "{0}" could not be found.</value>
@@ -156,14 +156,14 @@
   <data name="PathNotFoundExceptionMessage" xml:space="preserve">
     <value>The library path "{0}" could not be found.</value>
   </data>
-  <data name="ScaleNameAlreadyExistsMessage" xml:space="preserve">
-    <value>A scale named "{0}" already exists.</value>
+  <data name="ScaleAlreadyExistsExceptionMessage" xml:space="preserve">
+    <value>The scale "{0}" already exists.</value>
   </data>
   <data name="ScaleNotFoundExceptionMessage" xml:space="preserve">
     <value>The scale "{0}" could not be found.</value>
   </data>
-  <data name="TuningNameAlreadyExistsMessage" xml:space="preserve">
-    <value>A tuning named "{0}" already exists.</value>
+  <data name="TuningAlreadyExistsMessage" xml:space="preserve">
+    <value>The tuning "{0}" already exists.</value>
   </data>
   <data name="TuningNotFoundExceptionMessage" xml:space="preserve">
     <value>The tuning "{0}" could not be found.</value>
@@ -185,5 +185,11 @@
   </data>
   <data name="WatermarkFormat" xml:space="preserve">
     <value>Created with {0}.</value>
+  </data>
+  <data name="NamedIntervalAlreadyExistsExceptionMessage" xml:space="preserve">
+    <value>The named interval "{0}" already exists.</value>
+  </data>
+  <data name="NamedIntervalNotFoundExceptionMessage" xml:space="preserve">
+    <value>The named interval "{0}" could not be found.</value>
   </data>
 </root>

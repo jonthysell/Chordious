@@ -30,7 +30,7 @@ using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
 {
-    internal class DiagramLibraryNode
+    internal class DiagramLibraryNode : IComparable
     {
         public string Path
         {
@@ -115,6 +115,31 @@ namespace com.jonthysell.Chordious.Core
             this.DiagramCollection.Write(xmlWriter);
 
             xmlWriter.WriteEndElement();
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (null == obj)
+            {
+                throw new ArgumentNullException("obj");
+            }
+
+            DiagramLibraryNode node = obj as DiagramLibraryNode;
+            if (null == node)
+            {
+                throw new ArgumentException();
+            }
+            
+            int comparePaths = this.Path.CompareTo(node.Path);
+
+            if (comparePaths != 0)
+            {
+                return comparePaths;
+            }
+            else
+            {
+                return this.Name.CompareTo(node.Name);
+            }
         }
     }
 }

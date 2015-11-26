@@ -240,6 +240,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 finally
                 {
                     RaisePropertyChanged("SelectedScale");
+                    RaisePropertyChanged("SearchAsync");
                 }
             }
         }
@@ -630,23 +631,37 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             Instruments = AppVM.GetInstruments();
 
-            foreach (ObservableInstrument oi in Instruments)
+            if (null == selectedInstrument)
             {
-                if (oi.Instrument == selectedInstrument)
-                {
-                    SelectedInstrument = oi;
-                    break;
-                }
+                SelectedInstrument = null;
             }
-
-            Tunings = SelectedInstrument.GetTunings();
-
-            foreach (ObservableTuning ot in Tunings)
+            else
             {
-                if (ot.Tuning == selectedTuning)
+                foreach (ObservableInstrument oi in Instruments)
                 {
-                    SelectedTuning = ot;
-                    break;
+                    if (oi.Instrument == selectedInstrument)
+                    {
+                        SelectedInstrument = oi;
+                        break;
+                    }
+                }
+
+                Tunings = SelectedInstrument.GetTunings();
+
+                if (null == selectedTuning)
+                {
+                    SelectedTuning = null;
+                }
+                else
+                {
+                    foreach (ObservableTuning ot in Tunings)
+                    {
+                        if (ot.Tuning == selectedTuning)
+                        {
+                            SelectedTuning = ot;
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -655,12 +670,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             Scales = AppVM.GetScales();
 
-            foreach (ObservableScale os in Scales)
+            if (null == selectedScale)
             {
-                if (os.Scale == selectedScale)
+                SelectedScale = null;
+            }
+            else
+            {
+                foreach (ObservableScale os in Scales)
                 {
-                    SelectedScale = os;
-                    break;
+                    if (os.Scale == selectedScale)
+                    {
+                        SelectedScale = os;
+                        break;
+                    }
                 }
             }
         }
@@ -705,7 +727,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private bool CanSearch()
         {
-            return IsIdle && (null != SelectedInstrument) && (null != SelectedTuning);
+            return IsIdle && (null != SelectedInstrument) && (null != SelectedTuning) && (null != SelectedScale);
         }
 
         private static ObservableCollection<string> GetMarkTextOptions()

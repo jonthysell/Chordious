@@ -240,6 +240,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 finally
                 {
                     RaisePropertyChanged("SelectedChordQuality");
+                    RaisePropertyChanged("SearchAsync");
                 }
             }
         }
@@ -698,23 +699,37 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             Instruments = AppVM.GetInstruments();
 
-            foreach (ObservableInstrument oi in Instruments)
+            if (null == selectedInstrument)
             {
-                if (oi.Instrument == selectedInstrument)
-                {
-                    SelectedInstrument = oi;
-                    break;
-                }
+                SelectedInstrument = null;
             }
-
-            Tunings = SelectedInstrument.GetTunings();
-
-            foreach (ObservableTuning ot in Tunings)
+            else
             {
-                if (ot.Tuning == selectedTuning)
+                foreach (ObservableInstrument oi in Instruments)
                 {
-                    SelectedTuning = ot;
-                    break;
+                    if (oi.Instrument == selectedInstrument)
+                    {
+                        SelectedInstrument = oi;
+                        break;
+                    }
+                }
+
+                Tunings = SelectedInstrument.GetTunings();
+
+                if (null == selectedTuning)
+                {
+                    SelectedTuning = null;
+                }
+                else
+                {
+                    foreach (ObservableTuning ot in Tunings)
+                    {
+                        if (ot.Tuning == selectedTuning)
+                        {
+                            SelectedTuning = ot;
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -723,12 +738,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ChordQualities = AppVM.GetChordQualities();
 
-            foreach (ObservableChordQuality ocq in ChordQualities)
+            if (null == selectedChordQuality)
             {
-                if (ocq.ChordQuality == selectedChordQuality)
+                SelectedChordQuality = null;
+            }
+            else
+            {
+                foreach (ObservableChordQuality ocq in ChordQualities)
                 {
-                    SelectedChordQuality = ocq;
-                    break;
+                    if (ocq.ChordQuality == selectedChordQuality)
+                    {
+                        SelectedChordQuality = ocq;
+                        break;
+                    }
                 }
             }
         }
@@ -777,7 +799,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private bool CanSearch()
         {
-            return IsIdle && (null != SelectedInstrument) && (null != SelectedTuning);
+            return IsIdle && (null != SelectedInstrument) && (null != SelectedTuning) && (null != SelectedChordQuality);
         }
 
         private static ObservableCollection<string> GetBarreTypeOptions()

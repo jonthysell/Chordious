@@ -260,12 +260,58 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ObservableCollection<ObservableInstrument> collection = new ObservableCollection<ObservableInstrument>();
 
-            foreach (Instrument instrument in UserConfig.Instruments)
+            ObservableCollection<ObservableInstrument> userCollection = GetUserInstruments();
+            ObservableCollection<ObservableInstrument> defaultCollection = GetDefaultInstruments();
+
+            bool haveUser = userCollection.Count > 0;
+            bool haveDefault = defaultCollection.Count > 0;
+
+            if (haveUser)
+            {
+                if (haveDefault)
+                {
+                    collection.Add(new ObservableInstrument("User Instruments"));
+                }
+
+                foreach (ObservableInstrument userInstrument in userCollection)
+                {
+                    collection.Add(userInstrument);
+                }
+            }
+
+            if (haveDefault)
+            {
+                if (haveUser)
+                {
+                    collection.Add(new ObservableInstrument("Default Instruments"));
+                }
+
+                foreach (ObservableInstrument defaultInstrument in defaultCollection)
+                {
+                    collection.Add(defaultInstrument);
+                }
+            }
+
+            return collection;
+        }
+
+        public ObservableCollection<ObservableInstrument> GetDefaultInstruments()
+        {
+            ObservableCollection<ObservableInstrument> collection = new ObservableCollection<ObservableInstrument>();
+
+            foreach (Instrument instrument in DefaultConfig.Instruments)
             {
                 collection.Add(new ObservableInstrument(instrument));
             }
 
-            foreach (Instrument instrument in DefaultConfig.Instruments)
+            return collection;
+        }
+
+        public ObservableCollection<ObservableInstrument> GetUserInstruments()
+        {
+            ObservableCollection<ObservableInstrument> collection = new ObservableCollection<ObservableInstrument>();
+
+            foreach (Instrument instrument in UserConfig.Instruments)
             {
                 collection.Add(new ObservableInstrument(instrument));
             }
@@ -277,12 +323,58 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ObservableCollection<ObservableChordQuality> collection = new ObservableCollection<ObservableChordQuality>();
 
-            foreach (ChordQuality chordQuality in UserConfig.ChordQualities)
+            ObservableCollection<ObservableChordQuality> userCollection = GetUserChordQualities();
+            ObservableCollection<ObservableChordQuality> defaultCollection = GetDefaultChordQualities();
+
+            bool haveUser = userCollection.Count > 0;
+            bool haveDefault = defaultCollection.Count > 0;
+
+            if (haveUser)
+            {
+                if (haveDefault)
+                {
+                    collection.Add(new ObservableChordQuality("User Qualities"));
+                }
+
+                foreach (ObservableChordQuality userChordQuality in userCollection)
+                {
+                    collection.Add(userChordQuality);
+                }
+            }
+
+            if (haveDefault)
+            {
+                if (haveUser)
+                {
+                    collection.Add(new ObservableChordQuality("Default Qualities"));
+                }
+
+                foreach (ObservableChordQuality defaultChordQuality in defaultCollection)
+                {
+                    collection.Add(defaultChordQuality);
+                }
+            }
+
+            return collection;
+        }
+
+        public ObservableCollection<ObservableChordQuality> GetDefaultChordQualities()
+        {
+            ObservableCollection<ObservableChordQuality> collection = new ObservableCollection<ObservableChordQuality>();
+
+            foreach (ChordQuality chordQuality in DefaultConfig.ChordQualities)
             {
                 collection.Add(new ObservableChordQuality(chordQuality));
             }
 
-            foreach (ChordQuality chordQuality in DefaultConfig.ChordQualities)
+            return collection;
+        }
+
+        public ObservableCollection<ObservableChordQuality> GetUserChordQualities()
+        {
+            ObservableCollection<ObservableChordQuality> collection = new ObservableCollection<ObservableChordQuality>();
+
+            foreach (ChordQuality chordQuality in UserConfig.ChordQualities)
             {
                 collection.Add(new ObservableChordQuality(chordQuality));
             }
@@ -294,12 +386,58 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ObservableCollection<ObservableScale> collection = new ObservableCollection<ObservableScale>();
 
-            foreach (Scale scale in UserConfig.Scales)
+            ObservableCollection<ObservableScale> userCollection = GetUserScales();
+            ObservableCollection<ObservableScale> defaultCollection = GetDefaultScales();
+
+            bool haveUser = userCollection.Count > 0;
+            bool haveDefault = defaultCollection.Count > 0;
+
+            if (haveUser)
+            {
+                if (haveDefault)
+                {
+                    collection.Add(new ObservableScale("User Scales"));
+                }
+
+                foreach (ObservableScale userScale in userCollection)
+                {
+                    collection.Add(userScale);
+                }
+            }
+
+            if (haveDefault)
+            {
+                if (haveUser)
+                {
+                    collection.Add(new ObservableScale("Default Scales"));
+                }
+
+                foreach (ObservableScale defaultScale in defaultCollection)
+                {
+                    collection.Add(defaultScale);
+                }
+            }
+
+            return collection;
+        }
+
+        public ObservableCollection<ObservableScale> GetDefaultScales()
+        {
+            ObservableCollection<ObservableScale> collection = new ObservableCollection<ObservableScale>();
+
+            foreach (Scale scale in DefaultConfig.Scales)
             {
                 collection.Add(new ObservableScale(scale));
             }
 
-            foreach (Scale scale in DefaultConfig.Scales)
+            return collection;
+        }
+
+        public ObservableCollection<ObservableScale> GetUserScales()
+        {
+            ObservableCollection<ObservableScale> collection = new ObservableCollection<ObservableScale>();
+
+            foreach (Scale scale in UserConfig.Scales)
             {
                 collection.Add(new ObservableScale(scale));
             }

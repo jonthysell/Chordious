@@ -1,5 +1,9 @@
 # Chordious Changelist #
 
+## 1.9.15354.202 ##
+* Fixed a bug where the first time a user runs Chordious they get a STAThread error
+* Other minor bug-fixes
+
 ## 1.9.15330.0833 ##
 * Custom user instruments, tunings, chord qualities, and scales are all now clearly separated from the default built-in ones in editors
 * Lists of such items are now all sorted alphabetically

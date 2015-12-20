@@ -92,7 +92,7 @@ namespace com.jonthysell.Chordious.Core
                 foreach (NamedInterval ni in _namedIntervals)
                 {
                     ChordQuality chordQuality = (ChordQuality)ni;
-                    if (sourceChordQuality.Equals(chordQuality))
+                    if (sourceChordQuality == chordQuality)
                     {
                         found = true;
                         break;

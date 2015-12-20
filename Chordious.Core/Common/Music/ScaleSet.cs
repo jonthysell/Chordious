@@ -92,7 +92,7 @@ namespace com.jonthysell.Chordious.Core
                 foreach (NamedInterval namedInterval in _namedIntervals)
                 {
                     Scale scale = (Scale)namedInterval;
-                    if (sourceScale.Equals(scale))
+                    if (sourceScale == scale)
                     {
                         found = true;
                         break;

@@ -37,6 +37,20 @@ namespace com.jonthysell.Chordious.Core
             return Equals(obj as ElementPosition);
         }
 
+        public static bool operator ==(ElementPosition a, ElementPosition b)
+        {
+            if (object.ReferenceEquals(a, null))
+            {
+                return object.ReferenceEquals(b, null);
+            }
+
+            return a.Equals(b);
+        }
+        public static bool operator !=(ElementPosition a, ElementPosition b)
+        {
+            return !(a == b);
+        }
+
         public abstract bool Equals(ElementPosition obj);
         public override abstract int GetHashCode();
     }

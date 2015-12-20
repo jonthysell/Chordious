@@ -782,7 +782,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 foreach (DiagramMark mark in this._marks)
                 {
-                    if (mark.Position.Equals(position))
+                    if (mark.Position == position)
                     {
                         return mark;
                     }
@@ -792,7 +792,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 foreach (DiagramFretLabel fretLabel in this.FretLabels)
                 {
-                    if (fretLabel.Position.Equals(position))
+                    if (fretLabel.Position == position)
                     {
                         return fretLabel;
                     }
@@ -802,7 +802,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 foreach (DiagramBarre barre in this.Barres)
                 {
-                    if (barre.Position.Equals(position))
+                    if (barre.Position == position)
                     {
                         return barre;
                     }
@@ -831,7 +831,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 foreach (DiagramMark mark in this._marks)
                 {
-                    if (mark.Position.Equals(position) && element != mark)
+                    if (mark.Position == position && element != mark)
                     {
                         return false;
                     }
@@ -841,7 +841,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 foreach (DiagramFretLabel fretLabel in this.FretLabels)
                 {
-                    if (fretLabel.Position.Equals(position) && element != fretLabel)
+                    if (fretLabel.Position == position && element != fretLabel)
                     {
                         return false;
                     }

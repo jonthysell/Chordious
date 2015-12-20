@@ -137,7 +137,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("position");
             }
 
-            if (this.Equals(position))
+            if (this == position)
             {
                 return true;
             }

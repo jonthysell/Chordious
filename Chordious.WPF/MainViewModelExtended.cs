@@ -113,10 +113,13 @@ namespace com.jonthysell.Chordious.WPF
 
             string message = "Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? (Recommended) You can change your mind later in Options.";
 
-            Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (enableAutoUpdate) =>
+            AppVM.DoOnUIThread(() =>
             {
-                UpdateUtils.SetCheckUpdateOnStart(enableAutoUpdate);
-            }));
+                Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (enableAutoUpdate) =>
+                {
+                    UpdateUtils.SetCheckUpdateOnStart(enableAutoUpdate);
+                }));
+            });
         }
     }
 }

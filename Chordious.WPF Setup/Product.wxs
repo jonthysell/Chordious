@@ -173,6 +173,9 @@
         <File Source="$(var.Chordious.WPF.TargetDir)\Resources\edit16.png" />
       </Component>
       <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Resources\copy16.png" />
+      </Component>
+      <Component>
         <File Source="$(var.Chordious.WPF.TargetDir)\Resources\remove16.png" />
       </Component>
       <Component>

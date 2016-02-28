@@ -1,6 +1,6 @@
 # Chordious Changelist #
 
-## 1.9.16059.2130 ##
+## 1.9.16059.2132 ##
 * Can now easily create copies of collections in the Library
 * Fixed crash when trying to edit the name of a Library collection and a diagram was previously selected
 * Other minor bug-fixes

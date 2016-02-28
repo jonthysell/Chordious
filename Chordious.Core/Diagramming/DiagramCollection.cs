@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -184,6 +184,18 @@ namespace com.jonthysell.Chordious.Core
             {
                 d.Write(xmlWriter);
             }
+        }
+
+        public DiagramCollection Clone()
+        {
+            DiagramCollection clone = new DiagramCollection(Style.Parent);
+
+            foreach (Diagram diagram in this)
+            {
+                clone.Add(diagram.Clone());
+            }
+
+            return clone;
         }
 
     }

@@ -41,6 +41,11 @@
                             <Image Source="{DynamicResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
+                    <MenuItem Command="{Binding CopyNode}" Header="Copy">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource CopyIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <MenuItem Command="{Binding DeleteNode}" Header="Delete">
                         <MenuItem.Icon>
                             <Image Source="{DynamicResource RemoveIcon16}" />

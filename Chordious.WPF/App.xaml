@@ -21,6 +21,7 @@
         <BitmapImage x:Key="AddIcon16" >pack://siteoforigin:,,,/Resources/add16.png</BitmapImage>
         <BitmapImage x:Key="RemoveIcon16" >pack://siteoforigin:,,,/Resources/remove16.png</BitmapImage>
         <BitmapImage x:Key="EditIcon16" >pack://siteoforigin:,,,/Resources/edit16.png</BitmapImage>
+        <BitmapImage x:Key="CopyIcon16" >pack://siteoforigin:,,,/Resources/copy16.png</BitmapImage>
         <BitmapImage x:Key="SearchIcon16" >pack://siteoforigin:,,,/Resources/search16.png</BitmapImage>
         <BitmapImage x:Key="ImportIcon16" >pack://siteoforigin:,,,/Resources/import16.png</BitmapImage>
         <BitmapImage x:Key="ExportIcon16" >pack://siteoforigin:,,,/Resources/export16.png</BitmapImage>

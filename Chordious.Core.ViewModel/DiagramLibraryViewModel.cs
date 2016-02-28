@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -82,6 +82,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 RaisePropertyChanged("NodeIsSelected");
                 RaisePropertyChanged("CreateNode");
                 RaisePropertyChanged("EditNode");
+                RaisePropertyChanged("CopyNode");
                 RaisePropertyChanged("DeleteNode");
             }
         }
@@ -176,6 +177,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public RelayCommand CopyNode
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        string path = SelectedNode.Path;
+                        string oldName = SelectedNode.Name;
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(String.Format("Create copy of collection \"{0}\" named:", oldName), Library.GetNewCollectionName(path, oldName), (newName) =>
+                        {
+                            Library.Clone(path, oldName, newName);
+                            RaisePropertyChanged("Nodes");
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return NodeIsSelected;
+                });
+            }
+        }
+
         internal DiagramLibrary Library { get; private set; }
 
         public DiagramLibraryViewModel()
@@ -187,7 +215,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             foreach (string subfolder in Library.GetSubFolders(path))
             {
-                if (String.IsNullOrEmpty(subfolder))
                 GetNodes(collection, PathUtils.Join(path, subfolder));
             }
 

@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jon Thysell")]
 [assembly: AssemblyProduct("Chordious")]
-[assembly: AssemblyCopyright("Copyright © 2015 Jon Thysell <http://jonthysell.com>")]
+[assembly: AssemblyCopyright("Copyright © 2015, 2016 Jon Thysell <http://jonthysell.com>")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.9.15354.0202")]
-[assembly: AssemblyFileVersion("1.9.15354.0202")]
+[assembly: AssemblyVersion("1.9.16059.2130")]
+[assembly: AssemblyFileVersion("1.9.16059.2130")]

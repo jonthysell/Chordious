@@ -1,5 +1,10 @@
 # Chordious Changelist #
 
+## 1.9.16059.2130 ##
+* Can now easily create copies of collections in the Library
+* Fixed crash when trying to edit the name of a Library collection and a diagram was previously selected
+* Other minor bug-fixes
+
 ## 1.9.15354.202 ##
 * Fixed a bug where the first time a user runs Chordious they get a STAThread error
 * Other minor bug-fixes

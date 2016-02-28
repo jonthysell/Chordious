@@ -326,6 +326,9 @@
     <Content Include="Resources\add16.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\copy16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Resources\edit16.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

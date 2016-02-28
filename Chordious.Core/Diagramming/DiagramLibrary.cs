@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -230,14 +230,65 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public string GetNewCollectionName()
+        public void Clone(string name, string newName)
         {
-            return GetNewCollectionName(PathUtils.PathRoot);
+            Clone(PathUtils.PathRoot, name, newName);
         }
 
-        public string GetNewCollectionName(string path)
+        public void Clone(string path, string name, string newName)
         {
-            string baseName = "New Collection";
+            if (StringUtils.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("name");
+            }
+
+            if (StringUtils.IsNullOrWhiteSpace(newName))
+            {
+                throw new ArgumentNullException("newName");
+            }
+
+            path = PathUtils.Clean(path);
+
+            name = name.Trim();
+            newName = newName.Trim();
+
+            if (name != newName)
+            {
+                DiagramLibraryNode node;
+                if (TryGetNode(path, name, out node))
+                {
+                    DiagramLibraryNode clonedNode = node.Clone();
+                    clonedNode.Name = newName;
+                    AddNode(clonedNode);
+                }
+                else
+                {
+                    throw new DiagramCollectionNotFoundException(this, path, name);
+                }
+            }
+        }
+
+        public string GetNewCollectionName()
+        {
+            return GetNewCollectionName(PathUtils.PathRoot, "New Collection");
+        }
+
+        public string GetNewCollectionName(string baseName)
+        {
+            return GetNewCollectionName(PathUtils.PathRoot, baseName);
+        }
+
+        public string GetNewCollectionName(string path, string baseName)
+        {
+            if (StringUtils.IsNullOrWhiteSpace(path))
+            {
+                throw new ArgumentNullException("path");
+            }
+
+            if (StringUtils.IsNullOrWhiteSpace(baseName))
+            {
+                throw new ArgumentNullException("baseName");
+            }
 
             string name = baseName;
 
@@ -285,7 +336,7 @@ namespace com.jonthysell.Chordious.Core
         {
             path = PathUtils.Clean(path);
 
-            List<string> subFolders = new List<string>();
+            SortedSet<string> subFolders = new SortedSet<string>();
             foreach (DiagramLibraryNode node in _nodes)
             {
                 string nodePath = node.Path;

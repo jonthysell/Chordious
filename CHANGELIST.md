@@ -1,5 +1,9 @@
 # Chordious Changelist #
 
+## 1.9.16061.1205 ##
+* Resource images are now embedded
+* Fixed copyright notice formatting
+
 ## 1.9.16059.2132 ##
 * Can now easily create copies of collections in the Library
 * Fixed crash when trying to edit the name of a Library collection and a diagram was previously selected

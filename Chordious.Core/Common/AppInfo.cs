@@ -144,7 +144,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return AppInfo.Assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
+                return "Copyright © 2013-2016 Jon Thysell <http://jonthysell.com>";
             }
         }
 

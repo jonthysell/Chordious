@@ -133,7 +133,7 @@ namespace com.jonthysell.Chordious.WPF
             }
             else if (background == Background.Transparent)
             {
-                Image transparent = new Bitmap("Resources/transparent16.png");
+                Image transparent = new Bitmap(Properties.Resources.transparent16);
                 for (int x = 0; x < source.Width; x += transparent.Width)
                 {
                     for (int y = 0; y < source.Height; y += transparent.Height)

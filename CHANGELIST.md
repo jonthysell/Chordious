@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## 1.9.16062.348 ##
+* Fixed bug with loading the diagram editor with a transparent render background
+
 ## 1.9.16061.1205 ##
 * Resource images are now embedded
 * Fixed copyright notice formatting

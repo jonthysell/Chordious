@@ -1,7 +1,7 @@
 ﻿<Window x:Class="com.jonthysell.Chordious.WPF.DiagramEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="{Binding Title}" Height="600" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Icon="{DynamicResource ChordiousIcon}">
+        Title="{Binding Title, FallbackValue=Diagram Editor}" Height="600" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Icon="{StaticResource ChordiousIcon}">
     <Window.InputBindings>
         <KeyBinding Key="F5" Command="{Binding ObservableDiagram.RenderImage}" />
     </Window.InputBindings>
@@ -33,11 +33,11 @@
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="80" Content="Orientation"/>
-                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding ObservableDiagram.Orientations}" SelectedIndex="{Binding ObservableDiagram.SelectedOrientationIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding ObservableDiagram.Orientations}" SelectedIndex="{Binding ObservableDiagram.SelectedOrientationIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Margin="5" Width="80" Content="Label Model"/>
-                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding ObservableDiagram.LabelLayoutModels}" SelectedIndex="{Binding ObservableDiagram.SelectedLabelLayoutModelIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding ObservableDiagram.LabelLayoutModels}" SelectedIndex="{Binding ObservableDiagram.SelectedLabelLayoutModelIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -91,7 +91,7 @@
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="100" Margin="5" Content="Color"/>
-                                    <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.GridColor}" Text="{Binding ObservableDiagram.GridColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                    <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.GridColor}" Text="{Binding ObservableDiagram.GridColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="110" Margin="5" Content="Opacity"/>
@@ -103,7 +103,7 @@
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="100" Margin="5" Content="Color"/>
-                                    <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.GridLineColor}" Text="{Binding ObservableDiagram.GridLineColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                    <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.GridLineColor}" Text="{Binding ObservableDiagram.GridLineColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Margin="5" Width="110" Content="Width (px)"/>
@@ -133,47 +133,47 @@
                     <ContextMenu Name="ImageContextMenu">
                         <MenuItem Command="{Binding ObservableDiagram.AddMark}" Header="Add Mark" Visibility="{Binding ObservableDiagram.CanAddMark, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{DynamicResource AddIcon16}" />
+                                <Image Source="{StaticResource AddIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.EditMark}" Header="Edit Mark" Visibility="{Binding ObservableDiagram.CanEditMark, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{DynamicResource EditIcon16}" />
+                                <Image Source="{StaticResource EditIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.RemoveMark}" Header="Remove Mark" Visibility="{Binding ObservableDiagram.CanRemoveMark, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{DynamicResource RemoveIcon16}" />
+                                <Image Source="{StaticResource RemoveIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.AddFretLabel}" Header="Add Fret Label" Visibility="{Binding ObservableDiagram.CanAddFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{DynamicResource AddIcon16}" />
+                                <Image Source="{StaticResource AddIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.EditFretLabel}" Header="Edit Fret Label" Visibility="{Binding ObservableDiagram.CanEditFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{DynamicResource EditIcon16}" />
+                                <Image Source="{StaticResource EditIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.RemoveFretLabel}" Header="Remove Fret Label" Visibility="{Binding ObservableDiagram.CanRemoveFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{DynamicResource RemoveIcon16}" />
+                                <Image Source="{StaticResource RemoveIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.AddBarre}" Header="Add Barre" Visibility="{Binding ObservableDiagram.CanAddBarre, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{DynamicResource AddIcon16}" />
+                                <Image Source="{StaticResource AddIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.EditBarre}" Header="Edit Barre" Visibility="{Binding ObservableDiagram.CanEditBarre, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{DynamicResource EditIcon16}" />
+                                <Image Source="{StaticResource EditIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.RemoveBarre}" Header="Remove Barre" Visibility="{Binding ObservableDiagram.CanRemoveBarre, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{DynamicResource RemoveIcon16}" />
+                                <Image Source="{StaticResource RemoveIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                     </ContextMenu>
@@ -189,7 +189,7 @@
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
                             <Label Width="100" Margin="5" Content="Color"/>
-                            <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.DiagramColor}" Text="{Binding ObservableDiagram.DiagramColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                            <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.DiagramColor}" Text="{Binding ObservableDiagram.DiagramColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Opacity"/>
@@ -197,7 +197,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Border Color"/>
-                            <ComboBox Width="65" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.DiagramBorderColor}" Text="{Binding ObservableDiagram.DiagramBorderColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                            <ComboBox Width="65" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.DiagramBorderColor}" Text="{Binding ObservableDiagram.DiagramBorderColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Width="110" Margin="5" Content="Border Width (px)"/>
@@ -223,7 +223,7 @@
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="80" Margin="5" Content="Family"/>
-                                    <ComboBox Width="95" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.FontFamilies}" SelectedItem="{Binding ObservableDiagram.TitleTextFontFamily}" Text="{Binding ObservableDiagram.TitleTextFontFamily, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                    <ComboBox Width="95" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.FontFamilies}" SelectedItem="{Binding ObservableDiagram.TitleTextFontFamily}" Text="{Binding ObservableDiagram.TitleTextFontFamily, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="110" Margin="5" Content="Size (pt)"/>
@@ -231,15 +231,15 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="80" Margin="5" Content="Style"/>
-                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding ObservableDiagram.TitleTextStyles}" SelectedIndex="{Binding ObservableDiagram.SelectedTitleTextStyleIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding ObservableDiagram.TitleTextStyles}" SelectedIndex="{Binding ObservableDiagram.SelectedTitleTextStyleIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="80" Margin="5" Content="Alignment"/>
-                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding ObservableDiagram.TitleTextAlignments}" SelectedIndex="{Binding ObservableDiagram.SelectedTitleTextAlignmentIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding ObservableDiagram.TitleTextAlignments}" SelectedIndex="{Binding ObservableDiagram.SelectedTitleTextAlignmentIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="100" Margin="5" Content="Color"/>
-                                    <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.TitleColor}" Text="{Binding ObservableDiagram.TitleColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                    <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding ObservableDiagram.Colors}" SelectedItem="{Binding ObservableDiagram.TitleColor}" Text="{Binding ObservableDiagram.TitleColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="110" Margin="5" Content="Opacity"/>
@@ -247,7 +247,7 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="80" Margin="5" Content="Label Style"/>
-                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding ObservableDiagram.TitleLabelStyles}" SelectedIndex="{Binding ObservableDiagram.SelectedTitleLabelStyleIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                    <ComboBox Width="95" Margin="5" ItemsSource="{Binding ObservableDiagram.TitleLabelStyles}" SelectedIndex="{Binding ObservableDiagram.SelectedTitleLabelStyleIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Width="110" Margin="5" Content="Modifier Ratio" IsEnabled="{Binding ObservableDiagram.IsTitleTextSizeModRatioEnabled}"/>
@@ -261,13 +261,13 @@
         </ScrollViewer>
         <WrapPanel Grid.Row="2" Grid.ColumnSpan="3" FlowDirection="RightToLeft">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
-                <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
-                <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
+                <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
+                <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
+                <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
                 <Label Margin="5" Content="Editor Background" FontWeight="Bold"/>
-                <ComboBox Width="95" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                <ComboBox Width="95" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
             </StackPanel>
         </WrapPanel>
     </Grid>

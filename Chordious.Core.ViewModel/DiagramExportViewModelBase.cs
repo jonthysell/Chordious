@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,7 @@ using System;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -104,6 +105,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
                 _diagramsToExport = value;
                 RaisePropertyChanged("DiagramsToExport");
+                RaisePropertyChanged("MaxWidth");
+                RaisePropertyChanged("MaxHeight");
             }
         }
         private ObservableCollection<ObservableDiagram> _diagramsToExport;
@@ -126,6 +129,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private string _collectionName;
+
+        public int MaxWidth
+        {
+            get
+            {
+                return DiagramsToExport.Max((od) => od.TotalWidth);
+            }
+        }
+
+        public int MaxHeight
+        {
+            get
+            {
+                return DiagramsToExport.Max((od) => od.TotalHeight);
+            }
+        }
 
         public RelayCommand ExportAsync
         {

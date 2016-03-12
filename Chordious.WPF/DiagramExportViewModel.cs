@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -162,6 +162,8 @@ namespace com.jonthysell.Chordious.WPF
                 RaisePropertyChanged("ExportFormat");
                 RaisePropertyChanged("SelectedExportFormatIndex");
                 RaisePropertyChanged("ExampleFilenameFormat");
+                RaisePropertyChanged("CanZoom");
+                RaisePropertyChanged("CanScale");
             }
         }
 
@@ -190,6 +192,72 @@ namespace com.jonthysell.Chordious.WPF
             {
                 SetSetting("diagramexport.overwritefiles", value);
                 RaisePropertyChanged("OverwriteFiles");
+            }
+        }
+
+        public bool CanScale
+        {
+            get
+            {
+                return ExportFormat != ExportFormat.SVG;
+            }
+        }
+
+        public int ScalePercent
+        {
+            get
+            {
+                return (int)((100.0f * ScaleFactor) + 0.5f);
+            }
+            set
+            {
+                try
+                {
+                    ScaleFactor = ((float)value) / 100.0f;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("ScalePercent");
+                }
+            }
+        }
+
+        public float ScaleFactor
+        {
+            get
+            {
+                float result;
+
+                if (Single.TryParse(GetSetting("diagramexport.scalefactor"), out result))
+                {
+                    return result;
+                }
+
+                return 1.0f;
+            }
+            set
+            {
+                try
+                {
+                    if (value <= 0.0f || value > ImageUtils.GetMaxScaleFactor(MaxWidth, MaxHeight))
+                    {
+                        throw new ArgumentOutOfRangeException();
+                    }
+
+                    SetSetting("diagramexport.scalefactor", value);
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+                finally
+                {
+                    RaisePropertyChanged("ScaleFactor");
+                }
             }
         }
 
@@ -311,7 +379,7 @@ namespace com.jonthysell.Chordious.WPF
             while (!foundFilename)
             {
                 bool fileAlreadyExists = File.Exists(testfileName);
-                bool fileCreatedThisExport = _createdFiles.Contains(testfileName);
+                bool fileCreatedThisExport = _createdFiles.Exists(createdFile => createdFile.Equals(testfileName, StringComparison.CurrentCultureIgnoreCase));
 
                 if (!fileAlreadyExists || (fileAlreadyExists && !fileCreatedThisExport && overwriteFiles))
                 {
@@ -341,17 +409,24 @@ namespace com.jonthysell.Chordious.WPF
         {
             return Task.Factory.StartNew(() =>
             {
-                ObservableDiagram od = DiagramsToExport[diagramIndex];
+                try
+                {
+                    ObservableDiagram od = DiagramsToExport[diagramIndex];
 
-                string svgText = od.SvgText;
-                int width = od.TotalWidth;
-                int height = od.TotalHeight;
+                    string svgText = od.SvgText;
+                    int width = od.TotalWidth;
+                    int height = od.TotalHeight;
 
-                string filePath = GetFullFilePath(diagramIndex, OverwriteFiles);
+                    string filePath = GetFullFilePath(diagramIndex, OverwriteFiles);
 
-                ImageUtils.ExportImageFile(svgText, width, height, ExportFormat, filePath);
+                    ImageUtils.ExportImageFile(svgText, width, height, ExportFormat, ScaleFactor, filePath);
 
-                _createdFiles.Add(filePath);
+                    _createdFiles.Add(filePath);
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
             });
         }
 

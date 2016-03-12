@@ -120,7 +120,154 @@
   <data name="AdvancedDataValidationErrorMessage" xml:space="preserve">
     <value>The data could not be validated: {0}</value>
   </data>
+  <data name="CloneLabel" xml:space="preserve">
+    <value>Clone...</value>
+  </data>
+  <data name="CountLabel" xml:space="preserve">
+    <value>Count:</value>
+  </data>
+  <data name="DeleteLabel" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DiagramLibraryCloneNodeLabelFormat" xml:space="preserve">
+    <value>Clone "{0}"...</value>
+  </data>
+  <data name="DiagramLibraryCloneNodePromptFormat" xml:space="preserve">
+    <value>Create a clone of collection "{0}" named:</value>
+  </data>
+  <data name="DiagramLibraryCloneNodeToolTip" xml:space="preserve">
+    <value>Create a copy of the selected collection.</value>
+  </data>
+  <data name="DiagramLibraryCreateNodePrompt" xml:space="preserve">
+    <value>Create new collection named:</value>
+  </data>
+  <data name="DiagramLibraryCreateNodeToolTip" xml:space="preserve">
+    <value>Create a new collection.</value>
+  </data>
+  <data name="DiagramLibraryDeleteNodeLabelFormat" xml:space="preserve">
+    <value>Delete "{0}"</value>
+  </data>
+  <data name="DiagramLibraryDeleteNodePromptFormat" xml:space="preserve">
+    <value>This will delete the collection "{0}". This cannot be undone. Do you want to continue?</value>
+  </data>
+  <data name="DiagramLibraryDeleteNodeToolTip" xml:space="preserve">
+    <value>Delete the selected collection.</value>
+  </data>
+  <data name="DiagramLibraryDeleteSelectedDiagramsPromptPluralFormat" xml:space="preserve">
+    <value>This will delete the {0} selected diagrams. This cannot be undone. Do you want to continue?</value>
+  </data>
+  <data name="DiagramLibraryDeleteSelectedDiagramsPromptSingleFormat" xml:space="preserve">
+    <value>This will delete the selected diagram. This cannot be undone. Do you want to continue?</value>
+  </data>
+  <data name="DiagramLibraryEditNodeLabelFormat" xml:space="preserve">
+    <value>Edit "{0}"...</value>
+  </data>
+  <data name="DiagramLibraryEditNodeToolTip" xml:space="preserve">
+    <value>Edit the selected collection's properties.</value>
+  </data>
+  <data name="DiagramLibraryNodesLabel" xml:space="preserve">
+    <value>Collections</value>
+  </data>
+  <data name="DiagramLibraryNodesToolTip" xml:space="preserve">
+    <value>Your collections of diagrams.</value>
+  </data>
+  <data name="DiagramLibraryOnlyOneDiagramCanBeEditedMessage" xml:space="preserve">
+    <value>Only one diagram can be edited at a time. Please select a single diagram and try again.</value>
+  </data>
+  <data name="DiagramLibraryTitle" xml:space="preserve">
+    <value>Diagram Library</value>
+  </data>
+  <data name="EditLabel" xml:space="preserve">
+    <value>Edit...</value>
+  </data>
   <data name="ExceptionViewModelDetailsFormat" xml:space="preserve">
     <value>Exception details: {0}</value>
+  </data>
+  <data name="ExportLabel" xml:space="preserve">
+    <value>Export...</value>
+  </data>
+  <data name="LaunchWebsiteLabel" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="LaunchWebsiteToolTip" xml:space="preserve">
+    <value>Go to the Chordious website.</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="NewLabel" xml:space="preserve">
+    <value>New...</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeCloneSelectedToolTipPluralFormat" xml:space="preserve">
+    <value>Clone the {0} selected diagrams.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeCloneSelectedToolTipSingleFormat" xml:space="preserve">
+    <value>Clone the selected diagram.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeCreateDiagramToolTip" xml:space="preserve">
+    <value>Create a new diagram.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeDeleteSelectedToolTipPluralFormat" xml:space="preserve">
+    <value>Delete the {0} selected diagrams.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeDeleteSelectedToolTipSingleFormat" xml:space="preserve">
+    <value>Delete the selected diagram.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeEditSelectedToolTip" xml:space="preserve">
+    <value>Edit the selected diagram.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeExportSelectedToolTipPluralFormat" xml:space="preserve">
+    <value>Export the {0} selected diagrams as image files.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeExportSelectedToolTipSingleFormat" xml:space="preserve">
+    <value>Export the selected diagram as an image file.</value>
+  </data>
+  <data name="PathLabel" xml:space="preserve">
+    <value>Path:</value>
+  </data>
+  <data name="SelectedLabel" xml:space="preserve">
+    <value>Selected:</value>
+  </data>
+  <data name="ShowChordFinderLabel" xml:space="preserve">
+    <value>Chord Finder</value>
+  </data>
+  <data name="ShowChordFinderToolTip" xml:space="preserve">
+    <value>Search for chords with the Chord Finder.</value>
+  </data>
+  <data name="ShowDiagramLibraryLabel" xml:space="preserve">
+    <value>Library</value>
+  </data>
+  <data name="ShowDiagramLibraryToolTip" xml:space="preserve">
+    <value>Create and manage collections of your favorite diagrams.</value>
+  </data>
+  <data name="ShowHelpLabel" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="ShowHelpToolTip" xml:space="preserve">
+    <value>Go to the Help section on the Chordious website.</value>
+  </data>
+  <data name="ShowInstrumentManagerLabel" xml:space="preserve">
+    <value>Instruments</value>
+  </data>
+  <data name="ShowInstrumentManagerToolTip" xml:space="preserve">
+    <value>Create and manage your favorite instruments and tunings.</value>
+  </data>
+  <data name="ShowLicenseLabel" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="ShowLicenseToolTip" xml:space="preserve">
+    <value>View the license for using Chordious.</value>
+  </data>
+  <data name="ShowOptionsLabel" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="ShowOptionsToolTip" xml:space="preserve">
+    <value>Change Chordious' configuration.</value>
+  </data>
+  <data name="ShowScaleFinderLabel" xml:space="preserve">
+    <value>Scale Finder</value>
+  </data>
+  <data name="ShowScaleFinderToolTip" xml:space="preserve">
+    <value>Search for scales with the Scale Finder.</value>
   </data>
 </root>

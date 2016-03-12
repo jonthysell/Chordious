@@ -2,7 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:com.jonthysell.Chordious.Core.ViewModel;assembly=Chordious.Core.ViewModel"
-        Title="{Binding Title}" Height="600" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Icon="{DynamicResource ChordiousIcon}">
+        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
+        Title="{Binding Title, FallbackValue=Instrument Manager}" Height="600" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Icon="{StaticResource ChordiousIcon}">
     <Window.DataContext>
         <vm:InstrumentManagerViewModel />
     </Window.DataContext>
@@ -35,17 +36,17 @@
                 <ContextMenu Name="UserInstrumentsContextMenu">
                     <MenuItem Command="{Binding AddInstrument}" Header="Add">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource AddIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding EditInstrument}" Header="Edit">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource EditIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding DeleteInstrument}" Header="Delete">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource RemoveIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
@@ -78,63 +79,45 @@
                 <ContextMenu Name="TuningContextMenu">
                     <MenuItem Command="{Binding AddTuning}" Header="Add">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource AddIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding EditTuning}" Header="Edit">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource EditIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding DeleteTuning}" Header="Delete">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource RemoveIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
             </ListBox.ContextMenu>
         </ListBox>
-        <WrapPanel Grid.Row="4" Grid.Column="0" FlowDirection="RightToLeft">
+        <WrapPanel Grid.Row="4" Grid.Column="0"  HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Button Command="{Binding AddInstrument}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                    </StackPanel>
+                <Button Command="{Binding AddInstrument}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                    <local:AutoDisableImage Source="{StaticResource AddIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding EditInstrument}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                    </StackPanel>
+                <Button Command="{Binding EditInstrument}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                    <local:AutoDisableImage Source="{StaticResource EditIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding DeleteInstrument}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-                    </StackPanel>
+                <Button Command="{Binding DeleteInstrument}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                    <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
             </StackPanel>
         </WrapPanel>
-        <WrapPanel Grid.Row="4" Grid.Column="1" FlowDirection="RightToLeft">
+        <WrapPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Button Command="{Binding AddTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                    </StackPanel>
+                <Button Command="{Binding AddTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                    <local:AutoDisableImage Source="{StaticResource AddIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding EditTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                    </StackPanel>
+                <Button Command="{Binding EditTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                    <local:AutoDisableImage Source="{StaticResource EditIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding DeleteTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-                    </StackPanel>
+                <Button Command="{Binding DeleteTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                    <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
             </StackPanel>
         </WrapPanel>

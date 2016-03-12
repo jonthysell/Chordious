@@ -2,7 +2,6 @@
 <chordious>
   <settings>
     <setting key="app.firstrun" value="true" />
-    <setting key="app.renderer" value="SvgSharp" />
     <setting key="app.renderbackground" value="None" />
     <setting key="app.releasechannel" value="Official" />
     <setting key="app.checkupdateonstart" value="false" />
@@ -10,6 +9,7 @@
     <setting key="diagramexport.filenameformat" value="%t.%x" />
     <setting key="diagramexport.exportformat" value="SVG" />
     <setting key="diagramexport.overwritefiles" value="true" />
+    <setting key="diagramexport.scalefactor" value="1.0" />
     <setting key="diagrameditor.renderbackground" value="Transparent" />
   </settings>
 </chordious>

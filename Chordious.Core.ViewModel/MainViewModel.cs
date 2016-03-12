@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +31,8 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
+
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
@@ -72,6 +74,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #region LaunchWebsite
+
+        public string LaunchWebsiteLabel
+        {
+            get
+            {
+                return Strings.LaunchWebsiteLabel;
+            }
+        }
+
+        public string LaunchWebsiteToolTip
+        {
+            get
+            {
+                return Strings.LaunchWebsiteToolTip;
+            }
+        }
+
         public RelayCommand LaunchWebsite
         {
             get
@@ -95,6 +115,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #endregion
+
+        #region ShowLicense
+
+        public string ShowLicenseLabel
+        {
+            get
+            {
+                return Strings.ShowLicenseLabel;
+            }
+        }
+
+        public string ShowLicenseToolTip
+        {
+            get
+            {
+                return Strings.ShowLicenseToolTip;
+            }
+        }
+
         public RelayCommand ShowLicense
         {
             get
@@ -111,6 +151,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         ExceptionUtils.HandleException(ex);
                     }
                 });
+            }
+        }
+
+        #endregion
+
+        #region ShowChordFinder
+
+        public string ShowChordFinderLabel
+        {
+            get
+            {
+                return Strings.ShowChordFinderLabel;
+            }
+        }
+
+        public string ShowChordFinderToolTip
+        {
+            get
+            {
+                return Strings.ShowChordFinderToolTip;
             }
         }
 
@@ -132,6 +192,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #endregion
+
+        #region ShowScaleFinder
+
+        public string ShowScaleFinderLabel
+        {
+            get
+            {
+                return Strings.ShowScaleFinderLabel;
+            }
+        }
+
+        public string ShowScaleFinderToolTip
+        {
+            get
+            {
+                return Strings.ShowScaleFinderToolTip;
+            }
+        }
+
         public RelayCommand ShowScaleFinder
         {
             get
@@ -147,6 +227,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         ExceptionUtils.HandleException(ex);
                     }
                 });
+            }
+        }
+
+        #endregion
+
+        #region Show Diagram Library
+
+        public string ShowDiagramLibraryLabel
+        {
+            get
+            {
+                return Strings.ShowDiagramLibraryLabel;
+            }
+        }
+
+        public string ShowDiagramLibraryToolTip
+        {
+            get
+            {
+                return Strings.ShowDiagramLibraryToolTip;
             }
         }
 
@@ -168,6 +268,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #endregion
+
+        #region Show Instrument Manager
+
+        public string ShowInstrumentManagerLabel
+        {
+            get
+            {
+                return Strings.ShowInstrumentManagerLabel;
+            }
+        }
+
+        public string ShowInstrumentManagerToolTip
+        {
+            get
+            {
+                return Strings.ShowInstrumentManagerToolTip;
+            }
+        }
+
         public RelayCommand ShowInstrumentManager
         {
             get
@@ -183,6 +303,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         ExceptionUtils.HandleException(ex);
                     }
                 });
+            }
+        }
+
+        #endregion
+
+        #region Show Options
+
+        public string ShowOptionsLabel
+        {
+            get
+            {
+                return Strings.ShowOptionsLabel;
+            }
+        }
+
+        public string ShowOptionsToolTip
+        {
+            get
+            {
+                return Strings.ShowOptionsToolTip;
             }
         }
 
@@ -210,6 +350,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #endregion
+
+        #region Show Help
+
+        public string ShowHelpLabel
+        {
+            get
+            {
+                return Strings.ShowHelpLabel;
+            }
+        }
+
+        public string ShowHelpToolTip
+        {
+            get
+            {
+                return Strings.ShowHelpToolTip;
+            }
+        }
+
         public RelayCommand ShowHelp
         {
             get
@@ -233,6 +393,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 });
             }
         }
+
+        #endregion
 
         public MainViewModel()
         {

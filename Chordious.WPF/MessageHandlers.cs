@@ -437,11 +437,18 @@ namespace com.jonthysell.Chordious.WPF
                 try
                 {
                     lastPath = AppViewModel.Instance.GetSetting("app.lastpath");
+                    if (!Directory.Exists(lastPath))
+                    {
+                        lastPath = "";
+                    }
                 }
-                catch (Exception)
+                catch (Exception) { }
+
+                if (String.IsNullOrWhiteSpace(lastPath))
                 {
                     lastPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 }
+
                 return lastPath;
             }
             set

@@ -2,7 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:com.jonthysell.Chordious.Core.ViewModel;assembly=Chordious.Core.ViewModel"
-        Title="{Binding Title}" Height="600" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Icon="{DynamicResource ChordiousIcon}"
+        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
+        Title="{Binding Title, FallbackValue=Scale Finder}" Height="600" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Icon="{StaticResource ChordiousIcon}"
         Cursor="{Binding IsIdle, Converter={StaticResource IdleBoolToWaitCursorConverter}}" ForceCursor="True">
     <Window.DataContext>
         <vm:ScaleFinderViewModel />
@@ -34,7 +35,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Margin="5" Content="Instrument" FontWeight="Bold" />
-            <ComboBox Grid.Column="1" ItemsSource="{Binding Instruments}" SelectedItem="{Binding SelectedInstrument}" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}">
+            <ComboBox Grid.Column="1" ItemsSource="{Binding Instruments}" SelectedItem="{Binding SelectedInstrument}" VerticalAlignment="Center" Margin="5" Style="{StaticResource CleanComboBox}">
                 <ComboBox.ItemContainerStyle>
                     <Style>
                         <Style.Triggers>
@@ -53,18 +54,20 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
             <Label Grid.Column="2" Margin="5" Content="Tuning" FontWeight="Bold" />
-            <ComboBox Grid.Column="3" ItemsSource="{Binding Tunings}" SelectedItem="{Binding SelectedTuning}" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}">
+            <ComboBox Grid.Column="3" ItemsSource="{Binding Tunings}" SelectedItem="{Binding SelectedTuning}" VerticalAlignment="Center" Margin="5" Style="{StaticResource CleanComboBox}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding LongName}" />
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Grid.Column="4" Margin="5" Content="Edit" Width="50" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+            <Button Grid.Column="4" Margin="5" Width="50" Command="{Binding ShowInstrumentManager, Mode=OneWay}" ToolTip="Edit the available instruments and tunings." Style="{StaticResource CleanButtonNoBorder}">
+                <local:AutoDisableImage Source="{StaticResource EditIcon16}" Width="16" Height="16" Margin="5,0,5,0" />
+            </Button>
             <Label Grid.Column="5" Margin="5" Content="Root Note" FontWeight="Bold" />
-            <ComboBox Grid.Column="6" ItemsSource="{Binding RootNotes}" SelectedItem="{Binding SelectedRootNote}" Width="50" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}"/>
+            <ComboBox Grid.Column="6" ItemsSource="{Binding RootNotes}" SelectedItem="{Binding SelectedRootNote}" Width="50" VerticalAlignment="Center" Margin="5" Style="{StaticResource CleanComboBox}"/>
             <Label Grid.Column="7" Margin="5" Content="Scale" FontWeight="Bold" />
-            <ComboBox Grid.Column="8" ItemsSource="{Binding Scales}" SelectedItem="{Binding SelectedScale}" VerticalAlignment="Center" Margin="5" Style="{DynamicResource CleanComboBox}">
+            <ComboBox Grid.Column="8" ItemsSource="{Binding Scales}" SelectedItem="{Binding SelectedScale}" VerticalAlignment="Center" Margin="5" Style="{StaticResource CleanComboBox}">
                 <ComboBox.ItemContainerStyle>
                     <Style>
                         <Style.Triggers>
@@ -82,7 +85,9 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Grid.Column="9" Margin="5" Content="Edit" Width="50" Command="{Binding ShowScaleManager}" Style="{DynamicResource CleanButton}"/>
+            <Button Grid.Column="9" Margin="5" Width="50" Command="{Binding ShowScaleManager}" ToolTip="Edit the available scales." Style="{StaticResource CleanButtonNoBorder}">
+                <local:AutoDisableImage Source="{StaticResource EditIcon16}" Width="16" Height="16" Margin="5,0,5,0" />
+            </Button>
         </Grid>
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel>
@@ -130,11 +135,11 @@
                         <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Add Root Notes"/>
                         <CheckBox Grid.Row="2" Grid.Column="1" Margin="5" IsChecked="{Binding AddRootNotes}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Mark Text"/>
-                        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding MarkTextOptions}" SelectedIndex="{Binding SelectedMarkTextOptionIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding MarkTextOptions}" SelectedIndex="{Binding SelectedMarkTextOptionIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                     </Grid>
                 </GroupBox>
-                <Button Margin="5" Content="Set as Defaults" Command="{Binding SetAsDefaults, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
-                <Button Margin="5" Content="Reset to Defaults" Command="{Binding ResetToDefaults, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                <Button Margin="5" Content="Set as Defaults" Command="{Binding SetAsDefaults, Mode=OneWay}" Style="{StaticResource CleanButton}"/>
+                <Button Margin="5" Content="Reset to Defaults" Command="{Binding ResetToDefaults, Mode=OneWay}" Style="{StaticResource CleanButton}"/>
             </StackPanel>
         </ScrollViewer>
         <ListView Grid.Row="1" Grid.Column="1" Name="ResultsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Results}" SelectionMode="Extended">
@@ -149,15 +154,15 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Grid.Row="2" Margin="5" Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}" Style="{DynamicResource CleanButton}">
+        <Button Grid.Row="2" Margin="5" Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}" ToolTip="Begin searching with the parameters selected. (F5)" Style="{StaticResource CleanButtonNoBorder}">
             <StackPanel Orientation="Horizontal">
-                <Image Source="{DynamicResource SearchIcon16}" Width="16" Height="16" Margin="5" />
+                <local:AutoDisableImage Source="{StaticResource SearchIcon16}" Width="16" Height="16" Margin="5" />
                 <TextBlock Text="Search" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </StackPanel>
         </Button>
-        <Button Name="SaveSelectedCommand" Grid.Column="1" Margin="5" Grid.Row="2" Command="{Binding SaveSelected}" Style="{DynamicResource CleanButton}">
+        <Button Name="SaveSelectedCommand" Grid.Column="1" Margin="5" Grid.Row="2" Command="{Binding SaveSelected}" ToolTip="Save the selected diagrams to the Diagram Library." Style="{StaticResource CleanButtonNoBorder}">
             <StackPanel Orientation="Horizontal">
-                <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
+                <local:AutoDisableImage Source="{StaticResource AddIcon16}" Width="16" Height="16" Margin="5" />
                 <TextBlock Text="Save Selected" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </StackPanel>
         </Button>

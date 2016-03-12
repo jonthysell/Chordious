@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -35,10 +35,6 @@ using System.Windows.Media.Imaging;
 
 using Svg;
 
-using SharpVectors.Dom.Svg;
-using SharpVectors.Renderers.Gdi;
-using SharpVectors.Renderers.Forms;
-
 using com.jonthysell.Chordious.Core.ViewModel;
 
 namespace com.jonthysell.Chordious.WPF
@@ -55,16 +51,15 @@ namespace com.jonthysell.Chordious.WPF
 
         #region SVG Rendering
 
-        public static BitmapImage SvgTextToBitmapImage(string svgText, int width, int height, bool editMode = false)
+        public static BitmapImage SvgTextToBitmapImage(string svgText, int width, int height, bool editMode)
         {
             Background background = editMode ? GetEditorRenderBackground() : GetRenderBackground();
-            return SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, background);
+            return SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, background, 1.0f);
         }
 
-        public static BitmapImage SvgTextToBitmapImage(string svgText, int width, int height, ImageFormat imageFormat, Background background)
+        public static BitmapImage SvgTextToBitmapImage(string svgText, int width, int height, ImageFormat imageFormat, Background background, float scaleFactor)
         {
-            SvgRenderer svgRenderer = GetRenderer();
-            Bitmap diagram = SvgTextToBitmap(svgText, width, height, svgRenderer);
+            Bitmap diagram = SvgTextToBitmap(svgText, width, height, scaleFactor);
 
             if (background != Background.None)
             {
@@ -74,38 +69,42 @@ namespace com.jonthysell.Chordious.WPF
             return BitmapToBitmapImage(diagram, imageFormat);
         }
 
-        public static Bitmap SvgTextToBitmap(string svgText, int width, int height, SvgRenderer svgRenderer)
+        public static Bitmap SvgTextToBitmap(string svgText, int width, int height, float scaleFactor)
         {
             if (String.IsNullOrEmpty(svgText))
             {
                 throw new ArgumentNullException("svgText");
             }
 
-            Bitmap svgBitmap = null;
-
-            if (svgRenderer == SvgRenderer.SvgSharp)
+            if (width <= 0 || width > MaxBitmapDimension)
             {
-                Svg.SvgDocument doc = Svg.SvgDocument.FromSvg<Svg.SvgDocument>(svgText);
-                svgBitmap = doc.Draw();
-            }
-            else if (svgRenderer == SvgRenderer.SharpVectors)
-            {
-                // make SVG document with associated window so we can render it.
-
-                GdiGraphicsRenderer renderer = new GdiGraphicsRenderer();
-                SharpVectors.Dom.Svg.SvgWindow window = new SvgPictureBoxWindow(width, height, renderer);
-
-                SharpVectors.Dom.Svg.SvgDocument doc = new SharpVectors.Dom.Svg.SvgDocument(window);
-                doc.LoadXml(svgText);
-
-                renderer.BackColor = Color.Transparent;
-                renderer.Render(doc);
-
-                svgBitmap = renderer.RasterImage;
+                throw new ArgumentOutOfRangeException("width");
             }
 
+            if (height <= 0 || height > MaxBitmapDimension)
+            {
+                throw new ArgumentOutOfRangeException("height");
+            }
+
+            if (scaleFactor <= 0 || scaleFactor > GetMaxScaleFactor(width, height))
+            {
+                throw new ArgumentOutOfRangeException("scaleFactor");
+            }
+
+            float maxDimension = scaleFactor * (float)Math.Max(width, height);
+
+            SvgDocument doc = SvgDocument.FromSvg<Svg.SvgDocument>(svgText);
+
+            if (scaleFactor != 1.0f)
+            {
+                doc.Transforms.Add(new Svg.Transforms.SvgScale(scaleFactor));
+                doc.Width = new SvgUnit(scaleFactor * width);
+                doc.Height = new SvgUnit(scaleFactor * height);
+            }
+
+            Bitmap svgBitmap = doc.Draw();
             return svgBitmap;
-        }
+        } 
 
         #endregion
 
@@ -197,21 +196,26 @@ namespace com.jonthysell.Chordious.WPF
 
         #region Export
 
-        public static void ExportImageFile(string svgText, int width, int height, ExportFormat exportFormat, string filePath)
+        public static void ExportImageFile(string svgText, int width, int height, ExportFormat exportFormat, float scaleFactor, string filePath)
         {
             if (String.IsNullOrWhiteSpace(svgText))
             {
                 throw new ArgumentNullException("svgText");
             }
 
-            if (width <= 0)
+            if (width <= 0 || (exportFormat != ExportFormat.SVG && width > MaxBitmapDimension))
             {
                 throw new ArgumentOutOfRangeException("width");
             }
 
-            if (height <= 0)
+            if (height <= 0 || (exportFormat != ExportFormat.SVG && height > MaxBitmapDimension))
             {
                 throw new ArgumentOutOfRangeException("height");
+            }
+
+            if (scaleFactor <= 0 || (exportFormat != ExportFormat.SVG && scaleFactor > GetMaxScaleFactor(width, height)))
+            {
+                throw new ArgumentOutOfRangeException("scaleFactor");
             }
 
             if (String.IsNullOrWhiteSpace(filePath))
@@ -255,7 +259,7 @@ namespace com.jonthysell.Chordious.WPF
                         background = Background.White;
                     }
 
-                    BitmapImage bmpImage = SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, background);
+                    BitmapImage bmpImage = SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, background, scaleFactor);
                     BitmapMetadata frameMetadata = GetExportMetadata(exportFormat);
 
                     BitmapFrame frame = BitmapFrame.Create(bmpImage, null, frameMetadata, null);
@@ -334,19 +338,32 @@ namespace com.jonthysell.Chordious.WPF
 
         #endregion
 
-        #region Settings
+        #region Limits
 
-        public static SvgRenderer GetRenderer()
+        public static float GetMaxScaleFactor(int width, int height)
         {
-            SvgRenderer result;
-
-            if (Enum.TryParse<SvgRenderer>(AppVM.GetSetting("app.renderer"), out result))
+            if (width <= 0 || width > MaxBitmapDimension)
             {
-                return result;
+                throw new ArgumentOutOfRangeException("width");
             }
 
-            return SvgRenderer.SvgSharp;
+            if (height <= 0 || height > MaxBitmapDimension)
+            {
+                throw new ArgumentOutOfRangeException("height");
+            }
+
+            float maxByDimensionConstraint = (float)MaxBitmapDimension / (float)Math.Max(width, height);
+
+            float maxByMemoryConstraint = (float)Math.Sqrt(((double)MaxBitmapDimension * (double)MaxBitmapDimension) / ((double)width * (double)height));
+
+            return Math.Min(maxByDimensionConstraint, maxByMemoryConstraint);
         }
+
+        private static int MaxBitmapDimension = 32768;
+
+        #endregion
+
+        #region Settings
 
         public static Background GetRenderBackground()
         {
@@ -373,12 +390,6 @@ namespace com.jonthysell.Chordious.WPF
         }
 
         #endregion
-    }
-
-    public enum SvgRenderer
-    {
-        SvgSharp,
-        SharpVectors,
     }
 
     public enum Background

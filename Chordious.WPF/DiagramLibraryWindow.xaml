@@ -2,7 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:com.jonthysell.Chordious.Core.ViewModel;assembly=Chordious.Core.ViewModel"
-        Title="{Binding Title}" Height="600" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Icon="{DynamicResource ChordiousIcon}">
+        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
+        Title="{Binding Title, FallbackValue=Diagram Library}" Height="600" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Icon="{StaticResource ChordiousIcon}">
     <Window.DataContext>
         <vm:DiagramLibraryViewModel />
     </Window.DataContext>
@@ -17,7 +18,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <WrapPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="Collections" FontWeight="Bold" Margin="5,0" />
+            <Label Content="{Binding NodesLabel, FallbackValue=Collection}" ToolTip="{Binding NodesToolTip}" FontWeight="Bold" Margin="5,0" />
         </WrapPanel>
         <ListBox Name="NodesListView" Margin="5,0" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Nodes}" SelectedItem="{Binding SelectedNode}">
             <ListBox.ItemTemplate>
@@ -31,36 +32,38 @@
             </ListBox.ItemTemplate>
             <ListBox.ContextMenu>
                 <ContextMenu Name="NodeContextMenu">
-                    <MenuItem Command="{Binding CreateNode}" Header="Add">
+                    <MenuItem Command="{Binding CreateNode}" Header="{Binding CreateNodeLabel}" ToolTip="{Binding CreateNodeToolTip}">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource AddIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding EditNode}" Header="Edit">
+                    <MenuItem Command="{Binding EditNode}" Header="{Binding EditNodeLabel}" ToolTip="{Binding EditNodeToolTip}">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource EditIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding CopyNode}" Header="Copy">
+                    <MenuItem Command="{Binding CloneNode}" Header="{Binding CloneNodeLabel}" ToolTip="{Binding CloneNodeToolTip}">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource CopyIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding DeleteNode}" Header="Delete">
+                    <MenuItem Command="{Binding DeleteNode}" Header="{Binding DeleteNodeLabel}" ToolTip="{Binding DeleteNodeToolTip}">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource RemoveIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
             </ListBox.ContextMenu>
         </ListBox>
         <WrapPanel Margin="5,0" Grid.Row="0" Grid.Column="1" IsEnabled="{Binding NodeIsSelected}">
-            <Label Content="Path:" FontWeight="Bold" />
-            <Label Content="{Binding SelectedNode.Path}" />
-            <Label Content="Name:" FontWeight="Bold" />
-            <Label Content="{Binding SelectedNode.Name}" />
-            <Label Content="Count:" FontWeight="Bold" />
-            <Label Content="{Binding SelectedNode.Diagrams.Count}" />
+            <Label Content="{Binding AppVM.PathLabel, FallbackValue=Path:}" FontWeight="Bold" />
+            <Label Content="{Binding SelectedNode.Path, FallbackValue=/}" />
+            <Label Content="{Binding AppVM.NameLabel, FallbackValue=Name:}" FontWeight="Bold" />
+            <Label Content="{Binding SelectedNode.Name, FallbackValue=Name}" />
+            <Label Content="{Binding AppVM.CountLabel, FallbackValue=Count:}" FontWeight="Bold" />
+            <Label Content="{Binding SelectedNode.Diagrams.Count, FallbackValue=0}" />
+            <Label Content="{Binding AppVM.SelectedLabel, FallbackValue=Count:}" FontWeight="Bold" />
+            <Label Content="{Binding SelectedNode.SelectedDiagrams.Count, FallbackValue=0}" />
         </WrapPanel>
         <ListView Grid.Row="1" Grid.Column="1" Name="DiagramsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding SelectedNode.Diagrams}" SelectionMode="Extended" Margin="5,0" IsEnabled="{Binding NodeIsSelected}">
             <ListView.ItemsPanel>
@@ -79,74 +82,60 @@
             </ListView.ItemTemplate>
             <ListView.ContextMenu>
                 <ContextMenu Name="DiagramsListViewContextMenu">
-                    <MenuItem Command="{Binding SelectedNode.CreateDiagram}" Header="Add">
+                    <MenuItem Command="{Binding SelectedNode.CreateDiagram}" Header="{Binding SelectedNode.CreateDiagramLabel}" ToolTip="{Binding SelectedNode.CreateDiagramToolTip}">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource AddIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding SelectedNode.EditSelected}" Header="Edit">
+                    <MenuItem Command="{Binding SelectedNode.EditSelected}" Header="{Binding SelectedNode.EditSelectedLabel}" ToolTip="{Binding SelectedNode.EditSelectedToolTip}">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource EditIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding SelectedNode.DeleteSelected}" Header="Delete">
+                    <MenuItem Command="{Binding SelectedNode.CloneSelected}" Header="{Binding SelectedNode.CloneSelectedLabel}" ToolTip="{Binding SelectedNode.CloneSelectedToolTip}">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource RemoveIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding SelectedNode.ExportSelected}" Header="Export Images">
+                    <MenuItem Command="{Binding SelectedNode.ExportSelected}" Header="{Binding SelectedNode.ExportSelectedLabel}" ToolTip="{Binding SelectedNode.ExportSelectedToolTip}">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource ExportIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource ExportIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding SelectedNode.DeleteSelected}" Header="{Binding SelectedNode.DeleteSelectedLabel}" ToolTip="{Binding SelectedNode.DeleteSelectedToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
-        <WrapPanel Grid.Row="2" Grid.Column="0" FlowDirection="LeftToRight">
-            <Button Command="{Binding CreateNode}" Margin="5" Style="{DynamicResource CleanButton}">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
-                    <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                </StackPanel>
-            </Button>
-            <Button Command="{Binding EditNode}" Margin="5" Style="{DynamicResource CleanButton}">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
-                    <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                </StackPanel>
-            </Button>
-            <Button Command="{Binding DeleteNode}" Margin="5" Style="{DynamicResource CleanButton}">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
-                    <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                </StackPanel>
-            </Button>
-        </WrapPanel>
-        <WrapPanel Grid.Row="2" Grid.Column="1" FlowDirection="RightToLeft">
+        <WrapPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Button Command="{Binding SelectedNode.CreateDiagram}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                    </StackPanel>
+                <Button Command="{Binding CreateNode}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding CreateNodeToolTip}">
+                    <local:AutoDisableImage Source="{StaticResource AddIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding SelectedNode.EditSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                    </StackPanel>
+                <Button Command="{Binding EditNode}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding EditNodeToolTip}">
+                    <local:AutoDisableImage Source="{StaticResource EditIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding SelectedNode.DeleteSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                    </StackPanel>
+                <Button Command="{Binding DeleteNode}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding DeleteNodeToolTip}">
+                    <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding SelectedNode.ExportSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource ExportIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Export Images" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                    </StackPanel>
+            </StackPanel>
+        </WrapPanel>
+        <WrapPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Button Command="{Binding SelectedNode.CreateDiagram}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding SelectedNode.CreateDiagramToolTip}">
+                    <local:AutoDisableImage Source="{StaticResource AddIcon16}" Width="16" Height="16" Margin="5" />
+                </Button>
+                <Button Command="{Binding SelectedNode.EditSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding SelectedNode.EditSelectedToolTip}">
+                    <local:AutoDisableImage Source="{StaticResource EditIcon16}" Width="16" Height="16" Margin="5" />
+                </Button>
+                <Button Command="{Binding SelectedNode.ExportSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding SelectedNode.ExportSelectedToolTip}">
+                    <local:AutoDisableImage Source="{StaticResource ExportIcon16}" Width="16" Height="16" Margin="5" />
+                </Button>
+                <Button Command="{Binding SelectedNode.DeleteSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding SelectedNode.DeleteSelectedToolTip}">
+                    <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
             </StackPanel>
         </WrapPanel>

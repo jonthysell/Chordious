@@ -2,7 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:com.jonthysell.Chordious.Core.ViewModel;assembly=Chordious.Core.ViewModel"
-        Title="{Binding Title}" Height="300" Width="400" WindowStartupLocation="CenterScreen" MinWidth="400" MinHeight="300" Icon="{DynamicResource ChordiousIcon}">
+        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
+        Title="{Binding Title, FallbackValue=Named Interval Manager}" Height="300" Width="400" WindowStartupLocation="CenterScreen" MinWidth="400" MinHeight="300" Icon="{StaticResource ChordiousIcon}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -28,17 +29,17 @@
                 <ContextMenu Name="UserNamedIntervalContextMenu">
                     <MenuItem Command="{Binding AddNamedInterval}" Header="Add">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource AddIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding EditNamedInterval}" Header="Edit">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource EditIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding DeleteNamedInterval}" Header="Delete">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource RemoveIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
@@ -54,25 +55,16 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <WrapPanel Grid.Row="4" FlowDirection="RightToLeft">
+        <WrapPanel Grid.Row="4" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Button Command="{Binding AddNamedInterval}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource AddIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                    </StackPanel>
+                <Button Command="{Binding AddNamedInterval}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                    <local:AutoDisableImage Source="{StaticResource AddIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding EditNamedInterval}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource EditIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
-                    </StackPanel>
+                <Button Command="{Binding EditNamedInterval}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                    <local:AutoDisableImage Source="{StaticResource EditIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding DeleteNamedInterval}" Margin="5" Style="{DynamicResource CleanButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{DynamicResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-                    </StackPanel>
+                <Button Command="{Binding DeleteNamedInterval}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                    <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
             </StackPanel>
         </WrapPanel>

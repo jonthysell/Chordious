@@ -1,5 +1,19 @@
 # Chordious Changelist #
 
+## 1.9.16072.2038 ##
+* New main icon!
+* New color icons and button style changes
+* Button icons now grey-out when disabled
+* Added ability to clone diagrams within a library collection
+* Added ability to scale exported image files (needs more testing)
+* Removed SharpVectors and ability to choose SVG renderer
+* Switched from Dynamic to Static resources to improve performance
+* Fixed bug in options Window with reloading options after exiting the advanced editor
+* Fixed bug in Diagram Export with filename case-sensitivity
+* Fixed bug when trying to open/close files and the last path opened doesn't exist anymore
+* Started moving hard-coded UI strings into resource files for future localization (incomplete)
+* Started adding more tooltips to items (incomplete)
+
 ## 1.9.16062.348 ##
 * Fixed bug with loading the diagram editor with a transparent render background
 

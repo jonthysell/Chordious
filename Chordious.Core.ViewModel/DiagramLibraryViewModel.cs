@@ -35,6 +35,8 @@ using GalaSoft.MvvmLight.Messaging;
 using com.jonthysell.Chordious.Core;
 using com.jonthysell.Chordious.Core.Legacy;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class DiagramLibraryViewModel : ViewModelBase
@@ -51,9 +53,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return "Diagram Library";
+                return Strings.DiagramLibraryTitle;
             }
         }
+
+        #region SelectedNode
 
         public bool NodeIsSelected
         {
@@ -81,12 +85,36 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 RaisePropertyChanged("SelectedNode");
                 RaisePropertyChanged("NodeIsSelected");
                 RaisePropertyChanged("CreateNode");
+                RaisePropertyChanged("CreateNodeLabel");
                 RaisePropertyChanged("EditNode");
-                RaisePropertyChanged("CopyNode");
+                RaisePropertyChanged("EditNodeLabel");
+                RaisePropertyChanged("CloneNode");
+                RaisePropertyChanged("CloneNodeLabel");
                 RaisePropertyChanged("DeleteNode");
+                RaisePropertyChanged("DeleteNodeLabel");
             }
         }
         private ObservableDiagramLibraryNode _selectedNode;
+
+        #endregion SelectedNode
+
+        #region Nodes
+
+        public string NodesLabel
+        {
+            get
+            {
+                return Strings.DiagramLibraryNodesLabel;
+            }
+        }
+
+        public string NodesToolTip
+        {
+            get
+            {
+                return Strings.DiagramLibraryNodesToolTip;
+            }
+        }
 
         public ObservableCollection<ObservableDiagramLibraryNode> Nodes
         {
@@ -98,6 +126,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #endregion
+
+        #region CreateNode
+
+        public string CreateNodeLabel
+        {
+            get
+            {
+                return Strings.NewLabel;
+            }
+        }
+
+        public string CreateNodeToolTip
+        {
+            get
+            {
+                return Strings.DiagramLibraryCreateNodeToolTip;
+            }
+        }
+
         public RelayCommand CreateNode
         {
             get
@@ -106,7 +154,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Create new collection named:", Library.GetNewCollectionName(), (name) =>
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(Strings.DiagramLibraryCreateNodePrompt, Library.GetNewCollectionName(), (name) =>
                         {
                             Library.Add(name);
                             RaisePropertyChanged("Nodes");
@@ -120,33 +168,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public RelayCommand DeleteNode
+        #endregion
+
+        #region EditNode
+
+        public string EditNodeLabel
         {
             get
             {
-                return new RelayCommand(() =>
+                if (NodeIsSelected)
                 {
-                    try
-                    {
-                        string path = SelectedNode.Path;
-                        string name = SelectedNode.Name;
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete the collection \"{0}\". Do you want to continue?", name), (confirmed) =>
-                        {
-                            if (confirmed)
-                            {
-                                Library.Remove(path, name);
-                                RaisePropertyChanged("Nodes");
-                            }
-                        }));
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                }, () =>
-                {
-                    return NodeIsSelected;
-                });
+                    return String.Format(Strings.DiagramLibraryEditNodeLabelFormat, SelectedNode.Name);
+                }
+
+                return Strings.EditLabel;
+            }
+        }
+
+        public string EditNodeToolTip
+        {
+            get
+            {
+                return Strings.DiagramLibraryEditNodeToolTip;
             }
         }
 
@@ -177,7 +220,32 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public RelayCommand CopyNode
+        #endregion
+
+        #region CloneNode
+
+        public string CloneNodeLabel
+        {
+            get
+            {
+                if (NodeIsSelected)
+                {
+                    return String.Format(Strings.DiagramLibraryCloneNodeLabelFormat, SelectedNode.Name);
+                }
+
+                return Strings.CloneLabel;
+            }
+        }
+
+        public string CloneNodeToolTip
+        {
+            get
+            {
+                return Strings.DiagramLibraryCloneNodeToolTip;
+            }
+        }
+
+        public RelayCommand CloneNode
         {
             get
             {
@@ -187,7 +255,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         string path = SelectedNode.Path;
                         string oldName = SelectedNode.Name;
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(String.Format("Create copy of collection \"{0}\" named:", oldName), Library.GetNewCollectionName(path, oldName), (newName) =>
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(String.Format(Strings.DiagramLibraryCloneNodePromptFormat, oldName), Library.GetNewCollectionName(path, oldName), (newName) =>
                         {
                             Library.Clone(path, oldName, newName);
                             RaisePropertyChanged("Nodes");
@@ -203,6 +271,63 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 });
             }
         }
+
+        #endregion
+
+        #region DeleteNode
+
+        public string DeleteNodeLabel
+        {
+            get
+            {
+                if (NodeIsSelected)
+                {
+                    return String.Format(Strings.DiagramLibraryDeleteNodeLabelFormat, SelectedNode.Name);
+                }
+
+                return Strings.DeleteLabel;
+            }
+        }
+
+        public string DeleteNodeToolTip
+        {
+            get
+            {
+                return Strings.DiagramLibraryDeleteNodeToolTip;
+            }
+        }
+
+        public RelayCommand DeleteNode
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        string path = SelectedNode.Path;
+                        string name = SelectedNode.Name;
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format(Strings.DiagramLibraryDeleteNodePromptFormat, name), (confirmed) =>
+                        {
+                            if (confirmed)
+                            {
+                                Library.Remove(path, name);
+                                RaisePropertyChanged("Nodes");
+                            }
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return NodeIsSelected;
+                });
+            }
+        }
+
+        #endregion
 
         internal DiagramLibrary Library { get; private set; }
 

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,47 +38,6 @@ namespace com.jonthysell.Chordious.WPF
     {
         #region Rendering
 
-        public int SelectedRendererIndex
-        {
-            get
-            {
-                return (int)Renderer;
-            }
-            set
-            {
-                Renderer = (SvgRenderer)(value);
-                RaisePropertyChanged("SelectedRendererIndex");
-            }
-        }
-
-        public ObservableCollection<string> Renderers
-        {
-            get
-            {
-                return GetRenderers();
-            }
-        }
-
-        private SvgRenderer Renderer
-        {
-            get
-            {
-                SvgRenderer result;
-
-                if (Enum.TryParse<SvgRenderer>(GetSetting("app.renderer"), out result))
-                {
-                    return result;
-                }
-
-                return SvgRenderer.SvgSharp;
-            }
-            set
-            {
-                SetSetting("app.renderer", value);
-                RaisePropertyChanged("Renderer");
-            }
-        }
-
         public int SelectedRenderBackgroundIndex
         {
             get
@@ -88,7 +47,6 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 RenderBackground = (Background)(value);
-                RaisePropertyChanged("SelectedRenderBackgroundIndex");
             }
         }
 
@@ -116,7 +74,7 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 SetSetting("app.renderbackground", value);
-                RaisePropertyChanged("RenderBackground");
+                RaisePropertyChanged("SelectedRenderBackgroundIndex");
             }
         }
 
@@ -129,7 +87,6 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 EditorRenderBackground = (Background)(value);
-                RaisePropertyChanged("SelectedEditorRenderBackgroundIndex");
             }
         }
 
@@ -157,7 +114,7 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 SetSetting("diagrameditor.renderbackground", value);
-                RaisePropertyChanged("EditorRenderBackground");
+                RaisePropertyChanged("SelectedEditorRenderBackgroundIndex");
             }
         }
 
@@ -174,7 +131,6 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 ReleaseChannel = (ReleaseChannel)(value);
-                RaisePropertyChanged("SelectedReleaseChannelIndex");
             }
         }
 
@@ -202,7 +158,7 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 SetSetting("app.releasechannel", value);
-                RaisePropertyChanged("ReleaseChannel");
+                RaisePropertyChanged("SelectedReleaseChannelIndex");
             }
         }
 
@@ -285,16 +241,6 @@ namespace com.jonthysell.Chordious.WPF
             return collection;
         }
 
-        private static ObservableCollection<string> GetRenderers()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add("SvgSharp");
-            collection.Add("SharpVectors");
-
-            return collection;
-        }
-
         private static ObservableCollection<string> GetBackgrounds()
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
@@ -309,9 +255,9 @@ namespace com.jonthysell.Chordious.WPF
         public override void RefreshProperties()
         {
             base.RefreshProperties();
-            RaisePropertyChanged("Renderer");
-            RaisePropertyChanged("RenderBackground");
-            RaisePropertyChanged("ReleaseChannel");
+            RaisePropertyChanged("SelectedRenderBackgroundIndex");
+            RaisePropertyChanged("SelectedEditorRenderBackgroundIndex");
+            RaisePropertyChanged("SelectedReleaseChannelIndex");
             RaisePropertyChanged("CheckUpdateOnStart");
             RaisePropertyChanged("LastUpdateCheck");
         }

@@ -63,30 +63,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="SharpVectors.Converters">
-      <HintPath>..\External\SharpVectors\SharpVectors.Converters.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpVectors.Core">
-      <HintPath>..\External\SharpVectors\SharpVectors.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpVectors.Css">
-      <HintPath>..\External\SharpVectors\SharpVectors.Css.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpVectors.Dom">
-      <HintPath>..\External\SharpVectors\SharpVectors.Dom.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpVectors.Model">
-      <HintPath>..\External\SharpVectors\SharpVectors.Model.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpVectors.Rendering.Gdi">
-      <HintPath>..\External\SharpVectors\SharpVectors.Rendering.Gdi.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpVectors.Rendering.Wpf">
-      <HintPath>..\External\SharpVectors\SharpVectors.Rendering.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpVectors.Runtime">
-      <HintPath>..\External\SharpVectors\SharpVectors.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Svg">
       <HintPath>..\External\SVG.NET\Svg.dll</HintPath>
     </Reference>
@@ -117,6 +93,7 @@
     <Compile Include="AdvancedDataWindow.xaml.cs">
       <DependentUpon>AdvancedDataWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AutoDisableImage.cs" />
     <Compile Include="ChordQualityEditorWindow.xaml.cs">
       <DependentUpon>ChordQualityEditorWindow.xaml</DependentUpon>
     </Compile>

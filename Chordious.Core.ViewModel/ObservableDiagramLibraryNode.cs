@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -34,6 +34,8 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
+
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
@@ -109,6 +111,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableDiagram> _selectedDiagrams;
 
+        #region CreateDiagram
+
+        public string CreateDiagramLabel
+        {
+            get
+            {
+                return Strings.NewLabel;
+            }
+        }
+
+        public string CreateDiagramToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramLibraryNodeCreateDiagramToolTip;
+            }
+        }
+
         public RelayCommand CreateDiagram
         {
             get
@@ -129,6 +149,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #endregion
+
+        #region EditSelected
+
+        public string EditSelectedLabel
+        {
+            get
+            {
+                return Strings.EditLabel;
+            }
+        }
+
+        public string EditSelectedToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramLibraryNodeEditSelectedToolTip;
+            }
+        }
+
         public RelayCommand EditSelected
         {
             get
@@ -144,7 +184,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage("Only one diagram can be edited at a time. Please select a single diagram and try again."));
+                        Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeEditedMessage));
                     }
                     catch (Exception ex)
                     {
@@ -157,7 +197,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public RelayCommand DeleteSelected
+        #endregion
+
+        #region CloneSelected
+
+        public string CloneSelectedLabel
+        {
+            get
+            {
+                return Strings.CloneLabel;
+            }
+        }
+
+        public string CloneSelectedToolTip
+        {
+            get
+            {
+                int count = SelectedDiagrams.Count;
+                return String.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeCloneSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeCloneSelectedToolTipPluralFormat, count);
+            }
+        }
+
+        public RelayCommand CloneSelected
         {
             get
             {
@@ -165,21 +226,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete the {0} selected diagrams. This cannot be undone. Do you want to continue?", SelectedDiagrams.Count), (confirmed) =>
-                        {
-                            if (confirmed)
-                            {
-                                List<ObservableDiagram> itemsToDelete = new List<ObservableDiagram>(SelectedDiagrams);
+                        List<ObservableDiagram> itemsToClone = new List<ObservableDiagram>(SelectedDiagrams);
 
-                                DiagramCollection collection = Library.Get(Path, Name);
-                                foreach (ObservableDiagram od in itemsToDelete)
-                                {
-                                    collection.Remove(od.Diagram);
-                                    Diagrams.Remove(od);
-                                }
-                                SelectedDiagrams.Clear();
-                            }
-                        }));
+                        DiagramCollection collection = Library.Get(Path, Name);
+                        foreach (ObservableDiagram od in itemsToClone)
+                        {
+                            ObservableDiagram clonedOd = CreateObservableDiagram(od.Diagram.Clone());
+                            collection.Add(clonedOd.Diagram);
+                            Diagrams.Add(clonedOd);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -189,6 +244,27 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     return SelectedDiagrams.Count > 0;
                 });
+            }
+        }
+
+        #endregion
+
+        #region ExportSelected
+
+        public string ExportSelectedLabel
+        {
+            get
+            {
+                return Strings.ExportLabel;
+            }
+        }
+
+        public string ExportSelectedToolTip
+        {
+            get
+            {
+                int count = SelectedDiagrams.Count;
+                return String.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeExportSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeExportSelectedToolTipPluralFormat, count);
             }
         }
 
@@ -212,6 +288,66 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 });
             }
         }
+
+        #endregion
+
+        #region DeleteSelected
+
+        public string DeleteSelectedLabel
+        {
+            get
+            {
+                return Strings.DeleteLabel;
+            }
+        }
+
+        public string DeleteSelectedToolTip
+        {
+            get
+            {
+                int count = SelectedDiagrams.Count;
+                return String.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeDeleteSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeDeleteSelectedToolTipPluralFormat, count);
+            }
+        }
+
+        public RelayCommand DeleteSelected
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        int count = SelectedDiagrams.Count;
+                        string message = String.Format(count < 2 ? Strings.DiagramLibraryDeleteSelectedDiagramsPromptSingleFormat : Strings.DiagramLibraryDeleteSelectedDiagramsPromptPluralFormat, count);
+
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (confirmed) =>
+                        {
+                            if (confirmed)
+                            {
+                                List<ObservableDiagram> itemsToDelete = new List<ObservableDiagram>(SelectedDiagrams);
+
+                                DiagramCollection collection = Library.Get(Path, Name);
+                                foreach (ObservableDiagram od in itemsToDelete)
+                                {
+                                    collection.Remove(od.Diagram);
+                                    Diagrams.Remove(od);
+                                }
+                            }
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedDiagrams.Count > 0;
+                });
+            }
+        }
+
+        #endregion
 
         internal DiagramLibrary Library { get; private set; }
 
@@ -245,7 +381,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             Diagrams = new ObservableCollection<ObservableDiagram>();
 
             SelectedDiagrams = new ObservableCollection<ObservableDiagram>();
-
             SelectedDiagrams.CollectionChanged += SelectedDiagrams_CollectionChanged;
         }
 
@@ -302,8 +437,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         private void UpdateCommands()
         {
             RaisePropertyChanged("EditSelected");
-            RaisePropertyChanged("DeleteSelected");
+            RaisePropertyChanged("CloneSelected");
+            RaisePropertyChanged("CloneSelectedToolTip");
             RaisePropertyChanged("ExportSelected");
+            RaisePropertyChanged("ExportSelectedToolTip");
+            RaisePropertyChanged("DeleteSelected");
+            RaisePropertyChanged("DeleteSelectedToolTip");
         }
     }
 }

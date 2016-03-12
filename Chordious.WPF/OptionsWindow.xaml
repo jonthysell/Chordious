@@ -1,7 +1,7 @@
 ﻿<Window x:Class="com.jonthysell.Chordious.WPF.OptionsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="{Binding Title}" Height="400" MinHeight="300" Width="300" MinWidth="300" MaxWidth="300" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" Icon="{DynamicResource ChordiousIcon}"
+        Title="{Binding Title, FallbackValue=Options}" Height="400" MinHeight="300" Width="300" MinWidth="300" MaxWidth="300" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" Icon="{DynamicResource ChordiousIcon}"
         Cursor="{Binding IsIdle, Converter={StaticResource IdleBoolToWaitCursorConverter}}" ForceCursor="True">
     <Grid IsEnabled="{Binding IsIdle}">
         <Grid.RowDefinitions>
@@ -12,23 +12,15 @@
             <TabItem Header="Settings">
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
                     <StackPanel>
-                        <GroupBox Header="Diagram Editor" Margin="5">
+                        <GroupBox Header="Background" Margin="5">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Width="110" Margin="5" Content="Background"/>
-                                    <ComboBox Width="100" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </GroupBox>
-                        <GroupBox Header="Rendering" Margin="5">
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Width="110" Margin="5" Content="Renderer"/>
-                                    <ComboBox Width="100" Margin="5" ItemsSource="{Binding Renderers}" SelectedIndex="{Binding SelectedRendererIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Width="110" Margin="5" Content="Background"/>
+                                    <Label Width="110" Margin="5" Content="Normal"/>
                                     <ComboBox Width="100" Margin="5" ItemsSource="{Binding RenderBackgrounds}" SelectedIndex="{Binding SelectedRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="110" Margin="5" Content="Diagram Editor"/>
+                                    <ComboBox Width="100" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                                 </StackPanel>
                             </StackPanel>
                         </GroupBox>
@@ -68,11 +60,11 @@
             <TabItem Header="Finders">
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
                     <StackPanel>
-                        <GroupBox Header="Targets" Margin="5">
+                        <GroupBox Header="Managers" Margin="5">
                             <StackPanel>
-                                <Button Content="Edit Instruments &amp; Tunings" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
-                                <Button Content="Edit Chord Qualities" Command="{Binding ShowChordQualityManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
-                                <Button Content="Edit Scales"  Command="{Binding ShowScaleManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}" />
+                                <Button Content="Instrument Manager" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="Chord Quality Manager" Command="{Binding ShowChordQualityManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="Scale Manager"  Command="{Binding ShowScaleManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}" />
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Header="Search Defaults" Margin="5">

@@ -120,6 +120,9 @@
   <data name="AdvancedDataValidationErrorMessage" xml:space="preserve">
     <value>The data could not be validated: {0}</value>
   </data>
+  <data name="ChordFinderTitle" xml:space="preserve">
+    <value>Chord Finder</value>
+  </data>
   <data name="CloneLabel" xml:space="preserve">
     <value>Clone...</value>
   </data>
@@ -228,11 +231,38 @@
   <data name="ObservableDiagramLibraryNodeExportSelectedToolTipSingleFormat" xml:space="preserve">
     <value>Export the selected diagram as an image file.</value>
   </data>
+  <data name="OptionsLabel" xml:space="preserve">
+    <value>Options</value>
+  </data>
   <data name="PathLabel" xml:space="preserve">
     <value>Path:</value>
   </data>
+  <data name="SelectedChordQualityLabel" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+  <data name="SelectedChordQualityToolTip" xml:space="preserve">
+    <value>The chord quality you want to use.</value>
+  </data>
+  <data name="SelectedInstrumentLabel" xml:space="preserve">
+    <value>Instrument</value>
+  </data>
+  <data name="SelectedInstrumentToolTip" xml:space="preserve">
+    <value>The instrument you want to use.</value>
+  </data>
   <data name="SelectedLabel" xml:space="preserve">
     <value>Selected:</value>
+  </data>
+  <data name="SelectedRootNoteLabel" xml:space="preserve">
+    <value>Root Note</value>
+  </data>
+  <data name="SelectedRootNoteToolTip" xml:space="preserve">
+    <value>The root note you want to use.</value>
+  </data>
+  <data name="SelectedTuningLabel" xml:space="preserve">
+    <value>Tuning</value>
+  </data>
+  <data name="SelectedTuningToolTip" xml:space="preserve">
+    <value>The tuning you want to use.</value>
   </data>
   <data name="ShowChordFinderLabel" xml:space="preserve">
     <value>Chord Finder</value>
@@ -253,7 +283,7 @@
     <value>Go to the Help section on the Chordious website.</value>
   </data>
   <data name="ShowInstrumentManagerLabel" xml:space="preserve">
-    <value>Instruments</value>
+    <value>Edit Instruments</value>
   </data>
   <data name="ShowInstrumentManagerToolTip" xml:space="preserve">
     <value>Create and manage your favorite instruments and tunings.</value>
@@ -281,5 +311,131 @@
   </data>
   <data name="YesLabel" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="StyleLabel" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="FinderOptionsAllowMutedStringsLabel" xml:space="preserve">
+    <value>Allow Muted Strings</value>
+  </data>
+  <data name="FinderOptionsAllowMutedStringsToolTip" xml:space="preserve">
+    <value>Allow results that use muted strings.</value>
+  </data>
+  <data name="FinderOptionsAllowOpenStringsLabel" xml:space="preserve">
+    <value>Allow Open Strings</value>
+  </data>
+  <data name="FinderOptionsAllowOpenStringsToolTip" xml:space="preserve">
+    <value>Allow results that use open strings.</value>
+  </data>
+  <data name="ChordFinderOptionsAllowRootlessChordsLabel" xml:space="preserve">
+    <value>Allow Rootless Chords</value>
+  </data>
+  <data name="ChordFinderOptionsAllowRootlessChordsToolTip" xml:space="preserve">
+    <value>Allow results that don't have the root note of the chord.</value>
+  </data>
+  <data name="FinderOptionsMaxFretLabel" xml:space="preserve">
+    <value>Max Fret</value>
+  </data>
+  <data name="FinderOptionsMaxFretToolTip" xml:space="preserve">
+    <value>The highest fret on the fretboard that a result can have.</value>
+  </data>
+  <data name="FinderOptionsMaxReachLabel" xml:space="preserve">
+    <value>Max Reach</value>
+  </data>
+  <data name="FinderOptionsMaxReachToolTip" xml:space="preserve">
+    <value>The number of frets a player will need to reach their fingers across in order to play the result.</value>
+  </data>
+  <data name="FinderOptionsNumFretsLabel" xml:space="preserve">
+    <value># of Frets</value>
+  </data>
+  <data name="FinderOptionsNumFretsToolTip" xml:space="preserve">
+    <value>The number of frets to display in each result.</value>
+  </data>
+  <data name="ChordFinderOptionsAddBottomMarksLabel" xml:space="preserve">
+    <value>Add Bottom Marks</value>
+  </data>
+  <data name="ChordFinderOptionsAddBottomMarksToolTip" xml:space="preserve">
+    <value>Include the note played by each string at the bottom of the diagram in each result.</value>
+  </data>
+  <data name="FinderOptionsAddRootNotesLabel" xml:space="preserve">
+    <value>Add Root Notes</value>
+  </data>
+  <data name="FinderOptionsAddRootNotesToolTip" xml:space="preserve">
+    <value>Flag root notes in each result as such, so they may be styled differently.</value>
+  </data>
+  <data name="FinderOptionsAddTitleLabel" xml:space="preserve">
+    <value>Add Title</value>
+  </data>
+  <data name="FinderOptionsAddTitleToolTip" xml:space="preserve">
+    <value>Include the title in each result.</value>
+  </data>
+  <data name="ChordFinderOptionsBarreTypeLabel" xml:space="preserve">
+    <value>Barre Type</value>
+  </data>
+  <data name="ChordFinderOptionsBarreTypeToolTip" xml:space="preserve">
+    <value>Which type of barre lines to include (if any) in each result.</value>
+  </data>
+  <data name="ChordFinderOptionsBottomMarkTextLabel" xml:space="preserve">
+    <value>Bottom Mark Text</value>
+  </data>
+  <data name="ChordFinderOptionsBottomMarkTextToolTip" xml:space="preserve">
+    <value>The style of the notes for the text at the bottom of the fretboard.</value>
+  </data>
+  <data name="FinderOptionsMarkTextLabel" xml:space="preserve">
+    <value>Mark Text</value>
+  </data>
+  <data name="FinderOptionsMarkTextToolTip" xml:space="preserve">
+    <value>Include the note played by each string (and its style) on the mark in each result.</value>
+  </data>
+  <data name="FinderOptionsMirrorResultsLabel" xml:space="preserve">
+    <value>Mirror Results</value>
+  </data>
+  <data name="FinderOptionsMirrorResultsToolTip" xml:space="preserve">
+    <value>Flip the order of the strings on each result.</value>
+  </data>
+  <data name="FinderOptionsResetToDefaultsLabel" xml:space="preserve">
+    <value>Reset to Defaults</value>
+  </data>
+  <data name="FinderOptionsResetToDefaultsToolTip" xml:space="preserve">
+    <value>Reset your current search parameters to the default values.</value>
+  </data>
+  <data name="FinderOptionsSetAsDefaultsLabel" xml:space="preserve">
+    <value>Set as Defaults</value>
+  </data>
+  <data name="FinderOptionsSetAsDefaultsToolTip" xml:space="preserve">
+    <value>Set your current search parameters as the new default values.</value>
+  </data>
+  <data name="FinderSaveSelectedLabel" xml:space="preserve">
+    <value>Save Selected</value>
+  </data>
+  <data name="FinderSaveSelectedToolTip" xml:space="preserve">
+    <value>Save the selected diagrams to the Diagram Library.</value>
+  </data>
+  <data name="FinderSearchLabel" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="FinderSearchToolTip" xml:space="preserve">
+    <value>Begin searching with the parameters selected. (F5)</value>
+  </data>
+  <data name="ScaleFinderTitle" xml:space="preserve">
+    <value>Scale Finder</value>
+  </data>
+  <data name="SelectedScaleLabel" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="SelectedScaleToolTip" xml:space="preserve">
+    <value>The scale you want to use.</value>
+  </data>
+  <data name="ShowChordQualityManagerLabel" xml:space="preserve">
+    <value>Edit Chord Qualities</value>
+  </data>
+  <data name="ShowChordQualityManagerToolTip" xml:space="preserve">
+    <value>Edit the available qualities.</value>
+  </data>
+  <data name="ShowScaleManagerLabel" xml:space="preserve">
+    <value>Edit Scales</value>
+  </data>
+  <data name="ShowScaleManagerToolTip" xml:space="preserve">
+    <value>Edit the available scales.</value>
   </data>
 </root>

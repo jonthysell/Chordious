@@ -71,6 +71,87 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Bottom Marks.
+        /// </summary>
+        internal static string ChordFinderOptionsAddBottomMarksLabel {
+            get {
+                return ResourceManager.GetString("ChordFinderOptionsAddBottomMarksLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include the note played by each string at the bottom of the diagram in each result..
+        /// </summary>
+        internal static string ChordFinderOptionsAddBottomMarksToolTip {
+            get {
+                return ResourceManager.GetString("ChordFinderOptionsAddBottomMarksToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow Rootless Chords.
+        /// </summary>
+        internal static string ChordFinderOptionsAllowRootlessChordsLabel {
+            get {
+                return ResourceManager.GetString("ChordFinderOptionsAllowRootlessChordsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow results that don&apos;t have the root note of the chord..
+        /// </summary>
+        internal static string ChordFinderOptionsAllowRootlessChordsToolTip {
+            get {
+                return ResourceManager.GetString("ChordFinderOptionsAllowRootlessChordsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barre Type.
+        /// </summary>
+        internal static string ChordFinderOptionsBarreTypeLabel {
+            get {
+                return ResourceManager.GetString("ChordFinderOptionsBarreTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Which type of barre lines to include (if any) in each result..
+        /// </summary>
+        internal static string ChordFinderOptionsBarreTypeToolTip {
+            get {
+                return ResourceManager.GetString("ChordFinderOptionsBarreTypeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Text.
+        /// </summary>
+        internal static string ChordFinderOptionsBottomMarkTextLabel {
+            get {
+                return ResourceManager.GetString("ChordFinderOptionsBottomMarkTextLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The style of the notes for the text at the bottom of the fretboard..
+        /// </summary>
+        internal static string ChordFinderOptionsBottomMarkTextToolTip {
+            get {
+                return ResourceManager.GetString("ChordFinderOptionsBottomMarkTextToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chord Finder.
+        /// </summary>
+        internal static string ChordFinderTitle {
+            get {
+                return ResourceManager.GetString("ChordFinderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clone....
         /// </summary>
         internal static string CloneLabel {
@@ -278,6 +359,240 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Root Notes.
+        /// </summary>
+        internal static string FinderOptionsAddRootNotesLabel {
+            get {
+                return ResourceManager.GetString("FinderOptionsAddRootNotesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flag root notes in each result as such, so they may be styled differently..
+        /// </summary>
+        internal static string FinderOptionsAddRootNotesToolTip {
+            get {
+                return ResourceManager.GetString("FinderOptionsAddRootNotesToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Title.
+        /// </summary>
+        internal static string FinderOptionsAddTitleLabel {
+            get {
+                return ResourceManager.GetString("FinderOptionsAddTitleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include the title in each result..
+        /// </summary>
+        internal static string FinderOptionsAddTitleToolTip {
+            get {
+                return ResourceManager.GetString("FinderOptionsAddTitleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow Muted Strings.
+        /// </summary>
+        internal static string FinderOptionsAllowMutedStringsLabel {
+            get {
+                return ResourceManager.GetString("FinderOptionsAllowMutedStringsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow results that use muted strings..
+        /// </summary>
+        internal static string FinderOptionsAllowMutedStringsToolTip {
+            get {
+                return ResourceManager.GetString("FinderOptionsAllowMutedStringsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow Open Strings.
+        /// </summary>
+        internal static string FinderOptionsAllowOpenStringsLabel {
+            get {
+                return ResourceManager.GetString("FinderOptionsAllowOpenStringsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow results that use open strings..
+        /// </summary>
+        internal static string FinderOptionsAllowOpenStringsToolTip {
+            get {
+                return ResourceManager.GetString("FinderOptionsAllowOpenStringsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Text.
+        /// </summary>
+        internal static string FinderOptionsMarkTextLabel {
+            get {
+                return ResourceManager.GetString("FinderOptionsMarkTextLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include the note played by each string (and its style) on the mark in each result..
+        /// </summary>
+        internal static string FinderOptionsMarkTextToolTip {
+            get {
+                return ResourceManager.GetString("FinderOptionsMarkTextToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Fret.
+        /// </summary>
+        internal static string FinderOptionsMaxFretLabel {
+            get {
+                return ResourceManager.GetString("FinderOptionsMaxFretLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The highest fret on the fretboard that a result can have..
+        /// </summary>
+        internal static string FinderOptionsMaxFretToolTip {
+            get {
+                return ResourceManager.GetString("FinderOptionsMaxFretToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Reach.
+        /// </summary>
+        internal static string FinderOptionsMaxReachLabel {
+            get {
+                return ResourceManager.GetString("FinderOptionsMaxReachLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of frets a player will need to reach their fingers across in order to play the result..
+        /// </summary>
+        internal static string FinderOptionsMaxReachToolTip {
+            get {
+                return ResourceManager.GetString("FinderOptionsMaxReachToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mirror Results.
+        /// </summary>
+        internal static string FinderOptionsMirrorResultsLabel {
+            get {
+                return ResourceManager.GetString("FinderOptionsMirrorResultsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flip the order of the strings on each result..
+        /// </summary>
+        internal static string FinderOptionsMirrorResultsToolTip {
+            get {
+                return ResourceManager.GetString("FinderOptionsMirrorResultsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # of Frets.
+        /// </summary>
+        internal static string FinderOptionsNumFretsLabel {
+            get {
+                return ResourceManager.GetString("FinderOptionsNumFretsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of frets to display in each result..
+        /// </summary>
+        internal static string FinderOptionsNumFretsToolTip {
+            get {
+                return ResourceManager.GetString("FinderOptionsNumFretsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset to Defaults.
+        /// </summary>
+        internal static string FinderOptionsResetToDefaultsLabel {
+            get {
+                return ResourceManager.GetString("FinderOptionsResetToDefaultsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset your current search parameters to the default values..
+        /// </summary>
+        internal static string FinderOptionsResetToDefaultsToolTip {
+            get {
+                return ResourceManager.GetString("FinderOptionsResetToDefaultsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set as Defaults.
+        /// </summary>
+        internal static string FinderOptionsSetAsDefaultsLabel {
+            get {
+                return ResourceManager.GetString("FinderOptionsSetAsDefaultsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set your current search parameters as the new default values..
+        /// </summary>
+        internal static string FinderOptionsSetAsDefaultsToolTip {
+            get {
+                return ResourceManager.GetString("FinderOptionsSetAsDefaultsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Selected.
+        /// </summary>
+        internal static string FinderSaveSelectedLabel {
+            get {
+                return ResourceManager.GetString("FinderSaveSelectedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save the selected diagrams to the Diagram Library..
+        /// </summary>
+        internal static string FinderSaveSelectedToolTip {
+            get {
+                return ResourceManager.GetString("FinderSaveSelectedToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        internal static string FinderSearchLabel {
+            get {
+                return ResourceManager.GetString("FinderSearchLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin searching with the parameters selected. (F5).
+        /// </summary>
+        internal static string FinderSearchToolTip {
+            get {
+                return ResourceManager.GetString("FinderSearchToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Website.
         /// </summary>
         internal static string LaunchWebsiteLabel {
@@ -395,6 +710,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        internal static string OptionsLabel {
+            get {
+                return ResourceManager.GetString("OptionsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Path:.
         /// </summary>
         internal static string PathLabel {
@@ -404,11 +728,110 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scale Finder.
+        /// </summary>
+        internal static string ScaleFinderTitle {
+            get {
+                return ResourceManager.GetString("ScaleFinderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quality.
+        /// </summary>
+        internal static string SelectedChordQualityLabel {
+            get {
+                return ResourceManager.GetString("SelectedChordQualityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The chord quality you want to use..
+        /// </summary>
+        internal static string SelectedChordQualityToolTip {
+            get {
+                return ResourceManager.GetString("SelectedChordQualityToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instrument.
+        /// </summary>
+        internal static string SelectedInstrumentLabel {
+            get {
+                return ResourceManager.GetString("SelectedInstrumentLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The instrument you want to use..
+        /// </summary>
+        internal static string SelectedInstrumentToolTip {
+            get {
+                return ResourceManager.GetString("SelectedInstrumentToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selected:.
         /// </summary>
         internal static string SelectedLabel {
             get {
                 return ResourceManager.GetString("SelectedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Note.
+        /// </summary>
+        internal static string SelectedRootNoteLabel {
+            get {
+                return ResourceManager.GetString("SelectedRootNoteLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The root note you want to use..
+        /// </summary>
+        internal static string SelectedRootNoteToolTip {
+            get {
+                return ResourceManager.GetString("SelectedRootNoteToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale.
+        /// </summary>
+        internal static string SelectedScaleLabel {
+            get {
+                return ResourceManager.GetString("SelectedScaleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The scale you want to use..
+        /// </summary>
+        internal static string SelectedScaleToolTip {
+            get {
+                return ResourceManager.GetString("SelectedScaleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tuning.
+        /// </summary>
+        internal static string SelectedTuningLabel {
+            get {
+                return ResourceManager.GetString("SelectedTuningLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The tuning you want to use..
+        /// </summary>
+        internal static string SelectedTuningToolTip {
+            get {
+                return ResourceManager.GetString("SelectedTuningToolTip", resourceCulture);
             }
         }
         
@@ -427,6 +850,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ShowChordFinderToolTip {
             get {
                 return ResourceManager.GetString("ShowChordFinderToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Chord Qualities.
+        /// </summary>
+        internal static string ShowChordQualityManagerLabel {
+            get {
+                return ResourceManager.GetString("ShowChordQualityManagerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the available qualities..
+        /// </summary>
+        internal static string ShowChordQualityManagerToolTip {
+            get {
+                return ResourceManager.GetString("ShowChordQualityManagerToolTip", resourceCulture);
             }
         }
         
@@ -467,7 +908,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Instruments.
+        ///   Looks up a localized string similar to Edit Instruments.
         /// </summary>
         internal static string ShowInstrumentManagerLabel {
             get {
@@ -535,6 +976,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ShowScaleFinderToolTip {
             get {
                 return ResourceManager.GetString("ShowScaleFinderToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Scales.
+        /// </summary>
+        internal static string ShowScaleManagerLabel {
+            get {
+                return ResourceManager.GetString("ShowScaleManagerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the available scales..
+        /// </summary>
+        internal static string ShowScaleManagerToolTip {
+            get {
+                return ResourceManager.GetString("ShowScaleManagerToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Style.
+        /// </summary>
+        internal static string StyleLabel {
+            get {
+                return ResourceManager.GetString("StyleLabel", resourceCulture);
             }
         }
         

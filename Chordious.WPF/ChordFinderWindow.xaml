@@ -34,8 +34,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Margin="5" Content="Instrument" FontWeight="Bold" />
-            <ComboBox Grid.Column="1" ItemsSource="{Binding Instruments}" SelectedItem="{Binding SelectedInstrument}" VerticalAlignment="Center" Margin="5" Style="{StaticResource CleanComboBox}" >
+            <Label Grid.Column="0" Margin="5" Content="{Binding SelectedInstrumentLabel, FallbackValue=Instrument}" FontWeight="Bold" />
+            <ComboBox Grid.Column="1" ItemsSource="{Binding Instruments}" SelectedItem="{Binding SelectedInstrument}" ToolTip="{Binding SelectedInstrumentToolTip}" VerticalAlignment="Center" Margin="5" Style="{StaticResource CleanComboBox}" >
                 <ComboBox.ItemContainerStyle>
                     <Style>
                         <Style.Triggers>
@@ -53,21 +53,21 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Label Grid.Column="2" Margin="5" Content="Tuning" FontWeight="Bold" />
-            <ComboBox Grid.Column="3" ItemsSource="{Binding Tunings}" SelectedItem="{Binding SelectedTuning}" VerticalAlignment="Center" Margin="5" Style="{StaticResource CleanComboBox}">
+            <Label Grid.Column="2" Margin="5" Content="{Binding SelectedTuningLabel, FallbackValue=Tuning}" FontWeight="Bold" />
+            <ComboBox Grid.Column="3" ItemsSource="{Binding Tunings}" SelectedItem="{Binding SelectedTuning}" ToolTip="{Binding SelectedTuningToolTip}" VerticalAlignment="Center" Margin="5" Style="{StaticResource CleanComboBox}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding LongName}" />
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Grid.Column="4" Margin="5" Width="50" Command="{Binding ShowInstrumentManager, Mode=OneWay}" ToolTip="Edit the available instruments and tunings." Style="{StaticResource CleanButtonNoBorder}">
+            <Button Grid.Column="4" Margin="5" Width="50" Command="{Binding ShowInstrumentManager, Mode=OneWay}" ToolTip="{Binding ShowInstrumentManagerToolTip}" Style="{StaticResource CleanButtonNoBorder}">
                 <local:AutoDisableImage Source="{StaticResource EditIcon16}" Width="16" Height="16" Margin="5,0,5,0" />
             </Button>
-            <Label Grid.Column="5" Margin="5" Content="Root Note" FontWeight="Bold" />
-            <ComboBox Grid.Column="6" ItemsSource="{Binding RootNotes}" SelectedItem="{Binding SelectedRootNote}" Width="50" VerticalAlignment="Center" Margin="5" Style="{StaticResource CleanComboBox}"/>
-            <Label Grid.Column="7" Margin="5" Content="Quality" FontWeight="Bold" />
-            <ComboBox Grid.Column="8" ItemsSource="{Binding ChordQualities}" SelectedItem="{Binding SelectedChordQuality}" VerticalAlignment="Center" Margin="5" Style="{StaticResource CleanComboBox}">
+            <Label Grid.Column="5" Margin="5" Content="{Binding SelectedRootNoteLabel, FallbackValue=Root Note}" FontWeight="Bold" />
+            <ComboBox Grid.Column="6" ItemsSource="{Binding RootNotes}" SelectedItem="{Binding SelectedRootNote}" ToolTip="{Binding SelectedRootNoteToolTip}" Width="50" VerticalAlignment="Center" Margin="5" Style="{StaticResource CleanComboBox}"/>
+            <Label Grid.Column="7" Margin="5" Content="{Binding SelectedChordQualityLabel, FallbackValue=Quality}" FontWeight="Bold" />
+            <ComboBox Grid.Column="8" ItemsSource="{Binding ChordQualities}" SelectedItem="{Binding SelectedChordQuality}" ToolTip="{Binding SelectedChordQualityToolTip}" VerticalAlignment="Center" Margin="5" Style="{StaticResource CleanComboBox}">
                 <ComboBox.ItemContainerStyle>
                     <Style>
                         <Style.Triggers>
@@ -85,13 +85,13 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Grid.Column="9" Margin="5" Width="50" Command="{Binding ShowChordQualityManager}" ToolTip="Edit the available qualities." Style="{StaticResource CleanButtonNoBorder}">
+            <Button Grid.Column="9" Margin="5" Width="50" Command="{Binding ShowChordQualityManager}" ToolTip="{Binding ShowChordQualityManagerToolTip}" Style="{StaticResource CleanButtonNoBorder}">
                 <local:AutoDisableImage Source="{StaticResource EditIcon16}" Width="16" Height="16" Margin="5,0,5,0" />
             </Button>
         </Grid>
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <GroupBox Header="Options" Margin="5">
+                <GroupBox Header="{Binding AppVM.OptionsLabel, FallbackValue=Options}" Margin="5">
                     <Grid Margin="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -105,21 +105,21 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="# of Frets"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding NumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Max Fret"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding MaxFret, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Max Reach"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding MaxReach, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
-                        <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Allow Open Strings"/>
-                        <CheckBox Grid.Row="3" Grid.Column="1" Margin="5" IsChecked="{Binding AllowOpenStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Allow Muted Strings"/>
-                        <CheckBox Grid.Row="4" Grid.Column="1" Margin="5" IsChecked="{Binding AllowMutedStrings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        <Label Grid.Row="5" Grid.Column="0" Margin="5" Content="Allow Rootless Chords"/>
-                        <CheckBox Grid.Row="5" Grid.Column="1" Margin="5" IsChecked="{Binding AllowRootlessChords}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="{Binding NumFretsLabel, FallbackValue=# of Frets}"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding NumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding NumFretsToolTip}"  MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="{Binding MaxFretLabel, FallbackValue=Max Fret}"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding MaxFret, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding MaxFretToolTip}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="{Binding MaxReachLabel, FallbackValue=Max Reach}"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding MaxReach, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding MaxReachToolTip}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="{Binding AllowOpenStringsLabel, FallbackValue=Allow Open Strings}"/>
+                        <CheckBox Grid.Row="3" Grid.Column="1" Margin="5" IsChecked="{Binding AllowOpenStrings}" ToolTip="{Binding AllowOpenStringsToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="{Binding AllowMutedStringsLabel, FallbackValue=Allow Muted Strings}"/>
+                        <CheckBox Grid.Row="4" Grid.Column="1" Margin="5" IsChecked="{Binding AllowMutedStrings}" ToolTip="{Binding AllowMutedStringsToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <Label Grid.Row="5" Grid.Column="0" Margin="5" Content="{Binding AllowRootlessChordsLabel, FallbackValue=Allow Rootless Chords}"/>
+                        <CheckBox Grid.Row="5" Grid.Column="1" Margin="5" IsChecked="{Binding AllowRootlessChords}" ToolTip="{Binding AllowRootlessChordsToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     </Grid>
                 </GroupBox>
-                <GroupBox Header="Style" Margin="5">
+                <GroupBox Header="{Binding AppVM.StyleLabel, FallbackValue=Style}" Margin="5">
                     <Grid Margin="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -134,24 +134,24 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Add Title"/>
-                        <CheckBox Grid.Row="0" Grid.Column="1" Margin="5" IsChecked="{Binding AddTitle}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Mirror Results"/>
-                        <CheckBox Grid.Row="1" Grid.Column="1" Margin="5" IsChecked="{Binding MirrorResults}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Add Root Notes"/>
-                        <CheckBox Grid.Row="2" Grid.Column="1" Margin="5" IsChecked="{Binding AddRootNotes}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Barre Type"/>
-                        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding BarreTypeOptions}" SelectedIndex="{Binding SelectedBarreTypeOptionIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
-                        <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="Mark Text"/>
-                        <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding MarkTextOptions}" SelectedIndex="{Binding SelectedMarkTextOptionIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
-                        <Label Grid.Row="5" Grid.Column="0" Margin="5" Content="Add Bottom Marks"/>
-                        <CheckBox Grid.Row="5" Grid.Column="1" Margin="5" IsChecked="{Binding AddBottomMarks}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        <Label Grid.Row="6" Grid.Column="0" Margin="5" Content="Bottom Mark Text" IsEnabled="{Binding AddBottomMarks}"/>
-                        <ComboBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding BottomMarkTextOptions}" SelectedIndex="{Binding SelectedBottomMarkTextOptionIndex}" VerticalAlignment="Center" IsEnabled="{Binding AddBottomMarks}" Style="{StaticResource CleanComboBox}"/>
+                        <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="{Binding AddTitleLabel, FallbackValue=Add Title}"/>
+                        <CheckBox Grid.Row="0" Grid.Column="1" Margin="5" IsChecked="{Binding AddTitle}" ToolTip="{Binding AddTitleToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="{Binding MirrorResultsLabel, FallbackValue=Mirror Results}"/>
+                        <CheckBox Grid.Row="1" Grid.Column="1" Margin="5" IsChecked="{Binding MirrorResults}" ToolTip="{Binding MirrorResultsToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="{Binding AddRootNotesLabel, FallbackValue=Add Root Notes}"/>
+                        <CheckBox Grid.Row="2" Grid.Column="1" Margin="5" IsChecked="{Binding AddRootNotes}" ToolTip="{Binding AddRootNotesToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="{Binding SelectedBarreTypeOptionLabel, FallbackValue=Barre Type}"/>
+                        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding BarreTypeOptions}" ToolTip="{Binding SelectedBarreTypeOptionToolTip}" SelectedIndex="{Binding SelectedBarreTypeOptionIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
+                        <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="{Binding SelectedMarkTextOptionLabel, FallbackValue=Mark Text}"/>
+                        <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding MarkTextOptions}" ToolTip="{Binding SelectedMarkTextOptionToolTip}" SelectedIndex="{Binding SelectedMarkTextOptionIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
+                        <Label Grid.Row="5" Grid.Column="0" Margin="5" Content="{Binding AddBottomMarksLabel, FallbackValue=Add Bottom Marks}"/>
+                        <CheckBox Grid.Row="5" Grid.Column="1" Margin="5" IsChecked="{Binding AddBottomMarks}" ToolTip="{Binding AddBottomMarksToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <Label Grid.Row="6" Grid.Column="0" Margin="5" Content="{Binding SelectedBottomMarkTextOptionLabel, FallbackValue=Bottom Mark Text}" IsEnabled="{Binding AddBottomMarks}"/>
+                        <ComboBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding BottomMarkTextOptions}" SelectedIndex="{Binding SelectedBottomMarkTextOptionIndex}" ToolTip="{Binding SelectedBottomMarkTextOptionToolTip}" VerticalAlignment="Center" IsEnabled="{Binding AddBottomMarks}" Style="{StaticResource CleanComboBox}"/>
                     </Grid>
                 </GroupBox>
-                <Button Margin="5" Content="Set as Defaults" Command="{Binding SetAsDefaults, Mode=OneWay}" Style="{StaticResource CleanButton}"/>
-                <Button Margin="5" Content="Reset to Defaults" Command="{Binding ResetToDefaults, Mode=OneWay}" Style="{StaticResource CleanButton}"/>
+                <Button Margin="5" Content="{Binding SetAsDefaultsLabel, FallbackValue=Set as Defaults}" ToolTip="{Binding SetAsDefaultsToolTip}" Command="{Binding SetAsDefaults, Mode=OneWay}" Style="{StaticResource CleanButton}"/>
+                <Button Margin="5" Content="{Binding ResetToDefaultsLabel, FallbackValue=Reset to Defaults}" ToolTip="{Binding ResetToDefaultsToolTip}" Command="{Binding ResetToDefaults, Mode=OneWay}" Style="{StaticResource CleanButton}"/>
             </StackPanel>
         </ScrollViewer>
         <ListView Grid.Row="1" Grid.Column="1" Name="ResultsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Results}" SelectionMode="Extended">
@@ -166,16 +166,16 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Grid.Row="2" Margin="5" Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}" ToolTip="Begin searching with the parameters selected. (F5)" Style="{StaticResource CleanButtonNoBorder}">
+        <Button Grid.Row="2" Margin="5" Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}" ToolTip="{Binding SearchAsyncToolTip}" Style="{StaticResource CleanButtonNoBorder}">
             <StackPanel Orientation="Horizontal">
                 <local:AutoDisableImage Source="{StaticResource SearchIcon16}" Width="16" Height="16" Margin="5" />
-                <TextBlock Text="Search" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding SearchAsyncLabel, FallbackValue=Search}" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </StackPanel>
         </Button>
-        <Button Name="SaveSelectedCommand" Grid.Column="1" Margin="5" Grid.Row="2" Command="{Binding SaveSelected}" ToolTip="Save the selected diagrams to the Diagram Library." Style="{StaticResource CleanButtonNoBorder}">
+        <Button Name="SaveSelectedCommand" Grid.Column="1" Margin="5" Grid.Row="2" Command="{Binding SaveSelected}" ToolTip="{Binding SaveSelectedToolTip}" Style="{StaticResource CleanButtonNoBorder}">
             <StackPanel Orientation="Horizontal">
                 <local:AutoDisableImage Source="{StaticResource AddIcon16}" Width="16" Height="16" Margin="5" />
-                <TextBlock Text="Save Selected" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding SaveSelectedLabel, FallbackValue=Save Selected}" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </StackPanel>
         </Button>
     </Grid>

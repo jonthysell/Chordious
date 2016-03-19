@@ -36,6 +36,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ScaleFinderViewModel : ViewModelBase, IIdle
@@ -52,7 +54,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return "Scale Finder";
+                return Strings.ScaleFinderTitle;
             }
         }
 
@@ -72,6 +74,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         private bool _isIdle = true;
 
         #region Options
+
+        #region Instruments
+
+        public string SelectedInstrumentLabel
+        {
+            get
+            {
+                return Strings.SelectedInstrumentLabel;
+            }
+        }
+
+        public string SelectedInstrumentToolTip
+        {
+            get
+            {
+                return Strings.SelectedInstrumentToolTip;
+            }
+        }
 
         public ObservableInstrument SelectedInstrument
         {
@@ -122,6 +142,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableInstrument> _instruments;
 
+        #endregion
+
+        #region Tunings
+
+        public string SelectedTuningLabel
+        {
+            get
+            {
+                return Strings.SelectedTuningLabel;
+            }
+        }
+
+        public string SelectedTuningToolTip
+        {
+            get
+            {
+                return Strings.SelectedTuningToolTip;
+            }
+        }
+
         public ObservableTuning SelectedTuning
         {
             get
@@ -165,6 +205,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableTuning> _tunings;
 
+        #endregion
+
+        public string ShowInstrumentManagerLabel
+        {
+            get
+            {
+                return Strings.ShowInstrumentManagerLabel;
+            }
+        }
+
+        public string ShowInstrumentManagerToolTip
+        {
+            get
+            {
+                return Strings.ShowInstrumentManagerToolTip;
+            }
+        }
+
         public RelayCommand ShowInstrumentManager
         {
             get
@@ -183,6 +241,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         ExceptionUtils.HandleException(ex);
                     }
                 });
+            }
+        }
+
+        #region RootNode
+
+        public string SelectedRootNoteLabel
+        {
+            get
+            {
+                return Strings.SelectedRootNoteLabel;
+            }
+        }
+
+        public string SelectedRootNoteToolTip
+        {
+            get
+            {
+                return Strings.SelectedRootNoteToolTip;
             }
         }
 
@@ -214,6 +290,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 return ObservableEnums.GetNotes();
+            }
+        }
+
+        #endregion
+
+        #region Scale
+
+        public string SelectedScaleLabel
+        {
+            get
+            {
+                return Strings.SelectedScaleLabel;
+            }
+        }
+
+        public string SelectedScaleToolTip
+        {
+            get
+            {
+                return Strings.SelectedScaleToolTip;
             }
         }
 
@@ -260,6 +356,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableScale> _scales;
 
+        public string ShowScaleManagerLabel
+        {
+            get
+            {
+                return Strings.ShowScaleManagerLabel;
+            }
+        }
+
+        public string ShowScaleManagerToolTip
+        {
+            get
+            {
+                return Strings.ShowScaleManagerToolTip;
+            }
+        }
+
         public RelayCommand ShowScaleManager
         {
             get
@@ -278,6 +390,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         ExceptionUtils.HandleException(ex);
                     }
                 });
+            }
+        }
+
+        #endregion
+
+        public string NumFretsLabel
+        {
+            get
+            {
+                return Strings.FinderOptionsNumFretsLabel;
+            }
+        }
+
+        public string NumFretsToolTip
+        {
+            get
+            {
+                return Strings.FinderOptionsNumFretsToolTip;
             }
         }
 
@@ -305,6 +435,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string MaxReachLabel
+        {
+            get
+            {
+                return Strings.FinderOptionsMaxReachLabel;
+            }
+        }
+
+        public string MaxReachToolTip
+        {
+            get
+            {
+                return Strings.FinderOptionsMaxReachToolTip;
+            }
+        }
+
         public int MaxReach
         {
             get
@@ -326,6 +472,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     RaisePropertyChanged("MaxReach");
                     RaisePropertyChanged("NumFrets");
                 }
+            }
+        }
+
+        public string MaxFretLabel
+        {
+            get
+            {
+                return Strings.FinderOptionsMaxFretLabel;
+            }
+        }
+
+        public string MaxFretToolTip
+        {
+            get
+            {
+                return Strings.FinderOptionsMaxFretToolTip;
             }
         }
 
@@ -352,6 +514,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string AllowOpenStringsLabel
+        {
+            get
+            {
+                return Strings.FinderOptionsAllowOpenStringsLabel;
+            }
+        }
+
+        public string AllowOpenStringsToolTip
+        {
+            get
+            {
+                return Strings.FinderOptionsAllowOpenStringsToolTip;
+            }
+        }
+
         public bool AllowOpenStrings
         {
             get
@@ -362,6 +540,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 Options.AllowOpenStrings = value;
                 RaisePropertyChanged("AllowOpenStrings");
+            }
+        }
+
+        public string AllowMutedStringsLabel
+        {
+            get
+            {
+                return Strings.FinderOptionsAllowMutedStringsLabel;
+            }
+        }
+
+        public string AllowMutedStringsToolTip
+        {
+            get
+            {
+                return Strings.FinderOptionsAllowMutedStringsToolTip;
             }
         }
 
@@ -382,6 +576,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region Styles
 
+        public string AddTitleLabel
+        {
+            get
+            {
+                return Strings.FinderOptionsAddTitleLabel;
+            }
+        }
+
+        public string AddTitleToolTip
+        {
+            get
+            {
+                return Strings.FinderOptionsAddTitleToolTip;
+            }
+        }
+
         public bool AddTitle
         {
             get
@@ -392,6 +602,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 Style.AddTitle = value;
                 RaisePropertyChanged("AddTitle");
+            }
+        }
+
+        public string MirrorResultsLabel
+        {
+            get
+            {
+                return Strings.FinderOptionsMirrorResultsLabel;
+            }
+        }
+
+        public string MirrorResultsToolTip
+        {
+            get
+            {
+                return Strings.FinderOptionsMirrorResultsToolTip;
             }
         }
 
@@ -408,6 +634,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string AddRootNotesLabel
+        {
+            get
+            {
+                return Strings.FinderOptionsAddRootNotesLabel;
+            }
+        }
+
+        public string AddRootNotesToolTip
+        {
+            get
+            {
+                return Strings.FinderOptionsAddRootNotesToolTip;
+            }
+        }
+
         public bool AddRootNotes
         {
             get
@@ -418,6 +660,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 Style.AddRootNotes = value;
                 RaisePropertyChanged("AddRootNotes");
+            }
+        }
+
+        public string SelectedMarkTextOptionLabel
+        {
+            get
+            {
+                return Strings.FinderOptionsMarkTextLabel;
+            }
+        }
+
+        public string SelectedMarkTextOptionToolTip
+        {
+            get
+            {
+                return Strings.FinderOptionsMarkTextToolTip;
             }
         }
 
@@ -443,6 +701,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
 
         #endregion
+
+        public string SetAsDefaultsLabel
+        {
+            get
+            {
+                return Strings.FinderOptionsSetAsDefaultsLabel;
+            }
+        }
+
+        public string SetAsDefaultsToolTip
+        {
+            get
+            {
+                return Strings.FinderOptionsSetAsDefaultsToolTip;
+            }
+        }
 
         public RelayCommand SetAsDefaults
         {
@@ -470,6 +744,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string ResetToDefaultsLabel
+        {
+            get
+            {
+                return Strings.FinderOptionsResetToDefaultsLabel;
+            }
+        }
+
+        public string ResetToDefaultsToolTip
+        {
+            get
+            {
+                return Strings.FinderOptionsResetToDefaultsToolTip;
+            }
+        }
+
         public RelayCommand ResetToDefaults
         {
             get
@@ -493,6 +783,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         ExceptionUtils.HandleException(ex);
                     }
                 });
+            }
+        }
+
+        public string SearchAsyncLabel
+        {
+            get
+            {
+                return Strings.FinderSearchLabel;
+            }
+        }
+
+        public string SearchAsyncToolTip
+        {
+            get
+            {
+                return Strings.FinderSearchToolTip;
             }
         }
 
@@ -529,6 +835,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     return CanSearch();
                 });
+            }
+        }
+
+        public string SaveSelectedLabel
+        {
+            get
+            {
+                return Strings.FinderSaveSelectedLabel;
+            }
+        }
+
+        public string SaveSelectedToolTip
+        {
+            get
+            {
+                return Strings.FinderSaveSelectedToolTip;
             }
         }
 

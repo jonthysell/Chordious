@@ -121,6 +121,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 return Strings.NoLabel;
             }
         }
+        
+        public string OptionsLabel
+        {
+            get
+            {
+                return Strings.OptionsLabel;
+            }
+        }
+
+        public string StyleLabel
+        {
+            get
+            {
+                return Strings.StyleLabel;
+            }
+        }
 
         #endregion
 

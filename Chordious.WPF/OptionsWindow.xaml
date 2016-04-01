@@ -27,7 +27,8 @@
                         <GroupBox Header="Advanced" Margin="5">
                             <StackPanel>
                                 <Button Content="Advanced Editor" Margin="5" Command="{Binding ShowAdvancedSettings, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
-                                <Button Content="Reset" Margin="5" Command="{Binding ResetUserSettings, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="Reset All" Margin="5" Command="{Binding ResetUserSettings, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="Reset Confirmations" Margin="5" Command="{Binding ResetConfirmations, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>

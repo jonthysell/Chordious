@@ -295,7 +295,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             {
                                 ExceptionUtils.HandleException(ex);
                             }
-                        }));
+                        }, "confirmation.instrumentmanager.deleteinstrument"));
                     }
                     catch (Exception ex)
                     {
@@ -384,7 +384,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             {
                                 ExceptionUtils.HandleException(ex);
                             }
-                        }));
+                        }, "confirmation.instrumentmanager.deletetuning"));
                     }
                     catch (Exception ex)
                     {

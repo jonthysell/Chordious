@@ -123,6 +123,9 @@
   <data name="CloneLabel" xml:space="preserve">
     <value>Clone...</value>
   </data>
+  <data name="ConfirmationTitle" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
   <data name="CountLabel" xml:space="preserve">
     <value>Count:</value>
   </data>
@@ -198,6 +201,9 @@
   <data name="NewLabel" xml:space="preserve">
     <value>New...</value>
   </data>
+  <data name="NoLabel" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="ObservableDiagramLibraryNodeCloneSelectedToolTipPluralFormat" xml:space="preserve">
     <value>Clone the {0} selected diagrams.</value>
   </data>
@@ -269,5 +275,11 @@
   </data>
   <data name="ShowScaleFinderToolTip" xml:space="preserve">
     <value>Search for scales with the Scale Finder.</value>
+  </data>
+  <data name="YesAndRememberLabel" xml:space="preserve">
+    <value>Yes (stop asking me)</value>
+  </data>
+  <data name="YesLabel" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

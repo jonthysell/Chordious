@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -185,6 +185,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             if (confirmed)
                             {
                                 ClearUserSettings();
+                                RefreshProperties();
+                            }
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                });
+            }
+        }
+
+        public RelayCommand ResetConfirmations
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("This will reset all of the confirmation dialogs you specified to stop prompting you. This cannot be undone. Do you want to continue?", (confirmed) =>
+                        {
+                            if (confirmed)
+                            {
+                                ClearConfirmations();
                                 RefreshProperties();
                             }
                         }));
@@ -650,6 +675,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             SettingsBuffer.Clear();
             SettingsBuffer.Parent.Clear();
+
+            Dirty = false;
+            ItemsChanged = true;
+            AdvancedSettingsClean = true;
+        }
+
+        private void ClearConfirmations()
+        {
+            SettingsBuffer.ClearByPrefix("confirmation.");
+            SettingsBuffer.Parent.ClearByPrefix("confirmation.");
 
             Dirty = false;
             ItemsChanged = true;

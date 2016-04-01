@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,15 +30,25 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ConfirmationViewModel : ViewModelBase
     {
+        public AppViewModel AppVM
+        {
+            get
+            {
+                return AppViewModel.Instance;
+            }
+        }
+
         public string Title
         {
             get
             {
-                return "Confirmation";
+                return Strings.ConfirmationTitle;
             }
         }
 
@@ -58,6 +68,50 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private string _message;
+
+        public bool DisplayDialog { get; private set; }
+
+        public string YesAndRememberLabel
+        {
+            get
+            {
+                return Strings.YesAndRememberLabel;
+            }
+        }
+
+        public bool ShowAcceptAndRemember
+        {
+            get
+            {
+                return !String.IsNullOrWhiteSpace(_rememberAnswerKey);
+            }
+        }
+        private string _rememberAnswerKey;
+
+        public RelayCommand AcceptAndRemember
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Result = ConfirmationResult.AcceptAndRemember;
+                        if (null != RequestClose)
+                        {
+                            RequestClose();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return ShowAcceptAndRemember;
+                });
+            }
+        }
 
         public RelayCommand Accept
         {
@@ -124,16 +178,37 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private Action<bool> _callback;
 
-        public ConfirmationViewModel(string message, Action<bool> callback)
+        public ConfirmationViewModel(string message, Action<bool> callback, string rememberAnswerKey)
         {
             Message = message;
             Callback = callback;
+            DisplayDialog = true;
             Result = ConfirmationResult.None;
+
+            _rememberAnswerKey = rememberAnswerKey;
+
+            if (ShowAcceptAndRemember)
+            {
+                bool value;
+                if (AppVM.Settings.TryGet(rememberAnswerKey, out value))
+                {
+                    if (value)
+                    {
+                        DisplayDialog = false;
+                        Result = ConfirmationResult.AcceptAndRemember;
+                    }
+                }
+            }
         }
 
         public void ProcessClose()
         {
-            Callback(Result == ConfirmationResult.Accept);
+            if (ShowAcceptAndRemember)
+            {
+                AppVM.Settings.Set(_rememberAnswerKey, Result == ConfirmationResult.AcceptAndRemember);
+            }
+            
+            Callback(Result == ConfirmationResult.Accept || Result == ConfirmationResult.AcceptAndRemember);
         }
     }
 
@@ -141,6 +216,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         None,
         Accept,
+        AcceptAndRemember,
         Reject
     }
 }

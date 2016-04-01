@@ -105,7 +105,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             {
                                 Messenger.Default.Send<LaunchUrlMessage>(new LaunchUrlMessage(AppInfo.Website));
                             }
-                        }));
+                        }, "confirmation.main.launchwebsite"));
                     }
                     catch (Exception ex)
                     {
@@ -384,7 +384,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             {
                                 Messenger.Default.Send<LaunchUrlMessage>(new LaunchUrlMessage("http://chordious.com/help/"));
                             }
-                        }));
+                        }, "confirmation.main.showhelp"));
                     }
                     catch (Exception ex)
                     {

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -190,13 +190,14 @@ namespace com.jonthysell.Chordious.Core
             {
                 _localDictionary.Remove(key);
             }
-            else if (null != this.Parent && recursive) // Recursively check parent
+            
+            if (null != this.Parent && !this.Parent.ReadOnly && recursive) // Recursively check parent
             {
                 this.Parent.Clear(key, recursive);
             }
         }
 
-        public void ClearByPrefix(string prefix)
+        public void ClearByPrefix(string prefix, bool recursive = false)
         {
             if (this.ReadOnly)
             {
@@ -223,6 +224,11 @@ namespace com.jonthysell.Chordious.Core
             foreach (string key in keysToRemove)
             {
                 _localDictionary.Remove(key);
+            }
+
+            if (null != this.Parent && recursive) // Recursively check parent
+            {
+                this.Parent.ClearByPrefix(prefix, recursive);
             }
         }
 
@@ -319,7 +325,12 @@ namespace com.jonthysell.Chordious.Core
             return false;
         }
 
-        public bool GetBoolean(string key, bool recursive = true)
+        public bool GetBoolean(string key)
+        {
+            return GetBoolean(key, true);
+        }
+
+        public bool GetBoolean(string key, bool recursive)
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
@@ -335,11 +346,11 @@ namespace com.jonthysell.Chordious.Core
             throw new InheritableDictionaryKeyNotFoundException(this, key);
         }
 
-        public bool GetBoolean(string key, bool defaultValue, bool recursive = true)
+        public bool GetBoolean(string key, bool defaultValue, bool recursive)
         {
             try
             {
-                return GetBoolean(key, recursive: recursive);
+                return GetBoolean(key, recursive);
             }
             catch (InheritableDictionaryKeyNotFoundException) { }
 

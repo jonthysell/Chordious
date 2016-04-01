@@ -334,7 +334,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                                     Diagrams.Remove(od);
                                 }
                             }
-                        }));
+                        }, "confirmation.diagramlibrary.deletediagram"));
                     }
                     catch (Exception ex)
                     {

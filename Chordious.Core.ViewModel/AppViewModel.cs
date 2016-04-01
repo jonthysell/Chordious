@@ -106,6 +106,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string YesLabel
+        {
+            get
+            {
+                return Strings.YesLabel;
+            }
+        }
+
+        public string NoLabel
+        {
+            get
+            {
+                return Strings.NoLabel;
+            }
+        }
+
         #endregion
 
         internal ConfigFile DefaultConfig { get; private set; }
@@ -177,6 +193,29 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private string _userConfigPath = "";
+
+        internal ChordiousSettings Settings
+        {
+            get
+            {
+                if (UserConfigLoaded)
+                {
+                    return UserConfig.ChordiousSettings;
+                }
+
+                if (AppConfigLoaded)
+                {
+                    return AppConfig.ChordiousSettings;
+                }
+
+                if (DefaultConfigLoaded)
+                {
+                    return DefaultConfig.ChordiousSettings;
+                }
+
+                return null;
+            }
+        }
 
         public SvgTextToImage SvgTextToImage { get; private set; }
 
@@ -284,15 +323,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             SaveUserConfig();
         }
 
+        #region Settings
+
         public string GetSetting(string key)
         {
-            return UserConfig.ChordiousSettings.Get(key);
+            return Settings.Get(key);
         }
 
         public void SetSetting(string key, object value)
         {
-            UserConfig.ChordiousSettings.Set(key, value);
+            Settings.Set(key, value);
         }
+
+        #endregion
 
         public ObservableCollection<ObservableInstrument> GetInstruments()
         {

@@ -1,5 +1,9 @@
 # Chordious Changelist #
 
+## 1.9.16092.503 ##
+* Added option to remember some yes/no confirmations
+* Fixed bug with true/false settings
+
 ## 1.9.16072.2038 ##
 * New main icon!
 * New color icons and button style changes

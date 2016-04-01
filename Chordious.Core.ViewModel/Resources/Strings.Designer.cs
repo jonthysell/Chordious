@@ -80,6 +80,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirmation.
+        /// </summary>
+        internal static string ConfirmationTitle {
+            get {
+                return ResourceManager.GetString("ConfirmationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Count:.
         /// </summary>
         internal static string CountLabel {
@@ -305,6 +314,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string NoLabel {
+            get {
+                return ResourceManager.GetString("NoLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clone the {0} selected diagrams..
         /// </summary>
         internal static string ObservableDiagramLibraryNodeCloneSelectedToolTipPluralFormat {
@@ -517,6 +535,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ShowScaleFinderToolTip {
             get {
                 return ResourceManager.GetString("ShowScaleFinderToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes (stop asking me).
+        /// </summary>
+        internal static string YesAndRememberLabel {
+            get {
+                return ResourceManager.GetString("YesAndRememberLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string YesLabel {
+            get {
+                return ResourceManager.GetString("YesLabel", resourceCulture);
             }
         }
     }

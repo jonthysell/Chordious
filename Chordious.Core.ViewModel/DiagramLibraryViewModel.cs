@@ -314,7 +314,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                                 Library.Remove(path, name);
                                 RaisePropertyChanged("Nodes");
                             }
-                        }));
+                        }, "confirmation.diagramlibrary.deletenode"));
                     }
                     catch (Exception ex)
                     {

@@ -1,5 +1,10 @@
 # Chordious Changelist #
 
+## 1.9.16101.2003 ##
+* Added new resource strings
+* Updated ChordFinderWindow to use resource strings
+* Updated ScaleFinderWindow to use resource strings
+
 ## 1.9.16092.503 ##
 * Added option to remember some yes/no confirmations
 * Fixed bug with true/false settings

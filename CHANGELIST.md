@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## 1.9.16103.221 ##
+* Can now edit Finder results before saving them
+
 ## 1.9.16101.2003 ##
 * Added new resource strings
 * Updated ChordFinderWindow to use resource strings

@@ -62,11 +62,29 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string AcceptLabel {
+            get {
+                return ResourceManager.GetString("AcceptLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The data could not be validated: {0}.
         /// </summary>
         internal static string AdvancedDataValidationErrorMessage {
             get {
                 return ResourceManager.GetString("AdvancedDataValidationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string CancelLabel {
+            get {
+                return ResourceManager.GetString("CancelLabel", resourceCulture);
             }
         }
         
@@ -157,6 +175,150 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string CloneLabel {
             get {
                 return ResourceManager.GetString("CloneLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have chosen to export your Library without your base Styles. This may result in diagrams changing their appearance. Do you want to continue?.
+        /// </summary>
+        internal static string ConfigExportLibraryWithoutStylesPromptMessage {
+            get {
+                return ResourceManager.GetString("ConfigExportLibraryWithoutStylesPromptMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Config Export.
+        /// </summary>
+        internal static string ConfigExportTitle {
+            get {
+                return ResourceManager.GetString("ConfigExportTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will overwrite your current user config. Do you want to continue?.
+        /// </summary>
+        internal static string ConfigImportOverwritePromptMessage {
+            get {
+                return ResourceManager.GetString("ConfigImportOverwritePromptMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Config Import.
+        /// </summary>
+        internal static string ConfigImportTitle {
+            get {
+                return ResourceManager.GetString("ConfigImportTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chord Qualities.
+        /// </summary>
+        internal static string ConfigPartsChordQualitiesLabel {
+            get {
+                return ResourceManager.GetString("ConfigPartsChordQualitiesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include user chord qualities..
+        /// </summary>
+        internal static string ConfigPartsChordQualitiesToolTip {
+            get {
+                return ResourceManager.GetString("ConfigPartsChordQualitiesToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instruments.
+        /// </summary>
+        internal static string ConfigPartsInstrumentsLabel {
+            get {
+                return ResourceManager.GetString("ConfigPartsInstrumentsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include user instruments and tunings..
+        /// </summary>
+        internal static string ConfigPartsInstrumentsToolTip {
+            get {
+                return ResourceManager.GetString("ConfigPartsInstrumentsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Library.
+        /// </summary>
+        internal static string ConfigPartsLibraryLabel {
+            get {
+                return ResourceManager.GetString("ConfigPartsLibraryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include saved diagram collections..
+        /// </summary>
+        internal static string ConfigPartsLibraryToolTip {
+            get {
+                return ResourceManager.GetString("ConfigPartsLibraryToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scales.
+        /// </summary>
+        internal static string ConfigPartsScalesLabel {
+            get {
+                return ResourceManager.GetString("ConfigPartsScalesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include user scales..
+        /// </summary>
+        internal static string ConfigPartsScalesToolTip {
+            get {
+                return ResourceManager.GetString("ConfigPartsScalesToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string ConfigPartsSettingsLabel {
+            get {
+                return ResourceManager.GetString("ConfigPartsSettingsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include user settings..
+        /// </summary>
+        internal static string ConfigPartsSettingsToolTip {
+            get {
+                return ResourceManager.GetString("ConfigPartsSettingsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Styles.
+        /// </summary>
+        internal static string ConfigPartsStylesLabel {
+            get {
+                return ResourceManager.GetString("ConfigPartsStylesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include user styles..
+        /// </summary>
+        internal static string ConfigPartsStylesToolTip {
+            get {
+                return ResourceManager.GetString("ConfigPartsStylesToolTip", resourceCulture);
             }
         }
         
@@ -589,6 +751,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string FinderSearchToolTip {
             get {
                 return ResourceManager.GetString("FinderSearchToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include.
+        /// </summary>
+        internal static string IncludeLabel {
+            get {
+                return ResourceManager.GetString("IncludeLabel", resourceCulture);
             }
         }
         

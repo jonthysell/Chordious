@@ -438,4 +438,61 @@
   <data name="ShowScaleManagerToolTip" xml:space="preserve">
     <value>Edit the available scales.</value>
   </data>
+  <data name="AcceptLabel" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="CancelLabel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ConfigExportLibraryWithoutStylesPromptMessage" xml:space="preserve">
+    <value>You have chosen to export your Library without your base Styles. This may result in diagrams changing their appearance. Do you want to continue?</value>
+  </data>
+  <data name="ConfigExportTitle" xml:space="preserve">
+    <value>Config Export</value>
+  </data>
+  <data name="ConfigImportOverwritePromptMessage" xml:space="preserve">
+    <value>This will overwrite your current user config. Do you want to continue?</value>
+  </data>
+  <data name="ConfigImportTitle" xml:space="preserve">
+    <value>Config Import</value>
+  </data>
+  <data name="ConfigPartsChordQualitiesLabel" xml:space="preserve">
+    <value>Chord Qualities</value>
+  </data>
+  <data name="ConfigPartsChordQualitiesToolTip" xml:space="preserve">
+    <value>Include user chord qualities.</value>
+  </data>
+  <data name="ConfigPartsInstrumentsLabel" xml:space="preserve">
+    <value>Instruments</value>
+  </data>
+  <data name="ConfigPartsInstrumentsToolTip" xml:space="preserve">
+    <value>Include user instruments and tunings.</value>
+  </data>
+  <data name="ConfigPartsLibraryLabel" xml:space="preserve">
+    <value>Library</value>
+  </data>
+  <data name="ConfigPartsLibraryToolTip" xml:space="preserve">
+    <value>Include saved diagram collections.</value>
+  </data>
+  <data name="ConfigPartsScalesLabel" xml:space="preserve">
+    <value>Scales</value>
+  </data>
+  <data name="ConfigPartsScalesToolTip" xml:space="preserve">
+    <value>Include user scales.</value>
+  </data>
+  <data name="ConfigPartsSettingsLabel" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ConfigPartsSettingsToolTip" xml:space="preserve">
+    <value>Include user settings.</value>
+  </data>
+  <data name="ConfigPartsStylesLabel" xml:space="preserve">
+    <value>Styles</value>
+  </data>
+  <data name="ConfigPartsStylesToolTip" xml:space="preserve">
+    <value>Include user styles.</value>
+  </data>
+  <data name="IncludeLabel" xml:space="preserve">
+    <value>Include</value>
+  </data>
 </root>

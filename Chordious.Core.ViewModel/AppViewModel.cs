@@ -121,6 +121,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 return Strings.NoLabel;
             }
         }
+
+        public string IncludeLabel
+        {
+            get
+            {
+                return Strings.IncludeLabel;
+            }
+        }
         
         public string OptionsLabel
         {
@@ -135,6 +143,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 return Strings.StyleLabel;
+            }
+        }
+
+        public string AcceptLabel
+        {
+            get
+            {
+                return Strings.AcceptLabel;
+            }
+        }
+
+        public string CancelLabel
+        {
+            get
+            {
+                return Strings.CancelLabel;
             }
         }
 

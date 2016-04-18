@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ConfigImportViewModel : ConfigViewModelBase
@@ -41,11 +43,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return "Config Import";
+                return Strings.ConfigImportTitle;
             }
         }
 
-        public RelayCommand Accept
+        public override RelayCommand Accept
         {
             get
             {
@@ -54,7 +56,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         IsIdle = false;
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("This will overwrite your current user config. Do you want to continue?", (confirmed) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.ConfigImportOverwritePromptMessage, (confirmed) =>
                         {
                             if (confirmed)
                             {

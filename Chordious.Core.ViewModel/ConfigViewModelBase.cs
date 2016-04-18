@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +30,8 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
 using com.jonthysell.Chordious.Core;
+
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
@@ -59,6 +61,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _isIdle;
 
+        public string IncludeSettingsLabel
+        {
+            get
+            {
+                return Strings.ConfigPartsSettingsLabel;
+            }
+        }
+
+        public string IncludeSettingsToolTip
+        {
+            get
+            {
+                return Strings.ConfigPartsSettingsToolTip;
+            }
+        }
+
         public bool IncludeSettings
         {
             get
@@ -72,6 +90,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private bool _includeSettings;
+
+        public string IncludeStylesLabel
+        {
+            get
+            {
+                return Strings.ConfigPartsStylesLabel;
+            }
+        }
+
+        public string IncludeStylesToolTip
+        {
+            get
+            {
+                return Strings.ConfigPartsStylesToolTip;
+            }
+        }
 
         public bool IncludeStyles
         {
@@ -87,6 +121,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _includeStyles;
 
+        public string IncludeInstrumentsLabel
+        {
+            get
+            {
+                return Strings.ConfigPartsInstrumentsLabel;
+            }
+        }
+
+        public string IncludeInstrumentsToolTip
+        {
+            get
+            {
+                return Strings.ConfigPartsInstrumentsToolTip;
+            }
+        }
+
         public bool IncludeInstruments
         {
             get
@@ -100,6 +150,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private bool _includeInstruments;
+
+        public string IncludeChordQualitiesLabel
+        {
+            get
+            {
+                return Strings.ConfigPartsChordQualitiesLabel;
+            }
+        }
+
+        public string IncludeChordQualitiesToolTip
+        {
+            get
+            {
+                return Strings.ConfigPartsChordQualitiesToolTip;
+            }
+        }
 
         public bool IncludeChordQualities
         {
@@ -115,6 +181,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _includeChordQualities;
 
+        public string IncludeScalesLabel
+        {
+            get
+            {
+                return Strings.ConfigPartsScalesLabel;
+            }
+        }
+
+        public string IncludeScalesToolTip
+        {
+            get
+            {
+                return Strings.ConfigPartsScalesToolTip;
+            }
+        }
+
         public bool IncludeScales
         {
             get
@@ -129,6 +211,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _includeScales;
 
+        public string IncludeLibraryLabel
+        {
+            get
+            {
+                return Strings.ConfigPartsLibraryLabel;
+            }
+        }
+
+        public string IncludeLibraryToolTip
+        {
+            get
+            {
+                return Strings.ConfigPartsLibraryToolTip;
+            }
+        }
+
         public bool IncludeLibrary
         {
             get
@@ -142,6 +240,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private bool _includeLibrary;
+
+        public abstract RelayCommand Accept { get; }
 
         public RelayCommand Cancel
         {

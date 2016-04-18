@@ -8,37 +8,37 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <GroupBox Grid.Row="0" Header="Include" Margin="5">
+        <GroupBox Grid.Row="0" Header="{Binding AppVM.IncludeLabel, FallbackValue=Include}" Margin="5">
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <Label Width="100" Margin="5" Content="Settings"/>
-                    <CheckBox Margin="5" IsChecked="{Binding IncludeSettings}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label Width="100" Margin="5" Content="{Binding IncludeSettingsLabel, FallbackValue=Settings}"/>
+                    <CheckBox Margin="5" IsChecked="{Binding IncludeSettings}" ToolTip="{Binding IncludeSettingsToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Width="100" Margin="5" Content="Styles"/>
-                    <CheckBox Margin="5" IsChecked="{Binding IncludeStyles}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label Width="100" Margin="5" Content="{Binding IncludeStylesLabel, FallbackValue=Styles}"/>
+                    <CheckBox Margin="5" IsChecked="{Binding IncludeStyles}" ToolTip="{Binding IncludeStylesToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Width="100" Margin="5" Content="Instruments"/>
-                    <CheckBox Margin="5" IsChecked="{Binding IncludeInstruments}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label Width="100" Margin="5" Content="{Binding IncludeInstrumentsLabel, FallbackValue=Instruments}"/>
+                    <CheckBox Margin="5" IsChecked="{Binding IncludeInstruments}" ToolTip="{Binding IncludeInstrumentsToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Width="100" Margin="5" Content="Chord Qualities"/>
-                    <CheckBox Margin="5" IsChecked="{Binding IncludeChordQualities}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label Width="100" Margin="5" Content="{Binding IncludeChordQualitiesLabel, FallbackValue=Chord Qualities}"/>
+                    <CheckBox Margin="5" IsChecked="{Binding IncludeChordQualities}" ToolTip="{Binding IncludeChordQualitiesToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Width="100" Margin="5" Content="Scales"/>
-                    <CheckBox Margin="5" IsChecked="{Binding IncludeScales}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label Width="100" Margin="5" Content="{Binding IncludeScalesLabel, FallbackValue=Scales}"/>
+                    <CheckBox Margin="5" IsChecked="{Binding IncludeScales}" ToolTip="{Binding IncludeScalesToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Width="100" Margin="5" Content="Library"/>
-                    <CheckBox Margin="5" IsChecked="{Binding IncludeLibrary}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label Width="100" Margin="5" Content="{Binding IncludeLibraryLabel, FallbackValue=Library}"/>
+                    <CheckBox Margin="5" IsChecked="{Binding IncludeLibrary}" ToolTip="{Binding IncludeLibraryToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 </StackPanel>
             </StackPanel>
         </GroupBox>
         <WrapPanel Grid.Row="1" FlowDirection="RightToLeft" Height="Auto" Margin="5">
-            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True" Style="{StaticResource CleanButton}"/>
-            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
+            <Button Command="{Binding Accept}" Content="{Binding AppVM.AcceptLabel, FallbackValue=OK}" Width="75" Margin="5" IsDefault="True" Style="{StaticResource CleanButton}"/>
+            <Button Command="{Binding Cancel}" Content="{Binding AppVM.CancelLabel, FallbackValue=Cancel}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
         </WrapPanel>
     </Grid>
 </Window>

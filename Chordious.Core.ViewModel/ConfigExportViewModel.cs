@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ConfigExportViewModel : ConfigViewModelBase
@@ -41,11 +43,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return "Config Export";
+                return Strings.ConfigExportTitle;
             }
         }
 
-        public RelayCommand Accept
+        public override RelayCommand Accept
         {
             get
             {
@@ -56,7 +58,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         IsIdle = false;
                         if (IncludeLibrary && !IncludeStyles)
                         {
-                            Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("You have chosen to export your Library without your base Styles. This may result in diagrams changing their appearance. Do you want to continue?", (confirmed) =>
+                            Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.ConfigExportLibraryWithoutStylesPromptMessage, (confirmed) =>
                             {
                                 if (confirmed)
                                 {
@@ -105,6 +107,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     ExceptionUtils.HandleException(ex);
                 }
             }));
-    }
+        }
     }
 }

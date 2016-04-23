@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -97,443 +97,7 @@ namespace com.jonthysell.Chordious.Core
 
         #endregion
 
-        #region Style
-
         public DiagramStyle Style { get; private set; }
-
-        public DiagramOrientation Orientation
-        {
-            get
-            {
-                return Style.DiagramOrientationGet();
-            }
-            set
-            {
-                Style.DiagramOrientationSet(value);
-            }
-        }
-
-        public DiagramLabelLayoutModel LabelLayoutModel
-        {
-            get
-            {
-                return Style.DiagramLabelLayoutModelGet();
-            }
-            set
-            {
-                Style.DiagramLabelLayoutModelSet(value);
-            }
-        }
-
-        public string DiagramColor
-        {
-            get
-            {
-                return Style.DiagramColorGet();
-            }
-            set
-            {
-                Style.DiagramColorSet(value);
-            }
-        }
-
-        public double DiagramOpacity
-        {
-            get
-            {
-                return Style.DiagramOpacityGet();
-            }
-            set
-            {
-                Style.DiagramOpacitySet(value);
-            }
-        }
-
-        public string DiagramBorderColor
-        {
-            get
-            {
-                return Style.DiagramBorderColorGet();
-            }
-            set
-            {
-                Style.DiagramBorderColorSet(value);
-            }
-        }
-
-        public double DiagramBorderThickness
-        {
-            get
-            {
-                return Style.DiagramBorderThicknessGet();
-            }
-            set
-            {
-                Style.DiagramBorderThicknessSet(value);
-            }
-        }
-
-        #endregion
-
-        #region Title Style
-
-        public double TitleGridPadding
-        {
-            get
-            {
-                return Style.TitleGridPaddingGet();
-            }
-            set
-            {
-                Style.TitleGridPaddingSet(value);
-            }
-        }
-
-        public double TitleTextSize
-        {
-            get
-            {
-                return Style.TitleTextSizeGet();
-            }
-            set
-            {
-                Style.TitleTextSizeSet(value);
-            }
-        }
-
-        public double TitleTextSizeModRatio
-        {
-            get
-            {
-                return Style.TitleTextSizeModRatioGet();
-            }
-            set
-            {
-                Style.TitleTextSizeModRatioSet(value);
-            }
-        }
-
-        public string TitleFontFamily
-        {
-            get
-            {
-                return Style.TitleFontFamilyGet();
-            }
-            set
-            {
-                Style.TitleFontFamilySet(value);
-            }
-        }
-
-        public DiagramHorizontalAlignment TitleTextAlignment
-        {
-            get
-            {
-                return Style.TitleTextAlignmentGet();
-            }
-            set
-            {
-                Style.TitleTextAlignmentSet(value);
-            }
-        }
-
-        public DiagramTextStyle TitleTextStyle
-        {
-            get
-            {
-                return Style.TitleTextStyleGet();
-            }
-            set
-            {
-                Style.TitleTextStyleSet(value);
-            }
-        }
-
-        public bool TitleVisible
-        {
-            get
-            {
-                return Style.TitleVisibleGet();
-            }
-            set
-            {
-                Style.TitleVisibleSet(value);
-            }
-        }
-
-        public DiagramLabelStyle TitleLabelStyle
-        {
-            get
-            {
-                return Style.TitleLabelStyleGet();
-            }
-            set
-            {
-                Style.TitleLabelStyleSet(value);
-            }
-        }
-
-        public string TitleColor
-        {
-            get
-            {
-                return Style.TitleColorGet();
-            }
-            set
-            {
-                Style.TitleColorSet(value);
-            }
-        }
-
-        public double TitleOpacity
-        {
-            get
-            {
-                return Style.TitleOpacityGet();
-            }
-            set
-            {
-                Style.TitleOpacitySet(value);
-            }
-        }
-
-        #endregion
-
-        #region Grid Style
-
-        public double GridMargin
-        {
-            get
-            {
-                return Style.GridMarginGet();
-            }
-            set
-            {
-                Style.GridMarginSet(value);
-            }
-        }
-
-        public bool GridMarginLeftOverride
-        {
-            get
-            {
-                return Style.GridMarginLeftOverrideGet();
-            }
-            set
-            {
-                if (value && !Style.GridMarginLeftOverrideGet())
-                {
-                    Style.GridMarginLeftSet(GridMargin);
-                }
-                else if (!value)
-                {
-                    Style.GridMarginLeftOverrideClear();
-                }
-            }
-        }
-
-        public double GridMarginLeft
-        {
-            get
-            {
-                return Style.GridMarginLeftGet();
-            }
-            set
-            {
-                Style.GridMarginLeftSet(value);
-            }
-        }
-
-        public bool GridMarginRightOverride
-        {
-            get
-            {
-                return Style.GridMarginRightOverrideGet();
-            }
-            set
-            {
-                if (value && !Style.GridMarginRightOverrideGet())
-                {
-                    Style.GridMarginRightSet(GridMargin);
-                }
-                else if (!value)
-                {
-                    Style.GridMarginRightOverrideClear();
-                }
-            }
-        }
-
-        public double GridMarginRight
-        {
-            get
-            {
-                return Style.GridMarginRightGet();
-            }
-            set
-            {
-                Style.GridMarginRightSet(value);
-            }
-        }
-
-        public bool GridMarginTopOverride
-        {
-            get
-            {
-                return Style.GridMarginTopOverrideGet();
-            }
-            set
-            {
-                if (value && !Style.GridMarginTopOverrideGet())
-                {
-                    Style.GridMarginTopSet(GridMargin);
-                }
-                else if (!value)
-                {
-                    Style.GridMarginTopOverrideClear();
-                }
-            }
-        }
-
-        public double GridMarginTop
-        {
-            get
-            {
-                return Style.GridMarginTopGet();
-            }
-            set
-            {
-                Style.GridMarginTopSet(value);
-            }
-        }
-
-        public bool GridMarginBottomOverride
-        {
-            get
-            {
-                return Style.GridMarginBottomOverrideGet();
-            }
-            set
-            {
-                if (value && !Style.GridMarginBottomOverrideGet())
-                {
-                    Style.GridMarginBottomSet(GridMargin);
-                }
-                else if (!value)
-                {
-                    Style.GridMarginBottomOverrideClear();
-                }
-            }
-        }
-
-        public double GridMarginBottom
-        {
-            get
-            {
-                return Style.GridMarginBottomGet();
-            }
-            set
-            {
-                Style.GridMarginBottomSet(value);
-            }
-        }
-
-        public double GridFretSpacing
-        {
-            get
-            {
-                return Style.GridFretSpacingGet();
-            }
-            set
-            {
-                Style.GridFretSpacingSet(value);
-            }
-        }
-
-        public double GridStringSpacing
-        {
-            get
-            {
-                return Style.GridStringSpacingGet();
-            }
-            set
-            {
-                Style.GridStringSpacingSet(value);
-            }
-        }
-
-        public string GridColor
-        {
-            get
-            {
-                return Style.GridColorGet();
-            }
-            set
-            {
-                Style.GridColorSet(value);
-            }
-        }
-
-        public double GridOpacity
-        {
-            get
-            {
-                return Style.GridOpacityGet();
-            }
-            set
-            {
-                Style.GridOpacitySet(value);
-            }
-        }
-
-        public string GridLineColor
-        {
-            get
-            {
-                return Style.GridLineColorGet();
-            }
-            set
-            {
-                Style.GridLineColorSet(value);
-            }
-        }
-
-        public double GridLineThickness
-        {
-            get
-            {
-                return Style.GridLineThicknessGet();
-            }
-            set
-            {
-                Style.GridLineThicknessSet(value);
-            }
-        }
-
-        public bool GridNutVisible
-        {
-            get
-            {
-                return Style.GridNutVisibleGet();
-            }
-            set
-            {
-                Style.GridNutVisibleSet(value);
-            }
-        }
-
-        public double GridNutRatio
-        {
-            get
-            {
-                return Style.GridNutRatioGet();
-            }
-            set
-            {
-                Style.GridNutRatioSet(value);
-            }
-        }
-
-        #endregion
 
         public Diagram(DiagramStyle parentStyle)
         {
@@ -863,7 +427,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool HasVisibleTitle()
         {
-            return !String.IsNullOrEmpty(this.Title) && this.TitleVisible;
+            return !String.IsNullOrEmpty(this.Title) && this.Style.TitleVisible;
         }
 
         public bool HasVisibleFretLabels(FretLabelSide side)
@@ -1072,9 +636,9 @@ namespace com.jonthysell.Chordious.Core
 
         public double GridLeftEdge()
         {
-            double edge = this.GridMarginLeft;
-            if (this.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
-                || this.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingHorizontal)
+            double edge = this.Style.GridMarginLeft;
+            if (this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
+                || this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingHorizontal)
             {
                 edge += this.MaxFretLabelWidth(FretLabelSide.Left);
             }
@@ -1084,20 +648,20 @@ namespace com.jonthysell.Chordious.Core
 
         public double GridTopEdge()
         {
-            double edge = this.GridMarginTop;
+            double edge = this.Style.GridMarginTop;
 
-            if (this.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
-                || this.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingVertical)
+            if (this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
+                || this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingVertical)
             {
                 if (this.HasMarksAboveTopEdge())
                 {
-                    edge += this.GridFretSpacing;
+                    edge += this.Style.GridFretSpacing;
                 }
 
                 if (this.HasVisibleTitle())
                 {
-                    edge += this.TitleGridPadding;
-                    edge += Orientation == DiagramOrientation.LeftRight ? this.TitleTextSize * this.Title.Length : this.TitleTextSize;
+                    edge += this.Style.TitleGridPadding;
+                    edge += this.Style.Orientation == DiagramOrientation.LeftRight ? this.Style.TitleTextSize * this.Title.Length : this.Style.TitleTextSize;
                 }
             }
 
@@ -1116,12 +680,12 @@ namespace com.jonthysell.Chordious.Core
 
         public double GridHeight()
         {
-            return this.GridFretSpacing * this.NumFrets;
+            return this.Style.GridFretSpacing * this.NumFrets;
         }
 
         public double GridWidth()
         {
-            return this.GridStringSpacing * (this.NumStrings - 1);
+            return this.Style.GridStringSpacing * (this.NumStrings - 1);
         }
 
         public bool InGrid(double x, double y)
@@ -1201,7 +765,7 @@ namespace com.jonthysell.Chordious.Core
             fret = -1;
 
             // Fix for left/right orientation
-            if (Orientation == DiagramOrientation.LeftRight)
+            if (this.Style.Orientation == DiagramOrientation.LeftRight)
             {
                 double oldY = y;
                 y = x;
@@ -1216,8 +780,8 @@ namespace com.jonthysell.Chordious.Core
             double leftMargin = leftEdge;
             double rightMargin = GetWidth() - rightEdge;
 
-            double fretSpacing = this.GridFretSpacing;
-            double stringSpacing = this.GridStringSpacing;
+            double fretSpacing = this.Style.GridFretSpacing;
+            double stringSpacing = this.Style.GridStringSpacing;
 
             double stringRange = stringSpacing / 2.0;
 
@@ -1288,7 +852,7 @@ namespace com.jonthysell.Chordious.Core
 
         public double TotalHeight()
         {
-            if (Orientation == DiagramOrientation.LeftRight)
+            if (this.Style.Orientation == DiagramOrientation.LeftRight)
             {
                 return GetWidth();
             }
@@ -1298,14 +862,14 @@ namespace com.jonthysell.Chordious.Core
 
         private double GetHeight()
         {
-            double height = GridBottomEdge() + this.GridMarginBottom;
-            
-            if (this.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
-                 || this.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingVertical)
+            double height = GridBottomEdge() + this.Style.GridMarginBottom;
+
+            if (this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
+                 || this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingVertical)
             {
                 if (this.HasMarksBelowBottomEdge())
                 {
-                    height += this.GridFretSpacing;
+                    height += this.Style.GridFretSpacing;
                 }
             }
 
@@ -1314,7 +878,7 @@ namespace com.jonthysell.Chordious.Core
 
         public double TotalWidth()
         {
-            if (Orientation == DiagramOrientation.LeftRight)
+            if (this.Style.Orientation == DiagramOrientation.LeftRight)
             {
                 return GetHeight();
             }
@@ -1324,10 +888,10 @@ namespace com.jonthysell.Chordious.Core
 
         private double GetWidth()
         {
-            double width = GridRightEdge() + this.GridMarginRight;
+            double width = GridRightEdge() + this.Style.GridMarginRight;
 
-            if (this.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
-                 || this.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingHorizontal)
+            if (this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
+                 || this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingHorizontal)
             {
                 width += this.MaxFretLabelWidth(FretLabelSide.Right);
             }
@@ -1359,7 +923,7 @@ namespace com.jonthysell.Chordious.Core
 
             string baseStyle = this.Style.GetSvgStyle(Diagram._baseStyleMap);
 
-            if (this.DiagramBorderThickness > 0)
+            if (this.Style.DiagramBorderThickness > 0)
             {
                 baseStyle += this.Style.GetSvgStyle(Diagram._baseStyleMapBorder);
             }
@@ -1390,7 +954,7 @@ namespace com.jonthysell.Chordious.Core
             string lineStyle = this.Style.GetSvgStyle(Diagram._lineStyleMap);
 
             // Add vertical Lines
-            double vSpacing = this.GridStringSpacing;
+            double vSpacing = this.Style.GridStringSpacing;
             for (int vLine = 1; vLine < NumStrings - 1; vLine++)
             {
                 double x = rectX + (vLine * vSpacing);
@@ -1405,7 +969,7 @@ namespace com.jonthysell.Chordious.Core
             }
 
             // Add horizontal Lines
-            double hSpacing = this.GridFretSpacing;
+            double hSpacing = this.Style.GridFretSpacing;
             for (int hLine = 1; hLine < NumFrets; hLine++)
             {
                 double x1 = rectX;
@@ -1421,16 +985,16 @@ namespace com.jonthysell.Chordious.Core
             }
 
             // Add nut
-            if (this.GridNutVisible)
+            if (this.Style.GridNutVisible)
             {
-                double strokeCorrection = this.GridLineThickness / this.GridNutRatio;
+                double strokeCorrection = this.Style.GridLineThickness / this.Style.GridNutRatio;
 
                 double x1 = rectX - strokeCorrection;
                 double x2 = rectX + rectWidth + strokeCorrection;
                 double y = rectY - strokeCorrection;
 
                 string nutStyle = this.Style.GetSvgStyle(Diagram._nutStyleMap);
-                nutStyle += String.Format("stroke-width:{0};", this.GridLineThickness * this.GridNutRatio);
+                nutStyle += String.Format("stroke-width:{0};", this.Style.GridLineThickness * this.Style.GridNutRatio);
 
                 sb.AppendFormat(SvgConstants.LINE,
                                 nutStyle,
@@ -1474,11 +1038,11 @@ namespace com.jonthysell.Chordious.Core
             if (HasVisibleTitle())
             {
                 double titleX = rectX + (rectWidth / 2.0);
-                double titleY = rectY - this.TitleGridPadding;
+                double titleY = rectY - this.Style.TitleGridPadding;
 
-                if (Orientation == DiagramOrientation.UpDown)
+                if (this.Style.Orientation == DiagramOrientation.UpDown)
                 {
-                    switch (this.TitleTextAlignment)
+                    switch (this.Style.TitleTextAlignment)
                     {
                         case DiagramHorizontalAlignment.Left:
                             titleX = rectX;
@@ -1489,27 +1053,27 @@ namespace com.jonthysell.Chordious.Core
                     }
                 }
 
-                if (this.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
-                || this.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingVertical)
+                if (this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
+                || this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingVertical)
                 {
                     if (this.HasMarksAboveTopEdge())
                     {
-                        titleY -= this.GridFretSpacing;
+                        titleY -= this.Style.GridFretSpacing;
                     }
                 }
 
                 string titleStyle = this.Style.GetSvgStyle(Diagram._titleStyleMap);
 
-                if (this.TitleLabelStyle == DiagramLabelStyle.ChordName && this.Title.Length > 1)
+                if (this.Style.TitleLabelStyle == DiagramLabelStyle.ChordName && this.Title.Length > 1)
                 {
-                    double modifierSize = this.TitleTextSize * this.TitleTextSizeModRatio;
+                    double modifierSize = this.Style.TitleTextSize * this.Style.TitleTextSizeModRatio;
                     string modifierStyle = String.Format("font-size:{0}pt;", modifierSize);
                     string titleChordNameFormat = SvgConstants.TEXT_CHORDNAME;
-                    if (Orientation == DiagramOrientation.LeftRight)
+                    if (this.Style.Orientation == DiagramOrientation.LeftRight)
                     {
                         titleChordNameFormat = SvgConstants.ROTATED_TEXT_CHORDNAME;
-                        titleX -= (TitleTextSize - this.TitleGridPadding) / 2.0;
-                        titleY -= (TitleTextSize + (modifierSize * (this.Title.Length - 1))) / 2.0;
+                        titleX -= (this.Style.TitleTextSize - this.Style.TitleGridPadding) / 2.0;
+                        titleY -= (this.Style.TitleTextSize + (modifierSize * (this.Title.Length - 1))) / 2.0;
                     }
                     sb.AppendFormat(titleChordNameFormat,
                             titleStyle,
@@ -1522,11 +1086,11 @@ namespace com.jonthysell.Chordious.Core
                 else
                 {
                     string titleFormat = SvgConstants.TEXT;
-                    if (Orientation == DiagramOrientation.LeftRight)
+                    if (this.Style.Orientation == DiagramOrientation.LeftRight)
                     {
                         titleFormat = SvgConstants.ROTATED_TEXT;
-                        titleX -= (TitleTextSize - this.TitleGridPadding) / 2.0;
-                        titleY -= (TitleTextSize * Title.Length) / 2.0;
+                        titleX -= (this.Style.TitleTextSize - this.Style.TitleGridPadding) / 2.0;
+                        titleY -= (this.Style.TitleTextSize * Title.Length) / 2.0;
                     }
                     sb.AppendFormat(titleFormat,
                             titleStyle,
@@ -1539,7 +1103,7 @@ namespace com.jonthysell.Chordious.Core
             string imageText = sb.ToString().Trim();
 
             // Apply rotation if necessary
-            if (this.Orientation == DiagramOrientation.LeftRight)
+            if (this.Style.Orientation == DiagramOrientation.LeftRight)
             {
                 imageText = String.Format(SvgConstants.ROTATE,
                     imageText,

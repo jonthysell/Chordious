@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -199,16 +199,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             ObservableDiagram = new ObservableDiagram(diagram.Diagram.Clone());
             ObservableDiagram.IsEditMode = true;
-
-            // Pre-seed used fonts
-            ObservableEnums.SortedInsert(ObservableDiagram.FontFamilies, ObservableDiagram.TitleTextFontFamily);
-
-            // Pre-seed used colors
-            ObservableEnums.SortedInsert(ObservableDiagram.Colors, ObservableDiagram.DiagramColor);
-            ObservableEnums.SortedInsert(ObservableDiagram.Colors, ObservableDiagram.DiagramBorderColor);
-            ObservableEnums.SortedInsert(ObservableDiagram.Colors, ObservableDiagram.GridColor);
-            ObservableEnums.SortedInsert(ObservableDiagram.Colors, ObservableDiagram.GridLineColor);
-            ObservableEnums.SortedInsert(ObservableDiagram.Colors, ObservableDiagram.TitleColor);
 
             if (isNew)
             {

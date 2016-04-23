@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2014, 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2014, 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -90,7 +90,7 @@ namespace com.jonthysell.Chordious.Core
             if (chordFinderStyle.AddTitle)
             {
                 d.Title = NoteUtils.ToString(this.Parent.ChordFinderOptions.RootNote) + this.Parent.ChordFinderOptions.ChordQuality.Abbreviation;
-                d.TitleLabelStyle = DiagramLabelStyle.ChordName;
+                d.Style.TitleLabelStyle = DiagramLabelStyle.ChordName;
             }
 
             // Add marks
@@ -140,11 +140,11 @@ namespace com.jonthysell.Chordious.Core
             // Add nut or fret label
             if (baseLine == 0)
             {
-                d.GridNutVisible = true;
+                d.Style.GridNutVisible = true;
             }
             else
             {
-                d.GridNutVisible = false;
+                d.Style.GridNutVisible = false;
                 FretLabelPosition flp = new FretLabelPosition(FretLabelSide.Right, 1);
                 d.NewFretLabel(flp, baseLine.ToString());
             }

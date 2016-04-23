@@ -59,6 +59,7 @@
     <Compile Include="InformationViewModel.cs" />
     <Compile Include="DiagramExportViewModelBase.cs" />
     <Compile Include="ConfirmationViewModel.cs" />
+    <Compile Include="ObservableDiagramStyle.cs" />
     <Compile Include="ObservableEnums.cs" />
     <Compile Include="ObservableHeaderObject.cs" />
     <Compile Include="Resources\Strings.Designer.cs">

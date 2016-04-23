@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -100,45 +100,45 @@ namespace com.jonthysell.Chordious.Core.Legacy
             Diagram diagram = new Diagram(parentStyle, chord.NumStrings, chord.NumFrets);
 
             // Setup base
-            diagram.Orientation = DiagramOrientation.UpDown;
-            diagram.LabelLayoutModel = DiagramLabelLayoutModel.AddPaddingVertical;
-            diagram.DiagramColor = "White";
-            diagram.DiagramOpacity = 0;
-            diagram.DiagramBorderColor = "Black";
-            diagram.DiagramBorderThickness = 0;
+            diagram.Style.Orientation = DiagramOrientation.UpDown;
+            diagram.Style.LabelLayoutModel = DiagramLabelLayoutModel.AddPaddingVertical;
+            diagram.Style.DiagramColor = "White";
+            diagram.Style.DiagramOpacity = 0;
+            diagram.Style.DiagramBorderColor = "Black";
+            diagram.Style.DiagramBorderThickness = 0;
 
             // Process title
             diagram.Title = chord.Title;
-            diagram.TitleLabelStyle = DiagramLabelStyle.ChordName;
-            diagram.TitleTextSize = chordOptions.FontSize * (19.0 / 24.0);
-            diagram.TitleVisible = true;
-            diagram.TitleTextSizeModRatio = 0.75;
-            diagram.TitleGridPadding = diagram.TitleTextSize / 2.0;
-            diagram.TitleFontFamily = chordOptions.FontFamily;
-            diagram.TitleColor = "Black";
-            diagram.TitleOpacity = 1;
-            diagram.TitleTextAlignment = DiagramHorizontalAlignment.Center;
+            diagram.Style.TitleLabelStyle = DiagramLabelStyle.ChordName;
+            diagram.Style.TitleTextSize = chordOptions.FontSize * (19.0 / 24.0);
+            diagram.Style.TitleVisible = true;
+            diagram.Style.TitleTextSizeModRatio = 0.75;
+            diagram.Style.TitleGridPadding = diagram.Style.TitleTextSize / 2.0;
+            diagram.Style.TitleFontFamily = chordOptions.FontFamily;
+            diagram.Style.TitleColor = "Black";
+            diagram.Style.TitleOpacity = 1;
+            diagram.Style.TitleTextAlignment = DiagramHorizontalAlignment.Center;
 
             // Process grid
             double margin = chordOptions.Margin;
-            diagram.GridMargin = margin;
-            diagram.GridMarginLeft = margin;
-            diagram.GridMarginRight = margin;
-            diagram.GridMarginTop = margin;
-            diagram.GridMarginBottom = margin;
+            diagram.Style.GridMargin = margin;
+            diagram.Style.GridMarginLeft = margin;
+            diagram.Style.GridMarginRight = margin;
+            diagram.Style.GridMarginTop = margin;
+            diagram.Style.GridMarginBottom = margin;
 
-            double titleHeight = diagram.TitleTextSize;
+            double titleHeight = diagram.Style.TitleTextSize;
 
             double rectWidth = chordOptions.Width - (2.0 * chordOptions.Margin);
             double rectHeight = chordOptions.Height - titleHeight - (2.0 * chordOptions.Margin);
 
-            diagram.GridLineThickness = chordOptions.StrokeWidth;
-            diagram.GridStringSpacing = rectWidth / (chord.NumStrings - 1);
-            diagram.GridFretSpacing = rectHeight / chord.NumFrets;
+            diagram.Style.GridLineThickness = chordOptions.StrokeWidth;
+            diagram.Style.GridStringSpacing = rectWidth / (chord.NumStrings - 1);
+            diagram.Style.GridFretSpacing = rectHeight / chord.NumFrets;
 
-            diagram.GridLineColor = "White";
-            diagram.GridOpacity = 0;
-            diagram.GridLineColor = "Black";
+            diagram.Style.GridLineColor = "White";
+            diagram.Style.GridOpacity = 0;
+            diagram.Style.GridLineColor = "Black";
 
             DiagramTextStyle titleTextStyle = DiagramTextStyle.Regular;
             switch (chordOptions.FontStyle)
@@ -153,7 +153,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
                     titleTextStyle = DiagramTextStyle.BoldItalic;
                     break;
             }
-            diagram.TitleTextStyle = titleTextStyle;
+            diagram.Style.TitleTextStyle = titleTextStyle;
 
             // Process marks
 
@@ -266,8 +266,8 @@ namespace com.jonthysell.Chordious.Core.Legacy
             }
 
             // Process baseline / fret marker
-            diagram.GridNutVisible = false;
-            diagram.GridNutRatio = 2.0;
+            diagram.Style.GridNutVisible = false;
+            diagram.Style.GridNutRatio = 2.0;
 
             diagram.Style.FretLabelTextVisibleSet(true);
             diagram.Style.FretLabelTextAlignmentSet(DiagramHorizontalAlignment.Left);
@@ -286,7 +286,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
 
             if (baseLine == 0)
             {
-                diagram.GridNutVisible = true;
+                diagram.Style.GridNutVisible = true;
             }
             else if (chord.BaseLine > 1)
             {

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -197,18 +197,18 @@ namespace com.jonthysell.Chordious.Core
 
             if (this.IsVisible())
             {
-                double startX = this.Parent.GridLeftEdge() + (this.Parent.GridStringSpacing * (this.Position.StartString - 1));
-                double endX = this.Parent.GridLeftEdge() + (this.Parent.GridStringSpacing * (this.Position.EndString - 1));
+                double startX = this.Parent.GridLeftEdge() + (this.Parent.Style.GridStringSpacing * (this.Position.StartString - 1));
+                double endX = this.Parent.GridLeftEdge() + (this.Parent.Style.GridStringSpacing * (this.Position.EndString - 1));
 
-                double centerY = this.Parent.GridTopEdge() + (this.Parent.GridFretSpacing / 2.0) + (this.Parent.GridFretSpacing * (this.Position.Fret - 1));
+                double centerY = this.Parent.GridTopEdge() + (this.Parent.Style.GridFretSpacing / 2.0) + (this.Parent.Style.GridFretSpacing * (this.Position.Fret - 1));
 
                 switch (this.VerticalAlignment)
                 {
                     case DiagramVerticalAlignment.Bottom:
-                        centerY += this.Parent.GridFretSpacing * 0.5;
+                        centerY += this.Parent.Style.GridFretSpacing * 0.5;
                         break;
                     case DiagramVerticalAlignment.Top:
-                        centerY -= this.Parent.GridFretSpacing * 0.5;
+                        centerY -= this.Parent.Style.GridFretSpacing * 0.5;
                         break;
                     case DiagramVerticalAlignment.Middle:
                     default:
@@ -218,8 +218,8 @@ namespace com.jonthysell.Chordious.Core
                 string shapeStyle = this.Style.GetSvgStyle(DiagramBarre._shapeStyleMap);
                 shapeStyle += "fill-opacity:0;";
 
-                double radiusX = (this.Position.EndString - this.Position.StartString) * this.Parent.GridStringSpacing;
-                double radiusY = this.Parent.GridFretSpacing * this.ArcRatio;
+                double radiusX = (this.Position.EndString - this.Position.StartString) * this.Parent.Style.GridStringSpacing;
+                double radiusY = this.Parent.Style.GridFretSpacing * this.ArcRatio;
                 svg += String.Format(SvgConstants.ARC, shapeStyle, startX, centerY, radiusX, radiusY, endX, centerY);
             }
 

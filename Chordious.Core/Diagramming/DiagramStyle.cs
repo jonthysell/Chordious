@@ -77,434 +77,540 @@ namespace com.jonthysell.Chordious.Core
 
         #region Diagram-specific Styles
 
-        public DiagramOrientation DiagramOrientationGet()
+        public DiagramOrientation Orientation
         {
-            return GetEnum<DiagramOrientation>("diagram.orientation");
-        }
-
-        public void DiagramOrientationSet(DiagramOrientation value)
-        {
-            Set("diagram.orientation", value);
-        }
-
-        public DiagramLabelLayoutModel DiagramLabelLayoutModelGet()
-        {
-            return GetEnum<DiagramLabelLayoutModel>("diagram.labellayoutmodel");
-        }
-
-        public void DiagramLabelLayoutModelSet(DiagramLabelLayoutModel value)
-        {
-            Set("diagram.labellayoutmodel", value);
-        }
-
-        public string DiagramColorGet()
-        {
-            return GetColor("diagram.color");
-        }
-
-        public void DiagramColorSet(string value)
-        {
-            SetColor("diagram.color", value);
-        }
-
-        public double DiagramOpacityGet()
-        {
-            return GetDouble("diagram.opacity");
-        }
-
-        public void DiagramOpacitySet(double value)
-        {
-            if (value < 0 || value > 1.0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                return GetEnum<DiagramOrientation>("diagram.orientation");
             }
-
-            Set("diagram.opacity", value);
-        }
-
-        public string DiagramBorderColorGet()
-        {
-            return GetColor("diagram.bordercolor");
-        }
-
-        public void DiagramBorderColorSet(string value)
-        {
-            SetColor("diagram.bordercolor", value);
-        }
-
-        public double DiagramBorderThicknessGet()
-        {
-            return GetDouble("diagram.borderthickness");
-        }
-
-        public void DiagramBorderThicknessSet(double value)
-        {
-            if (value < 0)
+            set
             {
-                throw new ArgumentOutOfRangeException("value");
+                Set("diagram.orientation", value);
             }
+        }
 
-            Set("diagram.borderthickness", value);
+        public DiagramLabelLayoutModel LabelLayoutModel
+        {
+            get
+            {
+                return GetEnum<DiagramLabelLayoutModel>("diagram.labellayoutmodel");
+            }
+            set
+            {
+                Set("diagram.labellayoutmodel", value);
+            }
+        }
+
+        public string DiagramColor
+        {
+            get
+            {
+                return GetColor("diagram.color");
+            }
+            set
+            {
+                SetColor("diagram.color", value);
+            }
+        }
+
+        public double DiagramOpacity
+        {
+            get
+            {
+                return GetDouble("diagram.opacity");
+            }
+            set
+            {
+                if (value < 0 || value > 1.0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("diagram.opacity", value);
+            }
+        }
+
+        public string DiagramBorderColor
+        {
+            get
+            {
+                return GetColor("diagram.bordercolor");
+            }
+            set
+            {
+                SetColor("diagram.bordercolor", value);
+            }
+        }
+
+        public double DiagramBorderThickness
+        {
+            get
+            {
+                return GetDouble("diagram.borderthickness");
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("diagram.borderthickness", value);
+            }
         }
 
         #endregion
 
         #region Grid-specific Styles
 
-        public double GridMarginGet()
+        public double GridMargin
         {
-            return GetDouble("grid.margin", 0);
-        }
-
-        public void GridMarginSet(double value)
-        {
-            if (value < 0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                return GetDouble("grid.margin", 0);
             }
-            Set("grid.margin", value);
-        }
-
-        public bool GridMarginLeftOverrideGet()
-        {
-            return HasKey("grid.marginleft");
-        }
-
-        public void GridMarginLeftOverrideClear()
-        {
-            Clear("grid.marginleft");
-        }
-
-        public double GridMarginLeftGet()
-        {
-            double margin;
-            if (TryGet("grid.marginleft", out margin))
+            set
             {
-                return margin;
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("grid.margin", value);
             }
-            
-            return this.GridMarginGet();
         }
 
-        public void GridMarginLeftSet(double value)
+        public bool GridMarginLeftOverride
         {
-            if (value < 0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                return HasKey("grid.marginleft");
             }
-            Set("grid.marginleft", value);
-        }
-
-        public bool GridMarginRightOverrideGet()
-        {
-            return HasKey("grid.marginright");
-        }
-
-        public void GridMarginRightOverrideClear()
-        {
-            Clear("grid.marginright");
-        }
-
-        public double GridMarginRightGet()
-        {
-            double margin;
-            if (TryGet("grid.marginright", out margin))
+            set
             {
-                return margin;
+                if (value && !GridMarginLeftOverride)
+                {
+                    GridMarginLeft = GridMargin;
+                }
+                else if (!value)
+                {
+                    Clear("grid.marginleft");
+                }
             }
-
-            return this.GridMarginGet();
         }
 
-        public void GridMarginRightSet(double value)
+        public double GridMarginLeft
         {
-            if (value < 0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                double margin;
+                if (TryGet("grid.marginleft", out margin))
+                {
+                    return margin;
+                }
+
+                return GridMargin;
             }
-            Set("grid.marginright", value);
-        }
-
-        public bool GridMarginTopOverrideGet()
-        {
-            return HasKey("grid.margintop");
-        }
-
-        public void GridMarginTopOverrideClear()
-        {
-            Clear("grid.margintop");
-        }
-
-        public double GridMarginTopGet()
-        {
-            double margin;
-            if (TryGet("grid.margintop", out margin))
+            set
             {
-                return margin;
-            }
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
 
-            return this.GridMarginGet();
+                Set("grid.marginleft", value);
+            }
         }
 
-        public void GridMarginTopSet(double value)
+        public bool GridMarginRightOverride
         {
-            if (value < 0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                return HasKey("grid.marginright");
             }
-            Set("grid.margintop", value);
-        }
-
-        public bool GridMarginBottomOverrideGet()
-        {
-            return HasKey("grid.marginbottom");
-        }
-
-        public void GridMarginBottomOverrideClear()
-        {
-            Clear("grid.marginbottom");
-        }
-
-        public double GridMarginBottomGet()
-        {
-            double margin;
-            if (TryGet("grid.marginbottom", out margin))
+            set
             {
-                return margin;
+                if (value && !GridMarginRightOverride)
+                {
+                    GridMarginRight = GridMargin;
+                }
+                else if (!value)
+                {
+                    Clear("grid.marginright");
+                }
             }
-
-            return this.GridMarginGet();
         }
 
-        public void GridMarginBottomSet(double value)
+        public double GridMarginRight
         {
-            if (value < 0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                double margin;
+                if (TryGet("grid.marginright", out margin))
+                {
+                    return margin;
+                }
+
+                return GridMargin;
             }
-            Set("grid.marginbottom", value);
-        }
-
-        public double GridFretSpacingGet()
-        {
-            return GetDouble("grid.fretspacing");
-        }
-
-        public void GridFretSpacingSet(double value)
-        {
-            if (value < 0)
+            set
             {
-                throw new ArgumentOutOfRangeException("value");
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("grid.marginright", value);
             }
-            Set("grid.fretspacing", value);
         }
 
-        public double GridStringSpacingGet()
+        public bool GridMarginTopOverride
         {
-            return GetDouble("grid.stringspacing");
-        }
-
-        public void GridStringSpacingSet(double value)
-        {
-            if (value < 0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                return HasKey("grid.margintop");
             }
-            Set("grid.stringspacing", value);
-        }
-
-        public string GridColorGet()
-        {
-            return GetColor("grid.color");
-        }
-
-        public void GridColorSet(string value)
-        {
-            SetColor("grid.color", value);
-        }
-
-        public double GridOpacityGet()
-        {
-            return GetDouble("grid.opacity");
-        }
-
-        public void GridOpacitySet(double value)
-        {
-            if (value < 0 || value > 1.0)
+            set
             {
-                throw new ArgumentOutOfRangeException("value");
+                if (value && !GridMarginTopOverride)
+                {
+                    GridMarginTop = GridMargin;
+                }
+                else if (!value)
+                {
+                    Clear("grid.margintop");
+                }
             }
-
-            Set("grid.opacity", value);
         }
 
-        public string GridLineColorGet()
+        public double GridMarginTop
         {
-            return GetColor("grid.linecolor");
-        }
-
-        public void GridLineColorSet(string value)
-        {
-            SetColor("grid.linecolor", value);
-        }
-
-        public double GridLineThicknessGet()
-        {
-            return GetDouble("grid.linethickness");
-        }
-
-        public void GridLineThicknessSet(double value)
-        {
-            if (value < 0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                double margin;
+                if (TryGet("grid.margintop", out margin))
+                {
+                    return margin;
+                }
+
+                return GridMargin;
             }
-            Set("grid.linethickness", value);
-        }
-
-        public bool GridNutVisibleGet()
-        {
-            return GetBoolean("grid.nutvisible");
-        }
-
-        public void GridNutVisibleSet(bool value)
-        {
-            Set("grid.nutvisible", value);
-        }
-
-        public double GridNutRatioGet()
-        {
-            return GetDouble("grid.nutratio", 1.0);
-        }
-
-        public void GridNutRatioSet(double value)
-        {
-            if (value < 0)
+            set
             {
-                throw new ArgumentOutOfRangeException("value");
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("grid.margintop", value);
             }
-            Set("grid.nutratio", value);
+        }
+
+        public bool GridMarginBottomOverride
+        {
+            get
+            {
+                return HasKey("grid.marginbottom");
+            }
+            set
+            {
+                if (value && !GridMarginBottomOverride)
+                {
+                    GridMarginBottom = GridMargin;
+                }
+                else if (!value)
+                {
+                    Clear("grid.marginbottom");
+                }
+            }
+        }
+
+        public double GridMarginBottom
+        {
+            get
+            {
+                double margin;
+                if (TryGet("grid.marginbottom", out margin))
+                {
+                    return margin;
+                }
+
+                return GridMargin;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("grid.marginbottom", value);
+            }
+        }
+
+        public double GridFretSpacing
+        {
+            get
+            {
+                return GetDouble("grid.fretspacing");
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("grid.fretspacing", value);
+            }
+        }
+
+        public double GridStringSpacing
+        {
+            get
+            {
+                return GetDouble("grid.stringspacing");
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("grid.stringspacing", value);
+            }
+        }
+
+        public string GridColor
+        {
+            get
+            {
+                return GetColor("grid.color");
+            }
+            set
+            {
+                SetColor("grid.color", value);
+            }
+        }
+
+        public double GridOpacity
+        {
+            get
+            {
+                return GetDouble("grid.opacity");
+            }
+            set
+            {
+                if (value < 0 || value > 1.0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("grid.opacity", value);
+            }
+        }
+
+        public string GridLineColor
+        {
+            get
+            {
+                return GetColor("grid.linecolor");
+            }
+            set
+            {
+                SetColor("grid.linecolor", value);
+            }
+        }
+
+        public double GridLineThickness
+        {
+            get
+            {
+                return GetDouble("grid.linethickness");
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("grid.linethickness", value);
+            }
+        }
+
+        public bool GridNutVisible
+        {
+            get
+            {
+                return GetBoolean("grid.nutvisible");
+            }
+            set
+            {
+                Set("grid.nutvisible", value);
+            }
+        }
+
+        public double GridNutRatio
+        {
+            get
+            {
+                return GetDouble("grid.nutratio", 1.0);
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("grid.nutratio", value);
+            }
         }
 
         #endregion
 
         #region DiagramTitle-specific Styles
 
-        public double TitleGridPaddingGet()
+        public double TitleGridPadding
         {
-            return GetDouble("title.gridpadding", 0);
-        }
-
-        public void TitleGridPaddingSet(double value)
-        {
-            if (value < 0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                return GetDouble("title.gridpadding", 0);
             }
-            Set("title.gridpadding", value);
-        }
-
-        public double TitleTextSizeGet()
-        {
-            return GetDouble("title.textsize");
-        }
-
-        public void TitleTextSizeSet(double value)
-        {
-            if (value < 0)
+            set
             {
-                throw new ArgumentOutOfRangeException("value");
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("title.gridpadding", value);
             }
-            Set("title.textsize", value);
         }
 
-        public double TitleTextSizeModRatioGet()
+        public double TitleTextSize
         {
-            return GetDouble("title.textmodratio", 1.0);
-        }
-
-        public void TitleTextSizeModRatioSet(double value)
-        {
-            if (value < 0 || value > 1.0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                return GetDouble("title.textsize");
             }
-            Set("title.textmodratio", value);
-        }
-
-        public string TitleFontFamilyGet()
-        {
-            return Get("title.fontfamily");
-        }
-
-        public void TitleFontFamilySet(string value)
-        {
-            Set("title.fontfamily", value);
-        }
-
-        public DiagramHorizontalAlignment TitleTextAlignmentGet()
-        {
-            return GetEnum<DiagramHorizontalAlignment>("title.textalignment");
-        }
-
-        public void TitleTextAlignmentSet(DiagramHorizontalAlignment value)
-        {
-            Set("title.textalignment", value);
-        }
-
-        public DiagramTextStyle TitleTextStyleGet()
-        {
-            return GetEnum<DiagramTextStyle>("title.textstyle");
-        }
-
-        public void TitleTextStyleSet(DiagramTextStyle value)
-        {
-            Set("title.textstyle", value);
-        }
-
-        public bool TitleVisibleGet()
-        {
-            return GetBoolean("title.textvisible");
-        }
-
-        public void TitleVisibleSet(bool value)
-        {
-            Set("title.textvisible", value);
-        }
-
-        public DiagramLabelStyle TitleLabelStyleGet()
-        {
-            return GetEnum<DiagramLabelStyle>("title.labelstyle");
-        }
-
-        public void TitleLabelStyleSet(DiagramLabelStyle value)
-        {
-            Set("title.labelstyle", value);
-        }
-
-        public string TitleColorGet()
-        {
-            return GetColor("title.textcolor");
-        }
-
-        public void TitleColorSet(string value)
-        {
-            SetColor("title.textcolor", value);
-        }
-
-        public double TitleOpacityGet()
-        {
-            return GetDouble("title.textopacity");
-        }
-
-        public void TitleOpacitySet(double value)
-        {
-            if (value < 0 || value > 1.0)
+            set
             {
-                throw new ArgumentOutOfRangeException("value");
-            }
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
 
-            Set("title.textopacity", value);
+                Set("title.textsize", value);
+            }
+        }
+
+        public double TitleTextSizeModRatio
+        {
+            get
+            {
+                return GetDouble("title.textmodratio", 1.0);
+            }
+            set
+            {
+                if (value < 0 || value > 1.0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("title.textmodratio", value);
+            }
+        }
+
+        public string TitleFontFamily
+        {
+            get
+            {
+                return Get("title.fontfamily");
+            }
+            set
+            {
+                Set("title.fontfamily", value);
+            }
+        }
+
+        public DiagramHorizontalAlignment TitleTextAlignment
+        {
+            get
+            {
+                return GetEnum<DiagramHorizontalAlignment>("title.textalignment");
+            }
+            set
+            {
+                Set("title.textalignment", value);
+            }
+        }
+
+        public DiagramTextStyle TitleTextStyle
+        {
+            get
+            {
+                return GetEnum<DiagramTextStyle>("title.textstyle");
+            }
+            set
+            {
+                Set("title.textstyle", value);
+            }
+        }
+
+        public bool TitleVisible
+        {
+            get
+            {
+                return GetBoolean("title.textvisible");
+            }
+            set
+            {
+                Set("title.textvisible", value);
+            }
+        }
+
+        public DiagramLabelStyle TitleLabelStyle
+        {
+            get
+            {
+                return GetEnum<DiagramLabelStyle>("title.labelstyle");
+            }
+            set
+            {
+                Set("title.labelstyle", value);
+            }
+        }
+
+        public string TitleColor
+        {
+            get
+            {
+                return GetColor("title.textcolor");
+            }
+            set
+            {
+                SetColor("title.textcolor", value);
+            }
+        }
+
+        public double TitleOpacity
+        {
+            get
+            {
+                return GetDouble("title.textopacity");
+            }
+            set
+            {
+                if (value < 0 || value > 1.0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("title.textopacity", value);
+            }
         }
 
         #endregion

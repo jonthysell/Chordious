@@ -1,0 +1,23 @@
+﻿<Window x:Class="com.jonthysell.Chordious.WPF.DiagramStyleEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding Title, FallbackValue=Style Editor}" WindowStartupLocation="CenterScreen" Icon="{StaticResource ChordiousIcon}" MinWidth="320" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <StackPanel>
+        <GroupBox Header="Layout" Margin="5">
+            <StackPanel Margin="5">
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Margin="5" IsChecked="{Binding ObservableDiagramStyle.OrientationIsLocal}" VerticalAlignment="Center" />
+                    <Label Margin="5" Width="80" Content="{Binding ObservableDiagramStyle.SelectedOrientationLabel, FallbackValue=Orientation}" />
+                    <ComboBox Margin="5" Width="95" ItemsSource="{Binding ObservableDiagramStyle.Orientations}" SelectedIndex="{Binding ObservableDiagramStyle.SelectedOrientationIndex}" ToolTip="{Binding ObservableDiagramStyle.SelectedOrientationToolTip}" IsEnabled="{Binding ObservableDiagramStyle.OrientationIsLocal}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <WrapPanel FlowDirection="RightToLeft" Height="Auto">
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
+                <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
+                <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
+            </StackPanel>
+        </WrapPanel>
+    </StackPanel>
+</Window>

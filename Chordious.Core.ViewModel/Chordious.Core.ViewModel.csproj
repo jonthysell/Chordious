@@ -54,6 +54,7 @@
     <Compile Include="ConfigImportViewModel.cs" />
     <Compile Include="ConfigExportViewModel.cs" />
     <Compile Include="DiagramBarreEditorViewModel.cs" />
+    <Compile Include="DiagramStyleEditorViewModel.cs" />
     <Compile Include="DiagramFretLabelEditorViewModel.cs" />
     <Compile Include="DiagramMarkEditorViewModel.cs" />
     <Compile Include="InformationViewModel.cs" />

@@ -349,6 +349,34 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        #region EditCollectionStyle
+
+        public string EditCollectionStyleLabel
+        {
+            get
+            {
+                return Strings.EditStyleLabel;
+            }
+        }
+
+        public string EditCollectionStyleToolTip
+        {
+            get
+            {
+                return String.Format(Strings.ObservableDiagramLibraryNodeEditCollectionStyleToolTipFormat, Name);
+            }
+        }
+
+        public RelayCommand EditCollectionStyle
+        {
+            get
+            {
+                return CollectionStyle.ShowEditor;
+            }
+        }
+
+        #endregion
+
         internal DiagramLibrary Library { get; private set; }
 
         internal DiagramCollection Collection
@@ -363,6 +391,25 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private DiagramCollection _collection;
+
+        public ObservableDiagramStyle CollectionStyle
+        {
+            get
+            {
+                if (null == _collectionStyle)
+                {
+                    _collectionStyle = new ObservableDiagramStyle(Collection.Style);
+                    _collectionStyle.PostEditCallback = (changed) =>
+                    {
+                        Diagrams.Clear();
+                        _firstLoad = true;
+                        RaisePropertyChanged("Diagrams");
+                    };
+                }
+                return _collectionStyle;
+            }
+        }
+        private ObservableDiagramStyle _collectionStyle;
 
         private bool _firstLoad = true;
 

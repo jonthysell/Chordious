@@ -449,6 +449,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Style of &quot;{0}&quot;....
+        /// </summary>
+        internal static string DiagramLibraryEditNodeStyleLabelFormat {
+            get {
+                return ResourceManager.GetString("DiagramLibraryEditNodeStyleLabelFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the base style of the selected collection..
+        /// </summary>
+        internal static string DiagramLibraryEditNodeStyleToolTip {
+            get {
+                return ResourceManager.GetString("DiagramLibraryEditNodeStyleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit the selected collection&apos;s properties..
         /// </summary>
         internal static string DiagramLibraryEditNodeToolTip {
@@ -494,11 +512,47 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Orientation.
+        /// </summary>
+        internal static string DiagramStyleOrientationLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleOrientationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether the diagram is oriented top-down or left-right..
+        /// </summary>
+        internal static string DiagramStyleOrientationToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleOrientationToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a collection first and try again..
+        /// </summary>
+        internal static string DiagrmLibrarySelectNodeFirstMessage {
+            get {
+                return ResourceManager.GetString("DiagrmLibrarySelectNodeFirstMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit....
         /// </summary>
         internal static string EditLabel {
             get {
                 return ResourceManager.GetString("EditLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Style....
+        /// </summary>
+        internal static string EditStyleLabel {
+            get {
+                return ResourceManager.GetString("EditStyleLabel", resourceCulture);
             }
         }
         
@@ -850,6 +904,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ObservableDiagramLibraryNodeDeleteSelectedToolTipSingleFormat {
             get {
                 return ResourceManager.GetString("ObservableDiagramLibraryNodeDeleteSelectedToolTipSingleFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the base style of the collection &quot;{0}&quot;..
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeEditCollectionStyleToolTipFormat {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeEditCollectionStyleToolTipFormat", resourceCulture);
             }
         }
         

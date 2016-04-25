@@ -101,6 +101,9 @@
     <Compile Include="DiagramBarreEditorWindow.xaml.cs">
       <DependentUpon>DiagramBarreEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DiagramStyleEditorWindow.xaml.cs">
+      <DependentUpon>DiagramStyleEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DiagramFretLabelEditorWindow.xaml.cs">
       <DependentUpon>DiagramFretLabelEditorWindow.xaml</DependentUpon>
     </Compile>
@@ -217,6 +220,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="DiagramStyleEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="DiagramFretLabelEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -301,6 +308,7 @@
     <Content Include="Chordious.WPF.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\style16.png" />
     <Resource Include="Resources\add16.png" />
     <Resource Include="Resources\copy16.png" />
     <Resource Include="Resources\edit16.png" />

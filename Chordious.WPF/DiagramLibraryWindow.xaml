@@ -42,14 +42,20 @@
                             <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
+                    <MenuItem Command="{Binding DeleteNode}" Header="{Binding DeleteNodeLabel}" ToolTip="{Binding DeleteNodeToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
                     <MenuItem Command="{Binding CloneNode}" Header="{Binding CloneNodeLabel}" ToolTip="{Binding CloneNodeToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding DeleteNode}" Header="{Binding DeleteNodeLabel}" ToolTip="{Binding DeleteNodeToolTip}">
+                    <MenuItem Command="{Binding EditNodeStyle}" Header="{Binding EditNodeStyleLabel}" ToolTip="{Binding EditNodeStyleToolTip}">
                         <MenuItem.Icon>
-                            <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource StyleIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
@@ -92,6 +98,12 @@
                             <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
+                    <MenuItem Command="{Binding SelectedNode.DeleteSelected}" Header="{Binding SelectedNode.DeleteSelectedLabel}" ToolTip="{Binding SelectedNode.DeleteSelectedToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
                     <MenuItem Command="{Binding SelectedNode.CloneSelected}" Header="{Binding SelectedNode.CloneSelectedLabel}" ToolTip="{Binding SelectedNode.CloneSelectedToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
@@ -100,11 +112,6 @@
                     <MenuItem Command="{Binding SelectedNode.ExportSelected}" Header="{Binding SelectedNode.ExportSelectedLabel}" ToolTip="{Binding SelectedNode.ExportSelectedToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource ExportIcon16}" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Command="{Binding SelectedNode.DeleteSelected}" Header="{Binding SelectedNode.DeleteSelectedLabel}" ToolTip="{Binding SelectedNode.DeleteSelectedToolTip}">
-                        <MenuItem.Icon>
-                            <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
@@ -131,11 +138,19 @@
                 <Button Command="{Binding SelectedNode.EditSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding SelectedNode.EditSelectedToolTip}">
                     <local:AutoDisableImage Source="{StaticResource EditIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding SelectedNode.ExportSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding SelectedNode.ExportSelectedToolTip}">
-                    <local:AutoDisableImage Source="{StaticResource ExportIcon16}" Width="16" Height="16" Margin="5" />
-                </Button>
                 <Button Command="{Binding SelectedNode.DeleteSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding SelectedNode.DeleteSelectedToolTip}">
                     <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />            
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Button Command="{Binding SelectedNode.EditCollectionStyle}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding SelectedNode.EditCollectionStyleToolTip}">
+                    <local:AutoDisableImage Source="{StaticResource StyleIcon16}" Width="16" Height="16" Margin="5" />
+                </Button>
+                <Button Command="{Binding SelectedNode.ExportSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding SelectedNode.ExportSelectedToolTip}">
+                    <local:AutoDisableImage Source="{StaticResource ExportIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
             </StackPanel>
         </WrapPanel>

@@ -77,6 +77,25 @@ namespace com.jonthysell.Chordious.Core
 
         #region Diagram-specific Styles
 
+        public bool OrientationIsLocal
+        {
+            get
+            {
+                return HasKey("diagram.orientation", false);
+            }
+            set
+            {
+                if (value)
+                {
+                    Orientation = Orientation;
+                }
+                else
+                {
+                    Clear("diagram.orientation", false);
+                }
+            }
+        }
+
         public DiagramOrientation Orientation
         {
             get
@@ -1151,9 +1170,11 @@ namespace com.jonthysell.Chordious.Core
             base.Write(xmlWriter, "style", filter);
         }
 
-        public new DiagramStyle Clone()
+        public DiagramStyle Clone()
         {
-            return (DiagramStyle)base.Clone();
+            DiagramStyle ds = new DiagramStyle(this.Parent, this.Level);
+            ds.CopyFrom(this);
+            return ds;
         }
 
         public void SetColor(string key, string value)

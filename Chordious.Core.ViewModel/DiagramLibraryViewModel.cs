@@ -88,10 +88,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 RaisePropertyChanged("CreateNodeLabel");
                 RaisePropertyChanged("EditNode");
                 RaisePropertyChanged("EditNodeLabel");
-                RaisePropertyChanged("CloneNode");
-                RaisePropertyChanged("CloneNodeLabel");
                 RaisePropertyChanged("DeleteNode");
                 RaisePropertyChanged("DeleteNodeLabel");
+                RaisePropertyChanged("CloneNode");
+                RaisePropertyChanged("CloneNodeLabel");
+                RaisePropertyChanged("EditNodeStyle");
+                RaisePropertyChanged("EditNodeStyleLabel");
             }
         }
         private ObservableDiagramLibraryNode _selectedNode;
@@ -222,6 +224,61 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        #region DeleteNode
+
+        public string DeleteNodeLabel
+        {
+            get
+            {
+                if (NodeIsSelected)
+                {
+                    return String.Format(Strings.DiagramLibraryDeleteNodeLabelFormat, SelectedNode.Name);
+                }
+
+                return Strings.DeleteLabel;
+            }
+        }
+
+        public string DeleteNodeToolTip
+        {
+            get
+            {
+                return Strings.DiagramLibraryDeleteNodeToolTip;
+            }
+        }
+
+        public RelayCommand DeleteNode
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        string path = SelectedNode.Path;
+                        string name = SelectedNode.Name;
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format(Strings.DiagramLibraryDeleteNodePromptFormat, name), (confirmed) =>
+                        {
+                            if (confirmed)
+                            {
+                                Library.Remove(path, name);
+                                RaisePropertyChanged("Nodes");
+                            }
+                        }, "confirmation.diagramlibrary.deletenode"));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return NodeIsSelected;
+                });
+            }
+        }
+
+        #endregion
+
         #region CloneNode
 
         public string CloneNodeLabel
@@ -274,47 +331,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
-        #region DeleteNode
+        #region EditNodeStyle
 
-        public string DeleteNodeLabel
+        public string EditNodeStyleLabel
         {
             get
             {
                 if (NodeIsSelected)
                 {
-                    return String.Format(Strings.DiagramLibraryDeleteNodeLabelFormat, SelectedNode.Name);
+                    return String.Format(Strings.DiagramLibraryEditNodeStyleLabelFormat, SelectedNode.Name);
                 }
 
-                return Strings.DeleteLabel;
+                return Strings.EditStyleLabel;
             }
         }
 
-        public string DeleteNodeToolTip
+        public string EditNodeStyleToolTip
         {
             get
             {
-                return Strings.DiagramLibraryDeleteNodeToolTip;
+                return Strings.DiagramLibraryEditNodeStyleToolTip;
             }
         }
 
-        public RelayCommand DeleteNode
+        public RelayCommand EditNodeStyle
         {
             get
             {
+                if (NodeIsSelected)
+                {
+                    return SelectedNode.EditCollectionStyle;
+                }
+
                 return new RelayCommand(() =>
                 {
                     try
                     {
-                        string path = SelectedNode.Path;
-                        string name = SelectedNode.Name;
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format(Strings.DiagramLibraryDeleteNodePromptFormat, name), (confirmed) =>
-                        {
-                            if (confirmed)
-                            {
-                                Library.Remove(path, name);
-                                RaisePropertyChanged("Nodes");
-                            }
-                        }, "confirmation.diagramlibrary.deletenode"));
+                        Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.DiagrmLibrarySelectNodeFirstMessage));
                     }
                     catch (Exception ex)
                     {

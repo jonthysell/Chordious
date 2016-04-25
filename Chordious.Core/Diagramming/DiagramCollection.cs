@@ -164,10 +164,18 @@ namespace com.jonthysell.Chordious.Core
             {
                 do
                 {
-                    if (xmlReader.IsStartElement() && xmlReader.Name == "diagram")
+                    if (xmlReader.IsStartElement())
                     {
-                        Diagram diagram = new Diagram(this.Style, xmlReader.ReadSubtree());
-                        Add(diagram);
+                        switch(xmlReader.Name)
+                        {
+                            case "diagram":
+                                Diagram diagram = new Diagram(this.Style, xmlReader.ReadSubtree());
+                                Add(diagram);
+                                break;
+                            case "style":
+                                this.Style.Read(xmlReader.ReadSubtree());
+                                break;
+                        }
                     }
                 } while (xmlReader.Read());
             }
@@ -179,6 +187,8 @@ namespace com.jonthysell.Chordious.Core
             {
                 throw new ArgumentNullException("xmlWriter");
             }
+
+            this.Style.Write(xmlWriter);
 
             foreach (Diagram d in _diagrams)
             {

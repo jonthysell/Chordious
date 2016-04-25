@@ -653,18 +653,6 @@ namespace com.jonthysell.Chordious.Core
             this.Parent.Set(key, this[key]);
         }
 
-        public InheritableDictionary Clone()
-        {
-            InheritableDictionary id = new InheritableDictionary(this.Parent, this.Level);
-
-            foreach (string key in this.LocalKeys())
-            {
-                id.Set(key, this.Get(key));
-            }
-
-            return id;
-        }
-
         public void CopyFrom(InheritableDictionary source)
         {
             if (null == source)
@@ -674,20 +662,7 @@ namespace com.jonthysell.Chordious.Core
 
             foreach (string key in source.LocalKeys())
             {
-                this.Set(key, source.Get(key));
-            }
-        }
-
-        public void CopyTo(InheritableDictionary target)
-        {
-            if (null == target)
-            {
-                throw new ArgumentNullException("target");
-            }
-
-            foreach (string key in this.LocalKeys())
-            {
-                target.Set(key, this.Get(key));
+                this.Set(key, source.Get(key, false));
             }
         }
 

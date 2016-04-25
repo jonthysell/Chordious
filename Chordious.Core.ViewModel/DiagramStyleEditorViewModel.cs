@@ -1,10 +1,10 @@
 ﻿// 
-// DiagramEditorViewModel.cs
+// DiagramStyleEditorViewModel.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -39,7 +39,7 @@ using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class DiagramEditorViewModel : ViewModelBase
+    public class DiagramStyleEditorViewModel : ViewModelBase
     {
         public AppViewModel AppVM
         {
@@ -53,7 +53,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return "Diagram Editor" + (Dirty ? "*" : "");
+                return "Style Editor" + (Dirty ? "*" : "");
             }
         }
 
@@ -154,25 +154,25 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _dirty = false;
 
-        public bool DiagramChanged
+        public bool DiagramStyleChanged
         {
             get
             {
-                return _diagramChanged;
+                return _diagramStyleChanged;
             }
             private set
             {
-                _diagramChanged = value;
-                RaisePropertyChanged("DiagramChanged");
+                _diagramStyleChanged = value;
+                RaisePropertyChanged("DiagramStyleChanged");
             }
         }
-        private bool _diagramChanged = false;
+        private bool _diagramStyleChanged = false;
 
-        public ObservableDiagram ObservableDiagram
+        public ObservableDiagramStyle ObservableDiagramStyle
         {
             get
             {
-                return _observableDiagram;
+                return _observableDiagramStyle;
             }
             private set
             {
@@ -180,40 +180,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     throw new ArgumentNullException();
                 }
-                _observableDiagram = value;
-                RaisePropertyChanged("ObservableDiagram");
+                _observableDiagramStyle = value;
+                RaisePropertyChanged("ObservableDiagramStyle");
             }
         }
-        private ObservableDiagram _observableDiagram;
+        private ObservableDiagramStyle _observableDiagramStyle;
 
-        private ObservableDiagram OriginalObservableDiagram;
+        private ObservableDiagramStyle OriginalObservableDiagramStyle;
 
-        public DiagramEditorViewModel(ObservableDiagram diagram, bool isNew)
+        public DiagramStyleEditorViewModel(ObservableDiagramStyle diagramStyle)
         {
-            if (null == diagram)
+            if (null == diagramStyle)
             {
-                throw new ArgumentNullException("diagram");
+                throw new ArgumentNullException("diagramStyle");
             }
 
-            OriginalObservableDiagram = diagram;
+            OriginalObservableDiagramStyle = diagramStyle;
 
-            ObservableDiagram = new ObservableDiagram(diagram.Diagram.Clone());
-            ObservableDiagram.IsEditMode = true;
+            ObservableDiagramStyle = new ObservableDiagramStyle(diagramStyle.Style.Clone());
 
-            if (isNew)
-            {
-                Dirty = true;
-            }
-
-            ObservableDiagram.PropertyChanged += ObservableDiagram_PropertyChanged;
+            ObservableDiagramStyle.PropertyChanged += ObservableDiagramStyle_PropertyChanged;
         }
 
-        void ObservableDiagram_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        void ObservableDiagramStyle_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (!ObservableDiagram.IsCursorProperty(e.PropertyName))
-            {
-                Dirty = true;
-            }
+            Dirty = true;
         }
 
         public bool ProcessClose()
@@ -222,14 +213,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 ApplyChanges();
             }
-            return DiagramChanged;
+            return DiagramStyleChanged;
         }
 
         private void ApplyChanges()
         {
-            OriginalObservableDiagram.Diagram = ObservableDiagram.Diagram.Clone();
+            OriginalObservableDiagramStyle.Style.Clear();
+            OriginalObservableDiagramStyle.Style.CopyFrom(ObservableDiagramStyle.Style);
             Dirty = false;
-            DiagramChanged = true;
+            DiagramStyleChanged = true;
         }
     }
 }

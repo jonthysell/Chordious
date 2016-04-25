@@ -54,7 +54,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                return GetBackgrounds();
+                return ObservableEnums.GetBackgrounds();
             }
         }
 
@@ -94,7 +94,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                return GetBackgrounds();
+                return ObservableEnums.GetBackgrounds();
             }
         }
 
@@ -237,17 +237,6 @@ namespace com.jonthysell.Chordious.WPF
 
             collection.Add("Official");
             collection.Add("Preview");
-
-            return collection;
-        }
-
-        private static ObservableCollection<string> GetBackgrounds()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add("None");
-            collection.Add("White");
-            collection.Add("Transparent");
 
             return collection;
         }

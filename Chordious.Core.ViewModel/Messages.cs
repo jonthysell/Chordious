@@ -325,6 +325,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
     }
 
+    public class ShowDiagramStyleEditorMessage : MessageBase
+    {
+        public DiagramStyleEditorViewModel DiagramStyleEditorVM { get; private set; }
+
+        private Action<bool> Callback;
+
+        public ShowDiagramStyleEditorMessage(ObservableDiagramStyle diagramStyle, Action<bool> callback = null) : base()
+        {
+            DiagramStyleEditorVM = new DiagramStyleEditorViewModel(diagramStyle);
+            Callback = callback;
+        }
+
+        public void Process()
+        {
+            bool saveChanges = DiagramStyleEditorVM.ProcessClose();
+            if (null != Callback)
+            {
+                Callback(saveChanges);
+            }
+        }
+    }
+
     public class ShowOptionsMessage : MessageBase
     {
         public OptionsViewModel OptionsVM { get; set; }

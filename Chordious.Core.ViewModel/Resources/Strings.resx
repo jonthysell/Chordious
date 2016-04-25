@@ -492,7 +492,28 @@
   <data name="ConfigPartsStylesToolTip" xml:space="preserve">
     <value>Include user styles.</value>
   </data>
+  <data name="DiagramLibraryEditNodeStyleLabelFormat" xml:space="preserve">
+    <value>Edit Style of "{0}"...</value>
+  </data>
+  <data name="DiagramLibraryEditNodeStyleToolTip" xml:space="preserve">
+    <value>Edit the base style of the selected collection.</value>
+  </data>
+  <data name="DiagrmLibrarySelectNodeFirstMessage" xml:space="preserve">
+    <value>Select a collection first and try again.</value>
+  </data>
+  <data name="EditStyleLabel" xml:space="preserve">
+    <value>Edit Style...</value>
+  </data>
   <data name="IncludeLabel" xml:space="preserve">
     <value>Include</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeEditCollectionStyleToolTipFormat" xml:space="preserve">
+    <value>Edit the base style of the collection "{0}".</value>
+  </data>
+  <data name="DiagramStyleOrientationLabel" xml:space="preserve">
+    <value>Orientation</value>
+  </data>
+  <data name="DiagramStyleOrientationToolTip" xml:space="preserve">
+    <value>Whether the diagram is oriented top-down or left-right.</value>
   </data>
 </root>

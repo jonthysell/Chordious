@@ -60,6 +60,7 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Register<ShowDiagramMarkEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramMarkEditor(message));
             Messenger.Default.Register<ShowDiagramFretLabelEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramFretLabelEditor(message));
             Messenger.Default.Register<ShowDiagramBarreEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramBarreEditor(message));
+            Messenger.Default.Register<ShowDiagramStyleEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramStyleEditor(message));
 
             Messenger.Default.Register<ShowInstrumentManagerMessage>(recipient, (message) => MessageHandlers.ShowInstrumentManager(message));
             Messenger.Default.Register<ShowInstrumentEditorMessage>(recipient, (message) => MessageHandlers.ShowInstrumentEditor(message));
@@ -103,6 +104,7 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Unregister<ShowDiagramMarkEditorMessage>(recipient);
             Messenger.Default.Unregister<ShowDiagramFretLabelEditorMessage>(recipient);
             Messenger.Default.Unregister<ShowDiagramBarreEditorMessage>(recipient);
+            Messenger.Default.Unregister<ShowDiagramStyleEditorMessage>(recipient);
 
             Messenger.Default.Unregister<ShowInstrumentManagerMessage>(recipient);
 
@@ -316,6 +318,18 @@ namespace com.jonthysell.Chordious.WPF
             DiagramBarreEditorWindow window = new DiagramBarreEditorWindow();
             window.DataContext = message.DiagramBarreEditorVM;
             message.DiagramBarreEditorVM.RequestClose += () =>
+            {
+                window.Close();
+            };
+            window.ShowDialog();
+            message.Process();
+        }
+
+        private static void ShowDiagramStyleEditor(ShowDiagramStyleEditorMessage message)
+        {
+            DiagramStyleEditorWindow window = new DiagramStyleEditorWindow();
+            window.DataContext = message.DiagramStyleEditorVM;
+            message.DiagramStyleEditorVM.RequestClose += () =>
             {
                 window.Close();
             };

@@ -34,11 +34,49 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ObservableDiagramStyle : ObservableObject
     {
         #region Layout
+
+        public bool OrientationIsLocal
+        {
+            get
+            {
+                return Style.OrientationIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.OrientationIsLocal = value;
+                    RaisePropertyChanged("OrientationIsLocal");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string SelectedOrientationLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleOrientationLabel;
+            }
+        }
+
+        public string SelectedOrientationToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleOrientationToolTip;
+            }
+        }
 
         public int SelectedOrientationIndex
         {
@@ -821,6 +859,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        #region ShowEditor
+
         public RelayCommand ShowEditor
         {
             get
@@ -829,15 +869,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        /*
-                        Messenger.Default.Send<ShowDiagramEditorMessage>(new ShowDiagramEditorMessage(this, false, (changed) =>
+                        Messenger.Default.Send<ShowDiagramStyleEditorMessage>(new ShowDiagramStyleEditorMessage(this, (changed) =>
                         {
                             if (null != PostEditCallback)
                             {
                                 PostEditCallback(changed);
                             }
                         }));
-                        */
                     }
                     catch (Exception ex)
                     {
@@ -846,6 +884,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 });
             }
         }
+
+        #endregion
 
         public Action<bool> PostEditCallback
         {

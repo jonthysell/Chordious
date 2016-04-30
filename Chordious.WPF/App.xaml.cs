@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -40,6 +40,7 @@ using System.Windows.Threading;
 using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core.ViewModel;
+using com.jonthysell.Chordious.WPF.Resources;
 
 namespace com.jonthysell.Chordious.WPF
 {
@@ -94,10 +95,13 @@ namespace com.jonthysell.Chordious.WPF
                 AppVM.LoadAppConfig();
             }
 
-            if (File.Exists(userFile))
+            if (!File.Exists(userFile))
             {
-                AppVM.LoadUserConfig();
+                // Makes sure that LoadUserConfig will be successful
+                AppVM.SaveUserConfig();
             }
+
+            AppVM.LoadUserConfig(HandleUserConfigLoadException);
 
             Exit += App_Exit;
         }
@@ -131,6 +135,44 @@ namespace com.jonthysell.Chordious.WPF
             {
                 yield return font.Name;
             }
+        }
+
+        public void HandleUserConfigLoadException(Exception ex)
+        {
+            string userFile = GetUserConfigPath();
+            Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.ResetAndBackupUserConfigConfirmationMessage, (confirmed) =>
+            {
+                if (!confirmed) // No, exit app
+                {
+                    Exit -= App_Exit; // Remove the handler so we don't overwrite the corruupt config with whatever we may have loaded 
+                    Shutdown(1);
+                }
+                else // Yes, backup and continue
+                {
+                    string backupFile = ResetAndBackupUserConfig(userFile);
+                    string message = String.Format(Strings.ResetAndBackupUserConfigBackupFileMessageFormat, backupFile);
+                    ExceptionUtils.HandleException(new Exception(message, ex));
+                    //Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(message));
+                }
+            }));
+        }
+
+        private string ResetAndBackupUserConfig(string userFile)
+        {
+            if (String.IsNullOrWhiteSpace(userFile))
+            {
+                throw new ArgumentNullException("userFile");
+            }
+
+            string userFolder = Path.GetDirectoryName(userFile);
+            string backupFile = Path.Combine(userFolder, String.Format("Chordious.WPF.{0}.xml", DateTime.UtcNow.ToString("yyyy.MM.dd.HH.mm.ss")));
+
+            File.Move(userFile, backupFile);
+
+            AppVM.ResetUserConfig();
+            AppVM.SaveUserConfig();
+
+            return backupFile;
         }
 
         private void App_Exit(object sender, ExitEventArgs e)

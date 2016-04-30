@@ -234,6 +234,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private string _userConfigPath = "";
 
+        private Exception _userConfigLoadException = null;
+        private Action<Exception> _userConfigLoadExceptionCallback = null;
+
         internal ChordiousSettings Settings
         {
             get
@@ -341,13 +344,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             AppConfigLoaded = true;
         }
 
-        public void LoadUserConfig()
+        public void LoadUserConfig(Action<Exception> loadFailedCallback = null)
         {
-            using (Stream inputStream = _loadUserConfigStream())
+            _userConfigLoadExceptionCallback = loadFailedCallback;
+
+            try
             {
-                UserConfig.LoadFile(inputStream);
+                using (Stream inputStream = _loadUserConfigStream())
+                {
+                    UserConfig.LoadFile(inputStream);
+                }
+                UserConfigLoaded = true;
             }
-            UserConfigLoaded = true;
+            catch (Exception ex)
+            {
+                _userConfigLoadException = ex;
+            }
         }
 
         public void SaveUserConfig()
@@ -355,6 +367,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             using (Stream outputStream = _saveUserConfigStream())
             {
                 UserConfig.SaveFile(outputStream);
+            }
+        }
+
+        public void ResetUserConfig()
+        {
+            UserConfig = new ConfigFile(AppConfig, "User");
+            UserConfigLoaded = true;
+        }
+
+        public void TryHandleFailedUserConfigLoad()
+        {
+            if (null != _userConfigLoadException)
+            {
+                if (null != _userConfigLoadExceptionCallback)
+                {
+                    DoOnUIThread(() =>
+                    {
+                        _userConfigLoadExceptionCallback(_userConfigLoadException);
+                    });
+                }
             }
         }
 

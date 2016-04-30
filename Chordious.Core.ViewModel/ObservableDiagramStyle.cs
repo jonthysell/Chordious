@@ -54,6 +54,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     Style.OrientationIsLocal = value;
                     RaisePropertyChanged("OrientationIsLocal");
+                    RaisePropertyChanged("SelectedOrientationIndex");
                 }
                 catch (Exception ex)
                 {

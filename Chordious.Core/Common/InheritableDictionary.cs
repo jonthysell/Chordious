@@ -325,6 +325,29 @@ namespace com.jonthysell.Chordious.Core
             return false;
         }
 
+        public bool TryGet(string key, out object result, bool recursive = true)
+        {
+            if (StringUtils.IsNullOrWhiteSpace(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            key = CleanKey(key);
+
+            if (_localDictionary.ContainsKey(key)) // Check locally
+            {
+                result = _localDictionary[key];
+                return true;
+            }
+            else if (null != this.Parent && recursive) // Recursively check parent
+            {
+                return this.Parent.TryGet(key, out result, recursive);
+            }
+
+            result = null;
+            return false;
+        }
+
         public bool GetBoolean(string key)
         {
             return GetBoolean(key, true);
@@ -722,6 +745,36 @@ namespace com.jonthysell.Chordious.Core
                 }
                 pointer = pointer.Parent;
             } while (null != pointer);
+        }
+
+        public bool IsLocalGet(string key)
+        {
+            return HasKey(key, false);
+        }
+
+        public void IsLocalSet(string key, bool value, object defaultValue = null)
+        {
+            bool oldValue = IsLocalGet(key);
+
+            if (value != oldValue)
+            {
+                if (value)
+                {
+                    object parentValue;
+                    if (TryGet(key, out parentValue))
+                    {
+                        Set(key, parentValue);
+                    }
+                    else
+                    {
+                        Set(key, defaultValue);
+                    }
+                }
+                else
+                {
+                    Clear(key, false);
+                }
+            }
         }
 
         protected string CleanPrefix(string prefix)

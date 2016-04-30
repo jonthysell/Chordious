@@ -81,18 +81,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return HasKey("diagram.orientation", false);
+                return IsLocalGet("diagram.orientation");
             }
             set
             {
-                if (value)
-                {
-                    Orientation = Orientation;
-                }
-                else
-                {
-                    Clear("diagram.orientation", false);
-                }
+                IsLocalSet("diagram.orientation", value);
             }
         }
 

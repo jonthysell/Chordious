@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,8 @@ using System;
 using System.Threading;
 using System.Windows;
 
+using com.jonthysell.Chordious.WPF.Resources;
+
 namespace com.jonthysell.Chordious.WPF
 {
     public class Program
@@ -41,13 +43,21 @@ namespace com.jonthysell.Chordious.WPF
 
             if (!_mutex.WaitOne(TimeSpan.Zero, false))
             {
-                MessageBox.Show("A copy of Chordious is already running.", "Chordious", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Strings.ChordiousAlreadyRunningErrorMessage, Strings.ChordiousDialogCaption, MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                App app = new App();
-                app.InitializeComponent();
-                app.Run();
+                try
+                {
+                    App app = new App();
+                    app.InitializeComponent();
+                    app.Run();
+                }
+                catch (Exception ex)
+                {
+                    String message = String.Join(Environment.NewLine, String.Format(Strings.ChordiousUnhandledExceptionMessageFormat, ex.Message), ex.StackTrace);
+                    MessageBox.Show(message, Strings.ChordiousDialogCaption, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }

@@ -1,5 +1,14 @@
 # Chordious Changelist #
 
+## 1.9.16121.2216 ##
+* Updated config import/export to use resource strings
+* Refactored DiagramStyle to support code re-use
+* Fixed bug with collections not saving/loading their styles
+* Added the start of the DiagramStyleEditor
+* Fixed bug where a missing user config would throw an error on startup
+* Added logic to catch if Chordious crashes during startup
+* Added logic to catch corrupt user configs and give the user the option to create a backup of the corrupt config (hopefully to be debugged later) and reset Chordious to a fresh state
+
 ## 1.9.16103.221 ##
 * Can now edit Finder results before saving them
 

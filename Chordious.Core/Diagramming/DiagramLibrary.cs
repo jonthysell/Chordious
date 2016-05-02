@@ -38,7 +38,7 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramLibrary(DiagramStyle parentStyle)
         {
-            Style = new DiagramStyle(parentStyle, "DiagramLibrary");
+            Style = new DiagramStyle(parentStyle, LevelKey);
             _nodes = new List<DiagramLibraryNode>();
         }
 
@@ -484,6 +484,8 @@ namespace com.jonthysell.Chordious.Core
 
             ListUtils.SortedInsert<DiagramLibraryNode>(_nodes, node);
         }
+
+        public const string LevelKey = "DiagramLibrary";
     }
 
     public abstract class DiagramLibraryException : ChordiousException

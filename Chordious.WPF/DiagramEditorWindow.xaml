@@ -32,7 +32,7 @@
                 <GroupBox Header="Layout" Margin="5">
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
-                            <Label Margin="5" Width="80" Content="{Binding ObservableDiagram.Style.SelectedOrientationLabel, FallbackValue=Orientation}" />
+                            <Label Margin="5" Width="80" Content="{Binding ObservableDiagram.Style.SelectedOrientationLabel, FallbackValue=Orientation}" ToolTip="{Binding ObservableDiagram.Style.SelectedOrientationToolTip}" />
                             <ComboBox Margin="5" Width="95" ItemsSource="{Binding ObservableDiagram.Style.Orientations}" SelectedIndex="{Binding ObservableDiagram.Style.SelectedOrientationIndex}" ToolTip="{Binding ObservableDiagram.Style.SelectedOrientationToolTip}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">

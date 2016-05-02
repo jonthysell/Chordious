@@ -27,6 +27,8 @@
 using System;
 using System.Xml;
 
+using com.jonthysell.Chordious.Core.Resources;
+
 namespace com.jonthysell.Chordious.Core
 {
     public class DiagramStyle : InheritableDictionary
@@ -1311,6 +1313,47 @@ namespace com.jonthysell.Chordious.Core
             }
 
             return String.Empty;
+        }
+
+        public override string GetFriendlyKeyName(string key)
+        {
+            if (String.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            key = CleanKey(key);
+
+            switch (key)
+            {
+                case "diagram.orientation":
+                    return Strings.DiagramOrientationFriendlyKeyName;
+                default:
+                    return base.GetFriendlyKeyName(key);
+            }
+        }
+
+        public override string GetFriendlyValueName(string key, bool recursive = true)
+        {
+            if (String.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            key = CleanKey(key);
+
+            switch (key)
+            {
+                case "diagram.orientation":
+                    return EnumUtils.GetFriendlyValue(GetEnum<DiagramOrientation>(key, recursive));
+                default:
+                    return base.GetFriendlyValueName(key, recursive);
+            }
+        }
+
+        protected override string GetFriendlyLevel()
+        {
+            return String.Format(Strings.DiagramStyleFriendlyLevelFormat, base.GetFriendlyLevel());
         }
     }
 

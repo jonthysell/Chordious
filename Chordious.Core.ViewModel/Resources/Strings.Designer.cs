@@ -512,6 +512,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} Editor.
+        /// </summary>
+        internal static string DiagramStyleEditorTitleFormat {
+            get {
+                return ResourceManager.GetString("DiagramStyleEditorTitleFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Orientation.
         /// </summary>
         internal static string DiagramStyleOrientationLabel {
@@ -526,6 +535,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramStyleOrientationToolTip {
             get {
                 return ResourceManager.GetString("DiagramStyleOrientationToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary of {0}.
+        /// </summary>
+        internal static string DiagramStyleSummaryLabelFormat {
+            get {
+                return ResourceManager.GetString("DiagramStyleSummaryLabelFormat", resourceCulture);
             }
         }
         

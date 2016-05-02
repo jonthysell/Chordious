@@ -87,8 +87,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
-            collection.Add("Vertical");
-            collection.Add("Horizontal");
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramOrientation.UpDown));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramOrientation.LeftRight));
 
             return collection;
         }

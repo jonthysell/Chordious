@@ -51,6 +51,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\EnumUtils.cs" />
     <Compile Include="Common\Finding\FinderOptions.cs" />
     <Compile Include="Common\ListUtils.cs" />
     <Compile Include="Common\Music\NamedIntervalSet.cs" />

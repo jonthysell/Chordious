@@ -52,7 +52,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("parentStyle");
             }
 
-            this.Style = new DiagramStyle(parentStyle, "DiagramCollection");
+            this.Style = new DiagramStyle(parentStyle, LevelKey);
 
             _diagrams = new List<Diagram>();
         }
@@ -208,5 +208,6 @@ namespace com.jonthysell.Chordious.Core
             return clone;
         }
 
+        public const string LevelKey = "DiagramCollection";
     }
 }

@@ -3,15 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="{Binding Title, FallbackValue=Style Editor}" WindowStartupLocation="CenterScreen" Icon="{StaticResource ChordiousIcon}" MinWidth="320" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
     <StackPanel>
-        <GroupBox Header="Layout" Margin="5">
-            <StackPanel Margin="5">
-                <StackPanel Orientation="Horizontal">
-                    <CheckBox Margin="5" IsChecked="{Binding ObservableDiagramStyle.OrientationIsLocal}" VerticalAlignment="Center" />
-                    <Label Margin="5" Width="80" Content="{Binding ObservableDiagramStyle.SelectedOrientationLabel, FallbackValue=Orientation}" />
-                    <ComboBox Margin="5" Width="95" ItemsSource="{Binding ObservableDiagramStyle.Orientations}" SelectedIndex="{Binding ObservableDiagramStyle.SelectedOrientationIndex}" ToolTip="{Binding ObservableDiagramStyle.SelectedOrientationToolTip}" IsEnabled="{Binding ObservableDiagramStyle.OrientationIsLocal}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
+        <StackPanel Margin="5">
+            <GroupBox Header="{Binding ObservableDiagramStyle.SummaryLabel, FallbackValue=Summary}" Margin="5">
+                <Label Margin="5" Content="{Binding ObservableDiagramStyle.Summary}" VerticalContentAlignment="Center" />
+            </GroupBox>
+        </StackPanel>
+        <TabControl Margin="5">
+            <TabItem Header="Layout">
+                <StackPanel Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Margin="5" IsChecked="{Binding ObservableDiagramStyle.OrientationIsLocal}" VerticalAlignment="Center" Content="{Binding ObservableDiagramStyle.SelectedOrientationLabel, FallbackValue=Orientation}" ToolTip="{Binding ObservableDiagramStyle.SelectedOrientationToolTip}" />
+                        <ComboBox Margin="5" Width="95" ItemsSource="{Binding ObservableDiagramStyle.Orientations}" SelectedIndex="{Binding ObservableDiagramStyle.SelectedOrientationIndex}" ToolTip="{Binding ObservableDiagramStyle.SelectedOrientationToolTip}" IsEnabled="{Binding ObservableDiagramStyle.OrientationIsLocal}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
-        </GroupBox>
+            </TabItem>
+        </TabControl>
         <WrapPanel FlowDirection="RightToLeft" Height="Auto">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
                 <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>

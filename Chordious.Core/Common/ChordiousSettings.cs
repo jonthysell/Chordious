@@ -27,6 +27,8 @@
 using System;
 using System.Xml;
 
+using com.jonthysell.Chordious.Core.Resources;
+
 namespace com.jonthysell.Chordious.Core
 {
     public class ChordiousSettings : InheritableDictionary
@@ -66,6 +68,27 @@ namespace com.jonthysell.Chordious.Core
             ChordiousSettings cs = new ChordiousSettings(this.Parent, this.Level);
             cs.CopyFrom(this);
             return cs;
+        }
+
+        public override string GetFriendlyKeyName(string key)
+        {
+            if (String.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            key = CleanKey(key);
+
+            switch (key)
+            {
+                default:
+                    return base.GetFriendlyKeyName(key);
+            }
+        }
+
+        protected override string GetFriendlyLevel()
+        {
+            return String.Format(Strings.ChordiousSettingsFriendlyLevelFormat, base.GetFriendlyLevel());
         }
     }
 }

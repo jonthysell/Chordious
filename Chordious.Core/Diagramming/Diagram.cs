@@ -110,7 +110,7 @@ namespace com.jonthysell.Chordious.Core
             this._fretLabels = new List<DiagramFretLabel>();
             this._barres = new List<DiagramBarre>();
 
-            this.Style = new DiagramStyle(parentStyle, "Diagram");
+            this.Style = new DiagramStyle(parentStyle, LevelKey);
 
             this._numFrets = Style.NewDiagramNumFretsGet();
             this._numStrings = Style.NewDiagramNumStringsGet();
@@ -1167,6 +1167,8 @@ namespace com.jonthysell.Chordious.Core
         }
 
         #endregion
+
+        public const string LevelKey = "Diagram";
     }
 
     public class CantResizeDiagramException : ChordiousException

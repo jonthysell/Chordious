@@ -26,7 +26,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Xml;
+
+using com.jonthysell.Chordious.Core.Resources;
 
 namespace com.jonthysell.Chordious.Core
 {
@@ -69,6 +72,22 @@ namespace com.jonthysell.Chordious.Core
             }
         }
         private string _level;
+
+        public string FriendlyLevel
+        {
+            get
+            {
+                return GetFriendlyLevel();
+            }
+        }
+
+        public string Summary
+        {
+            get
+            {
+                return GetSummary();
+            }
+        }
 
         public string this[string key]
         {
@@ -777,6 +796,58 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public virtual string GetFriendlyKeyName(string key)
+        {
+            if (String.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            return CleanKey(key);
+        }
+
+        public virtual string GetFriendlyValueName(string key, bool recursive = true)
+        {
+            if (String.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            return Get(key, recursive);
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(Level);
+
+            bool hasItems = false;
+            
+            if (null != this.Parent)
+            {
+                sb.AppendFormat(": {0}", Parent.Level);
+                hasItems = true;
+            }
+
+            foreach (string key in LocalKeys())
+            {
+                if (!hasItems)
+                {
+                    sb.Append(": ");
+                }
+                else
+                {
+                    sb.Append(" + ");
+                }
+
+                sb.AppendFormat("{0}: {1}", key, Get(key, false));
+                hasItems = true;
+            }
+
+            return sb.ToString();
+        }
+
         protected string CleanPrefix(string prefix)
         {
             if (StringUtils.IsNullOrWhiteSpace(prefix))
@@ -799,6 +870,47 @@ namespace com.jonthysell.Chordious.Core
             key = key.ToLower().Trim();
 
             return key;
+        }
+
+        protected virtual string GetFriendlyLevel()
+        {
+            switch (this.Level)
+            {
+                case Diagram.LevelKey:
+                    return Strings.DiagramFriendlyLevel;
+                case DiagramCollection.LevelKey:
+                    return Strings.DiagramCollectionFriendlyLevel;
+                case DiagramLibrary.LevelKey:
+                    return Strings.DiagramLibraryFriendlyLevel;
+                default:
+                    return this.Level;
+            }
+        }
+
+        private string GetSummary()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            bool hasItems = false;
+
+            if (null != this.Parent)
+            {
+                sb.Append(Parent.FriendlyLevel);
+                hasItems = true;
+            }
+
+            foreach (string key in LocalKeys())
+            {
+                if (hasItems)
+                {
+                    sb.Append(" + ");
+                }
+
+                sb.AppendFormat("{0}: {1}", GetFriendlyKeyName(key), GetFriendlyValueName(key, false));
+                hasItems = true;
+            }
+
+            return sb.ToString();
         }
 
     }

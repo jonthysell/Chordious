@@ -27,6 +27,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -40,6 +41,30 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ObservableDiagramStyle : ObservableObject
     {
+        public string Level
+        {
+            get
+            {
+                return Style.FriendlyLevel;
+            }
+        }
+
+        public string SummaryLabel
+        {
+            get
+            {
+                return String.Format(Strings.DiagramStyleSummaryLabelFormat, Style.FriendlyLevel);
+            }
+        }
+
+        public string Summary
+        {
+            get
+            {
+                return Style.Summary;
+            }
+        }
+
         #region Layout
 
         public bool OrientationIsLocal
@@ -941,6 +966,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             ObservableEnums.SortedInsert(Colors, Style.GridColor);
             ObservableEnums.SortedInsert(Colors, Style.GridLineColor);
             ObservableEnums.SortedInsert(Colors, Style.TitleColor);
+
+            PropertyChanged += ObservableDiagramStyle_PropertyChanged;
+        }
+
+        private void ObservableDiagramStyle_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "Summary")
+            {
+                RaisePropertyChanged("Summary");
+            }
         }
     }
 }

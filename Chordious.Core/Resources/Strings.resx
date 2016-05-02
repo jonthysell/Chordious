@@ -192,4 +192,28 @@
   <data name="NamedIntervalNotFoundExceptionMessage" xml:space="preserve">
     <value>The named interval "{0}" could not be found.</value>
   </data>
+  <data name="ChordiousSettingsFriendlyLevelFormat" xml:space="preserve">
+    <value>{0}'s Settings</value>
+  </data>
+  <data name="DiagramCollectionFriendlyLevel" xml:space="preserve">
+    <value>Collection</value>
+  </data>
+  <data name="DiagramFriendlyLevel" xml:space="preserve">
+    <value>Diagram</value>
+  </data>
+  <data name="DiagramLibraryFriendlyLevel" xml:space="preserve">
+    <value>Library</value>
+  </data>
+  <data name="DiagramOrientationFriendlyKeyName" xml:space="preserve">
+    <value>Diagram Orientation</value>
+  </data>
+  <data name="DiagramOrientationLeftRightFriendlyValue" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="DiagramOrientationUpDownFriendlyValue" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="DiagramStyleFriendlyLevelFormat" xml:space="preserve">
+    <value>{0}'s Style</value>
+  </data>
 </root>

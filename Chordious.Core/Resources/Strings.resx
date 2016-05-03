@@ -192,8 +192,23 @@
   <data name="NamedIntervalNotFoundExceptionMessage" xml:space="preserve">
     <value>The named interval "{0}" could not be found.</value>
   </data>
+  <data name="BarreTypeOptionFullFriendlyValue" xml:space="preserve">
+    <value>Full</value>
+  </data>
+  <data name="BarreTypeOptionNoneFriendlyValue" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="BarreTypeOptionPartialFriendlyValue" xml:space="preserve">
+    <value>Partial</value>
+  </data>
   <data name="ChordiousSettingsFriendlyLevelFormat" xml:space="preserve">
     <value>{0}'s Settings</value>
+  </data>
+  <data name="DiagramBarreStackOverMarksFriendlyValue" xml:space="preserve">
+    <value>Over Marks</value>
+  </data>
+  <data name="DiagramBarreStackUnderMarksFriendlyValue" xml:space="preserve">
+    <value>Under Marks</value>
   </data>
   <data name="DiagramCollectionFriendlyLevel" xml:space="preserve">
     <value>Collection</value>
@@ -201,8 +216,68 @@
   <data name="DiagramFriendlyLevel" xml:space="preserve">
     <value>Diagram</value>
   </data>
+  <data name="DiagramHorizontalAlignmentCenterFriendlyValue" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="DiagramHorizontalAlignmentLeftFriendlyValue" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="DiagramHorizontalAlignmentRightFriendlyValue" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="DiagramLabelLayoutModelAddPaddingBothFriendlyValue" xml:space="preserve">
+    <value>Add Horizontal &amp; Vertical Padding</value>
+  </data>
+  <data name="DiagramLabelLayoutModelAddPaddingHorizontalFriendlyValue" xml:space="preserve">
+    <value>Add Horizontal Padding</value>
+  </data>
+  <data name="DiagramLabelLayoutModelAddPaddingVerticalFriendlyValue" xml:space="preserve">
+    <value>Add Vertical Padding</value>
+  </data>
+  <data name="DiagramLabelLayoutModelOverlapFriendlyValue" xml:space="preserve">
+    <value>Overlay</value>
+  </data>
+  <data name="DiagramLabelStyleChordNameFriendlyValue" xml:space="preserve">
+    <value>Chord Name</value>
+  </data>
+  <data name="DiagramLabelStyleRegularFriendlyValue" xml:space="preserve">
+    <value>Regular</value>
+  </data>
   <data name="DiagramLibraryFriendlyLevel" xml:space="preserve">
     <value>Library</value>
+  </data>
+  <data name="DiagramMarkShapeCircleFriendlyValue" xml:space="preserve">
+    <value>Circle</value>
+  </data>
+  <data name="DiagramMarkShapeDiamondFriendlyValue" xml:space="preserve">
+    <value>Diamond</value>
+  </data>
+  <data name="DiagramMarkShapeNoneFriendlyValue" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="DiagramMarkShapeSquareFriendlyValue" xml:space="preserve">
+    <value>Square</value>
+  </data>
+  <data name="DiagramMarkShapeXFriendlyValue" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="DiagramMarkTypeBottomFriendlyValue" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="DiagramMarkTypeMutedFriendlyValue" xml:space="preserve">
+    <value>Muted</value>
+  </data>
+  <data name="DiagramMarkTypeNormalFriendlyValue" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="DiagramMarkTypeOpenFriendlyValue" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="DiagramMarkTypeOpenRootFriendlyValue" xml:space="preserve">
+    <value>Open Root</value>
+  </data>
+  <data name="DiagramMarkTypeRootFriendlyValue" xml:space="preserve">
+    <value>Root</value>
   </data>
   <data name="DiagramOrientationFriendlyKeyName" xml:space="preserve">
     <value>Diagram Orientation</value>
@@ -215,5 +290,38 @@
   </data>
   <data name="DiagramStyleFriendlyLevelFormat" xml:space="preserve">
     <value>{0}'s Style</value>
+  </data>
+  <data name="DiagramTextStyleBoldFriendlyValue" xml:space="preserve">
+    <value>Bold</value>
+  </data>
+  <data name="DiagramTextStyleBoldItalicFriendlyValue" xml:space="preserve">
+    <value>Bold &amp; Italic</value>
+  </data>
+  <data name="DiagramTextStyleItalicFriendlyValue" xml:space="preserve">
+    <value>Italic</value>
+  </data>
+  <data name="DiagramTextStyleRegularFriendlyValue" xml:space="preserve">
+    <value>Regular</value>
+  </data>
+  <data name="DiagramVerticalAlignmentBottomFriendlyValue" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="DiagramVerticalAlignmentMiddleFriendlyValue" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="DiagramVerticalAlignmentTopFriendlyValue" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="MarkTextOptionNoneFriendlyValue" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="MarkTextOptionShowNotePreferFlatsFriendlyValue" xml:space="preserve">
+    <value>Prefer Flats</value>
+  </data>
+  <data name="MarkTextOptionShowNotePreferSharpsFriendlyValue" xml:space="preserve">
+    <value>Prefer Sharps</value>
+  </data>
+  <data name="MarkTextOptionShowNoteShowBothFriendlyValue" xml:space="preserve">
+    <value>Show Both</value>
   </data>
 </root>

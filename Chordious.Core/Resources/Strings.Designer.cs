@@ -71,6 +71,33 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Full.
+        /// </summary>
+        internal static string BarreTypeOptionFullFriendlyValue {
+            get {
+                return ResourceManager.GetString("BarreTypeOptionFullFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        internal static string BarreTypeOptionNoneFriendlyValue {
+            get {
+                return ResourceManager.GetString("BarreTypeOptionNoneFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Partial.
+        /// </summary>
+        internal static string BarreTypeOptionPartialFriendlyValue {
+            get {
+                return ResourceManager.GetString("BarreTypeOptionPartialFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot resize the diagram due to existing marks, fret labels, and/or barres..
         /// </summary>
         internal static string CantResizeDiagramExceptionMessage {
@@ -116,6 +143,24 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Over Marks.
+        /// </summary>
+        internal static string DiagramBarreStackOverMarksFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramBarreStackOverMarksFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Under Marks.
+        /// </summary>
+        internal static string DiagramBarreStackUnderMarksFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramBarreStackUnderMarksFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Collection.
         /// </summary>
         internal static string DiagramCollectionFriendlyLevel {
@@ -152,11 +197,191 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Center.
+        /// </summary>
+        internal static string DiagramHorizontalAlignmentCenterFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramHorizontalAlignmentCenterFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Left.
+        /// </summary>
+        internal static string DiagramHorizontalAlignmentLeftFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramHorizontalAlignmentLeftFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right.
+        /// </summary>
+        internal static string DiagramHorizontalAlignmentRightFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramHorizontalAlignmentRightFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Horizontal &amp; Vertical Padding.
+        /// </summary>
+        internal static string DiagramLabelLayoutModelAddPaddingBothFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramLabelLayoutModelAddPaddingBothFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Horizontal Padding.
+        /// </summary>
+        internal static string DiagramLabelLayoutModelAddPaddingHorizontalFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramLabelLayoutModelAddPaddingHorizontalFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Vertical Padding.
+        /// </summary>
+        internal static string DiagramLabelLayoutModelAddPaddingVerticalFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramLabelLayoutModelAddPaddingVerticalFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overlay.
+        /// </summary>
+        internal static string DiagramLabelLayoutModelOverlapFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramLabelLayoutModelOverlapFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chord Name.
+        /// </summary>
+        internal static string DiagramLabelStyleChordNameFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramLabelStyleChordNameFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regular.
+        /// </summary>
+        internal static string DiagramLabelStyleRegularFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramLabelStyleRegularFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Library.
         /// </summary>
         internal static string DiagramLibraryFriendlyLevel {
             get {
                 return ResourceManager.GetString("DiagramLibraryFriendlyLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Circle.
+        /// </summary>
+        internal static string DiagramMarkShapeCircleFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramMarkShapeCircleFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diamond.
+        /// </summary>
+        internal static string DiagramMarkShapeDiamondFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramMarkShapeDiamondFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        internal static string DiagramMarkShapeNoneFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramMarkShapeNoneFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Square.
+        /// </summary>
+        internal static string DiagramMarkShapeSquareFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramMarkShapeSquareFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to X.
+        /// </summary>
+        internal static string DiagramMarkShapeXFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramMarkShapeXFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom.
+        /// </summary>
+        internal static string DiagramMarkTypeBottomFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramMarkTypeBottomFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted.
+        /// </summary>
+        internal static string DiagramMarkTypeMutedFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramMarkTypeMutedFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal.
+        /// </summary>
+        internal static string DiagramMarkTypeNormalFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramMarkTypeNormalFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        internal static string DiagramMarkTypeOpenFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramMarkTypeOpenFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root.
+        /// </summary>
+        internal static string DiagramMarkTypeOpenRootFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramMarkTypeOpenRootFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root.
+        /// </summary>
+        internal static string DiagramMarkTypeRootFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramMarkTypeRootFriendlyValue", resourceCulture);
             }
         }
         
@@ -193,6 +418,69 @@ namespace com.jonthysell.Chordious.Core.Resources {
         internal static string DiagramStyleFriendlyLevelFormat {
             get {
                 return ResourceManager.GetString("DiagramStyleFriendlyLevelFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bold.
+        /// </summary>
+        internal static string DiagramTextStyleBoldFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramTextStyleBoldFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bold &amp; Italic.
+        /// </summary>
+        internal static string DiagramTextStyleBoldItalicFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramTextStyleBoldItalicFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Italic.
+        /// </summary>
+        internal static string DiagramTextStyleItalicFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramTextStyleItalicFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regular.
+        /// </summary>
+        internal static string DiagramTextStyleRegularFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramTextStyleRegularFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom.
+        /// </summary>
+        internal static string DiagramVerticalAlignmentBottomFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramVerticalAlignmentBottomFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Middle.
+        /// </summary>
+        internal static string DiagramVerticalAlignmentMiddleFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramVerticalAlignmentMiddleFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top.
+        /// </summary>
+        internal static string DiagramVerticalAlignmentTopFriendlyValue {
+            get {
+                return ResourceManager.GetString("DiagramVerticalAlignmentTopFriendlyValue", resourceCulture);
             }
         }
         
@@ -265,6 +553,42 @@ namespace com.jonthysell.Chordious.Core.Resources {
         internal static string LevelNotFoundExceptionMessage {
             get {
                 return ResourceManager.GetString("LevelNotFoundExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        internal static string MarkTextOptionNoneFriendlyValue {
+            get {
+                return ResourceManager.GetString("MarkTextOptionNoneFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefer Flats.
+        /// </summary>
+        internal static string MarkTextOptionShowNotePreferFlatsFriendlyValue {
+            get {
+                return ResourceManager.GetString("MarkTextOptionShowNotePreferFlatsFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefer Sharps.
+        /// </summary>
+        internal static string MarkTextOptionShowNotePreferSharpsFriendlyValue {
+            get {
+                return ResourceManager.GetString("MarkTextOptionShowNotePreferSharpsFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Both.
+        /// </summary>
+        internal static string MarkTextOptionShowNoteShowBothFriendlyValue {
+            get {
+                return ResourceManager.GetString("MarkTextOptionShowNoteShowBothFriendlyValue", resourceCulture);
             }
         }
         

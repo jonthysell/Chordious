@@ -696,7 +696,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return GetBarreTypeOptions();
+                return ObservableEnums.GetBarreTypeOptions();
             }
         }
 
@@ -762,7 +762,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return GetMarkTextOptions();
+                return ObservableEnums.GetMarkTextOptions();
             }
         }
 
@@ -828,7 +828,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return GetMarkTextOptions();
+                return ObservableEnums.GetMarkTextOptions();
             }
         }
 
@@ -1193,29 +1193,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         private bool CanSearch()
         {
             return IsIdle && (null != SelectedInstrument) && (null != SelectedTuning) && (null != SelectedChordQuality);
-        }
-
-        private static ObservableCollection<string> GetBarreTypeOptions()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add("None");
-            collection.Add("Partial");
-            collection.Add("Full");
-
-            return collection;
-        }
-
-        private static ObservableCollection<string> GetMarkTextOptions()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add("None");
-            collection.Add("Show Both");
-            collection.Add("Prefer Flats");
-            collection.Add("Prefer Sharps");
-
-            return collection;
         }
     }
 }

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -211,17 +211,17 @@ namespace com.jonthysell.Chordious.Core.Legacy
             return s;
         }
 
-        public static string OptionsPrefix = "%";
-        public static int DefaultWidth = 171;
-        public static int DefaultHeight = 258;
-        public static int DefaultStrokeWidth = 2;
-        public static int DefaultMargin = 30;
-        public static int DefaultFontSize = 48;
-        public static string DefaultFontFamily = "serif";
-        public static FontStyle DefaultFontStyle = FontStyle.Regular;
-        public static BarreType DefaultBarreType = BarreType.None;
-        public static OpenStringType DefaultOpenStringType = OpenStringType.None;
-        public static bool DefaultFullBarres = false;
+        public const string OptionsPrefix = "%";
+        public const int DefaultWidth = 171;
+        public const int DefaultHeight = 258;
+        public const int DefaultStrokeWidth = 2;
+        public const int DefaultMargin = 30;
+        public const int DefaultFontSize = 48;
+        public const string DefaultFontFamily = "serif";
+        public const FontStyle DefaultFontStyle = FontStyle.Regular;
+        public const BarreType DefaultBarreType = BarreType.None;
+        public const OpenStringType DefaultOpenStringType = OpenStringType.None;
+        public const bool DefaultFullBarres = false;
     }
 
     internal enum FontStyle

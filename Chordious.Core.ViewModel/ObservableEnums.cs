@@ -77,8 +77,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
-            collection.Add("Regular");
-            collection.Add("Chord Name");
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramLabelStyle.Regular));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramLabelStyle.ChordName));
 
             return collection;
         }
@@ -97,10 +97,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
-            collection.Add("Overlap");
-            collection.Add("Add Horizontal Padding");
-            collection.Add("Add Vertical Padding");
-            collection.Add("Add Horizontal & Vertical Padding");
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramLabelLayoutModel.Overlap));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramLabelLayoutModel.AddPaddingHorizontal));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramLabelLayoutModel.AddPaddingVertical));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramLabelLayoutModel.AddPaddingBoth));
 
             return collection;
         }
@@ -109,9 +109,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
-            collection.Add("Left");
-            collection.Add("Center");
-            collection.Add("Right");
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramHorizontalAlignment.Left));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramHorizontalAlignment.Center));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramHorizontalAlignment.Right));
 
             return collection;
         }
@@ -120,9 +120,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
-            collection.Add("Top");
-            collection.Add("Middle");
-            collection.Add("Bottom");
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramVerticalAlignment.Top));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramVerticalAlignment.Middle));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramVerticalAlignment.Bottom));
 
             return collection;
         }
@@ -131,10 +131,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
-            collection.Add("Regular");
-            collection.Add("Bold");
-            collection.Add("Italic");
-            collection.Add("Bold & Italic");
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramTextStyle.Regular));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramTextStyle.Bold));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramTextStyle.Italic));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramTextStyle.BoldItalic));
 
             return collection;
         }
@@ -155,12 +155,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
-            collection.Add("Normal");
-            collection.Add("Muted");
-            collection.Add("Root");
-            collection.Add("Open");
-            collection.Add("Open Root");
-            collection.Add("Bottom");
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkType.Normal));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkType.Muted));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkType.Root));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkType.Open));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkType.OpenRoot));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkType.Bottom));
 
             return collection;
         }
@@ -169,11 +169,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
-            collection.Add("None");
-            collection.Add("Circle");
-            collection.Add("Square");
-            collection.Add("Diamond");
-            collection.Add("X");
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkShape.None));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkShape.Circle));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkShape.Square));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkShape.Diamond));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkShape.X));
 
             return collection;
         }
@@ -182,8 +182,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
-            collection.Add("Under Marks");
-            collection.Add("Over Marks");
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramBarreStack.UnderMarks));
+            collection.Add(EnumUtils.GetFriendlyValue(DiagramBarreStack.OverMarks));
+
+            return collection;
+        }
+
+        public static ObservableCollection<string> GetBarreTypeOptions()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add(EnumUtils.GetFriendlyValue(BarreTypeOption.None));
+            collection.Add(EnumUtils.GetFriendlyValue(BarreTypeOption.Partial));
+            collection.Add(EnumUtils.GetFriendlyValue(BarreTypeOption.Full));
+
+            return collection;
+        }
+
+        public static ObservableCollection<string> GetMarkTextOptions()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add(EnumUtils.GetFriendlyValue(MarkTextOption.None));
+            collection.Add(EnumUtils.GetFriendlyValue(MarkTextOption.ShowNote_ShowBoth));
+            collection.Add(EnumUtils.GetFriendlyValue(MarkTextOption.ShowNote_PreferFlats));
+            collection.Add(EnumUtils.GetFriendlyValue(MarkTextOption.ShowNote_PreferSharps));
 
             return collection;
         }

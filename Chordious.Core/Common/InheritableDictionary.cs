@@ -33,7 +33,7 @@ using com.jonthysell.Chordious.Core.Resources;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class InheritableDictionary : IReadOnly
+    public abstract class InheritableDictionary : IReadOnly
     {
         public bool ReadOnly { get; private set; }
 

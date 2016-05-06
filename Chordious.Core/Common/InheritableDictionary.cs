@@ -876,6 +876,12 @@ namespace com.jonthysell.Chordious.Core
         {
             switch (this.Level)
             {
+                case ConfigFile.DefaultLevelKey:
+                    return Strings.DefaultConfigFileFriendlyLevel;
+                case ConfigFile.AppLevelKey:
+                    return Strings.AppConfigFileFriendlyLevel;
+                case ConfigFile.UserLevelKey:
+                    return Strings.UserConfigFileFriendlyLevel;
                 case Diagram.LevelKey:
                     return Strings.DiagramFriendlyLevel;
                 case DiagramCollection.LevelKey:

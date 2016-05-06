@@ -319,9 +319,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             SvgTextToImage = svgTextToImage;
             DoOnUIThread = doOnUIThread;
 
-            DefaultConfig = new ConfigFile("Default");
-            AppConfig = new ConfigFile(DefaultConfig, "App");
-            UserConfig = new ConfigFile(AppConfig, "User");
+            DefaultConfig = new ConfigFile(ConfigFile.DefaultLevelKey);
+            AppConfig = new ConfigFile(DefaultConfig, ConfigFile.AppLevelKey);
+            UserConfig = new ConfigFile(AppConfig, ConfigFile.UserLevelKey);
         }
 
         public void LoadDefaultConfig()

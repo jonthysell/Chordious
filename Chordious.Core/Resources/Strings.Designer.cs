@@ -62,6 +62,15 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to App.
+        /// </summary>
+        internal static string AppConfigFileFriendlyLevel {
+            get {
+                return ResourceManager.GetString("AppConfigFileFriendlyLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A barre cannot span from string {0} to string {1}..
         /// </summary>
         internal static string BarrePositionInvalidSpanExceptionMessage {
@@ -139,6 +148,15 @@ namespace com.jonthysell.Chordious.Core.Resources {
         internal static string ChordQualityNotFoundExceptionMessage {
             get {
                 return ResourceManager.GetString("ChordQualityNotFoundExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default.
+        /// </summary>
+        internal static string DefaultConfigFileFriendlyLevel {
+            get {
+                return ResourceManager.GetString("DefaultConfigFileFriendlyLevel", resourceCulture);
             }
         }
         
@@ -670,6 +688,15 @@ namespace com.jonthysell.Chordious.Core.Resources {
         internal static string TuningNotFoundExceptionMessage {
             get {
                 return ResourceManager.GetString("TuningNotFoundExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        internal static string UserConfigFileFriendlyLevel {
+            get {
+                return ResourceManager.GetString("UserConfigFileFriendlyLevel", resourceCulture);
             }
         }
         

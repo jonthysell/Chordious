@@ -324,4 +324,13 @@
   <data name="MarkTextOptionShowNoteShowBothFriendlyValue" xml:space="preserve">
     <value>Show Both</value>
   </data>
+  <data name="AppConfigFileFriendlyLevel" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="DefaultConfigFileFriendlyLevel" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="UserConfigFileFriendlyLevel" xml:space="preserve">
+    <value>User</value>
+  </data>
 </root>

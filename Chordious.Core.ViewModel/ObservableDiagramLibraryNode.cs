@@ -401,9 +401,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     _collectionStyle = new ObservableDiagramStyle(Collection.Style);
                     _collectionStyle.PostEditCallback = (changed) =>
                     {
-                        Diagrams.Clear();
-                        _firstLoad = true;
-                        RaisePropertyChanged("Diagrams");
+                        if (changed)
+                        {
+                            Redraw();
+                        }                        
                     };
                 }
                 return _collectionStyle;
@@ -413,7 +414,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private bool _firstLoad = true;
 
-        public ObservableDiagramLibraryNode(string path, string name, DiagramLibrary library) : base()
+        private Action _redrawCallback;
+
+        public ObservableDiagramLibraryNode(string path, string name, DiagramLibrary library, Action redrawCallback = null) : base()
         {
             if (null == library)
             {
@@ -425,6 +428,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             Library = library;
 
+            _redrawCallback = redrawCallback;
+
             Diagrams = new ObservableCollection<ObservableDiagram>();
 
             SelectedDiagrams = new ObservableCollection<ObservableDiagram>();
@@ -434,6 +439,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         private void SelectedDiagrams_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             UpdateCommands();
+        }
+
+        private void Redraw()
+        {
+            if (null != _redrawCallback)
+            {
+                _redrawCallback();
+            }
+        }
+
+        internal void RedrawDiagrams()
+        {
+            if (!_firstLoad)
+            {
+                Diagrams.Clear();
+                _firstLoad = true;
+                RaisePropertyChanged("Diagrams");
+            }
         }
 
         private ObservableDiagram CreateObservableDiagram()

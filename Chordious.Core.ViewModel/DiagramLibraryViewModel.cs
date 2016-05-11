@@ -122,11 +122,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                ObservableCollection<ObservableDiagramLibraryNode> collection = new ObservableCollection<ObservableDiagramLibraryNode>();
-                GetNodes(collection, PathUtils.PathRoot);
-                return collection;
+                if (_firstLoad || null == _nodes)
+                {
+                    ObservableCollection<ObservableDiagramLibraryNode> collection = new ObservableCollection<ObservableDiagramLibraryNode>();
+                    GetNodes(collection, PathUtils.PathRoot);
+                    _nodes = collection;
+                    _firstLoad = false;
+                }
+
+                return _nodes;
             }
         }
+        private ObservableCollection<ObservableDiagramLibraryNode> _nodes;
+
+        private bool _firstLoad = true;
 
         #endregion
 
@@ -159,7 +168,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(Strings.DiagramLibraryCreateNodePrompt, Library.GetNewCollectionName(), (name) =>
                         {
                             Library.Add(name);
-                            RaisePropertyChanged("Nodes");
+                            ReloadNodes();
                         }));
                     }
                     catch (Exception ex)
@@ -208,7 +217,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(String.Format("Rename collection \"{0}\" to:", oldName), oldName, (newName) =>
                         {
                             Library.Rename(path, oldName, newName);
-                            RaisePropertyChanged("Nodes");
+                            ReloadNodes();
                         }));
                     }
                     catch (Exception ex)
@@ -262,7 +271,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             if (confirmed)
                             {
                                 Library.Remove(path, name);
-                                RaisePropertyChanged("Nodes");
+                                ReloadNodes();
                             }
                         }, "confirmation.diagramlibrary.deletenode"));
                     }
@@ -315,7 +324,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(String.Format(Strings.DiagramLibraryCloneNodePromptFormat, oldName), Library.GetNewCollectionName(path, oldName), (newName) =>
                         {
                             Library.Clone(path, oldName, newName);
-                            RaisePropertyChanged("Nodes");
+                            ReloadNodes();
                         }));
                     }
                     catch (Exception ex)
@@ -398,7 +407,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             foreach (KeyValuePair<string, DiagramCollection> kvp in Library.GetAll(path))
             {
-                collection.Add(new ObservableDiagramLibraryNode(path, kvp.Key, Library));
+                collection.Add(new ObservableDiagramLibraryNode(path, kvp.Key, Library, RedrawNodes));
+            }
+        }
+
+        private void ReloadNodes()
+        {
+            _firstLoad = true;
+            RaisePropertyChanged("Nodes");
+        }
+
+        private void RedrawNodes()
+        {
+            foreach (ObservableDiagramLibraryNode node in Nodes)
+            {
+                node.RedrawDiagrams();
             }
         }
     }

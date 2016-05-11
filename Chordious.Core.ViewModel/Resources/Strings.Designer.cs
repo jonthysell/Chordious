@@ -512,11 +512,29 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Editor.
+        ///   Looks up a localized string similar to Selected Style.
         /// </summary>
-        internal static string DiagramStyleEditorTitleFormat {
+        internal static string DiagramStyleEditorSelectedStyleLabel {
             get {
-                return ResourceManager.GetString("DiagramStyleEditorTitleFormat", resourceCulture);
+                return ResourceManager.GetString("DiagramStyleEditorSelectedStyleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The scope of the style you want to edit..
+        /// </summary>
+        internal static string DiagramStyleEditorSelectedStyleToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleEditorSelectedStyleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Style Editor.
+        /// </summary>
+        internal static string DiagramStyleEditorTitle {
+            get {
+                return ResourceManager.GetString("DiagramStyleEditorTitle", resourceCulture);
             }
         }
         
@@ -544,6 +562,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramStyleSummaryLabelFormat {
             get {
                 return ResourceManager.GetString("DiagramStyleSummaryLabelFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A full summary of what the {0} consists of..
+        /// </summary>
+        internal static string DiagramStyleSummaryToolTipFormat {
+            get {
+                return ResourceManager.GetString("DiagramStyleSummaryToolTipFormat", resourceCulture);
             }
         }
         

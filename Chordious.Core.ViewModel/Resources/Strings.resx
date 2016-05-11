@@ -516,10 +516,19 @@
   <data name="DiagramStyleOrientationToolTip" xml:space="preserve">
     <value>Whether the diagram is oriented top-down or left-right.</value>
   </data>
-  <data name="DiagramStyleEditorTitleFormat" xml:space="preserve">
-    <value>{0} Editor</value>
+  <data name="DiagramStyleEditorTitle" xml:space="preserve">
+    <value>Style Editor</value>
   </data>
   <data name="DiagramStyleSummaryLabelFormat" xml:space="preserve">
     <value>Summary of {0}</value>
+  </data>
+  <data name="DiagramStyleEditorSelectedStyleLabel" xml:space="preserve">
+    <value>Selected Style</value>
+  </data>
+  <data name="DiagramStyleEditorSelectedStyleToolTip" xml:space="preserve">
+    <value>The scope of the style you want to edit.</value>
+  </data>
+  <data name="DiagramStyleSummaryToolTipFormat" xml:space="preserve">
+    <value>A full summary of what the {0} consists of.</value>
   </data>
 </root>

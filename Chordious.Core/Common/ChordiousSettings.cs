@@ -65,8 +65,15 @@ namespace com.jonthysell.Chordious.Core
 
         public ChordiousSettings Clone()
         {
-            ChordiousSettings cs = new ChordiousSettings(this.Parent, this.Level);
+            ChordiousSettings cs = new ChordiousSettings(this.Level);
+
+            if (null != this.Parent)
+            {
+                cs.Parent = Parent;
+            }
+
             cs.CopyFrom(this);
+
             return cs;
         }
 

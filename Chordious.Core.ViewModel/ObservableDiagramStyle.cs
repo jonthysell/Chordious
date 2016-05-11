@@ -57,11 +57,27 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string SummaryToolTip
+        {
+            get
+            {
+                return String.Format(Strings.DiagramStyleSummaryToolTipFormat, Style.FriendlyLevel);
+            }
+        }
+
         public string Summary
         {
             get
             {
                 return Style.Summary;
+            }
+        }
+
+        public bool IsEditable
+        {
+            get
+            {
+                return !Style.ReadOnly;
             }
         }
 

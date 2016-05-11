@@ -54,7 +54,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return String.Format(Strings.DiagramStyleEditorTitleFormat, ObservableDiagramStyle.Level) + (Dirty ? "*" : "");
+                return Strings.DiagramStyleEditorTitle + (Dirty ? "*" : "");
             }
         }
 
@@ -169,11 +169,55 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _diagramStyleChanged = false;
 
-        public ObservableDiagramStyle ObservableDiagramStyle
+        public string SelectedStyleLabel
         {
             get
             {
-                return _observableDiagramStyle;
+                return Strings.DiagramStyleEditorSelectedStyleLabel;
+            }
+        }
+
+        public string SelectedStyleToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleEditorSelectedStyleToolTip;
+            }
+        }
+
+        public ObservableDiagramStyle SelectedStyle
+        {
+            get
+            {
+                return Styles[SelectedStyleIndex];
+            }
+        }
+
+        public int SelectedStyleIndex
+        {
+            get
+            {
+                return _selectedStyleIndex;
+            }
+            set
+            {
+                if (value < 0 || value > Styles.Count)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                _selectedStyleIndex = value;
+                RaisePropertyChanged("SelectedStyleIndex");
+                RaisePropertyChanged("SelectedStyle");
+            }
+        }
+        private int _selectedStyleIndex;
+
+        public ObservableCollection<ObservableDiagramStyle> Styles
+        {
+            get
+            {
+                return _styles;
             }
             private set
             {
@@ -181,13 +225,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     throw new ArgumentNullException();
                 }
-                _observableDiagramStyle = value;
-                RaisePropertyChanged("ObservableDiagramStyle");
+                _styles = value;
+                RaisePropertyChanged("Styles");
             }
         }
-        private ObservableDiagramStyle _observableDiagramStyle;
+        private ObservableCollection<ObservableDiagramStyle> _styles;
 
-        private ObservableDiagramStyle OriginalObservableDiagramStyle;
+        private ObservableCollection<ObservableDiagramStyle> _originalStyles;
 
         public DiagramStyleEditorViewModel(ObservableDiagramStyle diagramStyle)
         {
@@ -196,14 +240,40 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 throw new ArgumentNullException("diagramStyle");
             }
 
-            OriginalObservableDiagramStyle = diagramStyle;
+            // Add original
+            _originalStyles = new ObservableCollection<ObservableDiagramStyle>();
+            _originalStyles.Add(diagramStyle);
 
-            ObservableDiagramStyle = new ObservableDiagramStyle(diagramStyle.Style.Clone());
+            // Recursively parents up the tree
+            DiagramStyle style = diagramStyle.Style.Parent;
 
-            ObservableDiagramStyle.PropertyChanged += ObservableDiagramStyle_PropertyChanged;
+            while (null != style)
+            {
+                ObservableDiagramStyle parentStyle = new ObservableDiagramStyle(style);
+                _originalStyles.Insert(0, parentStyle);
+                style = style.Parent;
+            }
+
+            // Add editable clones
+            Styles = new ObservableCollection<ObservableDiagramStyle>();
+
+            foreach (ObservableDiagramStyle originalStyle in _originalStyles)
+            {
+                DiagramStyle clone = originalStyle.Style.Clone();
+                if (originalStyle.Style.ReadOnly)
+                {
+                    clone.MarkAsReadOnly();
+                }
+
+                ObservableDiagramStyle editableStyle = new ObservableDiagramStyle(clone);
+                editableStyle.PropertyChanged += ObservableDiagramStyle_PropertyChanged;
+                Styles.Add(editableStyle);
+            }
+
+            SelectedStyleIndex = Styles.Count - 1;
         }
 
-        void ObservableDiagramStyle_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void ObservableDiagramStyle_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             Dirty = true;
         }
@@ -219,8 +289,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void ApplyChanges()
         {
-            OriginalObservableDiagramStyle.Style.Clear();
-            OriginalObservableDiagramStyle.Style.CopyFrom(ObservableDiagramStyle.Style);
+            for (int i = 0; i < _originalStyles.Count; i++)
+            {
+                if (_originalStyles[i].IsEditable)
+                {
+                    _originalStyles[i].Style.Clear();
+                    _originalStyles[i].Style.CopyFrom(Styles[i].Style);
+                }
+            }
+
             Dirty = false;
             DiagramStyleChanged = true;
         }

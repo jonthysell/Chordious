@@ -1167,8 +1167,15 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramStyle Clone()
         {
-            DiagramStyle ds = new DiagramStyle(this.Parent, this.Level);
+            DiagramStyle ds = new DiagramStyle(this.Level);
+
+            if (null != this.Parent)
+            {
+                ds.Parent = Parent;
+            }
+
             ds.CopyFrom(this);
+
             return ds;
         }
 

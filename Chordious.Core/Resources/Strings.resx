@@ -289,7 +289,7 @@
     <value>Vertical</value>
   </data>
   <data name="DiagramStyleFriendlyLevelFormat" xml:space="preserve">
-    <value>{0}'s Style</value>
+    <value>{0} Style</value>
   </data>
   <data name="DiagramTextStyleBoldFriendlyValue" xml:space="preserve">
     <value>Bold</value>

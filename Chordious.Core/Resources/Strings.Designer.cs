@@ -431,7 +431,7 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}&apos;s Style.
+        ///   Looks up a localized string similar to {0} Style.
         /// </summary>
         internal static string DiagramStyleFriendlyLevelFormat {
             get {

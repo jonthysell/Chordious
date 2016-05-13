@@ -38,6 +38,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core.ViewModel;
 
+using com.jonthysell.Chordious.WPF.Resources;
+
 namespace com.jonthysell.Chordious.WPF
 {
     public class UpdateUtils
@@ -96,7 +98,7 @@ namespace com.jonthysell.Chordious.WPF
                 {
                     if (confirmUpdate)
                     {
-                        string message = String.Format("Chordious {0} is available. Would you like to update now?", latestVersion.Version);
+                        string message = String.Format(Strings.ChordiousUpdateAvailableUpdateNowMessageFormat, latestVersion.Version);
                         AppVM.DoOnUIThread(() =>
                         {
                             Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (confirmed) =>
@@ -119,7 +121,7 @@ namespace com.jonthysell.Chordious.WPF
                     {
                         AppVM.DoOnUIThread(() =>
                         {
-                            Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage("Chordious is up-to-date."));
+                            Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.ChordiousUpdateNotAvailableMessage));
                         });
                     }
                 }

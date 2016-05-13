@@ -71,11 +71,38 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Advanced Editor.
+        /// </summary>
+        internal static string AdvancedDataEditorTitle {
+            get {
+                return ResourceManager.GetString("AdvancedDataEditorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The data could not be validated: {0}.
         /// </summary>
         internal static string AdvancedDataValidationErrorMessage {
             get {
                 return ResourceManager.GetString("AdvancedDataValidationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Advanced Settings Editor.
+        /// </summary>
+        internal static string AdvancedSettingsEditorTitle {
+            get {
+                return ResourceManager.GetString("AdvancedSettingsEditorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Advanced Style Editor.
+        /// </summary>
+        internal static string AdvancedStyleEditorTitle {
+            get {
+                return ResourceManager.GetString("AdvancedStyleEditorTitle", resourceCulture);
             }
         }
         
@@ -166,6 +193,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ChordFinderTitle {
             get {
                 return ResourceManager.GetString("ChordFinderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chordious.
+        /// </summary>
+        internal static string ChordiousMessageTitle {
+            get {
+                return ResourceManager.GetString("ChordiousMessageTitle", resourceCulture);
             }
         }
         
@@ -877,6 +913,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string LaunchWebsiteToolTip {
             get {
                 return ResourceManager.GetString("LaunchWebsiteToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to License.
+        /// </summary>
+        internal static string LicenseTitle {
+            get {
+                return ResourceManager.GetString("LicenseTitle", resourceCulture);
             }
         }
         

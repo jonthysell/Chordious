@@ -333,4 +333,94 @@
   <data name="UserConfigFileFriendlyLevel" xml:space="preserve">
     <value>User</value>
   </data>
+  <data name="DiagramBorderColorFriendlyKeyName" xml:space="preserve">
+    <value>Diagram Border Color</value>
+  </data>
+  <data name="DiagramBorderThicknessFriendlyKeyName" xml:space="preserve">
+    <value>Diagram Border Thickness</value>
+  </data>
+  <data name="DiagramColorFriendlyKeyName" xml:space="preserve">
+    <value>Diagram Color</value>
+  </data>
+  <data name="DiagramLabelLayoutModelFriendlyKeyName" xml:space="preserve">
+    <value>Diagram Label Layout Model</value>
+  </data>
+  <data name="DiagramOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Diagram Opacity</value>
+  </data>
+  <data name="GridColorFriendlyKeyName" xml:space="preserve">
+    <value>Grid Color</value>
+  </data>
+  <data name="GridFretSpacingFriendlyKeyName" xml:space="preserve">
+    <value>Grid Fret Spacing</value>
+  </data>
+  <data name="GridLineColorFriendlyKeyName" xml:space="preserve">
+    <value>Grid Line Color</value>
+  </data>
+  <data name="GridLineThicknessFriendlyKeyName" xml:space="preserve">
+    <value>Grid Line Thickness</value>
+  </data>
+  <data name="GridMarginBottomFriendlyKeyName" xml:space="preserve">
+    <value>Grid Margin Bottom</value>
+  </data>
+  <data name="GridMarginFriendlyKeyName" xml:space="preserve">
+    <value>Grid Margin</value>
+  </data>
+  <data name="GridMarginLeftFriendlyKeyName" xml:space="preserve">
+    <value>Grid Margin Left</value>
+  </data>
+  <data name="GridMarginRightFriendlyKeyName" xml:space="preserve">
+    <value>Grid Margin Right</value>
+  </data>
+  <data name="GridMarginTopFriendlyKeyName" xml:space="preserve">
+    <value>Grid Margin Top</value>
+  </data>
+  <data name="GridNutRatioFriendlyKeyName" xml:space="preserve">
+    <value>Grid Nut Ratio</value>
+  </data>
+  <data name="GridNutVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Grid Nut Visible</value>
+  </data>
+  <data name="GridOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Grid Opacity</value>
+  </data>
+  <data name="GridStringSpacingFriendlyKeyName" xml:space="preserve">
+    <value>Grid String Spacing</value>
+  </data>
+  <data name="NewDiagramNumFretsFriendlyKeyName" xml:space="preserve">
+    <value>New Diagram Num Frets</value>
+  </data>
+  <data name="NewDiagramNumStringsFriendlyKeyName" xml:space="preserve">
+    <value>New Diagram Num Strings</value>
+  </data>
+  <data name="TitleColorFriendlyKeyName" xml:space="preserve">
+    <value>Title Color</value>
+  </data>
+  <data name="TitleFontFamilyFriendlyKeyName" xml:space="preserve">
+    <value>Title Font Family</value>
+  </data>
+  <data name="TitleGridPaddingFriendlyKeyName" xml:space="preserve">
+    <value>Title Grid Padding</value>
+  </data>
+  <data name="TitleLabelStyleFriendlyKeyName" xml:space="preserve">
+    <value>Title Label Style</value>
+  </data>
+  <data name="TitleOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Title Opacity</value>
+  </data>
+  <data name="TitleTextAlignmentFriendlyKeyName" xml:space="preserve">
+    <value>Title Text Alignment</value>
+  </data>
+  <data name="TitleTextSizeFriendlyKeyName" xml:space="preserve">
+    <value>Title Text Size</value>
+  </data>
+  <data name="TitleTextSizeModRatioFriendlyKeyName" xml:space="preserve">
+    <value>Title Text Size Mod Ratio</value>
+  </data>
+  <data name="TitleTextStyleFriendlyKeyName" xml:space="preserve">
+    <value>Title Text Style</value>
+  </data>
+  <data name="TitleVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Title Visible</value>
+  </data>
 </root>

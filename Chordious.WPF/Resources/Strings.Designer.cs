@@ -88,6 +88,42 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chordious {0} is available. Would you like to update now?.
+        /// </summary>
+        internal static string ChordiousUpdateAvailableUpdateNowMessageFormat {
+            get {
+                return ResourceManager.GetString("ChordiousUpdateAvailableUpdateNowMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chordious is up-to-date..
+        /// </summary>
+        internal static string ChordiousUpdateNotAvailableMessage {
+            get {
+                return ResourceManager.GetString("ChordiousUpdateNotAvailableMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Official.
+        /// </summary>
+        internal static string ReleaseChannelOfficialFriendlyValue {
+            get {
+                return ResourceManager.GetString("ReleaseChannelOfficialFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preview.
+        /// </summary>
+        internal static string ReleaseChannelPreviewFriendlyValue {
+            get {
+                return ResourceManager.GetString("ReleaseChannelPreviewFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chordious failed to load the user config.
         ///
         ///Backup: {0}

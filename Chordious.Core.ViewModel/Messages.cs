@@ -32,16 +32,20 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ChordiousMessage : MessageBase
     {
         public InformationViewModel InformationVM { get; private set; }
 
-        public ChordiousMessage(string message, string title = "Chordious", Action callback = null) : base()
+        public ChordiousMessage(string message, string title, Action callback = null) : base()
         {
             InformationVM = new InformationViewModel(message, title, callback);
         }
+
+        public ChordiousMessage(string message, Action callback = null) : this(message, Strings.ChordiousMessageTitle, callback) { }
 
         public void Process()
         {

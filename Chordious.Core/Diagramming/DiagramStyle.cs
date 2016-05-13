@@ -1333,8 +1333,68 @@ namespace com.jonthysell.Chordious.Core
 
             switch (key)
             {
+                case "newdiagram.numstrings":
+                    return Strings.NewDiagramNumStringsFriendlyKeyName;
+                case "newdiagram.numfrets":
+                    return Strings.NewDiagramNumFretsFriendlyKeyName;
                 case "diagram.orientation":
                     return Strings.DiagramOrientationFriendlyKeyName;
+                case "diagram.labellayoutmodel":
+                    return Strings.DiagramLabelLayoutModelFriendlyKeyName;
+                case "diagram.color":
+                    return Strings.DiagramColorFriendlyKeyName;
+                case "diagram.opacity":
+                    return Strings.DiagramOpacityFriendlyKeyName;
+                case "diagram.bordercolor":
+                    return Strings.DiagramBorderColorFriendlyKeyName;
+                case "diagram.borderthickness":
+                    return Strings.DiagramBorderThicknessFriendlyKeyName;
+                case "grid.margin":
+                    return Strings.GridMarginFriendlyKeyName;
+                case "grid.marginleft":
+                    return Strings.GridMarginLeftFriendlyKeyName;
+                case "grid.marginright":
+                    return Strings.GridMarginRightFriendlyKeyName;
+                case "grid.margintop":
+                    return Strings.GridMarginTopFriendlyKeyName;
+                case "grid.marginbottom":
+                    return Strings.GridMarginBottomFriendlyKeyName;
+                case "grid.fretspacing":
+                    return Strings.GridFretSpacingFriendlyKeyName;
+                case "grid.stringspacing":
+                    return Strings.GridStringSpacingFriendlyKeyName;
+                case "grid.color":
+                    return Strings.GridColorFriendlyKeyName;
+                case "grid.opacity":
+                    return Strings.GridOpacityFriendlyKeyName;
+                case "grid.linecolor":
+                    return Strings.GridLineColorFriendlyKeyName;
+                case "grid.linethickness":
+                    return Strings.GridLineThicknessFriendlyKeyName;
+                case "grid.nutvisible":
+                    return Strings.GridNutVisibleFriendlyKeyName;
+                case "grid.nutratio":
+                    return Strings.GridNutRatioFriendlyKeyName;
+                case "title.gridpadding":
+                    return Strings.TitleGridPaddingFriendlyKeyName;
+                case "title.textsize":
+                    return Strings.TitleTextSizeFriendlyKeyName;
+                case "title.textmodratio":
+                    return Strings.TitleTextSizeModRatioFriendlyKeyName;
+                case "title.fontfamily":
+                    return Strings.TitleFontFamilyFriendlyKeyName;
+                case "title.textalignment":
+                    return Strings.TitleTextAlignmentFriendlyKeyName;
+                case "title.textstyle":
+                    return Strings.TitleTextStyleFriendlyKeyName;
+                case "title.textvisible":
+                    return Strings.TitleVisibleFriendlyKeyName;
+                case "title.labelstyle":
+                    return Strings.TitleLabelStyleFriendlyKeyName;
+                case "title.textcolor":
+                    return Strings.TitleColorFriendlyKeyName;
+                case "title.textopacity":
+                    return Strings.TitleOpacityFriendlyKeyName;
                 default:
                     return base.GetFriendlyKeyName(key);
             }
@@ -1353,6 +1413,27 @@ namespace com.jonthysell.Chordious.Core
             {
                 case "diagram.orientation":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramOrientation>(key, recursive));
+                case "diagram.labellayoutmodel":
+                    return EnumUtils.GetFriendlyValue(GetEnum<DiagramLabelLayoutModel>(key, recursive));
+                case "title.textalignment":
+                    return EnumUtils.GetFriendlyValue(GetEnum<DiagramHorizontalAlignment>(key, recursive));
+                case "title.textstyle":
+                    return EnumUtils.GetFriendlyValue(GetEnum<DiagramTextStyle>(key, recursive));
+                case "title.labelstyle":
+                    return EnumUtils.GetFriendlyValue(GetEnum<DiagramLabelStyle>(key, recursive));
+                case "diagram.borderthickness":
+                case "grid.margin":
+                case "grid.marginleft":
+                case "grid.marginright":
+                case "grid.margintop":
+                case "grid.marginbottom":
+                case "grid.fretspacing":
+                case "grid.stringspacing":
+                case "grid.linethickness":
+                case "title.gridpadding":
+                    return String.Format("{0}px", base.GetFriendlyValueName(key, recursive));
+                case "title.textsize":
+                    return String.Format("{0}pt", base.GetFriendlyValueName(key, recursive));
                 default:
                     return base.GetFriendlyValueName(key, recursive);
             }

@@ -32,6 +32,8 @@ using GalaSoft.MvvmLight.Command;
 
 using com.jonthysell.Chordious.Core.ViewModel;
 
+using com.jonthysell.Chordious.WPF.Resources;
+
 namespace com.jonthysell.Chordious.WPF
 {
     public class OptionsViewModelExtended : OptionsViewModel, IIdle
@@ -235,8 +237,8 @@ namespace com.jonthysell.Chordious.WPF
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 
-            collection.Add("Official");
-            collection.Add("Preview");
+            collection.Add(Strings.ReleaseChannelOfficialFriendlyValue);
+            collection.Add(Strings.ReleaseChannelPreviewFriendlyValue);
 
             return collection;
         }

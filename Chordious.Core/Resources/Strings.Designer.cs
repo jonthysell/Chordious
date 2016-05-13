@@ -179,6 +179,24 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Diagram Border Color.
+        /// </summary>
+        internal static string DiagramBorderColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("DiagramBorderColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram Border Thickness.
+        /// </summary>
+        internal static string DiagramBorderThicknessFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("DiagramBorderThicknessFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Collection.
         /// </summary>
         internal static string DiagramCollectionFriendlyLevel {
@@ -202,6 +220,15 @@ namespace com.jonthysell.Chordious.Core.Resources {
         internal static string DiagramCollectionNotFoundExceptionMessage {
             get {
                 return ResourceManager.GetString("DiagramCollectionNotFoundExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram Color.
+        /// </summary>
+        internal static string DiagramColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("DiagramColorFriendlyKeyName", resourceCulture);
             }
         }
         
@@ -265,6 +292,15 @@ namespace com.jonthysell.Chordious.Core.Resources {
         internal static string DiagramLabelLayoutModelAddPaddingVerticalFriendlyValue {
             get {
                 return ResourceManager.GetString("DiagramLabelLayoutModelAddPaddingVerticalFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram Label Layout Model.
+        /// </summary>
+        internal static string DiagramLabelLayoutModelFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("DiagramLabelLayoutModelFriendlyKeyName", resourceCulture);
             }
         }
         
@@ -404,6 +440,15 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Diagram Opacity.
+        /// </summary>
+        internal static string DiagramOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("DiagramOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Diagram Orientation.
         /// </summary>
         internal static string DiagramOrientationFriendlyKeyName {
@@ -521,6 +566,123 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grid Color.
+        /// </summary>
+        internal static string GridColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("GridColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Fret Spacing.
+        /// </summary>
+        internal static string GridFretSpacingFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("GridFretSpacingFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Line Color.
+        /// </summary>
+        internal static string GridLineColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("GridLineColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Line Thickness.
+        /// </summary>
+        internal static string GridLineThicknessFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("GridLineThicknessFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Margin Bottom.
+        /// </summary>
+        internal static string GridMarginBottomFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("GridMarginBottomFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Margin.
+        /// </summary>
+        internal static string GridMarginFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("GridMarginFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Margin Left.
+        /// </summary>
+        internal static string GridMarginLeftFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("GridMarginLeftFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Margin Right.
+        /// </summary>
+        internal static string GridMarginRightFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("GridMarginRightFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Margin Top.
+        /// </summary>
+        internal static string GridMarginTopFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("GridMarginTopFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Nut Ratio.
+        /// </summary>
+        internal static string GridNutRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("GridNutRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Nut Visible.
+        /// </summary>
+        internal static string GridNutVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("GridNutVisibleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Opacity.
+        /// </summary>
+        internal static string GridOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("GridOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid String Spacing.
+        /// </summary>
+        internal static string GridStringSpacingFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("GridStringSpacingFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An instrument named &quot;{0}&quot; already exists..
         /// </summary>
         internal static string InstrumentNameAlreadyExistsMessage {
@@ -629,6 +791,24 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Diagram Num Frets.
+        /// </summary>
+        internal static string NewDiagramNumFretsFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("NewDiagramNumFretsFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Diagram Num Strings.
+        /// </summary>
+        internal static string NewDiagramNumStringsFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("NewDiagramNumStringsFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} could not be modified because it is marked read-only..
         /// </summary>
         internal static string ObjectIsReadOnlyExceptionMessage {
@@ -670,6 +850,96 @@ namespace com.jonthysell.Chordious.Core.Resources {
         internal static string ScaleNotFoundExceptionMessage {
             get {
                 return ResourceManager.GetString("ScaleNotFoundExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title Color.
+        /// </summary>
+        internal static string TitleColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("TitleColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title Font Family.
+        /// </summary>
+        internal static string TitleFontFamilyFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("TitleFontFamilyFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title Grid Padding.
+        /// </summary>
+        internal static string TitleGridPaddingFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("TitleGridPaddingFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title Label Style.
+        /// </summary>
+        internal static string TitleLabelStyleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("TitleLabelStyleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title Opacity.
+        /// </summary>
+        internal static string TitleOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("TitleOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title Text Alignment.
+        /// </summary>
+        internal static string TitleTextAlignmentFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("TitleTextAlignmentFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title Text Size.
+        /// </summary>
+        internal static string TitleTextSizeFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("TitleTextSizeFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title Text Size Mod Ratio.
+        /// </summary>
+        internal static string TitleTextSizeModRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("TitleTextSizeModRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title Text Style.
+        /// </summary>
+        internal static string TitleTextStyleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("TitleTextStyleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title Visible.
+        /// </summary>
+        internal static string TitleVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("TitleVisibleFriendlyKeyName", resourceCulture);
             }
         }
         

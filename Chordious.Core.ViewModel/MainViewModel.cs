@@ -144,7 +144,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         string text = String.Join(Environment.NewLine, AppInfo.Product + " " + AppInfo.Copyright, "", AppInfo.License);
-                        Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(text, "License"));
+                        Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(text, Strings.LicenseTitle));
                     }
                     catch (Exception ex)
                     {

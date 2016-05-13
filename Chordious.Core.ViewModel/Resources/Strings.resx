@@ -531,4 +531,19 @@
   <data name="DiagramStyleSummaryToolTipFormat" xml:space="preserve">
     <value>A full summary of what the {0} consists of.</value>
   </data>
+  <data name="AdvancedDataEditorTitle" xml:space="preserve">
+    <value>Advanced Editor</value>
+  </data>
+  <data name="AdvancedSettingsEditorTitle" xml:space="preserve">
+    <value>Advanced Settings Editor</value>
+  </data>
+  <data name="AdvancedStyleEditorTitle" xml:space="preserve">
+    <value>Advanced Style Editor</value>
+  </data>
+  <data name="ChordiousMessageTitle" xml:space="preserve">
+    <value>Chordious</value>
+  </data>
+  <data name="LicenseTitle" xml:space="preserve">
+    <value>License</value>
+  </data>
 </root>

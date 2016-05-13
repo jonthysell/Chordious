@@ -126,6 +126,18 @@
   <data name="ChordiousUnhandledExceptionMessageFormat" xml:space="preserve">
     <value>Chordious crashed exception: {0}</value>
   </data>
+  <data name="ChordiousUpdateAvailableUpdateNowMessageFormat" xml:space="preserve">
+    <value>Chordious {0} is available. Would you like to update now?</value>
+  </data>
+  <data name="ChordiousUpdateNotAvailableMessage" xml:space="preserve">
+    <value>Chordious is up-to-date.</value>
+  </data>
+  <data name="ReleaseChannelOfficialFriendlyValue" xml:space="preserve">
+    <value>Official</value>
+  </data>
+  <data name="ReleaseChannelPreviewFriendlyValue" xml:space="preserve">
+    <value>Preview</value>
+  </data>
   <data name="ResetAndBackupUserConfigBackupFileMessageFormat" xml:space="preserve">
     <value>Chordious failed to load the user config.
 

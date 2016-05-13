@@ -34,6 +34,8 @@ using GalaSoft.MvvmLight.Command;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class AdvancedDataViewModel : ViewModelBase
@@ -50,18 +52,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                string title = "Advanced";
+                string title = Strings.AdvancedDataEditorTitle;
 
                 if (null != LocalBuffer.Parent as ChordiousSettings)
                 {
-                    title += " Settings";
+                    title = Strings.AdvancedSettingsEditorTitle;
                 }
                 else if (null != LocalBuffer.Parent as DiagramStyle)
                 {
-                    title += " Style";
+                    title = Strings.AdvancedStyleEditorTitle;
                 }
-
-                title += " Editor";
 
                 if (Dirty)
                 {
@@ -337,7 +337,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return String.Format(Resources.Strings.AdvancedDataValidationErrorMessage, InnerException.Message);
+                return String.Format(Strings.AdvancedDataValidationErrorMessage, InnerException.Message);
             }
         }
 

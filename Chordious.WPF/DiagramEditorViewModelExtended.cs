@@ -53,7 +53,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                return ObservableEnums.GetBackgrounds();
+                return ImageUtils.GetBackgrounds();
             }
         }
 

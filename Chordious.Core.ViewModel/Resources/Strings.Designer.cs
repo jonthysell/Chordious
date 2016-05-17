@@ -575,6 +575,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Label Model.
+        /// </summary>
+        internal static string DiagramStyleLabelLayoutModelLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleLabelLayoutModelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How the labels and padding interact with one another..
+        /// </summary>
+        internal static string DiagramStyleLabelLayoutModelToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleLabelLayoutModelToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Orientation.
         /// </summary>
         internal static string DiagramStyleOrientationLabel {

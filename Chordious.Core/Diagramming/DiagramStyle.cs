@@ -103,6 +103,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool LabelLayoutModelIsLocal
+        {
+            get
+            {
+                return IsLocalGet("diagram.labellayoutmodel");
+            }
+            set
+            {
+                IsLocalSet("diagram.labellayoutmodel", value);
+            }
+        }
+
         public DiagramLabelLayoutModel LabelLayoutModel
         {
             get

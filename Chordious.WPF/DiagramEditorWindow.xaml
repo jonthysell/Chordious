@@ -36,8 +36,8 @@
                             <ComboBox Margin="5" Width="95" ItemsSource="{Binding ObservableDiagram.Style.Orientations}" SelectedIndex="{Binding ObservableDiagram.Style.SelectedOrientationIndex}" ToolTip="{Binding ObservableDiagram.Style.SelectedOrientationToolTip}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Margin="5" Width="80" Content="Label Model"/>
-                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding ObservableDiagram.Style.LabelLayoutModels}" SelectedIndex="{Binding ObservableDiagram.Style.SelectedLabelLayoutModelIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
+                            <Label Margin="5" Width="80" Content="{Binding ObservableDiagram.Style.SelectedLabelLayoutModelLabel, FallbackValue=Label Model}" ToolTip="{Binding ObservableDiagram.Style.SelectedLabelLayoutModelToolTip}" />
+                            <ComboBox Margin="5" Width="95" ItemsSource="{Binding ObservableDiagram.Style.LabelLayoutModels}" SelectedIndex="{Binding ObservableDiagram.Style.SelectedLabelLayoutModelIndex}" ToolTip="{Binding ObservableDiagram.Style.SelectedLabelLayoutModelToolTip}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>

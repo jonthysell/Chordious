@@ -61,6 +61,33 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        internal static string BackgroundNoneFriendlyValue {
+            get {
+                return ResourceManager.GetString("BackgroundNoneFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transparent.
+        /// </summary>
+        internal static string BackgroundTransparentFriendlyValue {
+            get {
+                return ResourceManager.GetString("BackgroundTransparentFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White.
+        /// </summary>
+        internal static string BackgroundWhiteFriendlyValue {
+            get {
+                return ResourceManager.GetString("BackgroundWhiteFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chordious failed to start because a copy of Chordious is already running..
         /// </summary>
         internal static string ChordiousAlreadyRunningErrorMessage {

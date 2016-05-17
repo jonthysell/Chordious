@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BackgroundNoneFriendlyValue" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="BackgroundTransparentFriendlyValue" xml:space="preserve">
+    <value>Transparent</value>
+  </data>
+  <data name="BackgroundWhiteFriendlyValue" xml:space="preserve">
+    <value>White</value>
+  </data>
   <data name="ChordiousAlreadyRunningErrorMessage" xml:space="preserve">
     <value>Chordious failed to start because a copy of Chordious is already running.</value>
   </data>

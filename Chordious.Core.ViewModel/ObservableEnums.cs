@@ -32,6 +32,8 @@ using GalaSoft.MvvmLight;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ObservableEnums
@@ -219,17 +221,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 collection.Add(color);
             }
-
-            return collection;
-        }
-
-        public static ObservableCollection<string> GetBackgrounds()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add("None");
-            collection.Add("White");
-            collection.Add("Transparent");
 
             return collection;
         }

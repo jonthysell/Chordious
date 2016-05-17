@@ -546,4 +546,10 @@
   <data name="LicenseTitle" xml:space="preserve">
     <value>License</value>
   </data>
+  <data name="DiagramStyleLabelLayoutModelLabel" xml:space="preserve">
+    <value>Label Model</value>
+  </data>
+  <data name="DiagramStyleLabelLayoutModelToolTip" xml:space="preserve">
+    <value>How the labels and padding interact with one another.</value>
+  </data>
 </root>

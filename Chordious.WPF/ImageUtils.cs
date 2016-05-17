@@ -26,6 +26,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -36,6 +37,8 @@ using System.Windows.Media.Imaging;
 using Svg;
 
 using com.jonthysell.Chordious.Core.ViewModel;
+
+using com.jonthysell.Chordious.WPF.Resources;
 
 namespace com.jonthysell.Chordious.WPF
 {
@@ -387,6 +390,17 @@ namespace com.jonthysell.Chordious.WPF
             }
 
             return Background.None;
+        }
+
+        public static ObservableCollection<string> GetBackgrounds()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add(Strings.BackgroundNoneFriendlyValue);
+            collection.Add(Strings.BackgroundWhiteFriendlyValue);
+            collection.Add(Strings.BackgroundTransparentFriendlyValue);
+
+            return collection;
         }
 
         #endregion

@@ -148,6 +148,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public bool LabelLayoutModelIsLocal
+        {
+            get
+            {
+                return Style.LabelLayoutModelIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.LabelLayoutModelIsLocal = value;
+                    RaisePropertyChanged("LabelLayoutModelIsLocal");
+                    RaisePropertyChanged("SelectedLabelLayoutModelIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string SelectedLabelLayoutModelLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleLabelLayoutModelLabel;
+            }
+        }
+
+        public string SelectedLabelLayoutModelToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleLabelLayoutModelToolTip;
+            }
+        } 
+
         public int SelectedLabelLayoutModelIndex
         {
             get

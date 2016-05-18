@@ -127,6 +127,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool DiagramColorIsLocal
+        {
+            get
+            {
+                return IsLocalGet("diagram.color");
+            }
+            set
+            {
+                IsLocalSet("diagram.color", value);
+            }
+        }
+
         public string DiagramColor
         {
             get
@@ -136,6 +148,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 SetColor("diagram.color", value);
+            }
+        }
+
+        public bool DiagramOpacityIsLocal
+        {
+            get
+            {
+                return IsLocalGet("diagram.opacity");
+            }
+            set
+            {
+                IsLocalSet("diagram.opacity", value);
             }
         }
 
@@ -156,6 +180,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool DiagramBorderColorIsLocal
+        {
+            get
+            {
+                return IsLocalGet("diagram.bordercolor");
+            }
+            set
+            {
+                IsLocalSet("diagram.bordercolor", value);
+            }
+        }
+
         public string DiagramBorderColor
         {
             get
@@ -165,6 +201,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 SetColor("diagram.bordercolor", value);
+            }
+        }
+
+        public bool DiagramBorderThicknessIsLocal
+        {
+            get
+            {
+                return IsLocalGet("diagram.borderthickness");
+            }
+            set
+            {
+                IsLocalSet("diagram.borderthickness", value);
             }
         }
 

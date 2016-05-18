@@ -185,7 +185,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public ObservableDiagramStyle SelectedStyle
+        public ObservableDiagramStyle Style
         {
             get
             {
@@ -208,7 +208,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
                 _selectedStyleIndex = value;
                 RaisePropertyChanged("SelectedStyleIndex");
-                RaisePropertyChanged("SelectedStyle");
+                RaisePropertyChanged("Style");
             }
         }
         private int _selectedStyleIndex;

@@ -188,6 +188,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private ObservableDiagram OriginalObservableDiagram;
 
+        public ObservableDiagramStyle Style
+        {
+            get
+            {
+                return ObservableDiagram.Style;
+            }
+        }
+
         public DiagramEditorViewModel(ObservableDiagram diagram, bool isNew)
         {
             if (null == diagram)

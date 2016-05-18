@@ -546,6 +546,30 @@
   <data name="LicenseTitle" xml:space="preserve">
     <value>License</value>
   </data>
+  <data name="DiagramStyleDiagramBorderColorLabel" xml:space="preserve">
+    <value>Border Color</value>
+  </data>
+  <data name="DiagramStyleDiagramBorderColorToolTip" xml:space="preserve">
+    <value>The color of the diagram's border.</value>
+  </data>
+  <data name="DiagramStyleDiagramBorderThicknessLabel" xml:space="preserve">
+    <value>Border Width (px)</value>
+  </data>
+  <data name="DiagramStyleDiagramBorderThicknessToolTip" xml:space="preserve">
+    <value>The width of the diagram's border.</value>
+  </data>
+  <data name="DiagramStyleDiagramColorLabel" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="DiagramStyleDiagramColorToolTip" xml:space="preserve">
+    <value>The color of the diagram's background.</value>
+  </data>
+  <data name="DiagramStyleDiagramOpacityLabel" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="DiagramStyleDiagramOpacityToolTip" xml:space="preserve">
+    <value>The opacity of the background color.</value>
+  </data>
   <data name="DiagramStyleLabelLayoutModelLabel" xml:space="preserve">
     <value>Label Model</value>
   </data>

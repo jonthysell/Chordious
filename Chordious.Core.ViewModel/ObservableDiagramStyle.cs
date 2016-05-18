@@ -217,6 +217,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region Background
 
+        public bool DiagramColorIsLocal
+        {
+            get
+            {
+                return Style.DiagramColorIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.DiagramColorIsLocal = value;
+                    RaisePropertyChanged("DiagramColorIsLocal");
+                    RaisePropertyChanged("DiagramColor");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string DiagramColorLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramColorLabel;
+            }
+        }
+
+        public string DiagramColorToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramColorToolTip;
+            }
+        }
+
         public string DiagramColor
         {
             get
@@ -241,6 +278,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public bool DiagramOpacityIsLocal
+        {
+            get
+            {
+                return Style.DiagramOpacityIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.DiagramOpacityIsLocal = value;
+                    RaisePropertyChanged("DiagramOpacityIsLocal");
+                    RaisePropertyChanged("DiagramOpacity");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string DiagramOpacityLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramOpacityLabel;
+            }
+        }
+
+        public string DiagramOpacityToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramOpacityToolTip;
+            }
+        }
+
         public double DiagramOpacity
         {
             get
@@ -258,6 +332,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        public bool DiagramBorderColorIsLocal
+        {
+            get
+            {
+                return Style.DiagramBorderColorIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.DiagramBorderColorIsLocal = value;
+                    RaisePropertyChanged("DiagramBorderColorIsLocal");
+                    RaisePropertyChanged("DiagramBorderColor");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string DiagramBorderColorLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramBorderColorLabel;
+            }
+        }
+
+        public string DiagramBorderColorToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramBorderColorToolTip;
             }
         }
 
@@ -282,6 +393,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        public bool DiagramBorderThicknessIsLocal
+        {
+            get
+            {
+                return Style.DiagramBorderThicknessIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.DiagramBorderThicknessIsLocal = value;
+                    RaisePropertyChanged("DiagramBorderThicknessIsLocal");
+                    RaisePropertyChanged("DiagramBorderThickness");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string DiagramBorderThicknessLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramBorderThicknessLabel;
+            }
+        }
+
+        public string DiagramBorderThicknessToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramBorderThicknessToolTip;
             }
         }
 

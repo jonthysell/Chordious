@@ -548,6 +548,78 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Border Color.
+        /// </summary>
+        internal static string DiagramStyleDiagramBorderColorLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramBorderColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The color of the diagram&apos;s border..
+        /// </summary>
+        internal static string DiagramStyleDiagramBorderColorToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramBorderColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Border Width (px).
+        /// </summary>
+        internal static string DiagramStyleDiagramBorderThicknessLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramBorderThicknessLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The width of the diagram&apos;s border..
+        /// </summary>
+        internal static string DiagramStyleDiagramBorderThicknessToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramBorderThicknessToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        internal static string DiagramStyleDiagramColorLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The color of the diagram&apos;s background..
+        /// </summary>
+        internal static string DiagramStyleDiagramColorToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opacity.
+        /// </summary>
+        internal static string DiagramStyleDiagramOpacityLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramOpacityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The opacity of the background color..
+        /// </summary>
+        internal static string DiagramStyleDiagramOpacityToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramOpacityToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selected Style.
         /// </summary>
         internal static string DiagramStyleEditorSelectedStyleLabel {

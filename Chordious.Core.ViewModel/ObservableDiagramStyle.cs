@@ -81,7 +81,25 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #region Diagram
+
+        public string DiagramGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramGroupLabel;
+            }
+        }
+
         #region Layout
+
+        public string DiagramLayoutGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramLayoutGroupLabel;
+            }
+        }
 
         public bool OrientationIsLocal
         {
@@ -217,6 +235,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region Background
 
+        public string DiagramBackgroundGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramBackgroundGroupLabel;
+            }
+        }
+
         public bool DiagramColorIsLocal
         {
             get
@@ -332,6 +358,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        #endregion
+
+        #region Border
+
+        public string DiagramBorderGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramBorderGroupLabel;
             }
         }
 
@@ -455,7 +493,143 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        #region NewDiagram
+
+        public string NewDiagramGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleNewDiagramGroupLabel;
+            }
+        }
+
+        public bool NewDiagramNumStringsIsLocal
+        {
+            get
+            {
+                return Style.NewDiagramNumStringsIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.NewDiagramNumStringsIsLocal = value;
+                    RaisePropertyChanged("NewDiagramNumStringsIsLocal");
+                    RaisePropertyChanged("NewDiagramNumStrings");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string NewDiagramNumStringsLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleNewDiagramNumStringsLabel;
+            }
+        }
+
+        public string NewDiagramNumStringsToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleNewDiagramNumStringsToolTip;
+            }
+        }
+
+        public int NewDiagramNumStrings
+        {
+            get
+            {
+                return Style.NewDiagramNumStrings;
+            }
+            set
+            {
+                try
+                {
+                    Style.NewDiagramNumStrings = value;
+                    RaisePropertyChanged("NewDiagramNumStrings");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool NewDiagramNumFretsIsLocal
+        {
+            get
+            {
+                return Style.NewDiagramNumFretsIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.NewDiagramNumFretsIsLocal = value;
+                    RaisePropertyChanged("NewDiagramNumFretsIsLocal");
+                    RaisePropertyChanged("NewDiagramNumFrets");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string NewDiagramNumFretsLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleNewDiagramNumFretsLabel;
+            }
+        }
+
+        public string NewDiagramNumFretsToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleNewDiagramNumFretsToolTip;
+            }
+        }
+
+        public int NewDiagramNumFrets
+        {
+            get
+            {
+                return Style.NewDiagramNumFrets;
+            }
+            set
+            {
+                try
+                {
+                    Style.NewDiagramNumFrets = value;
+                    RaisePropertyChanged("NewDiagramNumFrets");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+        #endregion
+
         #region Grid
+
+        public string GridGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramGridGroupLabel;
+            }
+        }
 
         public double GridMargin
         {
@@ -813,18 +987,37 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region Title
 
-        public double TitleTextSize
+        public string TitleGroupLabel
         {
             get
             {
-                return Style.TitleTextSize;
+                return Strings.DiagramStyleTitleGroupLabel;
+            }
+        }
+
+        #region Layout
+
+        public string TitleLayoutGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleLayoutGroupLabel;
+            }
+        }
+
+        public bool TitleVisibleIsLocal
+        {
+            get
+            {
+                return Style.TitleVisibleIsLocal;
             }
             set
             {
                 try
                 {
-                    Style.TitleTextSize = value;
-                    RaisePropertyChanged("TitleTextSize");
+                    Style.TitleVisibleIsLocal = value;
+                    RaisePropertyChanged("TitleVisibleIsLocal");
+                    RaisePropertyChanged("TitleVisible");
                 }
                 catch (Exception ex)
                 {
@@ -833,26 +1026,34 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public bool IsTitleTextSizeModRatioEnabled
+        public string TitleVisibleLabel
         {
             get
             {
-                return (DiagramLabelStyle)SelectedTitleLabelStyleIndex == DiagramLabelStyle.ChordName;
+                return Strings.DiagramStyleTitleVisibleLabel;
             }
         }
 
-        public double TitleTextSizeModRatio
+        public string TitleVisibleToolTip
         {
             get
             {
-                return Style.TitleTextSizeModRatio;
+                return Strings.DiagramStyleTitleVisibleToolTip;
+            }
+        }
+
+        public bool TitleVisible
+        {
+            get
+            {
+                return Style.TitleVisible;
             }
             set
             {
                 try
                 {
-                    Style.TitleTextSizeModRatio = value;
-                    RaisePropertyChanged("TitleTextSizeModRatio");
+                    Style.TitleVisible = value;
+                    RaisePropertyChanged("TitleVisible");
                 }
                 catch (Exception ex)
                 {
@@ -861,27 +1062,97 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public string TitleTextFontFamily
+        public bool TitleGridPaddingIsLocal
         {
             get
             {
-                return Style.TitleFontFamily;
+                return Style.TitleGridPaddingIsLocal;
             }
             set
             {
                 try
                 {
-                    if (null != value)
-                    {
-                        Style.TitleFontFamily = value;
-                        ObservableEnums.SortedInsert(FontFamilies, TitleTextFontFamily);
-                        RaisePropertyChanged("TitleTextFontFamily");
-                    }
+                    Style.TitleGridPaddingIsLocal = value;
+                    RaisePropertyChanged("TitleGridPaddingIsLocal");
+                    RaisePropertyChanged("TitleGridPadding");
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        public string TitleGridPaddingLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleGridPaddingLabel;
+            }
+        }
+
+        public string TitleGridPaddingToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleGridPaddingToolTip;
+            }
+        }
+
+        public double TitleGridPadding
+        {
+            get
+            {
+                return Style.TitleGridPadding;
+            }
+            set
+            {
+                try
+                {
+                    Style.TitleGridPadding = value;
+                    RaisePropertyChanged("TitleGridPadding");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool TitleTextAlignmentIsLocal
+        {
+            get
+            {
+                return Style.TitleTextAlignmentIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.TitleTextAlignmentIsLocal = value;
+                    RaisePropertyChanged("TitleTextAlignmentIsLocal");
+                    RaisePropertyChanged("SelectedTitleTextAlignmentIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string SelectedTitleTextAlignmentLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleTextAlignmentLabel;
+            }
+        }
+
+        public string SelectedTitleTextAlignmentToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleTextAlignmentToolTip;
             }
         }
 
@@ -913,6 +1184,238 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #endregion
+
+        #region Font
+
+        public string TitleFontGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleFontGroupLabel;
+            }
+        }
+
+        public bool TitleFontFamilyIsLocal
+        {
+            get
+            {
+                return Style.TitleFontFamilyIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.TitleFontFamilyIsLocal = value;
+                    RaisePropertyChanged("TitleFontFamilyIsLocal");
+                    RaisePropertyChanged("TitleFontFamily");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string TitleFontFamilyLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleFontFamilyLabel;
+            }
+        }
+
+        public string TitleFontFamilyToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleFontFamilyToolTip;
+            }
+        }
+
+        public string TitleFontFamily
+        {
+            get
+            {
+                return Style.TitleFontFamily;
+            }
+            set
+            {
+                try
+                {
+                    if (null != value)
+                    {
+                        Style.TitleFontFamily = value;
+                        ObservableEnums.SortedInsert(FontFamilies, TitleFontFamily);
+                        RaisePropertyChanged("TitleFontFamily");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool TitleTextSizeIsLocal
+        {
+            get
+            {
+                return Style.TitleTextSizeIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.TitleTextSizeIsLocal = value;
+                    RaisePropertyChanged("TitleTextSizeIsLocal");
+                    RaisePropertyChanged("TitleTextSize");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string TitleTextSizeLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleTextSizeLabel;
+            }
+        }
+
+        public string TitleTextSizeToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleTextSizeToolTip;
+            }
+        }
+
+        public double TitleTextSize
+        {
+            get
+            {
+                return Style.TitleTextSize;
+            }
+            set
+            {
+                try
+                {
+                    Style.TitleTextSize = value;
+                    RaisePropertyChanged("TitleTextSize");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool IsTitleTextSizeModRatioEnabled
+        {
+            get
+            {
+                return (DiagramLabelStyle)SelectedTitleLabelStyleIndex == DiagramLabelStyle.ChordName;
+            }
+        }
+
+        public bool TitleTextSizeModRatioIsLocal
+        {
+            get
+            {
+                return Style.TitleTextSizeModRatioIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.TitleTextSizeModRatioIsLocal = value;
+                    RaisePropertyChanged("TitleTextSizeModRatioIsLocal");
+                    RaisePropertyChanged("TitleTextSizeModRatio");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string TitleTextSizeModRatioLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleTextSizeModRatioLabel;
+            }
+        }
+
+        public string TitleTextSizeModRatioToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleTextSizeModRatioToolTip;
+            }
+        }
+
+        public double TitleTextSizeModRatio
+        {
+            get
+            {
+                return Style.TitleTextSizeModRatio;
+            }
+            set
+            {
+                try
+                {
+                    Style.TitleTextSizeModRatio = value;
+                    RaisePropertyChanged("TitleTextSizeModRatio");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool TitleTextStyleIsLocal
+        {
+            get
+            {
+                return Style.TitleTextStyleIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.TitleTextStyleIsLocal = value;
+                    RaisePropertyChanged("TitleTextStyleIsLocal");
+                    RaisePropertyChanged("SelectedTitleTextStyleIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string SelectedTitleTextStyleLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleTextStyleLabel;
+            }
+        }
+
+        public string SelectedTitleTextStyleToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleTextStyleToolTip;
+            }
+        }
+
         public int SelectedTitleTextStyleIndex
         {
             get
@@ -941,18 +1444,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public double TitleGridPadding
+        public bool TitleLabelStyleIsLocal
         {
             get
             {
-                return Style.TitleGridPadding;
+                return Style.TitleLabelStyleIsLocal;
             }
             set
             {
                 try
                 {
-                    Style.TitleGridPadding = value;
-                    RaisePropertyChanged("TitleGridPadding");
+                    Style.TitleLabelStyleIsLocal = value;
+                    RaisePropertyChanged("TitleLabelStyleIsLocal");
+                    RaisePropertyChanged("SelectedTitleLabelStyleIndex");
                 }
                 catch (Exception ex)
                 {
@@ -961,23 +1465,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public bool TitleVisible
+        public string SelectedTitleLabelStyleLabel
         {
             get
             {
-                return Style.TitleVisible;
+                return Strings.DiagramStyleTitleLabelStyleLabel;
             }
-            set
+        }
+
+        public string SelectedTitleLabelStyleToolTip
+        {
+            get
             {
-                try
-                {
-                    Style.TitleVisible = value;
-                    RaisePropertyChanged("TitleVisible");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
+                return Strings.DiagramStyleTitleLabelStyleToolTip;
             }
         }
 
@@ -1010,6 +1510,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public bool TitleColorIsLocal
+        {
+            get
+            {
+                return Style.TitleColorIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.TitleColorIsLocal = value;
+                    RaisePropertyChanged("TitleColorIsLocal");
+                    RaisePropertyChanged("TitleColor");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string TitleColorLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleColorLabel;
+            }
+        }
+
+        public string TitleColorToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleColorToolTip;
+            }
+        }
+
         public string TitleColor
         {
             get
@@ -1034,6 +1571,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public bool TitleOpacityIsLocal
+        {
+            get
+            {
+                return Style.TitleOpacityIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.TitleOpacityIsLocal = value;
+                    RaisePropertyChanged("TitleOpacityIsLocal");
+                    RaisePropertyChanged("TitleOpacity");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string TitleOpacityLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleOpacityLabel;
+            }
+        }
+
+        public string TitleOpacityToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleTitleOpacityToolTip;
+            }
+        }
+
         public double TitleOpacity
         {
             get
@@ -1051,6 +1625,44 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Marks
+
+        public string MarksGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramMarksGroupLabel;
+            }
+        }
+
+        #endregion
+
+        #region Fret Labels
+
+        public string FretLabelsGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramFretLabelsGroupLabel;
+            }
+        }
+
+        #endregion
+
+        #region Barres
+
+        public string BarresGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleDiagramBarresGroupLabel;
             }
         }
 

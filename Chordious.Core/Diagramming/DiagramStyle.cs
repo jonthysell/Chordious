@@ -47,32 +47,62 @@ namespace com.jonthysell.Chordious.Core
 
         #region New Diagram-specific Styles
 
-        public int NewDiagramNumStringsGet()
+        public bool NewDiagramNumStringsIsLocal
         {
-            return GetInt32("newdiagram.numstrings", 2);
-        }
-
-        public void NewDiagramNumStringsSet(int value)
-        {
-            if (value < 2)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                return IsLocalGet("newdiagram.numstrings");
             }
-            Set("newdiagram.numstrings", value);
-        }
-
-        public int NewDiagramNumFretsGet()
-        {
-            return GetInt32("newdiagram.numfrets", 1);
-        }
-
-        public void NewDiagramNumFretsSet(int value)
-        {
-            if (value < 1)
+            set
             {
-                throw new ArgumentOutOfRangeException("value");
+                IsLocalSet("newdiagram.numstrings", value);
             }
-            Set("newdiagram.numfrets", value);
+        }
+
+        public int NewDiagramNumStrings
+        {
+            get
+            {
+                return GetInt32("newdiagram.numstrings", 2);
+            }
+            set
+            {
+                if (value < 2)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("newdiagram.numstrings", value);
+            }
+        }
+
+        public bool NewDiagramNumFretsIsLocal
+        {
+            get
+            {
+                return IsLocalGet("newdiagram.numfrets");
+            }
+            set
+            {
+                IsLocalSet("newdiagram.numfrets", value);
+            }
+        }
+
+        public int NewDiagramNumFrets
+        {
+            get
+            {
+                return GetInt32("newdiagram.numfrets", 1);
+            }
+            set
+            {
+                if (value < 1)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("newdiagram.numfrets", value);
+            }
         }
 
         #endregion
@@ -237,6 +267,18 @@ namespace com.jonthysell.Chordious.Core
 
         #region Grid-specific Styles
 
+        public bool GridMarginIsLocal
+        {
+            get
+            {
+                return IsLocalGet("grid.margin");
+            }
+            set
+            {
+                IsLocalSet("grid.margin", value);
+            }
+        }
+
         public double GridMargin
         {
             get
@@ -270,6 +312,18 @@ namespace com.jonthysell.Chordious.Core
                 {
                     Clear("grid.marginleft");
                 }
+            }
+        }
+
+        public bool GridMarginLeftIsLocal
+        {
+            get
+            {
+                return IsLocalGet("grid.marginleft");
+            }
+            set
+            {
+                IsLocalSet("grid.marginleft", value);
             }
         }
 
@@ -315,6 +369,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool GridMarginRightIsLocal
+        {
+            get
+            {
+                return IsLocalGet("grid.marginright");
+            }
+            set
+            {
+                IsLocalSet("grid.marginright", value);
+            }
+        }
+
         public double GridMarginRight
         {
             get
@@ -354,6 +420,18 @@ namespace com.jonthysell.Chordious.Core
                 {
                     Clear("grid.margintop");
                 }
+            }
+        }
+
+        public bool GridMarginTopIsLocal
+        {
+            get
+            {
+                return IsLocalGet("grid.margintop");
+            }
+            set
+            {
+                IsLocalSet("grid.margintop", value);
             }
         }
 
@@ -399,6 +477,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool GridMarginBottomIsLocal
+        {
+            get
+            {
+                return IsLocalGet("grid.marginbottom");
+            }
+            set
+            {
+                IsLocalSet("grid.marginbottom", value);
+            }
+        }
+
         public double GridMarginBottom
         {
             get
@@ -422,6 +512,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool GridFretSpacingIsLocal
+        {
+            get
+            {
+                return IsLocalGet("grid.fretspacing");
+            }
+            set
+            {
+                IsLocalSet("grid.fretspacing", value);
+            }
+        }
+
         public double GridFretSpacing
         {
             get
@@ -436,6 +538,18 @@ namespace com.jonthysell.Chordious.Core
                 }
 
                 Set("grid.fretspacing", value);
+            }
+        }
+
+        public bool GridStringSpacingIsLocal
+        {
+            get
+            {
+                return IsLocalGet("grid.stringspacing");
+            }
+            set
+            {
+                IsLocalSet("grid.stringspacing", value);
             }
         }
 
@@ -456,6 +570,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool GridColorIsLocal
+        {
+            get
+            {
+                return IsLocalGet("grid.color");
+            }
+            set
+            {
+                IsLocalSet("grid.color", value);
+            }
+        }
+
         public string GridColor
         {
             get
@@ -465,6 +591,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 SetColor("grid.color", value);
+            }
+        }
+
+        public bool GridOpacityIsLocal
+        {
+            get
+            {
+                return IsLocalGet("grid.opacity");
+            }
+            set
+            {
+                IsLocalSet("grid.opacity", value);
             }
         }
 
@@ -485,6 +623,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool GridLineColorIsLocal
+        {
+            get
+            {
+                return IsLocalGet("grid.linecolor");
+            }
+            set
+            {
+                IsLocalSet("grid.linecolor", value);
+            }
+        }
+
         public string GridLineColor
         {
             get
@@ -494,6 +644,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 SetColor("grid.linecolor", value);
+            }
+        }
+
+        public bool GridLineThicknessIsLocal
+        {
+            get
+            {
+                return IsLocalGet("grid.linethickness");
+            }
+            set
+            {
+                IsLocalSet("grid.linethickness", value);
             }
         }
 
@@ -514,6 +676,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool GridNutVisibleIsLocal
+        {
+            get
+            {
+                return IsLocalGet("grid.nutvisible");
+            }
+            set
+            {
+                IsLocalSet("grid.nutvisible", value);
+            }
+        }
+
         public bool GridNutVisible
         {
             get
@@ -523,6 +697,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Set("grid.nutvisible", value);
+            }
+        }
+
+        public bool GridNutRatioIsLocal
+        {
+            get
+            {
+                return IsLocalGet("grid.nutratio");
+            }
+            set
+            {
+                IsLocalSet("grid.nutratio", value);
             }
         }
 
@@ -545,7 +731,19 @@ namespace com.jonthysell.Chordious.Core
 
         #endregion
 
-        #region DiagramTitle-specific Styles
+        #region Title-specific Styles
+
+        public bool TitleGridPaddingIsLocal
+        {
+            get
+            {
+                return IsLocalGet("title.gridpadding");
+            }
+            set
+            {
+                IsLocalSet("title.gridpadding", value);
+            }
+        }
 
         public double TitleGridPadding
         {
@@ -561,6 +759,18 @@ namespace com.jonthysell.Chordious.Core
                 }
 
                 Set("title.gridpadding", value);
+            }
+        }
+
+        public bool TitleTextSizeIsLocal
+        {
+            get
+            {
+                return IsLocalGet("title.textsize");
+            }
+            set
+            {
+                IsLocalSet("title.textsize", value);
             }
         }
 
@@ -581,6 +791,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool TitleTextSizeModRatioIsLocal
+        {
+            get
+            {
+                return IsLocalGet("title.textmodratio");
+            }
+            set
+            {
+                IsLocalSet("title.textmodratio", value);
+            }
+        }
+
         public double TitleTextSizeModRatio
         {
             get
@@ -598,6 +820,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool TitleFontFamilyIsLocal
+        {
+            get
+            {
+                return IsLocalGet("title.fontfamily");
+            }
+            set
+            {
+                IsLocalSet("title.fontfamily", value);
+            }
+        }
+
         public string TitleFontFamily
         {
             get
@@ -607,6 +841,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Set("title.fontfamily", value);
+            }
+        }
+
+        public bool TitleTextAlignmentIsLocal
+        {
+            get
+            {
+                return IsLocalGet("title.textalignment");
+            }
+            set
+            {
+                IsLocalSet("title.textalignment", value);
             }
         }
 
@@ -622,6 +868,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool TitleTextStyleIsLocal
+        {
+            get
+            {
+                return IsLocalGet("title.textstyle");
+            }
+            set
+            {
+                IsLocalSet("title.textstyle", value);
+            }
+        }
+
         public DiagramTextStyle TitleTextStyle
         {
             get
@@ -631,6 +889,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Set("title.textstyle", value);
+            }
+        }
+
+        public bool TitleVisibleIsLocal
+        {
+            get
+            {
+                return IsLocalGet("title.textvisible");
+            }
+            set
+            {
+                IsLocalSet("title.textvisible", value);
             }
         }
 
@@ -646,6 +916,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool TitleLabelStyleIsLocal
+        {
+            get
+            {
+                return IsLocalGet("title.labelstyle");
+            }
+            set
+            {
+                IsLocalSet("title.labelstyle", value);
+            }
+        }
+
         public DiagramLabelStyle TitleLabelStyle
         {
             get
@@ -658,6 +940,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool TitleColorIsLocal
+        {
+            get
+            {
+                return IsLocalGet("title.textcolor");
+            }
+            set
+            {
+                IsLocalSet("title.textcolor", value);
+            }
+        }
+
         public string TitleColor
         {
             get
@@ -667,6 +961,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 SetColor("title.textcolor", value);
+            }
+        }
+
+        public bool TitleOpacityIsLocal
+        {
+            get
+            {
+                return IsLocalGet("title.textopacity");
+            }
+            set
+            {
+                IsLocalSet("title.textopacity", value);
             }
         }
 

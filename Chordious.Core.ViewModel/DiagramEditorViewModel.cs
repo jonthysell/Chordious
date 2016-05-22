@@ -37,6 +37,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class DiagramEditorViewModel : ViewModelBase
@@ -53,9 +55,53 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return "Diagram Editor" + (Dirty ? "*" : "");
+                return Strings.DiagramEditorTitle + (Dirty ? "*" : "");
             }
         }
+
+        #region Dimensions
+
+        public string DimensionsGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorDimensionsGroupLabel;
+            }
+        }
+
+        public string WidthLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorWidthLabel;
+            }
+        }
+
+        public string WidthToolTip
+        {
+            get
+            {
+                return Strings.DiagramEditorWidthToolTip;
+            }
+        }
+
+        public string HeightLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorHeightLabel;
+            }
+        }
+
+        public string HeightToolTip
+        {
+            get
+            {
+                return Strings.DiagramEditorHeightToolTip;
+            }
+        }
+
+        #endregion
 
         public RelayCommand Apply
         {

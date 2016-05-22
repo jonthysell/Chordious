@@ -112,8 +112,8 @@ namespace com.jonthysell.Chordious.Core
 
             this.Style = new DiagramStyle(parentStyle, LevelKey);
 
-            this._numFrets = Style.NewDiagramNumFretsGet();
-            this._numStrings = Style.NewDiagramNumStringsGet();
+            this._numFrets = Style.NewDiagramNumFrets;
+            this._numStrings = Style.NewDiagramNumStrings;
         }
 
         public Diagram(DiagramStyle parentStyle, int numStrings, int numFrets) : this(parentStyle)

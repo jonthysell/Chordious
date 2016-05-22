@@ -386,6 +386,60 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dimensions.
+        /// </summary>
+        internal static string DiagramEditorDimensionsGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorDimensionsGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Height (px).
+        /// </summary>
+        internal static string DiagramEditorHeightLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorHeightLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The height of the diagram in pixels..
+        /// </summary>
+        internal static string DiagramEditorHeightToolTip {
+            get {
+                return ResourceManager.GetString("DiagramEditorHeightToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram Editor.
+        /// </summary>
+        internal static string DiagramEditorTitle {
+            get {
+                return ResourceManager.GetString("DiagramEditorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Width (px).
+        /// </summary>
+        internal static string DiagramEditorWidthLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorWidthLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The width of the diagram in pixels..
+        /// </summary>
+        internal static string DiagramEditorWidthToolTip {
+            get {
+                return ResourceManager.GetString("DiagramEditorWidthToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clone &quot;{0}&quot;....
         /// </summary>
         internal static string DiagramLibraryCloneNodeLabelFormat {
@@ -548,7 +602,25 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Border Color.
+        ///   Looks up a localized string similar to Diagram Background.
+        /// </summary>
+        internal static string DiagramStyleDiagramBackgroundGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramBackgroundGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barres.
+        /// </summary>
+        internal static string DiagramStyleDiagramBarresGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramBarresGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
         /// </summary>
         internal static string DiagramStyleDiagramBorderColorLabel {
             get {
@@ -566,7 +638,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Border Width (px).
+        ///   Looks up a localized string similar to Diagram Border.
+        /// </summary>
+        internal static string DiagramStyleDiagramBorderGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramBorderGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Width (px).
         /// </summary>
         internal static string DiagramStyleDiagramBorderThicknessLabel {
             get {
@@ -598,6 +679,51 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramStyleDiagramColorToolTip {
             get {
                 return ResourceManager.GetString("DiagramStyleDiagramColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Labels.
+        /// </summary>
+        internal static string DiagramStyleDiagramFretLabelsGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramFretLabelsGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid.
+        /// </summary>
+        internal static string DiagramStyleDiagramGridGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramGridGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram.
+        /// </summary>
+        internal static string DiagramStyleDiagramGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram Layout.
+        /// </summary>
+        internal static string DiagramStyleDiagramLayoutGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramLayoutGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Marks.
+        /// </summary>
+        internal static string DiagramStyleDiagramMarksGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleDiagramMarksGroupLabel", resourceCulture);
             }
         }
         
@@ -665,6 +791,51 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Diagrams.
+        /// </summary>
+        internal static string DiagramStyleNewDiagramGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleNewDiagramGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # of Frets.
+        /// </summary>
+        internal static string DiagramStyleNewDiagramNumFretsLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleNewDiagramNumFretsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The default number of frets for new diagrams..
+        /// </summary>
+        internal static string DiagramStyleNewDiagramNumFretsToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleNewDiagramNumFretsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # of Strings.
+        /// </summary>
+        internal static string DiagramStyleNewDiagramNumStringsLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleNewDiagramNumStringsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The default number of strings for new diagrams..
+        /// </summary>
+        internal static string DiagramStyleNewDiagramNumStringsToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleNewDiagramNumStringsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Orientation.
         /// </summary>
         internal static string DiagramStyleOrientationLabel {
@@ -697,6 +868,231 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramStyleSummaryToolTipFormat {
             get {
                 return ResourceManager.GetString("DiagramStyleSummaryToolTipFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        internal static string DiagramStyleTitleColorLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The color of the title..
+        /// </summary>
+        internal static string DiagramStyleTitleColorToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Family.
+        /// </summary>
+        internal static string DiagramStyleTitleFontFamilyLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleFontFamilyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The font to use for the title..
+        /// </summary>
+        internal static string DiagramStyleTitleFontFamilyToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleFontFamilyToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title Font.
+        /// </summary>
+        internal static string DiagramStyleTitleFontGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleFontGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Padding (px).
+        /// </summary>
+        internal static string DiagramStyleTitleGridPaddingLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleGridPaddingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How much space to put between the title and the grid..
+        /// </summary>
+        internal static string DiagramStyleTitleGridPaddingToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleGridPaddingToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        internal static string DiagramStyleTitleGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Label Style.
+        /// </summary>
+        internal static string DiagramStyleTitleLabelStyleLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleLabelStyleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether or not to show the title with modifiers of a different size..
+        /// </summary>
+        internal static string DiagramStyleTitleLabelStyleToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleLabelStyleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title Layout.
+        /// </summary>
+        internal static string DiagramStyleTitleLayoutGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleLayoutGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opacity.
+        /// </summary>
+        internal static string DiagramStyleTitleOpacityLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleOpacityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The opacity of the title..
+        /// </summary>
+        internal static string DiagramStyleTitleOpacityToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleOpacityToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alignment.
+        /// </summary>
+        internal static string DiagramStyleTitleTextAlignmentLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleTextAlignmentLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The horizontal alignment of the title..
+        /// </summary>
+        internal static string DiagramStyleTitleTextAlignmentToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleTextAlignmentToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        internal static string DiagramStyleTitleTextLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleTextLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size (pt).
+        /// </summary>
+        internal static string DiagramStyleTitleTextSizeLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleTextSizeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modifier Ratio.
+        /// </summary>
+        internal static string DiagramStyleTitleTextSizeModRatioLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleTextSizeModRatioLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ratio of the modifier portion of the title..
+        /// </summary>
+        internal static string DiagramStyleTitleTextSizeModRatioToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleTextSizeModRatioToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The size of the title text in points..
+        /// </summary>
+        internal static string DiagramStyleTitleTextSizeToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleTextSizeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Style.
+        /// </summary>
+        internal static string DiagramStyleTitleTextStyleLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleTextStyleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether to bold and/or italicize the title..
+        /// </summary>
+        internal static string DiagramStyleTitleTextStyleToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleTextStyleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The text of the title..
+        /// </summary>
+        internal static string DiagramStyleTitleTextToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleTextToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visible.
+        /// </summary>
+        internal static string DiagramStyleTitleVisibleLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleVisibleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show the title of the diagram..
+        /// </summary>
+        internal static string DiagramStyleTitleVisibleToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleVisibleToolTip", resourceCulture);
             }
         }
         

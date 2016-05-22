@@ -547,13 +547,13 @@
     <value>License</value>
   </data>
   <data name="DiagramStyleDiagramBorderColorLabel" xml:space="preserve">
-    <value>Border Color</value>
+    <value>Color</value>
   </data>
   <data name="DiagramStyleDiagramBorderColorToolTip" xml:space="preserve">
     <value>The color of the diagram's border.</value>
   </data>
   <data name="DiagramStyleDiagramBorderThicknessLabel" xml:space="preserve">
-    <value>Border Width (px)</value>
+    <value>Width (px)</value>
   </data>
   <data name="DiagramStyleDiagramBorderThicknessToolTip" xml:space="preserve">
     <value>The width of the diagram's border.</value>
@@ -575,5 +575,137 @@
   </data>
   <data name="DiagramStyleLabelLayoutModelToolTip" xml:space="preserve">
     <value>How the labels and padding interact with one another.</value>
+  </data>
+  <data name="DiagramEditorDimensionsGroupLabel" xml:space="preserve">
+    <value>Dimensions</value>
+  </data>
+  <data name="DiagramEditorHeightLabel" xml:space="preserve">
+    <value>Height (px)</value>
+  </data>
+  <data name="DiagramEditorHeightToolTip" xml:space="preserve">
+    <value>The height of the diagram in pixels.</value>
+  </data>
+  <data name="DiagramEditorTitle" xml:space="preserve">
+    <value>Diagram Editor</value>
+  </data>
+  <data name="DiagramEditorWidthLabel" xml:space="preserve">
+    <value>Width (px)</value>
+  </data>
+  <data name="DiagramEditorWidthToolTip" xml:space="preserve">
+    <value>The width of the diagram in pixels.</value>
+  </data>
+  <data name="DiagramStyleDiagramBackgroundGroupLabel" xml:space="preserve">
+    <value>Diagram Background</value>
+  </data>
+  <data name="DiagramStyleDiagramBarresGroupLabel" xml:space="preserve">
+    <value>Barres</value>
+  </data>
+  <data name="DiagramStyleDiagramBorderGroupLabel" xml:space="preserve">
+    <value>Diagram Border</value>
+  </data>
+  <data name="DiagramStyleDiagramFretLabelsGroupLabel" xml:space="preserve">
+    <value>Fret Labels</value>
+  </data>
+  <data name="DiagramStyleDiagramGridGroupLabel" xml:space="preserve">
+    <value>Grid</value>
+  </data>
+  <data name="DiagramStyleDiagramGroupLabel" xml:space="preserve">
+    <value>Diagram</value>
+  </data>
+  <data name="DiagramStyleDiagramLayoutGroupLabel" xml:space="preserve">
+    <value>Diagram Layout</value>
+  </data>
+  <data name="DiagramStyleDiagramMarksGroupLabel" xml:space="preserve">
+    <value>Marks</value>
+  </data>
+  <data name="DiagramStyleNewDiagramGroupLabel" xml:space="preserve">
+    <value>New Diagrams</value>
+  </data>
+  <data name="DiagramStyleNewDiagramNumFretsLabel" xml:space="preserve">
+    <value># of Frets</value>
+  </data>
+  <data name="DiagramStyleNewDiagramNumFretsToolTip" xml:space="preserve">
+    <value>The default number of frets for new diagrams.</value>
+  </data>
+  <data name="DiagramStyleNewDiagramNumStringsLabel" xml:space="preserve">
+    <value># of Strings</value>
+  </data>
+  <data name="DiagramStyleNewDiagramNumStringsToolTip" xml:space="preserve">
+    <value>The default number of strings for new diagrams.</value>
+  </data>
+  <data name="DiagramStyleTitleColorLabel" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="DiagramStyleTitleColorToolTip" xml:space="preserve">
+    <value>The color of the title.</value>
+  </data>
+  <data name="DiagramStyleTitleFontFamilyLabel" xml:space="preserve">
+    <value>Family</value>
+  </data>
+  <data name="DiagramStyleTitleFontFamilyToolTip" xml:space="preserve">
+    <value>The font to use for the title.</value>
+  </data>
+  <data name="DiagramStyleTitleFontGroupLabel" xml:space="preserve">
+    <value>Title Font</value>
+  </data>
+  <data name="DiagramStyleTitleGridPaddingLabel" xml:space="preserve">
+    <value>Grid Padding (px)</value>
+  </data>
+  <data name="DiagramStyleTitleGridPaddingToolTip" xml:space="preserve">
+    <value>How much space to put between the title and the grid.</value>
+  </data>
+  <data name="DiagramStyleTitleGroupLabel" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="DiagramStyleTitleLabelStyleLabel" xml:space="preserve">
+    <value>Label Style</value>
+  </data>
+  <data name="DiagramStyleTitleLabelStyleToolTip" xml:space="preserve">
+    <value>Whether or not to show the title with modifiers of a different size.</value>
+  </data>
+  <data name="DiagramStyleTitleLayoutGroupLabel" xml:space="preserve">
+    <value>Title Layout</value>
+  </data>
+  <data name="DiagramStyleTitleOpacityLabel" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="DiagramStyleTitleOpacityToolTip" xml:space="preserve">
+    <value>The opacity of the title.</value>
+  </data>
+  <data name="DiagramStyleTitleTextAlignmentLabel" xml:space="preserve">
+    <value>Alignment</value>
+  </data>
+  <data name="DiagramStyleTitleTextAlignmentToolTip" xml:space="preserve">
+    <value>The horizontal alignment of the title.</value>
+  </data>
+  <data name="DiagramStyleTitleTextLabel" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="DiagramStyleTitleTextSizeLabel" xml:space="preserve">
+    <value>Size (pt)</value>
+  </data>
+  <data name="DiagramStyleTitleTextSizeModRatioLabel" xml:space="preserve">
+    <value>Modifier Ratio</value>
+  </data>
+  <data name="DiagramStyleTitleTextSizeModRatioToolTip" xml:space="preserve">
+    <value>The ratio of the modifier portion of the title.</value>
+  </data>
+  <data name="DiagramStyleTitleTextSizeToolTip" xml:space="preserve">
+    <value>The size of the title text in points.</value>
+  </data>
+  <data name="DiagramStyleTitleTextStyleLabel" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="DiagramStyleTitleTextStyleToolTip" xml:space="preserve">
+    <value>Whether to bold and/or italicize the title.</value>
+  </data>
+  <data name="DiagramStyleTitleTextToolTip" xml:space="preserve">
+    <value>The text of the title.</value>
+  </data>
+  <data name="DiagramStyleTitleVisibleLabel" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="DiagramStyleTitleVisibleToolTip" xml:space="preserve">
+    <value>Show the title of the diagram.</value>
   </data>
 </root>

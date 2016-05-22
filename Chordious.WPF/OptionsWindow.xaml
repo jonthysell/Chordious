@@ -37,17 +37,8 @@
             <TabItem Header="Styles">
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
                     <StackPanel>
-                        <GroupBox Header="New Diagrams" Margin="5">
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Width="110" Margin="5" Content="# of Frets"/>
-                                    <TextBox Width="100" Margin="5" Text="{Binding NewDiagramNumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Width="110" Margin="5" Content="# of Strings"/>
-                                    <TextBox Width="100" Margin="5" Text="{Binding NewDiagramNumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="2" MaxLines="1" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
-                                </StackPanel>
-                            </StackPanel>
+                        <GroupBox Header="Basic" Margin="5">
+                            <Button Content="User Style Editor" Margin="5" Command="{Binding ShowStyleEditor, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
                         </GroupBox>
                         <GroupBox Header="Advanced" Margin="5">
                             <StackPanel>

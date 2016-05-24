@@ -59,50 +59,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        #region Dimensions
-
-        public string DimensionsGroupLabel
-        {
-            get
-            {
-                return Strings.DiagramEditorDimensionsGroupLabel;
-            }
-        }
-
-        public string WidthLabel
-        {
-            get
-            {
-                return Strings.DiagramEditorWidthLabel;
-            }
-        }
-
-        public string WidthToolTip
-        {
-            get
-            {
-                return Strings.DiagramEditorWidthToolTip;
-            }
-        }
-
-        public string HeightLabel
-        {
-            get
-            {
-                return Strings.DiagramEditorHeightLabel;
-            }
-        }
-
-        public string HeightToolTip
-        {
-            get
-            {
-                return Strings.DiagramEditorHeightToolTip;
-            }
-        }
-
-        #endregion
-
         public RelayCommand Apply
         {
             get

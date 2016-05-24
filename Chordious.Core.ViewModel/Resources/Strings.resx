@@ -498,7 +498,7 @@
   <data name="DiagramLibraryEditNodeStyleToolTip" xml:space="preserve">
     <value>Edit the base style of the selected collection.</value>
   </data>
-  <data name="DiagrmLibrarySelectNodeFirstMessage" xml:space="preserve">
+  <data name="DiagramLibrarySelectNodeFirstMessage" xml:space="preserve">
     <value>Select a collection first and try again.</value>
   </data>
   <data name="EditStyleLabel" xml:space="preserve">
@@ -576,22 +576,22 @@
   <data name="DiagramStyleLabelLayoutModelToolTip" xml:space="preserve">
     <value>How the labels and padding interact with one another.</value>
   </data>
-  <data name="DiagramEditorDimensionsGroupLabel" xml:space="preserve">
+  <data name="DiagramDimensionsGroupLabel" xml:space="preserve">
     <value>Dimensions</value>
   </data>
-  <data name="DiagramEditorHeightLabel" xml:space="preserve">
+  <data name="DiagramTotalHeightLabel" xml:space="preserve">
     <value>Height (px)</value>
   </data>
-  <data name="DiagramEditorHeightToolTip" xml:space="preserve">
+  <data name="DiagramTotalHeightToolTip" xml:space="preserve">
     <value>The height of the diagram in pixels.</value>
   </data>
   <data name="DiagramEditorTitle" xml:space="preserve">
     <value>Diagram Editor</value>
   </data>
-  <data name="DiagramEditorWidthLabel" xml:space="preserve">
+  <data name="DiagramTotalWidthLabel" xml:space="preserve">
     <value>Width (px)</value>
   </data>
-  <data name="DiagramEditorWidthToolTip" xml:space="preserve">
+  <data name="DiagramTotalWidthToolTip" xml:space="preserve">
     <value>The width of the diagram in pixels.</value>
   </data>
   <data name="DiagramStyleDiagramBackgroundGroupLabel" xml:space="preserve">
@@ -606,7 +606,7 @@
   <data name="DiagramStyleDiagramFretLabelsGroupLabel" xml:space="preserve">
     <value>Fret Labels</value>
   </data>
-  <data name="DiagramStyleDiagramGridGroupLabel" xml:space="preserve">
+  <data name="DiagramStyleGridGroupLabel" xml:space="preserve">
     <value>Grid</value>
   </data>
   <data name="DiagramStyleDiagramGroupLabel" xml:space="preserve">
@@ -707,5 +707,110 @@
   </data>
   <data name="DiagramStyleTitleVisibleToolTip" xml:space="preserve">
     <value>Show the title of the diagram.</value>
+  </data>
+  <data name="DiagramNumFretsLabel" xml:space="preserve">
+    <value># of Frets</value>
+  </data>
+  <data name="DiagramNumFretsToolTip" xml:space="preserve">
+    <value>The number of frets.</value>
+  </data>
+  <data name="DiagramNumStringsLabel" xml:space="preserve">
+    <value># of Strings</value>
+  </data>
+  <data name="DiagramNumStringsToolTip" xml:space="preserve">
+    <value>The number of strings.</value>
+  </data>
+  <data name="DiagramStyleGridBackgroundGroupLabel" xml:space="preserve">
+    <value>Grid Background</value>
+  </data>
+  <data name="DiagramStyleGridColorLabel" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="DiagramStyleGridColorToolTip" xml:space="preserve">
+    <value>The grid's background color.</value>
+  </data>
+  <data name="DiagramStyleGridFretSpacingLabel" xml:space="preserve">
+    <value>Fret Spacing (px)</value>
+  </data>
+  <data name="DiagramStyleGridFretSpacingToolTip" xml:space="preserve">
+    <value>The spacing, in pixels, between the fret lines.</value>
+  </data>
+  <data name="DiagramStyleGridLineColorLabel" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="DiagramStyleGridLineColorToolTip" xml:space="preserve">
+    <value>The color of the grid lines.</value>
+  </data>
+  <data name="DiagramStyleGridLineGroupLabel" xml:space="preserve">
+    <value>Grid Lines</value>
+  </data>
+  <data name="DiagramStyleGridLineThicknessLabel" xml:space="preserve">
+    <value>Width (px)</value>
+  </data>
+  <data name="DiagramStyleGridLineThicknessToolTip" xml:space="preserve">
+    <value>The width of the grid lines.</value>
+  </data>
+  <data name="DiagramStyleGridMarginBottomLabel" xml:space="preserve">
+    <value>Bottom (px)</value>
+  </data>
+  <data name="DiagramStyleGridMarginBottomToolTip" xml:space="preserve">
+    <value>The margin between the bottom edge of the grid and the bottom edge of the diagram.</value>
+  </data>
+  <data name="DiagramStyleGridMarginGroupLabel" xml:space="preserve">
+    <value>Grid Margins</value>
+  </data>
+  <data name="DiagramStyleGridMarginLabel" xml:space="preserve">
+    <value>Base (px)</value>
+  </data>
+  <data name="DiagramStyleGridMarginLeftLabel" xml:space="preserve">
+    <value>Left (px)</value>
+  </data>
+  <data name="DiagramStyleGridMarginLeftToolTip" xml:space="preserve">
+    <value>The margin between the left edge of the grid and the left edge of the diagram.</value>
+  </data>
+  <data name="DiagramStyleGridMarginRightLabel" xml:space="preserve">
+    <value>Right (px)</value>
+  </data>
+  <data name="DiagramStyleGridMarginRightToolTip" xml:space="preserve">
+    <value>The margin between the right edge of the grid and the right edge of the diagram.</value>
+  </data>
+  <data name="DiagramStyleGridMarginToolTip" xml:space="preserve">
+    <value>The margin between the edges of the grid and the edges of the diagram.</value>
+  </data>
+  <data name="DiagramStyleGridMarginTopLabel" xml:space="preserve">
+    <value>Top (px)</value>
+  </data>
+  <data name="DiagramStyleGridMarginTopToolTip" xml:space="preserve">
+    <value>The margin between the top edge of the grid and the top edge of the diagram.</value>
+  </data>
+  <data name="DiagramStyleGridNutGroupLabel" xml:space="preserve">
+    <value>Grid Nut</value>
+  </data>
+  <data name="DiagramStyleGridNutRatioLabel" xml:space="preserve">
+    <value>Ratio</value>
+  </data>
+  <data name="DiagramStyleGridNutRatioToolTip" xml:space="preserve">
+    <value>The ratio of how thick the nut is relative to a normal grid line.</value>
+  </data>
+  <data name="DiagramStyleGridNutVisibleLabel" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="DiagramStyleGridNutVisibleToolTip" xml:space="preserve">
+    <value>Show the nut at the top of the grid.</value>
+  </data>
+  <data name="DiagramStyleGridOpacityLabel" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="DiagramStyleGridOpacityToolTip" xml:space="preserve">
+    <value>The opacity of the grid's background color.</value>
+  </data>
+  <data name="DiagramStyleGridSpacingGroupLabel" xml:space="preserve">
+    <value>Grid Spacings</value>
+  </data>
+  <data name="DiagramStyleGridStringSpacingLabel" xml:space="preserve">
+    <value>String Spacing (px)</value>
+  </data>
+  <data name="DiagramStyleGridStringSpacingToolTip" xml:space="preserve">
+    <value>The spacing, in pixels, between the string lines.</value>
   </data>
 </root>

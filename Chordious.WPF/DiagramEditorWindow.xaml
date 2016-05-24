@@ -17,112 +17,98 @@
         </Grid.RowDefinitions>
         <ScrollViewer Grid.Column="0" Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <GroupBox Margin="5" Header="{Binding DimensionsGroupLabel, FallbackValue=Dimensions}">
+                <GroupBox Margin="5" Header="{Binding ObservableDiagram.DimensionsGroupLabel, FallbackValue=Dimensions}">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Width="120" Height="25" Margin="5" Content="{Binding WidthLabel, FallbackValue=Width (px)}" ToolTip="{Binding WidthToolTip}" />
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding ObservableDiagram.TotalWidth, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding WidthToolTip}" IsReadOnly="True" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <Label Width="120" Height="25" Margin="5" Content="{Binding ObservableDiagram.TotalWidthLabel, FallbackValue=Width (px)}" ToolTip="{Binding ObservableDiagram.TotalWidthToolTip}" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding ObservableDiagram.TotalWidth, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ObservableDiagram.TotalWidthToolTip}" IsReadOnly="True" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Width="120" Height="25" Margin="5" Content="{Binding HeightLabel, FallbackValue=Height (px)}" ToolTip="{Binding HeightToolTip}" />
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding ObservableDiagram.TotalHeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding HeightToolTip}" IsReadOnly="True" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <Label Width="120" Height="25" Margin="5" Content="{Binding ObservableDiagram.TotalHeightLabel, FallbackValue=Height (px)}" ToolTip="{Binding ObservableDiagram.TotalHeightToolTip}" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding ObservableDiagram.TotalHeight, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ObservableDiagram.TotalHeightToolTip}" IsReadOnly="True" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="120" Height="25" Margin="5" Content="{Binding ObservableDiagram.NumFretsLabel, FallbackValue=# of Frets}" ToolTip="{Binding ObservableDiagram.NumFretsToolTip}" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding ObservableDiagram.NumFrets, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ObservableDiagram.NumFretsToolTip}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="120" Height="25" Margin="5" Content="{Binding ObservableDiagram.NumStringsLabel, FallbackValue=# of Strings}" ToolTip="{Binding ObservableDiagram.NumStringsToolTip}" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding ObservableDiagram.NumStrings, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ObservableDiagram.NumStringsToolTip}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Margin="5" Header="{Binding Style.DiagramLayoutGroupLabel, FallbackValue=Diagram Layout}">
+                <GroupBox Margin="5" Header="{Binding Style.GridSpacingGroupLabel, FallbackValue=Grid Spacings}">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.OrientationIsLocal}" Content="{Binding Style.SelectedOrientationLabel, FallbackValue=Orientation}" ToolTip="{Binding Style.SelectedOrientationToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                            <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.Orientations}" SelectedIndex="{Binding Style.SelectedOrientationIndex}" ToolTip="{Binding Style.SelectedOrientationToolTip}" IsEnabled="{Binding Style.OrientationIsLocal}" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}" />
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridFretSpacingIsLocal}" Content="{Binding Style.GridFretSpacingLabel, FallbackValue=Fret Spacing (px)}" ToolTip="{Binding Style.GridFretSpacingToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.GridFretSpacing, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.GridFretSpacingToolTip}" IsEnabled="{Binding Style.GridFretSpacingIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.LabelLayoutModelIsLocal}" Content="{Binding Style.SelectedLabelLayoutModelLabel, FallbackValue=Label Model}" ToolTip="{Binding Style.SelectedLabelLayoutModelToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                            <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.LabelLayoutModels}" SelectedIndex="{Binding Style.SelectedLabelLayoutModelIndex}" ToolTip="{Binding Style.SelectedLabelLayoutModelToolTip}" IsEnabled="{Binding Style.LabelLayoutModelIsLocal}" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}" />
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridStringSpacingIsLocal}" Content="{Binding Style.GridStringSpacingLabel, FallbackValue=String Spacing (px)}" ToolTip="{Binding Style.GridStringSpacingToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.GridStringSpacing, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.GridStringSpacingToolTip}" IsEnabled="{Binding Style.GridStringSpacingIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.GridGroupLabel, FallbackValue=Grid}" Margin="5">
-                    <StackPanel Margin="5">
+                <GroupBox Margin="5" Header="{Binding Style.GridMarginGroupLabel, FallbackValue=Grid Margins}">
+                    <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Margin="5" Width="110" Content="# of Frets"/>
-                            <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.NumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridMarginIsLocal}" Content="{Binding Style.GridMarginLabel, FallbackValue=Base (px)}" ToolTip="{Binding Style.GridMarginToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.GridMargin, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.GridMarginToolTip}" IsEnabled="{Binding Style.GridMarginIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Margin="5" Width="110" Content="# of Strings"/>
-                            <TextBox Margin="5" Width="65" Text="{Binding ObservableDiagram.NumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridMarginLeftIsLocal}" Content="{Binding Style.GridMarginLeftLabel, FallbackValue=Left (px)}" ToolTip="{Binding Style.GridMarginLeftToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.GridMarginLeft, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.GridMarginLeftToolTip}" IsEnabled="{Binding Style.GridMarginLeftIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Margin="5" Width="110" Content="Fret Spacing (px)"/>
-                            <TextBox Margin="5" Width="65" Text="{Binding Style.GridFretSpacing, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridMarginRightIsLocal}" Content="{Binding Style.GridMarginRightLabel, FallbackValue=Right (px)}" ToolTip="{Binding Style.GridMarginRightToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.GridMarginRight, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.GridMarginRightToolTip}" IsEnabled="{Binding Style.GridMarginRightIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Margin="5" Width="110" Content="String Spacing (px)"/>
-                            <TextBox Margin="5" Width="65" Text="{Binding Style.GridStringSpacing, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridMarginTopIsLocal}" Content="{Binding Style.GridMarginTopLabel, FallbackValue=Top (px)}" ToolTip="{Binding Style.GridMarginTopToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.GridMarginTop, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.GridMarginTopToolTip}" IsEnabled="{Binding Style.GridMarginTopIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
-                        <Expander Header="Margins" Margin="0,5,0,5" IsExpanded="True" BorderThickness="0">
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Margin="5" Width="110" Content="Base (px)"/>
-                                    <TextBox Margin="5" Width="65" Text="{Binding Style.GridMargin, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding Style.GridMarginLeftOverride}" VerticalAlignment="Center" />
-                                    <Label Margin="0,5,5,5" Width="90" Content="Left (px)" IsEnabled="{Binding Style.GridMarginLeftOverride}" />
-                                    <TextBox Margin="5" Width="65" Text="{Binding Style.GridMarginLeft, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding Style.GridMarginLeftOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding Style.GridMarginRightOverride}" VerticalAlignment="Center" />
-                                    <Label Margin="0,5,5,5" Width="90" Content="Right (px)" IsEnabled="{Binding Style.GridMarginRightOverride}" />
-                                    <TextBox Margin="5" Width="65" Text="{Binding Style.GridMarginRight, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding Style.GridMarginRightOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding Style.GridMarginTopOverride}" VerticalAlignment="Center" />
-                                    <Label Margin="0,5,5,5" Width="90" Content="Top (px)" IsEnabled="{Binding Style.GridMarginTopOverride}" />
-                                    <TextBox Margin="5" Width="65" Text="{Binding Style.GridMarginTop, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding Style.GridMarginTopOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding Style.GridMarginBottomOverride}" VerticalAlignment="Center" />
-                                    <Label Margin="0,5,5,5" Width="90" Content="Bottom (px)" IsEnabled="{Binding Style.GridMarginBottomOverride}" />
-                                    <TextBox Margin="5" Width="65" Text="{Binding Style.GridMarginBottom, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding Style.GridMarginBottomOverride}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridMarginBottomIsLocal}" Content="{Binding Style.GridMarginBottomLabel, FallbackValue=Bottom (px)}" ToolTip="{Binding Style.GridMarginBottomToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.GridMarginBottom, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.GridMarginBottomToolTip}" IsEnabled="{Binding Style.GridMarginBottomIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Margin="5" Header="{Binding Style.GridBackgroundGroupLabel, FallbackValue=Grid Background}">
+                    <StackPanel>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridColorIsLocal}" Content="{Binding Style.GridColorLabel, FallbackValue=Color}" ToolTip="{Binding Style.GridColorToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                                <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.Colors}" SelectedItem="{Binding Style.GridColor}" Text="{Binding Style.GridColor, UpdateSourceTrigger=LostFocus}" ToolTip="{Binding Style.GridColorToolTip}" IsEnabled="{Binding Style.GridColorIsLocal}" IsEditable="True" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                             </StackPanel>
-                        </Expander>
-                        <Expander Header="Background" Margin="0,5,0,5" IsExpanded="True" BorderThickness="0">
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Width="100" Margin="5" Content="Color"/>
-                                    <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding Style.Colors}" SelectedItem="{Binding Style.GridColor}" Text="{Binding Style.GridColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Width="110" Margin="5" Content="Opacity"/>
-                                    <TextBox Width="65" Margin="5" Text="{Binding Style.GridOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridOpacityIsLocal}" Content="{Binding Style.GridOpacityLabel, FallbackValue=Opacity}" ToolTip="{Binding Style.GridOpacityToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                                <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.GridOpacity, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.GridOpacityToolTip}" IsEnabled="{Binding Style.GridOpacityIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                             </StackPanel>
-                        </Expander>
-                        <Expander Header="Lines" Margin="0,5,0,5" IsExpanded="True" BorderThickness="0">
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Width="100" Margin="5" Content="Color"/>
-                                    <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding Style.Colors}" SelectedItem="{Binding Style.GridLineColor}" Text="{Binding Style.GridLineColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Margin="5" Width="110" Content="Width (px)"/>
-                                    <TextBox Margin="5" Width="65" Text="{Binding Style.GridLineThickness, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Expander>
-                        <Expander Header="Nut" Margin="0,5,0,5" IsExpanded="True" BorderThickness="0">
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Margin="5" Width="110" Content="Visible"/>
-                                    <CheckBox Width="65" Margin="5" IsChecked="{Binding Style.GridNutVisible}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Margin="5" Width="110" Content="Ratio"/>
-                                    <TextBox Margin="5" Width="65" Text="{Binding Style.GridNutRatio, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Expander>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Margin="5" Header="{Binding Style.GridLineGroupLabel, FallbackValue=Grid Lines}">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridLineColorIsLocal}" Content="{Binding Style.GridLineColorLabel, FallbackValue=Color}" ToolTip="{Binding Style.GridLineColorToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.Colors}" SelectedItem="{Binding Style.GridLineColor}" Text="{Binding Style.GridLineColor, UpdateSourceTrigger=LostFocus}" ToolTip="{Binding Style.GridLineColorToolTip}" IsEnabled="{Binding Style.GridLineColorIsLocal}" IsEditable="True" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridLineThicknessIsLocal}" Content="{Binding Style.GridLineThicknessLabel, FallbackValue=Width (px)}" ToolTip="{Binding Style.GridLineThicknessToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.GridLineThickness, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.GridLineThicknessToolTip}" IsEnabled="{Binding Style.GridLineThicknessIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Margin="5" Header="{Binding Style.GridNutGroupLabel, FallbackValue=Grid Nut}">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridNutVisibleIsLocal}" Content="{Binding Style.GridNutVisibleLabel, FallbackValue=Visible}" ToolTip="{Binding Style.GridNutVisibleToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <CheckBox Width="80" Height="25" Margin="5" IsChecked="{Binding Style.GridNutVisible}" IsEnabled="{Binding Style.GridNutVisibleIsLocal}" ToolTip="{Binding Style.GridNutVisibleToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" IsEnabled="{Binding Style.IsTitleTextSizeModRatioEnabled}">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridNutRatioIsLocal}" Content="{Binding Style.GridNutRatioLabel, FallbackValue=Ratio}" ToolTip="{Binding Style.GridNutRatioToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.GridNutRatio, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.GridNutRatioToolTip}" IsEnabled="{Binding Style.GridNutRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
@@ -184,7 +170,19 @@
             </Image>
         </ScrollViewer>
         <ScrollViewer Grid.Column="2" Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <StackPanel >
+            <StackPanel>
+                <GroupBox Margin="5" Header="{Binding Style.DiagramLayoutGroupLabel, FallbackValue=Diagram Layout}">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.OrientationIsLocal}" Content="{Binding Style.SelectedOrientationLabel, FallbackValue=Orientation}" ToolTip="{Binding Style.SelectedOrientationToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.Orientations}" SelectedIndex="{Binding Style.SelectedOrientationIndex}" ToolTip="{Binding Style.SelectedOrientationToolTip}" IsEnabled="{Binding Style.OrientationIsLocal}" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.LabelLayoutModelIsLocal}" Content="{Binding Style.SelectedLabelLayoutModelLabel, FallbackValue=Label Model}" ToolTip="{Binding Style.SelectedLabelLayoutModelToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.LabelLayoutModels}" SelectedIndex="{Binding Style.SelectedLabelLayoutModelIndex}" ToolTip="{Binding Style.SelectedLabelLayoutModelToolTip}" IsEnabled="{Binding Style.LabelLayoutModelIsLocal}" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}" />
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
                 <GroupBox Margin="5" Header="{Binding Style.DiagramBackgroundGroupLabel, FallbackValue=Diagram Background}">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -243,7 +241,7 @@
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.TitleLabelStyleIsLocal}" Content="{Binding Style.SelectedTitleLabelStyleLabel, FallbackValue=Label Style}" ToolTip="{Binding Style.SelectedTitleLabelStyleToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
                             <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.TitleLabelStyles}" SelectedIndex="{Binding Style.SelectedTitleLabelStyleIndex}" ToolTip="{Binding Style.SelectedTitleLabelStyleToolTip}" IsEnabled="{Binding Style.TitleLabelStyleIsLocal}" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}" />
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" IsEnabled="{Binding Style.IsTitleTextSizeModRatioEnabled}">
+                        <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.TitleTextSizeModRatioIsLocal}" Content="{Binding Style.TitleTextSizeModRatioLabel, FallbackValue=Modifier Ratio}" ToolTip="{Binding Style.TitleTextSizeModRatioToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
                             <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.TitleTextSizeModRatio, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.TitleTextSizeModRatioToolTip}" IsEnabled="{Binding Style.TitleTextSizeModRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>

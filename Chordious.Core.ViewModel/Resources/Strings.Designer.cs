@@ -388,27 +388,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Dimensions.
         /// </summary>
-        internal static string DiagramEditorDimensionsGroupLabel {
+        internal static string DiagramDimensionsGroupLabel {
             get {
-                return ResourceManager.GetString("DiagramEditorDimensionsGroupLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Height (px).
-        /// </summary>
-        internal static string DiagramEditorHeightLabel {
-            get {
-                return ResourceManager.GetString("DiagramEditorHeightLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The height of the diagram in pixels..
-        /// </summary>
-        internal static string DiagramEditorHeightToolTip {
-            get {
-                return ResourceManager.GetString("DiagramEditorHeightToolTip", resourceCulture);
+                return ResourceManager.GetString("DiagramDimensionsGroupLabel", resourceCulture);
             }
         }
         
@@ -418,24 +400,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramEditorTitle {
             get {
                 return ResourceManager.GetString("DiagramEditorTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Width (px).
-        /// </summary>
-        internal static string DiagramEditorWidthLabel {
-            get {
-                return ResourceManager.GetString("DiagramEditorWidthLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The width of the diagram in pixels..
-        /// </summary>
-        internal static string DiagramEditorWidthToolTip {
-            get {
-                return ResourceManager.GetString("DiagramEditorWidthToolTip", resourceCulture);
             }
         }
         
@@ -593,11 +557,56 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a collection first and try again..
+        /// </summary>
+        internal static string DiagramLibrarySelectNodeFirstMessage {
+            get {
+                return ResourceManager.GetString("DiagramLibrarySelectNodeFirstMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Diagram Library.
         /// </summary>
         internal static string DiagramLibraryTitle {
             get {
                 return ResourceManager.GetString("DiagramLibraryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # of Frets.
+        /// </summary>
+        internal static string DiagramNumFretsLabel {
+            get {
+                return ResourceManager.GetString("DiagramNumFretsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of frets..
+        /// </summary>
+        internal static string DiagramNumFretsToolTip {
+            get {
+                return ResourceManager.GetString("DiagramNumFretsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # of Strings.
+        /// </summary>
+        internal static string DiagramNumStringsLabel {
+            get {
+                return ResourceManager.GetString("DiagramNumStringsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of strings..
+        /// </summary>
+        internal static string DiagramNumStringsToolTip {
+            get {
+                return ResourceManager.GetString("DiagramNumStringsToolTip", resourceCulture);
             }
         }
         
@@ -692,15 +701,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grid.
-        /// </summary>
-        internal static string DiagramStyleDiagramGridGroupLabel {
-            get {
-                return ResourceManager.GetString("DiagramStyleDiagramGridGroupLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Diagram.
         /// </summary>
         internal static string DiagramStyleDiagramGroupLabel {
@@ -769,6 +769,294 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramStyleEditorTitle {
             get {
                 return ResourceManager.GetString("DiagramStyleEditorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Background.
+        /// </summary>
+        internal static string DiagramStyleGridBackgroundGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridBackgroundGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        internal static string DiagramStyleGridColorLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The grid&apos;s background color..
+        /// </summary>
+        internal static string DiagramStyleGridColorToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Spacing (px).
+        /// </summary>
+        internal static string DiagramStyleGridFretSpacingLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridFretSpacingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The spacing, in pixels, between the fret lines..
+        /// </summary>
+        internal static string DiagramStyleGridFretSpacingToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridFretSpacingToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid.
+        /// </summary>
+        internal static string DiagramStyleGridGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        internal static string DiagramStyleGridLineColorLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridLineColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The color of the grid lines..
+        /// </summary>
+        internal static string DiagramStyleGridLineColorToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridLineColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Lines.
+        /// </summary>
+        internal static string DiagramStyleGridLineGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridLineGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Width (px).
+        /// </summary>
+        internal static string DiagramStyleGridLineThicknessLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridLineThicknessLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The width of the grid lines..
+        /// </summary>
+        internal static string DiagramStyleGridLineThicknessToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridLineThicknessToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom (px).
+        /// </summary>
+        internal static string DiagramStyleGridMarginBottomLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridMarginBottomLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The margin between the bottom edge of the grid and the bottom edge of the diagram..
+        /// </summary>
+        internal static string DiagramStyleGridMarginBottomToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridMarginBottomToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Margins.
+        /// </summary>
+        internal static string DiagramStyleGridMarginGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridMarginGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Base (px).
+        /// </summary>
+        internal static string DiagramStyleGridMarginLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridMarginLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Left (px).
+        /// </summary>
+        internal static string DiagramStyleGridMarginLeftLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridMarginLeftLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The margin between the left edge of the grid and the left edge of the diagram..
+        /// </summary>
+        internal static string DiagramStyleGridMarginLeftToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridMarginLeftToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right (px).
+        /// </summary>
+        internal static string DiagramStyleGridMarginRightLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridMarginRightLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The margin between the right edge of the grid and the right edge of the diagram..
+        /// </summary>
+        internal static string DiagramStyleGridMarginRightToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridMarginRightToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The margin between the edges of the grid and the edges of the diagram..
+        /// </summary>
+        internal static string DiagramStyleGridMarginToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridMarginToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top (px).
+        /// </summary>
+        internal static string DiagramStyleGridMarginTopLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridMarginTopLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The margin between the top edge of the grid and the top edge of the diagram..
+        /// </summary>
+        internal static string DiagramStyleGridMarginTopToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridMarginTopToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Nut.
+        /// </summary>
+        internal static string DiagramStyleGridNutGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridNutGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ratio.
+        /// </summary>
+        internal static string DiagramStyleGridNutRatioLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridNutRatioLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ratio of how thick the nut is relative to a normal grid line..
+        /// </summary>
+        internal static string DiagramStyleGridNutRatioToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridNutRatioToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visible.
+        /// </summary>
+        internal static string DiagramStyleGridNutVisibleLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridNutVisibleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show the nut at the top of the grid..
+        /// </summary>
+        internal static string DiagramStyleGridNutVisibleToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridNutVisibleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opacity.
+        /// </summary>
+        internal static string DiagramStyleGridOpacityLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridOpacityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The opacity of the grid&apos;s background color..
+        /// </summary>
+        internal static string DiagramStyleGridOpacityToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridOpacityToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Spacings.
+        /// </summary>
+        internal static string DiagramStyleGridSpacingGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridSpacingGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String Spacing (px).
+        /// </summary>
+        internal static string DiagramStyleGridStringSpacingLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridStringSpacingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The spacing, in pixels, between the string lines..
+        /// </summary>
+        internal static string DiagramStyleGridStringSpacingToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleGridStringSpacingToolTip", resourceCulture);
             }
         }
         
@@ -1097,11 +1385,38 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select a collection first and try again..
+        ///   Looks up a localized string similar to Height (px).
         /// </summary>
-        internal static string DiagrmLibrarySelectNodeFirstMessage {
+        internal static string DiagramTotalHeightLabel {
             get {
-                return ResourceManager.GetString("DiagrmLibrarySelectNodeFirstMessage", resourceCulture);
+                return ResourceManager.GetString("DiagramTotalHeightLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The height of the diagram in pixels..
+        /// </summary>
+        internal static string DiagramTotalHeightToolTip {
+            get {
+                return ResourceManager.GetString("DiagramTotalHeightToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Width (px).
+        /// </summary>
+        internal static string DiagramTotalWidthLabel {
+            get {
+                return ResourceManager.GetString("DiagramTotalWidthLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The width of the diagram in pixels..
+        /// </summary>
+        internal static string DiagramTotalWidthToolTip {
+            get {
+                return ResourceManager.GetString("DiagramTotalWidthToolTip", resourceCulture);
             }
         }
         

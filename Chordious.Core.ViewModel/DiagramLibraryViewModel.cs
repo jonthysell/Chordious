@@ -376,7 +376,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.DiagrmLibrarySelectNodeFirstMessage));
+                        Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.DiagramLibrarySelectNodeFirstMessage));
                     }
                     catch (Exception ex)
                     {

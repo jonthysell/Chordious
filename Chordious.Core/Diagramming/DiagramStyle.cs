@@ -323,7 +323,7 @@ namespace com.jonthysell.Chordious.Core
             }
             set
             {
-                IsLocalSet("grid.marginleft", value);
+                IsLocalSet("grid.marginleft", value, GridMargin);
             }
         }
 
@@ -377,7 +377,7 @@ namespace com.jonthysell.Chordious.Core
             }
             set
             {
-                IsLocalSet("grid.marginright", value);
+                IsLocalSet("grid.marginright", value, GridMargin);
             }
         }
 
@@ -431,7 +431,7 @@ namespace com.jonthysell.Chordious.Core
             }
             set
             {
-                IsLocalSet("grid.margintop", value);
+                IsLocalSet("grid.margintop", value, GridMargin);
             }
         }
 
@@ -485,7 +485,7 @@ namespace com.jonthysell.Chordious.Core
             }
             set
             {
-                IsLocalSet("grid.marginbottom", value);
+                IsLocalSet("grid.marginbottom", value, GridMargin);
             }
         }
 

@@ -627,7 +627,52 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.DiagramStyleDiagramGridGroupLabel;
+                return Strings.DiagramStyleGridGroupLabel;
+            }
+        }
+
+        public string GridMarginGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridMarginGroupLabel;
+            }
+        }
+
+        public bool GridMarginIsLocal
+        {
+            get
+            {
+                return Style.GridMarginIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.GridMarginIsLocal = value;
+                    RaisePropertyChanged("GridMarginIsLocal");
+                    RaisePropertyChanged("GridMargin");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string GridMarginLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridMarginLabel;
+            }
+        }
+
+        public string GridMarginToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleGridMarginToolTip;
             }
         }
 
@@ -651,24 +696,40 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public bool GridMarginLeftOverride
+        public bool GridMarginLeftIsLocal
         {
             get
             {
-                return Style.GridMarginLeftOverride;
+                return Style.GridMarginLeftIsLocal;
             }
             set
             {
                 try
                 {
-                    Style.GridMarginLeftOverride = value;
-                    RaisePropertyChanged("GridMarginLeftOverride");
+                    Style.GridMarginLeftIsLocal = value;
+                    RaisePropertyChanged("GridMarginLeftIsLocal");
                     RaisePropertyChanged("GridMarginLeft");
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        public string GridMarginLeftLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridMarginLeftLabel;
+            }
+        }
+
+        public string GridMarginLeftToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleGridMarginLeftToolTip;
             }
         }
 
@@ -692,24 +753,40 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public bool GridMarginRightOverride
+        public bool GridMarginRightIsLocal
         {
             get
             {
-                return Style.GridMarginRightOverride;
+                return Style.GridMarginRightIsLocal;
             }
             set
             {
                 try
                 {
-                    Style.GridMarginRightOverride = value;
-                    RaisePropertyChanged("GridMarginRightOverride");
+                    Style.GridMarginRightIsLocal = value;
+                    RaisePropertyChanged("GridMarginRightIsLocal");
                     RaisePropertyChanged("GridMarginRight");
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        public string GridMarginRightLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridMarginRightLabel;
+            }
+        }
+
+        public string GridMarginRightToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleGridMarginRightToolTip;
             }
         }
 
@@ -733,24 +810,40 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public bool GridMarginTopOverride
+        public bool GridMarginTopIsLocal
         {
             get
             {
-                return Style.GridMarginTopOverride;
+                return Style.GridMarginTopIsLocal;
             }
             set
             {
                 try
                 {
-                    Style.GridMarginTopOverride = value;
-                    RaisePropertyChanged("GridMarginTopOverride");
+                    Style.GridMarginTopIsLocal = value;
+                    RaisePropertyChanged("GridMarginTopIsLocal");
                     RaisePropertyChanged("GridMarginTop");
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        public string GridMarginTopLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridMarginTopLabel;
+            }
+        }
+
+        public string GridMarginTopToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleGridMarginTopToolTip;
             }
         }
 
@@ -774,24 +867,40 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public bool GridMarginBottomOverride
+        public bool GridMarginBottomIsLocal
         {
             get
             {
-                return Style.GridMarginBottomOverride;
+                return Style.GridMarginBottomIsLocal;
             }
             set
             {
                 try
                 {
-                    Style.GridMarginBottomOverride = value;
-                    RaisePropertyChanged("GridMarginBottomOverride");
+                    Style.GridMarginBottomIsLocal = value;
+                    RaisePropertyChanged("GridMarginBottomIsLocal");
                     RaisePropertyChanged("GridMarginBottom");
                 }
                 catch (Exception ex)
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        public string GridMarginBottomLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridMarginBottomLabel;
+            }
+        }
+
+        public string GridMarginBottomToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleGridMarginBottomToolTip;
             }
         }
 
@@ -815,6 +924,51 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string GridSpacingGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridSpacingGroupLabel;
+            }
+        }
+
+        public bool GridFretSpacingIsLocal
+        {
+            get
+            {
+                return Style.GridFretSpacingIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.GridFretSpacingIsLocal = value;
+                    RaisePropertyChanged("GridFretSpacingIsLocal");
+                    RaisePropertyChanged("GridFretSpacing");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string GridFretSpacingLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridFretSpacingLabel;
+            }
+        }
+
+        public string GridFretSpacingToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleGridFretSpacingToolTip;
+            }
+        }
+
         public double GridFretSpacing
         {
             get
@@ -835,6 +989,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public bool GridStringSpacingIsLocal
+        {
+            get
+            {
+                return Style.GridStringSpacingIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.GridStringSpacingIsLocal = value;
+                    RaisePropertyChanged("GridStringSpacingIsLocal");
+                    RaisePropertyChanged("GridStringSpacing");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string GridStringSpacingLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridStringSpacingLabel;
+            }
+        }
+
+        public string GridStringSpacingToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleGridStringSpacingToolTip;
+            }
+        }
+
         public double GridStringSpacing
         {
             get
@@ -852,6 +1043,51 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        public string GridBackgroundGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridBackgroundGroupLabel;
+            }
+        }
+
+        public bool GridColorIsLocal
+        {
+            get
+            {
+                return Style.GridColorIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.GridColorIsLocal = value;
+                    RaisePropertyChanged("GridColorIsLocal");
+                    RaisePropertyChanged("GridColor");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string GridColorLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridColorLabel;
+            }
+        }
+
+        public string GridColorToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleGridColorToolTip;
             }
         }
 
@@ -879,6 +1115,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public bool GridOpacityIsLocal
+        {
+            get
+            {
+                return Style.GridOpacityIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.GridOpacityIsLocal = value;
+                    RaisePropertyChanged("GridOpacityIsLocal");
+                    RaisePropertyChanged("GridOpacity");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string GridOpacityLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridOpacityLabel;
+            }
+        }
+
+        public string GridOpacityToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleGridOpacityToolTip;
+            }
+        }
+
         public double GridOpacity
         {
             get
@@ -896,6 +1169,51 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        public string GridLineGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridLineGroupLabel;
+            }
+        }
+
+        public bool GridLineColorIsLocal
+        {
+            get
+            {
+                return Style.GridLineColorIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.GridLineColorIsLocal = value;
+                    RaisePropertyChanged("GridLineColorIsLocal");
+                    RaisePropertyChanged("GridLineColor");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string GridLineColorLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridLineColorLabel;
+            }
+        }
+
+        public string GridLineColorToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleGridLineColorToolTip;
             }
         }
 
@@ -923,6 +1241,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public bool GridLineThicknessIsLocal
+        {
+            get
+            {
+                return Style.GridLineThicknessIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.GridLineColorIsLocal = value;
+                    RaisePropertyChanged("GridLineThicknessIsLocal");
+                    RaisePropertyChanged("GridLineThickness");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string GridLineThicknessLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridLineThicknessLabel;
+            }
+        }
+
+        public string GridLineThicknessToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleGridLineThicknessToolTip;
+            }
+        }
+
         public double GridLineThickness
         {
             get
@@ -943,6 +1298,51 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string GridNutGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridNutGroupLabel;
+            }
+        }
+
+        public bool GridNutVisibleIsLocal
+        {
+            get
+            {
+                return Style.GridNutVisibleIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.GridNutVisibleIsLocal = value;
+                    RaisePropertyChanged("GridNutVisibleIsLocal");
+                    RaisePropertyChanged("GridNutVisible");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string GridNutVisibleLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridNutVisibleLabel;
+            }
+        }
+
+        public string GridNutVisibleToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleGridNutVisibleToolTip;
+            }
+        }
+
         public bool GridNutVisible
         {
             get
@@ -960,6 +1360,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        public bool GridNutRatioIsLocal
+        {
+            get
+            {
+                return Style.GridNutRatioIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.GridNutRatioIsLocal = value;
+                    RaisePropertyChanged("GridNutRatioIsLocal");
+                    RaisePropertyChanged("GridNutRatio");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string GridNutRatioLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleGridNutRatioLabel;
+            }
+        }
+
+        public string GridNutRatioToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleGridNutRatioToolTip;
             }
         }
 
@@ -1311,14 +1748,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-            }
-        }
-
-        public bool IsTitleTextSizeModRatioEnabled
-        {
-            get
-            {
-                return (DiagramLabelStyle)SelectedTitleLabelStyleIndex == DiagramLabelStyle.ChordName;
             }
         }
 

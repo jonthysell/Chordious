@@ -35,6 +35,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ObservableDiagram : ObservableObject
@@ -63,11 +65,51 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region Dimensions
 
+        public string DimensionsGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramDimensionsGroupLabel;
+            }
+        }
+
+        public string TotalWidthLabel
+        {
+            get
+            {
+                return Strings.DiagramTotalWidthLabel;
+            }
+        }
+
+        public string TotalWidthToolTip
+        {
+            get
+            {
+                return Strings.DiagramTotalWidthToolTip;
+            }
+        }
+
         public int TotalWidth
         {
             get
             {
                 return (int)(Diagram.TotalWidth() + 0.5);
+            }
+        }
+
+        public string TotalHeightLabel
+        {
+            get
+            {
+                return Strings.DiagramTotalHeightLabel;
+            }
+        }
+
+        public string TotalHeightToolTip
+        {
+            get
+            {
+                return Strings.DiagramTotalHeightToolTip;
             }
         }
 
@@ -79,9 +121,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        #endregion
+        public string NumFretsLabel
+        {
+            get
+            {
+                return Strings.DiagramNumFretsLabel;
+            }
+        }
 
-        #region Grid
+        public string NumFretsToolTip
+        {
+            get
+            {
+                return Strings.DiagramNumFretsToolTip;
+            }
+        }
 
         public int NumFrets
         {
@@ -101,6 +155,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        public string NumStringsLabel
+        {
+            get
+            {
+                return Strings.DiagramNumStringsLabel;
+            }
+        }
+
+        public string NumStringsToolTip
+        {
+            get
+            {
+                return Strings.DiagramNumStringsToolTip;
             }
         }
 

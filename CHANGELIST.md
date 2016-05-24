@@ -1,5 +1,11 @@
 # Chordious Changelist #
 
+## 1.9.16145.449 ##
+* Added the new Diagram Style Editor with fully localized strings
+* Updated the Diagram Editor to use the same setup of options as the Diagram Style Editor
+* Added more tooltips to the Finders
+* Localized update prompts and other strings
+
 ## 1.9.16121.2216 ##
 * Updated config import/export to use resource strings
 * Refactored DiagramStyle to support code re-use

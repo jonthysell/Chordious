@@ -81,7 +81,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.SelectedInstrumentLabel;
+                return Strings.FinderSelectedInstrumentLabel;
             }
         }
 
@@ -89,7 +89,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.SelectedInstrumentToolTip;
+                return Strings.FinderSelectedInstrumentToolTip;
             }
         }
 
@@ -150,7 +150,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.SelectedTuningLabel;
+                return Strings.FinderSelectedTuningLabel;
             }
         }
 
@@ -158,7 +158,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.SelectedTuningToolTip;
+                return Strings.FinderSelectedTuningToolTip;
             }
         }
 
@@ -250,7 +250,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.SelectedRootNoteLabel;
+                return Strings.FinderSelectedRootNoteLabel;
             }
         }
 
@@ -258,7 +258,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.SelectedRootNoteToolTip;
+                return Strings.FinderSelectedRootNoteToolTip;
             }
         }
 
@@ -301,7 +301,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.SelectedChordQualityLabel;
+                return Strings.ChordFinderOptionsSelectedChordQualityLabel;
             }
         }
 
@@ -309,7 +309,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.SelectedChordQualityToolTip;
+                return Strings.ChordFinderOptionsSelectedChordQualityToolTip;
             }
         }
 

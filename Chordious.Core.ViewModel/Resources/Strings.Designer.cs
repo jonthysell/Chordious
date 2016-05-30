@@ -188,6 +188,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quality.
+        /// </summary>
+        internal static string ChordFinderOptionsSelectedChordQualityLabel {
+            get {
+                return ResourceManager.GetString("ChordFinderOptionsSelectedChordQualityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The chord quality you want to use..
+        /// </summary>
+        internal static string ChordFinderOptionsSelectedChordQualityToolTip {
+            get {
+                return ResourceManager.GetString("ChordFinderOptionsSelectedChordQualityToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chord Finder.
         /// </summary>
         internal static string ChordFinderTitle {
@@ -202,6 +220,87 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ChordiousMessageTitle {
             get {
                 return ResourceManager.GetString("ChordiousMessageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new chord quality..
+        /// </summary>
+        internal static string ChordQualityManagerAddNamedIntervalToolTip {
+            get {
+                return ResourceManager.GetString("ChordQualityManagerAddNamedIntervalToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Qualities.
+        /// </summary>
+        internal static string ChordQualityManagerDefaultNamedIntervalGroupLabel {
+            get {
+                return ResourceManager.GetString("ChordQualityManagerDefaultNamedIntervalGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Built-in chord qualities..
+        /// </summary>
+        internal static string ChordQualityManagerDefaultNamedIntervalGroupToolTip {
+            get {
+                return ResourceManager.GetString("ChordQualityManagerDefaultNamedIntervalGroupToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will delete the chord quality &quot;{0}&quot;. This cannot be undone. Do you want to continue?.
+        /// </summary>
+        internal static string ChordQualityManagerDeleteNamedIntervalPromptFormat {
+            get {
+                return ResourceManager.GetString("ChordQualityManagerDeleteNamedIntervalPromptFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete the selected chord quality..
+        /// </summary>
+        internal static string ChordQualityManagerDeleteNamedIntervalToolTip {
+            get {
+                return ResourceManager.GetString("ChordQualityManagerDeleteNamedIntervalToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the selected chord quality..
+        /// </summary>
+        internal static string ChordQualityManagerEditNamedIntervalToolTip {
+            get {
+                return ResourceManager.GetString("ChordQualityManagerEditNamedIntervalToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chord Quality Manager.
+        /// </summary>
+        internal static string ChordQualityManagerTitle {
+            get {
+                return ResourceManager.GetString("ChordQualityManagerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Qualities.
+        /// </summary>
+        internal static string ChordQualityManagerUserNamedIntervalGroupLabel {
+            get {
+                return ResourceManager.GetString("ChordQualityManagerUserNamedIntervalGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User created chord qualities..
+        /// </summary>
+        internal static string ChordQualityManagerUserNamedIntervalGroupToolTip {
+            get {
+                return ResourceManager.GetString("ChordQualityManagerUserNamedIntervalGroupToolTip", resourceCulture);
             }
         }
         
@@ -1691,6 +1790,60 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Instrument.
+        /// </summary>
+        internal static string FinderSelectedInstrumentLabel {
+            get {
+                return ResourceManager.GetString("FinderSelectedInstrumentLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The instrument you want to use..
+        /// </summary>
+        internal static string FinderSelectedInstrumentToolTip {
+            get {
+                return ResourceManager.GetString("FinderSelectedInstrumentToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Note.
+        /// </summary>
+        internal static string FinderSelectedRootNoteLabel {
+            get {
+                return ResourceManager.GetString("FinderSelectedRootNoteLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The root note you want to use..
+        /// </summary>
+        internal static string FinderSelectedRootNoteToolTip {
+            get {
+                return ResourceManager.GetString("FinderSelectedRootNoteToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tuning.
+        /// </summary>
+        internal static string FinderSelectedTuningLabel {
+            get {
+                return ResourceManager.GetString("FinderSelectedTuningLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The tuning you want to use..
+        /// </summary>
+        internal static string FinderSelectedTuningToolTip {
+            get {
+                return ResourceManager.GetString("FinderSelectedTuningToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Include.
         /// </summary>
         internal static string IncludeLabel {
@@ -1723,6 +1876,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string LicenseTitle {
             get {
                 return ResourceManager.GetString("LicenseTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete &quot;{0}&quot;....
+        /// </summary>
+        internal static string NamedIntervalManagerDeleteNamedIntervalLabelFormat {
+            get {
+                return ResourceManager.GetString("NamedIntervalManagerDeleteNamedIntervalLabelFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit &quot;{0}&quot;....
+        /// </summary>
+        internal static string NamedIntervalManagerEditNamedIntervalLabelFormat {
+            get {
+                return ResourceManager.GetString("NamedIntervalManagerEditNamedIntervalLabelFormat", resourceCulture);
             }
         }
         
@@ -1853,6 +2024,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scale.
+        /// </summary>
+        internal static string ScaleFinderOptionsSelectedScaleLabel {
+            get {
+                return ResourceManager.GetString("ScaleFinderOptionsSelectedScaleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The scale you want to use..
+        /// </summary>
+        internal static string ScaleFinderOptionsSelectedScaleToolTip {
+            get {
+                return ResourceManager.GetString("ScaleFinderOptionsSelectedScaleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scale Finder.
         /// </summary>
         internal static string ScaleFinderTitle {
@@ -1862,38 +2051,83 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quality.
+        ///   Looks up a localized string similar to Create a new scale..
         /// </summary>
-        internal static string SelectedChordQualityLabel {
+        internal static string ScaleManagerAddNamedIntervalToolTip {
             get {
-                return ResourceManager.GetString("SelectedChordQualityLabel", resourceCulture);
+                return ResourceManager.GetString("ScaleManagerAddNamedIntervalToolTip", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The chord quality you want to use..
+        ///   Looks up a localized string similar to Default Scales.
         /// </summary>
-        internal static string SelectedChordQualityToolTip {
+        internal static string ScaleManagerDefaultNamedIntervalGroupLabel {
             get {
-                return ResourceManager.GetString("SelectedChordQualityToolTip", resourceCulture);
+                return ResourceManager.GetString("ScaleManagerDefaultNamedIntervalGroupLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Instrument.
+        ///   Looks up a localized string similar to Built-in scales..
         /// </summary>
-        internal static string SelectedInstrumentLabel {
+        internal static string ScaleManagerDefaultNamedIntervalGroupToolTip {
             get {
-                return ResourceManager.GetString("SelectedInstrumentLabel", resourceCulture);
+                return ResourceManager.GetString("ScaleManagerDefaultNamedIntervalGroupToolTip", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The instrument you want to use..
+        ///   Looks up a localized string similar to This will delete the chord quality &quot;{0}&quot;. This cannot be undone. Do you want to continue?.
         /// </summary>
-        internal static string SelectedInstrumentToolTip {
+        internal static string ScaleManagerDeleteNamedIntervalPromptFormat {
             get {
-                return ResourceManager.GetString("SelectedInstrumentToolTip", resourceCulture);
+                return ResourceManager.GetString("ScaleManagerDeleteNamedIntervalPromptFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete the selected scale..
+        /// </summary>
+        internal static string ScaleManagerDeleteNamedIntervalToolTip {
+            get {
+                return ResourceManager.GetString("ScaleManagerDeleteNamedIntervalToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the selected scale..
+        /// </summary>
+        internal static string ScaleManagerEditNamedIntervalToolTip {
+            get {
+                return ResourceManager.GetString("ScaleManagerEditNamedIntervalToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale Manager.
+        /// </summary>
+        internal static string ScaleManagerTitle {
+            get {
+                return ResourceManager.GetString("ScaleManagerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Scales.
+        /// </summary>
+        internal static string ScaleManagerUserNamedIntervalGroupLabel {
+            get {
+                return ResourceManager.GetString("ScaleManagerUserNamedIntervalGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User created scales..
+        /// </summary>
+        internal static string ScaleManagerUserNamedIntervalGroupToolTip {
+            get {
+                return ResourceManager.GetString("ScaleManagerUserNamedIntervalGroupToolTip", resourceCulture);
             }
         }
         
@@ -1903,60 +2137,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string SelectedLabel {
             get {
                 return ResourceManager.GetString("SelectedLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Root Note.
-        /// </summary>
-        internal static string SelectedRootNoteLabel {
-            get {
-                return ResourceManager.GetString("SelectedRootNoteLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The root note you want to use..
-        /// </summary>
-        internal static string SelectedRootNoteToolTip {
-            get {
-                return ResourceManager.GetString("SelectedRootNoteToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scale.
-        /// </summary>
-        internal static string SelectedScaleLabel {
-            get {
-                return ResourceManager.GetString("SelectedScaleLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The scale you want to use..
-        /// </summary>
-        internal static string SelectedScaleToolTip {
-            get {
-                return ResourceManager.GetString("SelectedScaleToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tuning.
-        /// </summary>
-        internal static string SelectedTuningLabel {
-            get {
-                return ResourceManager.GetString("SelectedTuningLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The tuning you want to use..
-        /// </summary>
-        internal static string SelectedTuningToolTip {
-            get {
-                return ResourceManager.GetString("SelectedTuningToolTip", resourceCulture);
             }
         }
         

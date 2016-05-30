@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="0" Margin="5,0">
-            <Label Content="{Binding UserNamedIntervalHeader}" FontWeight="Bold" />
+            <Label Content="{Binding UserNamedIntervalGroupLabel, FallbackValue=User Named Intervals}" ToolTip="{Binding UserNamedIntervalGroupToolTip}" FontWeight="Bold" />
         </WrapPanel>
         <ListView Grid.Row="1" Name="UserNamedIntervalsListView" Margin="5" ItemsSource="{Binding UserNamedIntervals}" SelectedIndex="{Binding SelectedUserNamedIntervalIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
             <ListView.ItemTemplate>
@@ -27,17 +27,17 @@
             </ListView.ItemTemplate>
             <ListView.ContextMenu>
                 <ContextMenu Name="UserNamedIntervalContextMenu">
-                    <MenuItem Command="{Binding AddNamedInterval}" Header="Add">
+                    <MenuItem Command="{Binding AddNamedInterval}" Header="{Binding AddNamedIntervalLabel}" ToolTip="{Binding AddNamedIntervalToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding EditNamedInterval}" Header="Edit">
+                    <MenuItem Command="{Binding EditNamedInterval}" Header="{Binding EditNamedIntervalLabel}" ToolTip="{Binding EditNamedIntervalToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding DeleteNamedInterval}" Header="Delete">
+                    <MenuItem Command="{Binding DeleteNamedInterval}" Header="{Binding DeleteNamedIntervalLabel}" ToolTip="{Binding DeleteNamedIntervalToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
                         </MenuItem.Icon>
@@ -46,7 +46,7 @@
             </ListView.ContextMenu>
         </ListView>
         <WrapPanel Grid.Row="2" Margin="5,0">
-            <Label Content="{Binding DefaultNamedIntervalHeader}" FontWeight="Bold" />
+            <Label Content="{Binding DefaultNamedIntervalGroupLabel, FallbackValue=Default Named Intervals}" ToolTip="{Binding DefaultNamedIntervalGroupToolTip}" FontWeight="Bold" />
         </WrapPanel>
         <ListView Grid.Row="3" Name="DefaultNamedIntervalsListView" Margin="5" ItemsSource="{Binding DefaultNamedIntervals}" SelectedIndex="{Binding SelectedDefaultNamedIntervalIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
             <ListView.ItemTemplate>
@@ -57,13 +57,13 @@
         </ListView>
         <WrapPanel Grid.Row="4" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Button Command="{Binding AddNamedInterval}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                <Button Command="{Binding AddNamedInterval}" ToolTip="{Binding AddNamedIntervalToolTip}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
                     <local:AutoDisableImage Source="{StaticResource AddIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding EditNamedInterval}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                <Button Command="{Binding EditNamedInterval}" ToolTip="{Binding EditNamedIntervalToolTip}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
                     <local:AutoDisableImage Source="{StaticResource EditIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding DeleteNamedInterval}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                <Button Command="{Binding DeleteNamedInterval}" ToolTip="{Binding DeleteNamedIntervalToolTip}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
                     <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
             </StackPanel>

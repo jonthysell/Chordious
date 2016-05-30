@@ -237,31 +237,31 @@
   <data name="PathLabel" xml:space="preserve">
     <value>Path:</value>
   </data>
-  <data name="SelectedChordQualityLabel" xml:space="preserve">
+  <data name="ChordFinderOptionsSelectedChordQualityLabel" xml:space="preserve">
     <value>Quality</value>
   </data>
-  <data name="SelectedChordQualityToolTip" xml:space="preserve">
+  <data name="ChordFinderOptionsSelectedChordQualityToolTip" xml:space="preserve">
     <value>The chord quality you want to use.</value>
   </data>
-  <data name="SelectedInstrumentLabel" xml:space="preserve">
+  <data name="FinderSelectedInstrumentLabel" xml:space="preserve">
     <value>Instrument</value>
   </data>
-  <data name="SelectedInstrumentToolTip" xml:space="preserve">
+  <data name="FinderSelectedInstrumentToolTip" xml:space="preserve">
     <value>The instrument you want to use.</value>
   </data>
   <data name="SelectedLabel" xml:space="preserve">
     <value>Selected:</value>
   </data>
-  <data name="SelectedRootNoteLabel" xml:space="preserve">
+  <data name="FinderSelectedRootNoteLabel" xml:space="preserve">
     <value>Root Note</value>
   </data>
-  <data name="SelectedRootNoteToolTip" xml:space="preserve">
+  <data name="FinderSelectedRootNoteToolTip" xml:space="preserve">
     <value>The root note you want to use.</value>
   </data>
-  <data name="SelectedTuningLabel" xml:space="preserve">
+  <data name="FinderSelectedTuningLabel" xml:space="preserve">
     <value>Tuning</value>
   </data>
-  <data name="SelectedTuningToolTip" xml:space="preserve">
+  <data name="FinderSelectedTuningToolTip" xml:space="preserve">
     <value>The tuning you want to use.</value>
   </data>
   <data name="ShowChordFinderLabel" xml:space="preserve">
@@ -420,10 +420,10 @@
   <data name="ScaleFinderTitle" xml:space="preserve">
     <value>Scale Finder</value>
   </data>
-  <data name="SelectedScaleLabel" xml:space="preserve">
+  <data name="ScaleFinderOptionsSelectedScaleLabel" xml:space="preserve">
     <value>Scale</value>
   </data>
-  <data name="SelectedScaleToolTip" xml:space="preserve">
+  <data name="ScaleFinderOptionsSelectedScaleToolTip" xml:space="preserve">
     <value>The scale you want to use.</value>
   </data>
   <data name="ShowChordQualityManagerLabel" xml:space="preserve">
@@ -812,5 +812,65 @@
   </data>
   <data name="DiagramStyleGridStringSpacingToolTip" xml:space="preserve">
     <value>The spacing, in pixels, between the string lines.</value>
+  </data>
+  <data name="ChordQualityManagerAddNamedIntervalToolTip" xml:space="preserve">
+    <value>Create a new chord quality.</value>
+  </data>
+  <data name="ChordQualityManagerDefaultNamedIntervalGroupLabel" xml:space="preserve">
+    <value>Default Qualities</value>
+  </data>
+  <data name="ChordQualityManagerDefaultNamedIntervalGroupToolTip" xml:space="preserve">
+    <value>Built-in chord qualities.</value>
+  </data>
+  <data name="ChordQualityManagerDeleteNamedIntervalToolTip" xml:space="preserve">
+    <value>Delete the selected chord quality.</value>
+  </data>
+  <data name="ChordQualityManagerEditNamedIntervalToolTip" xml:space="preserve">
+    <value>Edit the selected chord quality.</value>
+  </data>
+  <data name="ChordQualityManagerTitle" xml:space="preserve">
+    <value>Chord Quality Manager</value>
+  </data>
+  <data name="ChordQualityManagerUserNamedIntervalGroupLabel" xml:space="preserve">
+    <value>User Qualities</value>
+  </data>
+  <data name="ChordQualityManagerUserNamedIntervalGroupToolTip" xml:space="preserve">
+    <value>User created chord qualities.</value>
+  </data>
+  <data name="NamedIntervalManagerDeleteNamedIntervalLabelFormat" xml:space="preserve">
+    <value>Delete "{0}"...</value>
+  </data>
+  <data name="NamedIntervalManagerEditNamedIntervalLabelFormat" xml:space="preserve">
+    <value>Edit "{0}"...</value>
+  </data>
+  <data name="ScaleManagerAddNamedIntervalToolTip" xml:space="preserve">
+    <value>Create a new scale.</value>
+  </data>
+  <data name="ScaleManagerDefaultNamedIntervalGroupLabel" xml:space="preserve">
+    <value>Default Scales</value>
+  </data>
+  <data name="ScaleManagerDefaultNamedIntervalGroupToolTip" xml:space="preserve">
+    <value>Built-in scales.</value>
+  </data>
+  <data name="ScaleManagerDeleteNamedIntervalToolTip" xml:space="preserve">
+    <value>Delete the selected scale.</value>
+  </data>
+  <data name="ScaleManagerEditNamedIntervalToolTip" xml:space="preserve">
+    <value>Edit the selected scale.</value>
+  </data>
+  <data name="ScaleManagerTitle" xml:space="preserve">
+    <value>Scale Manager</value>
+  </data>
+  <data name="ScaleManagerUserNamedIntervalGroupLabel" xml:space="preserve">
+    <value>User Scales</value>
+  </data>
+  <data name="ScaleManagerUserNamedIntervalGroupToolTip" xml:space="preserve">
+    <value>User created scales.</value>
+  </data>
+  <data name="ChordQualityManagerDeleteNamedIntervalPromptFormat" xml:space="preserve">
+    <value>This will delete the chord quality "{0}". This cannot be undone. Do you want to continue?</value>
+  </data>
+  <data name="ScaleManagerDeleteNamedIntervalPromptFormat" xml:space="preserve">
+    <value>This will delete the chord quality "{0}". This cannot be undone. Do you want to continue?</value>
   </data>
 </root>

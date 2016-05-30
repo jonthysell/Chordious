@@ -34,6 +34,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public delegate IEnumerable<ObservableNamedInterval> GetNamedIntervals();
@@ -51,9 +53,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public abstract string Title { get; }
 
-        public abstract string DefaultNamedIntervalHeader { get; }
+        public abstract string DefaultNamedIntervalGroupLabel { get; }
+        public abstract string DefaultNamedIntervalGroupToolTip { get; }
 
-        public abstract string UserNamedIntervalHeader { get; }
+        public abstract string UserNamedIntervalGroupLabel { get; }
+        public abstract string UserNamedIntervalGroupToolTip { get; }
 
         public bool NamedIntervalIsSelected
         {
@@ -75,8 +79,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 RaisePropertyChanged("SelectedNamedInterval");
                 RaisePropertyChanged("NamedIntervalIsSelected");
                 RaisePropertyChanged("EditNamedInterval");
+                RaisePropertyChanged("EditNamedIntervalLabel");
+                RaisePropertyChanged("EditNamedIntervalToolTip");
                 RaisePropertyChanged("DeleteNamedInterval");
+                RaisePropertyChanged("DeleteNamedIntervalLabel");
+                RaisePropertyChanged("DeleteNamedIntervalToolTip");
                 RaisePropertyChanged("AddNamedInterval");
+                RaisePropertyChanged("AddNamedIntervalLabel");
+                RaisePropertyChanged("AddNamedIntervalToolTip");
             }
         }
         private ObservableNamedInterval _namedInterval;
@@ -155,49 +165,56 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableNamedInterval> _userNamedIntervals;
 
-        public abstract RelayCommand AddNamedInterval { get; }
-
-        public abstract RelayCommand EditNamedInterval { get; }
-
-        public RelayCommand DeleteNamedInterval
+        public string AddNamedIntervalLabel
         {
             get
             {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete \"{0}\". This cannot be undone. Do you want to continue?", SelectedNamedInterval.LongName), (confirm) =>
-                        {
-                            try
-                            {
-                                if (confirm)
-                                {
-                                    _deleteUserNamedInterval(SelectedNamedInterval.NamedInterval);
-                                    Refresh();
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionUtils.HandleException(ex);
-                            }
-                        }, "confirmation.namedintervalmanager.deletenamedinterval"));
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                }, () =>
-                {
-                    return NamedIntervalIsSelected && SelectedNamedInterval.CanEdit;
-                });
+                return Strings.NewLabel;
             }
         }
+
+        public abstract string AddNamedIntervalToolTip { get; }
+
+        public abstract RelayCommand AddNamedInterval { get; }
+
+        public string EditNamedIntervalLabel
+        {
+            get
+            {
+                if (NamedIntervalIsSelected)
+                {
+                    return String.Format(Strings.NamedIntervalManagerEditNamedIntervalLabelFormat, SelectedNamedInterval.Name);
+                }
+
+                return Strings.EditLabel;
+            }
+        }
+
+        public abstract string EditNamedIntervalToolTip { get; }
+
+        public abstract RelayCommand EditNamedInterval { get; }
+
+        public string DeleteNamedIntervalLabel
+        {
+            get
+            {
+                if (NamedIntervalIsSelected)
+                {
+                    return String.Format(Strings.NamedIntervalManagerDeleteNamedIntervalLabelFormat, SelectedNamedInterval.Name);
+                }
+
+                return Strings.DeleteLabel;
+            }
+        }
+
+        public abstract string DeleteNamedIntervalToolTip { get; }
+
+        public abstract RelayCommand DeleteNamedInterval { get; }
 
         private GetNamedIntervals _getUserNamedIntervals;
         private GetNamedIntervals _getDefaultNamedIntervals;
 
-        private DeleteNamedInterval _deleteUserNamedInterval;
+        protected DeleteNamedInterval _deleteUserNamedInterval;
 
         public NamedIntervalManagerViewModel(GetNamedIntervals getDefaultNamedIntervals, GetNamedIntervals getUserNamedIntervals, DeleteNamedInterval deleteUserNamedInterval): base()
         {
@@ -207,7 +224,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             Refresh();
         }
 
-        internal void Refresh(NamedInterval selectedNamedInterval = null)
+        protected void Refresh(NamedInterval selectedNamedInterval = null)
         {
             DefaultNamedIntervals = new ObservableCollection<ObservableNamedInterval>(_getDefaultNamedIntervals());
             UserNamedIntervals = new ObservableCollection<ObservableNamedInterval>(_getUserNamedIntervals());

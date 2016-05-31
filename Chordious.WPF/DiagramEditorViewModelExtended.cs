@@ -32,10 +32,28 @@ using GalaSoft.MvvmLight.Command;
 
 using com.jonthysell.Chordious.Core.ViewModel;
 
+using com.jonthysell.Chordious.WPF.Resources;
+
 namespace com.jonthysell.Chordious.WPF
 {
     public class DiagramEditorViewModelExtended : DiagramEditorViewModel
     {
+        public string SelectedEditorRenderBackgroundLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorSelectedEditorRendererBackgroundLabel;
+            }
+        }
+
+        public string SelectedEditorRenderBackgroundToolTip
+        {
+            get
+            {
+                return Strings.DiagramEditorSelectedEditorRendererBackgroundToolTip;
+            }
+        }
+
         public int SelectedEditorRenderBackgroundIndex
         {
             get

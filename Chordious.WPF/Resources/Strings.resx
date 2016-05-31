@@ -141,6 +141,15 @@
   <data name="ChordiousUpdateNotAvailableMessage" xml:space="preserve">
     <value>Chordious is up-to-date.</value>
   </data>
+  <data name="DiagramEditorSelectedEditorRendererBackgroundLabel" xml:space="preserve">
+    <value>Editor Background</value>
+  </data>
+  <data name="DiagramEditorSelectedEditorRendererBackgroundToolTip" xml:space="preserve">
+    <value>The background to show behind the diagrams.</value>
+  </data>
+  <data name="FirstRunMessage" xml:space="preserve">
+    <value>Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? (Recommended) You can change your mind later in Options.</value>
+  </data>
   <data name="OptionsCheckForUpdatesAsyncLabel" xml:space="preserve">
     <value>Check For Updates</value>
   </data>
@@ -163,7 +172,7 @@
     <value>Diagram Editor</value>
   </data>
   <data name="OptionsSelectedEditorRendererBackgroundToolTip" xml:space="preserve">
-    <value>The background to show for diagrams in the Diagram Editor.</value>
+    <value>The background to show behind the diagrams in the Diagram Editor.</value>
   </data>
   <data name="OptionsSelectedReleaseChannelLabel" xml:space="preserve">
     <value>Release Channel</value>
@@ -175,7 +184,7 @@
     <value>Normal</value>
   </data>
   <data name="OptionsSelectedRendererBackgroundToolTip" xml:space="preserve">
-    <value>The background to show for diagrams in the Chordious UI.</value>
+    <value>The background to show behind the diagrams in the Chordious UI.</value>
   </data>
   <data name="OptionsSettingsBackgroundGroupLabel" xml:space="preserve">
     <value>Background</value>

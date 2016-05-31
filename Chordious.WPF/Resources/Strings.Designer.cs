@@ -133,6 +133,33 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Editor Background.
+        /// </summary>
+        internal static string DiagramEditorSelectedEditorRendererBackgroundLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorSelectedEditorRendererBackgroundLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The background to show behind the diagrams..
+        /// </summary>
+        internal static string DiagramEditorSelectedEditorRendererBackgroundToolTip {
+            get {
+                return ResourceManager.GetString("DiagramEditorSelectedEditorRendererBackgroundToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? (Recommended) You can change your mind later in Options..
+        /// </summary>
+        internal static string FirstRunMessage {
+            get {
+                return ResourceManager.GetString("FirstRunMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check For Updates.
         /// </summary>
         internal static string OptionsCheckForUpdatesAsyncLabel {
@@ -196,7 +223,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The background to show for diagrams in the Diagram Editor..
+        ///   Looks up a localized string similar to The background to show behind the diagrams in the Diagram Editor..
         /// </summary>
         internal static string OptionsSelectedEditorRendererBackgroundToolTip {
             get {
@@ -232,7 +259,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The background to show for diagrams in the Chordious UI..
+        ///   Looks up a localized string similar to The background to show behind the diagrams in the Chordious UI..
         /// </summary>
         internal static string OptionsSelectedRendererBackgroundToolTip {
             get {

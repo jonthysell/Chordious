@@ -34,6 +34,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core.ViewModel;
 
+using com.jonthysell.Chordious.WPF.Resources;
+
 namespace com.jonthysell.Chordious.WPF
 {
     public class MainViewModelExtended : MainViewModel, IIdle
@@ -113,11 +115,9 @@ namespace com.jonthysell.Chordious.WPF
             // Turn off first-run so it doesn't run next time
             IsFirstRun = false;
 
-            string message = "Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? (Recommended) You can change your mind later in Options.";
-
             AppVM.DoOnUIThread(() =>
             {
-                Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (enableAutoUpdate) =>
+                Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.FirstRunMessage, (enableAutoUpdate) =>
                 {
                     UpdateUtils.SetCheckUpdateOnStart(enableAutoUpdate);
                 }));

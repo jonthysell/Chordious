@@ -9,106 +9,106 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TabControl Grid.Row="0" Margin="5">
-            <TabItem Header="Settings">
+            <TabItem Header="{Binding SettingsGroupLabel, FallbackValue=Settings}">
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
                     <StackPanel>
-                        <GroupBox Header="Background" Margin="5">
+                        <GroupBox Header="{Binding SettingsBackgroundGroupLabel, FallbackValue=Background}" Margin="5">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Width="110" Margin="5" Content="Normal"/>
-                                    <ComboBox Width="100" Margin="5" ItemsSource="{Binding RenderBackgrounds}" SelectedIndex="{Binding SelectedRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                    <Label Width="110" Margin="5" Content="{Binding SelectedRenderBackgroundLabel, FallbackValue=Normal}" ToolTip="{Binding SelectedRenderBackgroundToolTip}" />
+                                    <ComboBox Width="100" Margin="5" ItemsSource="{Binding RenderBackgrounds}" SelectedIndex="{Binding SelectedRenderBackgroundIndex}" ToolTip="{Binding SelectedRenderBackgroundToolTip}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Width="110" Margin="5" Content="Diagram Editor"/>
-                                    <ComboBox Width="100" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                                    <Label Width="110" Margin="5" Content="{Binding SelectedEditorRenderBackgroundLabel, FallbackValue=Diagram Editor}" ToolTip="{Binding SelectedEditorRenderBackgroundToolTip}" />
+                                    <ComboBox Width="100" Margin="5" ItemsSource="{Binding EditorRenderBackgrounds}" SelectedIndex="{Binding SelectedEditorRenderBackgroundIndex}" ToolTip="{Binding SelectedEditorRenderBackgroundToolTip}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                                 </StackPanel>
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Header="Advanced" Margin="5">
+                        <GroupBox Header="{Binding SettingsAdvancedGroupLabel, FallbackValue=Advanced}" Margin="5">
                             <StackPanel>
-                                <Button Content="Advanced Editor" Margin="5" Command="{Binding ShowAdvancedSettings, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
-                                <Button Content="Reset All" Margin="5" Command="{Binding ResetUserSettings, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
-                                <Button Content="Reset Confirmations" Margin="5" Command="{Binding ResetConfirmations, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="{Binding ShowAdvancedSettingsLabel, FallbackValue=Advanced Settings Editor}" ToolTip="{Binding ShowAdvancedSettingsToolTip}" Margin="5" Command="{Binding ShowAdvancedSettings, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="{Binding ResetUserSettingsLabel, FallbackValue=Reset Settings}" ToolTip="{Binding ResetUserSettingsToolTip}" Margin="5" Command="{Binding ResetUserSettings, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="{Binding ResetConfirmationsLabel, FallbackValue=Reset Confirmations}" ToolTip="{Binding ResetConfirmationsToolTip}" Margin="5" Command="{Binding ResetConfirmations, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="Styles">
+            <TabItem Header="{Binding StylesGroupLabel, FallbackValue=Styles}">
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
                     <StackPanel>
-                        <GroupBox Header="Basic" Margin="5">
-                            <Button Content="User Style Editor" Margin="5" Command="{Binding ShowStyleEditor, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                        <GroupBox Header="{Binding StylesBasicGroupLabel, FallbackValue=Basic}" Margin="5">
+                            <Button Content="{Binding ShowStyleEditorLabel ,FallbackValue=User Style Editor}" ToolTip="{Binding ShowStyleEditorToolTip}" Margin="5" Command="{Binding ShowStyleEditor, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
                         </GroupBox>
-                        <GroupBox Header="Advanced" Margin="5">
+                        <GroupBox Header="{Binding StylesAdvancedGroupLabel, FallbackValue=Advanced}" Margin="5">
                             <StackPanel>
-                                <Button Content="Advanced Editor" Margin="5" Command="{Binding ShowAdvancedStyle, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
-                                <Button Content="Reset" Margin="5" Command="{Binding ResetUserStyles, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="{Binding ShowAdvancedStyleLabel, FallbackValue=Advanced Style Editor}" ToolTip="{Binding ShowAdvancedStyleToolTip}" Margin="5" Command="{Binding ShowAdvancedStyle, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="{Binding ResetUserStylesLabel, FallbackValue=Reset Styles}" ToolTip="{Binding ResetUserStylesToolTip}" Margin="5" Command="{Binding ResetUserStyles, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="Finders">
+            <TabItem Header="{Binding FindersGroupLabel, FallbackValue=Finders}">
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
                     <StackPanel>
-                        <GroupBox Header="Managers" Margin="5">
+                        <GroupBox Header="{Binding FindersManagersGroupLabel, FallbackValue=Managers}" Margin="5">
                             <StackPanel>
-                                <Button Content="Instrument Manager" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
-                                <Button Content="Chord Quality Manager" Command="{Binding ShowChordQualityManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
-                                <Button Content="Scale Manager"  Command="{Binding ShowScaleManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}" />
+                                <Button Content="{Binding ShowInstrumentManagerLabel, FallbackValue=Instruments}" ToolTip="{Binding ShowInstrumentManagerToolTip}" Command="{Binding ShowInstrumentManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="{Binding ShowChordQualityManagerLabel, FallbackValue=Chord Qualities}" ToolTip="{Binding ShowChordQualityManagerToolTip}" Command="{Binding ShowChordQualityManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="{Binding ShowScaleManagerLabel, FallbackValue=Scales}" ToolTip="{Binding ShowScaleManagerToolTip}" Command="{Binding ShowScaleManager, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}" />
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Header="Search Defaults" Margin="5">
+                        <GroupBox Header="{Binding SearchDefaultsGroupLabel, FallbackValue=Search Defaults}" Margin="5">
                             <StackPanel>
-                                <Button Content="Reset Chord Finder Defaults" Margin="5" Command="{Binding ResetChordFinderDefaults, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
-                                <Button Content="Reset Scale Finder Defaults" Margin="5" Command="{Binding ResetScaleFinderDefaults, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="{Binding ResetChordFinderDefaultsLabel, FallbackValue=Reset Chord Finder Defaults}" ToolTip="{Binding ResetChordFinderDefaultsToolTip}" Margin="5" Command="{Binding ResetChordFinderDefaults, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="{Binding ResetScaleFinderDefaultsLabel, FallbackValue=Reset Scale Finder Defaults}" ToolTip="{Binding ResetScaleFinderDefaultsToolTip}" Margin="5" Command="{Binding ResetScaleFinderDefaults, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="Config">
+            <TabItem Header="{Binding ConfigGroupLabel, FallbackValue=Config}">
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
                     <StackPanel>
-                        <GroupBox Header="Import/Export" Margin="5">
+                        <GroupBox Header="{Binding ConfigImportExportGroupLabel, FallbackValue=Import / Export}" Margin="5">
                             <StackPanel>
-                                <Button Content="Import Config" Command="{Binding ShowConfigImport, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
-                                <Button Content="Export Config" Command="{Binding ShowConfigExport, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="{Binding ShowConfigImportLabel, FallbackValue=Import Config}" ToolTip="{Binding ShowConfigImportToolTip}" Command="{Binding ShowConfigImport, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="{Binding ShowConfigExportLabel, FallbackValue=Export Config}" ToolTip="{Binding ShowConfigExportToolTip}" Command="{Binding ShowConfigExport, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Header="Legacy" Margin="5">
+                        <GroupBox Header="{Binding ConfigLegacyGroupLabel, FallbackValue=Legacy}" Margin="5">
                             <StackPanel>
-                                <Button Content="Import ChordLines" Command="{Binding LegacyImport, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
+                                <Button Content="{Binding LegacyImportLabel, FallbackValue=Import ChordLines}" ToolTip="{Binding LegacyImportToolTip}" Command="{Binding LegacyImport, Mode=OneWay}" Margin="5" Style="{DynamicResource CleanButton}"/>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="Updates">
+            <TabItem Header="{Binding UpdatesGroupLabel, FallbackValue=Updates}">
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Width="160" Margin="5" Content="Check For Updates On Start"/>
-                            <CheckBox Width="65" Margin="5" IsChecked="{Binding CheckUpdateOnStart}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <Label Width="160" Margin="5" Content="{Binding CheckUpdateOnStartLabel, FallbackValue=Check For Updates On Start}" ToolTip="{Binding CheckUpdateOnStartToolTip}" />
+                            <CheckBox Width="65" Margin="5" IsChecked="{Binding CheckUpdateOnStart}" ToolTip="{Binding CheckUpdateOnStartToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Width="150" Margin="5" Content="Release Channel"/>
-                            <ComboBox Width="75" Margin="5" ItemsSource="{Binding ReleaseChannels}" SelectedIndex="{Binding SelectedReleaseChannelIndex}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
+                            <Label Width="150" Margin="5" Content="{Binding SelectedReleaseChannelLabel, FallbackValue=Release Channel}" ToolTip="{Binding SelectedReleaseChannelToolTip}" />
+                            <ComboBox Width="75" Margin="5" ItemsSource="{Binding ReleaseChannels}" SelectedIndex="{Binding SelectedReleaseChannelIndex}" ToolTip="{Binding SelectedReleaseChannelToolTip}" VerticalAlignment="Center" Style="{DynamicResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Margin="5" Content="Last Checked"/>
-                            <TextBox Margin="5" Text="{Binding LastUpdateCheck, Mode=OneWay}" VerticalAlignment="Center" BorderThickness="0" />
+                            <Label Margin="5" Content="{Binding LastUpdateCheckLabel, FallbackValue=Last Checked}" ToolTip="{Binding LastUpdateCheckToolTip}" />
+                            <TextBox Margin="5" Text="{Binding LastUpdateCheck, Mode=OneWay}" ToolTip="{Binding LastUpdateCheckToolTip}" VerticalAlignment="Center" BorderThickness="0" />
                         </StackPanel>
-                        <Button Command="{Binding CheckForUpdatesAsync, IsAsync=True}" Content="Check For Updates" Margin="15" Style="{DynamicResource CleanButton}"/>
+                        <Button Command="{Binding CheckForUpdatesAsync, IsAsync=True}" Content="{Binding CheckForUpdatesAsyncLabel, FallbackValue=Check For Updates}" ToolTip="{Binding CheckForUpdatesAsyncToolTip}" Margin="15" Style="{DynamicResource CleanButton}"/>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
         </TabControl>
         <WrapPanel Grid.Row="2" FlowDirection="RightToLeft">
-            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
-            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True" Style="{DynamicResource CleanButton}"/>
-            <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
+            <Button Command="{Binding Cancel}" Content="{Binding AppVM.CancelLabel, FallbackValue=Cancel}" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
+            <Button Command="{Binding Accept}" Content="{Binding AppVM.AcceptLabel, FallbackValue=OK}" Width="75" Margin="5" IsDefault="True" Style="{DynamicResource CleanButton}"/>
+            <Button Command="{Binding Apply}" Content="{Binding AppVM.ApplyLabel, FallbackValue=Apply}" Width="75" Margin="5" Style="{DynamicResource CleanButton}"/>
         </WrapPanel>
     </Grid>
 </Window>

@@ -283,7 +283,7 @@
     <value>Go to the Help section on the Chordious website.</value>
   </data>
   <data name="ShowInstrumentManagerLabel" xml:space="preserve">
-    <value>Edit Instruments</value>
+    <value>Instruments</value>
   </data>
   <data name="ShowInstrumentManagerToolTip" xml:space="preserve">
     <value>Create and manage your favorite instruments and tunings.</value>
@@ -427,13 +427,13 @@
     <value>The scale you want to use.</value>
   </data>
   <data name="ShowChordQualityManagerLabel" xml:space="preserve">
-    <value>Edit Chord Qualities</value>
+    <value>Chord Qualities</value>
   </data>
   <data name="ShowChordQualityManagerToolTip" xml:space="preserve">
     <value>Edit the available qualities.</value>
   </data>
   <data name="ShowScaleManagerLabel" xml:space="preserve">
-    <value>Edit Scales</value>
+    <value>Scales</value>
   </data>
   <data name="ShowScaleManagerToolTip" xml:space="preserve">
     <value>Edit the available scales.</value>
@@ -870,6 +870,15 @@
   <data name="ChordQualityManagerDeleteNamedIntervalPromptFormat" xml:space="preserve">
     <value>This will delete the chord quality "{0}". This cannot be undone. Do you want to continue?</value>
   </data>
+  <data name="ExceptionDetailsLabel" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="ExceptionDetailsToolTip" xml:space="preserve">
+    <value>The full details of the error, useful for debugging.</value>
+  </data>
+  <data name="ExceptionTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="FinderOptionsResetToDefaultsPromptMessage" xml:space="preserve">
     <value>This will reset your current search parameters to the default values. Do you want to continue?</value>
   </data>
@@ -879,11 +888,134 @@
   <data name="LaunchWebsitePromptMessage" xml:space="preserve">
     <value>This will open the Chordious website in your browser. Do you want to continue?</value>
   </data>
+  <data name="OptionsConfigGroupLabel" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="OptionsConfigImportExportGroupLabel" xml:space="preserve">
+    <value>Import / Export</value>
+  </data>
+  <data name="OptionsConfigLegacyGroupLabel" xml:space="preserve">
+    <value>Legacy</value>
+  </data>
+  <data name="OptionsFindersGroupLabel" xml:space="preserve">
+    <value>Finders</value>
+  </data>
+  <data name="OptionsFindersManagersGroupLabel" xml:space="preserve">
+    <value>Managers</value>
+  </data>
+  <data name="OptionsFindersSearchDefaultsGroupLabel" xml:space="preserve">
+    <value>Search Defaults</value>
+  </data>
+  <data name="OptionsLegacyImportLabel" xml:space="preserve">
+    <value>Import ChordLines</value>
+  </data>
+  <data name="OptionsLegacyImportToolTip" xml:space="preserve">
+    <value>Import a Classic Chordious ChordLines file.</value>
+  </data>
+  <data name="OptionsResetChordFinderDefaultsLabel" xml:space="preserve">
+    <value>Reset Chord Finder Defaults</value>
+  </data>
+  <data name="OptionsResetChordFinderDefaultsPromptMessage" xml:space="preserve">
+    <value>This will reset your default search parameters to the built-in values. This cannot be undone. Do you want to continue?</value>
+  </data>
+  <data name="OptionsResetChordFinderDefaultsToolTip" xml:space="preserve">
+    <value>Reset your default search parameters to the built-in values.</value>
+  </data>
+  <data name="OptionsResetConfirmationsLabel" xml:space="preserve">
+    <value>Reset Confirmations</value>
+  </data>
+  <data name="OptionsResetConfirmationsPromptMessage" xml:space="preserve">
+    <value>This will reset all of the confirmation dialogs you specified to stop prompting you. This cannot be undone. Do you want to continue?</value>
+  </data>
+  <data name="OptionsResetConfirmationsToolTip" xml:space="preserve">
+    <value>Reset all of the confirmation dialogs you specified to stop prompting you.</value>
+  </data>
+  <data name="OptionsResetScaleFinderDefaultsLabel" xml:space="preserve">
+    <value>Reset Scale Finder Defaults</value>
+  </data>
+  <data name="OptionsResetScaleFinderDefaultsPromptMessage" xml:space="preserve">
+    <value>This will reset your default search parameters to the built-in values. This cannot be undone. Do you want to continue?</value>
+  </data>
+  <data name="OptionsResetScaleFinderDefaultsToolTip" xml:space="preserve">
+    <value>Reset your default search parameters to the built-in values.</value>
+  </data>
+  <data name="OptionsResetUserSettingsLabel" xml:space="preserve">
+    <value>Reset Settings</value>
+  </data>
+  <data name="OptionsResetUserSettingsPromptMessage" xml:space="preserve">
+    <value>This will revert all of your user settings to the defaults. This cannot be undone. Do you want to continue?</value>
+  </data>
+  <data name="OptionsResetUserSettingsToolTip" xml:space="preserve">
+    <value>Revert your user settings to the defaults.</value>
+  </data>
+  <data name="OptionsResetUserStylesLabel" xml:space="preserve">
+    <value>Reset Styles</value>
+  </data>
+  <data name="OptionsResetUserStylesPromptMessage" xml:space="preserve">
+    <value>This will revert your base user styles to the defaults. This cannot be undone. Do you want to continue?</value>
+  </data>
+  <data name="OptionsResetUserStylesToolTip" xml:space="preserve">
+    <value>Revert your user styles to the defaults.</value>
+  </data>
+  <data name="OptionsSettingsAdvancedGroupLabel" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="OptionsSettingsGroupLabel" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="OptionsShowAdvancedSettingsLabel" xml:space="preserve">
+    <value>Advanced Settings Editor</value>
+  </data>
+  <data name="OptionsShowAdvancedSettingsPromptMessage" xml:space="preserve">
+    <value>Careful! You can cause problems with Chordious if you don't know what you're doing in here. Do you want to continue?</value>
+  </data>
+  <data name="OptionsShowAdvancedSettingsToolTip" xml:space="preserve">
+    <value>Edit all settings.</value>
+  </data>
+  <data name="OptionsShowAdvancedStyleLabel" xml:space="preserve">
+    <value>Advanced Style Editor</value>
+  </data>
+  <data name="OptionsShowAdvancedStylePromptMessage" xml:space="preserve">
+    <value>Careful! You can cause problems with Chordious if you don't know what you're doing in here. Do you want to continue?</value>
+  </data>
+  <data name="OptionsShowAdvancedStyleToolTip" xml:space="preserve">
+    <value>Edit all styles.</value>
+  </data>
+  <data name="OptionsShowConfigExportLabel" xml:space="preserve">
+    <value>Export Config</value>
+  </data>
+  <data name="OptionsShowConfigExportToolTip" xml:space="preserve">
+    <value>Export your Chordious Config to a file.</value>
+  </data>
+  <data name="OptionsShowConfigImportLabel" xml:space="preserve">
+    <value>Import Config</value>
+  </data>
+  <data name="OptionsShowConfigImportToolTip" xml:space="preserve">
+    <value>Import a Chordious Config file.</value>
+  </data>
+  <data name="OptionsShowStyleEditorLabel" xml:space="preserve">
+    <value>User Style Editor</value>
+  </data>
+  <data name="OptionsShowStyleEditorToolTip" xml:space="preserve">
+    <value>Edit the base user style.</value>
+  </data>
+  <data name="OptionsStylesAdvancedGroupLabel" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="OptionsStylesBasicGroupLabel" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="OptionsStylesGroupLabel" xml:space="preserve">
+    <value>Styles</value>
+  </data>
+  <data name="OptionsTitle" xml:space="preserve">
+    <value>Options</value>
+  </data>
   <data name="ScaleManagerDeleteNamedIntervalPromptFormat" xml:space="preserve">
     <value>This will delete the chord quality "{0}". This cannot be undone. Do you want to continue?</value>
   </data>
   <data name="ShowHelpPromptMessage" xml:space="preserve">
-    <value>This will open the Chordious Help page in your browser. Do you want to continue?</value>
+    <value>This will open the Help section on the Chordious website in your browser. Do you want to continue?</value>
   </data>
   <data name="TextPromptTitle" xml:space="preserve">
     <value>Prompt</value>

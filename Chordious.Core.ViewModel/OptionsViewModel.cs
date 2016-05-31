@@ -35,6 +35,8 @@ using GalaSoft.MvvmLight.Messaging;
 using com.jonthysell.Chordious.Core;
 using com.jonthysell.Chordious.Core.Legacy;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class OptionsViewModel : ViewModelBase
@@ -51,7 +53,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                string title = "Options";
+                string title = Strings.OptionsTitle;
                 if (Dirty)
                 {
                     title += "*";
@@ -82,6 +84,40 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _isIdle;
 
+        #region Settings
+
+        public string SettingsGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsSettingsGroupLabel;
+            }
+        }
+
+        public string SettingsAdvancedGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsSettingsAdvancedGroupLabel;
+            }
+        }
+
+        public string ShowAdvancedSettingsLabel
+        {
+            get
+            {
+                return Strings.OptionsShowAdvancedSettingsLabel;
+            }
+        }
+
+        public string ShowAdvancedSettingsToolTip
+        {
+            get
+            {
+                return Strings.OptionsShowAdvancedSettingsToolTip;
+            }
+        }
+
         public RelayCommand ShowAdvancedSettings
         {
             get
@@ -90,7 +126,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("Careful! You can cause problems with Chordious if you don't know what you're doing in here. Do you want to continue?", (confirmed) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsShowAdvancedSettingsPromptMessage, (confirmed) =>
                         {
                             if (confirmed)
                             {
@@ -122,6 +158,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string ResetUserSettingsLabel
+        {
+            get
+            {
+                return Strings.OptionsResetUserSettingsLabel;
+            }
+        }
+
+        public string ResetUserSettingsToolTip
+        {
+            get
+            {
+                return Strings.OptionsResetUserSettingsToolTip;
+            }
+        }
+
         public RelayCommand ResetUserSettings
         {
             get
@@ -130,7 +182,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("This will revert all of your user settings to the defaults. This cannot be undone. Do you want to continue?", (confirmed) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsResetUserSettingsPromptMessage, (confirmed) =>
                         {
                             if (confirmed)
                             {
@@ -147,6 +199,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string ResetConfirmationsLabel
+        {
+            get
+            {
+                return Strings.OptionsResetConfirmationsLabel;
+            }
+        }
+
+        public string ResetConfirmationsToolTip
+        {
+            get
+            {
+                return Strings.OptionsResetConfirmationsToolTip;
+            }
+        }
+
         public RelayCommand ResetConfirmations
         {
             get
@@ -155,7 +223,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("This will reset all of the confirmation dialogs you specified to stop prompting you. This cannot be undone. Do you want to continue?", (confirmed) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsResetConfirmationsPromptMessage, (confirmed) =>
                         {
                             if (confirmed)
                             {
@@ -172,11 +240,71 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #endregion
+
+        #region Styles
+
+        public string StylesGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsStylesGroupLabel;
+            }
+        }
+
+        public string StylesBasicGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsStylesBasicGroupLabel;
+            }
+        }
+
+        public string ShowStyleEditorLabel
+        {
+            get
+            {
+                return Strings.OptionsShowStyleEditorLabel;
+            }
+        }
+
+        public string ShowStyleEditorToolTip
+        {
+            get
+            {
+                return Strings.OptionsShowStyleEditorToolTip;
+            }
+        }
+
         public RelayCommand ShowStyleEditor
         {
             get
             {
                 return (new ObservableDiagramStyle(StyleBuffer.Parent)).ShowEditor;
+            }
+        }
+
+        public string StylesAdvancedGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsStylesAdvancedGroupLabel;
+            }
+        }
+
+        public string ShowAdvancedStyleLabel
+        {
+            get
+            {
+                return Strings.OptionsShowAdvancedStyleLabel;
+            }
+        }
+
+        public string ShowAdvancedStyleToolTip
+        {
+            get
+            {
+                return Strings.OptionsShowAdvancedStyleToolTip;
             }
         }
 
@@ -188,7 +316,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("Careful! You can cause problems with Chordious if you don't know what you're doing in here. Do you want to continue?", (confirmed) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsShowAdvancedStylePromptMessage, (confirmed) =>
                         {
                             if (confirmed)
                             {
@@ -220,6 +348,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string ResetUserStylesLabel
+        {
+            get
+            {
+                return Strings.OptionsResetUserStylesLabel;
+            }
+        }
+
+        public string ResetUserStylesToolTip
+        {
+            get
+            {
+                return Strings.OptionsResetUserStylesToolTip;
+            }
+        }
+
         public RelayCommand ResetUserStyles
         {
             get
@@ -228,7 +372,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("This will revert your base user styles to the defaults. This cannot be undone. Do you want to continue?", (confirmed) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsResetUserStylesPromptMessage, (confirmed) =>
                         {
                             if (confirmed)
                             {
@@ -242,6 +386,42 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         ExceptionUtils.HandleException(ex);
                     }
                 });
+            }
+        }
+
+        #endregion
+
+        #region Finders
+
+        public string FindersGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsFindersGroupLabel;
+            }
+        }
+
+        public string FindersManagersGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsFindersManagersGroupLabel;
+            }
+        }
+
+        public string ShowInstrumentManagerLabel
+        {
+            get
+            {
+                return Strings.ShowInstrumentManagerLabel;
+            }
+        }
+
+        public string ShowInstrumentManagerToolTip
+        {
+            get
+            {
+                return Strings.ShowInstrumentManagerToolTip;
             }
         }
 
@@ -263,6 +443,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string ShowChordQualityManagerLabel
+        {
+            get
+            {
+                return Strings.ShowChordQualityManagerLabel;
+            }
+        }
+
+        public string ShowChordQualityManagerToolTip
+        {
+            get
+            {
+                return Strings.ShowChordQualityManagerToolTip;
+            }
+        }
+
         public RelayCommand ShowChordQualityManager
         {
             get
@@ -278,6 +474,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         ExceptionUtils.HandleException(ex);
                     }
                 });
+            }
+        }
+
+        public string ShowScaleManagerLabel
+        {
+            get
+            {
+                return Strings.ShowScaleManagerLabel;
+            }
+        }
+
+        public string ShowScaleManagerToolTip
+        {
+            get
+            {
+                return Strings.ShowScaleManagerToolTip;
             }
         }
 
@@ -299,6 +511,30 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string FindersSearchDefaultsGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsFindersSearchDefaultsGroupLabel;
+            }
+        }
+
+        public string ResetChordFinderDefaultsLabel
+        {
+            get
+            {
+                return Strings.OptionsResetChordFinderDefaultsLabel;
+            }
+        }
+
+        public string ResetChordFinderDefaultsToolTip
+        {
+            get
+            {
+                return Strings.OptionsResetChordFinderDefaultsToolTip;
+            }
+        }
+
         public RelayCommand ResetChordFinderDefaults
         {
             get
@@ -307,7 +543,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("This will reset your default search parameters to the built-in values. This cannot be undone. Do you want to continue?", (confirmed) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsResetChordFinderDefaultsPromptMessage, (confirmed) =>
                         {
                             if (confirmed)
                             {
@@ -324,6 +560,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string ResetScaleFinderDefaultsLabel
+        {
+            get
+            {
+                return Strings.OptionsResetScaleFinderDefaultsLabel;
+            }
+        }
+
+        public string ResetScaleFinderDefaultsToolTip
+        {
+            get
+            {
+                return Strings.OptionsResetScaleFinderDefaultsToolTip;
+            }
+        }
+
         public RelayCommand ResetScaleFinderDefaults
         {
             get
@@ -332,7 +584,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("This will reset your default search parameters to the built-in values. This cannot be undone. Do you want to continue?", (confirmed) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsResetScaleFinderDefaultsPromptMessage, (confirmed) =>
                         {
                             if (confirmed)
                             {
@@ -346,6 +598,42 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         ExceptionUtils.HandleException(ex);
                     }
                 });
+            }
+        }
+
+        #endregion
+
+        #region Config
+
+        public string ConfigGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsConfigGroupLabel;
+            }
+        }
+
+        public string ConfigImportExportGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsConfigImportExportGroupLabel;
+            }
+        }
+
+        public string ShowConfigImportLabel
+        {
+            get
+            {
+                return Strings.OptionsShowConfigImportLabel;
+            }
+        }
+
+        public string ShowConfigImportToolTip
+        {
+            get
+            {
+                return Strings.OptionsShowConfigImportToolTip;
             }
         }
 
@@ -380,6 +668,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string ShowConfigExportLabel
+        {
+            get
+            {
+                return Strings.OptionsShowConfigExportLabel;
+            }
+        }
+
+        public string ShowConfigExportToolTip
+        {
+            get
+            {
+                return Strings.OptionsShowConfigExportToolTip;
+            }
+        }
+
         public RelayCommand ShowConfigExport
         {
             get
@@ -395,6 +699,30 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         ExceptionUtils.HandleException(ex);
                     }
                 });
+            }
+        }
+
+        public string ConfigLegacyGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsConfigLegacyGroupLabel;
+            }
+        }
+
+        public string LegacyImportLabel
+        {
+            get
+            {
+                return Strings.OptionsLegacyImportLabel;
+            }
+        }
+
+        public string LegacyImportToolTip
+        {
+            get
+            {
+                return Strings.OptionsLegacyImportToolTip;
             }
         }
 
@@ -427,6 +755,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 });
             }
         }
+
+        #endregion
 
         public RelayCommand Apply
         {

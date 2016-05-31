@@ -141,6 +141,48 @@
   <data name="ChordiousUpdateNotAvailableMessage" xml:space="preserve">
     <value>Chordious is up-to-date.</value>
   </data>
+  <data name="OptionsCheckForUpdatesAsyncLabel" xml:space="preserve">
+    <value>Check For Updates</value>
+  </data>
+  <data name="OptionsCheckForUpdatesAsyncToolTip" xml:space="preserve">
+    <value>Manually check online for updates.</value>
+  </data>
+  <data name="OptionsCheckUpdateOnStartLabel" xml:space="preserve">
+    <value>Check For Updates On Start</value>
+  </data>
+  <data name="OptionsCheckUpdateOnStartToolTip" xml:space="preserve">
+    <value>Chordious will check for updates automatically when the app starts.</value>
+  </data>
+  <data name="OptionsLastUpdateCheckLabel" xml:space="preserve">
+    <value>Last Checked</value>
+  </data>
+  <data name="OptionsLastUpdateCheckToolTip" xml:space="preserve">
+    <value>The last time that Chordious checked for updates.</value>
+  </data>
+  <data name="OptionsSelectedEditorRendererBackgroundLabel" xml:space="preserve">
+    <value>Diagram Editor</value>
+  </data>
+  <data name="OptionsSelectedEditorRendererBackgroundToolTip" xml:space="preserve">
+    <value>The background to show for diagrams in the Diagram Editor.</value>
+  </data>
+  <data name="OptionsSelectedReleaseChannelLabel" xml:space="preserve">
+    <value>Release Channel</value>
+  </data>
+  <data name="OptionsSelectedReleaseChannelToolTip" xml:space="preserve">
+    <value>The release channel that you want to get updates from.</value>
+  </data>
+  <data name="OptionsSelectedRendererBackgroundLabel" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="OptionsSelectedRendererBackgroundToolTip" xml:space="preserve">
+    <value>The background to show for diagrams in the Chordious UI.</value>
+  </data>
+  <data name="OptionsSettingsBackgroundGroupLabel" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="OptionsUpdatesGroupLabel" xml:space="preserve">
+    <value>Updates</value>
+  </data>
   <data name="ReleaseChannelOfficialFriendlyValue" xml:space="preserve">
     <value>Official</value>
   </data>

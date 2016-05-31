@@ -1538,6 +1538,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        internal static string ExceptionDetailsLabel {
+            get {
+                return ResourceManager.GetString("ExceptionDetailsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The full details of the error, useful for debugging..
+        /// </summary>
+        internal static string ExceptionDetailsToolTip {
+            get {
+                return ResourceManager.GetString("ExceptionDetailsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string ExceptionTitle {
+            get {
+                return ResourceManager.GetString("ExceptionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exception details: {0}.
         /// </summary>
         internal static string ExceptionViewModelDetailsFormat {
@@ -2033,11 +2060,380 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Config.
+        /// </summary>
+        internal static string OptionsConfigGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsConfigGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import / Export.
+        /// </summary>
+        internal static string OptionsConfigImportExportGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsConfigImportExportGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Legacy.
+        /// </summary>
+        internal static string OptionsConfigLegacyGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsConfigLegacyGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finders.
+        /// </summary>
+        internal static string OptionsFindersGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsFindersGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Managers.
+        /// </summary>
+        internal static string OptionsFindersManagersGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsFindersManagersGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search Defaults.
+        /// </summary>
+        internal static string OptionsFindersSearchDefaultsGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsFindersSearchDefaultsGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Options.
         /// </summary>
         internal static string OptionsLabel {
             get {
                 return ResourceManager.GetString("OptionsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import ChordLines.
+        /// </summary>
+        internal static string OptionsLegacyImportLabel {
+            get {
+                return ResourceManager.GetString("OptionsLegacyImportLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import a Classic Chordious ChordLines file..
+        /// </summary>
+        internal static string OptionsLegacyImportToolTip {
+            get {
+                return ResourceManager.GetString("OptionsLegacyImportToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Chord Finder Defaults.
+        /// </summary>
+        internal static string OptionsResetChordFinderDefaultsLabel {
+            get {
+                return ResourceManager.GetString("OptionsResetChordFinderDefaultsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will reset your default search parameters to the built-in values. This cannot be undone. Do you want to continue?.
+        /// </summary>
+        internal static string OptionsResetChordFinderDefaultsPromptMessage {
+            get {
+                return ResourceManager.GetString("OptionsResetChordFinderDefaultsPromptMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset your default search parameters to the built-in values..
+        /// </summary>
+        internal static string OptionsResetChordFinderDefaultsToolTip {
+            get {
+                return ResourceManager.GetString("OptionsResetChordFinderDefaultsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Confirmations.
+        /// </summary>
+        internal static string OptionsResetConfirmationsLabel {
+            get {
+                return ResourceManager.GetString("OptionsResetConfirmationsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will reset all of the confirmation dialogs you specified to stop prompting you. This cannot be undone. Do you want to continue?.
+        /// </summary>
+        internal static string OptionsResetConfirmationsPromptMessage {
+            get {
+                return ResourceManager.GetString("OptionsResetConfirmationsPromptMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset all of the confirmation dialogs you specified to stop prompting you..
+        /// </summary>
+        internal static string OptionsResetConfirmationsToolTip {
+            get {
+                return ResourceManager.GetString("OptionsResetConfirmationsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Scale Finder Defaults.
+        /// </summary>
+        internal static string OptionsResetScaleFinderDefaultsLabel {
+            get {
+                return ResourceManager.GetString("OptionsResetScaleFinderDefaultsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will reset your default search parameters to the built-in values. This cannot be undone. Do you want to continue?.
+        /// </summary>
+        internal static string OptionsResetScaleFinderDefaultsPromptMessage {
+            get {
+                return ResourceManager.GetString("OptionsResetScaleFinderDefaultsPromptMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset your default search parameters to the built-in values..
+        /// </summary>
+        internal static string OptionsResetScaleFinderDefaultsToolTip {
+            get {
+                return ResourceManager.GetString("OptionsResetScaleFinderDefaultsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Settings.
+        /// </summary>
+        internal static string OptionsResetUserSettingsLabel {
+            get {
+                return ResourceManager.GetString("OptionsResetUserSettingsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will revert all of your user settings to the defaults. This cannot be undone. Do you want to continue?.
+        /// </summary>
+        internal static string OptionsResetUserSettingsPromptMessage {
+            get {
+                return ResourceManager.GetString("OptionsResetUserSettingsPromptMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revert your user settings to the defaults..
+        /// </summary>
+        internal static string OptionsResetUserSettingsToolTip {
+            get {
+                return ResourceManager.GetString("OptionsResetUserSettingsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Styles.
+        /// </summary>
+        internal static string OptionsResetUserStylesLabel {
+            get {
+                return ResourceManager.GetString("OptionsResetUserStylesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will revert your base user styles to the defaults. This cannot be undone. Do you want to continue?.
+        /// </summary>
+        internal static string OptionsResetUserStylesPromptMessage {
+            get {
+                return ResourceManager.GetString("OptionsResetUserStylesPromptMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revert your user styles to the defaults..
+        /// </summary>
+        internal static string OptionsResetUserStylesToolTip {
+            get {
+                return ResourceManager.GetString("OptionsResetUserStylesToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Advanced.
+        /// </summary>
+        internal static string OptionsSettingsAdvancedGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsSettingsAdvancedGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string OptionsSettingsGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsSettingsGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Advanced Settings Editor.
+        /// </summary>
+        internal static string OptionsShowAdvancedSettingsLabel {
+            get {
+                return ResourceManager.GetString("OptionsShowAdvancedSettingsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Careful! You can cause problems with Chordious if you don&apos;t know what you&apos;re doing in here. Do you want to continue?.
+        /// </summary>
+        internal static string OptionsShowAdvancedSettingsPromptMessage {
+            get {
+                return ResourceManager.GetString("OptionsShowAdvancedSettingsPromptMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit all settings..
+        /// </summary>
+        internal static string OptionsShowAdvancedSettingsToolTip {
+            get {
+                return ResourceManager.GetString("OptionsShowAdvancedSettingsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Advanced Style Editor.
+        /// </summary>
+        internal static string OptionsShowAdvancedStyleLabel {
+            get {
+                return ResourceManager.GetString("OptionsShowAdvancedStyleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Careful! You can cause problems with Chordious if you don&apos;t know what you&apos;re doing in here. Do you want to continue?.
+        /// </summary>
+        internal static string OptionsShowAdvancedStylePromptMessage {
+            get {
+                return ResourceManager.GetString("OptionsShowAdvancedStylePromptMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit all styles..
+        /// </summary>
+        internal static string OptionsShowAdvancedStyleToolTip {
+            get {
+                return ResourceManager.GetString("OptionsShowAdvancedStyleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export Config.
+        /// </summary>
+        internal static string OptionsShowConfigExportLabel {
+            get {
+                return ResourceManager.GetString("OptionsShowConfigExportLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export your Chordious Config to a file..
+        /// </summary>
+        internal static string OptionsShowConfigExportToolTip {
+            get {
+                return ResourceManager.GetString("OptionsShowConfigExportToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Config.
+        /// </summary>
+        internal static string OptionsShowConfigImportLabel {
+            get {
+                return ResourceManager.GetString("OptionsShowConfigImportLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import a Chordious Config file..
+        /// </summary>
+        internal static string OptionsShowConfigImportToolTip {
+            get {
+                return ResourceManager.GetString("OptionsShowConfigImportToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Style Editor.
+        /// </summary>
+        internal static string OptionsShowStyleEditorLabel {
+            get {
+                return ResourceManager.GetString("OptionsShowStyleEditorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the base user style..
+        /// </summary>
+        internal static string OptionsShowStyleEditorToolTip {
+            get {
+                return ResourceManager.GetString("OptionsShowStyleEditorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Advanced.
+        /// </summary>
+        internal static string OptionsStylesAdvancedGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsStylesAdvancedGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic.
+        /// </summary>
+        internal static string OptionsStylesBasicGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsStylesBasicGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Styles.
+        /// </summary>
+        internal static string OptionsStylesGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsStylesGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        internal static string OptionsTitle {
+            get {
+                return ResourceManager.GetString("OptionsTitle", resourceCulture);
             }
         }
         
@@ -2186,7 +2582,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit Chord Qualities.
+        ///   Looks up a localized string similar to Chord Qualities.
         /// </summary>
         internal static string ShowChordQualityManagerLabel {
             get {
@@ -2231,7 +2627,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This will open the Chordious Help page in your browser. Do you want to continue?.
+        ///   Looks up a localized string similar to This will open the Help section on the Chordious website in your browser. Do you want to continue?.
         /// </summary>
         internal static string ShowHelpPromptMessage {
             get {
@@ -2249,7 +2645,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit Instruments.
+        ///   Looks up a localized string similar to Instruments.
         /// </summary>
         internal static string ShowInstrumentManagerLabel {
             get {
@@ -2321,7 +2717,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit Scales.
+        ///   Looks up a localized string similar to Scales.
         /// </summary>
         internal static string ShowScaleManagerLabel {
             get {

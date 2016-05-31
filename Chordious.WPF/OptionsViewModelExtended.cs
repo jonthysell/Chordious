@@ -38,7 +38,31 @@ namespace com.jonthysell.Chordious.WPF
 {
     public class OptionsViewModelExtended : OptionsViewModel, IIdle
     {
-        #region Rendering
+        #region Backgrounds
+
+        public string SettingsBackgroundGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsSettingsBackgroundGroupLabel;
+            }
+        }
+
+        public string SelectedRenderBackgroundLabel
+        {
+            get
+            {
+                return Strings.OptionsSelectedRendererBackgroundLabel;
+            }
+        }
+
+        public string SelectedRenderBackgroundToolTip
+        {
+            get
+            {
+                return Strings.OptionsSelectedRendererBackgroundToolTip;
+            }
+        }
 
         public int SelectedRenderBackgroundIndex
         {
@@ -77,6 +101,22 @@ namespace com.jonthysell.Chordious.WPF
             {
                 SetSetting("app.renderbackground", value);
                 RaisePropertyChanged("SelectedRenderBackgroundIndex");
+            }
+        }
+
+        public string SelectedEditorRenderBackgroundLabel
+        {
+            get
+            {
+                return Strings.OptionsSelectedEditorRendererBackgroundLabel;
+            }
+        }
+
+        public string SelectedEditorRenderBackgroundToolTip
+        {
+            get
+            {
+                return Strings.OptionsSelectedEditorRendererBackgroundToolTip;
             }
         }
 
@@ -124,6 +164,30 @@ namespace com.jonthysell.Chordious.WPF
 
         #region Updates
 
+        public string UpdatesGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsUpdatesGroupLabel;
+            }
+        }
+
+        public string SelectedReleaseChannelLabel
+        {
+            get
+            {
+                return Strings.OptionsSelectedReleaseChannelLabel;
+            }
+        }
+
+        public string SelectedReleaseChannelToolTip
+        {
+            get
+            {
+                return Strings.OptionsSelectedReleaseChannelToolTip;
+            }
+        }
+
         public int SelectedReleaseChannelIndex
         {
             get
@@ -164,6 +228,22 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
+        public string CheckUpdateOnStartLabel
+        {
+            get
+            {
+                return Strings.OptionsCheckUpdateOnStartLabel;
+            }
+        }
+
+        public string CheckUpdateOnStartToolTip
+        {
+            get
+            {
+                return Strings.OptionsCheckUpdateOnStartToolTip;
+            }
+        }
+
         public bool CheckUpdateOnStart
         {
             get
@@ -184,6 +264,22 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
+        public string LastUpdateCheckLabel
+        {
+            get
+            {
+                return Strings.OptionsLastUpdateCheckLabel;
+            }
+        }
+
+        public string LastUpdateCheckToolTip
+        {
+            get
+            {
+                return Strings.OptionsLastUpdateCheckToolTip;
+            }
+        }
+
         public string LastUpdateCheck
         {
             get
@@ -196,6 +292,22 @@ namespace com.jonthysell.Chordious.WPF
                 }
 
                 return lastCheck.ToLocalTime().ToString("G");
+            }
+        }
+
+        public string CheckForUpdatesAsyncLabel
+        {
+            get
+            {
+                return Strings.OptionsCheckForUpdatesAsyncLabel;
+            }
+        }
+
+        public string CheckForUpdatesAsyncToolTip
+        {
+            get
+            {
+                return Strings.OptionsCheckForUpdatesAsyncToolTip;
             }
         }
 

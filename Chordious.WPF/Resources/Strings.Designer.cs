@@ -133,6 +133,132 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check For Updates.
+        /// </summary>
+        internal static string OptionsCheckForUpdatesAsyncLabel {
+            get {
+                return ResourceManager.GetString("OptionsCheckForUpdatesAsyncLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manually check online for updates..
+        /// </summary>
+        internal static string OptionsCheckForUpdatesAsyncToolTip {
+            get {
+                return ResourceManager.GetString("OptionsCheckForUpdatesAsyncToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check For Updates On Start.
+        /// </summary>
+        internal static string OptionsCheckUpdateOnStartLabel {
+            get {
+                return ResourceManager.GetString("OptionsCheckUpdateOnStartLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chordious will check for updates automatically when the app starts..
+        /// </summary>
+        internal static string OptionsCheckUpdateOnStartToolTip {
+            get {
+                return ResourceManager.GetString("OptionsCheckUpdateOnStartToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Checked.
+        /// </summary>
+        internal static string OptionsLastUpdateCheckLabel {
+            get {
+                return ResourceManager.GetString("OptionsLastUpdateCheckLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The last time that Chordious checked for updates..
+        /// </summary>
+        internal static string OptionsLastUpdateCheckToolTip {
+            get {
+                return ResourceManager.GetString("OptionsLastUpdateCheckToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram Editor.
+        /// </summary>
+        internal static string OptionsSelectedEditorRendererBackgroundLabel {
+            get {
+                return ResourceManager.GetString("OptionsSelectedEditorRendererBackgroundLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The background to show for diagrams in the Diagram Editor..
+        /// </summary>
+        internal static string OptionsSelectedEditorRendererBackgroundToolTip {
+            get {
+                return ResourceManager.GetString("OptionsSelectedEditorRendererBackgroundToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release Channel.
+        /// </summary>
+        internal static string OptionsSelectedReleaseChannelLabel {
+            get {
+                return ResourceManager.GetString("OptionsSelectedReleaseChannelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The release channel that you want to get updates from..
+        /// </summary>
+        internal static string OptionsSelectedReleaseChannelToolTip {
+            get {
+                return ResourceManager.GetString("OptionsSelectedReleaseChannelToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal.
+        /// </summary>
+        internal static string OptionsSelectedRendererBackgroundLabel {
+            get {
+                return ResourceManager.GetString("OptionsSelectedRendererBackgroundLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The background to show for diagrams in the Chordious UI..
+        /// </summary>
+        internal static string OptionsSelectedRendererBackgroundToolTip {
+            get {
+                return ResourceManager.GetString("OptionsSelectedRendererBackgroundToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Background.
+        /// </summary>
+        internal static string OptionsSettingsBackgroundGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsSettingsBackgroundGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates.
+        /// </summary>
+        internal static string OptionsUpdatesGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsUpdatesGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Official.
         /// </summary>
         internal static string ReleaseChannelOfficialFriendlyValue {

@@ -147,6 +147,58 @@
   <data name="DiagramEditorSelectedEditorRendererBackgroundToolTip" xml:space="preserve">
     <value>The background to show behind the diagrams.</value>
   </data>
+  <data name="DiagramExportChooseOutputPathLabel" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="DiagramExportChooseOutputPathToolTip" xml:space="preserve">
+    <value>Browse for the path to export to.</value>
+  </data>
+  <data name="DiagramExportExampleFilenameFormatLabel" xml:space="preserve">
+    <value>Example</value>
+  </data>
+  <data name="DiagramExportExampleFilenameFormatToolTip" xml:space="preserve">
+    <value>An example of what the image filename will be.</value>
+  </data>
+  <data name="DiagramExportOutputPathLabel" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="DiagramExportOutputPathToolTip" xml:space="preserve">
+    <value>The path where you want to export the diagram image files.</value>
+  </data>
+  <data name="DiagramExportOverwriteFilesLabel" xml:space="preserve">
+    <value>Overwrite Files</value>
+  </data>
+  <data name="DiagramExportOverwriteFilesToolTip" xml:space="preserve">
+    <value>Overwrite files that already exist with the same name.</value>
+  </data>
+  <data name="DiagramExportScalePercentLabel" xml:space="preserve">
+    <value>Scale %</value>
+  </data>
+  <data name="DiagramExportScalePercentToolTip" xml:space="preserve">
+    <value>Scale the image files to what percentage of the original size.</value>
+  </data>
+  <data name="DiagramExportSelectedExportFormatLabel" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="DiagramExportSelectedExportFormatToolTip" xml:space="preserve">
+    <value>The format of the exported image files.</value>
+  </data>
+  <data name="DiagramExportSelectedFilenameFormatLabel" xml:space="preserve">
+    <value>Filename</value>
+  </data>
+  <data name="DiagramExportSelectedFilenameFormatToolTip" xml:space="preserve">
+    <value>How to format the filenames of the exported images. Codes as follows:
+%c - Diagram collection name
+%t - Diagram title text
+%h - Diagram height (in pixels)
+%w - Diagram width (in pixels)
+%x - Image extension (lowercase)
+%X - Image extension (uppercase)
+%0 - Diagram number (starts at 0)
+%1 - Diagram number (starts at 1)
+%# - Total number of diagrams to be exported
+%% - Percent sign</value>
+  </data>
   <data name="FirstRunMessage" xml:space="preserve">
     <value>Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? (Recommended) You can change your mind later in Options.</value>
   </data>

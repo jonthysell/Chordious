@@ -38,6 +38,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public abstract class DiagramExportViewModelBase : ViewModelBase
@@ -54,7 +56,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return "Diagram Export";
+                return Strings.DiagramExportTitle;
             }
         }
 
@@ -143,6 +145,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 return DiagramsToExport.Max((od) => od.TotalHeight);
+            }
+        }
+
+        public string ExportAsyncLabel
+        {
+            get
+            {
+                return Strings.DiagramExportExportAsyncLabel;
+            }
+        }
+
+        public string ExportAsyncToolTip
+        {
+            get
+            {
+                return Strings.DiagramExportExportAsyncToolTip;
             }
         }
 

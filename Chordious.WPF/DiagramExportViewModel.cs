@@ -39,10 +39,28 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core.ViewModel;
 
+using com.jonthysell.Chordious.WPF.Resources;
+
 namespace com.jonthysell.Chordious.WPF
 {
     public class DiagramExportViewModel : DiagramExportViewModelBase
     {
+        public string OutputPathLabel
+        {
+            get
+            {
+                return Strings.DiagramExportOutputPathLabel;
+            }
+        }
+
+        public string OutputPathToolTip
+        {
+            get
+            {
+                return Strings.DiagramExportOutputPathToolTip;
+            }
+        }
+
         public string OutputPath
         {
             get
@@ -63,6 +81,22 @@ namespace com.jonthysell.Chordious.WPF
                 SetSetting("diagramexport.outputpath", value);
                 RaisePropertyChanged("OutputPath");
                 RaisePropertyChanged("ExampleFilenameFormat");
+            }
+        }
+
+        public string SelectedFilenameFormatLabel
+        {
+            get
+            {
+                return Strings.DiagramExportSelectedFilenameFormatLabel;
+            }
+        }
+
+        public string SelectedFilenameFormatToolTip
+        {
+            get
+            {
+                return Strings.DiagramExportSelectedFilenameFormatToolTip;
             }
         }
 
@@ -103,23 +137,21 @@ namespace com.jonthysell.Chordious.WPF
                 RaisePropertyChanged("FilenameFormats");
             }
         }
-        private ObservableCollection<string> _filenameFormats; 
+        private ObservableCollection<string> _filenameFormats;
 
-        public string FilenameFormatHelp
+        public string ExampleFilenameFormatLabel
         {
             get
             {
-                return  String.Join("\n",
-                    "%c - Diagram collection name",
-                    "%t - Diagram title text",
-                    "%h - Diagram height (in pixels)",
-                    "%w - Diagram width (in pixels)",
-                    "%x - Image extension (lowercase)",
-                    "%X - Image extension (uppercase)",
-                    "%0 - Diagram number (starts at 0)",
-                    "%1 - Diagram number (starts at 1)",
-                    "%# - Total number of diagrams to be exported",
-                    "%% - Percent sign");
+                return Strings.DiagramExportExampleFilenameFormatLabel;
+            }
+        }
+
+        public string ExampleFilenameFormatToolTip
+        {
+            get
+            {
+                return Strings.DiagramExportExampleFilenameFormatToolTip;
             }
         }
 
@@ -128,6 +160,22 @@ namespace com.jonthysell.Chordious.WPF
             get
             {
                 return GetFullFilePath();
+            }
+        }
+
+        public string SelectedExportFormatLabel
+        {
+            get
+            {
+                return Strings.DiagramExportSelectedExportFormatLabel;
+            }
+        }
+
+        public string SelectedExportFormatToolTip
+        {
+            get
+            {
+                return Strings.DiagramExportSelectedExportFormatToolTip;
             }
         }
 
@@ -175,6 +223,22 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
+        public string OverwriteFilesLabel
+        {
+            get
+            {
+                return Strings.DiagramExportOverwriteFilesLabel;
+            }
+        }
+
+        public string OverwriteFilesToolTip
+        {
+            get
+            {
+                return Strings.DiagramExportOverwriteFilesToolTip;
+            }
+        }
+
         public bool OverwriteFiles
         {
             get
@@ -203,6 +267,22 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
+        public string ScalePercentLabel
+        {
+            get
+            {
+                return Strings.DiagramExportScalePercentLabel;
+            }
+        }
+
+        public string ScalePercentToolTip
+        {
+            get
+            {
+                return Strings.DiagramExportScalePercentToolTip;
+            }
+        }
+
         public int ScalePercent
         {
             get
@@ -226,7 +306,7 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
-        public float ScaleFactor
+        private float ScaleFactor
         {
             get
             {
@@ -258,6 +338,22 @@ namespace com.jonthysell.Chordious.WPF
                 {
                     RaisePropertyChanged("ScaleFactor");
                 }
+            }
+        }
+
+        public string ChooseOutputPathLabel
+        {
+            get
+            {
+                return Strings.DiagramExportChooseOutputPathLabel;
+            }
+        }
+
+        public string ChooseOutputPathToolTip
+        {
+            get
+            {
+                return Strings.DiagramExportChooseOutputPathToolTip;
             }
         }
 

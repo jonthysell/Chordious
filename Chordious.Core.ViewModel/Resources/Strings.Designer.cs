@@ -503,6 +503,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export.
+        /// </summary>
+        internal static string DiagramExportExportAsyncLabel {
+            get {
+                return ResourceManager.GetString("DiagramExportExportAsyncLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export the diagrams as image files..
+        /// </summary>
+        internal static string DiagramExportExportAsyncToolTip {
+            get {
+                return ResourceManager.GetString("DiagramExportExportAsyncToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram Export.
+        /// </summary>
+        internal static string DiagramExportTitle {
+            get {
+                return ResourceManager.GetString("DiagramExportTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clone &quot;{0}&quot;....
         /// </summary>
         internal static string DiagramLibraryCloneNodeLabelFormat {

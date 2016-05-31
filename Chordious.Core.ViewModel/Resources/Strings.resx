@@ -870,6 +870,15 @@
   <data name="ChordQualityManagerDeleteNamedIntervalPromptFormat" xml:space="preserve">
     <value>This will delete the chord quality "{0}". This cannot be undone. Do you want to continue?</value>
   </data>
+  <data name="DiagramExportExportAsyncLabel" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="DiagramExportExportAsyncToolTip" xml:space="preserve">
+    <value>Export the diagrams as image files.</value>
+  </data>
+  <data name="DiagramExportTitle" xml:space="preserve">
+    <value>Diagram Export</value>
+  </data>
   <data name="ExceptionDetailsLabel" xml:space="preserve">
     <value>Details</value>
   </data>

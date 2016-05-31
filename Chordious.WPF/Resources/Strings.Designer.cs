@@ -151,6 +151,142 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ....
+        /// </summary>
+        internal static string DiagramExportChooseOutputPathLabel {
+            get {
+                return ResourceManager.GetString("DiagramExportChooseOutputPathLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browse for the path to export to..
+        /// </summary>
+        internal static string DiagramExportChooseOutputPathToolTip {
+            get {
+                return ResourceManager.GetString("DiagramExportChooseOutputPathToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Example.
+        /// </summary>
+        internal static string DiagramExportExampleFilenameFormatLabel {
+            get {
+                return ResourceManager.GetString("DiagramExportExampleFilenameFormatLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An example of what the image filename will be..
+        /// </summary>
+        internal static string DiagramExportExampleFilenameFormatToolTip {
+            get {
+                return ResourceManager.GetString("DiagramExportExampleFilenameFormatToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path.
+        /// </summary>
+        internal static string DiagramExportOutputPathLabel {
+            get {
+                return ResourceManager.GetString("DiagramExportOutputPathLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The path where you want to export the diagram image files..
+        /// </summary>
+        internal static string DiagramExportOutputPathToolTip {
+            get {
+                return ResourceManager.GetString("DiagramExportOutputPathToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwrite Files.
+        /// </summary>
+        internal static string DiagramExportOverwriteFilesLabel {
+            get {
+                return ResourceManager.GetString("DiagramExportOverwriteFilesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwrite files that already exist with the same name..
+        /// </summary>
+        internal static string DiagramExportOverwriteFilesToolTip {
+            get {
+                return ResourceManager.GetString("DiagramExportOverwriteFilesToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale %.
+        /// </summary>
+        internal static string DiagramExportScalePercentLabel {
+            get {
+                return ResourceManager.GetString("DiagramExportScalePercentLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale the image files to what percentage of the original size..
+        /// </summary>
+        internal static string DiagramExportScalePercentToolTip {
+            get {
+                return ResourceManager.GetString("DiagramExportScalePercentToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Format.
+        /// </summary>
+        internal static string DiagramExportSelectedExportFormatLabel {
+            get {
+                return ResourceManager.GetString("DiagramExportSelectedExportFormatLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The format of the exported image files..
+        /// </summary>
+        internal static string DiagramExportSelectedExportFormatToolTip {
+            get {
+                return ResourceManager.GetString("DiagramExportSelectedExportFormatToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filename.
+        /// </summary>
+        internal static string DiagramExportSelectedFilenameFormatLabel {
+            get {
+                return ResourceManager.GetString("DiagramExportSelectedFilenameFormatLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How to format the filenames of the exported images. Codes as follows:
+        ///%c - Diagram collection name
+        ///%t - Diagram title text
+        ///%h - Diagram height (in pixels)
+        ///%w - Diagram width (in pixels)
+        ///%x - Image extension (lowercase)
+        ///%X - Image extension (uppercase)
+        ///%0 - Diagram number (starts at 0)
+        ///%1 - Diagram number (starts at 1)
+        ///%# - Total number of diagrams to be exported
+        ///%% - Percent sign.
+        /// </summary>
+        internal static string DiagramExportSelectedFilenameFormatToolTip {
+            get {
+                return ResourceManager.GetString("DiagramExportSelectedFilenameFormatToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? (Recommended) You can change your mind later in Options..
         /// </summary>
         internal static string FirstRunMessage {

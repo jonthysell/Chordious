@@ -870,7 +870,22 @@
   <data name="ChordQualityManagerDeleteNamedIntervalPromptFormat" xml:space="preserve">
     <value>This will delete the chord quality "{0}". This cannot be undone. Do you want to continue?</value>
   </data>
+  <data name="FinderOptionsResetToDefaultsPromptMessage" xml:space="preserve">
+    <value>This will reset your current search parameters to the default values. Do you want to continue?</value>
+  </data>
+  <data name="FinderOptionsSetAsDefaultsPromptMessage" xml:space="preserve">
+    <value>This will set your current search parameters as the new default values. Do you want to continue?</value>
+  </data>
+  <data name="LaunchWebsitePromptMessage" xml:space="preserve">
+    <value>This will open the Chordious website in your browser. Do you want to continue?</value>
+  </data>
   <data name="ScaleManagerDeleteNamedIntervalPromptFormat" xml:space="preserve">
     <value>This will delete the chord quality "{0}". This cannot be undone. Do you want to continue?</value>
+  </data>
+  <data name="ShowHelpPromptMessage" xml:space="preserve">
+    <value>This will open the Chordious Help page in your browser. Do you want to continue?</value>
+  </data>
+  <data name="TextPromptTitle" xml:space="preserve">
+    <value>Prompt</value>
   </data>
 </root>

@@ -1727,6 +1727,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This will reset your current search parameters to the default values. Do you want to continue?.
+        /// </summary>
+        internal static string FinderOptionsResetToDefaultsPromptMessage {
+            get {
+                return ResourceManager.GetString("FinderOptionsResetToDefaultsPromptMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset your current search parameters to the default values..
         /// </summary>
         internal static string FinderOptionsResetToDefaultsToolTip {
@@ -1741,6 +1750,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string FinderOptionsSetAsDefaultsLabel {
             get {
                 return ResourceManager.GetString("FinderOptionsSetAsDefaultsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will set your current search parameters as the new default values. Do you want to continue?.
+        /// </summary>
+        internal static string FinderOptionsSetAsDefaultsPromptMessage {
+            get {
+                return ResourceManager.GetString("FinderOptionsSetAsDefaultsPromptMessage", resourceCulture);
             }
         }
         
@@ -1858,6 +1876,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string LaunchWebsiteLabel {
             get {
                 return ResourceManager.GetString("LaunchWebsiteLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will open the Chordious website in your browser. Do you want to continue?.
+        /// </summary>
+        internal static string LaunchWebsitePromptMessage {
+            get {
+                return ResourceManager.GetString("LaunchWebsitePromptMessage", resourceCulture);
             }
         }
         
@@ -2204,6 +2231,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This will open the Chordious Help page in your browser. Do you want to continue?.
+        /// </summary>
+        internal static string ShowHelpPromptMessage {
+            get {
+                return ResourceManager.GetString("ShowHelpPromptMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go to the Help section on the Chordious website..
         /// </summary>
         internal static string ShowHelpToolTip {
@@ -2308,6 +2344,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string StyleLabel {
             get {
                 return ResourceManager.GetString("StyleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prompt.
+        /// </summary>
+        internal static string TextPromptTitle {
+            get {
+                return ResourceManager.GetString("TextPromptTitle", resourceCulture);
             }
         }
         

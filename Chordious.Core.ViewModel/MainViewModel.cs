@@ -99,7 +99,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 return new RelayCommand(() => {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("This will open the Chordious website in your browser. Do you want to continue?", (confirmed) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.LaunchWebsitePromptMessage, (confirmed) =>
                         {
                             if (confirmed)
                             {
@@ -378,7 +378,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage("This will open the Chordious website in your browser. Do you want to continue?", (confirmed) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.ShowHelpPromptMessage, (confirmed) =>
                         {
                             if (confirmed)
                             {

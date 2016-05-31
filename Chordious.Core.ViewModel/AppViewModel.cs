@@ -372,7 +372,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void ResetUserConfig()
         {
-            UserConfig = new ConfigFile(AppConfig, "User");
+            UserConfig = new ConfigFile(AppConfig, ConfigFile.UserLevelKey);
             UserConfigLoaded = true;
         }
 

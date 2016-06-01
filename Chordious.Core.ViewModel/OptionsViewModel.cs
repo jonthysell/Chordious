@@ -280,9 +280,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return (new ObservableDiagramStyle(StyleBuffer.Parent)).ShowEditor;
+                if (null == _userStyle)
+                {
+                    _userStyle = new ObservableDiagramStyle(StyleBuffer.Parent);
+                }
+                return _userStyle.ShowEditor;
             }
         }
+        private ObservableDiagramStyle _userStyle;
 
         public string StylesAdvancedGroupLabel
         {

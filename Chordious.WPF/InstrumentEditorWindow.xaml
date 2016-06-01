@@ -4,14 +4,14 @@
         Title="{Binding Title, FallbackValue=Instrument Editor}" WindowStartupLocation="CenterScreen" Icon="{StaticResource ChordiousIcon}" Width="400" Height="110" ResizeMode="NoResize">
     <StackPanel FocusManager.FocusedElement="{Binding ElementName=InputName}">
         <StackPanel Orientation="Horizontal">
-            <Label Content="Name:" Margin="5" />
-            <TextBox Name="InputName" Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" Width="200" Margin="5" MaxLines="1" />
-            <Label Content="# of Strings:" Margin="5" />
-            <TextBox Name="InputNumStrings" Text="{Binding NumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsNew}" SelectedText="" Width="25" Margin="5" MaxLines="1" MaxLength="3" HorizontalContentAlignment="Center" />
+            <Label Content="{Binding NameLabel, FallbackValue=Name}" ToolTip="{Binding NameToolTip}" Margin="5" />
+            <TextBox Name="InputName" Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" ToolTip="{Binding NameToolTip}" Width="200" Margin="5" MaxLines="1" />
+            <Label Content="{Binding NumStringsLabel, FallbackValue=# of Strings}" ToolTip="{Binding NumStringsToolTip}" Margin="5" />
+            <TextBox Name="InputNumStrings" Text="{Binding NumStrings, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsNew}" SelectedText="" ToolTip="{Binding NumStringsToolTip}" Width="25" Margin="5" MaxLines="1" MaxLength="3" HorizontalContentAlignment="Center" />
         </StackPanel>
         <WrapPanel FlowDirection="RightToLeft" Height="Auto">
-            <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
-            <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" IsDefault="True" Style="{StaticResource CleanButton}"/>
+            <Button Command="{Binding Cancel}" Content="{Binding AppVM.CancelLabel, FallbackValue=Cancel}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
+            <Button Command="{Binding Accept}" Content="{Binding AppVM.AcceptLabel, FallbackValue=OK}" Width="75" Margin="5" IsDefault="True" Style="{StaticResource CleanButton}"/>
         </WrapPanel>
     </StackPanel>
 </Window>

@@ -14,13 +14,13 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <Label Content="{Binding NameLabel, FallbackValue=Name:}" ToolTip="{Binding NameToolTip}" Margin="5" VerticalAlignment="Center" />
+            <Label Content="{Binding NameLabel, FallbackValue=Name}" ToolTip="{Binding NameToolTip}" Margin="5" VerticalAlignment="Center" />
             <TextBox Name="InputName" Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" ToolTip="{Binding NameToolTip}" Width="150" Margin="5" MaxLines="1" />
-            <Label Content="{Binding AbbreviationLabel, FallbackValue=Abbreviation:}" ToolTip="{Binding AbbreviationToolTip}" Margin="5" VerticalAlignment="Center" />
+            <Label Content="{Binding AbbreviationLabel, FallbackValue=Abbreviation}" ToolTip="{Binding AbbreviationToolTip}" Margin="5" VerticalAlignment="Center" />
             <TextBox Name="InputAbbreviation" Text="{Binding Abbreviation, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" ToolTip="{Binding AbbreviationToolTip}" Width="70" Margin="5" MaxLines="1" />
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-            <Label Content="{Binding IntervalsLabel, FallbackValue=Intervals:}" ToolTip="{Binding IntervalsToolTip}" Margin="5" VerticalAlignment="Center" />
+            <Label Content="{Binding IntervalsLabel, FallbackValue=Intervals}" ToolTip="{Binding IntervalsToolTip}" Margin="5" VerticalAlignment="Center" />
             <Button Command="{Binding AddInterval}" Content="{Binding AddIntervalLabel, FallbackValue=+}" ToolTip="{Binding AddIntervalToolTip}" Width="20" Height="30" Margin="0,5" VerticalAlignment="Center" Style="{StaticResource CleanButton}"/>
             <Button Command="{Binding RemoveInterval}" Content="{Binding RemoveIntervalLabel, FallbackValue=-}" ToolTip="{Binding RemoveIntervalToolTip}" Width="20" Height="30" Margin="5" VerticalAlignment="Center" Style="{StaticResource CleanButton}"/>
         </StackPanel>

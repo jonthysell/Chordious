@@ -20,7 +20,7 @@
         <WrapPanel Grid.Row="0" Grid.Column="0">
             <Label Content="{Binding NodesLabel, FallbackValue=Collection}" ToolTip="{Binding NodesToolTip}" FontWeight="Bold" Margin="5,0" />
         </WrapPanel>
-        <ListBox Name="NodesListView" Margin="5,0" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Nodes}" SelectedItem="{Binding SelectedNode}">
+        <ListBox Name="NodesListView" Margin="5,0" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Nodes}" SelectedItem="{Binding SelectedNode}" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}">

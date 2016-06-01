@@ -33,6 +33,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class InstrumentManagerViewModel : ViewModelBase
@@ -49,7 +51,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return "Instrument Manager";
+                return Strings.InstrumentManagerTitle;
             }
         }
 
@@ -96,12 +98,30 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     RaisePropertyChanged("SelectedInstrument");
                     RaisePropertyChanged("InstrumentIsSelected");
                     RaisePropertyChanged("EditInstrument");
+                    RaisePropertyChanged("EditInstrumentLabel");
                     RaisePropertyChanged("DeleteInstrument");
+                    RaisePropertyChanged("DeleteInstrumentLabel");
                     RaisePropertyChanged("AddTuning");
                 }
             }
         }
         private ObservableInstrument _instrument;
+
+        public string DefaultInstrumentsGroupLabel
+        {
+            get
+            {
+                return Strings.InstrumentManagerDefaultInstrumentsGroupLabel;
+            }
+        }
+
+        public string DefaultInstrumentsGroupToolTip
+        {
+            get
+            {
+                return Strings.InstrumentManagerDefaultInstrumentsGroupToolTip;
+            }
+        }
 
         public int SelectedDefaultInstrumentIndex
         {
@@ -140,6 +160,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableInstrument> _defaultInstruments;
 
+        public string UserInstrumentsGroupLabel
+        {
+            get
+            {
+                return Strings.InstrumentManagerUserInstrumentsGroupLabel;
+            }
+        }
+
+        public string UserInstrumentsGroupToolTip
+        {
+            get
+            {
+                return Strings.InstrumentManagerUserInstrumentsGroupToolTip;
+            }
+        }
+
         public int SelectedUserInstrumentIndex
         {
             get
@@ -177,6 +213,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableInstrument> _userInstruments;
 
+        public string TuningsGroupLabel
+        {
+            get
+            {
+                return Strings.InstrumentManagerTuningsGroupLabel;
+            }
+        }
+
+        public string TuningsGroupToolTip
+        {
+            get
+            {
+                return Strings.InstrumentManagerTuningsGroupToolTip;
+            }
+        }
+
         public bool TuningIsSelected
         {
             get
@@ -206,7 +258,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     RaisePropertyChanged("SelectedTuning");
                     RaisePropertyChanged("TuningIsSelected");
                     RaisePropertyChanged("EditTuning");
+                    RaisePropertyChanged("EditTuningLabel");
                     RaisePropertyChanged("DeleteTuning");
+                    RaisePropertyChanged("DeleteTuningLabel");
                 }
             }
         }
@@ -225,6 +279,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private ObservableCollection<ObservableTuning> _tunings;
+
+        #region AddInstrument
+
+        public string AddInstrumentLabel
+        {
+            get
+            {
+                return Strings.NewLabel;
+            }
+        }
+
+        public string AddInstrumentToolTip
+        {
+            get
+            {
+                return Strings.InstrumentManagerAddInstrumentToolTip;
+            }
+        }
 
         public RelayCommand AddInstrument
         {
@@ -245,6 +317,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         ExceptionUtils.HandleException(ex);
                     }
                 });
+            }
+        }
+
+        #endregion
+
+        #region EditInstrument
+
+        public string EditInstrumentLabel
+        {
+            get
+            {
+                if (InstrumentIsSelected)
+                {
+                    return String.Format(Strings.InstrumentManagerEditInstrumentLabelFormat, SelectedInstrument.Name);
+                }
+
+                return Strings.EditLabel;
+            }
+        }
+
+        public string EditInstrumentToolTip
+        {
+            get
+            {
+                return Strings.InstrumentManagerEditInstrumentToolTip;
             }
         }
 
@@ -270,6 +367,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     return InstrumentIsSelected && SelectedInstrument.CanEdit;
                 });
+            }
+        }
+
+        #endregion
+
+        #region DeleteInstrument
+
+        public string DeleteInstrumentLabel
+        {
+            get
+            {
+                if (InstrumentIsSelected)
+                {
+                    return String.Format(Strings.InstrumentManagerDeleteInstrumentLabelFormat, SelectedInstrument.Name);
+                }
+
+                return Strings.DeleteLabel;
+            }
+        }
+
+        public string DeleteInstrumentToolTip
+        {
+            get
+            {
+                return Strings.InstrumentManagerDeleteInstrumentToolTip;
             }
         }
 
@@ -308,6 +430,26 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #endregion
+
+        #region AddTuning
+
+        public string AddTuningLabel
+        {
+            get
+            {
+                return Strings.NewLabel;
+            }
+        }
+
+        public string AddTuningToolTip
+        {
+            get
+            {
+                return Strings.InstrumentManagerAddTuningToolTip;
+            }
+        }
+
         public RelayCommand AddTuning
         {
             get
@@ -335,6 +477,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #endregion
+
+        #region EditTuning
+
+        public string EditTuningLabel
+        {
+            get
+            {
+                if (TuningIsSelected)
+                {
+                    return String.Format(Strings.InstrumentManagerEditTuningLabelFormat, SelectedTuning.Name);
+                }
+
+                return Strings.EditLabel;
+            }
+        }
+
+        public string EditTuningToolTip
+        {
+            get
+            {
+                return Strings.InstrumentManagerEditTuningToolTip;
+            }
+        }
+
         public RelayCommand EditTuning
         {
             get
@@ -359,6 +526,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     return InstrumentIsSelected && SelectedInstrument.CanEdit && TuningIsSelected && SelectedTuning.CanEdit;
                 });
+            }
+        }
+
+        #endregion
+
+        #region DeleteTuning
+
+        public string DeleteTuningLabel
+        {
+            get
+            {
+                if (TuningIsSelected)
+                {
+                    return String.Format(Strings.InstrumentManagerDeleteTuningLabelFormat, SelectedTuning.Name);
+                }
+
+                return Strings.DeleteLabel;
+            }
+        }
+
+        public string DeleteTuningToolTip
+        {
+            get
+            {
+                return Strings.InstrumentManagerDeleteTuningToolTip;
             }
         }
 
@@ -396,6 +588,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 });
             }
         }
+
+        #endregion
 
         public InstrumentManagerViewModel()
         {

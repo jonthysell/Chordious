@@ -38,7 +38,7 @@
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
                     <StackPanel>
                         <GroupBox Header="{Binding StylesBasicGroupLabel, FallbackValue=Basic}" Margin="5">
-                            <Button Content="{Binding ShowStyleEditorLabel ,FallbackValue=User Style Editor}" ToolTip="{Binding ShowStyleEditorToolTip}" Margin="5" Command="{Binding ShowStyleEditor, Mode=OneWay}" Style="{DynamicResource CleanButton}"/>
+                            <Button Content="{Binding ShowStyleEditorLabel, FallbackValue=User Style Editor}" ToolTip="{Binding ShowStyleEditorToolTip}" Margin="5" Command="{Binding ShowStyleEditor}" Style="{DynamicResource CleanButton}"/>
                         </GroupBox>
                         <GroupBox Header="{Binding StylesAdvancedGroupLabel, FallbackValue=Advanced}" Margin="5">
                             <StackPanel>

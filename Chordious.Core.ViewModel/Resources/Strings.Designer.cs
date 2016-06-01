@@ -224,7 +224,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Abbreviation:.
+        ///   Looks up a localized string similar to Abbreviation.
         /// </summary>
         internal static string ChordQualityEditorAbbreviationLabel {
             get {
@@ -1988,6 +1988,213 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Instrument.
+        /// </summary>
+        internal static string InstrumentEditorEditTitle {
+            get {
+                return ResourceManager.GetString("InstrumentEditorEditTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string InstrumentEditorNameLabel {
+            get {
+                return ResourceManager.GetString("InstrumentEditorNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the instrument..
+        /// </summary>
+        internal static string InstrumentEditorNameToolTip {
+            get {
+                return ResourceManager.GetString("InstrumentEditorNameToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Instrument.
+        /// </summary>
+        internal static string InstrumentEditorNewTitle {
+            get {
+                return ResourceManager.GetString("InstrumentEditorNewTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # of Strings.
+        /// </summary>
+        internal static string InstrumentEditorNumStringsLabel {
+            get {
+                return ResourceManager.GetString("InstrumentEditorNumStringsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of strings the instrument has..
+        /// </summary>
+        internal static string InstrumentEditorNumStringsToolTip {
+            get {
+                return ResourceManager.GetString("InstrumentEditorNumStringsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new instrument..
+        /// </summary>
+        internal static string InstrumentManagerAddInstrumentToolTip {
+            get {
+                return ResourceManager.GetString("InstrumentManagerAddInstrumentToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new tuning for the selected instrument..
+        /// </summary>
+        internal static string InstrumentManagerAddTuningToolTip {
+            get {
+                return ResourceManager.GetString("InstrumentManagerAddTuningToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Instruments.
+        /// </summary>
+        internal static string InstrumentManagerDefaultInstrumentsGroupLabel {
+            get {
+                return ResourceManager.GetString("InstrumentManagerDefaultInstrumentsGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Built-in instruments..
+        /// </summary>
+        internal static string InstrumentManagerDefaultInstrumentsGroupToolTip {
+            get {
+                return ResourceManager.GetString("InstrumentManagerDefaultInstrumentsGroupToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete &quot;{0}&quot;.
+        /// </summary>
+        internal static string InstrumentManagerDeleteInstrumentLabelFormat {
+            get {
+                return ResourceManager.GetString("InstrumentManagerDeleteInstrumentLabelFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete the selected instrument..
+        /// </summary>
+        internal static string InstrumentManagerDeleteInstrumentToolTip {
+            get {
+                return ResourceManager.GetString("InstrumentManagerDeleteInstrumentToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete &quot;{0}&quot;.
+        /// </summary>
+        internal static string InstrumentManagerDeleteTuningLabelFormat {
+            get {
+                return ResourceManager.GetString("InstrumentManagerDeleteTuningLabelFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete the selected tuning..
+        /// </summary>
+        internal static string InstrumentManagerDeleteTuningToolTip {
+            get {
+                return ResourceManager.GetString("InstrumentManagerDeleteTuningToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit &quot;{0}&quot;....
+        /// </summary>
+        internal static string InstrumentManagerEditInstrumentLabelFormat {
+            get {
+                return ResourceManager.GetString("InstrumentManagerEditInstrumentLabelFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the selected instrument..
+        /// </summary>
+        internal static string InstrumentManagerEditInstrumentToolTip {
+            get {
+                return ResourceManager.GetString("InstrumentManagerEditInstrumentToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit &quot;{0}&quot;....
+        /// </summary>
+        internal static string InstrumentManagerEditTuningLabelFormat {
+            get {
+                return ResourceManager.GetString("InstrumentManagerEditTuningLabelFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the selected tuning..
+        /// </summary>
+        internal static string InstrumentManagerEditTuningToolTip {
+            get {
+                return ResourceManager.GetString("InstrumentManagerEditTuningToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instrument Manager.
+        /// </summary>
+        internal static string InstrumentManagerTitle {
+            get {
+                return ResourceManager.GetString("InstrumentManagerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tunings.
+        /// </summary>
+        internal static string InstrumentManagerTuningsGroupLabel {
+            get {
+                return ResourceManager.GetString("InstrumentManagerTuningsGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The available tunings for the selected instrument..
+        /// </summary>
+        internal static string InstrumentManagerTuningsGroupToolTip {
+            get {
+                return ResourceManager.GetString("InstrumentManagerTuningsGroupToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Instruments.
+        /// </summary>
+        internal static string InstrumentManagerUserInstrumentsGroupLabel {
+            get {
+                return ResourceManager.GetString("InstrumentManagerUserInstrumentsGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User created instruments..
+        /// </summary>
+        internal static string InstrumentManagerUserInstrumentsGroupToolTip {
+            get {
+                return ResourceManager.GetString("InstrumentManagerUserInstrumentsGroupToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Website.
         /// </summary>
         internal static string LaunchWebsiteLabel {
@@ -2051,7 +2258,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Intervals:.
+        ///   Looks up a localized string similar to Intervals.
         /// </summary>
         internal static string NamedIntervalEditorIntervalsLabel {
             get {
@@ -2060,7 +2267,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name:.
+        ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string NamedIntervalEditorNameLabel {
             get {
@@ -2947,6 +3154,60 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string TextPromptTitle {
             get {
                 return ResourceManager.GetString("TextPromptTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Tuning.
+        /// </summary>
+        internal static string TuningEditorEditTitle {
+            get {
+                return ResourceManager.GetString("TuningEditorEditTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string TuningEditorNameLabel {
+            get {
+                return ResourceManager.GetString("TuningEditorNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the tuning..
+        /// </summary>
+        internal static string TuningEditorNameToolTip {
+            get {
+                return ResourceManager.GetString("TuningEditorNameToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Tuning.
+        /// </summary>
+        internal static string TuningEditorNewTitle {
+            get {
+                return ResourceManager.GetString("TuningEditorNewTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        internal static string TuningEditorRootNotesLabel {
+            get {
+                return ResourceManager.GetString("TuningEditorRootNotesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The notes of the tuning..
+        /// </summary>
+        internal static string TuningEditorRootNotesToolTip {
+            get {
+                return ResourceManager.GetString("TuningEditorRootNotesToolTip", resourceCulture);
             }
         }
         

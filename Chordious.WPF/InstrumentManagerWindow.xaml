@@ -20,9 +20,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <WrapPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="User Instruments" FontWeight="Bold" Margin="5,0" />
+            <Label Content="{Binding UserInstrumentsGroupLabel, FallbackValue=User Instruments}" ToolTip="{Binding UserInstrumentsGroupToolTip}" FontWeight="Bold" Margin="5,0" />
         </WrapPanel>
-        <ListBox Name="UserInstrumentsListView" Margin="5,0" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding UserInstruments}" SelectedIndex="{Binding SelectedUserInstrumentIndex}">
+        <ListBox Name="UserInstrumentsListView" Margin="5,0" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding UserInstruments}" SelectedIndex="{Binding SelectedUserInstrumentIndex}" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}">
@@ -34,17 +34,17 @@
             </ListBox.ItemTemplate>
             <ListBox.ContextMenu>
                 <ContextMenu Name="UserInstrumentsContextMenu">
-                    <MenuItem Command="{Binding AddInstrument}" Header="Add">
+                    <MenuItem Command="{Binding AddInstrument}" Header="{Binding AddInstrumentLabel, FallbackValue=New...}" ToolTip="{Binding AddInstrumentToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding EditInstrument}" Header="Edit">
+                    <MenuItem Command="{Binding EditInstrument}" Header="{Binding EditInstrumentLabel, FallbackValue=Edit...}" ToolTip="{Binding EditInstrumentToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding DeleteInstrument}" Header="Delete">
+                    <MenuItem Command="{Binding DeleteInstrument}" Header="{Binding DeleteInstrumentLabel, FallbackValue=Delete}" ToolTip="{Binding DeleteInstrumentToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
                         </MenuItem.Icon>
@@ -53,9 +53,9 @@
             </ListBox.ContextMenu>
         </ListBox>
         <WrapPanel Grid.Row="2" Grid.Column="0">
-            <Label Content="Default Instruments" FontWeight="Bold" Margin="5,0" />
+            <Label Content="{Binding DefaultInstrumentsGroupLabel, FallbackValue=Default Instruments}" ToolTip="{Binding DefaultInstrumentsGroupToolTip}" FontWeight="Bold" Margin="5,0" />
         </WrapPanel>
-        <ListBox Name="DefaultInstrumentsListView" Margin="5,0" Grid.Row="3" Grid.Column="0" ItemsSource="{Binding DefaultInstruments}" SelectedIndex="{Binding SelectedDefaultInstrumentIndex}">
+        <ListBox Name="DefaultInstrumentsListView" Margin="5,0" Grid.Row="3" Grid.Column="0" ItemsSource="{Binding DefaultInstruments}" SelectedIndex="{Binding SelectedDefaultInstrumentIndex}" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}" />
@@ -63,9 +63,9 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <WrapPanel Grid.Row="0" Grid.Column="1">
-            <Label Content="Tunings" FontWeight="Bold" />
+            <Label Content="{Binding TuningsGroupLabel, FallbackValue=Tunings}" ToolTip="{Binding TuningsGroupToolTip}" FontWeight="Bold" />
         </WrapPanel>
-        <ListBox Name="TuningsListView" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" ItemsSource="{Binding Tunings}" SelectedItem="{Binding SelectedTuning}" IsEnabled="{Binding InstrumentIsSelected}">
+        <ListBox Name="TuningsListView" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" ItemsSource="{Binding Tunings}" SelectedItem="{Binding SelectedTuning}" IsEnabled="{Binding InstrumentIsSelected}" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding LongName}">
@@ -77,17 +77,17 @@
             </ListBox.ItemTemplate>
             <ListBox.ContextMenu>
                 <ContextMenu Name="TuningContextMenu">
-                    <MenuItem Command="{Binding AddTuning}" Header="Add">
+                    <MenuItem Command="{Binding AddTuning}" Header="{Binding AddTuningLabel, FallbackValue=New...}" ToolTip="{Binding AddTuningToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding EditTuning}" Header="Edit">
+                    <MenuItem Command="{Binding EditTuning}" Header="{Binding EditTuningLabel, FallbackValue=Edit...}" ToolTip="{Binding EditTuningToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding DeleteTuning}" Header="Delete">
+                    <MenuItem Command="{Binding DeleteTuning}" Header="{Binding DeleteTuningLabel, FallbackValue=Delete}" ToolTip="{Binding DeleteTuningToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
                         </MenuItem.Icon>
@@ -97,26 +97,26 @@
         </ListBox>
         <WrapPanel Grid.Row="4" Grid.Column="0"  HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Button Command="{Binding AddInstrument}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                <Button Command="{Binding AddInstrument}" ToolTip="{Binding AddInstrumentToolTip}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
                     <local:AutoDisableImage Source="{StaticResource AddIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding EditInstrument}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                <Button Command="{Binding EditInstrument}" ToolTip="{Binding EditInstrumentToolTip}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
                     <local:AutoDisableImage Source="{StaticResource EditIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding DeleteInstrument}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                <Button Command="{Binding DeleteInstrument}" ToolTip="{Binding DeleteInstrumentToolTip}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
                     <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
             </StackPanel>
         </WrapPanel>
         <WrapPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Button Command="{Binding AddTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                <Button Command="{Binding AddTuning}" IsEnabled="{Binding InstrumentIsSelected}" ToolTip="{Binding AddTuningToolTip}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
                     <local:AutoDisableImage Source="{StaticResource AddIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding EditTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                <Button Command="{Binding EditTuning}" IsEnabled="{Binding InstrumentIsSelected}" ToolTip="{Binding EditTuningToolTip}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
                     <local:AutoDisableImage Source="{StaticResource EditIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
-                <Button Command="{Binding DeleteTuning}" IsEnabled="{Binding InstrumentIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                <Button Command="{Binding DeleteTuning}" IsEnabled="{Binding InstrumentIsSelected}" ToolTip="{Binding DeleteTuningToolTip}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
                     <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
             </StackPanel>

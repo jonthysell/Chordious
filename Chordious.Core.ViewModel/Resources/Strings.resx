@@ -868,7 +868,7 @@
     <value>User created scales.</value>
   </data>
   <data name="ChordQualityEditorAbbreviationLabel" xml:space="preserve">
-    <value>Abbreviation:</value>
+    <value>Abbreviation</value>
   </data>
   <data name="ChordQualityEditorAbbreviationToolTip" xml:space="preserve">
     <value>The abbreviation to be shown after the root note in the chord.</value>
@@ -915,6 +915,75 @@
   <data name="FinderOptionsSetAsDefaultsPromptMessage" xml:space="preserve">
     <value>This will set your current search parameters as the new default values. Do you want to continue?</value>
   </data>
+  <data name="InstrumentEditorEditTitle" xml:space="preserve">
+    <value>Edit Instrument</value>
+  </data>
+  <data name="InstrumentEditorNameLabel" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="InstrumentEditorNameToolTip" xml:space="preserve">
+    <value>The name of the instrument.</value>
+  </data>
+  <data name="InstrumentEditorNewTitle" xml:space="preserve">
+    <value>New Instrument</value>
+  </data>
+  <data name="InstrumentEditorNumStringsLabel" xml:space="preserve">
+    <value># of Strings</value>
+  </data>
+  <data name="InstrumentEditorNumStringsToolTip" xml:space="preserve">
+    <value>The number of strings the instrument has.</value>
+  </data>
+  <data name="InstrumentManagerAddInstrumentToolTip" xml:space="preserve">
+    <value>Create a new instrument.</value>
+  </data>
+  <data name="InstrumentManagerAddTuningToolTip" xml:space="preserve">
+    <value>Create a new tuning for the selected instrument.</value>
+  </data>
+  <data name="InstrumentManagerDefaultInstrumentsGroupLabel" xml:space="preserve">
+    <value>Default Instruments</value>
+  </data>
+  <data name="InstrumentManagerDefaultInstrumentsGroupToolTip" xml:space="preserve">
+    <value>Built-in instruments.</value>
+  </data>
+  <data name="InstrumentManagerDeleteInstrumentLabelFormat" xml:space="preserve">
+    <value>Delete "{0}"</value>
+  </data>
+  <data name="InstrumentManagerDeleteInstrumentToolTip" xml:space="preserve">
+    <value>Delete the selected instrument.</value>
+  </data>
+  <data name="InstrumentManagerDeleteTuningLabelFormat" xml:space="preserve">
+    <value>Delete "{0}"</value>
+  </data>
+  <data name="InstrumentManagerDeleteTuningToolTip" xml:space="preserve">
+    <value>Delete the selected tuning.</value>
+  </data>
+  <data name="InstrumentManagerEditInstrumentLabelFormat" xml:space="preserve">
+    <value>Edit "{0}"...</value>
+  </data>
+  <data name="InstrumentManagerEditInstrumentToolTip" xml:space="preserve">
+    <value>Edit the selected instrument.</value>
+  </data>
+  <data name="InstrumentManagerEditTuningLabelFormat" xml:space="preserve">
+    <value>Edit "{0}"...</value>
+  </data>
+  <data name="InstrumentManagerEditTuningToolTip" xml:space="preserve">
+    <value>Edit the selected tuning.</value>
+  </data>
+  <data name="InstrumentManagerTitle" xml:space="preserve">
+    <value>Instrument Manager</value>
+  </data>
+  <data name="InstrumentManagerTuningsGroupLabel" xml:space="preserve">
+    <value>Tunings</value>
+  </data>
+  <data name="InstrumentManagerTuningsGroupToolTip" xml:space="preserve">
+    <value>The available tunings for the selected instrument.</value>
+  </data>
+  <data name="InstrumentManagerUserInstrumentsGroupLabel" xml:space="preserve">
+    <value>User Instruments</value>
+  </data>
+  <data name="InstrumentManagerUserInstrumentsGroupToolTip" xml:space="preserve">
+    <value>User created instruments.</value>
+  </data>
   <data name="LaunchWebsitePromptMessage" xml:space="preserve">
     <value>This will open the Chordious website in your browser. Do you want to continue?</value>
   </data>
@@ -928,10 +997,10 @@
     <value>Example in C:</value>
   </data>
   <data name="NamedIntervalEditorIntervalsLabel" xml:space="preserve">
-    <value>Intervals:</value>
+    <value>Intervals</value>
   </data>
   <data name="NamedIntervalEditorNameLabel" xml:space="preserve">
-    <value>Name:</value>
+    <value>Name</value>
   </data>
   <data name="NamedIntervalEditorRemoveIntervalLabel" xml:space="preserve">
     <value>-</value>
@@ -1085,5 +1154,23 @@
   </data>
   <data name="TextPromptTitle" xml:space="preserve">
     <value>Prompt</value>
+  </data>
+  <data name="TuningEditorEditTitle" xml:space="preserve">
+    <value>Edit Tuning</value>
+  </data>
+  <data name="TuningEditorNameLabel" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="TuningEditorNameToolTip" xml:space="preserve">
+    <value>The name of the tuning.</value>
+  </data>
+  <data name="TuningEditorNewTitle" xml:space="preserve">
+    <value>New Tuning</value>
+  </data>
+  <data name="TuningEditorRootNotesLabel" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="TuningEditorRootNotesToolTip" xml:space="preserve">
+    <value>The notes of the tuning.</value>
   </data>
 </root>

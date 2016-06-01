@@ -15,7 +15,7 @@
         <WrapPanel Grid.Row="0" Margin="5,0">
             <Label Content="{Binding UserNamedIntervalGroupLabel, FallbackValue=User Named Intervals}" ToolTip="{Binding UserNamedIntervalGroupToolTip}" FontWeight="Bold" />
         </WrapPanel>
-        <ListView Grid.Row="1" Name="UserNamedIntervalsListView" Margin="5" ItemsSource="{Binding UserNamedIntervals}" SelectedIndex="{Binding SelectedUserNamedIntervalIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+        <ListView Grid.Row="1" Name="UserNamedIntervalsListView" Margin="5" ItemsSource="{Binding UserNamedIntervals}" SelectedIndex="{Binding SelectedUserNamedIntervalIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding LongName}">
@@ -48,7 +48,7 @@
         <WrapPanel Grid.Row="2" Margin="5,0">
             <Label Content="{Binding DefaultNamedIntervalGroupLabel, FallbackValue=Default Named Intervals}" ToolTip="{Binding DefaultNamedIntervalGroupToolTip}" FontWeight="Bold" />
         </WrapPanel>
-        <ListView Grid.Row="3" Name="DefaultNamedIntervalsListView" Margin="5" ItemsSource="{Binding DefaultNamedIntervals}" SelectedIndex="{Binding SelectedDefaultNamedIntervalIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+        <ListView Grid.Row="3" Name="DefaultNamedIntervalsListView" Margin="5" ItemsSource="{Binding DefaultNamedIntervals}" SelectedIndex="{Binding SelectedDefaultNamedIntervalIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding LongName}" />

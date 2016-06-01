@@ -867,6 +867,27 @@
   <data name="ScaleManagerUserNamedIntervalGroupToolTip" xml:space="preserve">
     <value>User created scales.</value>
   </data>
+  <data name="ChordQualityEditorAbbreviationLabel" xml:space="preserve">
+    <value>Abbreviation:</value>
+  </data>
+  <data name="ChordQualityEditorAbbreviationToolTip" xml:space="preserve">
+    <value>The abbreviation to be shown after the root note in the chord.</value>
+  </data>
+  <data name="ChordQualityEditorEditTitle" xml:space="preserve">
+    <value>Edit Chord Quality</value>
+  </data>
+  <data name="ChordQualityEditorExampleToolTip" xml:space="preserve">
+    <value>The chord quality's notes in the key of C.</value>
+  </data>
+  <data name="ChordQualityEditorIntervalsToolTip" xml:space="preserve">
+    <value>The intervals (in half-steps) of the chord quality.</value>
+  </data>
+  <data name="ChordQualityEditorNameToolTip" xml:space="preserve">
+    <value>The name of the chord quality.</value>
+  </data>
+  <data name="ChordQualityEditorNewTitle" xml:space="preserve">
+    <value>New Chord Quality</value>
+  </data>
   <data name="ChordQualityManagerDeleteNamedIntervalPromptFormat" xml:space="preserve">
     <value>This will delete the chord quality "{0}". This cannot be undone. Do you want to continue?</value>
   </data>
@@ -896,6 +917,27 @@
   </data>
   <data name="LaunchWebsitePromptMessage" xml:space="preserve">
     <value>This will open the Chordious website in your browser. Do you want to continue?</value>
+  </data>
+  <data name="NamedIntervalEditorAddIntervalLabel" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="NamedIntervalEditorAddIntervalToolTip" xml:space="preserve">
+    <value>Add an interval.</value>
+  </data>
+  <data name="NamedIntervalEditorExampleLabel" xml:space="preserve">
+    <value>Example in C:</value>
+  </data>
+  <data name="NamedIntervalEditorIntervalsLabel" xml:space="preserve">
+    <value>Intervals:</value>
+  </data>
+  <data name="NamedIntervalEditorNameLabel" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="NamedIntervalEditorRemoveIntervalLabel" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="NamedIntervalEditorRemoveIntervalToolTip" xml:space="preserve">
+    <value>Remove an interval.</value>
   </data>
   <data name="OptionsConfigGroupLabel" xml:space="preserve">
     <value>Config</value>
@@ -1019,6 +1061,21 @@
   </data>
   <data name="OptionsTitle" xml:space="preserve">
     <value>Options</value>
+  </data>
+  <data name="ScaleEditorEditTitle" xml:space="preserve">
+    <value>Edit Scale</value>
+  </data>
+  <data name="ScaleEditorExampleToolTip" xml:space="preserve">
+    <value>The scale's notes in the key of C.</value>
+  </data>
+  <data name="ScaleEditorIntervalsToolTip" xml:space="preserve">
+    <value>The intervals (in half-steps) of the scale.</value>
+  </data>
+  <data name="ScaleEditorNameToolTip" xml:space="preserve">
+    <value>The name of the scale.</value>
+  </data>
+  <data name="ScaleEditorNewTitle" xml:space="preserve">
+    <value>New Scale</value>
   </data>
   <data name="ScaleManagerDeleteNamedIntervalPromptFormat" xml:space="preserve">
     <value>This will delete the chord quality "{0}". This cannot be undone. Do you want to continue?</value>

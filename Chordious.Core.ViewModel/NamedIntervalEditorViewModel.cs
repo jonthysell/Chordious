@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public abstract class NamedIntervalEditorViewModel : ViewModelBase
@@ -46,6 +48,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
 
         public abstract string Title { get; }
+
+        public string NameLabel
+        {
+            get
+            {
+                return Strings.NamedIntervalEditorNameLabel;
+            }
+        }
+
+        public abstract string NameToolTip { get; }
 
         public string Name
         {
@@ -61,6 +73,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private string _name;
+
+        public string IntervalsLabel
+        {
+            get
+            {
+                return Strings.NamedIntervalEditorIntervalsLabel;
+            }
+        }
+
+        public abstract string IntervalsToolTip { get; }
 
         public ObservableCollection<NamedIntervalValue> Intervals
         {
@@ -81,6 +103,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private ObservableCollection<NamedIntervalValue> _intervals;
+
+        public string ExampleLabel
+        {
+            get
+            {
+                return Strings.NamedIntervalEditorExampleLabel;
+            }
+        }
+
+        public abstract string ExampleToolTip { get; }
 
         public string Example
         {
@@ -119,6 +151,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _isNew;
 
+        public string AddIntervalLabel
+        {
+            get
+            {
+                return Strings.NamedIntervalEditorAddIntervalLabel;
+            }
+        }
+
+        public string AddIntervalToolTip
+        {
+            get
+            {
+                return Strings.NamedIntervalEditorAddIntervalToolTip;
+            }
+        }
+
         public RelayCommand AddInterval
         {
             get
@@ -137,6 +185,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         ExceptionUtils.HandleException(ex);
                     }
                 });
+            }
+        }
+
+        public string RemoveIntervalLabel
+        {
+            get
+            {
+                return Strings.NamedIntervalEditorRemoveIntervalLabel;
+            }
+        }
+
+        public string RemoveIntervalToolTip
+        {
+            get
+            {
+                return Strings.NamedIntervalEditorRemoveIntervalToolTip;
             }
         }
 

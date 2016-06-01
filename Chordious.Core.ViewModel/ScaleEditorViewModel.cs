@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +32,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ScaleEditorViewModel : NamedIntervalEditorViewModel
@@ -40,11 +42,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                string title = (IsNew ? "Add " : "Edit ");
+                return IsNew ? Strings.ScaleEditorNewTitle : Strings.ScaleEditorEditTitle;
+            }
+        }
 
-                title += "User Scale";
+        public override string NameToolTip
+        {
+            get
+            {
+                return Strings.ScaleEditorNameToolTip;
+            }
+        }
 
-                return title;
+        public override string IntervalsToolTip
+        {
+            get
+            {
+                return Strings.ScaleEditorIntervalsToolTip;
+            }
+        }
+
+        public override string ExampleToolTip
+        {
+            get
+            {
+                return Strings.ScaleEditorExampleToolTip;
             }
         }
 

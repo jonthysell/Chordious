@@ -224,6 +224,69 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Abbreviation:.
+        /// </summary>
+        internal static string ChordQualityEditorAbbreviationLabel {
+            get {
+                return ResourceManager.GetString("ChordQualityEditorAbbreviationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The abbreviation to be shown after the root note in the chord..
+        /// </summary>
+        internal static string ChordQualityEditorAbbreviationToolTip {
+            get {
+                return ResourceManager.GetString("ChordQualityEditorAbbreviationToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Chord Quality.
+        /// </summary>
+        internal static string ChordQualityEditorEditTitle {
+            get {
+                return ResourceManager.GetString("ChordQualityEditorEditTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The chord quality&apos;s notes in the key of C..
+        /// </summary>
+        internal static string ChordQualityEditorExampleToolTip {
+            get {
+                return ResourceManager.GetString("ChordQualityEditorExampleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The intervals (in half-steps) of the chord quality..
+        /// </summary>
+        internal static string ChordQualityEditorIntervalsToolTip {
+            get {
+                return ResourceManager.GetString("ChordQualityEditorIntervalsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the chord quality..
+        /// </summary>
+        internal static string ChordQualityEditorNameToolTip {
+            get {
+                return ResourceManager.GetString("ChordQualityEditorNameToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Chord Quality.
+        /// </summary>
+        internal static string ChordQualityEditorNewTitle {
+            get {
+                return ResourceManager.GetString("ChordQualityEditorNewTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new chord quality..
         /// </summary>
         internal static string ChordQualityManagerAddNamedIntervalToolTip {
@@ -1961,6 +2024,69 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to +.
+        /// </summary>
+        internal static string NamedIntervalEditorAddIntervalLabel {
+            get {
+                return ResourceManager.GetString("NamedIntervalEditorAddIntervalLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add an interval..
+        /// </summary>
+        internal static string NamedIntervalEditorAddIntervalToolTip {
+            get {
+                return ResourceManager.GetString("NamedIntervalEditorAddIntervalToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Example in C:.
+        /// </summary>
+        internal static string NamedIntervalEditorExampleLabel {
+            get {
+                return ResourceManager.GetString("NamedIntervalEditorExampleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Intervals:.
+        /// </summary>
+        internal static string NamedIntervalEditorIntervalsLabel {
+            get {
+                return ResourceManager.GetString("NamedIntervalEditorIntervalsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:.
+        /// </summary>
+        internal static string NamedIntervalEditorNameLabel {
+            get {
+                return ResourceManager.GetString("NamedIntervalEditorNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -.
+        /// </summary>
+        internal static string NamedIntervalEditorRemoveIntervalLabel {
+            get {
+                return ResourceManager.GetString("NamedIntervalEditorRemoveIntervalLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove an interval..
+        /// </summary>
+        internal static string NamedIntervalEditorRemoveIntervalToolTip {
+            get {
+                return ResourceManager.GetString("NamedIntervalEditorRemoveIntervalToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete &quot;{0}&quot;....
         /// </summary>
         internal static string NamedIntervalManagerDeleteNamedIntervalLabelFormat {
@@ -2470,6 +2596,51 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string PathLabel {
             get {
                 return ResourceManager.GetString("PathLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Scale.
+        /// </summary>
+        internal static string ScaleEditorEditTitle {
+            get {
+                return ResourceManager.GetString("ScaleEditorEditTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The scale&apos;s notes in the key of C..
+        /// </summary>
+        internal static string ScaleEditorExampleToolTip {
+            get {
+                return ResourceManager.GetString("ScaleEditorExampleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The intervals (in half-steps) of the scale..
+        /// </summary>
+        internal static string ScaleEditorIntervalsToolTip {
+            get {
+                return ResourceManager.GetString("ScaleEditorIntervalsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the scale..
+        /// </summary>
+        internal static string ScaleEditorNameToolTip {
+            get {
+                return ResourceManager.GetString("ScaleEditorNameToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Scale.
+        /// </summary>
+        internal static string ScaleEditorNewTitle {
+            get {
+                return ResourceManager.GetString("ScaleEditorNewTitle", resourceCulture);
             }
         }
         

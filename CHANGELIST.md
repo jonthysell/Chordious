@@ -1,5 +1,10 @@
 # Chordious Changelist #
 
+## 1.9.16153.1831 ##
+* Localized majority of remaining messages, windows, labels and tooltips
+* Fixed bug with launching the style editor from Options
+* Fixed bug with double-clicking on items in rows
+
 ## 1.9.16145.449 ##
 * Added the new Diagram Style Editor with fully localized strings
 * Updated the Diagram Editor to use the same setup of options as the Diagram Style Editor

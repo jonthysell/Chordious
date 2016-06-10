@@ -1,5 +1,9 @@
 # Chordious Changelist #
 
+## 1.9.16162.1448 ##
+* Added license prompt to the installer
+* Added option to start Chordious after install
+
 ## 1.9.16153.1831 ##
 * Localized majority of remaining messages, windows, labels and tooltips
 * Fixed bug with launching the style editor from Options

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-<Product Id="*" Name="Chordious !(bind.FileVersion.ChordiousWpfApp)" Language="1033" Version="!(bind.FileVersion.ChordiousWpfApp)" Manufacturer="Jon Thysell" UpgradeCode="a49f8d4a-4e86-490d-8b31-282e26ad5ccf">
+  <Product Id="*" Name="Chordious !(bind.FileVersion.ChordiousWpfApp)" Language="1033" Version="!(bind.FileVersion.ChordiousWpfApp)" Manufacturer="Jon Thysell" UpgradeCode="a49f8d4a-4e86-490d-8b31-282e26ad5ccf">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Languages="1033"/>
     <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of Chordious is already installed."/>
     <?if $(var.Chordious.WPF.Configuration) = "Release"?>
@@ -9,8 +9,8 @@
     <MediaTemplate EmbedCab="yes" CompressionLevel="none"/>
     <?endif?>
     <Feature Id="ProductFeature" Title="Chordious.WPF" Level="1">
-        <ComponentGroupRef Id="ProductComponents"/>
-        <ComponentGroupRef Id="ProductShortcuts"/>
+      <ComponentGroupRef Id="ProductComponents"/>
+      <ComponentGroupRef Id="ProductShortcuts"/>
     </Feature>
     <Icon Id="icon.ico" SourceFile="$(var.Chordious.WPF.ProjectDir)\Resources\chordious.ico"/>
     <Property Id="ARPPRODUCTICON" Value="icon.ico"/>
@@ -18,77 +18,82 @@
     <Property Id="ARPURLINFOABOUT" Value="http://chordious.com"/>
     <PropertyRef Id="NETFRAMEWORK45"/>
     <Condition Message="This application requires .NET Framework 4.5. Please install the .NET Framework then run this installer again.">
-        <![CDATA[Installed OR NETFRAMEWORK45]]>
+      <![CDATA[Installed OR NETFRAMEWORK45]]>
     </Condition>
     <Property Id="WixShellExecTarget" Value="[#ChordiousWpfApp]"/>
-    <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes"/>
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Start Chordious"/>
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1"/>
+    <CustomAction Id="LaunchApplication" Directory="INSTALLFOLDER" ExeCommand="[#ChordiousWpfApp]" Impersonate="yes" Return="asyncNoWait"/>
+    <UI>
+      <UIRef Id="WixUI_Minimal"/>
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+    </UI>
     <InstallExecuteSequence>
-        <Custom Action="LaunchApplication" After="InstallFinalize">NOT Installed</Custom>
+      <Custom Action="LaunchApplication" After="InstallFinalize">UILevel = 3 and NOT Installed</Custom>
     </InstallExecuteSequence>
-</Product>
-<Fragment>
+    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+  </Product>
+  <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
-        <Directory Id="ProgramFilesFolder">
-            <Directory Id="INSTALLFOLDER" Name="Chordious.WPF">
-                <Directory Id="ResourcesFolder" Name="Resources"/>
-            </Directory>
-        </Directory>
-        <Directory Id="ProgramMenuFolder">
-            <Directory Id="ApplicationProgramsFolder" Name="Chordious.WPF"/>
-        </Directory>
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="Chordious.WPF"/>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="Chordious.WPF"/>
+      </Directory>
     </Directory>
-</Fragment>
-<Fragment>
+  </Fragment>
+  <Fragment>
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-        <Component>
-            <File Source="$(var.Chordious.Core.TargetPath)"/>
-        </Component>
-        <Component>
-            <File Source="$(var.Chordious.Core.ViewModel.TargetPath)"/>
-        </Component>
-        <Component Id="ProductComponent.WpfApp">
-            <File Id="ChordiousWpfApp" Source="$(var.Chordious.WPF.TargetPath)" KeyPath="yes"/>
-            <File Id="ChordiousWpfCoreConfig" Source="$(var.Chordious.WPF.TargetDir)\Chordious.Core.xml"/>
-            <File Id="ChordiousWpfAppConfig" Source="$(var.Chordious.WPF.TargetDir)\Chordious.WPF.xml"/>
-            <File Id="ChordiousWpfReadme" Name="Readme.txt" Source="$(var.SolutionDir)\README.md"/>
-            <File Id="ChordiousWpfLicense" Name="License.txt" Source="$(var.SolutionDir)\LICENSE.md"/>
-            <File Id="SvgNetLicense" Name="SVG.NET License.txt" Source="$(var.SolutionDir)\External\SVG.NET\LICENSE.md"/>
-            <File Id="SvgNetReadme" Name="SVG.NET Readme.txt" Source="$(var.SolutionDir)\External\SVG.NET\README.md"/>
-            <File Id="MvvmLightLicense" Name="MVVM Light License.txt" Source="$(var.SolutionDir)\External\MVVMLight\LICENSE.md"/>
-        </Component>
-        <Component>
-            <File Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.dll"/>
-        </Component>
-        <Component>
-            <File Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.Extras.dll"/>
-        </Component>
-        <Component>
-            <File Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.Platform.dll"/>
-        </Component>
-        <Component>
-            <File Source="$(var.Chordious.WPF.TargetDir)\Microsoft.Practices.ServiceLocation.dll"/>
-        </Component>
-        <Component>
-            <File Source="$(var.Chordious.WPF.TargetDir)\System.Windows.Interactivity.dll"/>
-        </Component>
-        <Component>
-            <File Source="$(var.Chordious.WPF.TargetDir)\Svg.dll"/>
-        </Component>
+      <Component>
+        <File Source="$(var.Chordious.Core.TargetPath)"/>
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.Core.ViewModel.TargetPath)"/>
+      </Component>
+      <Component Id="ProductComponent.WpfApp">
+        <File Id="ChordiousWpfApp" Source="$(var.Chordious.WPF.TargetPath)" KeyPath="yes"/>
+        <File Id="ChordiousWpfCoreConfig" Source="$(var.Chordious.WPF.TargetDir)\Chordious.Core.xml"/>
+        <File Id="ChordiousWpfAppConfig" Source="$(var.Chordious.WPF.TargetDir)\Chordious.WPF.xml"/>
+        <File Id="ChordiousWpfReadme" Name="Readme.txt" Source="$(var.SolutionDir)\README.md"/>
+        <File Id="ChordiousWpfLicense" Name="License.txt" Source="$(var.SolutionDir)\LICENSE.md"/>
+        <File Id="SvgNetLicense" Name="SVG.NET License.txt" Source="$(var.SolutionDir)\External\SVG.NET\LICENSE.md"/>
+        <File Id="SvgNetReadme" Name="SVG.NET Readme.txt" Source="$(var.SolutionDir)\External\SVG.NET\README.md"/>
+        <File Id="MvvmLightLicense" Name="MVVM Light License.txt" Source="$(var.SolutionDir)\External\MVVMLight\LICENSE.md"/>
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.dll"/>
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.Extras.dll"/>
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.Platform.dll"/>
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Microsoft.Practices.ServiceLocation.dll"/>
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\System.Windows.Interactivity.dll"/>
+      </Component>
+      <Component>
+        <File Source="$(var.Chordious.WPF.TargetDir)\Svg.dll"/>
+      </Component>
     </ComponentGroup>
     <ComponentGroup Id="ProductShortcuts" Directory="ApplicationProgramsFolder">
-        <Component Id="ApplicationShortcut">
-            <Shortcut Id="ApplicationStartMenuShortcut" Name="Chordious" Description="Freboart diagram generator." Target="[#ChordiousWpfApp]" Icon="icon.ico" WorkingDirectory="INSTALLFOLDER"/>
-            <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
-            <RegistryValue Root="HKCU" Key="Software\Microsoft\Chordious.WPF" Name="application" Type="integer" Value="1" KeyPath="yes"/>
-        </Component>
-        <Component Id="ReadmeShortcut">
-            <Shortcut Id="ApplicationStartMenuReadmeShortcut" Name="Readme" Description="Readme for Chordious." Target="[#ChordiousWpfReadme]" WorkingDirectory="INSTALLFOLDER"/>
-            <RegistryValue Root="HKCU" Key="Software\Microsoft\Chordious.WPF" Name="readme" Type="integer" Value="1" KeyPath="yes"/>
-        </Component>
-        <Component Id="LicenseShortcut">
-            <Shortcut Id="ApplicationStartMenuLicenseShortcut" Name="License" Description="License for Chordious." Target="[#ChordiousWpfLicense]" WorkingDirectory="INSTALLFOLDER"/>
-            <RegistryValue Root="HKCU" Key="Software\Microsoft\Chordious.WPF" Name="license" Type="integer" Value="1" KeyPath="yes"/>
-        </Component>
+      <Component Id="ApplicationShortcut">
+        <Shortcut Id="ApplicationStartMenuShortcut" Name="Chordious" Description="Freboart diagram generator." Target="[#ChordiousWpfApp]" Icon="icon.ico" WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\Chordious.WPF" Name="application" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+      <Component Id="ReadmeShortcut">
+        <Shortcut Id="ApplicationStartMenuReadmeShortcut" Name="Readme" Description="Readme for Chordious." Target="[#ChordiousWpfReadme]" WorkingDirectory="INSTALLFOLDER"/>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\Chordious.WPF" Name="readme" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+      <Component Id="LicenseShortcut">
+        <Shortcut Id="ApplicationStartMenuLicenseShortcut" Name="License" Description="License for Chordious." Target="[#ChordiousWpfLicense]" WorkingDirectory="INSTALLFOLDER"/>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\Chordious.WPF" Name="license" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
     </ComponentGroup>
-</Fragment>
+  </Fragment>
 </Wix>

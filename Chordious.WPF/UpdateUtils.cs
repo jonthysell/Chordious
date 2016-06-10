@@ -162,7 +162,7 @@ namespace com.jonthysell.Chordious.WPF
 
             using (StreamWriter sw = new StreamWriter(new FileStream(cmdFile, FileMode.Create)))
             {
-                sw.WriteLine("msiexec /i \"{0}\"", msiPath);
+                sw.WriteLine("msiexec /i \"{0}\" /qb", msiPath);
             }
 
             AppVM.DoOnUIThread(() =>

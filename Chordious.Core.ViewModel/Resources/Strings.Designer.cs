@@ -548,11 +548,47 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string Diagram {
+            get {
+                return ResourceManager.GetString("Diagram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dimensions.
         /// </summary>
         internal static string DiagramDimensionsGroupLabel {
             get {
                 return ResourceManager.GetString("DiagramDimensionsGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Styles.
+        /// </summary>
+        internal static string DiagramEditorResetStylesLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorResetStylesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will reset all overridden styles of the diagram. Do you want to continue?.
+        /// </summary>
+        internal static string DiagramEditorResetStylesPrompt {
+            get {
+                return ResourceManager.GetString("DiagramEditorResetStylesPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset the style of the diagram..
+        /// </summary>
+        internal static string DiagramEditorResetStylesToolTip {
+            get {
+                return ResourceManager.GetString("DiagramEditorResetStylesToolTip", resourceCulture);
             }
         }
         

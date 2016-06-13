@@ -300,6 +300,26 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public void ClearStyles()
+        {
+            Style.Clear();
+
+            foreach (DiagramMark mark in this.Marks)
+            {
+                mark.Style.Clear();
+            }
+
+            foreach (DiagramFretLabel fretLabel in this.FretLabels)
+            {
+                fretLabel.Style.Clear();
+            }
+
+            foreach (DiagramBarre barre in this.Barres)
+            {
+                barre.Style.Clear();
+            }
+        }
+
         #endregion
 
         #region Element Checks
@@ -344,7 +364,7 @@ namespace com.jonthysell.Chordious.Core
 
             if (position.GetType() == typeof(MarkPosition))
             {
-                foreach (DiagramMark mark in this._marks)
+                foreach (DiagramMark mark in this.Marks)
                 {
                     if (mark.Position == position)
                     {
@@ -393,7 +413,7 @@ namespace com.jonthysell.Chordious.Core
 
             if (position.GetType() == typeof(MarkPosition))
             {
-                foreach (DiagramMark mark in this._marks)
+                foreach (DiagramMark mark in this.Marks)
                 {
                     if (mark.Position == position && element != mark)
                     {

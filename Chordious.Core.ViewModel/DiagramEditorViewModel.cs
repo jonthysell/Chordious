@@ -59,6 +59,39 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string ResetStylesLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorResetStylesLabel;
+            }
+        }
+
+        public string ResetStylesToolTip
+        {
+            get
+            {
+                return Strings.DiagramEditorResetStylesToolTip;
+            }
+        }
+
+        public RelayCommand ResetStyles
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.DiagramEditorResetStylesPrompt, (confirmed) =>
+                    {
+                        if (confirmed)
+                        {
+                            ObservableDiagram.ResetStyles();
+                        }
+                    }, "confirmation.diagrameditor.resetstyles"));
+                });
+            }
+        }
+
         public RelayCommand Apply
         {
             get
@@ -223,6 +256,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             if (!ObservableDiagram.IsCursorProperty(e.PropertyName))
             {
                 Dirty = true;
+                if (e.PropertyName == "Style")
+                {
+                    RaisePropertyChanged("Style");
+                }
             }
         }
 

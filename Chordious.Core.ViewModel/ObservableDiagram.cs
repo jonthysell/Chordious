@@ -886,6 +886,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             Refresh();
         }
 
+        public void ResetStyles()
+        {
+            Diagram.ClearStyles();
+            RaisePropertyChanged("Style");
+            Refresh();
+        }
+
         public void Refresh()
         {
             RaisePropertyChanged("SvgText");

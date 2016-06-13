@@ -267,6 +267,7 @@
         </ScrollViewer>
         <WrapPanel Grid.Row="2" Grid.ColumnSpan="3" FlowDirection="RightToLeft">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Button Command="{Binding ResetStyles}" Content="{Binding ResetStylesLabel, FallbackValue=Reset Style}" ToolTip="{Binding ResetStylesToolTip}" Width="100" Margin="5" Style="{StaticResource CleanButton}"/>
                 <Button Command="{Binding Apply}" Content="{Binding AppVM.ApplyLabel, FallbackValue=Apply}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
                 <Button Command="{Binding Accept}" Content="{Binding AppVM.AcceptLabel, FallbackValue=OK}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
                 <Button Command="{Binding Cancel}" Content="{Binding AppVM.CancelLabel, FallbackValue=Cancel}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>

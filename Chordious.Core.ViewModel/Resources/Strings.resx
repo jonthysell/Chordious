@@ -1173,4 +1173,16 @@
   <data name="TuningEditorRootNotesToolTip" xml:space="preserve">
     <value>The notes of the tuning.</value>
   </data>
+  <data name="Diagram" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DiagramEditorResetStylesLabel" xml:space="preserve">
+    <value>Reset Styles</value>
+  </data>
+  <data name="DiagramEditorResetStylesPrompt" xml:space="preserve">
+    <value>This will reset all overridden styles of the diagram. Do you want to continue?</value>
+  </data>
+  <data name="DiagramEditorResetStylesToolTip" xml:space="preserve">
+    <value>Reset the style of the diagram.</value>
+  </data>
 </root>

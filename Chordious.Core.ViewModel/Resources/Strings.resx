@@ -1185,6 +1185,21 @@
   <data name="DiagramEditorResetStylesToolTip" xml:space="preserve">
     <value>Reset the style of the diagram.</value>
   </data>
+  <data name="DiagramStyleResetLabel" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="DiagramStyleResetPrompt" xml:space="preserve">
+    <value>This will reset all overridden styles for the selected style. Do you want to continue?</value>
+  </data>
+  <data name="DiagramStyleResetToolTip" xml:space="preserve">
+    <value>Reset all of the overridden styles for the selected style.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeResetStylesSelectedPromptPluralFormat" xml:space="preserve">
+    <value>This will reset all overridden styles of the selected {0} diagrams. Do you want to continue?</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeResetStylesSelectedPromptSingleFormat" xml:space="preserve">
+    <value>This will reset all overridden styles of the selected diagram. Do you want to continue?</value>
+  </data>
   <data name="ObservableDiagramLibraryNodeResetStylesSelectedToolTipPluralFormat" xml:space="preserve">
     <value>Reset the styles of the {0} selected diagrams.</value>
   </data>

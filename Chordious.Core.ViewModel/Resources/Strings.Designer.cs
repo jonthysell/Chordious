@@ -1367,6 +1367,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        internal static string DiagramStyleResetLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleResetLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will reset all overridden styles for the selected style. Do you want to continue?.
+        /// </summary>
+        internal static string DiagramStyleResetPrompt {
+            get {
+                return ResourceManager.GetString("DiagramStyleResetPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset all of the overridden styles for the selected style..
+        /// </summary>
+        internal static string DiagramStyleResetToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleResetToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Summary of {0}.
         /// </summary>
         internal static string DiagramStyleSummaryLabelFormat {
@@ -2452,6 +2479,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ObservableDiagramLibraryNodeExportSelectedToolTipSingleFormat {
             get {
                 return ResourceManager.GetString("ObservableDiagramLibraryNodeExportSelectedToolTipSingleFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will reset all overridden styles of the selected {0} diagrams. Do you want to continue?.
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeResetStylesSelectedPromptPluralFormat {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeResetStylesSelectedPromptPluralFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will reset all overridden styles of the selected diagram. Do you want to continue?.
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeResetStylesSelectedPromptSingleFormat {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeResetStylesSelectedPromptSingleFormat", resourceCulture);
             }
         }
         

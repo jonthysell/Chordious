@@ -1,6 +1,7 @@
 ﻿<Window x:Class="com.jonthysell.Chordious.WPF.DiagramEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
         Title="{Binding Title, FallbackValue=Diagram Editor}" Height="600" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Icon="{StaticResource ChordiousIcon}">
     <Window.InputBindings>
         <KeyBinding Key="F5" Command="{Binding ObservableDiagram.RenderImage}" />
@@ -267,7 +268,9 @@
         </ScrollViewer>
         <WrapPanel Grid.Row="2" Grid.ColumnSpan="3" FlowDirection="RightToLeft">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Button Command="{Binding ResetStyles}" Content="{Binding ResetStylesLabel, FallbackValue=Reset Style}" ToolTip="{Binding ResetStylesToolTip}" Width="100" Margin="5" Style="{StaticResource CleanButton}"/>
+                <Button Command="{Binding ResetStyles}" ToolTip="{Binding ResetStylesToolTip}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                    <local:AutoDisableImage Source="{StaticResource ResetIcon16}" Width="16" Height="16" />
+                </Button>
                 <Button Command="{Binding Apply}" Content="{Binding AppVM.ApplyLabel, FallbackValue=Apply}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
                 <Button Command="{Binding Accept}" Content="{Binding AppVM.AcceptLabel, FallbackValue=OK}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
                 <Button Command="{Binding Cancel}" Content="{Binding AppVM.CancelLabel, FallbackValue=Cancel}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>

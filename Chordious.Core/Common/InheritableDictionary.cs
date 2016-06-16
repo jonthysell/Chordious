@@ -89,6 +89,14 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public int LocalCount
+        {
+            get
+            {
+                return this._localDictionary.Count;
+            }
+        }
+
         public string this[string key]
         {
             get

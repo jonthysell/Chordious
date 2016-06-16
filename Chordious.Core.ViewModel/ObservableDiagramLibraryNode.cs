@@ -226,12 +226,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        List<ObservableDiagram> itemsToReset= new List<ObservableDiagram>(SelectedDiagrams);
+                        int count = SelectedDiagrams.Count;
+                        string message = String.Format(count < 2 ? Strings.ObservableDiagramLibraryNodeResetStylesSelectedPromptSingleFormat : Strings.ObservableDiagramLibraryNodeResetStylesSelectedPromptPluralFormat, count);
 
-                        foreach (ObservableDiagram od in itemsToReset)
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (confirmed) =>
                         {
-                            od.ResetStyles();
-                        }
+                            if (confirmed)
+                            {
+                                foreach (ObservableDiagram od in SelectedDiagrams)
+                                {
+                                    od.ResetStyles();
+                                }
+                            }
+                        }, "confirmation.diagramlibrarynode.resetstyles"));
                     }
                     catch (Exception ex)
                     {
@@ -381,7 +388,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                                     Diagrams.Remove(od);
                                 }
                             }
-                        }, "confirmation.diagramlibrary.deletediagram"));
+                        }, "confirmation.diagramlibrarynode.deletediagram"));
                     }
                     catch (Exception ex)
                     {

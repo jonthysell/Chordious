@@ -86,8 +86,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         if (confirmed)
                         {
                             ObservableDiagram.ResetStyles();
+                            RaisePropertyChanged("ResetStyles");
                         }
                     }, "confirmation.diagrameditor.resetstyles"));
+                },
+                () =>
+                {
+                    return Style.LocalCount > 0;
                 });
             }
         }
@@ -249,6 +254,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
 
             ObservableDiagram.PropertyChanged += ObservableDiagram_PropertyChanged;
+            ObservableDiagram.Style.PropertyChanged += Style_PropertyChanged;
         }
 
         void ObservableDiagram_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -260,6 +266,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     RaisePropertyChanged("Style");
                 }
+            }
+        }
+
+        void Style_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "LocalCount")
+            {
+                Dirty = true;
+                RaisePropertyChanged("ResetStyles");
             }
         }
 

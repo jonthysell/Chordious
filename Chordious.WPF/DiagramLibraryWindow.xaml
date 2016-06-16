@@ -134,6 +134,14 @@
                     <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Button Command="{Binding SelectedNode.EditCollectionStyle}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding EditNodeStyleToolTip}">
+                    <local:AutoDisableImage Source="{StaticResource StyleIcon16}" Width="16" Height="16" Margin="5" />
+                </Button>
+            </StackPanel>
         </WrapPanel>
         <WrapPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
@@ -151,9 +159,6 @@
                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />            
             </StackPanel>
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Button Command="{Binding SelectedNode.EditCollectionStyle}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding SelectedNode.EditCollectionStyleToolTip}">
-                    <local:AutoDisableImage Source="{StaticResource StyleIcon16}" Width="16" Height="16" Margin="5" />
-                </Button>
                 <Button Command="{Binding SelectedNode.ExportSelected}" IsEnabled="{Binding NodeIsSelected}" Margin="5" Style="{StaticResource CleanButtonNoBorder}" ToolTip="{Binding SelectedNode.ExportSelectedToolTip}">
                     <local:AutoDisableImage Source="{StaticResource ExportIcon16}" Width="16" Height="16" Margin="5" />
                 </Button>

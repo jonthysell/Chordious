@@ -1,6 +1,7 @@
 ﻿<Window x:Class="com.jonthysell.Chordious.WPF.DiagramStyleEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
         Title="{Binding Title, FallbackValue=Style Editor}" WindowStartupLocation="CenterScreen" Icon="{StaticResource ChordiousIcon}" MinWidth="440" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
     <StackPanel>
         <StackPanel>
@@ -219,6 +220,9 @@
         </TabControl>
         <WrapPanel FlowDirection="RightToLeft" Height="Auto">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Button Command="{Binding Style.Reset}" ToolTip="{Binding Style.ResetToolTip}" IsEnabled="{Binding Style.IsEditable}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                    <local:AutoDisableImage Source="{StaticResource ResetIcon16}" Width="16" Height="16" />
+                </Button>
                 <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
                 <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
                 <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>

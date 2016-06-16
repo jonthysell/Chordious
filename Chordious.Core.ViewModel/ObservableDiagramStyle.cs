@@ -73,6 +73,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public int LocalCount
+        {
+            get
+            {
+                return Style.LocalCount;
+            }
+        }
+
         public bool IsEditable
         {
             get
@@ -2155,6 +2163,54 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        #region Reset
+
+        public string ResetLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleResetLabel;
+            }
+        }
+
+        public string ResetToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleResetToolTip;
+            }
+        }
+
+        public RelayCommand Reset
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.DiagramStyleResetPrompt, (confirmed) =>
+                        {
+                            if (confirmed)
+                            {
+                                Style.Clear();
+                                RaisePropertyChanged("");
+                            }
+                        }, "confirmation.diagramstyle.reset"));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return LocalCount > 0;
+                });
+            }
+        }
+
+        #endregion
+
         public Action<bool> PostEditCallback
         {
             get
@@ -2217,6 +2273,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             if (e.PropertyName != "Summary")
             {
                 RaisePropertyChanged("Summary");
+                if (e.PropertyName != "Reset" && e.PropertyName != "LocalCount")
+                {
+                    RaisePropertyChanged("LocalCount");
+                    RaisePropertyChanged("Reset");
+                }
             }
         }
     }

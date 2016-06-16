@@ -1185,4 +1185,13 @@
   <data name="DiagramEditorResetStylesToolTip" xml:space="preserve">
     <value>Reset the style of the diagram.</value>
   </data>
+  <data name="ObservableDiagramLibraryNodeResetStylesSelectedToolTipPluralFormat" xml:space="preserve">
+    <value>Reset the styles of the {0} selected diagrams.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeResetStylesSelectedToolTipSingleFormat" xml:space="preserve">
+    <value>Reset the style of the selected diagram.</value>
+  </data>
+  <data name="ResetStylesLabel" xml:space="preserve">
+    <value>Reset Styles...</value>
+  </data>
 </root>

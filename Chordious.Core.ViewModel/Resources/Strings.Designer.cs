@@ -2456,6 +2456,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset the styles of the {0} selected diagrams..
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeResetStylesSelectedToolTipPluralFormat {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeResetStylesSelectedToolTipPluralFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset the style of the selected diagram..
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeResetStylesSelectedToolTipSingleFormat {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeResetStylesSelectedToolTipSingleFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Config.
         /// </summary>
         internal static string OptionsConfigGroupLabel {
@@ -2839,6 +2857,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string PathLabel {
             get {
                 return ResourceManager.GetString("PathLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Styles....
+        /// </summary>
+        internal static string ResetStylesLabel {
+            get {
+                return ResourceManager.GetString("ResetStylesLabel", resourceCulture);
             }
         }
         

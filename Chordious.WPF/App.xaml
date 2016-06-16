@@ -26,6 +26,7 @@
         <BitmapImage x:Key="ImportIcon16" >pack://application:,,,/Resources/import16.png</BitmapImage>
         <BitmapImage x:Key="ExportIcon16" >pack://application:,,,/Resources/export16.png</BitmapImage>
         <BitmapImage x:Key="StyleIcon16" >pack://application:,,,/Resources/style16.png</BitmapImage>
+        <BitmapImage x:Key="ResetIcon16" >pack://application:,,,/Resources/reset16.png</BitmapImage>
         <BitmapImage x:Key="ErrorIcon32" >pack://application:,,,/Resources/error32.png</BitmapImage>
         <BitmapImage x:Key="WarningIcon32" >pack://application:,,,/Resources/warning32.png</BitmapImage>
         <BitmapImage x:Key="InformationIcon32" >pack://application:,,,/Resources/information32.png</BitmapImage>

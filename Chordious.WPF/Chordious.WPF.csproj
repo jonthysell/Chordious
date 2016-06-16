@@ -317,6 +317,7 @@
     <Content Include="Chordious.WPF.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\reset16.png" />
     <Resource Include="Resources\style16.png" />
     <Resource Include="Resources\add16.png" />
     <Resource Include="Resources\copy16.png" />

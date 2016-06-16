@@ -199,6 +199,53 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        #region ResetStylesSelected
+
+        public string ResetStylesSelectedLabel
+        {
+            get
+            {
+                return Strings.ResetStylesLabel;
+            }
+        }
+
+        public string ResetStylesSelectedToolTip
+        {
+            get
+            {
+                int count = SelectedDiagrams.Count;
+                return String.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeResetStylesSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeResetStylesSelectedToolTipPluralFormat, count);
+            }
+        }
+
+        public RelayCommand ResetStylesSelected
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        List<ObservableDiagram> itemsToReset= new List<ObservableDiagram>(SelectedDiagrams);
+
+                        foreach (ObservableDiagram od in itemsToReset)
+                        {
+                            od.ResetStyles();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedDiagrams.Count > 0;
+                });
+            }
+        }
+
+        #endregion
+
         #region CloneSelected
 
         public string CloneSelectedLabel
@@ -513,6 +560,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             RaisePropertyChanged("ExportSelectedToolTip");
             RaisePropertyChanged("DeleteSelected");
             RaisePropertyChanged("DeleteSelectedToolTip");
+            RaisePropertyChanged("ResetStylesSelected");
+            RaisePropertyChanged("ResetStylesSelectedToolTip");
         }
     }
 }

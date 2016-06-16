@@ -104,6 +104,11 @@
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator />
+                    <MenuItem Command="{Binding SelectedNode.ResetStylesSelected}" Header="{Binding SelectedNode.ResetStylesSelectedLabel}" ToolTip="{Binding SelectedNode.ResetStylesSelectedToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource ResetIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <MenuItem Command="{Binding SelectedNode.CloneSelected}" Header="{Binding SelectedNode.CloneSelectedLabel}" ToolTip="{Binding SelectedNode.CloneSelectedToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />

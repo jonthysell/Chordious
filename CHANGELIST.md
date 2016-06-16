@@ -1,5 +1,9 @@
 # Chordious Changelist #
 
+## 1.9.16168.1613 ##
+* Added buttons to reset the styles of diagrams
+* Added buttons to reset the style in the style editor
+
 ## 1.9.16162.1448 ##
 * Added license prompt to the installer
 * Added option to start Chordious after install

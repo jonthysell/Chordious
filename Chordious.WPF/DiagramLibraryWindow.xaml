@@ -48,14 +48,15 @@
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator />
-                    <MenuItem Command="{Binding CloneNode}" Header="{Binding CloneNodeLabel}" ToolTip="{Binding CloneNodeToolTip}">
-                        <MenuItem.Icon>
-                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
-                        </MenuItem.Icon>
-                    </MenuItem>
                     <MenuItem Command="{Binding EditNodeStyle}" Header="{Binding EditNodeStyleLabel}" ToolTip="{Binding EditNodeStyleToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource StyleIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Command="{Binding CloneNode}" Header="{Binding CloneNodeLabel}" ToolTip="{Binding CloneNodeToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource CloneIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
@@ -104,19 +105,31 @@
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator />
+                    <MenuItem Command="{Binding SelectedNode.ExportSelected}" Header="{Binding SelectedNode.ExportSelectedLabel}" ToolTip="{Binding SelectedNode.ExportSelectedToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource ExportIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
                     <MenuItem Command="{Binding SelectedNode.ResetStylesSelected}" Header="{Binding SelectedNode.ResetStylesSelectedLabel}" ToolTip="{Binding SelectedNode.ResetStylesSelectedToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource ResetIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
+                    <Separator />
                     <MenuItem Command="{Binding SelectedNode.CloneSelected}" Header="{Binding SelectedNode.CloneSelectedLabel}" ToolTip="{Binding SelectedNode.CloneSelectedToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource CloneIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding SelectedNode.CopySelected}" Header="{Binding SelectedNode.CopySelectedLabel}" ToolTip="{Binding SelectedNode.CopySelectedToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="{Binding SelectedNode.ExportSelected}" Header="{Binding SelectedNode.ExportSelectedLabel}" ToolTip="{Binding SelectedNode.ExportSelectedToolTip}">
+                    <MenuItem Command="{Binding SelectedNode.MoveSelected}" Header="{Binding SelectedNode.MoveSelectedLabel}" ToolTip="{Binding SelectedNode.MoveSelectedToolTip}">
                         <MenuItem.Icon>
-                            <local:AutoDisableImage Source="{StaticResource ExportIcon16}" />
+                            <local:AutoDisableImage Source="{StaticResource MoveIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>

@@ -530,6 +530,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy....
+        /// </summary>
+        internal static string CopyLabel {
+            get {
+                return ResourceManager.GetString("CopyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Count:.
         /// </summary>
         internal static string CountLabel {
@@ -2321,6 +2330,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Move....
+        /// </summary>
+        internal static string MoveLabel {
+            get {
+                return ResourceManager.GetString("MoveLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to +.
         /// </summary>
         internal static string NamedIntervalEditorAddIntervalLabel {
@@ -2429,7 +2447,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Clone the {0} selected diagrams..
+        ///   Looks up a localized string similar to Create copies of the {0} selected diagrams in the existing collection..
         /// </summary>
         internal static string ObservableDiagramLibraryNodeCloneSelectedToolTipPluralFormat {
             get {
@@ -2438,11 +2456,29 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Clone the selected diagram..
+        ///   Looks up a localized string similar to Create a copy of the selected diagram in the existing collection..
         /// </summary>
         internal static string ObservableDiagramLibraryNodeCloneSelectedToolTipSingleFormat {
             get {
                 return ResourceManager.GetString("ObservableDiagramLibraryNodeCloneSelectedToolTipSingleFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy the {0} selected diagrams to another collection..
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeCopySelectedToolTipPluralFormat {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeCopySelectedToolTipPluralFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy the selected diagram to another collection..
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeCopySelectedToolTipSingleFormat {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeCopySelectedToolTipSingleFormat", resourceCulture);
             }
         }
         
@@ -2506,6 +2542,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ObservableDiagramLibraryNodeExportSelectedToolTipSingleFormat {
             get {
                 return ResourceManager.GetString("ObservableDiagramLibraryNodeExportSelectedToolTipSingleFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move the {0} selected diagrams to another collection..
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeMoveSelectedToolTipPluralFormat {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeMoveSelectedToolTipPluralFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move the selected diagram to another collection..
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeMoveSelectedToolTipSingleFormat {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeMoveSelectedToolTipSingleFormat", resourceCulture);
             }
         }
         

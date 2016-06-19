@@ -41,6 +41,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ObservableDiagramLibraryNode : ObservableObject
     {
+        public AppViewModel AppVM
+        {
+            get
+            {
+                return AppViewModel.Instance;
+            }
+        }
+
         public string Path
         {
             get
@@ -285,10 +293,138 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         DiagramCollection collection = Library.Get(Path, Name);
                         foreach (ObservableDiagram od in itemsToClone)
                         {
-                            ObservableDiagram clonedOd = CreateObservableDiagram(od.Diagram.Clone());
-                            collection.Add(clonedOd.Diagram);
-                            Diagrams.Add(clonedOd);
+                            Diagram clone = od.Diagram.Clone();
+                            collection.Add(clone);
                         }
+                        Redraw();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedDiagrams.Count > 0;
+                });
+            }
+        }
+
+        #endregion
+
+        #region CopySelected
+
+        public string CopySelectedLabel
+        {
+            get
+            {
+                return Strings.CopyLabel;
+            }
+        }
+
+        public string CopySelectedToolTip
+        {
+            get
+            {
+                int count = SelectedDiagrams.Count;
+                return String.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeCopySelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeCopySelectedToolTipPluralFormat, count);
+            }
+        }
+
+        public RelayCommand CopySelected
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        List<ObservableDiagram> itemsToCopy = new List<ObservableDiagram>(SelectedDiagrams);
+
+                        Messenger.Default.Send<ShowDiagramCollectionSelectorMessage>(new ShowDiagramCollectionSelectorMessage((name, newCollection) =>
+                        {
+                            try
+                            {
+                                DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
+                                DiagramCollection targetCollection = library.Get(name);
+
+                                foreach (ObservableDiagram od in itemsToCopy)
+                                {
+                                    Diagram clone = od.Diagram.Clone();
+                                    targetCollection.Add(clone);
+                                }
+
+                                Redraw(newCollection);
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
+                        }
+                        , Name));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedDiagrams.Count > 0;
+                });
+            }
+        }
+
+        #endregion
+
+        #region MoveSelected
+
+        public string MoveSelectedLabel
+        {
+            get
+            {
+                return Strings.MoveLabel;
+            }
+        }
+
+        public string MoveSelectedToolTip
+        {
+            get
+            {
+                int count = SelectedDiagrams.Count;
+                return String.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeMoveSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeMoveSelectedToolTipPluralFormat, count);
+            }
+        }
+
+        public RelayCommand MoveSelected
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        List<ObservableDiagram> itemsToMove = new List<ObservableDiagram>(SelectedDiagrams);
+
+                        Messenger.Default.Send<ShowDiagramCollectionSelectorMessage>(new ShowDiagramCollectionSelectorMessage((name, newCollection) =>
+                        {
+                            try
+                            {
+                                DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
+                                DiagramCollection targetCollection = library.Get(name);
+
+                                foreach (ObservableDiagram od in itemsToMove)
+                                {
+                                    Collection.Remove(od.Diagram);
+                                    targetCollection.Add(od.Diagram);
+                                }
+
+                                Redraw(newCollection);
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
+                        }
+                        , Name));
                     }
                     catch (Exception ex)
                     {
@@ -468,9 +604,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private bool _firstLoad = true;
 
-        private Action _redrawCallback;
+        private Action<bool> _redrawCallback;
 
-        public ObservableDiagramLibraryNode(string path, string name, DiagramLibrary library, Action redrawCallback = null) : base()
+        public ObservableDiagramLibraryNode(string path, string name, DiagramLibrary library, Action<bool> redrawCallback = null) : base()
         {
             if (null == library)
             {
@@ -495,11 +631,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             UpdateCommands();
         }
 
-        private void Redraw()
+        private void Redraw(bool reload = false)
         {
             if (null != _redrawCallback)
             {
-                _redrawCallback();
+                _redrawCallback(reload);
             }
         }
 
@@ -563,6 +699,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             RaisePropertyChanged("EditSelected");
             RaisePropertyChanged("CloneSelected");
             RaisePropertyChanged("CloneSelectedToolTip");
+            RaisePropertyChanged("CopySelected");
+            RaisePropertyChanged("CopySelectedToolTip");
+            RaisePropertyChanged("MoveSelected");
+            RaisePropertyChanged("MoveSelectedToolTip");
             RaisePropertyChanged("ExportSelected");
             RaisePropertyChanged("ExportSelectedToolTip");
             RaisePropertyChanged("DeleteSelected");

@@ -475,7 +475,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         public DiagramCollectionSelectorViewModel DiagramCollectionSelectorVM { get; private set; }
 
-        public ShowDiagramCollectionSelectorMessage(Action<string> callback, string defaultCollectionName = null) : base()
+        public ShowDiagramCollectionSelectorMessage(Action<string, bool> callback, string defaultCollectionName = null) : base()
         {
             DiagramCollectionSelectorVM = new DiagramCollectionSelectorViewModel(callback, defaultCollectionName);
         }

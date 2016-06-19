@@ -994,15 +994,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowDiagramCollectionSelectorMessage>(new ShowDiagramCollectionSelectorMessage((name) =>
+                        Messenger.Default.Send<ShowDiagramCollectionSelectorMessage>(new ShowDiagramCollectionSelectorMessage((name, newCollection) =>
                         {
                             DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
-                            DiagramCollection targetCollection = null;
-
-                            if (!library.TryGet(name, out targetCollection))
-                            {
-                                targetCollection = library.Add(name);
-                            }
+                            DiagramCollection targetCollection = library.Get(name);
 
                             foreach (ObservableDiagram od in SelectedResults)
                             {

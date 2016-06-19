@@ -417,8 +417,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             RaisePropertyChanged("Nodes");
         }
 
-        private void RedrawNodes()
+        private void RedrawNodes(bool reloadFirst)
         {
+            if (reloadFirst)
+            {
+                ReloadNodes();
+            }
+
             foreach (ObservableDiagramLibraryNode node in Nodes)
             {
                 node.RedrawDiagrams();

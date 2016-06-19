@@ -208,10 +208,10 @@
     <value>No</value>
   </data>
   <data name="ObservableDiagramLibraryNodeCloneSelectedToolTipPluralFormat" xml:space="preserve">
-    <value>Clone the {0} selected diagrams.</value>
+    <value>Create copies of the {0} selected diagrams in the existing collection.</value>
   </data>
   <data name="ObservableDiagramLibraryNodeCloneSelectedToolTipSingleFormat" xml:space="preserve">
-    <value>Clone the selected diagram.</value>
+    <value>Create a copy of the selected diagram in the existing collection.</value>
   </data>
   <data name="ObservableDiagramLibraryNodeCreateDiagramToolTip" xml:space="preserve">
     <value>Create a new diagram.</value>
@@ -1217,5 +1217,23 @@
   </data>
   <data name="DiagramCollectionSelectorTitle" xml:space="preserve">
     <value>Select a Collection</value>
+  </data>
+  <data name="CopyLabel" xml:space="preserve">
+    <value>Copy...</value>
+  </data>
+  <data name="MoveLabel" xml:space="preserve">
+    <value>Move...</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeCopySelectedToolTipPluralFormat" xml:space="preserve">
+    <value>Copy the {0} selected diagrams to another collection.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeCopySelectedToolTipSingleFormat" xml:space="preserve">
+    <value>Copy the selected diagram to another collection.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeMoveSelectedToolTipPluralFormat" xml:space="preserve">
+    <value>Move the {0} selected diagrams to another collection.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeMoveSelectedToolTipSingleFormat" xml:space="preserve">
+    <value>Move the selected diagram to another collection.</value>
   </data>
 </root>

@@ -158,9 +158,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public event Action RequestClose;
 
-        public Action<string> Callback { get; private set; }
+        public Action<string, bool> Callback { get; private set; }
 
-        public DiagramCollectionSelectorViewModel(Action<string> callback, string defaultCollectionName = null)
+        public DiagramCollectionSelectorViewModel(Action<string, bool> callback, string defaultCollectionName = null)
         {
             if (null == callback)
             {
@@ -184,12 +184,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
             DiagramCollection targetCollection = null;
 
+            bool newCollection = false;
             if (!library.TryGet(CollectionName, out targetCollection))
             {
                 targetCollection = library.Add(CollectionName);
+                newCollection = true;
             }
 
-            Callback(CollectionName);
+            Callback(CollectionName, newCollection);
         }
 
         private ObservableCollection<string> GetCollectionNames()

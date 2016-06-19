@@ -1,5 +1,12 @@
 # Chordious Changelist #
 
+## 1.9.16171.2005 ##
+* New diagram collection selector window
+* Chord/scale finder now use collection selector
+* Can now move/copy digrams bewteen collections in the library
+* Rearranged diagram library context menus
+* Some icon/string updates
+
 ## 1.9.16168.1613 ##
 * Added buttons to reset the styles of diagrams
 * Added buttons to reset the style in the style editor

@@ -557,6 +557,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Collection Name.
+        /// </summary>
+        internal static string DiagramCollectionSelectorCollectionNameLabel {
+            get {
+                return ResourceManager.GetString("DiagramCollectionSelectorCollectionNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of a new or existing diagram collection..
+        /// </summary>
+        internal static string DiagramCollectionSelectorCollectionNameLabelToolTip {
+            get {
+                return ResourceManager.GetString("DiagramCollectionSelectorCollectionNameLabelToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a Collection.
+        /// </summary>
+        internal static string DiagramCollectionSelectorTitle {
+            get {
+                return ResourceManager.GetString("DiagramCollectionSelectorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dimensions.
         /// </summary>
         internal static string DiagramDimensionsGroupLabel {

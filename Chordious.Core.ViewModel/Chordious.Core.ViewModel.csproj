@@ -95,6 +95,7 @@
     <Compile Include="OptionsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ExceptionViewModel.cs" />
+    <Compile Include="DiagramCollectionSelectorViewModel.cs" />
     <Compile Include="TextPromptViewModel.cs" />
     <Compile Include="TuningEditorViewModel.cs" />
   </ItemGroup>

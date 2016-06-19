@@ -471,6 +471,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public PromptForConfigInputStreamMessage(Action<Stream> callback) : base(callback) { }
     }
 
+    public class ShowDiagramCollectionSelectorMessage : MessageBase
+    {
+        public DiagramCollectionSelectorViewModel DiagramCollectionSelectorVM { get; private set; }
+
+        public ShowDiagramCollectionSelectorMessage(Action<string> callback, string defaultCollectionName = null) : base()
+        {
+            DiagramCollectionSelectorVM = new DiagramCollectionSelectorViewModel(callback, defaultCollectionName);
+        }
+    }
+
     public class PromptForLegacyImportMessage : MessageBase
     {
         private Action<string, Stream> Callback;

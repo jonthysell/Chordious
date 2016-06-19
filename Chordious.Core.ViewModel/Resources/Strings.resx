@@ -1209,4 +1209,13 @@
   <data name="ResetStylesLabel" xml:space="preserve">
     <value>Reset Styles...</value>
   </data>
+  <data name="DiagramCollectionSelectorCollectionNameLabel" xml:space="preserve">
+    <value>Collection Name</value>
+  </data>
+  <data name="DiagramCollectionSelectorCollectionNameLabelToolTip" xml:space="preserve">
+    <value>The name of a new or existing diagram collection.</value>
+  </data>
+  <data name="DiagramCollectionSelectorTitle" xml:space="preserve">
+    <value>Select a Collection</value>
+  </data>
 </root>

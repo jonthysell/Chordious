@@ -82,6 +82,8 @@ namespace com.jonthysell.Chordious.WPF
 
             Messenger.Default.Register<ShowConfigExportMessage>(recipient, (message) => MessageHandlers.ShowConfigExport(message));
             Messenger.Default.Register<PromptForConfigOutputStreamMessage>(recipient, (message) => MessageHandlers.PromptForConfigOutputStream(message));
+
+            Messenger.Default.Register<ShowDiagramCollectionSelectorMessage>(recipient, (message) => MessageHandlers.ShowDiagramCollectionSelector(message));
             
             Messenger.Default.Register<PromptForLegacyImportMessage>(recipient, (message) => MessageHandlers.PromptForLegacyImport(message));
         }
@@ -127,6 +129,8 @@ namespace com.jonthysell.Chordious.WPF
 
             Messenger.Default.Unregister<ShowConfigExportMessage>(recipient);
             Messenger.Default.Unregister<PromptForConfigOutputStreamMessage>(recipient);
+
+            Messenger.Default.Unregister<ShowDiagramCollectionSelectorMessage>(recipient);
 
             Messenger.Default.Unregister<PromptForLegacyImportMessage>(recipient);
         }
@@ -428,6 +432,17 @@ namespace com.jonthysell.Chordious.WPF
                 string filename = dialog.FileName;
                 message.Process(new FileStream(filename, FileMode.Open, FileAccess.Read));
             }
+        }
+
+        public static void ShowDiagramCollectionSelector(ShowDiagramCollectionSelectorMessage message)
+        {
+            DiagramCollectionSelectorWindow window = new DiagramCollectionSelectorWindow();
+            window.DataContext = message.DiagramCollectionSelectorVM;
+            message.DiagramCollectionSelectorVM.RequestClose += () =>
+            {
+                window.Close();
+            };
+            window.ShowDialog();
         }
 
         public static void PromptForLegacyImport(PromptForLegacyImportMessage message)

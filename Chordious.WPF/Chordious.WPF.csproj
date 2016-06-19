@@ -142,6 +142,9 @@
     <Compile Include="DiagramMarkEditorWindow.xaml.cs">
       <DependentUpon>DiagramMarkEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DiagramCollectionSelectorWindow.xaml.cs">
+      <DependentUpon>DiagramCollectionSelectorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TuningEditorWindow.xaml.cs">
       <DependentUpon>TuningEditorWindow.xaml</DependentUpon>
     </Compile>
@@ -266,6 +269,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="DiagramMarkEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DiagramCollectionSelectorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

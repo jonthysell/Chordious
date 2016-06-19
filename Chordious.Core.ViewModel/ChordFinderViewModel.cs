@@ -994,7 +994,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Save selected diagrams to:", LastDiagramCollectionName, (name) =>
+                        Messenger.Default.Send<ShowDiagramCollectionSelectorMessage>(new ShowDiagramCollectionSelectorMessage((name) =>
                         {
                             DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
                             DiagramCollection targetCollection = null;
@@ -1010,7 +1010,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             }
 
                             LastDiagramCollectionName = name.Trim();
-                        }));
+                        }, LastDiagramCollectionName));
                     }
                     catch (Exception ex)
                     {

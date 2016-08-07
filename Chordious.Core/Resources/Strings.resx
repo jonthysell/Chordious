@@ -423,4 +423,25 @@
   <data name="TitleVisibleFriendlyKeyName" xml:space="preserve">
     <value>Title Visible</value>
   </data>
+  <data name="BarreArcRatioFriendlyKeyName" xml:space="preserve">
+    <value>Barre Arc Ratio</value>
+  </data>
+  <data name="BarreLineColorFriendlyKeyName" xml:space="preserve">
+    <value>Barre Line Color</value>
+  </data>
+  <data name="BarreLineThicknessFriendlyKeyName" xml:space="preserve">
+    <value>Barre Line Thickness</value>
+  </data>
+  <data name="BarreOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Barre Opacity</value>
+  </data>
+  <data name="BarreStackFriendlyKeyName" xml:space="preserve">
+    <value>Barre Stack</value>
+  </data>
+  <data name="BarreVerticalAlignmentFriendlyKeyName" xml:space="preserve">
+    <value>Barre Vertical Alignment</value>
+  </data>
+  <data name="BarreVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Barre Visible</value>
+  </data>
 </root>

@@ -71,11 +71,56 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Barre Arc Ratio.
+        /// </summary>
+        internal static string BarreArcRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BarreArcRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barre Line Color.
+        /// </summary>
+        internal static string BarreLineColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BarreLineColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barre Line Thickness.
+        /// </summary>
+        internal static string BarreLineThicknessFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BarreLineThicknessFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barre Opacity.
+        /// </summary>
+        internal static string BarreOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BarreOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A barre cannot span from string {0} to string {1}..
         /// </summary>
         internal static string BarrePositionInvalidSpanExceptionMessage {
             get {
                 return ResourceManager.GetString("BarrePositionInvalidSpanExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barre Stack.
+        /// </summary>
+        internal static string BarreStackFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BarreStackFriendlyKeyName", resourceCulture);
             }
         }
         
@@ -103,6 +148,24 @@ namespace com.jonthysell.Chordious.Core.Resources {
         internal static string BarreTypeOptionPartialFriendlyValue {
             get {
                 return ResourceManager.GetString("BarreTypeOptionPartialFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barre Vertical Alignment.
+        /// </summary>
+        internal static string BarreVerticalAlignmentFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BarreVerticalAlignmentFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barre Visible.
+        /// </summary>
+        internal static string BarreVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BarreVisibleFriendlyKeyName", resourceCulture);
             }
         }
         

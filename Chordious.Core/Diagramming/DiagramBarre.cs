@@ -46,90 +46,6 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public bool Visible
-        {
-            get
-            {
-                return this.Style.BarreVisibleGet();
-            }
-            set
-            {
-                this.Style.BarreVisibleSet(value);
-            }
-        }
-
-        public DiagramVerticalAlignment VerticalAlignment
-        {
-            get
-            {
-                return Style.BarreVerticalAlignmentGet();
-            }
-            set
-            {
-                Style.BarreVerticalAlignmentSet(value);
-            }
-        }
-
-        public DiagramBarreStack Stack
-        {
-            get
-            {
-                return Style.BarreStackGet();
-            }
-            set
-            {
-                Style.BarreStackSet(value);
-            }
-        }
-
-        public double ArcRatio
-        {
-            get
-            {
-                return Style.BarreArcRatioGet();
-            }
-            set
-            {
-                Style.BarreArcRatioSet(value);
-            }
-        }
-
-        public double Opacity
-        {
-            get
-            {
-                return Style.BarreOpacityGet();
-            }
-            set
-            {
-                Style.BarreOpacitySet(value);
-            }
-        }
-
-        public string LineColor
-        {
-            get
-            {
-                return Style.BarreLineColorGet();
-            }
-            set
-            {
-                Style.BarreLineColorSet(value);
-            }
-        }
-
-        public double LineThickness
-        {
-            get
-            {
-                return Style.BarreLineThicknessGet();
-            }
-            set
-            {
-                Style.BarreLineThicknessSet(value);
-            }
-        }
-
         public DiagramBarre(Diagram parent, BarrePosition position) : base(parent, position) { }
 
         public DiagramBarre(Diagram parent, XmlReader xmlReader) : base(parent)
@@ -188,7 +104,7 @@ namespace com.jonthysell.Chordious.Core
 
         public override bool IsVisible()
         {
-            return this.Visible;
+            return this.Style.BarreVisible;
         }
 
         public override string ToSvg()
@@ -202,7 +118,7 @@ namespace com.jonthysell.Chordious.Core
 
                 double centerY = this.Parent.GridTopEdge() + (this.Parent.Style.GridFretSpacing / 2.0) + (this.Parent.Style.GridFretSpacing * (this.Position.Fret - 1));
 
-                switch (this.VerticalAlignment)
+                switch (this.Style.BarreVerticalAlignment)
                 {
                     case DiagramVerticalAlignment.Bottom:
                         centerY += this.Parent.Style.GridFretSpacing * 0.5;
@@ -219,7 +135,7 @@ namespace com.jonthysell.Chordious.Core
                 shapeStyle += "fill-opacity:0;";
 
                 double radiusX = (this.Position.EndString - this.Position.StartString) * this.Parent.Style.GridStringSpacing;
-                double radiusY = this.Parent.Style.GridFretSpacing * this.ArcRatio;
+                double radiusY = this.Parent.Style.GridFretSpacing * this.Style.BarreArcRatio;
                 svg += String.Format(SvgConstants.ARC, shapeStyle, startX, centerY, radiusX, radiusY, endX, centerY);
             }
 

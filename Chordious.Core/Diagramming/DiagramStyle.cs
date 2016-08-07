@@ -1427,88 +1427,187 @@ namespace com.jonthysell.Chordious.Core
 
         #region DiagramBarre-specific Styles
 
-        public bool BarreVisibleGet()
+        public bool BarreVisibleIsLocal
         {
-            return GetBoolean("barre.visible");
-        }
-
-        public void BarreVisibleSet(bool value)
-        {
-            Set("barre.visible", value);
-        }
-
-        public DiagramVerticalAlignment BarreVerticalAlignmentGet()
-        {
-            return GetEnum<DiagramVerticalAlignment>("barre.verticalalignment");
-        }
-
-        public void BarreVerticalAlignmentSet(DiagramVerticalAlignment value)
-        {
-            Set("barre.verticalalignment", value);
-        }
-
-        public DiagramBarreStack BarreStackGet()
-        {
-            return GetEnum<DiagramBarreStack>("barre.stack");
-        }
-
-        public void BarreStackSet(DiagramBarreStack value)
-        {
-            Set("barre.stack", value);
-        }
-
-        public double BarreArcRatioGet()
-        {
-            return GetDouble("barre.arcratio", 1.0);
-        }
-
-        public void BarreArcRatioSet(double value)
-        {
-            if (value < 0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                return IsLocalGet("barre.visible");
             }
-            Set("barre.arcratio", value);
-        }
-
-        public double BarreOpacityGet()
-        {
-            return GetDouble("barre.opacity");
-        }
-
-        public void BarreOpacitySet(double value)
-        {
-            if (value < 0 || value > 1.0)
+            set
             {
-                throw new ArgumentOutOfRangeException("value");
+                IsLocalSet("barre.visible", value);
             }
-
-            Set("barre.opacity", value);
         }
 
-        public string BarreLineColorGet()
+        public bool BarreVisible
         {
-            return GetColor("barre.linecolor");
-        }
-
-        public void BarreLineColorSet(string value)
-        {
-            SetColor("barre.linecolor", value);
-        }
-
-        public double BarreLineThicknessGet()
-        {
-            return GetDouble("barre.linethickness");
-        }
-
-        public void BarreLineThicknessSet(double value)
-        {
-            if (value < 0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                return GetBoolean("barre.visible");
             }
+            set
+            {
+                Set("barre.visible", value);
+            }
+        }
 
-            Set("barre.linethickness", value);
+        public bool BarreVerticalAlignmentIsLocal
+        {
+            get
+            {
+                return IsLocalGet("barre.verticalalignment");
+            }
+            set
+            {
+                IsLocalSet("barre.verticalalignment", value);
+            }
+        }
+
+        public DiagramVerticalAlignment BarreVerticalAlignment
+        {
+            get
+            {
+                return GetEnum<DiagramVerticalAlignment>("barre.verticalalignment");
+            }
+            set
+            {
+                Set("barre.verticalalignment", value);
+            }
+        }
+
+        public bool BarreStackIsLocal
+        {
+            get
+            {
+                return IsLocalGet("barre.stack");
+            }
+            set
+            {
+                IsLocalSet("barre.stack", value);
+            }
+        }
+
+        public DiagramBarreStack BarreStack
+        {
+            get
+            {
+                return GetEnum<DiagramBarreStack>("barre.stack");
+            }
+            set
+            {
+                Set("barre.stack", value);
+            }
+        }
+
+        public bool BarreArcRatioIsLocal
+        {
+            get
+            {
+                return IsLocalGet("barre.arcratio");
+            }
+            set
+            {
+                IsLocalSet("barre.arcratio", value);
+            }
+        }
+
+        public double BarreArcRatio
+        {
+            get
+            {
+                return GetDouble("barre.arcratio", 1.0);
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("barre.arcratio", value);
+            }
+        }
+
+        public bool BarreOpacityIsLocal
+        {
+            get
+            {
+                return IsLocalGet("barre.opacity");
+            }
+            set
+            {
+                IsLocalSet("barre.opacity", value);
+            }
+        }
+
+        public double BarreOpacity
+        {
+            get
+            {
+                return GetDouble("barre.opacity");
+            }
+            set
+            {
+                if (value < 0 || value > 1.0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("barre.opacity", value);
+            }
+        }
+
+        public bool BarreLineColorIsLocal
+        {
+            get
+            {
+                return IsLocalGet("barre.linecolor");
+            }
+            set
+            {
+                IsLocalSet("barre.linecolor", value);
+            }
+        }
+
+        public string BarreLineColor
+        {
+            get
+            {
+                return GetColor("barre.linecolor");
+            }
+            set
+            {
+                SetColor("barre.linecolor", value);
+            }
+        }
+
+        public bool BarreLineThicknessIsLocal
+        {
+            get
+            {
+                return IsLocalGet("barre.linethickness");
+            }
+            set
+            {
+                IsLocalSet("barre.linethickness", value);
+            }
+        }
+
+        public double BarreLineThickness
+        {
+            get
+            {
+                return GetDouble("barre.linethickness");
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                Set("barre.linethickness", value);
+            }
         }
 
         #endregion
@@ -1761,6 +1860,20 @@ namespace com.jonthysell.Chordious.Core
                     return Strings.TitleColorFriendlyKeyName;
                 case "title.textopacity":
                     return Strings.TitleOpacityFriendlyKeyName;
+                case "barre.visible":
+                    return Strings.BarreVisibleFriendlyKeyName;
+                case "barre.verticalalignment":
+                    return Strings.BarreVerticalAlignmentFriendlyKeyName;
+                case "barre.stack":
+                    return Strings.BarreStackFriendlyKeyName;
+                case "barre.arcratio":
+                    return Strings.BarreArcRatioFriendlyKeyName;
+                case "barre.opacity":
+                    return Strings.BarreOpacityFriendlyKeyName;
+                case "barre.linecolor":
+                    return Strings.BarreLineColorFriendlyKeyName;
+                case "barre.linethickness":
+                    return Strings.BarreLineThicknessFriendlyKeyName;
                 default:
                     return base.GetFriendlyKeyName(key);
             }
@@ -1787,6 +1900,10 @@ namespace com.jonthysell.Chordious.Core
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramTextStyle>(key, recursive));
                 case "title.labelstyle":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramLabelStyle>(key, recursive));
+                case "title.textsize":
+                    return String.Format("{0}pt", base.GetFriendlyValueName(key, recursive));
+                case "barre.stack":
+                    return EnumUtils.GetFriendlyValue(GetEnum<DiagramBarreStack>(key, recursive));
                 case "diagram.borderthickness":
                 case "grid.margin":
                 case "grid.marginleft":
@@ -1798,8 +1915,8 @@ namespace com.jonthysell.Chordious.Core
                 case "grid.linethickness":
                 case "title.gridpadding":
                     return String.Format("{0}px", base.GetFriendlyValueName(key, recursive));
-                case "title.textsize":
-                    return String.Format("{0}pt", base.GetFriendlyValueName(key, recursive));
+                case "barre.verticalalignment":
+                    return EnumUtils.GetFriendlyValue(GetEnum<DiagramVerticalAlignment>(key, recursive));
                 default:
                     return base.GetFriendlyValueName(key, recursive);
             }

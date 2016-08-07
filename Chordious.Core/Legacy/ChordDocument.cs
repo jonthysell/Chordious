@@ -204,18 +204,18 @@ namespace com.jonthysell.Chordious.Core.Legacy
                 }
             }
 
-            diagram.Style.BarreVisibleSet(true);
-            diagram.Style.BarreVerticalAlignmentSet(DiagramVerticalAlignment.Middle);
-            diagram.Style.BarreArcRatioSet(0.5);
-            diagram.Style.BarreStackSet(DiagramBarreStack.UnderMarks);
-            diagram.Style.BarreOpacitySet(1.0);
-            diagram.Style.BarreLineColorSet("Black");
-            diagram.Style.BarreLineThicknessSet(2.0);
+            diagram.Style.BarreVisible = true;
+            diagram.Style.BarreVerticalAlignment = DiagramVerticalAlignment.Middle;
+            diagram.Style.BarreArcRatio = 0.5;
+            diagram.Style.BarreStack = DiagramBarreStack.UnderMarks;
+            diagram.Style.BarreOpacity = 1.0;
+            diagram.Style.BarreLineColor = "Black";
+            diagram.Style.BarreLineThickness = 2.0;
 
             // Process barres
             if (chordOptions.BarreType == BarreType.None)
             {
-                diagram.Style.BarreVisibleSet(false);
+                diagram.Style.BarreVisible = false;
             }
 
             BarrePosition bp = MarkUtils.AutoBarrePosition(chord.Marks); ;
@@ -256,7 +256,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
                 if (chordOptions.BarreType == BarreType.Straight)
                 {
                     DiagramBarre straightBarre = diagram.NewBarre(bp);
-                    straightBarre.ArcRatio = 0;
+                    straightBarre.Style.BarreArcRatio = 0;
                 
                 }
                 else if (chordOptions.BarreType == BarreType.Arc)

@@ -1027,7 +1027,7 @@ namespace com.jonthysell.Chordious.Core
             // Add barres underneath the marks
             foreach (DiagramBarre barre in this.Barres)
             {
-                if (barre.Stack == DiagramBarreStack.UnderMarks)
+                if (barre.Style.BarreStack == DiagramBarreStack.UnderMarks)
                 {
                     sb.Append(barre.ToSvg());
                 }
@@ -1042,7 +1042,7 @@ namespace com.jonthysell.Chordious.Core
             // Add barres on top of the marks
             foreach (DiagramBarre barre in this.Barres)
             {
-                if (barre.Stack == DiagramBarreStack.OverMarks)
+                if (barre.Style.BarreStack == DiagramBarreStack.OverMarks)
                 {
                     sb.Append(barre.ToSvg());
                 }

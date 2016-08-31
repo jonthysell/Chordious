@@ -872,6 +872,150 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arc Ratio.
+        /// </summary>
+        internal static string DiagramStyleBarreArcRatioLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreArcRatioLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ratio to curve the barre relative to the fret height..
+        /// </summary>
+        internal static string DiagramStyleBarreArcRatioToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreArcRatioToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barre Layout.
+        /// </summary>
+        internal static string DiagramStyleBarreLayoutGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreLayoutGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        internal static string DiagramStyleBarreLineColorLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreLineColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The color of the barre line..
+        /// </summary>
+        internal static string DiagramStyleBarreLineColorToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreLineColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thickness (px).
+        /// </summary>
+        internal static string DiagramStyleBarreLineThicknessLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreLineThicknessLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The thickness of the barre line..
+        /// </summary>
+        internal static string DiagramStyleBarreLineThicknessToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreLineThicknessToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opacity.
+        /// </summary>
+        internal static string DiagramStyleBarreOpacityLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreOpacityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The opacity of the barre..
+        /// </summary>
+        internal static string DiagramStyleBarreOpacityToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreOpacityToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stack.
+        /// </summary>
+        internal static string DiagramStyleBarreStackLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreStackLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether to put the barre under or over any diagram marks..
+        /// </summary>
+        internal static string DiagramStyleBarreStackToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreStackToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barre Style.
+        /// </summary>
+        internal static string DiagramStyleBarreStyleGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreStyleGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alignment.
+        /// </summary>
+        internal static string DiagramStyleBarreVerticalAlignmentLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreVerticalAlignmentLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The vertical alignment of the barre..
+        /// </summary>
+        internal static string DiagramStyleBarreVerticalAlignmentToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreVerticalAlignmentToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visible.
+        /// </summary>
+        internal static string DiagramStyleBarreVisibleLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreVisibleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show the barre..
+        /// </summary>
+        internal static string DiagramStyleBarreVisibleToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleBarreVisibleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Diagram Background.
         /// </summary>
         internal static string DiagramStyleDiagramBackgroundGroupLabel {

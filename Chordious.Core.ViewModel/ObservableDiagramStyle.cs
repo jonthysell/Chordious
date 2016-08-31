@@ -2103,6 +2103,445 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #region Layout
+
+        public string BarreLayoutGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreLayoutGroupLabel;
+            }
+        }
+
+        public bool BarreVisibleIsLocal
+        {
+            get
+            {
+                return Style.BarreVisibleIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreVisibleIsLocal = value;
+                    RaisePropertyChanged("BarreVisibleIsLocal");
+                    RaisePropertyChanged("BarreVisible");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string BarreVisibleLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreVisibleLabel;
+            }
+        }
+
+        public string BarreVisibleToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreVisibleToolTip;
+            }
+        }
+
+        public bool BarreVisible
+        {
+            get
+            {
+                return Style.BarreVisible;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreVisible = value;
+                    RaisePropertyChanged("BarreVisible");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool BarreVerticalAlignmentIsLocal
+        {
+            get
+            {
+                return Style.BarreVerticalAlignmentIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreVerticalAlignmentIsLocal = value;
+                    RaisePropertyChanged("BarreVerticalAlignmentIsLocal");
+                    RaisePropertyChanged("SelectedBarreVerticalAlignmentIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string BarreVerticalAlignmentLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreVerticalAlignmentLabel;
+            }
+        }
+
+        public string BarreVerticalAlignmentToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreVerticalAlignmentToolTip;
+            }
+        }
+
+        public int SelectedBarreVerticalAlignmentIndex
+        {
+            get
+            {
+                return (int)Style.BarreVerticalAlignment;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreVerticalAlignment = (DiagramVerticalAlignment)(value);
+                    RaisePropertyChanged("SelectedBarreVerticalAlignmentIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public ObservableCollection<string> BarreVerticalAlignments
+        {
+            get
+            {
+                return ObservableEnums.GetVerticalAlignments();
+            }
+        }
+
+        public bool BarreStackIsLocal
+        {
+            get
+            {
+                return Style.BarreStackIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreStackIsLocal = value;
+                    RaisePropertyChanged("BarreStackIsLocal");
+                    RaisePropertyChanged("SelectedBarreStackIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string BarreStackLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreStackLabel;
+            }
+        }
+
+        public string BarreStackToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreStackToolTip;
+            }
+        }
+
+        public int SelectedBarreStackIndex
+        {
+            get
+            {
+                return (int)Style.BarreStack;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreStack = (DiagramBarreStack)(value);
+                    RaisePropertyChanged("SelectedBarreStackIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public ObservableCollection<string> BarreStacks
+        {
+            get
+            {
+                return ObservableEnums.GetBarreStacks();
+            }
+        }
+
+        #endregion
+
+        #region Style
+
+        public string BarreStyleGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreStyleGroupLabel;
+            }
+        }
+
+        public bool BarreArcRatioIsLocal
+        {
+            get
+            {
+                return Style.BarreArcRatioIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreArcRatioIsLocal = value;
+                    RaisePropertyChanged("BarreArcRatioIsLocal");
+                    RaisePropertyChanged("BarreArcRatio");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string BarreArcRatioLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreArcRatioLabel;
+            }
+        }
+
+        public string BarreArcRatioToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreArcRatioToolTip;
+            }
+        }
+
+        public double BarreArcRatio
+        {
+            get
+            {
+                return Style.BarreArcRatio;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreArcRatio = value;
+                    RaisePropertyChanged("BarreArcRatio");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool BarreOpacityIsLocal
+        {
+            get
+            {
+                return Style.BarreOpacityIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreOpacityIsLocal = value;
+                    RaisePropertyChanged("BarreOpacityIsLocal");
+                    RaisePropertyChanged("BarreOpacity");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string BarreOpacityLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreOpacityLabel;
+            }
+        }
+
+        public string BarreOpacityToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreOpacityToolTip;
+            }
+        }
+
+        public double BarreOpacity
+        {
+            get
+            {
+                return Style.BarreOpacity;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreOpacity = value;
+                    RaisePropertyChanged("BarreOpacity");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool BarreLineColorIsLocal
+        {
+            get
+            {
+                return Style.BarreLineColorIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreLineColorIsLocal = value;
+                    RaisePropertyChanged("BarreLineColorIsLocal");
+                    RaisePropertyChanged("BarreLineColor");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string BarreLineColorLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreLineColorLabel;
+            }
+        }
+
+        public string BarreLineColorToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreLineColorToolTip;
+            }
+        }
+
+        public string BarreLineColor
+        {
+            get
+            {
+                return Style.BarreLineColor;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreLineColor = value;
+                    RaisePropertyChanged("BarreLineColor");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool BarreLineThicknessIsLocal
+        {
+            get
+            {
+                return Style.BarreLineThicknessIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreLineThicknessIsLocal = value;
+                    RaisePropertyChanged("BarreLineThicknessIsLocal");
+                    RaisePropertyChanged("BarreLineThickness");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string BarreLineThicknessLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreLineThicknessLabel;
+            }
+        }
+
+        public string BarreLineThicknessToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleBarreLineThicknessToolTip;
+            }
+        }
+
+        public double BarreLineThickness
+        {
+            get
+            {
+                return Style.BarreLineThickness;
+            }
+            set
+            {
+                try
+                {
+                    Style.BarreLineThickness = value;
+                    RaisePropertyChanged("BarreLineThickness");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Shared

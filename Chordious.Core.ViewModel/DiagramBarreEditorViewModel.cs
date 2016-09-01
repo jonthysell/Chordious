@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -56,186 +56,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 return "Diagram Barre Editor" + (Dirty ? "*" : "");
             }
         }
-
-        public bool Visible
-        {
-            get
-            {
-                return StyleBuffer.BarreVisible;
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.BarreVisible = value;
-                    Dirty = true;
-                    RaisePropertyChanged("Visible");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public int SelectedVerticalAlignmentIndex
-        {
-            get
-            {
-                return (int)StyleBuffer.BarreVerticalAlignment;
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.BarreVerticalAlignment = (DiagramVerticalAlignment)value;
-                    Dirty = true;
-                    RaisePropertyChanged("SelectedVerticalAlignmentIndex");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public ObservableCollection<string> VerticalAlignments
-        {
-            get
-            {
-                return ObservableEnums.GetVerticalAlignments();
-            }
-        }
-
-        public int SelectedBarreStackIndex
-        {
-            get
-            {
-                return (int)StyleBuffer.BarreStack;
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.BarreStack = (DiagramBarreStack)value;
-                    Dirty = true;
-                    RaisePropertyChanged("SelectedBarreStackIndex");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public ObservableCollection<string> BarreStacks
-        {
-            get
-            {
-                return ObservableEnums.GetBarreStacks();
-            }
-        }
-
-        public double ArcRatio
-        {
-            get
-            {
-                return StyleBuffer.BarreArcRatio;
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.BarreArcRatio = value;
-                    Dirty = true;
-                    RaisePropertyChanged("ArcRatio");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-        
-        public double Opacity
-        {
-            get
-            {
-                return StyleBuffer.BarreOpacity;
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.BarreOpacity = value;
-                    Dirty = true;
-                    RaisePropertyChanged("Opacity");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public string LineColor
-        {
-            get
-            {
-                return StyleBuffer.BarreLineColor;
-            }
-            set
-            {
-                try
-                {
-                    if (null != value)
-                    {
-                        StyleBuffer.BarreLineColor = value;
-                        ObservableEnums.SortedInsert(Colors, LineColor);
-                        Dirty = true;
-                        RaisePropertyChanged("LineColor");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public double LineThickness
-        {
-            get
-            {
-                return StyleBuffer.BarreLineThickness;
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.BarreLineThickness = value;
-                    Dirty = true;
-                    RaisePropertyChanged("LineThickness");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-        
-        public ObservableCollection<string> Colors
-        {
-            get
-            {
-                if (null == _colors)
-                {
-                    _colors = ObservableEnums.GetColors();
-                }
-                return _colors;
-            }
-        }
-        private ObservableCollection<string> _colors;
 
         public RelayCommand Apply
         {
@@ -334,22 +154,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _dirty = false;
 
-        public bool DiagramFretLabelChanged
+        public bool DiagramStyleChanged
         {
             get
             {
-                return _diagramFretLabelChanged;
+                return _diagramStyleChanged;
             }
             private set
             {
-                _diagramFretLabelChanged = value;
-                RaisePropertyChanged("DiagramFretLabelChanged");
+                _diagramStyleChanged = value;
+                RaisePropertyChanged("DiagramStyleChanged");
             }
         }
-        private bool _diagramFretLabelChanged = false;
+        private bool _diagramStyleChanged = false;
+
+        public ObservableDiagramStyle Style { get; private set; }
+        private ObservableDiagramStyle _originalStyle;
 
         internal DiagramBarre DiagramBarre { get; private set; }
-        internal DiagramStyle StyleBuffer { get; private set; }
 
         public DiagramBarreEditorViewModel(DiagramBarre diagramBarre, bool isNew)
         {
@@ -360,15 +182,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             DiagramBarre = diagramBarre;
 
-            StyleBuffer = new DiagramStyle(DiagramBarre.Style, "DiagramBarreEditor");
+            // Save original
+            _originalStyle = new ObservableDiagramStyle(diagramBarre.Style);
 
-            // Pre-seed used colors
-            ObservableEnums.SortedInsert(Colors, LineColor);
+            // Create editable clone
+            DiagramStyle clone = _originalStyle.Style.Clone();
+            if (_originalStyle.Style.ReadOnly)
+            {
+                clone.MarkAsReadOnly();
+            }
+
+            Style = new ObservableDiagramStyle(clone);
+            Style.PropertyChanged += ObservableDiagramStyle_PropertyChanged;
 
             if (isNew)
             {
                 Dirty = true;
             }
+        }
+
+        private void ObservableDiagramStyle_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            Dirty = true;
         }
 
         public bool ProcessClose()
@@ -377,27 +212,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 ApplyChanges();
             }
-            return DiagramFretLabelChanged;
+            return DiagramStyleChanged;
         }
 
         private void ApplyChanges()
         {
-            StyleBuffer.SetParent();
-            StyleBuffer.Clear();
+            if (_originalStyle.IsEditable)
+            {
+                _originalStyle.Style.Clear();
+                _originalStyle.Style.CopyFrom(Style.Style);
+            }
 
             Dirty = false;
-            DiagramFretLabelChanged = true;
-        }
-
-        private void RefreshProperties()
-        {
-            RaisePropertyChanged("Visible");
-            RaisePropertyChanged("SelectedVerticalAlignmentIndex");
-            RaisePropertyChanged("SelectedBarreStackIndex");
-            RaisePropertyChanged("ArcRatio");
-            RaisePropertyChanged("Opacity");
-            RaisePropertyChanged("LineColor");
-            RaisePropertyChanged("LineThickness");
+            DiagramStyleChanged = true;
         }
     }
 }

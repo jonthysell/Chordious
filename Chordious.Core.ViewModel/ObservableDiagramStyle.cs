@@ -2191,7 +2191,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public string BarreVerticalAlignmentLabel
+        public string SelectedBarreVerticalAlignmentLabel
         {
             get
             {
@@ -2199,7 +2199,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public string BarreVerticalAlignmentToolTip
+        public string SelectedBarreVerticalAlignmentToolTip
         {
             get
             {
@@ -2256,7 +2256,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public string BarreStackLabel
+        public string SelectedBarreStackLabel
         {
             get
             {
@@ -2264,7 +2264,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public string BarreStackToolTip
+        public string SelectedBarreStackToolTip
         {
             get
             {

@@ -1,5 +1,12 @@
 # Chordious Changelist #
 
+## 1.9.16245.2247 ##
+* Added barre styles to the Diagram Style Editor
+* Added barre styles to the Diagram Editor
+* Updated Diagram Barre Editor
+* Localized barre style strings
+* Some string updates
+
 ## 1.9.16171.2005 ##
 * New diagram collection selector window
 * Chord/scale finder now use collection selector

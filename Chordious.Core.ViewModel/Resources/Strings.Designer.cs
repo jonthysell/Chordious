@@ -1061,7 +1061,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Width (px).
+        ///   Looks up a localized string similar to Thickness (px).
         /// </summary>
         internal static string DiagramStyleDiagramBorderThicknessLabel {
             get {
@@ -1070,7 +1070,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The width of the diagram&apos;s border..
+        ///   Looks up a localized string similar to The thickness of the diagram&apos;s border..
         /// </summary>
         internal static string DiagramStyleDiagramBorderThicknessToolTip {
             get {
@@ -1259,7 +1259,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Width (px).
+        ///   Looks up a localized string similar to Thickness (px).
         /// </summary>
         internal static string DiagramStyleGridLineThicknessLabel {
             get {
@@ -1268,7 +1268,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The width of the grid lines..
+        ///   Looks up a localized string similar to The thickness of the grid lines..
         /// </summary>
         internal static string DiagramStyleGridLineThicknessToolTip {
             get {

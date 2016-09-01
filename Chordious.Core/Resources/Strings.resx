@@ -427,10 +427,10 @@
     <value>Barre Arc Ratio</value>
   </data>
   <data name="BarreLineColorFriendlyKeyName" xml:space="preserve">
-    <value>Barre Line Color</value>
+    <value>Barre Color</value>
   </data>
   <data name="BarreLineThicknessFriendlyKeyName" xml:space="preserve">
-    <value>Barre Line Thickness</value>
+    <value>Barre Thickness</value>
   </data>
   <data name="BarreOpacityFriendlyKeyName" xml:space="preserve">
     <value>Barre Opacity</value>
@@ -439,7 +439,7 @@
     <value>Barre Stack</value>
   </data>
   <data name="BarreVerticalAlignmentFriendlyKeyName" xml:space="preserve">
-    <value>Barre Vertical Alignment</value>
+    <value>Barre Alignment</value>
   </data>
   <data name="BarreVisibleFriendlyKeyName" xml:space="preserve">
     <value>Barre Visible</value>

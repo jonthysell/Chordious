@@ -61,13 +61,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return StyleBuffer.BarreVisibleGet();
+                return StyleBuffer.BarreVisible;
             }
             set
             {
                 try
                 {
-                    StyleBuffer.BarreVisibleSet(value);
+                    StyleBuffer.BarreVisible = value;
                     Dirty = true;
                     RaisePropertyChanged("Visible");
                 }
@@ -82,13 +82,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return (int)StyleBuffer.BarreVerticalAlignmentGet();
+                return (int)StyleBuffer.BarreVerticalAlignment;
             }
             set
             {
                 try
                 {
-                    StyleBuffer.BarreVerticalAlignmentSet((DiagramVerticalAlignment)value);
+                    StyleBuffer.BarreVerticalAlignment = (DiagramVerticalAlignment)value;
                     Dirty = true;
                     RaisePropertyChanged("SelectedVerticalAlignmentIndex");
                 }
@@ -111,13 +111,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return (int)StyleBuffer.BarreStackGet();
+                return (int)StyleBuffer.BarreStack;
             }
             set
             {
                 try
                 {
-                    StyleBuffer.BarreStackSet((DiagramBarreStack)value);
+                    StyleBuffer.BarreStack = (DiagramBarreStack)value;
                     Dirty = true;
                     RaisePropertyChanged("SelectedBarreStackIndex");
                 }
@@ -140,13 +140,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return StyleBuffer.BarreArcRatioGet();
+                return StyleBuffer.BarreArcRatio;
             }
             set
             {
                 try
                 {
-                    StyleBuffer.BarreArcRatioSet(value);
+                    StyleBuffer.BarreArcRatio = value;
                     Dirty = true;
                     RaisePropertyChanged("ArcRatio");
                 }
@@ -161,13 +161,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return StyleBuffer.BarreOpacityGet();
+                return StyleBuffer.BarreOpacity;
             }
             set
             {
                 try
                 {
-                    StyleBuffer.BarreOpacitySet(value);
+                    StyleBuffer.BarreOpacity = value;
                     Dirty = true;
                     RaisePropertyChanged("Opacity");
                 }
@@ -182,7 +182,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return StyleBuffer.BarreLineColorGet();
+                return StyleBuffer.BarreLineColor;
             }
             set
             {
@@ -190,7 +190,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     if (null != value)
                     {
-                        StyleBuffer.BarreLineColorSet(value);
+                        StyleBuffer.BarreLineColor = value;
                         ObservableEnums.SortedInsert(Colors, LineColor);
                         Dirty = true;
                         RaisePropertyChanged("LineColor");
@@ -207,13 +207,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return StyleBuffer.BarreLineThicknessGet();
+                return StyleBuffer.BarreLineThickness;
             }
             set
             {
                 try
                 {
-                    StyleBuffer.BarreLineThicknessSet(value);
+                    StyleBuffer.BarreLineThickness = value;
                     Dirty = true;
                     RaisePropertyChanged("LineThickness");
                 }

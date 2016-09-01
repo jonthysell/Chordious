@@ -95,7 +95,7 @@
                             <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.Colors}" SelectedItem="{Binding Style.GridLineColor}" Text="{Binding Style.GridLineColor, UpdateSourceTrigger=LostFocus}" ToolTip="{Binding Style.GridLineColorToolTip}" IsEnabled="{Binding Style.GridLineColorIsLocal}" IsEditable="True" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridLineThicknessIsLocal}" Content="{Binding Style.GridLineThicknessLabel, FallbackValue=Width (px)}" ToolTip="{Binding Style.GridLineThicknessToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.GridLineThicknessIsLocal}" Content="{Binding Style.GridLineThicknessLabel, FallbackValue=Thickness (px)}" ToolTip="{Binding Style.GridLineThicknessToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
                             <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.GridLineThickness, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.GridLineThicknessToolTip}" IsEnabled="{Binding Style.GridLineThicknessIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
@@ -203,7 +203,7 @@
                             <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.Colors}" SelectedItem="{Binding Style.DiagramBorderColor}" Text="{Binding Style.DiagramBorderColor, UpdateSourceTrigger=LostFocus}" ToolTip="{Binding Style.DiagramBorderColorToolTip}" IsEnabled="{Binding Style.DiagramBorderColorIsLocal}" IsEditable="True" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.DiagramBorderThicknessIsLocal}" Content="{Binding Style.DiagramBorderThicknessLabel, FallbackValue=Width (px)}" ToolTip="{Binding Style.DiagramBorderThicknessToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.DiagramBorderThicknessIsLocal}" Content="{Binding Style.DiagramBorderThicknessLabel, FallbackValue=Thickness (px)}" ToolTip="{Binding Style.DiagramBorderThicknessToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
                             <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.DiagramBorderThickness, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.DiagramBorderThicknessToolTip}" IsEnabled="{Binding Style.DiagramBorderThicknessIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>

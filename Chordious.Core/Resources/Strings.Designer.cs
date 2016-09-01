@@ -80,7 +80,7 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Barre Line Color.
+        ///   Looks up a localized string similar to Barre Color.
         /// </summary>
         internal static string BarreLineColorFriendlyKeyName {
             get {
@@ -89,7 +89,7 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Barre Line Thickness.
+        ///   Looks up a localized string similar to Barre Thickness.
         /// </summary>
         internal static string BarreLineThicknessFriendlyKeyName {
             get {
@@ -152,7 +152,7 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Barre Vertical Alignment.
+        ///   Looks up a localized string similar to Barre Alignment.
         /// </summary>
         internal static string BarreVerticalAlignmentFriendlyKeyName {
             get {

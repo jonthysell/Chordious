@@ -553,10 +553,10 @@
     <value>The color of the diagram's border.</value>
   </data>
   <data name="DiagramStyleDiagramBorderThicknessLabel" xml:space="preserve">
-    <value>Width (px)</value>
+    <value>Thickness (px)</value>
   </data>
   <data name="DiagramStyleDiagramBorderThicknessToolTip" xml:space="preserve">
-    <value>The width of the diagram's border.</value>
+    <value>The thickness of the diagram's border.</value>
   </data>
   <data name="DiagramStyleDiagramColorLabel" xml:space="preserve">
     <value>Color</value>
@@ -745,10 +745,10 @@
     <value>Grid Lines</value>
   </data>
   <data name="DiagramStyleGridLineThicknessLabel" xml:space="preserve">
-    <value>Width (px)</value>
+    <value>Thickness (px)</value>
   </data>
   <data name="DiagramStyleGridLineThicknessToolTip" xml:space="preserve">
-    <value>The width of the grid lines.</value>
+    <value>The thickness of the grid lines.</value>
   </data>
   <data name="DiagramStyleGridMarginBottomLabel" xml:space="preserve">
     <value>Bottom (px)</value>

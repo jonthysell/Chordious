@@ -1914,6 +1914,7 @@ namespace com.jonthysell.Chordious.Core
                 case "grid.stringspacing":
                 case "grid.linethickness":
                 case "title.gridpadding":
+                case "barre.linethickness":
                     return String.Format("{0}px", base.GetFriendlyValueName(key, recursive));
                 case "barre.verticalalignment":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramVerticalAlignment>(key, recursive));

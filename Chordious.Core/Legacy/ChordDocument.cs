@@ -269,18 +269,17 @@ namespace com.jonthysell.Chordious.Core.Legacy
             diagram.Style.GridNutVisible = false;
             diagram.Style.GridNutRatio = 2.0;
 
-            diagram.Style.FretLabelTextVisibleSet(true);
-            diagram.Style.FretLabelTextAlignmentSet(DiagramHorizontalAlignment.Left);
-            diagram.Style.FretLabelTextSizeRatioSet(0.6);
-            diagram.Style.FretLabelTextWidthRatioSet(0.5);
-            diagram.Style.FretLabelTextStyleSet(DiagramTextStyle.Regular);
+            diagram.Style.FretLabelTextVisible = true;
+            diagram.Style.FretLabelTextAlignment = DiagramHorizontalAlignment.Left;
+            diagram.Style.FretLabelTextSizeRatio = 0.6;
+            diagram.Style.FretLabelTextWidthRatio = 0.5;
+            diagram.Style.FretLabelTextStyle = DiagramTextStyle.Regular;
 
-            double padding = margin / 4.0;
-            diagram.Style.FretLabelGridPaddingSet(padding);
+            diagram.Style.FretLabelGridPadding = margin / 4.0;
 
-            diagram.Style.FretLabelTextColorSet("Black");
-            diagram.Style.FretLabelTextOpacitySet(1.0);
-            diagram.Style.FretLabelFontFamilySet(chordOptions.FontFamily);
+            diagram.Style.FretLabelTextColor = "Black";
+            diagram.Style.FretLabelTextOpacity = 1.0;
+            diagram.Style.FretLabelFontFamily = chordOptions.FontFamily;
 
             int baseLine = chord.BaseLine;
 

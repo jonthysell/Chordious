@@ -37,6 +37,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class DiagramBarreEditorViewModel : ViewModelBase
@@ -53,7 +55,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return "Diagram Barre Editor" + (Dirty ? "*" : "");
+                return Strings.DiagramBarreEditorTitle + (Dirty ? "*" : "");
             }
         }
 

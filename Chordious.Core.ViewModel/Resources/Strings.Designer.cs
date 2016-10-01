@@ -566,6 +566,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Diagram Barre Editor.
+        /// </summary>
+        internal static string DiagramBarreEditorTitle {
+            get {
+                return ResourceManager.GetString("DiagramBarreEditorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Collection Name.
         /// </summary>
         internal static string DiagramCollectionSelectorCollectionNameLabel {
@@ -661,6 +670,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramExportTitle {
             get {
                 return ResourceManager.GetString("DiagramExportTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram Fret Label Editor.
+        /// </summary>
+        internal static string DiagramFretLabelEditorTitle {
+            get {
+                return ResourceManager.GetString("DiagramFretLabelEditorTitle", resourceCulture);
             }
         }
         

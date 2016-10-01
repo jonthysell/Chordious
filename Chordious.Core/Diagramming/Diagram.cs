@@ -470,7 +470,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (fretLabel.IsVisible() && fretLabel.Position.Side == side)
                 {
-                    double width = fretLabel.GridPadding + fretLabel.GetTextWidth();
+                    double width = fretLabel.Style.FretLabelGridPadding + fretLabel.GetTextWidth();
                     if (width > maxWidth)
                     {
                         maxWidth = width;

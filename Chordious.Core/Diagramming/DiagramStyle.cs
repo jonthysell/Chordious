@@ -1316,111 +1316,240 @@ namespace com.jonthysell.Chordious.Core
 
         #region DiagramFretLabel-specific Styles
 
-        public string FretLabelTextColorGet()
+        public bool FretLabelTextColorIsLocal
         {
-            return GetColor("fretlabel.textcolor");
-        }
-
-        public void FretLabelTextColorSet(string value)
-        {
-            SetColor("fretlabel.textcolor", value);
-        }
-
-        public double FretLabelTextOpacityGet()
-        {
-            return GetDouble("fretlabel.textopacity");
-        }
-
-        public void FretLabelTextOpacitySet(double value)
-        {
-            if (value < 0 || value > 1.0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                return IsLocalGet("fretlabel.textcolor");
             }
-
-            Set("fretlabel.textopacity", value);
-        }
-
-        public string FretLabelFontFamilyGet()
-        {
-            return Get("fretlabel.fontfamily");
-        }
-
-        public void FretLabelFontFamilySet(string value)
-        {
-            Set("fretlabel.fontfamily", value);
-        }
-
-        public DiagramTextStyle FretLabelTextStyleGet()
-        {
-            return GetEnum<DiagramTextStyle>("fretlabel.textstyle");
-        }
-
-        public void FretLabelTextStyleSet(DiagramTextStyle value)
-        {
-            Set("fretlabel.textstyle", value);
-        }
-
-        public DiagramHorizontalAlignment FretLabelTextAlignmentGet()
-        {
-            return GetEnum<DiagramHorizontalAlignment>("fretlabel.textalignment");
-        }
-
-        public void FretLabelTextAlignmentSet(DiagramHorizontalAlignment value)
-        {
-            Set("fretlabel.textalignment", value);
-        }
-
-        public double FretLabelTextSizeRatioGet()
-        {
-            return GetDouble("fretlabel.textsizeratio", 1.0);
-        }
-
-        public void FretLabelTextSizeRatioSet(double value)
-        {
-            if (value < 0 || value > 1.0)
+            set
             {
-                throw new ArgumentOutOfRangeException("value");
+                IsLocalSet("fretlabel.textcolor", value);
             }
-            Set("fretlabel.textsizeratio", value);
         }
 
-        public bool FretLabelTextVisibleGet()
+        public string FretLabelTextColor
         {
-            return GetBoolean("fretlabel.textvisible");
-        }
-
-        public void FretLabelTextVisibleSet(bool value)
-        {
-            Set("fretlabel.textvisible", value);
-        }
-
-        public double FretLabelGridPaddingGet()
-        {
-            return GetDouble("fretlabel.gridpadding", 0);
-        }
-
-        public void FretLabelGridPaddingSet(double value)
-        {
-            if (value < 0)
+            get
             {
-                throw new ArgumentOutOfRangeException("value");
+                return GetColor("fretlabel.textcolor");
             }
-            Set("fretlabel.gridpadding", value);
-        }
-
-        public double FretLabelTextWidthRatioGet()
-        {
-            return GetDouble("fretlabel.textwidthratio", 1.0);
-        }
-
-        public void FretLabelTextWidthRatioSet(double value)
-        {
-            if (value < 0 || value > 1.0)
+            set
             {
-                throw new ArgumentOutOfRangeException("value");
+                SetColor("fretlabel.textcolor", value);
             }
-            Set("fretlabel.textwidthratio", value);
+        }
+
+        public bool FretLabelTextOpacityIsLocal
+        {
+            get
+            {
+                return IsLocalGet("fretlabel.textopacity");
+            }
+            set
+            {
+                IsLocalSet("fretlabel.textopacity", value);
+            }
+        }
+
+        public double FretLabelTextOpacity
+        {
+            get
+            {
+                return GetDouble("fretlabel.textopacity");
+            }
+            set
+            {
+                if (value < 0 || value > 1.0)
+                {
+                    throw new ArgumentOutOfRangeException("value");
+                }
+
+                Set("fretlabel.textopacity", value);
+            }
+        }
+
+        public bool FretLabelFontFamilyIsLocal
+        {
+            get
+            {
+                return IsLocalGet("fretlabel.fontfamily");
+            }
+            set
+            {
+                IsLocalSet("fretlabel.fontfamily", value);
+            }
+        }
+
+        public string FretLabelFontFamily
+        {
+            get
+            {
+                return Get("fretlabel.fontfamily");
+            }
+            set
+            {
+                Set("fretlabel.fontfamily", value);
+            }
+        }
+
+        public bool FretLabelTextStyleIsLocal
+        {
+            get
+            {
+                return IsLocalGet("fretlabel.textstyle");
+            }
+            set
+            {
+                IsLocalSet("fretlabel.textstyle", value);
+            }
+        }
+
+        public DiagramTextStyle FretLabelTextStyle
+        {
+            get
+            {
+                return GetEnum<DiagramTextStyle>("fretlabel.textstyle");
+            }
+            set
+            {
+                Set("fretlabel.textstyle", value);
+            }
+        }
+
+        public bool FretLabelTextAlignmentIsLocal
+        {
+            get
+            {
+                return IsLocalGet("fretlabel.textalignment");
+            }
+            set
+            {
+                IsLocalSet("fretlabel.textalignment", value);
+            }
+        }
+
+        public DiagramHorizontalAlignment FretLabelTextAlignment
+        {
+            get
+            {
+                return GetEnum<DiagramHorizontalAlignment>("fretlabel.textalignment");
+            }
+            set
+            {
+                Set("fretlabel.textalignment", value);
+            }
+        }
+
+        public bool FretLabelTextSizeRatioIsLocal
+        {
+            get
+            {
+                return IsLocalGet("fretlabel.textsizeratio");
+            }
+            set
+            {
+                IsLocalSet("fretlabel.textsizeratio", value);
+            }
+        }
+
+        public double FretLabelTextSizeRatio
+        {
+            get
+            {
+                return GetDouble("fretlabel.textsizeratio", 1.0);
+            }
+            set
+            {
+                if (value < 0 || value > 1.0)
+                {
+                    throw new ArgumentOutOfRangeException("value");
+                }
+
+                Set("fretlabel.textsizeratio", value);
+            }
+        }
+
+        public bool FretLabelTextVisibleIsLocal
+        {
+            get
+            {
+                return IsLocalGet("fretlabel.textvisible");
+            }
+            set
+            {
+                IsLocalSet("fretlabel.textvisible", value);
+            }
+        }
+
+        public bool FretLabelTextVisible
+        {
+            get
+            {
+                return GetBoolean("fretlabel.textvisible");
+            }
+            set
+            {
+                Set("fretlabel.textvisible", value);
+            }
+        }
+
+        public bool FretLabelGridPaddingIsLocal
+        {
+            get
+            {
+                return IsLocalGet("fretlabel.gridpadding");
+            }
+            set
+            {
+                IsLocalSet("fretlabel.gridpadding", value);
+            }
+        }
+
+        public double FretLabelGridPadding
+        {
+            get
+            {
+                return GetDouble("fretlabel.gridpadding", 0);
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("value");
+                }
+
+                Set("fretlabel.gridpadding", value);
+            }
+        }
+
+        public bool FretLabelTextWidthRatioIsLocal
+        {
+            get
+            {
+                return IsLocalGet("fretlabel.textwidthratio");
+            }
+            set
+            {
+                IsLocalSet("fretlabel.textwidthratio", value);
+            }
+        }
+
+        public double FretLabelTextWidthRatio
+        {
+            get
+            {
+                return GetDouble("fretlabel.textwidthratio", 1.0);
+            }
+            set
+            {
+                if (value < 0 || value > 1.0)
+                {
+                    throw new ArgumentOutOfRangeException("value");
+                }
+
+                Set("fretlabel.textwidthratio", value);
+            }
         }
 
         #endregion
@@ -1860,6 +1989,24 @@ namespace com.jonthysell.Chordious.Core
                     return Strings.TitleColorFriendlyKeyName;
                 case "title.textopacity":
                     return Strings.TitleOpacityFriendlyKeyName;
+                case "fretlabel.gridpadding":
+                    return Strings.FretLabelGridPaddingFriendlyKeyName;
+                case "fretlabel.textcolor":
+                    return Strings.FretLabelTextColorFriendlyKeyName;
+                case "fretlabel.textopacity":
+                    return Strings.FretLabelTextOpacityFriendlyKeyName;
+                case "fretlabel.textsizeratio":
+                    return Strings.FretLabelTextSizeRatioFriendlyKeyName;
+                case "fretlabel.textwidthratio":
+                    return Strings.FretLabelTextWidthRatioFriendlyKeyName;
+                case "fretlabel.fontfamily":
+                    return Strings.FretLabelFontFamilyFriendlyKeyName;
+                case "fretlabel.textalignment":
+                    return Strings.FretLabelTextAlignmentFriendlyKeyName;
+                case "fretlabel.textstyle":
+                    return Strings.FretLabelTextStyleFriendlyKeyName;
+                case "fretlabel.textvisible":
+                    return Strings.FretLabelTextVisibleFriendlyKeyName;
                 case "barre.visible":
                     return Strings.BarreVisibleFriendlyKeyName;
                 case "barre.verticalalignment":
@@ -1895,8 +2042,10 @@ namespace com.jonthysell.Chordious.Core
                 case "diagram.labellayoutmodel":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramLabelLayoutModel>(key, recursive));
                 case "title.textalignment":
+                case "fretlabel.textalignment":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramHorizontalAlignment>(key, recursive));
                 case "title.textstyle":
+                case "fretlabel.textstyle":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramTextStyle>(key, recursive));
                 case "title.labelstyle":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramLabelStyle>(key, recursive));
@@ -1904,6 +2053,8 @@ namespace com.jonthysell.Chordious.Core
                     return String.Format("{0}pt", base.GetFriendlyValueName(key, recursive));
                 case "barre.stack":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramBarreStack>(key, recursive));
+                case "barre.verticalalignment":
+                    return EnumUtils.GetFriendlyValue(GetEnum<DiagramVerticalAlignment>(key, recursive));
                 case "diagram.borderthickness":
                 case "grid.margin":
                 case "grid.marginleft":
@@ -1914,10 +2065,14 @@ namespace com.jonthysell.Chordious.Core
                 case "grid.stringspacing":
                 case "grid.linethickness":
                 case "title.gridpadding":
+                case "fretlabel.gridpadding":
                 case "barre.linethickness":
                     return String.Format("{0}px", base.GetFriendlyValueName(key, recursive));
-                case "barre.verticalalignment":
-                    return EnumUtils.GetFriendlyValue(GetEnum<DiagramVerticalAlignment>(key, recursive));
+                case "title.textvisible":
+                case "grid.nutvisible":
+                case "fretlabel.textvisible":
+                case "barre.visible":
+                    return GetBoolean(key, recursive) ? Strings.BooleanTrueFriendlyValue : Strings.BooleanFalseFriendlyValue;
                 default:
                     return base.GetFriendlyValueName(key, recursive);
             }

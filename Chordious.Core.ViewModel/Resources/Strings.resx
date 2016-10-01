@@ -1284,4 +1284,10 @@
   <data name="DiagramStyleBarreVisibleToolTip" xml:space="preserve">
     <value>Show the barre.</value>
   </data>
+  <data name="DiagramBarreEditorTitle" xml:space="preserve">
+    <value>Diagram Barre Editor</value>
+  </data>
+  <data name="DiagramFretLabelEditorTitle" xml:space="preserve">
+    <value>Diagram Fret Label Editor</value>
+  </data>
 </root>

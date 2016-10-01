@@ -10,16 +10,16 @@
     <setting key="chordfinderoptions.numfrets" value="5" />
     <setting key="chordfinderoptions.maxfret" value="12" />
     <setting key="chordfinderoptions.maxreach" value="4" />
-    <setting key="chordfinderoptions.allowopenstrings" value="true" />
-    <setting key="chordfinderoptions.allowmutedstrings" value="true" />
-    <setting key="chordfinderoptions.allowrootlesschords" value="false" />
-    <setting key="chordfinderstyle.addtitle" value="true" />
+    <setting key="chordfinderoptions.allowopenstrings" value="True" />
+    <setting key="chordfinderoptions.allowmutedstrings" value="True" />
+    <setting key="chordfinderoptions.allowrootlesschords" value="False" />
+    <setting key="chordfinderstyle.addtitle" value="True" />
     <setting key="chordfinderstyle.barretypeoption" value="None" />
-    <setting key="chordfinderstyle.addrootnotes" value="false" />
+    <setting key="chordfinderstyle.addrootnotes" value="False" />
     <setting key="chordfinderstyle.marktextoption" value="None" />
-    <setting key="chordfinderstyle.addbottommarks" value="false" />
+    <setting key="chordfinderstyle.addbottommarks" value="False" />
     <setting key="chordfinderstyle.bottommarktextoption" value="ShowNote_ShowBoth" />
-    <setting key="chordfinderstyle.mirrorresults" value="false" />
+    <setting key="chordfinderstyle.mirrorresults" value="False" />
     <setting key="scalefinderoptions.instrument" value="Ukulele" />
     <setting key="scalefinderoptions.tuning" value="Reentrant C (G4 C4 E4 A4)" />
     <setting key="scalefinderoptions.itlevel" value="Default" />
@@ -29,12 +29,12 @@
     <setting key="scalefinderoptions.numfrets" value="5" />
     <setting key="scalefinderoptions.maxfret" value="12" />
     <setting key="scalefinderoptions.maxreach" value="4" />
-    <setting key="scalefinderoptions.allowopenstrings" value="true" />
-    <setting key="scalefinderoptions.allowmutedstrings" value="true" />
-    <setting key="scalefinderstyle.addtitle" value="false" />
-    <setting key="scalefinderstyle.addrootnotes" value="true" />
+    <setting key="scalefinderoptions.allowopenstrings" value="True" />
+    <setting key="scalefinderoptions.allowmutedstrings" value="True" />
+    <setting key="scalefinderstyle.addtitle" value="False" />
+    <setting key="scalefinderstyle.addrootnotes" value="True" />
     <setting key="scalefinderstyle.marktextoption" value="None" />
-    <setting key="scalefinderstyle.mirrorresults" value="false" />
+    <setting key="scalefinderstyle.mirrorresults" value="False" />
   </settings>
   <styles>
     <style key="newdiagram.numfrets" value="5" />
@@ -52,26 +52,26 @@
     <style key="title.fontfamily" value="serif" />
     <style key="title.textalignment" value="Center" />
     <style key="title.textstyle" value="Regular" />
-    <style key="title.textvisible" value="true" />
+    <style key="title.textvisible" value="True" />
     <style key="title.textmodratio" value="0.75" />
     <style key="title.labelstyle" value="Regular" />
     <style key="grid.margin" value="30" />
     <style key="grid.fretspacing" value="30" />
     <style key="grid.stringspacing" value="37" />
-    <style key="grid.nutvisible" value="false" />
+    <style key="grid.nutvisible" value="False" />
     <style key="grid.nutratio" value="2.0" />
     <style key="grid.color" value="White" />
     <style key="grid.opacity" value="0" />
     <style key="grid.linecolor" value="Black" />
     <style key="grid.linethickness" value="2" />
     <style key="mark.shape" value="Circle" />
-    <style key="mark.visible" value="true" />
+    <style key="mark.visible" value="True" />
     <style key="mark.radiusratio" value="0.67" />
     <style key="mark.color" value="Black" />
     <style key="mark.opacity" value="1" />
     <style key="mark.textalignment" value="Center" />
     <style key="mark.textstyle" value="Regular" />
-    <style key="mark.textvisible" value="true" />
+    <style key="mark.textvisible" value="True" />
     <style key="mark.textcolor" value="White" />
     <style key="mark.textopacity" value="1" />
     <style key="mark.textsizeratio" value="0.5" />
@@ -79,7 +79,7 @@
     <style key="mark.bordercolor" value="Black" />
     <style key="mark.borderthickness" value="0" />
     <style key="mutedmark.shape" value="X" />
-    <style key="mutedmark.textvisible" value="false" />
+    <style key="mutedmark.textvisible" value="False" />
     <style key="mutedmark.borderthickness" value="2" />
     <style key="rootmark.shape" value="Diamond" />
     <style key="openmark.opacity" value="0" />
@@ -99,8 +99,8 @@
     <style key="fretlabel.fontfamily" value="serif" />
     <style key="fretlabel.textalignment" value="Center" />
     <style key="fretlabel.textstyle" value="Regular" />
-    <style key="fretlabel.textvisible" value="true" />
-    <style key="barre.visible" value="true" />
+    <style key="fretlabel.textvisible" value="True" />
+    <style key="barre.visible" value="True" />
     <style key="barre.opacity" value="1" />
     <style key="barre.linecolor" value="Black" />
     <style key="barre.linethickness" value="2" />

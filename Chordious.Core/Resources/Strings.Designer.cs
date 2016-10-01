@@ -170,6 +170,24 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string BooleanFalseFriendlyValue {
+            get {
+                return ResourceManager.GetString("BooleanFalseFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string BooleanTrueFriendlyValue {
+            get {
+                return ResourceManager.GetString("BooleanTrueFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot resize the diagram due to existing marks, fret labels, and/or barres..
         /// </summary>
         internal static string CantResizeDiagramExceptionMessage {
@@ -625,6 +643,87 @@ namespace com.jonthysell.Chordious.Core.Resources {
         internal static string ElementPositionOffFretboardExceptionMessage {
             get {
                 return ResourceManager.GetString("ElementPositionOffFretboardExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Label Font Family.
+        /// </summary>
+        internal static string FretLabelFontFamilyFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("FretLabelFontFamilyFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Label Grid Padding.
+        /// </summary>
+        internal static string FretLabelGridPaddingFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("FretLabelGridPaddingFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Label Text Alignment.
+        /// </summary>
+        internal static string FretLabelTextAlignmentFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("FretLabelTextAlignmentFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Label Text Color.
+        /// </summary>
+        internal static string FretLabelTextColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("FretLabelTextColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Label Text Opacity.
+        /// </summary>
+        internal static string FretLabelTextOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("FretLabelTextOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Label Text Size Ratio.
+        /// </summary>
+        internal static string FretLabelTextSizeRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("FretLabelTextSizeRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Label Text Style.
+        /// </summary>
+        internal static string FretLabelTextStyleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("FretLabelTextStyleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Label Text Visible.
+        /// </summary>
+        internal static string FretLabelTextVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("FretLabelTextVisibleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Label Text Width Ratio.
+        /// </summary>
+        internal static string FretLabelTextWidthRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("FretLabelTextWidthRatioFriendlyKeyName", resourceCulture);
             }
         }
         

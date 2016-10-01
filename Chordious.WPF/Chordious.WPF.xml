@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <chordious>
   <settings>
-    <setting key="app.firstrun" value="true" />
+    <setting key="app.firstrun" value="True" />
     <setting key="app.renderbackground" value="None" />
     <setting key="app.releasechannel" value="Official" />
-    <setting key="app.checkupdateonstart" value="false" />
+    <setting key="app.checkupdateonstart" value="False" />
     <setting key="app.lastupdatecheck" value="0001-01-01T08:00:00" />
     <setting key="diagramexport.filenameformat" value="%t.%x" />
     <setting key="diagramexport.exportformat" value="SVG" />
-    <setting key="diagramexport.overwritefiles" value="true" />
+    <setting key="diagramexport.overwritefiles" value="True" />
     <setting key="diagramexport.scalefactor" value="1.0" />
     <setting key="diagrameditor.renderbackground" value="Transparent" />
   </settings>

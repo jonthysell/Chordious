@@ -43,118 +43,6 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        #region Style
-
-        public string TextColor
-        {
-            get
-            {
-                return Style.FretLabelTextColorGet();
-            }
-            set
-            {
-                Style.FretLabelTextColorSet(value);
-            }
-        }
-
-        public double TextOpacity
-        {
-            get
-            {
-                return Style.FretLabelTextOpacityGet();
-            }
-            set
-            {
-                Style.FretLabelTextOpacitySet(value);
-            }
-        }
-
-        public string FontFamily
-        {
-            get
-            {
-                return Style.FretLabelFontFamilyGet();
-            }
-            set
-            {
-                Style.FretLabelFontFamilySet(value);
-            }
-        }
-
-        public DiagramTextStyle TextStyle
-        {
-            get
-            {
-                return Style.FretLabelTextStyleGet();
-            }
-            set
-            {
-                Style.FretLabelTextStyleSet(value);
-            }
-        }
-
-        public DiagramHorizontalAlignment TextAlignment
-        {
-            get
-            {
-                return Style.FretLabelTextAlignmentGet();
-            }
-            set
-            {
-                Style.FretLabelTextAlignmentSet(value);
-            }
-        }
-
-        public double TextSizeRatio
-        {
-            get
-            {
-                return Style.FretLabelTextSizeRatioGet();
-            }
-            set
-            {
-                Style.FretLabelTextSizeRatioSet(value);
-            }
-        }
-
-        public bool TextVisible
-        {
-            get
-            {
-                return Style.FretLabelTextVisibleGet();
-            }
-            set
-            {
-                Style.FretLabelTextVisibleSet(value);
-            }
-        }
-
-        public double GridPadding
-        {
-            get
-            {
-                return Style.FretLabelGridPaddingGet();
-            }
-            set
-            {
-                Style.FretLabelGridPaddingSet(value);
-            }
-        }
-
-        public double TextWidthRatio
-        {
-            get
-            {
-                return Style.FretLabelTextWidthRatioGet();
-            }
-            set
-            {
-                Style.FretLabelTextWidthRatioSet(value);
-            }
-        }
-
-        #endregion
-
         public DiagramFretLabel(Diagram parent, FretLabelPosition position, string text) : base(parent, position, text) { }
 
         public DiagramFretLabel(Diagram parent, XmlReader xmlReader) : base(parent)
@@ -211,17 +99,17 @@ namespace com.jonthysell.Chordious.Core
 
         public override bool IsVisible()
         {
-            return this.TextVisible && !String.IsNullOrEmpty(this.Text);
+            return this.Style.FretLabelTextVisible && !String.IsNullOrEmpty(this.Text);
         }
 
         public double GetTextHeight()
         {
-            return this.TextSizeRatio * Math.Min(this.Parent.Style.GridStringSpacing, this.Parent.Style.GridFretSpacing);
+            return this.Style.FretLabelTextSizeRatio * Math.Min(this.Parent.Style.GridStringSpacing, this.Parent.Style.GridFretSpacing);
         }
 
         public double GetTextWidth()
         {
-            return GetTextHeight() * this.TextWidthRatio * this.Text.Length;
+            return GetTextHeight() * this.Style.FretLabelTextWidthRatio * this.Text.Length;
         }
 
         public override string ToSvg()
@@ -244,36 +132,36 @@ namespace com.jonthysell.Chordious.Core
 
                 if (this.Position.Side == FretLabelSide.Left)
                 {
-                    switch (this.TextAlignment)
+                    switch (this.Style.FretLabelTextAlignment)
                     {
                         case DiagramHorizontalAlignment.Left:
-                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * (this.GridPadding + textSize) : -1.0 * (this.GridPadding + maxWidth); // D <-> U : L <-> R
+                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * (this.Style.FretLabelGridPadding + textSize) : -1.0 * (this.Style.FretLabelGridPadding + maxWidth); // D <-> U : L <-> R
                             textY += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * (this.Parent.Style.GridFretSpacing * 0.5) : textSize * 0.5; // L <-> R : U <-> D
                             break;
                         case DiagramHorizontalAlignment.Center:
-                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * (this.GridPadding + textSize) : -1.0 * (this.GridPadding + (maxWidth * 0.5)); // D <-> U : L <-> R
+                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * (this.Style.FretLabelGridPadding + textSize) : -1.0 * (this.Style.FretLabelGridPadding + (maxWidth * 0.5)); // D <-> U : L <-> R
                             textY += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? 0 : textSize * 0.5; // L <-> R : U <-> D
                             break;
                         case DiagramHorizontalAlignment.Right:
-                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * (this.GridPadding + textSize) : -1.0 * this.GridPadding; // D <-> U : L <-> R
+                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * (this.Style.FretLabelGridPadding + textSize) : -1.0 * this.Style.FretLabelGridPadding; // D <-> U : L <-> R
                             textY += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? this.Parent.Style.GridFretSpacing * 0.5 : textSize * 0.5; // L <-> R : U <-> D
                             break;
                     }
                 }
                 else if (this.Position.Side == FretLabelSide.Right)
                 {
-                    switch (this.TextAlignment)
+                    switch (this.Style.FretLabelTextAlignment)
                     {
                         case DiagramHorizontalAlignment.Left:
-                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? this.GridPadding : this.GridPadding; // D <-> U : L <-> R
+                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? this.Style.FretLabelGridPadding : this.Style.FretLabelGridPadding; // D <-> U : L <-> R
                             textY += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * (this.Parent.Style.GridFretSpacing * 0.5) : textSize * 0.5; // L <-> R : U <-> D
                             break;
                         case DiagramHorizontalAlignment.Center:
-                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? this.GridPadding : this.GridPadding + (maxWidth * 0.5); // D <-> U : L <-> R
+                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? this.Style.FretLabelGridPadding : this.Style.FretLabelGridPadding + (maxWidth * 0.5); // D <-> U : L <-> R
                             textY += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? 0 : textSize * 0.5; // L <-> R : U <-> D
                             break;
                         case DiagramHorizontalAlignment.Right:
-                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? this.GridPadding : this.GridPadding + maxWidth; // D <-> U : L <-> R
+                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? this.Style.FretLabelGridPadding : this.Style.FretLabelGridPadding + maxWidth; // D <-> U : L <-> R
                             textY += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? this.Parent.Style.GridFretSpacing * 0.5 : textSize * 0.5; // L <-> R : U <-> D
                             break;
                     }

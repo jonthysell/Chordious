@@ -444,4 +444,37 @@
   <data name="BarreVisibleFriendlyKeyName" xml:space="preserve">
     <value>Barre Visible</value>
   </data>
+  <data name="BooleanFalseFriendlyValue" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="BooleanTrueFriendlyValue" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="FretLabelFontFamilyFriendlyKeyName" xml:space="preserve">
+    <value>Fret Label Font Family</value>
+  </data>
+  <data name="FretLabelGridPaddingFriendlyKeyName" xml:space="preserve">
+    <value>Fret Label Grid Padding</value>
+  </data>
+  <data name="FretLabelTextAlignmentFriendlyKeyName" xml:space="preserve">
+    <value>Fret Label Text Alignment</value>
+  </data>
+  <data name="FretLabelTextColorFriendlyKeyName" xml:space="preserve">
+    <value>Fret Label Text Color</value>
+  </data>
+  <data name="FretLabelTextOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Fret Label Text Opacity</value>
+  </data>
+  <data name="FretLabelTextSizeRatioFriendlyKeyName" xml:space="preserve">
+    <value>Fret Label Text Size Ratio</value>
+  </data>
+  <data name="FretLabelTextStyleFriendlyKeyName" xml:space="preserve">
+    <value>Fret Label Text Style</value>
+  </data>
+  <data name="FretLabelTextVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Fret Label Text Visible</value>
+  </data>
+  <data name="FretLabelTextWidthRatioFriendlyKeyName" xml:space="preserve">
+    <value>Fret Label Text Width Ratio</value>
+  </data>
 </root>

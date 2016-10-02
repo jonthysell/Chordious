@@ -1290,4 +1290,64 @@
   <data name="DiagramFretLabelEditorTitle" xml:space="preserve">
     <value>Diagram Fret Label Editor</value>
   </data>
+  <data name="DiagramStyleFretLabelFontFamilyLabel" xml:space="preserve">
+    <value>Family</value>
+  </data>
+  <data name="DiagramStyleFretLabelFontFamilyToolTip" xml:space="preserve">
+    <value>The font to use for the fret label.</value>
+  </data>
+  <data name="DiagramStyleFretLabelFontGroupLabel" xml:space="preserve">
+    <value>Fret Label Font</value>
+  </data>
+  <data name="DiagramStyleFretLabelGridPaddingLabel" xml:space="preserve">
+    <value>Grid Padding (px)</value>
+  </data>
+  <data name="DiagramStyleFretLabelGridPaddingToolTip" xml:space="preserve">
+    <value>How much space to put between the fret label and the grid.</value>
+  </data>
+  <data name="DiagramStyleFretLabelLayoutGroupLabel" xml:space="preserve">
+    <value>Fret Label Layout</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextAlignmentLabel" xml:space="preserve">
+    <value>Alignment</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextAlignmentToolTip" xml:space="preserve">
+    <value>The horizontal alignment of the fret label.</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextColorLabel" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextColorToolTip" xml:space="preserve">
+    <value>The color of the fret label.</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextOpacityLabel" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextOpacityToolTip" xml:space="preserve">
+    <value>The opacity of the fret label.</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextSizeRatioLabel" xml:space="preserve">
+    <value>Size Ratio</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextSizeRatioToolTip" xml:space="preserve">
+    <value>The ratio of the fret label's text size relative to the height of the fret.</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextStyleLabel" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextStyleToolTip" xml:space="preserve">
+    <value>Whether to bold and/or italicize the fret label.</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextVisibleLabel" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextVisibleToolTip" xml:space="preserve">
+    <value>Show the fret label.</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextWidthRatioLabel" xml:space="preserve">
+    <value>Width Ratio</value>
+  </data>
+  <data name="DiagramStyleFretLabelTextWidthRatioToolTip" xml:space="preserve">
+    <value>The ratio of the width of the fret label relative to the text size.</value>
+  </data>
 </root>

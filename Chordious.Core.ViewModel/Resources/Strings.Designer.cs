@@ -1196,6 +1196,186 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Family.
+        /// </summary>
+        internal static string DiagramStyleFretLabelFontFamilyLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelFontFamilyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The font to use for the fret label..
+        /// </summary>
+        internal static string DiagramStyleFretLabelFontFamilyToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelFontFamilyToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Label Font.
+        /// </summary>
+        internal static string DiagramStyleFretLabelFontGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelFontGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Padding (px).
+        /// </summary>
+        internal static string DiagramStyleFretLabelGridPaddingLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelGridPaddingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How much space to put between the fret label and the grid..
+        /// </summary>
+        internal static string DiagramStyleFretLabelGridPaddingToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelGridPaddingToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Label Layout.
+        /// </summary>
+        internal static string DiagramStyleFretLabelLayoutGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelLayoutGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alignment.
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextAlignmentLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextAlignmentLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The horizontal alignment of the fret label..
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextAlignmentToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextAlignmentToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextColorLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The color of the fret label..
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextColorToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opacity.
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextOpacityLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextOpacityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The opacity of the fret label..
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextOpacityToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextOpacityToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size Ratio.
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextSizeRatioLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextSizeRatioLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ratio of the fret label&apos;s text size relative to the height of the fret..
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextSizeRatioToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextSizeRatioToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Style.
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextStyleLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextStyleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether to bold and/or italicize the fret label..
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextStyleToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextStyleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visible.
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextVisibleLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextVisibleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show the fret label..
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextVisibleToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextVisibleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Width Ratio.
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextWidthRatioLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextWidthRatioLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ratio of the width of the fret label relative to the text size..
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextWidthRatioToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextWidthRatioToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Grid Background.
         /// </summary>
         internal static string DiagramStyleGridBackgroundGroupLabel {

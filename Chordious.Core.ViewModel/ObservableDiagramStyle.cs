@@ -2091,6 +2091,567 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #region Layout
+
+        public string FretLabelLayoutGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelLayoutGroupLabel;
+            }
+        }
+
+        public bool FretLabelTextAlignmentIsLocal
+        {
+            get
+            {
+                return Style.FretLabelTextAlignmentIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelTextAlignmentIsLocal = value;
+                    RaisePropertyChanged("FretLabelTextAlignmentIsLocal");
+                    RaisePropertyChanged("SelectedFretLabelTextAlignmentIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string SelectedFretLabelTextAlignmentLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextAlignmentLabel;
+            }
+        }
+
+        public string SelectedFretLabelTextAlignmentToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextAlignmentToolTip;
+            }
+        }
+
+        public int SelectedFretLabelTextAlignmentIndex
+        {
+            get
+            {
+                return (int)Style.FretLabelTextAlignment;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelTextAlignment = (DiagramHorizontalAlignment)(value);
+                    RaisePropertyChanged("SelectedFretLabelTextAlignmentIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public ObservableCollection<string> FretLabelTextAlignments
+        {
+            get
+            {
+                return ObservableEnums.GetHorizontalAlignments();
+            }
+        }
+
+        public bool FretLabelTextVisibleIsLocal
+        {
+            get
+            {
+                return Style.FretLabelTextVisibleIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelTextVisibleIsLocal = value;
+                    RaisePropertyChanged("FretLabelTextVisibleIsLocal");
+                    RaisePropertyChanged("FretLabelTextVisible");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string FretLabelTextVisibleLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextVisibleLabel;
+            }
+        }
+
+        public string FretLabelTextVisibleToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextVisibleToolTip;
+            }
+        }
+
+        public bool FretLabelTextVisible
+        {
+            get
+            {
+                return Style.FretLabelTextVisible;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelTextVisible = value;
+                    RaisePropertyChanged("FretLabelTextVisible");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool FretLabelGridPaddingIsLocal
+        {
+            get
+            {
+                return Style.FretLabelGridPaddingIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelGridPaddingIsLocal = value;
+                    RaisePropertyChanged("FretLabelGridPaddingIsLocal");
+                    RaisePropertyChanged("FretLabelGridPadding");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string FretLabelGridPaddingLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelGridPaddingLabel;
+            }
+        }
+
+        public string FretLabelGridPaddingToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelGridPaddingToolTip;
+            }
+        }
+
+        public double FretLabelGridPadding
+        {
+            get
+            {
+                return Style.FretLabelGridPadding;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelGridPadding = value;
+                    RaisePropertyChanged("FretLabelGridPadding");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+        #region Font
+
+        public string FretLabelFontGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelFontGroupLabel;
+            }
+        }
+
+        public bool FretLabelTextColorIsLocal
+        {
+            get
+            {
+                return Style.FretLabelTextColorIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelTextColorIsLocal = value;
+                    RaisePropertyChanged("FretLabelTextColorIsLocal");
+                    RaisePropertyChanged("FretLabelTextColor");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string FretLabelTextColorLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextColorLabel;
+            }
+        }
+
+        public string FretLabelTextColorToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextColorToolTip;
+            }
+        }
+
+        public string FretLabelTextColor
+        {
+            get
+            {
+                return Style.FretLabelTextColor;
+            }
+            set
+            {
+                try
+                {
+                    if (null != value)
+                    {
+                        Style.FretLabelTextColor = value;
+                        ObservableEnums.SortedInsert(Colors, FretLabelTextColor);
+                        RaisePropertyChanged("FretLabelTextColor");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool FretLabelTextOpacityIsLocal
+        {
+            get
+            {
+                return Style.FretLabelTextOpacityIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelTextOpacityIsLocal = value;
+                    RaisePropertyChanged("FretLabelTextOpacityIsLocal");
+                    RaisePropertyChanged("FretLabelTextOpacity");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string FretLabelTextOpacityLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextOpacityLabel;
+            }
+        }
+
+        public string FretLabelTextOpacityToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextOpacityToolTip;
+            }
+        }
+
+        public double FretLabelTextOpacity
+        {
+            get
+            {
+                return Style.FretLabelTextOpacity;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelTextOpacity = value;
+                    RaisePropertyChanged("FretLabelTextOpacity");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool FretLabelFontFamilyIsLocal
+        {
+            get
+            {
+                return Style.FretLabelFontFamilyIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelFontFamilyIsLocal = value;
+                    RaisePropertyChanged("FretLabelFontFamilyIsLocal");
+                    RaisePropertyChanged("FretLabelFontFamily");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string FretLabelFontFamilyLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelFontFamilyLabel;
+            }
+        }
+
+        public string FretLabelTextFontFamilyToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelFontFamilyToolTip;
+            }
+        }
+
+        public string FretLabelFontFamily
+        {
+            get
+            {
+                return Style.FretLabelFontFamily;
+            }
+            set
+            {
+                try
+                {
+                    if (null != value)
+                    {
+                        Style.FretLabelFontFamily = value;
+                        ObservableEnums.SortedInsert(FontFamilies, FretLabelFontFamily);
+                        RaisePropertyChanged("FretLabelFontFamily");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool FretLabelTextStyleIsLocal
+        {
+            get
+            {
+                return Style.FretLabelTextStyleIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelTextStyleIsLocal = value;
+                    RaisePropertyChanged("FretLabelTextStyleIsLocal");
+                    RaisePropertyChanged("SelectedFretLabelTextStyleIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string SelectedFretLabelTextStyleLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextStyleLabel;
+            }
+        }
+
+        public string SelectedFretLabelTextStyleToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextStyleToolTip;
+            }
+        }
+
+        public int SelectedFretLabelTextStyleIndex
+        {
+            get
+            {
+                return (int)Style.FretLabelTextStyle;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelTextStyle = (DiagramTextStyle)(value);
+                    RaisePropertyChanged("SelectedFretLabelTextStyleIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public ObservableCollection<string> FretLabelTextStyles
+        {
+            get
+            {
+                return ObservableEnums.GetTextStyles();
+            }
+        }
+
+        public bool FretLabelTextSizeRatioIsLocal
+        {
+            get
+            {
+                return Style.FretLabelTextSizeRatioIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelTextSizeRatioIsLocal = value;
+                    RaisePropertyChanged("FretLabelTextSizeRatioIsLocal");
+                    RaisePropertyChanged("FretLabelTextSizeRatio");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string FretLabelTextSizeRatioLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextSizeRatioLabel;
+            }
+        }
+
+        public string FretLabelTextSizeRatioToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextSizeRatioToolTip;
+            }
+        }
+
+        public double FretLabelTextSizeRatio
+        {
+            get
+            {
+                return Style.FretLabelTextSizeRatio;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelTextSizeRatio = value;
+                    RaisePropertyChanged("FretLabelTextSizeRatio");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public bool FretLabelTextWidthRatioIsLocal
+        {
+            get
+            {
+                return Style.FretLabelTextWidthRatioIsLocal;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelTextWidthRatioIsLocal = value;
+                    RaisePropertyChanged("FretLabelTextWidthRatioIsLocal");
+                    RaisePropertyChanged("FretLabelTextWidthRatio");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public string FretLabelTextWidthRatioLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextWidthRatioLabel;
+            }
+        }
+
+        public string FretLabelTextWidthRatioToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleFretLabelTextWidthRatioToolTip;
+            }
+        }
+
+        public double FretLabelTextWidthRatio
+        {
+            get
+            {
+                return Style.FretLabelTextWidthRatio;
+            }
+            set
+            {
+                try
+                {
+                    Style.FretLabelTextWidthRatio = value;
+                    RaisePropertyChanged("FretLabelTextWidthRatio");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Barres

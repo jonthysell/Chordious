@@ -674,6 +674,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fret Label Properties.
+        /// </summary>
+        internal static string DiagramFretLabelEditorPropertiesGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramFretLabelEditorPropertiesGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        internal static string DiagramFretLabelEditorTextLabel {
+            get {
+                return ResourceManager.GetString("DiagramFretLabelEditorTextLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The text of the fret label..
+        /// </summary>
+        internal static string DiagramFretLabelEditorTextToolTip {
+            get {
+                return ResourceManager.GetString("DiagramFretLabelEditorTextToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Diagram Fret Label Editor.
         /// </summary>
         internal static string DiagramFretLabelEditorTitle {

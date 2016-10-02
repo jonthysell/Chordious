@@ -1,69 +1,73 @@
 ﻿<Window x:Class="com.jonthysell.Chordious.WPF.DiagramFretLabelEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
         Title="{Binding Title, FallbackValue=Diagram Fret Label Editor}" WindowStartupLocation="CenterScreen" Icon="{StaticResource ChordiousIcon}" MinWidth="320" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
     <StackPanel>
-        <GroupBox Header="Text" Margin="5">
+        <GroupBox Margin="5" Header="{Binding PropertiesGroupLabel, FallbackValue=Fret Label Properties}">
             <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Width="75" Margin="5" Content="Text"/>
-                        <TextBox Width="75" Margin="5" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" SelectedText="" MaxLines="1" HorizontalContentAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Width="75" Margin="5" Content="Color"/>
-                        <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding Colors}" SelectedItem="{Binding TextColor}" Text="{Binding TextColor, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Width="75" Margin="5" Content="Font Family"/>
-                        <ComboBox Width="75" Margin="5" IsEditable="True" ItemsSource="{Binding FontFamilies}" SelectedItem="{Binding TextFontFamily}" Text="{Binding TextFontFamily, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Width="75" Margin="5" Content="Style"/>
-                        <ComboBox Width="75" Margin="5" ItemsSource="{Binding TextStyles}" SelectedIndex="{Binding SelectedTextStyleIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
-                    </StackPanel>
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Width="75" Margin="5" Content="Visible"/>
-                        <CheckBox Width="75" Margin="5" IsChecked="{Binding TextVisible}" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Width="75" Margin="5" Content="Opacity"/>
-                        <TextBox Width="75" Margin="5" Text="{Binding TextOpacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Width="75" Margin="5" Content="Alignment"/>
-                        <ComboBox Width="75" Margin="5" ItemsSource="{Binding TextAlignments}" SelectedIndex="{Binding SelectedTextAlignmentIndex}" VerticalAlignment="Center" Style="{StaticResource CleanComboBox}"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Width="75" Margin="5" Content="Size Ratio"/>
-                        <TextBox Width="75" Margin="5" Text="{Binding TextSizeRatio, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
-                    </StackPanel>
-                </StackPanel>
+                <Label Width="120" Margin="5" Content="{Binding TextLabel, FallbackValue=Text}" ToolTip="{Binding TextToolTip}" />
+                <TextBox Width="80" Margin="5" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding TextToolTip}" SelectedText="" MaxLines="1" HorizontalContentAlignment="Center"/>
             </StackPanel>
         </GroupBox>
-        <GroupBox Header="Other" Margin="5">
-            <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Width="105" Margin="5" Content="Grid Padding (px)"/>
-                        <TextBox Width="45" Margin="5" Text="{Binding GridPadding, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" IsEnabled="{Binding Style.IsEditable}">
+            <StackPanel>
+                <GroupBox Margin="5" Header="{Binding Style.FretLabelFontGroupLabel, FallbackValue=Fret Label Font}">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelFontFamilyIsLocal}" Content="{Binding Style.FretLabelFontFamilyLabel, FallbackValue=Family}" ToolTip="{Binding Style.FretLabelFontFamilyToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.FontFamilies}" SelectedItem="{Binding Style.FretLabelFontFamily}" Text="{Binding Style.FretLabelFontFamily, UpdateSourceTrigger=LostFocus}" ToolTip="{Binding Style.FretLabelFontFamilyToolTip}" IsEnabled="{Binding Style.FretLabelFontFamilyIsLocal}" IsEditable="True" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelTextStyleIsLocal}" Content="{Binding Style.SelectedFretLabelTextStyleLabel, FallbackValue=Style}" ToolTip="{Binding Style.SelectedFretLabelTextStyleToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.FretLabelTextStyles}" SelectedIndex="{Binding Style.SelectedFretLabelTextStyleIndex}" ToolTip="{Binding Style.SelectedFretLabelTextStyleToolTip}" IsEnabled="{Binding Style.FretLabelTextStyleIsLocal}" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelTextColorIsLocal}" Content="{Binding Style.FretLabelTextColorLabel, FallbackValue=Color}" ToolTip="{Binding Style.FretLabelTextColorToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.Colors}" SelectedItem="{Binding Style.FretLabelTextColor}" Text="{Binding Style.FretLabelTextColor, UpdateSourceTrigger=LostFocus}" ToolTip="{Binding Style.FretLabelTextColorToolTip}" IsEnabled="{Binding Style.FretLabelTextColorIsLocal}" IsEditable="True" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelTextOpacityIsLocal}" Content="{Binding Style.FretLabelTextOpacityLabel, FallbackValue=Opacity}" ToolTip="{Binding Style.FretLabelTextOpacityToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.FretLabelTextOpacity, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.FretLabelTextOpacityToolTip}" IsEnabled="{Binding Style.FretLabelTextOpacityIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelTextSizeRatioIsLocal}" Content="{Binding Style.FretLabelTextSizeRatioLabel, FallbackValue=Size Ratio}" ToolTip="{Binding Style.FretLabelTextSizeRatioToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.FretLabelTextSizeRatio, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.FretLabelTextSizeRatioToolTip}" IsEnabled="{Binding Style.FretLabelTextSizeRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelTextWidthRatioIsLocal}" Content="{Binding Style.FretLabelTextWidthRatioLabel, FallbackValue=Width Ratio}" ToolTip="{Binding Style.FretLabelTextWidthRatioToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.FretLabelTextWidthRatio, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.FretLabelTextWidthRatioToolTip}" IsEnabled="{Binding Style.FretLabelTextWidthRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Width="100" Margin="5" Content="Text Width Ratio"/>
-                        <TextBox Width="50" Margin="5" Text="{Binding TextWidthRatio, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" MaxLength="4" MaxLines="1" HorizontalContentAlignment="Center"/>
-                    </StackPanel>
-                </StackPanel>
+                </GroupBox>
             </StackPanel>
-        </GroupBox>
+            <StackPanel>
+                <GroupBox Margin="5" Header="{Binding Style.FretLabelLayoutGroupLabel, FallbackValue=Fret Label Layout}">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelTextVisibleIsLocal}" Content="{Binding Style.FretLabelTextVisibleLabel, FallbackValue=Visible}" ToolTip="{Binding Style.FretLabelTextVisibleToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <CheckBox Width="80" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelTextVisible}" IsEnabled="{Binding Style.FretLabelTextVisibleIsLocal}" ToolTip="{Binding Style.FretLabelTextVisibleToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelTextAlignmentIsLocal}" Content="{Binding Style.SelectedFretLabelTextAlignmentLabel, FallbackValue=Alignment}" ToolTip="{Binding Style.SelectedFretLabelTextAlignmentToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.FretLabelTextAlignments}" SelectedIndex="{Binding Style.SelectedFretLabelTextAlignmentIndex}" ToolTip="{Binding Style.SelectedFretLabelTextAlignmentToolTip}" IsEnabled="{Binding Style.FretLabelTextAlignmentIsLocal}" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelGridPaddingIsLocal}" Content="{Binding Style.FretLabelGridPaddingLabel, FallbackValue=Grid Padding (px)}" ToolTip="{Binding Style.FretLabelGridPaddingToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.FretLabelGridPadding, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.FretLabelGridPaddingToolTip}" IsEnabled="{Binding Style.FretLabelGridPaddingIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </StackPanel>
         <WrapPanel FlowDirection="RightToLeft" Height="Auto">
             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                <Button Command="{Binding Apply}" Content="Apply" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
-                <Button Command="{Binding Accept}" Content="OK" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
-                <Button Command="{Binding Cancel}" Content="Cancel" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
+                <Button Command="{Binding Style.Reset}" ToolTip="{Binding Style.ResetToolTip}" IsEnabled="{Binding Style.IsEditable}" Margin="5" Style="{StaticResource CleanButtonNoBorder}">
+                    <local:AutoDisableImage Source="{StaticResource ResetIcon16}" Width="16" Height="16" />
+                </Button>
+                <Button Command="{Binding Apply}" Content="{Binding AppVM.ApplyLabel, FallbackValue=Apply}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
+                <Button Command="{Binding Accept}" Content="{Binding AppVM.AcceptLabel, FallbackValue=OK}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
+                <Button Command="{Binding Cancel}" Content="{Binding AppVM.CancelLabel, FallbackValue=Cancel}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
             </StackPanel>
         </WrapPanel>
     </StackPanel>

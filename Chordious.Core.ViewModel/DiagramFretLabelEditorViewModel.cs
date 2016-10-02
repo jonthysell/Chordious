@@ -59,6 +59,32 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #region Properties
+
+        public string PropertiesGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramFretLabelEditorPropertiesGroupLabel;
+            }
+        }
+
+        public string TextLabel
+        {
+            get
+            {
+                return Strings.DiagramFretLabelEditorTextLabel;
+            }
+        }
+
+        public string TextToolTip
+        {
+            get
+            {
+                return Strings.DiagramFretLabelEditorTextToolTip;
+            }
+        }
+
         public string Text
         {
             get
@@ -80,6 +106,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private string _text;
+
+        #endregion
 
         public RelayCommand Apply
         {

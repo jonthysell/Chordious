@@ -1290,6 +1290,15 @@
   <data name="DiagramFretLabelEditorTitle" xml:space="preserve">
     <value>Diagram Fret Label Editor</value>
   </data>
+  <data name="DiagramFretLabelEditorPropertiesGroupLabel" xml:space="preserve">
+    <value>Fret Label Properties</value>
+  </data>
+  <data name="DiagramFretLabelEditorTextLabel" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="DiagramFretLabelEditorTextToolTip" xml:space="preserve">
+    <value>The text of the fret label.</value>
+  </data>
   <data name="DiagramStyleFretLabelFontFamilyLabel" xml:space="preserve">
     <value>Family</value>
   </data>

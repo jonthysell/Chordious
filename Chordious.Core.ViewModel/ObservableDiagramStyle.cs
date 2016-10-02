@@ -2439,7 +2439,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelTextFontFamilyToolTip
+        public string FretLabelFontFamilyToolTip
         {
             get
             {

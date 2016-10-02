@@ -1,5 +1,12 @@
 # Chordious Changelist #
 
+## 1.9.16276.349 ##
+* Added fret label styles to the Diagram Style Editor
+* Added fret label styles to the Diagram Editor
+* Updated Diagram Fret Label Editor
+* Localized fret label style strings
+* Some string updates
+
 ## 1.9.16245.2247 ##
 * Added barre styles to the Diagram Style Editor
 * Added barre styles to the Diagram Editor

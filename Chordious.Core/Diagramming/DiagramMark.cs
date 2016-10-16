@@ -45,189 +45,34 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public DiagramMarkType Type { get; set; }
-
-        public DiagramMarkShape Shape
+        public DiagramMarkType Type
         {
             get
             {
-                return Style.MarkShapeGet(this.Type);
+                return this.MarkStyle.MarkType;
             }
             set
             {
-                Style.MarkShapeSet(value, this.Type);
+                this.MarkStyle.MarkType = value;
             }
         }
 
-        public bool Visible
-        {
-            get
-            {
-                return Style.MarkVisibleGet(this.Type);
-            }
-            set
-            {
-                Style.MarkVisibleSet(value, this.Type);
-            }
-        }
-
-        public string Color
-        {
-            get
-            {
-                return Style.MarkColorGet(this.Type);
-            }
-            set
-            {
-                Style.MarkColorSet(value, this.Type);
-            }
-        }
-
-        public double Opacity
-        {
-            get
-            {
-                return Style.MarkOpacityGet(this.Type);
-            }
-            set
-            {
-                Style.MarkOpacitySet(value, this.Type);
-            }
-        }
-
-        public DiagramTextStyle TextStyle
-        {
-            get
-            {
-                return Style.MarkTextStyleGet(this.Type);
-            }
-            set
-            {
-                Style.MarkTextStyleSet(value, this.Type);
-            }
-        }
-
-        public DiagramHorizontalAlignment TextAlignment
-        {
-            get
-            {
-                return Style.MarkTextAlignmentGet(this.Type);
-            }
-            set
-            {
-                Style.MarkTextAlignmentSet(value, this.Type);
-            }
-        }
-
-        public double TextSizeRatio
-        {
-            get
-            {
-                return Style.MarkTextSizeRatioGet(this.Type);
-            }
-            set
-            {
-                Style.MarkTextSizeRatioSet(value, this.Type);
-            }
-        }
-
-        public bool TextVisible
-        {
-            get
-            {
-                return Style.MarkTextVisibleGet(this.Type);
-            }
-            set
-            {
-                Style.MarkTextVisibleSet(value, this.Type);
-            }
-        }
-
-        public string TextColor
-        {
-            get
-            {
-                return Style.MarkTextColorGet(this.Type);
-            }
-            set
-            {
-                Style.MarkTextColorSet(value, this.Type);
-            }
-        }
-
-        public double TextOpacity
-        {
-            get
-            {
-                return Style.MarkTextOpacityGet(this.Type);
-            }
-            set
-            {
-                Style.MarkTextOpacitySet(value, this.Type);
-            }
-        }
-
-        public string FontFamily
-        {
-            get
-            {
-                return Style.MarkFontFamilyGet(this.Type);
-            }
-            set
-            {
-                Style.MarkFontFamilySet(value, this.Type);
-            }
-        }
-
-        public double RadiusRatio
-        {
-            get
-            {
-                return Style.MarkRadiusRatioGet(this.Type);
-            }
-            set
-            {
-                Style.MarkRadiusRatioSet(value, this.Type);
-            }
-        }
-
-        public string BorderColor
-        {
-            get
-            {
-                return Style.MarkBorderColorGet(this.Type);
-            }
-            set
-            {
-                Style.MarkBorderColorSet(value, this.Type);
-            }
-        }
-
-        public double BorderThickness
-        {
-            get
-            {
-                return Style.MarkBorderThicknessGet(this.Type);
-            }
-            set
-            {
-                Style.MarkBorderThicknessSet(value, this.Type);
-            }
-        }
+        public DiagramMarkStyleWrapper MarkStyle { get; private set; }
 
         public DiagramMark(Diagram parent, MarkPosition position, string text = "") : base(parent, position, text)
         {
-            this.Type = DiagramMarkType.Normal;
+            this.MarkStyle = new DiagramMarkStyleWrapper(this.Style);
         }
 
         public DiagramMark(Diagram parent, XmlReader xmlReader) : base(parent)
         {
+            this.MarkStyle = new DiagramMarkStyleWrapper(this.Style);
             this.Read(xmlReader);
         }
 
         public override bool IsVisible()
         {
-            return this.Visible;
+            return this.MarkStyle.MarkVisible;
         }
 
         public bool IsAboveTopEdge()
@@ -284,7 +129,7 @@ namespace com.jonthysell.Chordious.Core
             xmlWriter.WriteAttributeString("string", this.Position.String.ToString());
             xmlWriter.WriteAttributeString("fret", this.Position.Fret.ToString());
 
-            string prefix = DiagramStyle.MarkStylePrefix(this.Type);
+            string prefix = DiagramStyle.GetMarkStylePrefix(this.Type);
 
             this.Style.Write(xmlWriter, prefix + "mark");
 
@@ -297,10 +142,10 @@ namespace com.jonthysell.Chordious.Core
 
             if (this.IsVisible())
             {
-                string prefix = DiagramStyle.MarkStylePrefix(this.Type);
+                string prefix = DiagramStyle.GetMarkStylePrefix(this.Type);
 
-                DiagramMarkShape shape = this.Shape;
-                double radius = this.RadiusRatio * 0.5 * Math.Min(this.Parent.Style.GridStringSpacing, this.Parent.Style.GridFretSpacing);
+                DiagramMarkShape shape = this.MarkStyle.MarkShape;
+                double radius = this.MarkStyle.MarkRadiusRatio * 0.5 * Math.Min(this.Parent.Style.GridStringSpacing, this.Parent.Style.GridFretSpacing);
 
                 double centerX = this.Parent.GridLeftEdge() + (this.Parent.Style.GridStringSpacing * (this.Position.String - 1));
                 double centerY = this.Parent.GridTopEdge() + (this.Parent.Style.GridFretSpacing / 2.0) + (this.Parent.Style.GridFretSpacing * (this.Position.Fret - 1));
@@ -309,7 +154,7 @@ namespace com.jonthysell.Chordious.Core
 
                 string shapeStyle = this.Style.GetSvgStyle(DiagramMark._shapeStyleMap, prefix);
 
-                if (this.BorderThickness > 0)
+                if (this.MarkStyle.MarkBorderThickness > 0)
                 {
                     shapeStyle += this.Style.GetSvgStyle(DiagramMark._shapeStyleMapBorder, prefix);
                 }
@@ -341,14 +186,14 @@ namespace com.jonthysell.Chordious.Core
                 }
 
                 // Draw text
-                if (!StringUtils.IsNullOrWhiteSpace(this.Text) && this.TextVisible)
+                if (!StringUtils.IsNullOrWhiteSpace(this.Text) && this.MarkStyle.MarkTextVisible)
                 {
-                    double textSize = radius * 2.0 * this.TextSizeRatio;
+                    double textSize = radius * 2.0 * this.MarkStyle.MarkTextSizeRatio;
 
                     double textX = centerX;
                     double textY = centerY;
 
-                    switch (this.TextAlignment)
+                    switch (this.MarkStyle.MarkTextAlignment)
                     {
                         case DiagramHorizontalAlignment.Left:
                             textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * textSize * 0.5 : -1.0 * radius; // D <-> U : L <-> R

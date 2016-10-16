@@ -66,6 +66,7 @@
     <Compile Include="Common\Finding\FinderStyle.cs" />
     <Compile Include="Common\StringUtils.cs" />
     <Compile Include="Diagramming\ColorUtils.cs" />
+    <Compile Include="Diagramming\DiagramMarkStyleWrapper.cs" />
     <Compile Include="Legacy\Chord.cs" />
     <Compile Include="ChordFinding\ChordFinder.cs" />
     <Compile Include="ChordFinding\ChordFinderOptions.cs" />

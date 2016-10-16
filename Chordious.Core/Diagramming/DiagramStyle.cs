@@ -997,298 +997,114 @@ namespace com.jonthysell.Chordious.Core
 
         #region DiagramMark-specific Styles
 
-        public DiagramMarkShape MarkShapeGet(DiagramMarkType type = DiagramMarkType.Normal)
+        public bool MarkStyleIsLocalGet(string key, DiagramMarkType type = DiagramMarkType.Normal)
         {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-        
-            DiagramMarkShape result;
-            if (TryGet<DiagramMarkShape>(prefix + "mark.shape", out result))
+            string prefix = GetMarkStylePrefix(type);
+
+            return IsLocalGet(prefix + key);
+        }
+
+        public void MarkStyleIsLocalGet(string key, bool value, DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = GetMarkStylePrefix(type);
+
+            IsLocalSet(prefix + key, value);
+        }
+
+        public string MarkStyleGet(string key, DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = GetMarkStylePrefix(type);
+
+            string result;
+            if (TryGet(prefix + key, out result))
             {
                 return result;
             }
 
-            return GetEnum<DiagramMarkShape>("mark.shape");
+            return Get(key);
         }
 
-        public void MarkShapeSet(DiagramMarkShape value, DiagramMarkType type = DiagramMarkType.Normal)
+        public string MarkStyleGetColor(string key, DiagramMarkType type = DiagramMarkType.Normal)
         {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            Set(prefix + "mark.shape", value);
+            string prefix = GetMarkStylePrefix(type);
+
+            string result;
+            if (TryGetColor(prefix + key, out result))
+            {
+                return result;
+            }
+
+            return GetColor(key);
         }
 
-        public bool MarkVisibleGet(DiagramMarkType type = DiagramMarkType.Normal)
+        public bool MarkStyleGetBoolean(string key, DiagramMarkType type = DiagramMarkType.Normal)
         {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
+            string prefix = GetMarkStylePrefix(type);
 
             bool result;
-            if (TryGet(prefix + "mark.visible", out result))
+            if (TryGet(prefix + key, out result))
             {
                 return result;
             }
 
-            return GetBoolean("mark.visible");
+            return GetBoolean(key);
         }
 
-        public void MarkVisibleSet(bool value, DiagramMarkType type = DiagramMarkType.Normal)
+        public double MarkStyleGetDouble(string key, DiagramMarkType type = DiagramMarkType.Normal)
         {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            Set(prefix + "mark.visible", value);
-        }
-
-        public string MarkColorGet(DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-
-            string result;
-            if (TryGetColor(prefix + "mark.color", out result))
-            {
-                return result;
-            }
-
-            return GetColor("mark.color");
-        }
-
-        public void MarkColorSet(string value, DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            SetColor(prefix + "mark.color", value);
-        }
-
-        public double MarkOpacityGet(DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
+            string prefix = GetMarkStylePrefix(type);
 
             double result;
-            if (TryGet(prefix + "mark.opacity", out result))
+            if (TryGet(prefix + key, out result))
             {
                 return result;
             }
 
-            return GetDouble("mark.opacity");
+            return GetDouble(key);
         }
 
-        public void MarkOpacitySet(double value, DiagramMarkType type = DiagramMarkType.Normal)
+        public TEnum MarkStyleGetEnum<TEnum>(string key, DiagramMarkType type = DiagramMarkType.Normal) where TEnum : struct
         {
-            if (value < 0 || value > 1.0)
-            {
-                throw new ArgumentOutOfRangeException("value");
-            }
+            string prefix = GetMarkStylePrefix(type);
 
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            Set(prefix + "mark.opacity", value);
-        }
-
-        public DiagramTextStyle MarkTextStyleGet(DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-
-            DiagramTextStyle result;
-            if (TryGet<DiagramTextStyle>(prefix + "mark.textstyle", out result))
+            TEnum result;
+            if (TryGet<TEnum>(prefix + key, out result))
             {
                 return result;
             }
 
-            return GetEnum<DiagramTextStyle>("mark.textstyle");
-            }
-
-        public void MarkTextStyleSet(DiagramTextStyle value, DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            Set(prefix + "mark.textstyle", value);
+            return GetEnum<TEnum>(key);
         }
 
-        public DiagramHorizontalAlignment MarkTextAlignmentGet(DiagramMarkType type = DiagramMarkType.Normal)
+        public void MarkStyleSet(string key, object value, DiagramMarkType type = DiagramMarkType.Normal)
         {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
+            string prefix = GetMarkStylePrefix(type);
 
-            DiagramHorizontalAlignment result;
-            if (TryGet<DiagramHorizontalAlignment>(prefix + "mark.textalignment", out result))
-            {
-                return result;
-            }
-
-            return GetEnum<DiagramHorizontalAlignment>("mark.textalignment");
+            Set(prefix + key, value);
         }
 
-        public void MarkTextAlignmentSet(DiagramHorizontalAlignment value, DiagramMarkType type = DiagramMarkType.Normal)
+        public void MarkStyleSetColor(string key, string value, DiagramMarkType type = DiagramMarkType.Normal)
         {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            Set(prefix + "mark.textalignment", value);
+            string prefix = GetMarkStylePrefix(type);
+
+            SetColor(prefix + key, value);
         }
 
-        public double MarkTextSizeRatioGet(DiagramMarkType type = DiagramMarkType.Normal)
+        public bool MarkShapeIsLocalGet(DiagramMarkType type = DiagramMarkType.Normal)
         {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
+            string prefix = GetMarkStylePrefix(type);
 
-            double result;
-            if (TryGet(prefix + "mark.textsizeratio", out result))
-            {
-                return result;
-            }
-
-            return GetDouble("mark.textsizeratio", 1.0);
+            return IsLocalGet(prefix + "mark.shape");
         }
 
-        public void MarkTextSizeRatioSet(double value, DiagramMarkType type = DiagramMarkType.Normal)
+        public void MarkShapeIsLocalSet(bool value, DiagramMarkType type = DiagramMarkType.Normal)
         {
-            if (value < 0 || value > 1.0)
-            {
-                throw new ArgumentOutOfRangeException("value");
-            }
+            string prefix = GetMarkStylePrefix(type);
 
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            Set(prefix + "mark.textsizeratio", value);
+            IsLocalSet(prefix + "mark.shape", value);
         }
 
-        public bool MarkTextVisibleGet(DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-
-            bool result;
-            if (TryGet(prefix + "mark.textvisible", out result))
-            {
-                return result;
-            }
-
-            return GetBoolean("mark.textvisible");
-        }
-
-        public void MarkTextVisibleSet(bool value, DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            Set(prefix + "mark.textvisible", value);
-        }
-
-        public string MarkTextColorGet(DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-
-            string result;
-            if (TryGetColor(prefix + "mark.textcolor", out result))
-            {
-                return result;
-            }
-
-            return GetColor("mark.textcolor");
-        }
-
-        public void MarkTextColorSet(string value, DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            SetColor(prefix + "mark.textcolor", value);
-        }
-
-        public double MarkTextOpacityGet(DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-
-            double result;
-            if (TryGet(prefix + "mark.textopacity", out result))
-            {
-                return result;
-            }
-
-            return GetDouble("mark.textopacity");
-        }
-
-        public void MarkTextOpacitySet(double value, DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            if (value < 0 || value > 1.0)
-            {
-                throw new ArgumentOutOfRangeException("value");
-            }
-
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            Set(prefix + "mark.textopacity", value);
-        }
-
-        public string MarkFontFamilyGet(DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-
-            string result;
-            if (TryGet(prefix + "mark.fontfamily", out result))
-            {
-                return result;
-            }
-
-            return Get("mark.fontfamily");
-        }
-
-        public void MarkFontFamilySet(string value, DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            Set(prefix + "mark.fontfamily", value);
-        }
-
-        public double MarkRadiusRatioGet(DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-
-            double result;
-            if (TryGet(prefix + "mark.radiusratio", out result))
-            {
-                return result;
-            }
-
-            return GetDouble("mark.radiusratio", 1.0);
-        }
-
-        public void MarkRadiusRatioSet(double value, DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            if (value < 0 || value > 1.0)
-            {
-                throw new ArgumentOutOfRangeException("value");
-            }
-
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            Set(prefix + "mark.radiusratio", value);
-        }
-
-        public string MarkBorderColorGet(DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-
-            string result;
-            if (TryGetColor(prefix + "mark.bordercolor", out result))
-            {
-                return result;
-            }
-
-            return GetColor("mark.bordercolor");
-        }
-
-        public void MarkBorderColorSet(string value, DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            SetColor(prefix + "mark.bordercolor", value);
-        }
-
-        public double MarkBorderThicknessGet(DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-
-            double result;
-            if (TryGet(prefix + "mark.borderthickness", out result))
-            {
-                return result;
-            }
-
-            return GetDouble("mark.borderthickness");
-        }
-
-        public void MarkBorderThicknessSet(double value, DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            if (value < 0)
-            {
-                throw new ArgumentOutOfRangeException("value");
-            }
-
-            string prefix = DiagramStyle.MarkStylePrefix(type);
-            Set(prefix + "mark.borderthickness", value);
-        }
-
-        public static string MarkStylePrefix(DiagramMarkType type)
+        public static string GetMarkStylePrefix(DiagramMarkType type)
         {
             string prefix = "";
             switch (type)
@@ -1989,6 +1805,174 @@ namespace com.jonthysell.Chordious.Core
                     return Strings.TitleColorFriendlyKeyName;
                 case "title.textopacity":
                     return Strings.TitleOpacityFriendlyKeyName;
+                case "mark.shape":
+                    return Strings.MarkShapeFriendlyKeyName;
+                case "mark.visible":
+                    return Strings.MarkVisibleFriendlyKeyName;
+                case "mark.radiusratio":
+                    return Strings.MarkRadiusRatioFriendlyKeyName;
+                case "mark.color":
+                    return Strings.MarkColorFriendlyKeyName;
+                case "mark.opacity":
+                    return Strings.MarkOpacityFriendlyKeyName;
+                case "mark.textalignment":
+                    return Strings.MarkTextAlignmentFriendlyKeyName;
+                case "mark.textstyle":
+                    return Strings.MarkTextStyleFriendlyKeyName;
+                case "mark.textvisible":
+                    return Strings.MarkTextVisibleFriendlyKeyName;
+                case "mark.textcolor":
+                    return Strings.MarkTextColorFriendlyKeyName;
+                case "mark.textopacity":
+                    return Strings.MarkTextOpacityFriendlyKeyName;
+                case "mark.textsizeratio":
+                    return Strings.MarkTextSizeRatioFriendlyKeyName;
+                case "mark.fontfamily":
+                    return Strings.MarkFontFamilyFriendlyKeyName;
+                case "mark.bordercolor":
+                    return Strings.MarkBorderColorFriendlyKeyName;
+                case "mark.borderthickness":
+                    return Strings.MarkBorderThicknessFriendlyKeyName;
+                case "mutedmark.shape":
+                    return Strings.MutedMarkShapeFriendlyKeyName;
+                case "mutedmark.visible":
+                    return Strings.MutedMarkVisibleFriendlyKeyName;
+                case "mutedmark.radiusratio":
+                    return Strings.MutedMarkRadiusRatioFriendlyKeyName;
+                case "mutedmark.color":
+                    return Strings.MutedMarkColorFriendlyKeyName;
+                case "mutedmark.opacity":
+                    return Strings.MutedMarkOpacityFriendlyKeyName;
+                case "mutedmark.textalignment":
+                    return Strings.MutedMarkTextAlignmentFriendlyKeyName;
+                case "mutedmark.textstyle":
+                    return Strings.MutedMarkTextStyleFriendlyKeyName;
+                case "mutedmark.textvisible":
+                    return Strings.MutedMarkTextVisibleFriendlyKeyName;
+                case "mutedmark.textcolor":
+                    return Strings.MutedMarkTextColorFriendlyKeyName;
+                case "mutedmark.textopacity":
+                    return Strings.MutedMarkTextOpacityFriendlyKeyName;
+                case "mutedmark.textsizeratio":
+                    return Strings.MutedMarkTextSizeRatioFriendlyKeyName;
+                case "mutedmark.fontfamily":
+                    return Strings.MutedMarkFontFamilyFriendlyKeyName;
+                case "mutedmark.bordercolor":
+                    return Strings.MutedMarkBorderColorFriendlyKeyName;
+                case "mutedmark.borderthickness":
+                    return Strings.MutedMarkBorderThicknessFriendlyKeyName;
+                case "rootmark.shape":
+                    return Strings.RootMarkShapeFriendlyKeyName;
+                case "rootmark.visible":
+                    return Strings.RootMarkVisibleFriendlyKeyName;
+                case "rootmark.radiusratio":
+                    return Strings.RootMarkRadiusRatioFriendlyKeyName;
+                case "rootmark.color":
+                    return Strings.RootMarkColorFriendlyKeyName;
+                case "rootmark.opacity":
+                    return Strings.RootMarkOpacityFriendlyKeyName;
+                case "rootmark.textalignment":
+                    return Strings.RootMarkTextAlignmentFriendlyKeyName;
+                case "rootmark.textstyle":
+                    return Strings.RootMarkTextStyleFriendlyKeyName;
+                case "rootmark.textvisible":
+                    return Strings.RootMarkTextVisibleFriendlyKeyName;
+                case "rootmark.textcolor":
+                    return Strings.RootMarkTextColorFriendlyKeyName;
+                case "rootmark.textopacity":
+                    return Strings.RootMarkTextOpacityFriendlyKeyName;
+                case "rootmark.textsizeratio":
+                    return Strings.RootMarkTextSizeRatioFriendlyKeyName;
+                case "rootmark.fontfamily":
+                    return Strings.RootMarkFontFamilyFriendlyKeyName;
+                case "rootmark.bordercolor":
+                    return Strings.RootMarkBorderColorFriendlyKeyName;
+                case "rootmark.borderthickness":
+                    return Strings.RootMarkBorderThicknessFriendlyKeyName;
+                case "openmark.shape":
+                    return Strings.OpenMarkShapeFriendlyKeyName;
+                case "openmark.visible":
+                    return Strings.OpenMarkVisibleFriendlyKeyName;
+                case "openmark.radiusratio":
+                    return Strings.OpenMarkRadiusRatioFriendlyKeyName;
+                case "openmark.color":
+                    return Strings.OpenMarkColorFriendlyKeyName;
+                case "openmark.opacity":
+                    return Strings.OpenMarkOpacityFriendlyKeyName;
+                case "openmark.textalignment":
+                    return Strings.OpenMarkTextAlignmentFriendlyKeyName;
+                case "openmark.textstyle":
+                    return Strings.OpenMarkTextStyleFriendlyKeyName;
+                case "openmark.textvisible":
+                    return Strings.OpenMarkTextVisibleFriendlyKeyName;
+                case "openmark.textcolor":
+                    return Strings.OpenMarkTextColorFriendlyKeyName;
+                case "openmark.textopacity":
+                    return Strings.OpenMarkTextOpacityFriendlyKeyName;
+                case "openmark.textsizeratio":
+                    return Strings.OpenMarkTextSizeRatioFriendlyKeyName;
+                case "openmark.fontfamily":
+                    return Strings.OpenMarkFontFamilyFriendlyKeyName;
+                case "openmark.bordercolor":
+                    return Strings.OpenMarkBorderColorFriendlyKeyName;
+                case "openmark.borderthickness":
+                    return Strings.OpenMarkBorderThicknessFriendlyKeyName;
+                case "openrootmark.shape":
+                    return Strings.OpenRootMarkShapeFriendlyKeyName;
+                case "openrootmark.visible":
+                    return Strings.OpenRootMarkVisibleFriendlyKeyName;
+                case "openrootmark.radiusratio":
+                    return Strings.OpenRootMarkRadiusRatioFriendlyKeyName;
+                case "openrootmark.color":
+                    return Strings.OpenRootMarkColorFriendlyKeyName;
+                case "openrootmark.opacity":
+                    return Strings.OpenRootMarkOpacityFriendlyKeyName;
+                case "openrootmark.textalignment":
+                    return Strings.OpenRootMarkTextAlignmentFriendlyKeyName;
+                case "openrootmark.textstyle":
+                    return Strings.OpenRootMarkTextStyleFriendlyKeyName;
+                case "openrootmark.textvisible":
+                    return Strings.OpenRootMarkTextVisibleFriendlyKeyName;
+                case "openrootmark.textcolor":
+                    return Strings.OpenRootMarkTextColorFriendlyKeyName;
+                case "openrootmark.textopacity":
+                    return Strings.OpenRootMarkTextOpacityFriendlyKeyName;
+                case "openrootmark.textsizeratio":
+                    return Strings.OpenRootMarkTextSizeRatioFriendlyKeyName;
+                case "openrootmark.fontfamily":
+                    return Strings.OpenRootMarkFontFamilyFriendlyKeyName;
+                case "openrootmark.bordercolor":
+                    return Strings.OpenRootMarkBorderColorFriendlyKeyName;
+                case "openrootmark.borderthickness":
+                    return Strings.OpenRootMarkBorderThicknessFriendlyKeyName;
+                case "bottommark.shape":
+                    return Strings.BottomMarkShapeFriendlyKeyName;
+                case "bottommark.visible":
+                    return Strings.BottomMarkVisibleFriendlyKeyName;
+                case "bottommark.radiusratio":
+                    return Strings.BottomMarkRadiusRatioFriendlyKeyName;
+                case "bottommark.color":
+                    return Strings.BottomMarkColorFriendlyKeyName;
+                case "bottommark.opacity":
+                    return Strings.BottomMarkOpacityFriendlyKeyName;
+                case "bottommark.textalignment":
+                    return Strings.BottomMarkTextAlignmentFriendlyKeyName;
+                case "bottommark.textstyle":
+                    return Strings.BottomMarkTextStyleFriendlyKeyName;
+                case "bottommark.textvisible":
+                    return Strings.BottomMarkTextVisibleFriendlyKeyName;
+                case "bottommark.textcolor":
+                    return Strings.BottomMarkTextColorFriendlyKeyName;
+                case "bottommark.textopacity":
+                    return Strings.BottomMarkTextOpacityFriendlyKeyName;
+                case "bottommark.textsizeratio":
+                    return Strings.BottomMarkTextSizeRatioFriendlyKeyName;
+                case "bottommark.fontfamily":
+                    return Strings.BottomMarkFontFamilyFriendlyKeyName;
+                case "bottommark.bordercolor":
+                    return Strings.BottomMarkBorderColorFriendlyKeyName;
+                case "bottommark.borderthickness":
+                    return Strings.BottomMarkBorderThicknessFriendlyKeyName;
                 case "fretlabel.gridpadding":
                     return Strings.FretLabelGridPaddingFriendlyKeyName;
                 case "fretlabel.textcolor":
@@ -2042,15 +2026,34 @@ namespace com.jonthysell.Chordious.Core
                 case "diagram.labellayoutmodel":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramLabelLayoutModel>(key, recursive));
                 case "title.textalignment":
+                case "mark.textalignment":
+                case "mutedmark.textalignment":
+                case "rootmark.textalignment":
+                case "openmark.textalignment":
+                case "openrootmark.textalignment":
+                case "bottommark.textalignment":
                 case "fretlabel.textalignment":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramHorizontalAlignment>(key, recursive));
                 case "title.textstyle":
+                case "mark.textstyle":
+                case "mutedmark.textstyle":
+                case "rootmark.textstyle":
+                case "openmark.textstyle":
+                case "openrootmark.textstyle":
+                case "bottommark.textstyle":
                 case "fretlabel.textstyle":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramTextStyle>(key, recursive));
                 case "title.labelstyle":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramLabelStyle>(key, recursive));
                 case "title.textsize":
                     return String.Format("{0}pt", base.GetFriendlyValueName(key, recursive));
+                case "mark.shape":
+                case "mutedmark.shape":
+                case "rootmark.shape":
+                case "openmark.shape":
+                case "openrootmark.shape":
+                case "bottommark.shape":
+                    return EnumUtils.GetFriendlyValue(GetEnum<DiagramMarkShape>(key, recursive));
                 case "barre.stack":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramBarreStack>(key, recursive));
                 case "barre.verticalalignment":
@@ -2065,11 +2068,29 @@ namespace com.jonthysell.Chordious.Core
                 case "grid.stringspacing":
                 case "grid.linethickness":
                 case "title.gridpadding":
+                case "mark.borderthickness":
+                case "mutedmark.borderthickness":
+                case "rootmark.borderthickness":
+                case "openmark.borderthickness":
+                case "openrootmark.borderthickness":
+                case "bottommark.borderthickness":
                 case "fretlabel.gridpadding":
                 case "barre.linethickness":
                     return String.Format("{0}px", base.GetFriendlyValueName(key, recursive));
                 case "title.textvisible":
                 case "grid.nutvisible":
+                case "mark.visible":
+                case "mutedmark.visible":
+                case "rootmark.visible":
+                case "openmark.visible":
+                case "openrootmark.visible":
+                case "bottommark.visible":
+                case "mark.textvisible":
+                case "mutedmark.textvisible":
+                case "rootmark.textvisible":
+                case "openmark.textvisible":
+                case "openrootmark.textvisible":
+                case "bottommark.textvisible":
                 case "fretlabel.textvisible":
                 case "barre.visible":
                     return GetBoolean(key, recursive) ? Strings.BooleanTrueFriendlyValue : Strings.BooleanFalseFriendlyValue;

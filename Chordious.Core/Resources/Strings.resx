@@ -477,4 +477,256 @@
   <data name="FretLabelTextWidthRatioFriendlyKeyName" xml:space="preserve">
     <value>Fret Label Text Width Ratio</value>
   </data>
+  <data name="BottomMarkBorderColorFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Border Color</value>
+  </data>
+  <data name="BottomMarkBorderThicknessFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Border Thickness</value>
+  </data>
+  <data name="BottomMarkColorFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Color</value>
+  </data>
+  <data name="BottomMarkFontFamilyFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Font Family</value>
+  </data>
+  <data name="BottomMarkOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Opacity</value>
+  </data>
+  <data name="BottomMarkRadiusRatioFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Radius Ratio</value>
+  </data>
+  <data name="BottomMarkShapeFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Shape</value>
+  </data>
+  <data name="BottomMarkTextAlignmentFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Text Alignment</value>
+  </data>
+  <data name="BottomMarkTextColorFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Text Color</value>
+  </data>
+  <data name="BottomMarkTextOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Text Opacity</value>
+  </data>
+  <data name="BottomMarkTextSizeRatioFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Text Size Ratio</value>
+  </data>
+  <data name="BottomMarkTextStyleFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Text Style</value>
+  </data>
+  <data name="BottomMarkTextVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Text Visible</value>
+  </data>
+  <data name="BottomMarkVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Bottom Mark Visible</value>
+  </data>
+  <data name="MarkBorderColorFriendlyKeyName" xml:space="preserve">
+    <value>Mark Border Color</value>
+  </data>
+  <data name="MarkBorderThicknessFriendlyKeyName" xml:space="preserve">
+    <value>Mark Border Thickness</value>
+  </data>
+  <data name="MarkColorFriendlyKeyName" xml:space="preserve">
+    <value>Mark Color</value>
+  </data>
+  <data name="MarkFontFamilyFriendlyKeyName" xml:space="preserve">
+    <value>Mark Font Family</value>
+  </data>
+  <data name="MarkOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Mark Opacity</value>
+  </data>
+  <data name="MarkRadiusRatioFriendlyKeyName" xml:space="preserve">
+    <value>Mark Radius Ratio</value>
+  </data>
+  <data name="MarkShapeFriendlyKeyName" xml:space="preserve">
+    <value>Mark Shape</value>
+  </data>
+  <data name="MarkTextAlignmentFriendlyKeyName" xml:space="preserve">
+    <value>Mark Text Alignment</value>
+  </data>
+  <data name="MarkTextColorFriendlyKeyName" xml:space="preserve">
+    <value>Mark Text Color</value>
+  </data>
+  <data name="MarkTextOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Mark Text Opacity</value>
+  </data>
+  <data name="MarkTextSizeRatioFriendlyKeyName" xml:space="preserve">
+    <value>Mark Text Size Ratio</value>
+  </data>
+  <data name="MarkTextStyleFriendlyKeyName" xml:space="preserve">
+    <value>Mark Text Style</value>
+  </data>
+  <data name="MarkTextVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Mark Text Visible</value>
+  </data>
+  <data name="MarkVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Mark Visible</value>
+  </data>
+  <data name="MutedMarkBorderColorFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Border Color</value>
+  </data>
+  <data name="MutedMarkBorderThicknessFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Border Thickness</value>
+  </data>
+  <data name="MutedMarkColorFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Color</value>
+  </data>
+  <data name="MutedMarkFontFamilyFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Font Family</value>
+  </data>
+  <data name="MutedMarkOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Opacity</value>
+  </data>
+  <data name="MutedMarkRadiusRatioFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Radius Ratio</value>
+  </data>
+  <data name="MutedMarkShapeFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Shape</value>
+  </data>
+  <data name="MutedMarkTextAlignmentFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Text Alignment</value>
+  </data>
+  <data name="MutedMarkTextColorFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Text Color</value>
+  </data>
+  <data name="MutedMarkTextOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Text Opacity</value>
+  </data>
+  <data name="MutedMarkTextSizeRatioFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Text Size Ratio</value>
+  </data>
+  <data name="MutedMarkTextStyleFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Text Style</value>
+  </data>
+  <data name="MutedMarkTextVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Text Visible</value>
+  </data>
+  <data name="MutedMarkVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Muted Mark Visible</value>
+  </data>
+  <data name="OpenMarkBorderColorFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Border Color</value>
+  </data>
+  <data name="OpenMarkBorderThicknessFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Border Thickness</value>
+  </data>
+  <data name="OpenMarkColorFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Color</value>
+  </data>
+  <data name="OpenMarkFontFamilyFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Font Family</value>
+  </data>
+  <data name="OpenMarkOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Opacity</value>
+  </data>
+  <data name="OpenMarkRadiusRatioFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Radius Ratio</value>
+  </data>
+  <data name="OpenMarkShapeFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Shape</value>
+  </data>
+  <data name="OpenMarkTextAlignmentFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Text Alignment</value>
+  </data>
+  <data name="OpenMarkTextColorFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Text Color</value>
+  </data>
+  <data name="OpenMarkTextOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Text Opacity</value>
+  </data>
+  <data name="OpenMarkTextSizeRatioFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Text Size Ratio</value>
+  </data>
+  <data name="OpenMarkTextStyleFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Text Style</value>
+  </data>
+  <data name="OpenMarkTextVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Text Visible</value>
+  </data>
+  <data name="OpenMarkVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Open Mark Visible</value>
+  </data>
+  <data name="OpenRootMarkBorderColorFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Border Color</value>
+  </data>
+  <data name="OpenRootMarkBorderThicknessFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Border Thickness</value>
+  </data>
+  <data name="OpenRootMarkColorFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Color</value>
+  </data>
+  <data name="OpenRootMarkFontFamilyFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Font Family</value>
+  </data>
+  <data name="OpenRootMarkOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Opacity</value>
+  </data>
+  <data name="OpenRootMarkRadiusRatioFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Radius Ratio</value>
+  </data>
+  <data name="OpenRootMarkShapeFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Shape</value>
+  </data>
+  <data name="OpenRootMarkTextAlignmentFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Text Alignment</value>
+  </data>
+  <data name="OpenRootMarkTextColorFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Text Color</value>
+  </data>
+  <data name="OpenRootMarkTextOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Text Opacity</value>
+  </data>
+  <data name="OpenRootMarkTextSizeRatioFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Text Size Ratio</value>
+  </data>
+  <data name="OpenRootMarkTextStyleFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Text Style</value>
+  </data>
+  <data name="OpenRootMarkTextVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Text Visible</value>
+  </data>
+  <data name="OpenRootMarkVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Open Root Mark Visible</value>
+  </data>
+  <data name="RootMarkBorderColorFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Border Color</value>
+  </data>
+  <data name="RootMarkBorderThicknessFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Border Thickness</value>
+  </data>
+  <data name="RootMarkColorFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Color</value>
+  </data>
+  <data name="RootMarkFontFamilyFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Font Family</value>
+  </data>
+  <data name="RootMarkOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Opacity</value>
+  </data>
+  <data name="RootMarkRadiusRatioFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Radius Ratio</value>
+  </data>
+  <data name="RootMarkShapeFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Shape</value>
+  </data>
+  <data name="RootMarkTextAlignmentFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Text Alignment</value>
+  </data>
+  <data name="RootMarkTextColorFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Text Color</value>
+  </data>
+  <data name="RootMarkTextOpacityFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Text Opacity</value>
+  </data>
+  <data name="RootMarkTextSizeRatioFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Text Size Ratio</value>
+  </data>
+  <data name="RootMarkTextStyleFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Text Style</value>
+  </data>
+  <data name="RootMarkTextVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Text Visible</value>
+  </data>
+  <data name="RootMarkVisibleFriendlyKeyName" xml:space="preserve">
+    <value>Root Mark Visible</value>
+  </data>
 </root>

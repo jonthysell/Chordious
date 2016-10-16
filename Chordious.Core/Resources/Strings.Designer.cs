@@ -188,6 +188,132 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Border Color.
+        /// </summary>
+        internal static string BottomMarkBorderColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkBorderColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Border Thickness.
+        /// </summary>
+        internal static string BottomMarkBorderThicknessFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkBorderThicknessFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Color.
+        /// </summary>
+        internal static string BottomMarkColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Font Family.
+        /// </summary>
+        internal static string BottomMarkFontFamilyFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkFontFamilyFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Opacity.
+        /// </summary>
+        internal static string BottomMarkOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Radius Ratio.
+        /// </summary>
+        internal static string BottomMarkRadiusRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkRadiusRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Shape.
+        /// </summary>
+        internal static string BottomMarkShapeFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkShapeFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Text Alignment.
+        /// </summary>
+        internal static string BottomMarkTextAlignmentFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkTextAlignmentFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Text Color.
+        /// </summary>
+        internal static string BottomMarkTextColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkTextColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Text Opacity.
+        /// </summary>
+        internal static string BottomMarkTextOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkTextOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Text Size Ratio.
+        /// </summary>
+        internal static string BottomMarkTextSizeRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkTextSizeRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Text Style.
+        /// </summary>
+        internal static string BottomMarkTextStyleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkTextStyleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Text Visible.
+        /// </summary>
+        internal static string BottomMarkTextVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkTextVisibleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom Mark Visible.
+        /// </summary>
+        internal static string BottomMarkVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("BottomMarkVisibleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot resize the diagram due to existing marks, fret labels, and/or barres..
         /// </summary>
         internal static string CantResizeDiagramExceptionMessage {
@@ -899,6 +1025,96 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mark Border Color.
+        /// </summary>
+        internal static string MarkBorderColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkBorderColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Border Thickness.
+        /// </summary>
+        internal static string MarkBorderThicknessFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkBorderThicknessFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Color.
+        /// </summary>
+        internal static string MarkColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Font Family.
+        /// </summary>
+        internal static string MarkFontFamilyFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkFontFamilyFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Opacity.
+        /// </summary>
+        internal static string MarkOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Radius Ratio.
+        /// </summary>
+        internal static string MarkRadiusRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkRadiusRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Shape.
+        /// </summary>
+        internal static string MarkShapeFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkShapeFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Text Alignment.
+        /// </summary>
+        internal static string MarkTextAlignmentFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkTextAlignmentFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Text Color.
+        /// </summary>
+        internal static string MarkTextColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkTextColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Text Opacity.
+        /// </summary>
+        internal static string MarkTextOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkTextOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to None.
         /// </summary>
         internal static string MarkTextOptionNoneFriendlyValue {
@@ -931,6 +1147,168 @@ namespace com.jonthysell.Chordious.Core.Resources {
         internal static string MarkTextOptionShowNoteShowBothFriendlyValue {
             get {
                 return ResourceManager.GetString("MarkTextOptionShowNoteShowBothFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Text Size Ratio.
+        /// </summary>
+        internal static string MarkTextSizeRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkTextSizeRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Text Style.
+        /// </summary>
+        internal static string MarkTextStyleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkTextStyleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Text Visible.
+        /// </summary>
+        internal static string MarkTextVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkTextVisibleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Visible.
+        /// </summary>
+        internal static string MarkVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MarkVisibleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Border Color.
+        /// </summary>
+        internal static string MutedMarkBorderColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkBorderColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Border Thickness.
+        /// </summary>
+        internal static string MutedMarkBorderThicknessFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkBorderThicknessFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Color.
+        /// </summary>
+        internal static string MutedMarkColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Font Family.
+        /// </summary>
+        internal static string MutedMarkFontFamilyFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkFontFamilyFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Opacity.
+        /// </summary>
+        internal static string MutedMarkOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Radius Ratio.
+        /// </summary>
+        internal static string MutedMarkRadiusRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkRadiusRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Shape.
+        /// </summary>
+        internal static string MutedMarkShapeFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkShapeFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Text Alignment.
+        /// </summary>
+        internal static string MutedMarkTextAlignmentFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkTextAlignmentFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Text Color.
+        /// </summary>
+        internal static string MutedMarkTextColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkTextColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Text Opacity.
+        /// </summary>
+        internal static string MutedMarkTextOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkTextOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Text Size Ratio.
+        /// </summary>
+        internal static string MutedMarkTextSizeRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkTextSizeRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Text Style.
+        /// </summary>
+        internal static string MutedMarkTextStyleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkTextStyleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Text Visible.
+        /// </summary>
+        internal static string MutedMarkTextVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkTextVisibleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muted Mark Visible.
+        /// </summary>
+        internal static string MutedMarkVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("MutedMarkVisibleFriendlyKeyName", resourceCulture);
             }
         }
         
@@ -980,6 +1358,258 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open Mark Border Color.
+        /// </summary>
+        internal static string OpenMarkBorderColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkBorderColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Mark Border Thickness.
+        /// </summary>
+        internal static string OpenMarkBorderThicknessFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkBorderThicknessFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Mark Color.
+        /// </summary>
+        internal static string OpenMarkColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Mark Font Family.
+        /// </summary>
+        internal static string OpenMarkFontFamilyFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkFontFamilyFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Mark Opacity.
+        /// </summary>
+        internal static string OpenMarkOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Mark Radius Ratio.
+        /// </summary>
+        internal static string OpenMarkRadiusRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkRadiusRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Mark Shape.
+        /// </summary>
+        internal static string OpenMarkShapeFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkShapeFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Mark Text Alignment.
+        /// </summary>
+        internal static string OpenMarkTextAlignmentFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkTextAlignmentFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Mark Text Color.
+        /// </summary>
+        internal static string OpenMarkTextColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkTextColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Mark Text Opacity.
+        /// </summary>
+        internal static string OpenMarkTextOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkTextOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Mark Text Size Ratio.
+        /// </summary>
+        internal static string OpenMarkTextSizeRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkTextSizeRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Mark Text Style.
+        /// </summary>
+        internal static string OpenMarkTextStyleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkTextStyleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Mark Text Visible.
+        /// </summary>
+        internal static string OpenMarkTextVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkTextVisibleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Mark Visible.
+        /// </summary>
+        internal static string OpenMarkVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenMarkVisibleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Border Color.
+        /// </summary>
+        internal static string OpenRootMarkBorderColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkBorderColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Border Thickness.
+        /// </summary>
+        internal static string OpenRootMarkBorderThicknessFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkBorderThicknessFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Color.
+        /// </summary>
+        internal static string OpenRootMarkColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Font Family.
+        /// </summary>
+        internal static string OpenRootMarkFontFamilyFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkFontFamilyFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Opacity.
+        /// </summary>
+        internal static string OpenRootMarkOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Radius Ratio.
+        /// </summary>
+        internal static string OpenRootMarkRadiusRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkRadiusRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Shape.
+        /// </summary>
+        internal static string OpenRootMarkShapeFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkShapeFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Text Alignment.
+        /// </summary>
+        internal static string OpenRootMarkTextAlignmentFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkTextAlignmentFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Text Color.
+        /// </summary>
+        internal static string OpenRootMarkTextColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkTextColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Text Opacity.
+        /// </summary>
+        internal static string OpenRootMarkTextOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkTextOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Text Size Ratio.
+        /// </summary>
+        internal static string OpenRootMarkTextSizeRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkTextSizeRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Text Style.
+        /// </summary>
+        internal static string OpenRootMarkTextStyleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkTextStyleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Text Visible.
+        /// </summary>
+        internal static string OpenRootMarkTextVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkTextVisibleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Root Mark Visible.
+        /// </summary>
+        internal static string OpenRootMarkVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("OpenRootMarkVisibleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Object does not have a parent..
         /// </summary>
         internal static string ParentNotFoundExceptionMessage {
@@ -994,6 +1624,132 @@ namespace com.jonthysell.Chordious.Core.Resources {
         internal static string PathNotFoundExceptionMessage {
             get {
                 return ResourceManager.GetString("PathNotFoundExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Border Color.
+        /// </summary>
+        internal static string RootMarkBorderColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkBorderColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Border Thickness.
+        /// </summary>
+        internal static string RootMarkBorderThicknessFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkBorderThicknessFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Color.
+        /// </summary>
+        internal static string RootMarkColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Font Family.
+        /// </summary>
+        internal static string RootMarkFontFamilyFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkFontFamilyFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Opacity.
+        /// </summary>
+        internal static string RootMarkOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Radius Ratio.
+        /// </summary>
+        internal static string RootMarkRadiusRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkRadiusRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Shape.
+        /// </summary>
+        internal static string RootMarkShapeFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkShapeFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Text Alignment.
+        /// </summary>
+        internal static string RootMarkTextAlignmentFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkTextAlignmentFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Text Color.
+        /// </summary>
+        internal static string RootMarkTextColorFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkTextColorFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Text Opacity.
+        /// </summary>
+        internal static string RootMarkTextOpacityFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkTextOpacityFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Text Size Ratio.
+        /// </summary>
+        internal static string RootMarkTextSizeRatioFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkTextSizeRatioFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Text Style.
+        /// </summary>
+        internal static string RootMarkTextStyleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkTextStyleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Text Visible.
+        /// </summary>
+        internal static string RootMarkTextVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkTextVisibleFriendlyKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Mark Visible.
+        /// </summary>
+        internal static string RootMarkVisibleFriendlyKeyName {
+            get {
+                return ResourceManager.GetString("RootMarkVisibleFriendlyKeyName", resourceCulture);
             }
         }
         

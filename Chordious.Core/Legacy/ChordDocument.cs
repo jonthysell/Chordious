@@ -157,30 +157,35 @@ namespace com.jonthysell.Chordious.Core.Legacy
 
             // Process marks
 
-            diagram.Style.MarkVisibleSet(true);
-            diagram.Style.MarkRadiusRatioSet(0.67);
-            diagram.Style.MarkShapeSet(DiagramMarkShape.Circle);
-            diagram.Style.MarkBorderThicknessSet(2);
-            diagram.Style.MarkColorSet("Black");
-            diagram.Style.MarkOpacitySet(1.0);
-            diagram.Style.MarkBorderColorSet("Black");
+            DiagramMarkStyleWrapper dmsw = new DiagramMarkStyleWrapper(diagram.Style);
 
-            diagram.Style.MarkVisibleSet(true, DiagramMarkType.Muted);
-            diagram.Style.MarkRadiusRatioSet(0.33, DiagramMarkType.Muted);
-            diagram.Style.MarkShapeSet(DiagramMarkShape.X, DiagramMarkType.Muted);
-            diagram.Style.MarkBorderThicknessSet(2, DiagramMarkType.Muted);
-            diagram.Style.MarkColorSet("Black", DiagramMarkType.Muted);
-            diagram.Style.MarkOpacitySet(1.0, DiagramMarkType.Muted);
-            diagram.Style.MarkBorderColorSet("Black", DiagramMarkType.Muted);
+            dmsw.MarkType = DiagramMarkType.Normal;
+            dmsw.MarkVisible = true;
+            dmsw.MarkRadiusRatio = 0.67;
+            dmsw.MarkShape = DiagramMarkShape.Circle;
+            dmsw.MarkBorderThickness = 2;
+            dmsw.MarkColor = "Black";
+            dmsw.MarkOpacity = 1.0;
+            dmsw.MarkBorderColor = "Black";
 
+            dmsw.MarkType = DiagramMarkType.Muted;
+            dmsw.MarkVisible = true;
+            dmsw.MarkRadiusRatio = 0.33;
+            dmsw.MarkShape = DiagramMarkShape.X;
+            dmsw.MarkBorderThickness = 2;
+            dmsw.MarkColor = "Black";
+            dmsw.MarkOpacity = 1.0;
+            dmsw.MarkBorderColor = "Black";
+
+            dmsw.MarkType = DiagramMarkType.Open;
             bool openCircle = (chordOptions.OpenStringType == OpenStringType.Circle);
-            diagram.Style.MarkVisibleSet(openCircle, DiagramMarkType.Open);
-            diagram.Style.MarkRadiusRatioSet(0.33, DiagramMarkType.Open);
-            diagram.Style.MarkShapeSet(openCircle ? DiagramMarkShape.Circle : DiagramMarkShape.None, DiagramMarkType.Open);
-            diagram.Style.MarkBorderThicknessSet(2, DiagramMarkType.Open);
-            diagram.Style.MarkColorSet("White", DiagramMarkType.Open);
-            diagram.Style.MarkOpacitySet(1.0, DiagramMarkType.Open);
-            diagram.Style.MarkBorderColorSet("Black", DiagramMarkType.Open);
+            dmsw.MarkVisible = openCircle;
+            dmsw.MarkRadiusRatio = 0.33;
+            dmsw.MarkShape = openCircle ? DiagramMarkShape.Circle : DiagramMarkShape.None;
+            dmsw.MarkBorderThickness = 2;
+            dmsw.MarkColor = "White";
+            dmsw.MarkOpacity = 1.0;
+            dmsw.MarkBorderColor = "Black";
 
             for (int str = 0; str < chord.Marks.Length; str++)
             {

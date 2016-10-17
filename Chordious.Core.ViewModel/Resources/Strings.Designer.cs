@@ -1223,7 +1223,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Family.
+        ///   Looks up a localized string similar to Font.
         /// </summary>
         internal static string DiagramStyleFretLabelFontFamilyLabel {
             get {
@@ -1237,15 +1237,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramStyleFretLabelFontFamilyToolTip {
             get {
                 return ResourceManager.GetString("DiagramStyleFretLabelFontFamilyToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fret Label Font.
-        /// </summary>
-        internal static string DiagramStyleFretLabelFontGroupLabel {
-            get {
-                return ResourceManager.GetString("DiagramStyleFretLabelFontGroupLabel", resourceCulture);
             }
         }
         
@@ -1309,6 +1300,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramStyleFretLabelTextColorToolTip {
             get {
                 return ResourceManager.GetString("DiagramStyleFretLabelTextColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fret Label Text.
+        /// </summary>
+        internal static string DiagramStyleFretLabelTextGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleFretLabelTextGroupLabel", resourceCulture);
             }
         }
         
@@ -1709,6 +1709,285 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mark Background.
+        /// </summary>
+        internal static string DiagramStyleMarkBackgroundGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkBackgroundGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Border Color.
+        /// </summary>
+        internal static string DiagramStyleMarkBorderColorLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkBorderColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The color of the mark&apos;s border..
+        /// </summary>
+        internal static string DiagramStyleMarkBorderColorToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkBorderColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Border.
+        /// </summary>
+        internal static string DiagramStyleMarkBorderGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkBorderGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Border Thickness.
+        /// </summary>
+        internal static string DiagramStyleMarkBorderThicknessLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkBorderThicknessLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The thickness of the mark&apos;s border..
+        /// </summary>
+        internal static string DiagramStyleMarkBorderThicknessToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkBorderThicknessToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        internal static string DiagramStyleMarkColorLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The color of the mark..
+        /// </summary>
+        internal static string DiagramStyleMarkColorToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Font.
+        /// </summary>
+        internal static string DiagramStyleMarkFontFamilyLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkFontFamilyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The font to use for the mark text..
+        /// </summary>
+        internal static string DiagramStyleMarkFontFamilyToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkFontFamilyToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opacity.
+        /// </summary>
+        internal static string DiagramStyleMarkOpacityLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkOpacityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The opacity of the mark..
+        /// </summary>
+        internal static string DiagramStyleMarkOpacityToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkOpacityToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Radius Ratio.
+        /// </summary>
+        internal static string DiagramStyleMarkRadiusRatioLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkRadiusRatioLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The radius of the mark relative to the height of the fret..
+        /// </summary>
+        internal static string DiagramStyleMarkRadiusRatioToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkRadiusRatioToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shape.
+        /// </summary>
+        internal static string DiagramStyleMarkShapeLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkShapeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The shape of the mark..
+        /// </summary>
+        internal static string DiagramStyleMarkShapeToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkShapeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text Alignment.
+        /// </summary>
+        internal static string DiagramStyleMarkTextAlignmentLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTextAlignmentLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The horizontal alignment of the mark text..
+        /// </summary>
+        internal static string DiagramStyleMarkTextAlignmentToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTextAlignmentToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text Color.
+        /// </summary>
+        internal static string DiagramStyleMarkTextColorLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTextColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The color of the mark text..
+        /// </summary>
+        internal static string DiagramStyleMarkTextColorToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTextColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Text.
+        /// </summary>
+        internal static string DiagramStyleMarkTextGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTextGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text Opacity.
+        /// </summary>
+        internal static string DiagramStyleMarkTextOpacityLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTextOpacityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The opacity of the mark text..
+        /// </summary>
+        internal static string DiagramStyleMarkTextOpacityToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTextOpacityToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text Size Ratio.
+        /// </summary>
+        internal static string DiagramStyleMarkTextSizeRatioLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTextSizeRatioLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The size of the mark text relative to the size of the mark..
+        /// </summary>
+        internal static string DiagramStyleMarkTextSizeRatioToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTextSizeRatioToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text Style.
+        /// </summary>
+        internal static string DiagramStyleMarkTextStyleLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTextStyleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether to bold and/or italicize the mark..
+        /// </summary>
+        internal static string DiagramStyleMarkTextStyleToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTextStyleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text Visible.
+        /// </summary>
+        internal static string DiagramStyleMarkTextVisibleLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTextVisibleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show the mark text..
+        /// </summary>
+        internal static string DiagramStyleMarkTextVisibleToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTextVisibleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visible.
+        /// </summary>
+        internal static string DiagramStyleMarkVisibleLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkVisibleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show the mark..
+        /// </summary>
+        internal static string DiagramStyleMarkVisibleToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkVisibleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Diagrams.
         /// </summary>
         internal static string DiagramStyleNewDiagramGroupLabel {
@@ -1835,7 +2114,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Family.
+        ///   Looks up a localized string similar to Font.
         /// </summary>
         internal static string DiagramStyleTitleFontFamilyLabel {
             get {
@@ -1849,15 +2128,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramStyleTitleFontFamilyToolTip {
             get {
                 return ResourceManager.GetString("DiagramStyleTitleFontFamilyToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Title Font.
-        /// </summary>
-        internal static string DiagramStyleTitleFontGroupLabel {
-            get {
-                return ResourceManager.GetString("DiagramStyleTitleFontGroupLabel", resourceCulture);
             }
         }
         
@@ -1948,6 +2218,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramStyleTitleTextAlignmentToolTip {
             get {
                 return ResourceManager.GetString("DiagramStyleTitleTextAlignmentToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title Text.
+        /// </summary>
+        internal static string DiagramStyleTitleTextGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleTitleTextGroupLabel", resourceCulture);
             }
         }
         

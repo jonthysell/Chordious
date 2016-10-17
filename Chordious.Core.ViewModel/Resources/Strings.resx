@@ -640,13 +640,13 @@
     <value>The color of the title.</value>
   </data>
   <data name="DiagramStyleTitleFontFamilyLabel" xml:space="preserve">
-    <value>Family</value>
+    <value>Font</value>
   </data>
   <data name="DiagramStyleTitleFontFamilyToolTip" xml:space="preserve">
     <value>The font to use for the title.</value>
   </data>
-  <data name="DiagramStyleTitleFontGroupLabel" xml:space="preserve">
-    <value>Title Font</value>
+  <data name="DiagramStyleTitleTextGroupLabel" xml:space="preserve">
+    <value>Title Text</value>
   </data>
   <data name="DiagramStyleTitleGridPaddingLabel" xml:space="preserve">
     <value>Grid Padding (px)</value>
@@ -1300,13 +1300,13 @@
     <value>The text of the fret label.</value>
   </data>
   <data name="DiagramStyleFretLabelFontFamilyLabel" xml:space="preserve">
-    <value>Family</value>
+    <value>Font</value>
   </data>
   <data name="DiagramStyleFretLabelFontFamilyToolTip" xml:space="preserve">
     <value>The font to use for the fret label.</value>
   </data>
-  <data name="DiagramStyleFretLabelFontGroupLabel" xml:space="preserve">
-    <value>Fret Label Font</value>
+  <data name="DiagramStyleFretLabelTextGroupLabel" xml:space="preserve">
+    <value>Fret Label Text</value>
   </data>
   <data name="DiagramStyleFretLabelGridPaddingLabel" xml:space="preserve">
     <value>Grid Padding (px)</value>
@@ -1358,5 +1358,98 @@
   </data>
   <data name="DiagramStyleFretLabelTextWidthRatioToolTip" xml:space="preserve">
     <value>The ratio of the width of the fret label relative to the text size.</value>
+  </data>
+  <data name="DiagramStyleMarkBackgroundGroupLabel" xml:space="preserve">
+    <value>Mark Background</value>
+  </data>
+  <data name="DiagramStyleMarkBorderColorLabel" xml:space="preserve">
+    <value>Border Color</value>
+  </data>
+  <data name="DiagramStyleMarkBorderColorToolTip" xml:space="preserve">
+    <value>The color of the mark's border.</value>
+  </data>
+  <data name="DiagramStyleMarkBorderGroupLabel" xml:space="preserve">
+    <value>Mark Border</value>
+  </data>
+  <data name="DiagramStyleMarkBorderThicknessLabel" xml:space="preserve">
+    <value>Border Thickness</value>
+  </data>
+  <data name="DiagramStyleMarkBorderThicknessToolTip" xml:space="preserve">
+    <value>The thickness of the mark's border.</value>
+  </data>
+  <data name="DiagramStyleMarkColorLabel" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="DiagramStyleMarkColorToolTip" xml:space="preserve">
+    <value>The color of the mark.</value>
+  </data>
+  <data name="DiagramStyleMarkFontFamilyLabel" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="DiagramStyleMarkFontFamilyToolTip" xml:space="preserve">
+    <value>The font to use for the mark text.</value>
+  </data>
+  <data name="DiagramStyleMarkOpacityLabel" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="DiagramStyleMarkOpacityToolTip" xml:space="preserve">
+    <value>The opacity of the mark.</value>
+  </data>
+  <data name="DiagramStyleMarkRadiusRatioLabel" xml:space="preserve">
+    <value>Radius Ratio</value>
+  </data>
+  <data name="DiagramStyleMarkRadiusRatioToolTip" xml:space="preserve">
+    <value>The radius of the mark relative to the height of the fret.</value>
+  </data>
+  <data name="DiagramStyleMarkShapeLabel" xml:space="preserve">
+    <value>Shape</value>
+  </data>
+  <data name="DiagramStyleMarkShapeToolTip" xml:space="preserve">
+    <value>The shape of the mark.</value>
+  </data>
+  <data name="DiagramStyleMarkTextAlignmentLabel" xml:space="preserve">
+    <value>Text Alignment</value>
+  </data>
+  <data name="DiagramStyleMarkTextAlignmentToolTip" xml:space="preserve">
+    <value>The horizontal alignment of the mark text.</value>
+  </data>
+  <data name="DiagramStyleMarkTextColorLabel" xml:space="preserve">
+    <value>Text Color</value>
+  </data>
+  <data name="DiagramStyleMarkTextColorToolTip" xml:space="preserve">
+    <value>The color of the mark text.</value>
+  </data>
+  <data name="DiagramStyleMarkTextGroupLabel" xml:space="preserve">
+    <value>Mark Text</value>
+  </data>
+  <data name="DiagramStyleMarkTextOpacityLabel" xml:space="preserve">
+    <value>Text Opacity</value>
+  </data>
+  <data name="DiagramStyleMarkTextOpacityToolTip" xml:space="preserve">
+    <value>The opacity of the mark text.</value>
+  </data>
+  <data name="DiagramStyleMarkTextSizeRatioLabel" xml:space="preserve">
+    <value>Text Size Ratio</value>
+  </data>
+  <data name="DiagramStyleMarkTextSizeRatioToolTip" xml:space="preserve">
+    <value>The size of the mark text relative to the size of the mark.</value>
+  </data>
+  <data name="DiagramStyleMarkTextStyleLabel" xml:space="preserve">
+    <value>Text Style</value>
+  </data>
+  <data name="DiagramStyleMarkTextStyleToolTip" xml:space="preserve">
+    <value>Whether to bold and/or italicize the mark.</value>
+  </data>
+  <data name="DiagramStyleMarkTextVisibleLabel" xml:space="preserve">
+    <value>Text Visible</value>
+  </data>
+  <data name="DiagramStyleMarkTextVisibleToolTip" xml:space="preserve">
+    <value>Show the mark text.</value>
+  </data>
+  <data name="DiagramStyleMarkVisibleLabel" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="DiagramStyleMarkVisibleToolTip" xml:space="preserve">
+    <value>Show the mark.</value>
   </data>
 </root>

@@ -30,7 +30,31 @@ namespace com.jonthysell.Chordious.Core
 {
     public class DiagramMarkStyleWrapper
     {
-        public DiagramMarkType MarkType { get; set; }
+        public DiagramMarkType MarkType
+        {
+            get
+            {
+                return _markType;
+            }
+            set
+            {
+                _markType = value;
+                OnMarkTypeChanged();
+            }
+        }
+        private DiagramMarkType _markType;
+
+        public bool MarkShapeIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.shape", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.shape", value, this.MarkType);
+            }
+        }
 
         public DiagramMarkShape MarkShape
         {
@@ -41,6 +65,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Style.MarkStyleSet("mark.shape", value, this.MarkType);
+            }
+        }
+
+        public bool MarkVisibleIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.visible", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.visible", value, this.MarkType);
             }
         }
 
@@ -56,6 +92,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool MarkColorIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.color", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.color", value, this.MarkType);
+            }
+        }
+
         public string MarkColor
         {
             get
@@ -65,6 +113,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Style.MarkStyleSetColor("mark.color", value, this.MarkType);
+            }
+        }
+
+        public bool MarkOpacityIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.opacity", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.opacity", value, this.MarkType);
             }
         }
 
@@ -85,6 +145,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool MarkTextStyleIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.textstyle", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.textstyle", value, this.MarkType);
+            }
+        }
+
         public DiagramTextStyle MarkTextStyle
         {
             get
@@ -97,6 +169,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool MarkTextAlignmentIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.textalignment", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.textalignment", value, this.MarkType);
+            }
+        }
+
         public DiagramHorizontalAlignment MarkTextAlignment
         {
             get
@@ -106,6 +190,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Style.MarkStyleSet("mark.textalignment", value, this.MarkType);
+            }
+        }
+
+        public bool MarkTextSizeRatioIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.textsizeratio", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.textsizeratio", value, this.MarkType);
             }
         }
 
@@ -126,6 +222,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool MarkTextVisibleIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.textvisible", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.textvisible", value, this.MarkType);
+            }
+        }
+
         public bool MarkTextVisible
         {
             get
@@ -138,6 +246,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool MarkTextColorIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.textcolor", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.textcolor", value, this.MarkType);
+            }
+        }
+
         public string MarkTextColor
         {
             get
@@ -147,6 +267,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Style.MarkStyleSetColor("mark.textcolor", value, this.MarkType);
+            }
+        }
+
+        public bool MarkTextOpacityIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.textopacity", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.textopacity", value, this.MarkType);
             }
         }
 
@@ -167,6 +299,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool MarkFontFamilyIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.fontfamily", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.fontfamily", value, this.MarkType);
+            }
+        }
+
         public string MarkFontFamily
         {
             get
@@ -176,6 +320,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Style.MarkStyleSet("mark.fontfamily", value, this.MarkType);
+            }
+        }
+
+        public bool MarkRadiusRatioIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.radiusratio", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.radiusratio", value, this.MarkType);
             }
         }
 
@@ -196,6 +352,18 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
+        public bool MarkBorderColorIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.bordercolor", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.bordercolor", value, this.MarkType);
+            }
+        }
+
         public string MarkBorderColor
         {
             get
@@ -205,6 +373,18 @@ namespace com.jonthysell.Chordious.Core
             set
             {
                 Style.MarkStyleSetColor("mark.bordercolor", value, this.MarkType);
+            }
+        }
+
+        public bool MarkBorderThicknessIsLocal
+        {
+            get
+            {
+                return Style.MarkStyleIsLocalGet("mark.borderthickness", this.MarkType);
+            }
+            set
+            {
+                Style.MarkStyleIsLocalSet("mark.borderthickness", value, this.MarkType);
             }
         }
 
@@ -227,6 +407,8 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramStyle Style { get; private set; }
 
+        public event Action<DiagramMarkType> MarkTypeChanged;
+
         public DiagramMarkStyleWrapper(DiagramStyle style, DiagramMarkType markType = DiagramMarkType.Normal)
         {
             if (null == style)
@@ -236,6 +418,32 @@ namespace com.jonthysell.Chordious.Core
 
             Style = style;
             MarkType = markType;
+        }
+
+        public void ForEachMarkType(Action action)
+        {
+            if (null == action)
+            {
+                throw new ArgumentNullException("action");
+            }
+
+            DiagramMarkType original = MarkType;
+
+            foreach (DiagramMarkType markType in (DiagramMarkType[])Enum.GetValues(typeof(DiagramMarkType)))
+            {
+                MarkType = markType;
+                action();
+            }
+
+            MarkType = original;
+        }
+
+        private void OnMarkTypeChanged()
+        {
+            if (null != MarkTypeChanged)
+            {
+                MarkTypeChanged(MarkType);
+            }
         }
     }
 }

@@ -131,6 +131,7 @@ namespace com.jonthysell.Chordious.Core
 
             string prefix = DiagramStyle.GetMarkStylePrefix(this.Type);
 
+            // Only write the styles that apply to the type of this mark
             this.Style.Write(xmlWriter, prefix + "mark");
 
             xmlWriter.WriteEndElement();

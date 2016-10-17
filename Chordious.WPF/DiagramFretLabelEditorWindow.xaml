@@ -12,10 +12,10 @@
         </GroupBox>
         <StackPanel Orientation="Horizontal" IsEnabled="{Binding Style.IsEditable}">
             <StackPanel>
-                <GroupBox Margin="5" Header="{Binding Style.FretLabelFontGroupLabel, FallbackValue=Fret Label Font}">
+                <GroupBox Margin="5" Header="{Binding Style.FretLabelTextGroupLabel, FallbackValue=Fret Label Text}">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelFontFamilyIsLocal}" Content="{Binding Style.FretLabelFontFamilyLabel, FallbackValue=Family}" ToolTip="{Binding Style.FretLabelFontFamilyToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                            <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelFontFamilyIsLocal}" Content="{Binding Style.FretLabelFontFamilyLabel, FallbackValue=Font}" ToolTip="{Binding Style.FretLabelFontFamilyToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
                             <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding Style.FontFamilies}" SelectedItem="{Binding Style.FretLabelFontFamily}" Text="{Binding Style.FretLabelFontFamily, UpdateSourceTrigger=LostFocus}" ToolTip="{Binding Style.FretLabelFontFamilyToolTip}" IsEnabled="{Binding Style.FretLabelFontFamilyIsLocal}" IsEditable="True" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">

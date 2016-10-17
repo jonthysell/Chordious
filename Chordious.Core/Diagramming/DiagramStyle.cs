@@ -1004,7 +1004,7 @@ namespace com.jonthysell.Chordious.Core
             return IsLocalGet(prefix + key);
         }
 
-        public void MarkStyleIsLocalGet(string key, bool value, DiagramMarkType type = DiagramMarkType.Normal)
+        public void MarkStyleIsLocalSet(string key, bool value, DiagramMarkType type = DiagramMarkType.Normal)
         {
             string prefix = GetMarkStylePrefix(type);
 
@@ -1088,20 +1088,6 @@ namespace com.jonthysell.Chordious.Core
             string prefix = GetMarkStylePrefix(type);
 
             SetColor(prefix + key, value);
-        }
-
-        public bool MarkShapeIsLocalGet(DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = GetMarkStylePrefix(type);
-
-            return IsLocalGet(prefix + "mark.shape");
-        }
-
-        public void MarkShapeIsLocalSet(bool value, DiagramMarkType type = DiagramMarkType.Normal)
-        {
-            string prefix = GetMarkStylePrefix(type);
-
-            IsLocalSet(prefix + "mark.shape", value);
         }
 
         public static string GetMarkStylePrefix(DiagramMarkType type)

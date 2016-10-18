@@ -2071,16 +2071,47 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region Marks
 
-        internal DiagramMarkType MarkType
+        public string SelectedMarkTypeLabel
         {
             get
             {
-                return MarkStyle.MarkType;
+                return Strings.DiagramStyleMarkTypeLabel;
+            }
+        }
+
+        public string SelectedMarkTypeToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleMarkTypeToolTip;
+            }
+        }
+
+        public int SelectedMarkTypeIndex
+        {
+            get
+            {
+                return (int)MarkStyle.MarkType;
             }
             set
             {
-                MarkStyle.MarkType = value;
-                RaisePropertyChanged("MarkType");
+                try
+                {
+                    MarkStyle.MarkType = (DiagramMarkType)(value);
+                    RaisePropertyChanged("SelectedMarkTypeIndex");
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            }
+        }
+
+        public ObservableCollection<string> MarkTypes
+        {
+            get
+            {
+                return ObservableEnums.GetMarkTypes();
             }
         }
 
@@ -2432,6 +2463,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string MarkBorderColorLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleMarkBorderColorLabel;
+            }
+        }
+
+        public string MarkBorderColorToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleMarkBorderColorToolTip;
+            }
+        }
+
         public string MarkBorderColor
         {
             get
@@ -2470,6 +2517,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
+            }
+        }
+
+        public string MarkBorderThicknessLabel
+        {
+            get
+            {
+                return Strings.DiagramStyleMarkBorderThicknessLabel;
+            }
+        }
+
+        public string MarkBorderThicknessToolTip
+        {
+            get
+            {
+                return Strings.DiagramStyleMarkBorderThicknessToolTip;
             }
         }
 

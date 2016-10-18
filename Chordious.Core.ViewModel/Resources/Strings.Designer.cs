@@ -1718,7 +1718,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Border Color.
+        ///   Looks up a localized string similar to Color.
         /// </summary>
         internal static string DiagramStyleMarkBorderColorLabel {
             get {
@@ -1745,7 +1745,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Border Thickness.
+        ///   Looks up a localized string similar to Thickness (px).
         /// </summary>
         internal static string DiagramStyleMarkBorderThicknessLabel {
             get {
@@ -1966,6 +1966,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramStyleMarkTextVisibleToolTip {
             get {
                 return ResourceManager.GetString("DiagramStyleMarkTextVisibleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected Mark Type.
+        /// </summary>
+        internal static string DiagramStyleMarkTypeLabel {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The type of mark that you want to change the style of..
+        /// </summary>
+        internal static string DiagramStyleMarkTypeToolTip {
+            get {
+                return ResourceManager.GetString("DiagramStyleMarkTypeToolTip", resourceCulture);
             }
         }
         

@@ -1008,7 +1008,7 @@ namespace com.jonthysell.Chordious.Core
         {
             string prefix = GetMarkStylePrefix(type);
 
-            IsLocalSet(prefix + key, value);
+            IsLocalSet(prefix + key, value, Get(key));
         }
 
         public string MarkStyleGet(string key, DiagramMarkType type = DiagramMarkType.Normal)

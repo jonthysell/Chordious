@@ -1363,7 +1363,7 @@
     <value>Mark Background</value>
   </data>
   <data name="DiagramStyleMarkBorderColorLabel" xml:space="preserve">
-    <value>Border Color</value>
+    <value>Color</value>
   </data>
   <data name="DiagramStyleMarkBorderColorToolTip" xml:space="preserve">
     <value>The color of the mark's border.</value>
@@ -1372,7 +1372,7 @@
     <value>Mark Border</value>
   </data>
   <data name="DiagramStyleMarkBorderThicknessLabel" xml:space="preserve">
-    <value>Border Thickness</value>
+    <value>Thickness (px)</value>
   </data>
   <data name="DiagramStyleMarkBorderThicknessToolTip" xml:space="preserve">
     <value>The thickness of the mark's border.</value>
@@ -1451,5 +1451,11 @@
   </data>
   <data name="DiagramStyleMarkVisibleToolTip" xml:space="preserve">
     <value>Show the mark.</value>
+  </data>
+  <data name="DiagramStyleMarkTypeLabel" xml:space="preserve">
+    <value>Selected Mark Type</value>
+  </data>
+  <data name="DiagramStyleMarkTypeToolTip" xml:space="preserve">
+    <value>The type of mark that you want to change the style of.</value>
   </data>
 </root>

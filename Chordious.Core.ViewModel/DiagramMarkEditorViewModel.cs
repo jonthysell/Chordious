@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -37,6 +37,8 @@ using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class DiagramMarkEditorViewModel : ViewModelBase
@@ -53,7 +55,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return "Diagram Mark Editor" + (Dirty ? "*" : "");
+                return Strings.DiagramMarkEditorTitle + (Dirty ? "*" : "");
+            }
+        }
+
+        #region Properties
+
+        public string PropertiesGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramMarkEditorPropertiesGroupLabel;
+            }
+        }
+
+        public string TextLabel
+        {
+            get
+            {
+                return Strings.DiagramMarkEditorTextLabel;
+            }
+        }
+
+        public string TextToolTip
+        {
+            get
+            {
+                return Strings.DiagramMarkEditorTextToolTip;
             }
         }
 
@@ -79,20 +107,35 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private string _text;
 
+        public string SelectedMarkTypeLabel
+        {
+            get
+            {
+                return Strings.DiagramMarkEditorMarkTypeLabel;
+            }
+        }
+
+        public string SelectedMarkTypeToolTip
+        {
+            get
+            {
+                return Strings.DiagramMarkEditorMarkTypeToolTip;
+            }
+        }
+
         public int SelectedMarkTypeIndex
         {
             get
             {
-                return (int)_diagramMarkType;
+                return (int)Style.MarkStyle.MarkType;
             }
             set
             {
                 try
                 {
-                    _diagramMarkType = (DiagramMarkType)value;
+                    Style.MarkStyle.MarkType = (DiagramMarkType)(value);
                     Dirty = true;
                     RaisePropertyChanged("SelectedMarkTypeIndex");
-                    RefreshProperties();
                 }
                 catch (Exception ex)
                 {
@@ -100,375 +143,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
             }
         }
-        private DiagramMarkType _diagramMarkType;
 
         public ObservableCollection<string> MarkTypes
         {
             get
             {
-                return ObservableEnums.GetMarkTypes();
+                return Style.MarkTypes;
             }
         }
 
-        public int SelectedMarkShapeIndex
-        {
-            get
-            {
-                return (int)StyleBuffer.MarkShapeGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.MarkShapeSet((DiagramMarkShape)value, _diagramMarkType);
-                    Dirty = true;
-                    RaisePropertyChanged("SelectedMarkShapeIndex");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public ObservableCollection<string> MarkShapes
-        {
-            get
-            {
-                return ObservableEnums.GetMarkShapes();
-            }
-        }
-
-        public bool Visible
-        {
-            get
-            {
-                return StyleBuffer.MarkVisibleGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.MarkVisibleSet(value, _diagramMarkType);
-                    Dirty = true;
-                    RaisePropertyChanged("Visible");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public string Color
-        {
-            get
-            {
-                return StyleBuffer.MarkColorGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    if (null != value)
-                    {
-                        StyleBuffer.MarkColorSet(value, _diagramMarkType);
-                        ObservableEnums.SortedInsert(Colors, Color);
-                        Dirty = true;
-                        RaisePropertyChanged("Color");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public double Opacity
-        {
-            get
-            {
-                return StyleBuffer.MarkOpacityGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.MarkOpacitySet(value, _diagramMarkType);
-                    Dirty = true;
-                    RaisePropertyChanged("Opacity");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public int SelectedTextStyleIndex
-        {
-            get
-            {
-                return (int)StyleBuffer.MarkTextStyleGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.MarkTextStyleSet((DiagramTextStyle)value, _diagramMarkType);
-                    Dirty = true;
-                    RaisePropertyChanged("SelectedTextStyleIndex");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public ObservableCollection<string> TextStyles
-        {
-            get
-            {
-                return ObservableEnums.GetTextStyles();
-            }
-        }
-
-        public int SelectedTextAlignmentIndex
-        {
-            get
-            {
-                return (int)StyleBuffer.MarkTextAlignmentGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.MarkTextAlignmentSet((DiagramHorizontalAlignment)value, _diagramMarkType);
-                    Dirty = true;
-                    RaisePropertyChanged("SelectedTextAlignmentIndex");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public ObservableCollection<string> TextAlignments
-        {
-            get
-            {
-                return ObservableEnums.GetHorizontalAlignments();
-            }
-        }
-
-        public double TextSizeRatio
-        {
-            get
-            {
-                return StyleBuffer.MarkTextSizeRatioGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.MarkTextSizeRatioSet(value, _diagramMarkType);
-                    Dirty = true;
-                    RaisePropertyChanged("TextSizeRatio");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public bool TextVisible
-        {
-            get
-            {
-                return StyleBuffer.MarkTextVisibleGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.MarkTextVisibleSet(value, _diagramMarkType);
-                    Dirty = true;
-                    RaisePropertyChanged("TextVisible");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public string TextColor
-        {
-            get
-            {
-                return StyleBuffer.MarkTextColorGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    if (null != value)
-                    {
-                        StyleBuffer.MarkTextColorSet(value, _diagramMarkType);
-                        ObservableEnums.SortedInsert(Colors, TextColor);
-                        Dirty = true;
-                        RaisePropertyChanged("TextColor");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public double TextOpacity
-        {
-            get
-            {
-                return StyleBuffer.MarkTextOpacityGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.MarkTextOpacitySet(value, _diagramMarkType);
-                    Dirty = true;
-                    RaisePropertyChanged("TextOpacity");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public string TextFontFamily
-        {
-            get
-            {
-                return StyleBuffer.MarkFontFamilyGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    if (null != value)
-                    {
-                        StyleBuffer.MarkFontFamilySet(value, _diagramMarkType);
-                        ObservableEnums.SortedInsert(FontFamilies, TextFontFamily);
-                        Dirty = true;
-                        RaisePropertyChanged("TextFontFamily");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public double RadiusRatio
-        {
-            get
-            {
-                return StyleBuffer.MarkRadiusRatioGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.MarkRadiusRatioSet(value, _diagramMarkType);
-                    Dirty = true;
-                    RaisePropertyChanged("RadiusRatio");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public string BorderColor
-        {
-            get
-            {
-                return StyleBuffer.MarkBorderColorGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    if (null != value)
-                    {
-                        StyleBuffer.MarkBorderColorSet(value, _diagramMarkType);
-                        ObservableEnums.SortedInsert(Colors, BorderColor);
-                        Dirty = true;
-                        RaisePropertyChanged("BorderColor");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public double BorderThickness
-        {
-            get
-            {
-                return StyleBuffer.MarkBorderThicknessGet(_diagramMarkType);
-            }
-            set
-            {
-                try
-                {
-                    StyleBuffer.MarkBorderThicknessSet(value, _diagramMarkType);
-                    Dirty = true;
-                    RaisePropertyChanged("BorderThickness");
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-            }
-        }
-
-        public ObservableCollection<string> FontFamilies
-        {
-            get
-            {
-                if (null == _fontFamiles)
-                {
-                    _fontFamiles = new ObservableCollection<string>(ObservableEnums.FontFamilies);
-                }
-                return _fontFamiles;
-            }
-        }
-        private ObservableCollection<string> _fontFamiles;
-
-        public ObservableCollection<string> Colors
-        {
-            get
-            {
-                if (null == _colors)
-                {
-                    _colors = ObservableEnums.GetColors();
-                }
-                return _colors;
-            }
-        }
-        private ObservableCollection<string> _colors;
+        #endregion
 
         public RelayCommand Apply
         {
@@ -567,22 +251,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _dirty = false;
 
-        public bool DiagramMarkChanged
+        public bool DiagramStyleChanged
         {
             get
             {
-                return _diagramMarkChanged;
+                return _diagramStyleChanged;
             }
             private set
             {
-                _diagramMarkChanged = value;
-                RaisePropertyChanged("DiagramMarkChanged");
+                _diagramStyleChanged = value;
+                RaisePropertyChanged("DiagramStyleChanged");
             }
         }
-        private bool _diagramMarkChanged = false;
+        private bool _diagramStyleChanged = false;
+
+        public ObservableDiagramStyle Style { get; private set; }
+        private ObservableDiagramStyle _originalStyle;
 
         internal DiagramMark DiagramMark { get; private set; }
-        internal DiagramStyle StyleBuffer { get; private set; }
 
         public DiagramMarkEditorViewModel(DiagramMark diagramMark, bool isNew)
         {
@@ -593,24 +279,32 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             DiagramMark = diagramMark;
 
-            // Buffer values
-            _text = DiagramMark.Text;
-            _diagramMarkType = DiagramMark.Type;
+            // Save properties
+            _text = diagramMark.Text;
 
-            StyleBuffer = new DiagramStyle(DiagramMark.Style, "DiagramMarkEditor");
+            // Save original
+            _originalStyle = new ObservableDiagramStyle(diagramMark.Style, diagramMark.MarkStyle);
 
-            // Pre-seed used fonts
-            ObservableEnums.SortedInsert(FontFamilies, TextFontFamily);
+            // Create editable clone
+            DiagramStyle clone = _originalStyle.Style.Clone();
+            if (_originalStyle.Style.ReadOnly)
+            {
+                clone.MarkAsReadOnly();
+            }
 
-            // Pre-seed used colors
-            ObservableEnums.SortedInsert(Colors, Color);
-            ObservableEnums.SortedInsert(Colors, TextColor);
-            ObservableEnums.SortedInsert(Colors, BorderColor);
+            Style = new ObservableDiagramStyle(clone);
+            Style.MarkStyle.MarkType = DiagramMark.Type;
+            Style.PropertyChanged += ObservableDiagramStyle_PropertyChanged;
 
             if (isNew)
             {
                 Dirty = true;
             }
+        }
+
+        private void ObservableDiagramStyle_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            Dirty = true;
         }
 
         public bool ProcessClose()
@@ -619,37 +313,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 ApplyChanges();
             }
-            return DiagramMarkChanged;
+            return DiagramStyleChanged;
         }
 
         private void ApplyChanges()
         {
-            DiagramMark.Text = _text;
-            DiagramMark.Type = _diagramMarkType;
-
-            StyleBuffer.SetParent();
-            StyleBuffer.Clear();
+            if (_originalStyle.IsEditable)
+            {
+                DiagramMark.Text = Text;
+                DiagramMark.Type = Style.MarkStyle.MarkType;
+                _originalStyle.Style.Clear();
+                _originalStyle.Style.CopyFrom(Style.Style);
+            }
 
             Dirty = false;
-            DiagramMarkChanged = true;
-        }
-
-        private void RefreshProperties()
-        {
-            RaisePropertyChanged("SelectedMarkShapeIndex");
-            RaisePropertyChanged("Visible");
-            RaisePropertyChanged("Color");
-            RaisePropertyChanged("Opacity");
-            RaisePropertyChanged("SelectedTextStyleIndex");
-            RaisePropertyChanged("SelectedTextAlignmentIndex");
-            RaisePropertyChanged("TextSizeRatio");
-            RaisePropertyChanged("TextVisible");
-            RaisePropertyChanged("TextColor");
-            RaisePropertyChanged("TextOpacity");
-            RaisePropertyChanged("SelectedFontFamily");
-            RaisePropertyChanged("RadiusRatio");
-            RaisePropertyChanged("BorderColor");
-            RaisePropertyChanged("BorderThickness");
+            DiagramStyleChanged = true;
         }
     }
 }

@@ -1458,4 +1458,22 @@
   <data name="DiagramStyleMarkTypeToolTip" xml:space="preserve">
     <value>The type of mark that you want to change the style of.</value>
   </data>
+  <data name="DiagramMarkEditorMarkTypeLabel" xml:space="preserve">
+    <value>Mark Type</value>
+  </data>
+  <data name="DiagramMarkEditorMarkTypeToolTip" xml:space="preserve">
+    <value>The type of the mark.</value>
+  </data>
+  <data name="DiagramMarkEditorPropertiesGroupLabel" xml:space="preserve">
+    <value>Mark Properties</value>
+  </data>
+  <data name="DiagramMarkEditorTextLabel" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="DiagramMarkEditorTextToolTip" xml:space="preserve">
+    <value>The text of the mark.</value>
+  </data>
+  <data name="DiagramMarkEditorTitle" xml:space="preserve">
+    <value>Diagram Mark Editor</value>
+  </data>
 </root>

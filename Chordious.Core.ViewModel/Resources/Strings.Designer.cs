@@ -881,6 +881,60 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mark Type.
+        /// </summary>
+        internal static string DiagramMarkEditorMarkTypeLabel {
+            get {
+                return ResourceManager.GetString("DiagramMarkEditorMarkTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The type of the mark..
+        /// </summary>
+        internal static string DiagramMarkEditorMarkTypeToolTip {
+            get {
+                return ResourceManager.GetString("DiagramMarkEditorMarkTypeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Properties.
+        /// </summary>
+        internal static string DiagramMarkEditorPropertiesGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramMarkEditorPropertiesGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        internal static string DiagramMarkEditorTextLabel {
+            get {
+                return ResourceManager.GetString("DiagramMarkEditorTextLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The text of the mark..
+        /// </summary>
+        internal static string DiagramMarkEditorTextToolTip {
+            get {
+                return ResourceManager.GetString("DiagramMarkEditorTextToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram Mark Editor.
+        /// </summary>
+        internal static string DiagramMarkEditorTitle {
+            get {
+                return ResourceManager.GetString("DiagramMarkEditorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to # of Frets.
         /// </summary>
         internal static string DiagramNumFretsLabel {

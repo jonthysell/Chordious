@@ -1,5 +1,13 @@
 # Chordious Changelist #
 
+## 1.9.16292.1842 ##
+* Added mark styles to the Diagram Style Editor
+* Added mark styles to the Diagram Editor
+* Updated Diagram Mark Editor
+* Localized mark style strings
+* Rearranged the groups in the Diagram Editor
+* Some string updates
+
 ## 1.9.16276.349 ##
 * Added fret label styles to the Diagram Style Editor
 * Added fret label styles to the Diagram Editor

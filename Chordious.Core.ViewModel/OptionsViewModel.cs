@@ -743,7 +743,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         Messenger.Default.Send<PromptForLegacyImportMessage>(new PromptForLegacyImportMessage((fileName, inputStream) =>
                         {
                             string proposedName = String.IsNullOrWhiteSpace(fileName) ? library.GetNewCollectionName() : fileName.Trim();
-                            Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage("Name for the new collection:", proposedName, (name) =>
+                            Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(Strings.OptionsLegacyImportNewCollectionPrompt, proposedName, (name) =>
                             {
                                 DiagramCollection importedCollection = ChordDocument.Load(library.Style, inputStream);
                                 DiagramCollection newCollection = library.Add(name);

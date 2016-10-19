@@ -729,4 +729,10 @@
   <data name="RootMarkVisibleFriendlyKeyName" xml:space="preserve">
     <value>Root Mark Visible</value>
   </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Fretboard diagram generator for stringed instruments.</value>
+  </data>
+  <data name="DiagramLibraryDefaultNewCollectionName" xml:space="preserve">
+    <value>New Collection</value>
+  </data>
 </root>

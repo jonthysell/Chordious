@@ -214,7 +214,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         string path = SelectedNode.Path;
                         string oldName = SelectedNode.Name;
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(String.Format("Rename collection \"{0}\" to:", oldName), oldName, (newName) =>
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(String.Format(Strings.DiagramLibraryRenameCollectionPromptFormat, oldName), oldName, (newName) =>
                         {
                             Library.Rename(path, oldName, newName);
                             ReloadNodes();

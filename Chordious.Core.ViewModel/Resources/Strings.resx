@@ -1476,4 +1476,37 @@
   <data name="DiagramMarkEditorTitle" xml:space="preserve">
     <value>Diagram Mark Editor</value>
   </data>
+  <data name="DefaultChordQualitiesHeader" xml:space="preserve">
+    <value>Default Chord Qualities</value>
+  </data>
+  <data name="DefaultInstrumentsHeader" xml:space="preserve">
+    <value>Default Instruments</value>
+  </data>
+  <data name="DefaultScalesHeader" xml:space="preserve">
+    <value>Default Scales</value>
+  </data>
+  <data name="DiagramLibraryRenameCollectionPromptFormat" xml:space="preserve">
+    <value>Rename collection "{0}" to:</value>
+  </data>
+  <data name="InstrumentManagerDeleteInstrumentPromptFormat" xml:space="preserve">
+    <value>This will delete the instrument "{0}". This cannot be undone. Do you want to continue?</value>
+  </data>
+  <data name="InstrumentManagerDeleteTuningPromptFormat" xml:space="preserve">
+    <value>This will delete the tuning "{0}". This cannot be undone. Do you want to continue?</value>
+  </data>
+  <data name="ObservableDiagramAddBarrePromptFormat" xml:space="preserve">
+    <value>Barre across how many strings? ({0}-{1})</value>
+  </data>
+  <data name="OptionsLegacyImportNewCollectionPrompt" xml:space="preserve">
+    <value>Name for the new collection:</value>
+  </data>
+  <data name="UserChordQualitiesHeader" xml:space="preserve">
+    <value>User Chord Qualities</value>
+  </data>
+  <data name="UserInstrumentsHeader" xml:space="preserve">
+    <value>User Instruments</value>
+  </data>
+  <data name="UserScalesHeader" xml:space="preserve">
+    <value>User Scales</value>
+  </data>
 </root>

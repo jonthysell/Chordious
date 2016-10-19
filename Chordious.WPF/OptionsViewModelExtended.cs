@@ -288,7 +288,7 @@ namespace com.jonthysell.Chordious.WPF
 
                 if (lastCheck == DateTime.MinValue)
                 {
-                    return "Never";
+                    return Strings.OptionsLastUpdateCheckNeverCheckedValue;
                 }
 
                 return lastCheck.ToLocalTime().ToString("G");

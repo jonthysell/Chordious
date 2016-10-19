@@ -403,7 +403,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete the instrument \"{0}\". This cannot be undone. Do you want to continue?", SelectedInstrument.Name), (confirm) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format(Strings.InstrumentManagerDeleteInstrumentPromptFormat, SelectedInstrument.Name), (confirm) =>
                         {
                             try
                             {
@@ -562,7 +562,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format("This will delete the tuning \"{0}\". This cannot be undone. Do you want to continue?", SelectedTuning.Name), (confirm) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format(Strings.InstrumentManagerDeleteTuningPromptFormat, SelectedTuning.Name), (confirm) =>
                         {
                             try
                             {

@@ -71,6 +71,15 @@ namespace com.jonthysell.Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fretboard diagram generator for stringed instruments..
+        /// </summary>
+        internal static string AppDescription {
+            get {
+                return ResourceManager.GetString("AppDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Barre Arc Ratio.
         /// </summary>
         internal static string BarreArcRatioFriendlyKeyName {
@@ -535,6 +544,15 @@ namespace com.jonthysell.Chordious.Core.Resources {
         internal static string DiagramLabelStyleRegularFriendlyValue {
             get {
                 return ResourceManager.GetString("DiagramLabelStyleRegularFriendlyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Collection.
+        /// </summary>
+        internal static string DiagramLibraryDefaultNewCollectionName {
+            get {
+                return ResourceManager.GetString("DiagramLibraryDefaultNewCollectionName", resourceCulture);
             }
         }
         

@@ -28,6 +28,8 @@ using System;
 using System.Collections.Generic;
 using System.Xml;
 
+using com.jonthysell.Chordious.Core.Resources;
+
 namespace com.jonthysell.Chordious.Core
 {
     public class DiagramLibrary
@@ -270,7 +272,7 @@ namespace com.jonthysell.Chordious.Core
 
         public string GetNewCollectionName()
         {
-            return GetNewCollectionName(PathUtils.PathRoot, "New Collection");
+            return GetNewCollectionName(PathUtils.PathRoot, Strings.DiagramLibraryDefaultNewCollectionName);
         }
 
         public string GetNewCollectionName(string baseName)

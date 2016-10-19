@@ -423,7 +423,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (haveDefault)
                 {
-                    collection.Add(new ObservableInstrument("User Instruments"));
+                    collection.Add(new ObservableInstrument(Strings.UserInstrumentsHeader));
                 }
 
                 foreach (ObservableInstrument userInstrument in userCollection)
@@ -436,7 +436,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (haveUser)
                 {
-                    collection.Add(new ObservableInstrument("Default Instruments"));
+                    collection.Add(new ObservableInstrument(Strings.DefaultInstrumentsHeader));
                 }
 
                 foreach (ObservableInstrument defaultInstrument in defaultCollection)
@@ -486,7 +486,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (haveDefault)
                 {
-                    collection.Add(new ObservableChordQuality("User Qualities"));
+                    collection.Add(new ObservableChordQuality(Strings.UserChordQualitiesHeader));
                 }
 
                 foreach (ObservableChordQuality userChordQuality in userCollection)
@@ -499,7 +499,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (haveUser)
                 {
-                    collection.Add(new ObservableChordQuality("Default Qualities"));
+                    collection.Add(new ObservableChordQuality(Strings.DefaultChordQualitiesHeader));
                 }
 
                 foreach (ObservableChordQuality defaultChordQuality in defaultCollection)
@@ -549,7 +549,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (haveDefault)
                 {
-                    collection.Add(new ObservableScale("User Scales"));
+                    collection.Add(new ObservableScale(Strings.UserScalesHeader));
                 }
 
                 foreach (ObservableScale userScale in userCollection)
@@ -562,7 +562,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (haveUser)
                 {
-                    collection.Add(new ObservableScale("Default Scales"));
+                    collection.Add(new ObservableScale(Strings.DefaultScalesHeader));
                 }
 
                 foreach (ObservableScale defaultScale in defaultCollection)

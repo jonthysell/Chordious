@@ -548,6 +548,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default Chord Qualities.
+        /// </summary>
+        internal static string DefaultChordQualitiesHeader {
+            get {
+                return ResourceManager.GetString("DefaultChordQualitiesHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Instruments.
+        /// </summary>
+        internal static string DefaultInstrumentsHeader {
+            get {
+                return ResourceManager.GetString("DefaultInstrumentsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Scales.
+        /// </summary>
+        internal static string DefaultScalesHeader {
+            get {
+                return ResourceManager.GetString("DefaultScalesHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         internal static string DeleteLabel {
@@ -859,6 +886,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramLibraryOnlyOneDiagramCanBeEditedMessage {
             get {
                 return ResourceManager.GetString("DiagramLibraryOnlyOneDiagramCanBeEditedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rename collection &quot;{0}&quot; to:.
+        /// </summary>
+        internal static string DiagramLibraryRenameCollectionPromptFormat {
+            get {
+                return ResourceManager.GetString("DiagramLibraryRenameCollectionPromptFormat", resourceCulture);
             }
         }
         
@@ -2906,6 +2942,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This will delete the instrument &quot;{0}&quot;. This cannot be undone. Do you want to continue?.
+        /// </summary>
+        internal static string InstrumentManagerDeleteInstrumentPromptFormat {
+            get {
+                return ResourceManager.GetString("InstrumentManagerDeleteInstrumentPromptFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete the selected instrument..
         /// </summary>
         internal static string InstrumentManagerDeleteInstrumentToolTip {
@@ -2920,6 +2965,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string InstrumentManagerDeleteTuningLabelFormat {
             get {
                 return ResourceManager.GetString("InstrumentManagerDeleteTuningLabelFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will delete the tuning &quot;{0}&quot;. This cannot be undone. Do you want to continue?.
+        /// </summary>
+        internal static string InstrumentManagerDeleteTuningPromptFormat {
+            get {
+                return ResourceManager.GetString("InstrumentManagerDeleteTuningPromptFormat", resourceCulture);
             }
         }
         
@@ -3167,6 +3221,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Barre across how many strings? ({0}-{1}).
+        /// </summary>
+        internal static string ObservableDiagramAddBarrePromptFormat {
+            get {
+                return ResourceManager.GetString("ObservableDiagramAddBarrePromptFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create copies of the {0} selected diagrams in the existing collection..
         /// </summary>
         internal static string ObservableDiagramLibraryNodeCloneSelectedToolTipPluralFormat {
@@ -3388,6 +3451,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string OptionsLegacyImportLabel {
             get {
                 return ResourceManager.GetString("OptionsLegacyImportLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name for the new collection:.
+        /// </summary>
+        internal static string OptionsLegacyImportNewCollectionPrompt {
+            get {
+                return ResourceManager.GetString("OptionsLegacyImportNewCollectionPrompt", resourceCulture);
             }
         }
         
@@ -4117,6 +4189,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string TuningEditorRootNotesToolTip {
             get {
                 return ResourceManager.GetString("TuningEditorRootNotesToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Chord Qualities.
+        /// </summary>
+        internal static string UserChordQualitiesHeader {
+            get {
+                return ResourceManager.GetString("UserChordQualitiesHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Instruments.
+        /// </summary>
+        internal static string UserInstrumentsHeader {
+            get {
+                return ResourceManager.GetString("UserInstrumentsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Scales.
+        /// </summary>
+        internal static string UserScalesHeader {
+            get {
+                return ResourceManager.GetString("UserScalesHeader", resourceCulture);
             }
         }
         

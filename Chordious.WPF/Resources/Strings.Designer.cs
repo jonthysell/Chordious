@@ -341,6 +341,15 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Never.
+        /// </summary>
+        internal static string OptionsLastUpdateCheckNeverCheckedValue {
+            get {
+                return ResourceManager.GetString("OptionsLastUpdateCheckNeverCheckedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The last time that Chordious checked for updates..
         /// </summary>
         internal static string OptionsLastUpdateCheckToolTip {

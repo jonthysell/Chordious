@@ -886,7 +886,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        private static string LastDiagramCollectionName = "Scale Finder Results";
+        private static string LastDiagramCollectionName = "";
 
         public ObservableCollection<ObservableDiagram> SelectedResults
         {

@@ -1515,4 +1515,10 @@
   <data name="ScaleFinderNoResultsMessage" xml:space="preserve">
     <value>There were no scales found that fit your search parameters.</value>
   </data>
+  <data name="DiagramTitleTextLabel" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="DiagramTitleTextToolTip" xml:space="preserve">
+    <value>The title for the diagram.</value>
+  </data>
 </root>

@@ -2438,6 +2438,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        internal static string DiagramTitleTextLabel {
+            get {
+                return ResourceManager.GetString("DiagramTitleTextLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The title for the diagram..
+        /// </summary>
+        internal static string DiagramTitleTextToolTip {
+            get {
+                return ResourceManager.GetString("DiagramTitleTextToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Height (px).
         /// </summary>
         internal static string DiagramTotalHeightLabel {

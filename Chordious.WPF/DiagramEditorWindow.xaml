@@ -212,8 +212,8 @@
                 <GroupBox Margin="5" Header="{Binding Style.TitleGroupLabel, FallbackValue=Title}">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Width="120" Margin="5" Content="Text"/>
-                            <TextBox Width="80" Margin="5" Text="{Binding ObservableDiagram.Title, UpdateSourceTrigger=PropertyChanged}" MaxLines="1" HorizontalContentAlignment="Center"/>
+                            <Label Width="120" Margin="5" Content="{Binding ObservableDiagram.TitleLabel, FallbackValue=Text}" ToolTip="{Binding ObservableDiagram.TitleToolTip}" />
+                            <TextBox Width="80" Margin="5" Text="{Binding ObservableDiagram.Title, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ObservableDiagram.TitleToolTip}" MaxLines="1" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>

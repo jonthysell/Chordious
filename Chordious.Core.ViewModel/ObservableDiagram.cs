@@ -199,6 +199,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region Title
 
+        public string TitleLabel
+        {
+            get
+            {
+                return Strings.DiagramTitleTextLabel;
+            }
+        }
+
+        public string TitleToolTip
+        {
+            get
+            {
+                return Strings.DiagramTitleTextToolTip;
+            }
+        }
+
         public string Title
         {
             get

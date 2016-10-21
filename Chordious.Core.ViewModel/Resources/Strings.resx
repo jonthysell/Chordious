@@ -1509,4 +1509,10 @@
   <data name="UserScalesHeader" xml:space="preserve">
     <value>User Scales</value>
   </data>
+  <data name="ChordFinderNoResultsMessage" xml:space="preserve">
+    <value>There were no chords found that fit your search parameters.</value>
+  </data>
+  <data name="ScaleFinderNoResultsMessage" xml:space="preserve">
+    <value>There were no scales found that fit your search parameters.</value>
+  </data>
 </root>

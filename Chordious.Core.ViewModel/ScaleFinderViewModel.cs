@@ -105,6 +105,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     _instrument = value;
                     SelectedTuning = null;
+                    Tunings = null;
+
                     if (null != value)
                     {
                         Tunings = SelectedInstrument.GetTunings();
@@ -123,6 +125,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     RaisePropertyChanged("SelectedInstrument");
                     RaisePropertyChanged("SearchAsync");
+                    RaisePropertyChanged("SetAsDefaults");
                 }
             }
         }
@@ -186,6 +189,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     RaisePropertyChanged("SelectedTuning");
                     RaisePropertyChanged("SearchAsync");
+                    RaisePropertyChanged("SetAsDefaults");
                 }
             }
         }
@@ -233,7 +237,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Messenger.Default.Send<ShowInstrumentManagerMessage>(new ShowInstrumentManagerMessage(() =>
                             {
-                                RefreshInstruments(SelectedInstrument.Instrument, SelectedTuning.Tuning);
+                                RefreshInstruments(null != SelectedInstrument ? SelectedInstrument.Instrument : null, null != SelectedTuning ? SelectedTuning.Tuning : null);
                             }));
                     }
                     catch (Exception ex)
@@ -337,6 +341,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     RaisePropertyChanged("SelectedScale");
                     RaisePropertyChanged("SearchAsync");
+                    RaisePropertyChanged("SetAsDefaults");
                 }
             }
         }
@@ -382,7 +387,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Messenger.Default.Send<ShowScaleManagerMessage>(new ShowScaleManagerMessage(() =>
                             {
-                                RefreshScales(SelectedScale.Scale);
+                                RefreshScales(null != SelectedScale ? SelectedScale.Scale : null);
                             }));
                     }
                     catch (Exception ex)
@@ -740,6 +745,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
+                }, () =>
+                {
+                    return CanSearch();
                 });
             }
         }
@@ -815,7 +823,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         Results.Clear();
                         SelectedResults.Clear();
 
-                        if (null != results)
+                        if (null == results || results.Count == 0)
+                        {
+                            Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.ScaleFinderNoResultsMessage));
+                        }
+                        else
                         {
                             for (int i = 0; i < results.Count; i++)
                             {
@@ -947,12 +959,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         private void RefreshInstruments(Instrument selectedInstrument = null, Tuning selectedTuning = null)
         {
             Instruments = AppVM.GetInstruments();
+            SelectedInstrument = null;
 
-            if (null == selectedInstrument)
-            {
-                SelectedInstrument = null;
-            }
-            else
+            if (null != selectedInstrument && null != Instruments)
             {
                 foreach (ObservableInstrument oi in Instruments)
                 {
@@ -962,14 +971,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         break;
                     }
                 }
+            }
 
+            if (null != SelectedInstrument)
+            {
                 Tunings = SelectedInstrument.GetTunings();
+                SelectedTuning = null;
 
-                if (null == selectedTuning)
-                {
-                    SelectedTuning = null;
-                }
-                else
+                if (null != selectedTuning && null != Tunings)
                 {
                     foreach (ObservableTuning ot in Tunings)
                     {
@@ -986,12 +995,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         private void RefreshScales(Scale selectedScale = null)
         {
             Scales = AppVM.GetScales();
+            SelectedScale = null;
 
-            if (null == selectedScale)
-            {
-                SelectedScale = null;
-            }
-            else
+            if (null != selectedScale && null != Scales)
             {
                 foreach (ObservableScale os in Scales)
                 {

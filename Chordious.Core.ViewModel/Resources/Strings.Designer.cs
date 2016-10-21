@@ -116,6 +116,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There were no chords found that fit your search parameters..
+        /// </summary>
+        internal static string ChordFinderNoResultsMessage {
+            get {
+                return ResourceManager.GetString("ChordFinderNoResultsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Bottom Marks.
         /// </summary>
         internal static string ChordFinderOptionsAddBottomMarksLabel {
@@ -3829,6 +3838,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ScaleEditorNewTitle {
             get {
                 return ResourceManager.GetString("ScaleEditorNewTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There were no scales found that fit your search parameters..
+        /// </summary>
+        internal static string ScaleFinderNoResultsMessage {
+            get {
+                return ResourceManager.GetString("ScaleFinderNoResultsMessage", resourceCulture);
             }
         }
         

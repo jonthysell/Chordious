@@ -1,5 +1,10 @@
 # Chordious Changelist #
 
+## 2.0 ##
+* First 2.0 official release
+* Fixed bugs in finders with missing instruments/tunings/intervals
+* Fixed miscellaneous localization bugs
+
 ## 1.9.16292.1842 ##
 * Added mark styles to the Diagram Style Editor
 * Added mark styles to the Diagram Editor

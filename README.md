@@ -2,13 +2,13 @@
 
 Chordious is a fretboard diagram generator for fretted stringed instruments like the ukulele, mandolin, and guitar.
 
-**Offical Website:** http://chordious.com/
+**Official Website:** http://chordious.com/
 
-This is the latest version of Chordious, representing a complete refactor of the original code. It is still in active development. It requires .NET 4.5 or later. See http://chordious.com/download/ for download and installation details.
+Chordious requires .NET 4.5 or later. See http://chordious.com/download/ for download and installation details.
 
 ## Features ##
 
-* Create clean, scalable, SVG images
+* Create clean, scalable, fretboard diagrams
 * Extensive styling options
 * Find chords for all your instruments and tunings with the Chord Finder
 * Find scales for all your instruments and tunings with the Scale Finder
@@ -18,6 +18,4 @@ This is the latest version of Chordious, representing a complete refactor of the
 * Rich Diagram Editor
 * Automatic updates
 
-## Classic Chordious ##
-
-The classic version of Chordious was developed for Windows, Mac OSX, and Linux. It requires the Mono runtime. Download and installation instructions can be found at http://chordious.com/download/#classic. The source is available at https://launchpad.net/chordious/.
+Chordious Copyright © 2013-2016 Jon Thysell <http://jonthysell.com>

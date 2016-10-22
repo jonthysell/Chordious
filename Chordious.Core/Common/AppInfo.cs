@@ -78,7 +78,7 @@ namespace com.jonthysell.Chordious.Core
             get
             {
                 Version vers = AppInfo.Assembly.GetName().Version;
-                return String.Format("{0}.{1}.{2}", vers.Major, vers.Minor, vers.Build);
+                return vers.Build == 0 ? String.Format("{0}.{1}", vers.Major, vers.Minor) : String.Format("{0}.{1}.{2}", vers.Major, vers.Minor, vers.Build);
             }
         }
 

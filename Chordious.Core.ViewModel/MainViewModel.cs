@@ -58,7 +58,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return AppInfo.Product + " " + AppInfo.FullVersion;
+                return AppInfo.Product + " " + AppInfo.Version;
             }
         }
 

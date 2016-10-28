@@ -26,6 +26,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Xml;
 
@@ -269,6 +270,16 @@ namespace com.jonthysell.Chordious.Core
             Set(key, NoteUtils.ToString(value));
         }
 
+        public void Set(string key, double value)
+        {
+            if (StringUtils.IsNullOrWhiteSpace(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            Set(key, value.ToString(CultureInfo.InvariantCulture));
+        }
+
         public void Set(string key, object value)
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
@@ -451,7 +462,7 @@ namespace com.jonthysell.Chordious.Core
             string rawResult;
             if (TryGet(key, out rawResult, recursive))
             {
-                return Double.TryParse(rawResult, out result);
+                return Double.TryParse(rawResult, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
             }
 
             result = default(double);
@@ -849,7 +860,7 @@ namespace com.jonthysell.Chordious.Core
                     sb.Append(" + ");
                 }
 
-                sb.AppendFormat("{0}: {1}", key, Get(key, false));
+                sb.AppendFormat(CultureInfo.InvariantCulture, "{0}: {1}", key, Get(key, false));
                 hasItems = true;
             }
 
@@ -920,7 +931,7 @@ namespace com.jonthysell.Chordious.Core
                     sb.Append(" + ");
                 }
 
-                sb.AppendFormat("{0}: {1}", GetFriendlyKeyName(key), GetFriendlyValueName(key, false));
+                sb.AppendFormat(CultureInfo.InvariantCulture, "{0}: {1}", GetFriendlyKeyName(key), GetFriendlyValueName(key, false));
                 hasItems = true;
             }
 

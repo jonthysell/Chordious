@@ -25,9 +25,7 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Globalization;
 using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
@@ -136,7 +134,7 @@ namespace com.jonthysell.Chordious.Core
 
                 double radiusX = (this.Position.EndString - this.Position.StartString) * this.Parent.Style.GridStringSpacing;
                 double radiusY = this.Parent.Style.GridFretSpacing * this.Style.BarreArcRatio;
-                svg += String.Format(SvgConstants.ARC, shapeStyle, startX, centerY, radiusX, radiusY, endX, centerY);
+                svg += String.Format(CultureInfo.InvariantCulture, SvgConstants.ARC, shapeStyle, startX, centerY, radiusX, radiusY, endX, centerY);
             }
 
             return svg;

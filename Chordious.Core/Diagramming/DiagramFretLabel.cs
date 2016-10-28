@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Globalization;
 using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
@@ -168,11 +169,11 @@ namespace com.jonthysell.Chordious.Core
                 }
 
                 string textStyle = this.Style.GetSvgStyle(DiagramFretLabel._textStyleMap);
-                textStyle += String.Format("font-size:{0}pt;", textSize);
+                textStyle += String.Format(CultureInfo.InvariantCulture, "font-size:{0}pt;", textSize);
 
                 string textFormat = (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? SvgConstants.ROTATED_TEXT : SvgConstants.TEXT;
 
-                svg += String.Format(textFormat, textStyle, textX, textY, this.Text);
+                svg += String.Format(CultureInfo.InvariantCulture, textFormat, textStyle, textX, textY, this.Text);
             }
 
             return svg;

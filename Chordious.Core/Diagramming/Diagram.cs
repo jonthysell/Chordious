@@ -26,6 +26,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -948,7 +949,8 @@ namespace com.jonthysell.Chordious.Core
                 baseStyle += this.Style.GetSvgStyle(Diagram._baseStyleMapBorder);
             }
 
-            sb.AppendFormat(SvgConstants.RECTANGLE,
+            sb.AppendFormat(CultureInfo.InvariantCulture,
+                            SvgConstants.RECTANGLE,
                             baseStyle,
                             totalWidth,
                             totalHeight,
@@ -964,7 +966,8 @@ namespace com.jonthysell.Chordious.Core
 
             string gridRectStyle = this.Style.GetSvgStyle(Diagram._gridBaseStyleMap);
 
-            sb.AppendFormat(SvgConstants.RECTANGLE,
+            sb.AppendFormat(CultureInfo.InvariantCulture,
+                            SvgConstants.RECTANGLE,
                             gridRectStyle,
                             rectWidth,
                             rectHeight,
@@ -980,7 +983,8 @@ namespace com.jonthysell.Chordious.Core
                 double x = rectX + (vLine * vSpacing);
                 double y1 = rectY;
                 double y2 = y1 + rectHeight;
-                sb.AppendFormat(SvgConstants.LINE,
+                sb.AppendFormat(CultureInfo.InvariantCulture,
+                                SvgConstants.LINE,
                                 lineStyle,
                                 x,
                                 y1,
@@ -996,7 +1000,8 @@ namespace com.jonthysell.Chordious.Core
                 double x2 = rectX + rectWidth;
                 double y = rectY + (hLine * hSpacing);
 
-                sb.AppendFormat(SvgConstants.LINE,
+                sb.AppendFormat(CultureInfo.InvariantCulture,
+                                SvgConstants.LINE,
                                 lineStyle,
                                 x1,
                                 y,
@@ -1014,9 +1019,10 @@ namespace com.jonthysell.Chordious.Core
                 double y = rectY - strokeCorrection;
 
                 string nutStyle = this.Style.GetSvgStyle(Diagram._nutStyleMap);
-                nutStyle += String.Format("stroke-width:{0};", this.Style.GridLineThickness * this.Style.GridNutRatio);
+                nutStyle += String.Format(CultureInfo.InvariantCulture, "stroke-width:{0};", this.Style.GridLineThickness * this.Style.GridNutRatio);
 
-                sb.AppendFormat(SvgConstants.LINE,
+                sb.AppendFormat(CultureInfo.InvariantCulture,
+                                SvgConstants.LINE,
                                 nutStyle,
                                 x1,
                                 y,
@@ -1087,7 +1093,7 @@ namespace com.jonthysell.Chordious.Core
                 if (this.Style.TitleLabelStyle == DiagramLabelStyle.ChordName && this.Title.Length > 1)
                 {
                     double modifierSize = this.Style.TitleTextSize * this.Style.TitleTextSizeModRatio;
-                    string modifierStyle = String.Format("font-size:{0}pt;", modifierSize);
+                    string modifierStyle = String.Format(CultureInfo.InvariantCulture, "font-size:{0}pt;", modifierSize);
                     string titleChordNameFormat = SvgConstants.TEXT_CHORDNAME;
                     if (this.Style.Orientation == DiagramOrientation.LeftRight)
                     {
@@ -1095,7 +1101,8 @@ namespace com.jonthysell.Chordious.Core
                         titleX -= (this.Style.TitleTextSize - this.Style.TitleGridPadding) / 2.0;
                         titleY -= (this.Style.TitleTextSize + (modifierSize * (this.Title.Length - 1))) / 2.0;
                     }
-                    sb.AppendFormat(titleChordNameFormat,
+                    sb.AppendFormat(CultureInfo.InvariantCulture,
+                            titleChordNameFormat,
                             titleStyle,
                             titleX,
                             titleY,
@@ -1112,7 +1119,8 @@ namespace com.jonthysell.Chordious.Core
                         titleX -= (this.Style.TitleTextSize - this.Style.TitleGridPadding) / 2.0;
                         titleY -= (this.Style.TitleTextSize * Title.Length) / 2.0;
                     }
-                    sb.AppendFormat(titleFormat,
+                    sb.AppendFormat(CultureInfo.InvariantCulture,
+                            titleFormat,
                             titleStyle,
                             titleX,
                             titleY,
@@ -1125,7 +1133,8 @@ namespace com.jonthysell.Chordious.Core
             // Apply rotation if necessary
             if (this.Style.Orientation == DiagramOrientation.LeftRight)
             {
-                imageText = String.Format(SvgConstants.ROTATE,
+                imageText = String.Format(CultureInfo.InvariantCulture,
+                    SvgConstants.ROTATE,
                     imageText,
                     -90,
                     totalWidth / 2.0,
@@ -1137,7 +1146,7 @@ namespace com.jonthysell.Chordious.Core
                 totalWidth = temp;
             }
 
-            return String.Format(SvgConstants.BASE, totalWidth, totalHeight, AppInfo.Watermark, imageText);
+            return String.Format(CultureInfo.InvariantCulture, SvgConstants.BASE, totalWidth, totalHeight, AppInfo.Watermark, imageText);
         }
 
         private static string[][] _baseStyleMap =

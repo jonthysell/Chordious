@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Globalization;
 using System.Xml;
 
 using com.jonthysell.Chordious.Core.Resources;
@@ -1076,6 +1077,13 @@ namespace com.jonthysell.Chordious.Core
             return GetEnum<TEnum>(key);
         }
 
+        public void MarkStyleSet(string key, double value, DiagramMarkType type = DiagramMarkType.Normal)
+        {
+            string prefix = GetMarkStylePrefix(type);
+
+            Set(prefix + key, value);
+        }
+
         public void MarkStyleSet(string key, object value, DiagramMarkType type = DiagramMarkType.Normal)
         {
             string prefix = GetMarkStylePrefix(type);
@@ -1686,7 +1694,7 @@ namespace com.jonthysell.Chordious.Core
             }
             else if (svgStyle == "font-size")
             {
-                return String.Format("{0}:{1}pt;", svgStyle, rawValue);
+                return String.Format(CultureInfo.InvariantCulture, "{0}:{1}pt;", svgStyle, rawValue);
             }
             else if (svgStyle == "text-anchor")
             {
@@ -2032,7 +2040,7 @@ namespace com.jonthysell.Chordious.Core
                 case "title.labelstyle":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramLabelStyle>(key, recursive));
                 case "title.textsize":
-                    return String.Format("{0}pt", base.GetFriendlyValueName(key, recursive));
+                    return String.Format(CultureInfo.InvariantCulture, "{0}pt", base.GetFriendlyValueName(key, recursive));
                 case "mark.shape":
                 case "mutedmark.shape":
                 case "rootmark.shape":
@@ -2062,7 +2070,7 @@ namespace com.jonthysell.Chordious.Core
                 case "bottommark.borderthickness":
                 case "fretlabel.gridpadding":
                 case "barre.linethickness":
-                    return String.Format("{0}px", base.GetFriendlyValueName(key, recursive));
+                    return String.Format(CultureInfo.InvariantCulture, "{0}px", base.GetFriendlyValueName(key, recursive));
                 case "title.textvisible":
                 case "grid.nutvisible":
                 case "mark.visible":

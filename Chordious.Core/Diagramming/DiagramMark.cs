@@ -26,6 +26,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Xml;
 
@@ -163,23 +164,23 @@ namespace com.jonthysell.Chordious.Core
                 switch (shape)
                 {
                     case DiagramMarkShape.Circle:
-                        svg += String.Format(SvgConstants.CIRCLE, shapeStyle, radius, centerX, centerY);
+                        svg += String.Format(CultureInfo.InvariantCulture, SvgConstants.CIRCLE, shapeStyle, radius, centerX, centerY);
                         break;
                     case DiagramMarkShape.Square:
-                        svg += String.Format(SvgConstants.RECTANGLE, shapeStyle, radius * 2.0, radius * 2.0, centerX - radius, centerY - radius);
+                        svg += String.Format(CultureInfo.InvariantCulture, SvgConstants.RECTANGLE, shapeStyle, radius * 2.0, radius * 2.0, centerX - radius, centerY - radius);
                         break;
                     case DiagramMarkShape.Diamond:
                         string diamondPoints = "";
-                        diamondPoints += String.Format("{0},{1} ", centerX, centerY - radius);
-                        diamondPoints += String.Format("{0},{1} ", centerX + radius, centerY);
-                        diamondPoints += String.Format("{0},{1} ", centerX, centerY + radius);
-                        diamondPoints += String.Format("{0},{1}", centerX - radius, centerY);
-                        svg += String.Format(SvgConstants.POLYGON, shapeStyle, diamondPoints);
+                        diamondPoints += String.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX, centerY - radius);
+                        diamondPoints += String.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + radius, centerY);
+                        diamondPoints += String.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX, centerY + radius);
+                        diamondPoints += String.Format(CultureInfo.InvariantCulture, "{0},{1}", centerX - radius, centerY);
+                        svg += String.Format(CultureInfo.InvariantCulture, SvgConstants.POLYGON, shapeStyle, diamondPoints);
                         break;
                     case DiagramMarkShape.X:
                         double xDelta = Math.Sqrt((radius * radius / 2.0));
-                        svg += String.Format(SvgConstants.LINE, shapeStyle, centerX - xDelta, centerY - xDelta, centerX + xDelta, centerY + xDelta);
-                        svg += String.Format(SvgConstants.LINE, shapeStyle, centerX - xDelta, centerY + xDelta, centerX + xDelta, centerY - xDelta);
+                        svg += String.Format(CultureInfo.InvariantCulture, SvgConstants.LINE, shapeStyle, centerX - xDelta, centerY - xDelta, centerX + xDelta, centerY + xDelta);
+                        svg += String.Format(CultureInfo.InvariantCulture, SvgConstants.LINE, shapeStyle, centerX - xDelta, centerY + xDelta, centerX + xDelta, centerY - xDelta);
                         break;
                     case DiagramMarkShape.None:
                     default:
@@ -211,11 +212,11 @@ namespace com.jonthysell.Chordious.Core
                     }
 
                     string textStyle = this.Style.GetSvgStyle(DiagramMark._textStyleMap, prefix);
-                    textStyle += String.Format("font-size:{0}pt;", textSize);
+                    textStyle += String.Format(CultureInfo.InvariantCulture, "font-size:{0}pt;", textSize);
 
                     string textFormat = (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? SvgConstants.ROTATED_TEXT : SvgConstants.TEXT;
-                    
-                    svg += String.Format(textFormat, textStyle, textX, textY, this.Text);
+
+                    svg += String.Format(CultureInfo.InvariantCulture, textFormat, textStyle, textX, textY, this.Text);
                 }
             }
 

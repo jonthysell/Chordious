@@ -265,7 +265,7 @@ namespace com.jonthysell.Chordious.Core
                 {
                     endMarks.Add(mark);
                 }
-                else if (mark.Position.Fret > newNumFrets + 1)
+                else if (mark.Position.Fret > newNumFrets)
                 {
                     throw new CantResizeDiagramException();
                 }
@@ -1012,7 +1012,7 @@ namespace com.jonthysell.Chordious.Core
             // Add nut
             if (this.Style.GridNutVisible)
             {
-                double strokeCorrection = this.Style.GridLineThickness / this.Style.GridNutRatio;
+                double strokeCorrection = this.Style.GridLineThickness / 2.0;
 
                 double x1 = rectX - strokeCorrection;
                 double x2 = rectX + rectWidth + strokeCorrection;

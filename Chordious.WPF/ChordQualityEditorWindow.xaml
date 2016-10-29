@@ -15,9 +15,9 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
             <Label Content="{Binding NameLabel, FallbackValue=Name}" ToolTip="{Binding NameToolTip}" Margin="5" VerticalAlignment="Center" />
-            <TextBox Name="InputName" Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" ToolTip="{Binding NameToolTip}" Width="150" Margin="5" MaxLines="1" />
+            <TextBox Name="InputName" Text="{Binding Name}" SelectedText="" ToolTip="{Binding NameToolTip}" Width="150" Margin="5" MaxLines="1" />
             <Label Content="{Binding AbbreviationLabel, FallbackValue=Abbreviation}" ToolTip="{Binding AbbreviationToolTip}" Margin="5" VerticalAlignment="Center" />
-            <TextBox Name="InputAbbreviation" Text="{Binding Abbreviation, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" ToolTip="{Binding AbbreviationToolTip}" Width="70" Margin="5" MaxLines="1" />
+            <TextBox Name="InputAbbreviation" Text="{Binding Abbreviation}" SelectedText="" ToolTip="{Binding AbbreviationToolTip}" Width="70" Margin="5" MaxLines="1" />
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
             <Label Content="{Binding IntervalsLabel, FallbackValue=Intervals}" ToolTip="{Binding IntervalsToolTip}" Margin="5" VerticalAlignment="Center" />
@@ -33,14 +33,14 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBox Text="{Binding Value, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" SelectedText="" Width="30" MaxLines="1" MaxLength="2" HorizontalContentAlignment="Center" />
+                        <TextBox Text="{Binding Value}" SelectedText="" Width="30" MaxLines="1" MaxLength="2" HorizontalContentAlignment="Center" />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
             <Label Content="{Binding ExampleLabel, FallbackValue=Example in C:}" ToolTip="{Binding ExampleToolTip}" Margin="5" VerticalAlignment="Center" />
-            <Label Content="{Binding Example, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ExampleToolTip}" Margin="5" VerticalAlignment="Center" />
+            <Label Content="{Binding Example}" ToolTip="{Binding ExampleToolTip}" Margin="5" VerticalAlignment="Center" />
         </StackPanel>
         <WrapPanel Grid.Row="3" Grid.ColumnSpan="2" FlowDirection="RightToLeft" Height="Auto">
             <Button Command="{Binding Cancel}" Content="{Binding AppVM.CancelLabel, FallbackValue=Cancel}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>

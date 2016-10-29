@@ -223,20 +223,20 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale %.
+        ///   Looks up a localized string similar to Scale.
         /// </summary>
-        internal static string DiagramExportScalePercentLabel {
+        internal static string DiagramExportScaleFactorLabel {
             get {
-                return ResourceManager.GetString("DiagramExportScalePercentLabel", resourceCulture);
+                return ResourceManager.GetString("DiagramExportScaleFactorLabel", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Scale the image files to what percentage of the original size..
         /// </summary>
-        internal static string DiagramExportScalePercentToolTip {
+        internal static string DiagramExportScaleFactorToolTip {
             get {
-                return ResourceManager.GetString("DiagramExportScalePercentToolTip", resourceCulture);
+                return ResourceManager.GetString("DiagramExportScaleFactorToolTip", resourceCulture);
             }
         }
         

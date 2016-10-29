@@ -7,7 +7,7 @@
         <GroupBox Margin="5" Header="{Binding PropertiesGroupLabel, FallbackValue=Mark Properties}">
             <StackPanel Orientation="Horizontal">
                 <Label Width="120" Margin="5" Content="{Binding TextLabel, FallbackValue=Text}" ToolTip="{Binding TextToolTip}" />
-                <TextBox Width="80" Margin="5" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding TextToolTip}" SelectedText="" MaxLines="1" HorizontalContentAlignment="Center"/>
+                <TextBox Width="80" Margin="5" Text="{Binding Text}" ToolTip="{Binding TextToolTip}" SelectedText="" MaxLines="1" HorizontalContentAlignment="Center"/>
                 <Label Width="120" Height="25" Margin="25,5,5,5" Content="{Binding SelectedMarkTypeLabel, FallbackValue=Mark Type}" ToolTip="{Binding SelectedMarkTypeToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
                 <ComboBox Width="80" Height="25" Margin="5" ItemsSource="{Binding MarkTypes}" SelectedIndex="{Binding SelectedMarkTypeIndex}" ToolTip="{Binding SelectedMarkTypeToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource CleanComboBox}" />
             </StackPanel>
@@ -30,11 +30,11 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.MarkOpacityIsLocal}" Content="{Binding Style.MarkOpacityLabel, FallbackValue=Opacity}" ToolTip="{Binding Style.MarkOpacityToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.MarkOpacity, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.MarkOpacityToolTip}" IsEnabled="{Binding Style.MarkOpacityIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.MarkOpacity, Converter={StaticResource DecimalToPercentConverter}}" ToolTip="{Binding Style.MarkOpacityToolTip}" IsEnabled="{Binding Style.MarkOpacityIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.MarkRadiusRatioIsLocal}" Content="{Binding Style.MarkRadiusRatioLabel, FallbackValue=Size Ratio}" ToolTip="{Binding Style.MarkRadiusRatioToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.MarkRadiusRatio, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.MarkRadiusRatioToolTip}" IsEnabled="{Binding Style.MarkRadiusRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.MarkRadiusRatio, Converter={StaticResource DecimalToPercentConverter}}" ToolTip="{Binding Style.MarkRadiusRatioToolTip}" IsEnabled="{Binding Style.MarkRadiusRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -46,7 +46,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.MarkBorderThicknessIsLocal}" Content="{Binding Style.MarkBorderThicknessLabel, FallbackValue=Thickness (px)}" ToolTip="{Binding Style.MarkBorderThicknessToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.MarkBorderThickness, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.MarkBorderThicknessToolTip}" IsEnabled="{Binding Style.MarkBorderThicknessIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.MarkBorderThickness}" ToolTip="{Binding Style.MarkBorderThicknessToolTip}" IsEnabled="{Binding Style.MarkBorderThicknessIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -76,11 +76,11 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.MarkTextOpacityIsLocal}" Content="{Binding Style.MarkTextOpacityLabel, FallbackValue=Opacity}" ToolTip="{Binding Style.MarkTextOpacityToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.MarkTextOpacity, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.MarkTextOpacityToolTip}" IsEnabled="{Binding Style.MarkTextOpacityIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.MarkTextOpacity, Converter={StaticResource DecimalToPercentConverter}}" ToolTip="{Binding Style.MarkTextOpacityToolTip}" IsEnabled="{Binding Style.MarkTextOpacityIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.MarkTextSizeRatioIsLocal}" Content="{Binding Style.MarkTextSizeRatioLabel, FallbackValue=Size Ratio}" ToolTip="{Binding Style.MarkTextSizeRatioToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.MarkTextSizeRatio, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.MarkTextSizeRatioToolTip}" IsEnabled="{Binding Style.MarkTextSizeRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.MarkTextSizeRatio, Converter={StaticResource DecimalToPercentConverter}}" ToolTip="{Binding Style.MarkTextSizeRatioToolTip}" IsEnabled="{Binding Style.MarkTextSizeRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>

@@ -49,5 +49,17 @@ namespace com.jonthysell.Chordious.WPF
         {
             InitializeComponent();
         }
+
+        private void FocusOn_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            UIElement uiElement = sender as UIElement;
+            if (null != uiElement)
+            {
+                if (!(e.Source is ComboBox))
+                {
+                    uiElement.Focus();
+                }
+            }
+        }
     }
 }

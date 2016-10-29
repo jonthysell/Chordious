@@ -106,11 +106,11 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="{Binding NumFretsLabel, FallbackValue=# of Frets}" ToolTip="{Binding NumFretsToolTip}"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding NumFrets, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding NumFretsToolTip}"  MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding NumFrets}" ToolTip="{Binding NumFretsToolTip}"  MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
                         <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="{Binding MaxFretLabel, FallbackValue=Max Fret}" ToolTip="{Binding MaxFretToolTip}"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding MaxFret, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding MaxFretToolTip}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding MaxFret}" ToolTip="{Binding MaxFretToolTip}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
                         <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="{Binding MaxReachLabel, FallbackValue=Max Reach}" ToolTip="{Binding MaxReachToolTip}"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding MaxReach, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding MaxReachToolTip}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding MaxReach}" ToolTip="{Binding MaxReachToolTip}" MaxLength="2" MaxLines="1" HorizontalContentAlignment="Center"/>
                         <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="{Binding AllowOpenStringsLabel, FallbackValue=Allow Open Strings}" ToolTip="{Binding AllowOpenStringsToolTip}"/>
                         <CheckBox Grid.Row="3" Grid.Column="1" Margin="5" IsChecked="{Binding AllowOpenStrings}" ToolTip="{Binding AllowOpenStringsToolTip}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         <Label Grid.Row="4" Grid.Column="0" Margin="5" Content="{Binding AllowMutedStringsLabel, FallbackValue=Allow Muted Strings}" ToolTip="{Binding AllowMutedStringsToolTip}"/>

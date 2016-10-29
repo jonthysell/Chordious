@@ -1,10 +1,10 @@
 ﻿// 
-// IdleBoolToWaitCursorConverter.cs
+// DecimalToPercentConverter.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,44 +26,67 @@
 
 using System;
 using System.Globalization;
-using System.IO;
-using System.Windows.Input;
 using System.Windows.Data;
 using System.Windows.Markup;
 
 namespace com.jonthysell.Chordious.WPF
 {
-    public class IdleBoolToWaitCursorConverter : MarkupExtension, IValueConverter
+    public class DecimalToPercentConverter : MarkupExtension, IValueConverter
     {
-        
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             if (null == _converter)
             {
-                _converter = new IdleBoolToWaitCursorConverter();
+                _converter = new DecimalToPercentConverter();
             }
 
             return _converter;
         }
-        private static IdleBoolToWaitCursorConverter _converter = null;
+        private static DecimalToPercentConverter _converter = null;
 
         #region IValueConverter Members
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (null != value as bool?)
+            if (targetType == typeof(string))
             {
-                if (!(bool)value)
+                if (value is double)
                 {
-                    return Cursors.Wait;
+                    double dValue = (double)value;
+                    return dValue.ToString("P0", culture);
+                }
+                else if (value is float)
+                {
+                    float fValue = (float)value;
+                    return fValue.ToString("P0", culture);
                 }
             }
 
-            return Cursors.Arrow;
+            return value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            string sValue = value as string;
+
+            if (String.IsNullOrWhiteSpace(sValue))
+            {
+                return null;
+            }
+
+            sValue = sValue.Trim(' ', '\t', '%', '\n', '\r');
+
+            if (targetType == typeof(double))
+            {
+                double pValue = 0.01 * Double.Parse(sValue, culture);
+                return Math.Round(pValue, 2);
+            }
+            else if (targetType == typeof(float))
+            {
+                float pValue = 0.01F * Single.Parse(sValue, culture);
+                return Math.Round(pValue, 2);
+            }
+
             return value;
         }
 

@@ -267,46 +267,23 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
-        public string ScalePercentLabel
+        public string ScaleFactorLabel
         {
             get
             {
-                return Strings.DiagramExportScalePercentLabel;
+                return Strings.DiagramExportScaleFactorLabel;
             }
         }
 
-        public string ScalePercentToolTip
+        public string ScaleFactorToolTip
         {
             get
             {
-                return Strings.DiagramExportScalePercentToolTip;
+                return Strings.DiagramExportScaleFactorToolTip;
             }
         }
 
-        public int ScalePercent
-        {
-            get
-            {
-                return (int)((100.0f * ScaleFactor) + 0.5f);
-            }
-            set
-            {
-                try
-                {
-                    ScaleFactor = ((float)value) / 100.0f;
-                }
-                catch (Exception ex)
-                {
-                    ExceptionUtils.HandleException(ex);
-                }
-                finally
-                {
-                    RaisePropertyChanged("ScalePercent");
-                }
-            }
-        }
-
-        private float ScaleFactor
+        public float ScaleFactor
         {
             get
             {

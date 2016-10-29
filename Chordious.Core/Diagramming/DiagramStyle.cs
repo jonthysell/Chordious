@@ -2004,7 +2004,7 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public override string GetFriendlyValueName(string key, bool recursive = true)
+        public override string GetFriendlyValue(string key, bool recursive = true)
         {
             if (String.IsNullOrEmpty(key))
             {
@@ -2040,7 +2040,7 @@ namespace com.jonthysell.Chordious.Core
                 case "title.labelstyle":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramLabelStyle>(key, recursive));
                 case "title.textsize":
-                    return String.Format(CultureInfo.InvariantCulture, "{0}pt", base.GetFriendlyValueName(key, recursive));
+                    return String.Format("{0} pt", GetFriendlyDoubleValue(key, recursive));
                 case "mark.shape":
                 case "mutedmark.shape":
                 case "rootmark.shape":
@@ -2070,7 +2070,42 @@ namespace com.jonthysell.Chordious.Core
                 case "bottommark.borderthickness":
                 case "fretlabel.gridpadding":
                 case "barre.linethickness":
-                    return String.Format(CultureInfo.InvariantCulture, "{0}px", base.GetFriendlyValueName(key, recursive));
+                    return String.Format("{0} px", GetFriendlyDoubleValue(key, recursive));
+                case "diagram.opacity":
+                case "title.textopacity":
+                case "title.textmodratio":
+                case "grid.nutratio":
+                case "grid.opacity":
+                case "mark.radiusratio":
+                case "mark.opacity":
+                case "mark.textopacity":
+                case "mark.textsizeratio":
+                case "mutedmark.radiusratio":
+                case "mutedmark.opacity":
+                case "mutedmark.textopacity":
+                case "mutedmark.textsizeratio":
+                case "rootmark.radiusratio":
+                case "rootmark.opacity":
+                case "rootmark.textopacity":
+                case "rootmark.textsizeratio":
+                case "openmark.radiusratio":
+                case "openmark.opacity":
+                case "openmark.textopacity":
+                case "openmark.textsizeratio":
+                case "openrootmark.radiusratio":
+                case "openrootmark.opacity":
+                case "openrootmark.textopacity":
+                case "openrootmark.textsizeratio":
+                case "bottommark.radiusratio":
+                case "bottommark.opacity":
+                case "bottommark.textopacity":
+                case "bottommark.textsizeratio":
+                case "fretlabel.textopacity":
+                case "fretlabel.textsizeratio":
+                case "fretlabel.textwidthratio":
+                case "barre.opacity":
+                case "barre.arcratio":
+                    return GetFriendlyDoubleValue(key, "P0", recursive);
                 case "title.textvisible":
                 case "grid.nutvisible":
                 case "mark.visible":
@@ -2089,7 +2124,7 @@ namespace com.jonthysell.Chordious.Core
                 case "barre.visible":
                     return GetBoolean(key, recursive) ? Strings.BooleanTrueFriendlyValue : Strings.BooleanFalseFriendlyValue;
                 default:
-                    return base.GetFriendlyValueName(key, recursive);
+                    return base.GetFriendlyValue(key, recursive);
             }
         }
 

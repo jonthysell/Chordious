@@ -10,11 +10,11 @@
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.BarreArcRatioIsLocal}" Content="{Binding Style.BarreArcRatioLabel, FallbackValue=Arc Ratio}" ToolTip="{Binding Style.BarreArcRatioToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.BarreArcRatio, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.BarreArcRatioToolTip}" IsEnabled="{Binding Style.BarreArcRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.BarreArcRatio, Converter={StaticResource DecimalToPercentConverter}}" ToolTip="{Binding Style.BarreArcRatioToolTip}" IsEnabled="{Binding Style.BarreArcRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.BarreOpacityIsLocal}" Content="{Binding Style.BarreOpacityLabel, FallbackValue=Opacity}" ToolTip="{Binding Style.BarreOpacityToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.BarreOpacity, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.BarreOpacityToolTip}" IsEnabled="{Binding Style.BarreOpacityIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.BarreOpacity, Converter={StaticResource DecimalToPercentConverter}}" ToolTip="{Binding Style.BarreOpacityToolTip}" IsEnabled="{Binding Style.BarreOpacityIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.BarreLineColorIsLocal}" Content="{Binding Style.BarreLineColorLabel, FallbackValue=Color}" ToolTip="{Binding Style.BarreLineColorToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
@@ -22,7 +22,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.BarreLineThicknessIsLocal}" Content="{Binding Style.BarreLineThicknessLabel, FallbackValue=Thickness (px)}" ToolTip="{Binding Style.BarreLineThicknessToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.BarreLineThickness, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.BarreLineThicknessToolTip}" IsEnabled="{Binding Style.BarreLineThicknessIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.BarreLineThickness}" ToolTip="{Binding Style.BarreLineThicknessToolTip}" IsEnabled="{Binding Style.BarreLineThicknessIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>

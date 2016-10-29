@@ -25,13 +25,8 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Drawing.Imaging;
 using System.Globalization;
-using System.IO;
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Data;
 using System.Windows.Markup;
 
@@ -39,15 +34,16 @@ namespace com.jonthysell.Chordious.WPF
 {
     public class BoolToVisibilityConverter : MarkupExtension, IValueConverter
     {
-        private static BoolToVisibilityConverter _converter = null;
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            if (_converter == null)
+            if (null == _converter)
             {
                 _converter = new BoolToVisibilityConverter();
             }
+
             return _converter;
         }
+        private static BoolToVisibilityConverter _converter = null;
 
         #region IValueConverter Members
 
@@ -60,6 +56,7 @@ namespace com.jonthysell.Chordious.WPF
                     return Visibility.Collapsed;
                 }
             }
+
             return Visibility.Visible;
         }
 

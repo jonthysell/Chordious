@@ -171,10 +171,10 @@
   <data name="DiagramExportOverwriteFilesToolTip" xml:space="preserve">
     <value>Overwrite files that already exist with the same name.</value>
   </data>
-  <data name="DiagramExportScalePercentLabel" xml:space="preserve">
-    <value>Scale %</value>
+  <data name="DiagramExportScaleFactorLabel" xml:space="preserve">
+    <value>Scale</value>
   </data>
-  <data name="DiagramExportScalePercentToolTip" xml:space="preserve">
+  <data name="DiagramExportScaleFactorToolTip" xml:space="preserve">
     <value>Scale the image files to what percentage of the original size.</value>
   </data>
   <data name="DiagramExportSelectedExportFormatLabel" xml:space="preserve">

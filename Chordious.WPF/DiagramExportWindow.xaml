@@ -19,7 +19,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Content="{Binding OutputPathLabel, FallbackValue=Path}" ToolTip="{Binding OutputPathToolTip}" Margin="5" />
-        <TextBox Grid.Row="0" Grid.Column="1" Name="OutputPathInput" Text="{Binding OutputPath, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding OutputPathToolTip}" SelectedText="" Margin="5" MaxLines="1" />
+        <TextBox Grid.Row="0" Grid.Column="1" Name="OutputPathInput" Text="{Binding OutputPath}" ToolTip="{Binding OutputPathToolTip}" SelectedText="" Margin="5" MaxLines="1" />
         <Button Grid.Row="0" Grid.Column="2" Command="{Binding ChooseOutputPath, Mode=OneWay}" Content="{Binding ChooseOutputPathLabel, FallbackValue=...}" ToolTip="{Binding ChooseOutputPathToolTip}"  Margin="5" Style="{StaticResource CleanButton}"/>
         <Label Grid.Row="1" Grid.Column="0" Content="{Binding SelectedFilenameFormatLabel, FallbackValue=Filename}" ToolTip="{Binding SelectedFilenameFormatToolTip}"  Margin="5" />
         <ComboBox Grid.Row="1" Grid.Column="1" Name="FilenameFormatInput" IsEditable="True" ItemsSource="{Binding FilenameFormats}" SelectedItem="{Binding SelectedFilenameFormat}" Text="{Binding SelectedFilenameFormat, UpdateSourceTrigger=LostFocus}" ToolTip="{Binding SelectedFilenameFormatToolTip}" Margin="5" Style="{StaticResource CleanComboBox}" />
@@ -29,8 +29,8 @@
             <Label Name="ExampleFilenameFormat" Content="{Binding ExampleFilenameFormat}" ToolTip="{Binding ExampleFilenameFormatToolTip}" Margin="5" Width="300" FontStyle="Italic" />
         </WrapPanel>
         <WrapPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" FlowDirection="LeftToRight" Height="Auto" HorizontalAlignment="Center">
-            <Label Content="{Binding ScalePercentLabel, FallbackValue=Scale %}" ToolTip="{Binding ScalePercentToolTip}"  Margin="5" />
-            <TextBox Margin="5" Width="65" Text="{Binding ScalePercent, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding CanScale}" ToolTip="{Binding ScalePercentToolTip}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
+            <Label Content="{Binding ScaleFactorLabel, FallbackValue=Scale}" ToolTip="{Binding ScaleFactorToolTip}" Margin="5" />
+            <TextBox Margin="5" Width="65" Text="{Binding ScaleFactor, Converter={StaticResource DecimalToPercentConverter}}" IsEnabled="{Binding CanScale}" ToolTip="{Binding ScaleFactorToolTip}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
             <Label Content="{Binding OverwriteFilesLabel, FallbackValue=Overwrite Files}" ToolTip="{Binding OverwriteFilesToolTip}"  Margin="5" />
             <CheckBox Margin="5" IsChecked="{Binding OverwriteFiles}" ToolTip="{Binding OverwriteFilesToolTip}" VerticalAlignment="Center" />
         </WrapPanel>

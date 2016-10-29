@@ -462,7 +462,14 @@ namespace com.jonthysell.Chordious.Core
             string rawResult;
             if (TryGet(key, out rawResult, recursive))
             {
-                return Double.TryParse(rawResult, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
+                // Check with InvariantCulture as first default
+                if (Double.TryParse(rawResult, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
+                {
+                    return true;
+                }
+
+                // Try again with CurrentCulture
+                return Double.TryParse(rawResult, out result);
             }
 
             result = default(double);
@@ -825,7 +832,7 @@ namespace com.jonthysell.Chordious.Core
             return CleanKey(key);
         }
 
-        public virtual string GetFriendlyValueName(string key, bool recursive = true)
+        public virtual string GetFriendlyValue(string key, bool recursive = true)
         {
             if (String.IsNullOrEmpty(key))
             {
@@ -833,6 +840,23 @@ namespace com.jonthysell.Chordious.Core
             }
 
             return Get(key, recursive);
+        }
+
+        protected string GetFriendlyDoubleValue(string key, bool recursive = true)
+        {
+            return GetFriendlyDoubleValue(key, "G", recursive);
+        }
+
+        protected string GetFriendlyDoubleValue(string key, string format, bool recursive = true)
+        {
+            if (String.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            double value = GetDouble(key, recursive);
+
+            return value.ToString(format);
         }
 
         public override string ToString()
@@ -931,7 +955,7 @@ namespace com.jonthysell.Chordious.Core
                     sb.Append(" + ");
                 }
 
-                sb.AppendFormat(CultureInfo.InvariantCulture, "{0}: {1}", GetFriendlyKeyName(key), GetFriendlyValueName(key, false));
+                sb.AppendFormat(CultureInfo.InvariantCulture, "{0}: {1}", GetFriendlyKeyName(key), GetFriendlyValue(key, false));
                 hasItems = true;
             }
 

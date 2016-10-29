@@ -7,7 +7,7 @@
         <GroupBox Margin="5" Header="{Binding PropertiesGroupLabel, FallbackValue=Fret Label Properties}">
             <StackPanel Orientation="Horizontal">
                 <Label Width="120" Margin="5" Content="{Binding TextLabel, FallbackValue=Text}" ToolTip="{Binding TextToolTip}" />
-                <TextBox Width="80" Margin="5" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding TextToolTip}" SelectedText="" MaxLines="1" HorizontalContentAlignment="Center"/>
+                <TextBox Width="80" Margin="5" Text="{Binding Text}" ToolTip="{Binding TextToolTip}" SelectedText="" MaxLines="1" HorizontalContentAlignment="Center"/>
             </StackPanel>
         </GroupBox>
         <StackPanel Orientation="Horizontal" IsEnabled="{Binding Style.IsEditable}">
@@ -28,15 +28,15 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelTextOpacityIsLocal}" Content="{Binding Style.FretLabelTextOpacityLabel, FallbackValue=Opacity}" ToolTip="{Binding Style.FretLabelTextOpacityToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.FretLabelTextOpacity, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.FretLabelTextOpacityToolTip}" IsEnabled="{Binding Style.FretLabelTextOpacityIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.FretLabelTextOpacity, Converter={StaticResource DecimalToPercentConverter}}" ToolTip="{Binding Style.FretLabelTextOpacityToolTip}" IsEnabled="{Binding Style.FretLabelTextOpacityIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelTextSizeRatioIsLocal}" Content="{Binding Style.FretLabelTextSizeRatioLabel, FallbackValue=Size Ratio}" ToolTip="{Binding Style.FretLabelTextSizeRatioToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.FretLabelTextSizeRatio, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.FretLabelTextSizeRatioToolTip}" IsEnabled="{Binding Style.FretLabelTextSizeRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.FretLabelTextSizeRatio, Converter={StaticResource DecimalToPercentConverter}}" ToolTip="{Binding Style.FretLabelTextSizeRatioToolTip}" IsEnabled="{Binding Style.FretLabelTextSizeRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelTextWidthRatioIsLocal}" Content="{Binding Style.FretLabelTextWidthRatioLabel, FallbackValue=Width Ratio}" ToolTip="{Binding Style.FretLabelTextWidthRatioToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.FretLabelTextWidthRatio, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.FretLabelTextWidthRatioToolTip}" IsEnabled="{Binding Style.FretLabelTextWidthRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.FretLabelTextWidthRatio, Converter={StaticResource DecimalToPercentConverter}}" ToolTip="{Binding Style.FretLabelTextWidthRatioToolTip}" IsEnabled="{Binding Style.FretLabelTextWidthRatioIsLocal}" MaxLength="4" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -54,7 +54,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Width="120" Height="25" Margin="5" IsChecked="{Binding Style.FretLabelGridPaddingIsLocal}" Content="{Binding Style.FretLabelGridPaddingLabel, FallbackValue=Grid Padding (px)}" ToolTip="{Binding Style.FretLabelGridPaddingToolTip}" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.FretLabelGridPadding, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Style.FretLabelGridPaddingToolTip}" IsEnabled="{Binding Style.FretLabelGridPaddingIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBox Width="80" Height="25" Margin="5" Text="{Binding Style.FretLabelGridPadding}" ToolTip="{Binding Style.FretLabelGridPaddingToolTip}" IsEnabled="{Binding Style.FretLabelGridPaddingIsLocal}" MaxLength="5" MaxLines="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>

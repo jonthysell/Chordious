@@ -36,6 +36,8 @@ namespace com.jonthysell.Chordious.WPF
     {
         private static Mutex _mutex;
 
+        private static string userFile = null;
+
         [STAThread]
         public static void Main(string[] args)
         {
@@ -49,7 +51,12 @@ namespace com.jonthysell.Chordious.WPF
             {
                 try
                 {
-                    App app = new App();
+                    if (null != args && args.Length > 0)
+                    {
+                        userFile = args[0];
+                    }
+
+                    App app = new App(userFile);
                     app.InitializeComponent();
                     app.Run();
                 }

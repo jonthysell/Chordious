@@ -59,13 +59,17 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
-        public App()
+        public string UserConfigPath { get; private set; }
+
+        public App(string userConfigPath = null)
         {
             MessageHandlers.RegisterMessageHandlers(this);
 
+            UserConfigPath = !String.IsNullOrWhiteSpace(userConfigPath) ? userConfigPath : GetDefaultUserConfigPath();
+
             string defaultFile = GetDefaultConfigPath();
             string appFile = GetAppConfigPath();
-            string userFile = GetUserConfigPath();
+            string userFile = UserConfigPath;
 
             AppViewModel.Init(Assembly.GetEntryAssembly(), () =>
             {
@@ -85,7 +89,7 @@ namespace com.jonthysell.Chordious.WPF
                     Dispatcher.Invoke(action);
                 }
             , this.GetFonts
-            ,userFile);
+            , userFile);
 
             if (File.Exists(defaultFile))
             {
@@ -121,7 +125,7 @@ namespace com.jonthysell.Chordious.WPF
             return "Chordious.WPF.xml";
         }
 
-        public string GetUserConfigPath()
+        public string GetDefaultUserConfigPath()
         {
             string userFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             userFolder = Path.Combine(userFolder, "Chordious");
@@ -131,8 +135,22 @@ namespace com.jonthysell.Chordious.WPF
                 Directory.CreateDirectory(userFolder);
             }
 
-            return Path.Combine(userFolder, "Chordious.WPF.xml");
+            string defaultConfigPath = Path.Combine(userFolder, DefaultUserConfigFileName);
+
+            if (!File.Exists(defaultConfigPath))
+            {
+                // Migrate old config if necessary
+                string oldConfigPath = Path.Combine(userFolder, "Chordious.WPF.xml");
+                if (File.Exists(oldConfigPath))
+                {
+                    File.Move(oldConfigPath, defaultConfigPath);
+                }
+            }
+
+            return defaultConfigPath;
         }
+
+        private const string DefaultUserConfigFileName = "Chordious.User.xml";
 
         public IEnumerable<string> GetFonts()
         {
@@ -144,7 +162,7 @@ namespace com.jonthysell.Chordious.WPF
 
         public void HandleUserConfigLoadException(Exception ex)
         {
-            string userFile = GetUserConfigPath();
+            string userFile = UserConfigPath;
             Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.ResetAndBackupUserConfigConfirmationMessage, (confirmed) =>
             {
                 if (!confirmed) // No, exit app
@@ -157,7 +175,6 @@ namespace com.jonthysell.Chordious.WPF
                     string backupFile = ResetAndBackupUserConfig(userFile);
                     string message = String.Format(Strings.ResetAndBackupUserConfigBackupFileMessageFormat, backupFile);
                     ExceptionUtils.HandleException(new Exception(message, ex));
-                    //Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(message));
                 }
             }));
         }
@@ -170,7 +187,10 @@ namespace com.jonthysell.Chordious.WPF
             }
 
             string userFolder = Path.GetDirectoryName(userFile);
-            string backupFile = Path.Combine(userFolder, String.Format("Chordious.WPF.{0}.xml", DateTime.UtcNow.ToString("yyyy.MM.dd.HH.mm.ss")));
+            string userFileName = Path.GetFileNameWithoutExtension(userFile);
+            string userFileExt = Path.GetExtension(userFile);
+
+            string backupFile = Path.Combine(userFolder, String.Format("{0}.{1:yyyy.MM.dd.HH.mm.ss}{2}", userFileName, DateTime.UtcNow, userFileExt));
 
             File.Move(userFile, backupFile);
 

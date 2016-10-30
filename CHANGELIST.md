@@ -1,5 +1,18 @@
 # Chordious Changelist #
 
+## 2.0.1 ##
+* Fixed bug where diagrams would render as black boxes in some locales
+* Fixed bug where marks on the fretboard could be pushed off the bottom
+when resizing
+* Fixed bug where the nut was not being drawn in the correct position if
+the nut ratio != 2.0
+* Opacities and ratios are now presented as percentages
+* Fixed various bugs with the formatting of decimal numbers
+* Standardized install locations
+* Renamed user config to Chordious.User.xml
+* Added option to choose user config from the command-line
+* Added option to hide/disable updating functionality
+
 ## 2.0 ##
 * First 2.0 official release
 * Fixed bugs in finders with missing instruments/tunings/intervals

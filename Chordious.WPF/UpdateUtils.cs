@@ -92,7 +92,7 @@ namespace com.jonthysell.Chordious.WPF
                     }
                 }
 
-                SetLastUpdateCheck(DateTime.Now);
+                LastUpdateCheck = DateTime.Now;
 
                 if (updateAvailable)
                 {
@@ -234,38 +234,57 @@ namespace com.jonthysell.Chordious.WPF
             return ReleaseChannel.Official;
         }
 
-        public static bool GetCheckUpdateOnStart()
+        public static bool UpdateEnabled
         {
-            bool result;
-
-            if (Boolean.TryParse(AppVM.GetSetting("app.checkupdateonstart"), out result))
+            get
             {
-                return result;
+                bool result;
+
+                if (Boolean.TryParse(AppVM.GetSetting("app.updateenabled"), out result))
+                {
+                    return result;
+                }
+
+                return true;
             }
-
-            return false;
         }
 
-        public static void SetCheckUpdateOnStart(bool value)
+        public static bool CheckUpdateOnStart
         {
-            AppVM.SetSetting("app.checkupdateonstart", value);
-        }
-
-        public static DateTime GetLastUpdateCheck()
-        {
-            DateTime result;
-
-            if (DateTime.TryParse(AppVM.GetSetting("app.lastupdatecheck"), null, DateTimeStyles.AssumeUniversal, out result))
+            get
             {
-                return result;
-            }
+                bool result;
 
-            return DateTime.MinValue;
+                if (Boolean.TryParse(AppVM.GetSetting("app.checkupdateonstart"), out result))
+                {
+                    return result;
+                }
+
+                return false;
+            }
+            set
+            {
+                AppVM.SetSetting("app.checkupdateonstart", value);
+            }
         }
 
-        public static void SetLastUpdateCheck(DateTime value)
+        public static DateTime LastUpdateCheck
         {
-            AppVM.SetSetting("app.lastupdatecheck", value.ToUniversalTime().ToString("s"));
+            get
+            {
+                DateTime result;
+
+                if (DateTime.TryParse(AppVM.GetSetting("app.lastupdatecheck"), null, DateTimeStyles.AssumeUniversal, out result))
+                {
+                    return result;
+                }
+
+                return DateTime.MinValue;
+            }
+            set
+            {
+                AppVM.SetSetting("app.lastupdatecheck", value.ToUniversalTime().ToString("s"));
+            }
         }
 
         private const string _updateUrl = "http://update.chordious.com";

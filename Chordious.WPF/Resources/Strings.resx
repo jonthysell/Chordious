@@ -200,6 +200,9 @@
 %% - Percent sign</value>
   </data>
   <data name="FirstRunMessage" xml:space="preserve">
+    <value>Thanks for installing Chordious!</value>
+  </data>
+  <data name="FirstRunUpdateEnabledPrompt" xml:space="preserve">
     <value>Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? (Recommended) You can change your mind later in Options.</value>
   </data>
   <data name="OptionsCheckForUpdatesAsyncLabel" xml:space="preserve">

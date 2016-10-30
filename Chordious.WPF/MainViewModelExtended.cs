@@ -94,7 +94,7 @@ namespace com.jonthysell.Chordious.WPF
                         FirstRun();
                     }
 
-                    if (UpdateUtils.GetCheckUpdateOnStart())
+                    if (UpdateUtils.UpdateEnabled && UpdateUtils.CheckUpdateOnStart)
                     {
                         await UpdateUtils.UpdateCheckAsync(true, false);
                     }
@@ -117,10 +117,17 @@ namespace com.jonthysell.Chordious.WPF
 
             AppVM.DoOnUIThread(() =>
             {
-                Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.FirstRunMessage, (enableAutoUpdate) =>
+                if (UpdateUtils.UpdateEnabled)
                 {
-                    UpdateUtils.SetCheckUpdateOnStart(enableAutoUpdate);
-                }));
+                    Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.FirstRunUpdateEnabledPrompt, (enableAutoUpdate) =>
+                    {
+                        UpdateUtils.CheckUpdateOnStart = enableAutoUpdate;
+                    }));
+                }
+                else
+                {
+                    Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.FirstRunMessage));
+                }
             });
         }
     }

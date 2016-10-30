@@ -85,7 +85,7 @@
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="{Binding UpdatesGroupLabel, FallbackValue=Updates}">
+            <TabItem Header="{Binding UpdatesGroupLabel, FallbackValue=Updates}" Visibility="{Binding UpdateEnabled, Converter={StaticResource BoolToVisibilityConverter}}" >
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">

@@ -164,6 +164,14 @@ namespace com.jonthysell.Chordious.WPF
 
         #region Updates
 
+        public bool UpdateEnabled
+        {
+            get
+            {
+                return UpdateUtils.UpdateEnabled;
+            }
+        }
+
         public string UpdatesGroupLabel
         {
             get
@@ -284,7 +292,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                DateTime lastCheck = UpdateUtils.GetLastUpdateCheck();
+                DateTime lastCheck = UpdateUtils.LastUpdateCheck;
 
                 if (lastCheck == DateTime.MinValue)
                 {

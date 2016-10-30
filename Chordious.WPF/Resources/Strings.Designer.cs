@@ -287,11 +287,20 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? (Recommended) You can change your mind later in Options..
+        ///   Looks up a localized string similar to Thanks for installing Chordious!.
         /// </summary>
         internal static string FirstRunMessage {
             get {
                 return ResourceManager.GetString("FirstRunMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? (Recommended) You can change your mind later in Options..
+        /// </summary>
+        internal static string FirstRunUpdateEnabledPrompt {
+            get {
+                return ResourceManager.GetString("FirstRunUpdateEnabledPrompt", resourceCulture);
             }
         }
         

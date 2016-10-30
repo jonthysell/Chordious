@@ -1259,7 +1259,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 try
                 {
-                    Style.GridLineColorIsLocal = value;
+                    Style.GridLineThicknessIsLocal = value;
                     RaisePropertyChanged("GridLineThicknessIsLocal");
                     RaisePropertyChanged("GridLineThickness");
                 }

@@ -1042,14 +1042,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 ObservableDiagram od = null;
                 AppVM.DoOnUIThread(() =>
                     {
-                        od = new ObservableDiagram(result.ToDiagram(Style));
-                        od.PostEditCallback = (changed) =>
+                        try
                         {
-                            if (changed)
+                            od = new ObservableDiagram(result.ToDiagram(Style));
+                            od.PostEditCallback = (changed) =>
                             {
-                                od.Refresh();
-                            }
-                        };
+                                if (changed)
+                                {
+                                    od.Refresh();
+                                }
+                            };
+                        }
+                        catch (Exception ex)
+                        {
+                            ExceptionUtils.HandleException(ex);
+                        }
                     });
                 return od;
             });

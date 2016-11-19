@@ -223,7 +223,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
                 diagram.Style.BarreVisible = false;
             }
 
-            BarrePosition bp = MarkUtils.AutoBarrePosition(chord.Marks); ;
+            BarrePosition bp = MarkUtils.AutoBarrePosition(chord.Marks);
 
             if (chord.Barre == -1)
             {

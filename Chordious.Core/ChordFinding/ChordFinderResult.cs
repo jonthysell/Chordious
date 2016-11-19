@@ -154,7 +154,7 @@ namespace com.jonthysell.Chordious.Core
 
             if (chordFinderStyle.BarreTypeOption != BarreTypeOption.None)
             {
-                bp = MarkUtils.AutoBarrePosition(marks);
+                bp = MarkUtils.AutoBarrePosition(marks, chordFinderStyle.MirrorResults);
             }
 
             if (null != bp)

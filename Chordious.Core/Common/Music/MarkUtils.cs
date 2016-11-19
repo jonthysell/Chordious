@@ -113,14 +113,25 @@ namespace com.jonthysell.Chordious.Core
             maxFret = ma.MaxFret;
         }
 
-        public static BarrePosition AutoBarrePosition(int[] marks)
+        public static BarrePosition AutoBarrePosition(int[] marks, bool mirroredResult = false)
         {
             MarkAnalysis ma = ChordAnalysis(marks);
+
+            if (mirroredResult)
+            {
+                // Flip the barre to the correct side
+                int oldStart = ma.AutoBarreStartString;
+                int oldEnd = ma.AutoBarreEndString;
+
+                ma.AutoBarreStartString = marks.Length - 1 - oldEnd;
+                ma.AutoBarreEndString = marks.Length - 1 - oldStart;
+            }
 
             if (ma.AutoBarreFret > 0)
             {
                 return new BarrePosition(ma.AutoBarreFret, ma.AutoBarreStartString + 1, ma.AutoBarreEndString + 1);
             }
+
             return null;
         }
 

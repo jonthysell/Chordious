@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chordious.Core", "Chordious.Core\Chordious.Core.csproj", "{3D200375-095F-4AA8-A724-CD23931C4E1A}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chordious.Core.ViewModel", "Chordious.Core.ViewModel\Chordious.Core.ViewModel.csproj", "{E36654B9-259B-4A81-B9B3-44BFD1EC0B5E}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Chordious.WPF Setup", "Chordious.WPF Setup\Chordious.WPF Setup.wixproj", "{C01E6EF5-8807-4207-B9F6-677A60F47718}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chordious.CoreTest", "Chordious.CoreTest\Chordious.CoreTest.csproj", "{B44F6A9B-F263-48DF-B506-EA206F1E3AE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,16 @@ Global
 		{C01E6EF5-8807-4207-B9F6-677A60F47718}.Release|Mixed Platforms.Build.0 = Release|x86
 		{C01E6EF5-8807-4207-B9F6-677A60F47718}.Release|x86.ActiveCfg = Release|x86
 		{C01E6EF5-8807-4207-B9F6-677A60F47718}.Release|x86.Build.0 = Release|x86
+		{B44F6A9B-F263-48DF-B506-EA206F1E3AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B44F6A9B-F263-48DF-B506-EA206F1E3AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B44F6A9B-F263-48DF-B506-EA206F1E3AE7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B44F6A9B-F263-48DF-B506-EA206F1E3AE7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B44F6A9B-F263-48DF-B506-EA206F1E3AE7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B44F6A9B-F263-48DF-B506-EA206F1E3AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B44F6A9B-F263-48DF-B506-EA206F1E3AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B44F6A9B-F263-48DF-B506-EA206F1E3AE7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B44F6A9B-F263-48DF-B506-EA206F1E3AE7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B44F6A9B-F263-48DF-B506-EA206F1E3AE7}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

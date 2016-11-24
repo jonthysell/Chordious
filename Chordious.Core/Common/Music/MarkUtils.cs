@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -113,23 +113,59 @@ namespace com.jonthysell.Chordious.Core
             maxFret = ma.MaxFret;
         }
 
-        public static BarrePosition AutoBarrePosition(int[] marks, bool mirroredResult = false)
+        public static BarrePosition AutoBarrePosition(int[] marks, BarreTypeOption barreTypeOption = BarreTypeOption.None, bool leftToRight = false)
         {
-            MarkAnalysis ma = ChordAnalysis(marks);
-
-            if (mirroredResult)
+            if (barreTypeOption != BarreTypeOption.None)
             {
-                // Flip the barre to the correct side
-                int oldStart = ma.AutoBarreStartString;
-                int oldEnd = ma.AutoBarreEndString;
+                MarkAnalysis ma = ChordAnalysis(marks);
 
-                ma.AutoBarreStartString = marks.Length - 1 - oldEnd;
-                ma.AutoBarreEndString = marks.Length - 1 - oldStart;
-            }
+                int targetFret = ma.MinFret;
+                int startString = -1;
+                int endString = -1;
 
-            if (ma.AutoBarreFret > 0)
-            {
-                return new BarrePosition(ma.AutoBarreFret, ma.AutoBarreStartString + 1, ma.AutoBarreEndString + 1);
+                if (targetFret > 0)
+                {
+                    if (leftToRight)
+                    {
+                        startString = 0;
+                        endString = 0;
+                        for (int i = startString; i < marks.Length; i++)
+                        {
+                            if (marks[i] < targetFret)
+                            {
+                                break;
+                            }
+
+                            if ((barreTypeOption == BarreTypeOption.Full && marks[i] >= targetFret ) ||
+                                (barreTypeOption == BarreTypeOption.Partial && marks[i] == targetFret))                            {
+                                    endString = i;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        startString = marks.Length - 1;
+                        endString = marks.Length - 1;
+                        for (int i = endString; i >= 0; i--)
+                        {
+                            if (marks[i] < targetFret)
+                            {
+                                break;
+                            }
+
+                            if ((barreTypeOption == BarreTypeOption.Full && marks[i] >= targetFret) ||
+                                (barreTypeOption == BarreTypeOption.Partial && marks[i] == targetFret))
+                            {
+                                startString = i;
+                            }
+                        }
+                    }
+
+                    if (endString > startString)
+                    {
+                        return new BarrePosition(targetFret, startString + 1, endString + 1);
+                    }
+                }
             }
 
             return null;
@@ -188,6 +224,28 @@ namespace com.jonthysell.Chordious.Core
             return relativeMarks;
         }
 
+        public static InternalNote?[] GetInternalNotes(int[] marks, Tuning tuning)
+        {
+            if (null == marks || marks.Length == 0)
+            {
+                throw new ArgumentNullException("marks");
+            }
+
+            if (null == tuning)
+            {
+                throw new ArgumentNullException("tuning");
+            }
+
+            InternalNote?[] notes = new InternalNote?[marks.Length];
+
+            for (int i = 0; i < marks.Length; i++)
+            {
+                notes[i] = marks[i] == -1 ? null : (InternalNote?)tuning.InternalNoteAt(i, marks[i]);
+            }
+
+            return notes;
+        }
+
         public static IEnumerable<MarkPosition> AbsoluteToRelativeMarks(IEnumerable<MarkPosition> absoluteMarks, out int baseLine, int numFrets, int numStrings)
         {
             if (null == absoluteMarks)
@@ -230,22 +288,15 @@ namespace com.jonthysell.Chordious.Core
 
             MarkAnalysis ma = new MarkAnalysis();
 
-            int firstMark = -1;
-            int lastMark = -1;
-
-            bool onBarre = false;
-
             for (int i = 0; i < marks.Length; i++)
             {
                 if (marks[i] == 0)
                 {
                     ma.HasOpenStrings = true;
-                    onBarre = false;
                 }
                 else if (marks[i] < 0)
                 {
                     ma.HasMutedStrings = true;
-                    onBarre = false;
                 }
                 else if (marks[i] > 0)
                 {
@@ -253,21 +304,6 @@ namespace com.jonthysell.Chordious.Core
                     ma.MeanFret += marks[i];
                     ma.MinFret = Math.Min(ma.MinFret, marks[i]);
                     ma.MaxFret = Math.Max(ma.MaxFret, marks[i]);
-
-                    if (!onBarre)
-                    {
-                        firstMark = i;
-                        onBarre = true;
-                    }
-
-                    if (onBarre)
-                    {
-                        if (marks[firstMark] > marks[i])
-                        {
-                            firstMark = i;
-                        }
-                        lastMark = i;
-                    }
                 }
             }
 
@@ -280,14 +316,6 @@ namespace com.jonthysell.Chordious.Core
             }
 
             ma.Reach = (ma.MaxFret - ma.MinFret) + 1;
-
-            // Calculate auto-barre
-            if (firstMark >= 0 && lastMark >= 0 && firstMark != lastMark)
-            {
-                ma.AutoBarreFret = Math.Min(marks[firstMark], marks[lastMark]);
-                ma.AutoBarreStartString = firstMark;
-                ma.AutoBarreEndString = lastMark;
-            }
 
             return ma;
         }
@@ -355,9 +383,6 @@ namespace com.jonthysell.Chordious.Core
             public int MaxFret;
             public int Reach;
             public int MarkCount;
-            public int AutoBarreFret;
-            public int AutoBarreStartString;
-            public int AutoBarreEndString;
             public bool HasOpenStrings;
             public bool HasMutedStrings;
 
@@ -368,9 +393,6 @@ namespace com.jonthysell.Chordious.Core
                 MaxFret = Int32.MinValue;
                 Reach = 0;
                 MarkCount = 0;
-                AutoBarreFret = Int32.MinValue;
-                AutoBarreStartString = Int32.MinValue;
-                AutoBarreEndString = Int32.MinValue;
                 HasOpenStrings = false;
                 HasMutedStrings = false;
             }

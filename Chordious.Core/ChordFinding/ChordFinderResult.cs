@@ -50,36 +50,19 @@ namespace com.jonthysell.Chordious.Core
             this.Marks = marks;
         }
 
-        public InternalNote NoteAt(int str)
-        {
-            if (str < 0 || str > this.Marks.Length)
-            {
-                throw new ArgumentOutOfRangeException("str");
-            }
-
-            return this.Parent.ChordFinderOptions.Tuning.InternalNoteAt(str, Marks[str]);
-        }
-
-        public bool IsRoot(int str)
-        {
-            if (str < 0 || str > this.Marks.Length)
-            {
-                throw new ArgumentOutOfRangeException("str");
-            }
-
-            // Muted strings cannot be the root
-            if (Marks[str] < 0)
-            {
-                return false;
-            }
-
-            return NoteAt(str) == NoteUtils.ToInternalNote(this.Parent.ChordFinderOptions.RootNote);
-        }
-
         public Diagram ToDiagram(ChordFinderStyle chordFinderStyle)
         {
             int baseLine;
             int[] marks = MarkUtils.AbsoluteToRelativeMarks(this.Marks, out baseLine, this.Parent.ChordFinderOptions.NumFrets);
+
+            InternalNote?[] notes = MarkUtils.GetInternalNotes(this.Marks, this.Parent.ChordFinderOptions.Tuning);
+            InternalNote rootNote = NoteUtils.ToInternalNote(this.Parent.ChordFinderOptions.RootNote);
+
+            if (chordFinderStyle.MirrorResults)
+            {
+                Array.Reverse(marks);
+                Array.Reverse(notes);
+            }
 
             int numStrings = marks.Length;
 
@@ -98,11 +81,6 @@ namespace com.jonthysell.Chordious.Core
             {
                 int @string = i + 1;
 
-                if (chordFinderStyle.MirrorResults)
-                {
-                    @string = marks.Length - i;
-                }
-
                 int fret = Math.Max(marks[i], 0);
                 MarkPosition mp = new MarkPosition(@string, fret);
 
@@ -119,13 +97,16 @@ namespace com.jonthysell.Chordious.Core
                 }
 
                 // Change to root if necessary
-                if (dm.Type != DiagramMarkType.Muted && chordFinderStyle.AddRootNotes && IsRoot(i))
+                if (chordFinderStyle.AddRootNotes && notes[i].HasValue && notes[i].Value == rootNote)
                 {
                     dm.Type = (dm.Type == DiagramMarkType.Open) ? DiagramMarkType.OpenRoot : DiagramMarkType.Root;
                 }
 
                 // Add text
-                dm.Text = GetText(i, chordFinderStyle.MarkTextOption);
+                if (chordFinderStyle.MarkTextOption != MarkTextOption.None)
+                {
+                    dm.Text = GetText(notes, i, chordFinderStyle.MarkTextOption);
+                }
 
                 // Add bottom marks
                 if (chordFinderStyle.AddBottomMarks)
@@ -133,7 +114,7 @@ namespace com.jonthysell.Chordious.Core
                     MarkPosition bottomPosition = new MarkPosition(@string, numFrets + 1);
                     DiagramMark bottomMark = d.NewMark(bottomPosition);
                     bottomMark.Type = DiagramMarkType.Bottom;
-                    bottomMark.Text = GetText(i, chordFinderStyle.BottomMarkTextOption);
+                    bottomMark.Text = GetText(notes, i, chordFinderStyle.BottomMarkTextOption);
                 }
             }
 
@@ -150,48 +131,41 @@ namespace com.jonthysell.Chordious.Core
             }
 
             // Add barre
-            BarrePosition bp = null;
-
-            if (chordFinderStyle.BarreTypeOption != BarreTypeOption.None)
-            {
-                bp = MarkUtils.AutoBarrePosition(marks, chordFinderStyle.MirrorResults);
-            }
+            BarrePosition bp = MarkUtils.AutoBarrePosition(marks, chordFinderStyle.BarreTypeOption, chordFinderStyle.MirrorResults);
 
             if (null != bp)
             {
-                if (chordFinderStyle.BarreTypeOption == BarreTypeOption.Full)
-                {
-                    bp = new BarrePosition(bp.Fret, 1, numStrings);
-                }
                 d.NewBarre(bp);
             }
 
             return d;
         }
 
-        private string GetText(int str, MarkTextOption markTextOption)
+        private string GetText(InternalNote?[] notes, int str, MarkTextOption markTextOption)
         {
-            if (str < 0 || str > this.Marks.Length)
+            if (str < 0 || str >= notes.Length)
             {
                 throw new ArgumentOutOfRangeException("str");
             }
 
             string text = "";
-            if (this.Marks[str] >= 0)
+
+            if (notes[str].HasValue)
             {
                 switch (markTextOption)
                 {
                     case MarkTextOption.ShowNote_PreferFlats:
-                        text = NoteUtils.ToString(this.NoteAt(str), InternalNoteStringStyle.PreferFlat);
+                        text = NoteUtils.ToString(notes[str].Value, InternalNoteStringStyle.PreferFlat);
                         break;
                     case MarkTextOption.ShowNote_PreferSharps:
-                        text = NoteUtils.ToString(this.NoteAt(str), InternalNoteStringStyle.PreferSharp);
+                        text = NoteUtils.ToString(notes[str].Value, InternalNoteStringStyle.PreferSharp);
                         break;
                     case MarkTextOption.ShowNote_ShowBoth:
-                        text = NoteUtils.ToString(this.NoteAt(str), InternalNoteStringStyle.ShowBoth);
+                        text = NoteUtils.ToString(notes[str].Value, InternalNoteStringStyle.ShowBoth);
                         break;
                 }
             }
+
             return text;
         }
 

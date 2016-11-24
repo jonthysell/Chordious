@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -167,6 +167,25 @@ namespace com.jonthysell.Chordious.Core
             return false;
         }
 
+        public static BarrePosition Parse(string s)
+        {
+            if (StringUtils.IsNullOrWhiteSpace(s))
+            {
+                throw new ArgumentNullException(s);
+            }
+
+            s = s.Trim();
+
+            if (s.Equals("null", StringComparison.CurrentCultureIgnoreCase))
+            {
+                return null;
+            }
+
+            string[] vals = s.Split(':', '-');
+
+            return new BarrePosition(Int32.Parse(vals[0]), Int32.Parse(vals[1]), Int32.Parse(vals[2]));
+        }
+
         public override bool Equals(ElementPosition obj)
         {
             BarrePosition bp = (obj as BarrePosition);
@@ -175,7 +194,12 @@ namespace com.jonthysell.Chordious.Core
 
         public override int GetHashCode()
         {
-            return string.Format("{0}:{1}:{2}", this.Fret, this.StartString, this.EndString).GetHashCode();
+            return ToString().GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return String.Format("{0}:{1}-{2}", this.Fret, this.StartString, this.EndString);
         }
     }
 

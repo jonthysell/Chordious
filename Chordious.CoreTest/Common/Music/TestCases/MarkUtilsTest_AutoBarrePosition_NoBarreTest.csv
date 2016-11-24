@@ -1,0 +1,125 @@
+# BVT scenarios
+0,0,0,3	None	false	null
+0,0,0,3	Partial	false	null
+0,0,0,3	Full	false	null
+0,4,3,3	None	false	null
+5,4,3,3	None	false	null
+0,4,0,3	None	false	null
+0,4,0,3	Partial	false	null
+0,4,0,3	Full	false	null
+0,7,8,7	None	false	null
+5,7,8,7	None	false	null
+9,7,8,7	None	false	null
+3,0,0,0	None	true	null
+3,0,0,0	Partial	true	null
+3,0,0,0	Full	true	null
+3,3,4,0	None	true	null
+3,3,4,5	None	true	null
+3,0,4,0	None	true	null
+3,0,4,0	Partial	true	null
+3,0,4,0	Full	true	null
+7,8,7,0	None	true	null
+7,8,7,5	None	true	null
+7,8,7,9	None	false	null
+
+# All muted strings
+-1,-1,-1,-1	None	false	null
+-1,-1,-1,-1	None	true	null
+-1,-1,-1,-1	Partial	false	null
+-1,-1,-1,-1	Partial	true	null
+-1,-1,-1,-1	Full	false	null
+-1,-1,-1,-1	Full	true	null
+	
+# All open strings
+0,0,0,0	None	false	null
+0,0,0,0	None	true	null
+0,0,0,0	Partial	false	null
+0,0,0,0	Partial	true	null
+0,0,0,0	Full	false	null
+0,0,0,0	Full	true	null
+
+# All first string, None type
+0,0,0,1	None	false	null
+0,0,1,0	None	false	null
+0,0,1,1	None	false	null
+0,1,0,0	None	false	null
+0,1,0,1	None	false	null
+0,1,1,0	None	false	null
+0,1,1,1	None	false	null
+1,0,0,0	None	false	null
+1,0,0,1	None	false	null
+1,0,1,0	None	false	null
+1,0,1,1	None	false	null
+1,1,0,0	None	false	null
+1,1,0,1	None	false	null
+1,1,1,0	None	false	null
+1,1,1,1	None	false	null
+
+# All first string, None type, mirrored
+0,0,0,1	None	true	null
+0,0,1,0	None	true	null
+0,0,1,1	None	true	null
+0,1,0,0	None	true	null
+0,1,0,1	None	true	null
+0,1,1,0	None	true	null
+0,1,1,1	None	true	null
+1,0,0,0	None	true	null
+1,0,0,1	None	true	null
+1,0,1,0	None	true	null
+1,0,1,1	None	true	null
+1,1,0,0	None	true	null
+1,1,0,1	None	true	null
+1,1,1,0	None	true	null
+1,1,1,1	None	true	null
+
+# All first string, Partial type
+0,0,0,1	Partial	false	null
+0,0,1,0	Partial	false	null
+0,1,0,0	Partial	false	null
+0,1,0,1	Partial	false	null
+0,1,1,0	Partial	false	null
+1,0,0,0	Partial	false	null
+1,0,0,1	Partial	false	null
+1,0,1,0	Partial	false	null
+1,1,0,0	Partial	false	null
+1,1,0,1	Partial	false	null
+1,1,1,0	Partial	false	null
+
+# All first string, Partial type, mirrored
+0,0,0,1	Partial	true	null
+0,0,1,0	Partial	true	null
+0,0,1,1	Partial	true	null
+0,1,0,0	Partial	true	null
+0,1,0,1	Partial	true	null
+0,1,1,0	Partial	true	null
+0,1,1,1	Partial	true	null
+1,0,0,0	Partial	true	null
+1,0,0,1	Partial	true	null
+1,0,1,0	Partial	true	null
+1,0,1,1	Partial	true	null
+
+# All first string, Full type
+0,0,0,1	Full	false	null
+0,0,1,0	Full	false	null
+0,1,0,0	Full	false	null
+0,1,0,1	Full	false	null
+0,1,1,0	Full	false	null
+1,0,0,0	Full	false	null
+1,0,0,1	Full	false	null
+1,0,1,0	Full	false	null
+1,1,0,0	Full	false	null
+1,1,0,1	Full	false	null
+1,1,1,0	Full	false	null
+
+# All first string, Full type, mirrored
+0,0,0,1	Full	true	null
+0,0,1,0	Full	true	null
+0,0,1,1	Full	true	null
+0,1,0,0	Full	true	null
+0,1,0,1	Full	true	null
+0,1,1,0	Full	true	null
+0,1,1,1	Full	true	null
+1,0,0,0	Full	true	null
+1,0,0,1	Full	true	null
+1,0,1,0	Full	true	null
+1,0,1,1	Full	true	null

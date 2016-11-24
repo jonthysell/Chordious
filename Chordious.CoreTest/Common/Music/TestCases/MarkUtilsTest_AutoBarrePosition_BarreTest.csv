@@ -1,0 +1,57 @@
+# BVT scenarios
+0,4,3,3	Partial	false	3:3-4
+5,4,3,3	Partial	false	3:3-4
+0,7,8,7	Partial	false	7:2-4
+5,7,8,7	Partial	false	5:1-4
+9,7,8,7	Partial	false	7:2-4
+3,3,4,0	Partial	true	3:1-2
+3,3,4,5	Partial	true	3:1-2
+7,8,7,0	Partial	true	7:1-3
+7,8,7,5	Partial	true	5:1-4
+7,8,7,9	Partial	true	7:1-3
+0,4,3,3	Full	false	3:2-4
+5,4,3,3	Full	false	3:1-4
+0,7,8,7	Full	false	7:2-4
+5,7,8,7	Full	false	5:1-4
+9,7,8,7	Full	false	7:1-4
+3,3,4,0	Full	true	3:1-3
+3,3,4,5	Full	true	3:1-4
+7,8,7,0	Full	true	7:1-3
+7,8,7,5	Full	true	5:1-4
+7,8,7,9	Full	true	7:1-4
+
+# All first string, Partial type
+0,0,1,1	Partial	false	1:3-4
+0,1,1,1	Partial	false	1:2-4
+1,0,1,1	Partial	false	1:3-4
+1,1,1,1	Partial	false	1:1-4
+-1,-1,1,1	Partial	false	1:3-4
+-1,1,1,1	Partial	false	1:2-4
+1,-1,1,1	Partial	false	1:3-4
+
+# All first string, Partial type, mirrored
+1,1,0,0	Partial	true	1:1-2
+1,1,1,0	Partial	true	1:1-3
+1,1,0,1	Partial	true	1:1-2
+1,1,1,1	Partial	true	1:1-4
+1,1,-1,-1	Partial	true	1:1-2
+1,1,1,-1	Partial	true	1:1-3
+1,1,-1,1	Partial	true	1:1-2
+
+# All first string, Full type
+0,0,1,1	Full	false	1:3-4
+0,1,1,1	Full	false	1:2-4
+1,0,1,1	Full	false	1:3-4
+1,1,1,1	Full	false	1:1-4
+-1,-1,1,1	Full	false	1:3-4
+-1,1,1,1	Full	false	1:2-4
+1,-1,1,1	Full	false	1:3-4
+
+# All first string, Full type, mirrored
+1,1,0,0	Full	true	1:1-2
+1,1,1,0	Full	true	1:1-3
+1,1,0,1	Full	true	1:1-2
+1,1,1,1	Full	true	1:1-4
+1,1,-1,-1	Full	true	1:1-2
+1,1,1,-1	Full	true	1:1-3
+1,1,-1,1	Full	true	1:1-2

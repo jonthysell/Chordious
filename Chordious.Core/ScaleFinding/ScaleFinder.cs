@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace com.jonthysell.Chordious.Core
 {
@@ -33,6 +35,21 @@ namespace com.jonthysell.Chordious.Core
     {
         public static ScaleFinderResultSet FindScales(ScaleFinderOptions scaleFinderOptions)
         {
+            CancellationTokenSource cts = new CancellationTokenSource();
+
+            Task<ScaleFinderResultSet> task = FindScalesAsync(scaleFinderOptions, cts.Token);
+            task.Wait();
+
+            return task.Result;
+        }
+
+        public static async Task<ScaleFinderResultSet> FindScalesAsync(ScaleFinderOptions scaleFinderOptions, CancellationToken cancelToken)
+        {
+            if (null == scaleFinderOptions)
+            {
+                throw new ArgumentNullException("scaleFinderOptions");
+            }
+
             scaleFinderOptions = scaleFinderOptions.Clone();
 
             Note root = scaleFinderOptions.RootNote;
@@ -42,62 +59,65 @@ namespace com.jonthysell.Chordious.Core
 
             ScaleFinderResultSet results = new ScaleFinderResultSet(scaleFinderOptions);
 
-            FindAllScales(results, null, notesInScale, 0, 0, scaleFinderOptions);
+            if (cancelToken.IsCancellationRequested)
+            {
+                return results;
+            }
+
+            foreach (NoteNode startingNode in FindNodes(notesInScale[0], scaleFinderOptions))
+            {
+                await FindAllScalesAsync(results, startingNode, notesInScale, 1, startingNode.String, scaleFinderOptions, cancelToken);
+            }
 
             return results;
         }
 
-        private static void FindAllScales(ScaleFinderResultSet results, NoteNode noteNode, InternalNote[] targetNotes, int nextNote, int str, ScaleFinderOptions scaleFinderOptions)
+        private static IEnumerable<NoteNode> FindNodes(InternalNote targetNote, ScaleFinderOptions scaleFinderOptions)
         {
+            for (int str = 0; str < scaleFinderOptions.Instrument.NumStrings; str++)
+            {
+                InternalNote rootNote = scaleFinderOptions.Tuning.RootNotes[str].InternalNote;
+
+                int fret = NoteUtils.GetShift(rootNote, targetNote);
+
+                while (fret <= scaleFinderOptions.MaxFret)
+                {
+                    yield return new NoteNode(str, fret, targetNote, null);
+                    fret += 12;
+                }
+            }
+        }
+
+        private static async Task FindAllScalesAsync(ScaleFinderResultSet results, NoteNode noteNode, InternalNote[] targetNotes, int nextNote, int str, ScaleFinderOptions scaleFinderOptions, CancellationToken cancelToken)
+        {
+            if (cancelToken.IsCancellationRequested)
+            {
+                return;
+            }
+
             Instrument instrument = scaleFinderOptions.Instrument;
 
-            if (str == instrument.NumStrings || nextNote == targetNotes.Length) // Build a scale result
+            if (nextNote == targetNotes.Length) // Build a scale result
             {
                 List<MarkPosition> marks = new List<MarkPosition>();
 
                 NoteNode nn = noteNode;
 
-                bool[] hasNotes = new bool[targetNotes.Length];
-
                 // Walk back up the tree to set the marks on the result and flag each target note
-                int i = targetNotes.Length - 1;
                 while (nn != null)
                 {
                     if (nn.Fret >= 0)
                     {
-                        marks.Insert(0, new MarkPosition(nn.String + 1, nn.Fret));
-
-                        if (nn.Note == targetNotes[i])
-                        {
-                            hasNotes[i] = true;
-                            i--;
-                        }
+                        marks.Add(new MarkPosition(nn.String + 1, nn.Fret));
                     }
 
                     nn = nn.Parent;
                 }
 
-                // Add result if it had all the target notes
-                bool valid = true;
-                for (int j = 0; j < hasNotes.Length; j++)
-                {
-                    valid = valid && hasNotes[j];
-                }
-
-                if (valid)
-                {
-                    results.AddResult(marks);
-                }
+                results.AddResult(marks);
             }
-            else // Keep building the tree
+            else if (str < instrument.NumStrings) // Keep building the tree
             {
-                // Look at the muted string
-                if (scaleFinderOptions.AllowMutedStrings && nextNote == 0)
-                {
-                    NoteNode muted = new NoteNode(str, noteNode);
-                    FindAllScales(results, muted, targetNotes, nextNote, str + 1, scaleFinderOptions);
-                }
-
                 // Look at all the notes on the string
                 int startingFret = scaleFinderOptions.AllowOpenStrings ? 0 : 1;
 
@@ -113,17 +133,12 @@ namespace com.jonthysell.Chordious.Core
                     // See if the note is the next target note
                     if (note == targetNotes[nextNote])
                     {
-                        NoteNode child = new NoteNode(str, fret, note, noteNode);
-                        FindAllScales(results, child, targetNotes, nextNote + 1, str, scaleFinderOptions); // Look for the next note on the same string
-                        noteNode = child;
-                        break;
+                        NoteNode child = new NoteNode(str, fret, note, noteNode); // Add found note
+                        await FindAllScalesAsync(results, child, targetNotes, nextNote + 1, str, scaleFinderOptions, cancelToken); // Look for the next note on the same string
                     }
                 }
 
-                if (str + 1 < instrument.NumStrings && nextNote + 1 < targetNotes.Length)
-                {
-                    FindAllScales(results, noteNode, targetNotes, nextNote + 1, str + 1, scaleFinderOptions); // Look for the next note (if there is one) on the next string (if there is one)
-                }
+                await FindAllScalesAsync(results, noteNode, targetNotes, nextNote, str + 1, scaleFinderOptions, cancelToken); // Look for the next note on the next string
             }
         }
 

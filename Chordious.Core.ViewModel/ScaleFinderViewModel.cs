@@ -69,6 +69,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 _isIdle = value;
                 RaisePropertyChanged("IsIdle");
                 RaisePropertyChanged("SearchAsync");
+                RaisePropertyChanged("CancelSearch");
             }
         }
         private bool _isIdle = true;
@@ -816,22 +817,32 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 return new RelayCommand(async () =>
                 {
+                    _searchAsyncCancellationTokenSource = new CancellationTokenSource();
+
                     try
                     {
                         IsIdle = false;
-                        ScaleFinderResultSet results = await FindScalesAsync();
                         Results.Clear();
                         SelectedResults.Clear();
 
-                        if (null == results || results.Count == 0)
+                        ScaleFinderResultSet results = await FindScalesAsync(_searchAsyncCancellationTokenSource.Token);
+                        
+                        if (null != results)
                         {
-                            Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.ScaleFinderNoResultsMessage));
-                        }
-                        else
-                        {
-                            for (int i = 0; i < results.Count; i++)
+                            if (results.Count == 0 && !_searchAsyncCancellationTokenSource.IsCancellationRequested)
                             {
-                                Results.Add(await RenderScaleAsync(results.ResultAt(i)));
+                                Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.ScaleFinderNoResultsMessage));
+                            }
+                            else
+                            {
+                                for (int i = 0; i < results.Count; i++)
+                                {
+                                    if (_searchAsyncCancellationTokenSource.IsCancellationRequested)
+                                    {
+                                        break;
+                                    }
+                                    Results.Add(await RenderScaleAsync(results.ResultAt(i)));
+                                }
                             }
                         }
                     }
@@ -841,11 +852,38 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                     finally
                     {
+                        _searchAsyncCancellationTokenSource = null;
                         IsIdle = true;
                     }
                 }, () =>
                 {
                     return CanSearch();
+                });
+            }
+        }
+
+        private CancellationTokenSource _searchAsyncCancellationTokenSource;
+
+        public RelayCommand CancelSearch
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    try
+                    {
+                        if (null != _searchAsyncCancellationTokenSource)
+                        {
+                            _searchAsyncCancellationTokenSource.Cancel();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return (null != _searchAsyncCancellationTokenSource);
                 });
             }
         }
@@ -1027,11 +1065,25 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             RaisePropertyChanged("SelectedMarkTextOptionIndex");
         }
 
-        private Task<ScaleFinderResultSet> FindScalesAsync()
+        private Task<ScaleFinderResultSet> FindScalesAsync(CancellationToken cancelToken)
         {
             return Task<ScaleFinderResultSet>.Factory.StartNew(() =>
             {
-                return ScaleFinder.FindScales(Options);
+                ScaleFinderResultSet results = null;
+
+                try
+                {
+                    Task<ScaleFinderResultSet> task = ScaleFinder.FindScalesAsync(Options, cancelToken);
+                    task.Wait();
+
+                    results = task.Result;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+
+                return results;
             });
         }
 

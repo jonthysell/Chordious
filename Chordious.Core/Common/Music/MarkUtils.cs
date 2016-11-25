@@ -194,6 +194,29 @@ namespace com.jonthysell.Chordious.Core
             return analysisA.CompareTo(analysisB);
         }
 
+        public static int Compare(IEnumerable<MarkPosition> marksA, IEnumerable<MarkPosition> marksB, int numStrings)
+        {
+            if (null == marksA)
+            {
+                throw new ArgumentNullException("marksA");
+            }
+
+            if (null == marksB)
+            {
+                throw new ArgumentNullException("marksB");
+            }
+
+            if (numStrings <= 0)
+            {
+                throw new ArgumentOutOfRangeException("numStrings");
+            }
+
+            MarkAnalysis analysisA = ScaleAnalysis(marksA, numStrings);
+            MarkAnalysis analysisB = ScaleAnalysis(marksB, numStrings);
+
+            return analysisA.CompareTo(analysisB);
+        }
+
         public static int[] AbsoluteToRelativeMarks(int[] absoluteMarks, out int baseLine, int numFrets)
         {
             if (null == absoluteMarks)
@@ -337,19 +360,19 @@ namespace com.jonthysell.Chordious.Core
                 int str = mark.String;
                 int fret = mark.Fret;
 
+                hasMarks[str - 1] = true;
+
                 if (fret == 0)
                 {
                     ma.HasOpenStrings = true;
                 }
 
-                if (fret >= 0)
+                if (fret > 0)
                 {
-                    hasMarks[str - 1] = true;
-
                     ma.MarkCount++;
                     ma.MeanFret += fret;
                     ma.MinFret = Math.Min(ma.MinFret, fret);
-                    ma.MaxFret = Math.Max(ma.MaxFret,fret);
+                    ma.MaxFret = Math.Max(ma.MaxFret, fret);
                 }
             }
 

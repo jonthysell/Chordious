@@ -29,7 +29,7 @@ using System.Collections.Generic;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class ScaleFinderResult
+    public class ScaleFinderResult : IComparable
     {
         public IEnumerable<MarkPosition> Marks
         {
@@ -168,6 +168,22 @@ namespace com.jonthysell.Chordious.Core
         private string GetText(int markPositionIndex, MarkTextOption markTextOption)
         {
             return GetText(_marks[markPositionIndex], markTextOption);
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (null == obj)
+            {
+                throw new ArgumentNullException("obj");
+            }
+
+            ScaleFinderResult sfr = obj as ScaleFinderResult;
+            if (null == sfr)
+            {
+                throw new ArgumentException();
+            }
+
+            return MarkUtils.Compare(this.Marks, sfr.Marks, this.Parent.ScaleFinderOptions.Instrument.NumStrings);
         }
 
         public override string ToString()

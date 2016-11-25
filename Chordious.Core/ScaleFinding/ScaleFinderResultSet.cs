@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -65,7 +65,7 @@ namespace com.jonthysell.Chordious.Core
             if (IsValid(marks))
             {
                 _results.Add(new ScaleFinderResult(this, marks));
-                //_results.Sort();
+                _results.Sort();
             }
         }
 

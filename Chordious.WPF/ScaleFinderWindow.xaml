@@ -10,6 +10,7 @@
     </Window.DataContext>
     <Window.InputBindings>
         <KeyBinding Key="F5" Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}" />
+        <KeyBinding Key="Escape" Command="{Binding CancelSearch, Mode=OneWay}" />
     </Window.InputBindings>
     <Grid IsEnabled="{Binding IsIdle}" >
         <Grid.RowDefinitions>

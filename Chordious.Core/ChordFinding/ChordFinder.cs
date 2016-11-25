@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2014, 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2014, 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace com.jonthysell.Chordious.Core
 {
@@ -33,6 +35,21 @@ namespace com.jonthysell.Chordious.Core
     {
         public static ChordFinderResultSet FindChords(ChordFinderOptions chordFinderOptions)
         {
+            CancellationTokenSource cts = new CancellationTokenSource();
+
+            Task<ChordFinderResultSet> task = FindChordsAsync(chordFinderOptions, cts.Token);
+            task.Wait();
+
+            return task.Result;
+        }
+
+        public static async Task<ChordFinderResultSet> FindChordsAsync(ChordFinderOptions chordFinderOptions, CancellationToken cancelToken)
+        {
+            if (null == chordFinderOptions)
+            {
+                throw new ArgumentNullException("chordFinderOptions");
+            }
+
             chordFinderOptions = chordFinderOptions.Clone();
 
             Note root = chordFinderOptions.RootNote;
@@ -42,13 +59,23 @@ namespace com.jonthysell.Chordious.Core
 
             ChordFinderResultSet results = new ChordFinderResultSet(chordFinderOptions);
 
-            FindAllChords(results, null, notesInChord, 0, chordFinderOptions);
+            if (cancelToken.IsCancellationRequested)
+            {
+                return results;
+            }
+
+            await FindAllChordsAsync(results, null, notesInChord, 0, chordFinderOptions, cancelToken);
 
             return results;
         }
 
-        private static void FindAllChords(ChordFinderResultSet results, NoteNode noteNode, InternalNote[] targetNotes, int str, ChordFinderOptions chordFinderOptions)
+        private static async Task FindAllChordsAsync(ChordFinderResultSet results, NoteNode noteNode, InternalNote[] targetNotes, int str, ChordFinderOptions chordFinderOptions, CancellationToken cancelToken)
         {
+            if (cancelToken.IsCancellationRequested)
+            {
+                return;
+            }
+
             Instrument instrument = chordFinderOptions.Instrument;
 
             if (str == instrument.NumStrings) // Build a chord result
@@ -105,7 +132,7 @@ namespace com.jonthysell.Chordious.Core
                 {
                     NoteNode muted = new NoteNode();
                     muted.Parent = noteNode;
-                    FindAllChords(results, muted, targetNotes, str + 1, chordFinderOptions);
+                    await FindAllChordsAsync(results, muted, targetNotes, str + 1, chordFinderOptions, cancelToken);
                 }
 
                 // Look at all the notes on the string
@@ -121,7 +148,7 @@ namespace com.jonthysell.Chordious.Core
                         if (note == targetNotes[i])
                         {
                             NoteNode child = new NoteNode(fret, note, noteNode);
-                            FindAllChords(results, child, targetNotes, str + 1, chordFinderOptions);
+                            await FindAllChordsAsync(results, child, targetNotes, str + 1, chordFinderOptions, cancelToken);
                             break;
                         }
                     }

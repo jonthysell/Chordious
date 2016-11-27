@@ -33,7 +33,7 @@ namespace com.jonthysell.Chordious.Core
 {
     public class ScaleFinder
     {
-        public static ScaleFinderResultSet FindScales(ScaleFinderOptions scaleFinderOptions)
+        public static ScaleFinderResultSet FindScales(IScaleFinderOptions scaleFinderOptions)
         {
             CancellationTokenSource cts = new CancellationTokenSource();
 
@@ -43,19 +43,17 @@ namespace com.jonthysell.Chordious.Core
             return task.Result;
         }
 
-        public static async Task<ScaleFinderResultSet> FindScalesAsync(ScaleFinderOptions scaleFinderOptions, CancellationToken cancelToken)
+        public static async Task<ScaleFinderResultSet> FindScalesAsync(IScaleFinderOptions scaleFinderOptions, CancellationToken cancelToken)
         {
             if (null == scaleFinderOptions)
             {
                 throw new ArgumentNullException("scaleFinderOptions");
             }
 
-            scaleFinderOptions = scaleFinderOptions.Clone();
+            InternalNote root = NoteUtils.ToInternalNote(scaleFinderOptions.RootNote);
+            IScale scale = scaleFinderOptions.Scale;
 
-            Note root = scaleFinderOptions.RootNote;
-            Scale scale = scaleFinderOptions.Scale;
-
-            InternalNote[] notesInScale = scale.GetNotes(NoteUtils.ToInternalNote(root));
+            InternalNote[] notesInScale = NamedInterval.GetNotes(root, scale.Intervals);
 
             ScaleFinderResultSet results = new ScaleFinderResultSet(scaleFinderOptions);
 
@@ -72,7 +70,7 @@ namespace com.jonthysell.Chordious.Core
             return results;
         }
 
-        private static IEnumerable<NoteNode> FindNodes(InternalNote targetNote, ScaleFinderOptions scaleFinderOptions)
+        private static IEnumerable<NoteNode> FindNodes(InternalNote targetNote, IScaleFinderOptions scaleFinderOptions)
         {
             for (int str = 0; str < scaleFinderOptions.Instrument.NumStrings; str++)
             {
@@ -88,14 +86,14 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        private static async Task FindAllScalesAsync(ScaleFinderResultSet results, NoteNode noteNode, InternalNote[] targetNotes, int nextNote, int str, ScaleFinderOptions scaleFinderOptions, CancellationToken cancelToken)
+        private static async Task FindAllScalesAsync(ScaleFinderResultSet results, NoteNode noteNode, InternalNote[] targetNotes, int nextNote, int str, IScaleFinderOptions scaleFinderOptions, CancellationToken cancelToken)
         {
             if (cancelToken.IsCancellationRequested)
             {
                 return;
             }
 
-            Instrument instrument = scaleFinderOptions.Instrument;
+            IInstrument instrument = scaleFinderOptions.Instrument;
 
             if (nextNote == targetNotes.Length) // Build a scale result
             {
@@ -128,7 +126,7 @@ namespace com.jonthysell.Chordious.Core
 
                 for (int fret = startingFret; fret <= scaleFinderOptions.MaxFret; fret++)
                 {
-                    InternalNote note = scaleFinderOptions.Tuning.InternalNoteAt(str, fret);
+                    InternalNote note = NoteUtils.Shift(scaleFinderOptions.Tuning.RootNotes[str].InternalNote, fret);
 
                     // See if the note is the next target note
                     if (note == targetNotes[nextNote])

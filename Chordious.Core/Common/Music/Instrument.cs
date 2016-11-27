@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class Instrument : IReadOnly, IComparable
+    public class Instrument : IInstrument, IReadOnly, IComparable
     {
         public bool ReadOnly { get; private set; }
 
@@ -114,12 +114,19 @@ namespace com.jonthysell.Chordious.Core
         }
         private int _numStrings;
 
-        public TuningSet Tunings { get; private set; }
+        public ITuningSet Tunings
+        {
+            get
+            {
+                return _tunings;
+            }
+        }
+        private TuningSet _tunings;
 
         private Instrument(InstrumentSet parent)
         {
             ReadOnly = false;
-            Tunings = new TuningSet(this);
+            _tunings = new TuningSet(this);
             Parent = parent;
         }
 
@@ -161,7 +168,7 @@ namespace com.jonthysell.Chordious.Core
                     {
                         if (xmlReader.IsStartElement() && xmlReader.Name == "tuning")
                         {
-                            Tunings.Read(xmlReader.ReadSubtree());
+                            _tunings.Read(xmlReader.ReadSubtree());
                         }
                     }
                 }
@@ -180,7 +187,7 @@ namespace com.jonthysell.Chordious.Core
             xmlWriter.WriteAttributeString("name", this.Name);
             xmlWriter.WriteAttributeString("strings", this.NumStrings.ToString());
 
-            foreach (Tuning t in Tunings)
+            foreach (Tuning t in _tunings)
             {
                 t.Write(xmlWriter);
             }

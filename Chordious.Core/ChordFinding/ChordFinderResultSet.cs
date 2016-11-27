@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2014, 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2014, 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ namespace com.jonthysell.Chordious.Core
 {
     public class ChordFinderResultSet
     {
-        public ChordFinderOptions ChordFinderOptions { get; private set; }
+        public IChordFinderOptions ChordFinderOptions { get; private set; }
 
         public int Count
         {
@@ -41,7 +41,7 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public IEnumerable<ChordFinderResult> Results
+        public IEnumerable<IChordFinderResult> Results
         {
             get
             {
@@ -52,12 +52,12 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        private List<ChordFinderResult> _results;
+        private List<IChordFinderResult> _results;
 
-        internal ChordFinderResultSet(ChordFinderOptions chordFinderOptions)
+        internal ChordFinderResultSet(IChordFinderOptions chordFinderOptions)
         {
             this.ChordFinderOptions = chordFinderOptions;
-            this._results = new List<ChordFinderResult>();
+            this._results = new List<IChordFinderResult>();
         }
 
         public void AddResult(int[] marks)
@@ -69,14 +69,14 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public ChordFinderResult ResultAt(int index)
+        public IChordFinderResult ResultAt(int index)
         {
             return _results[index];
         }
 
         public Diagram DiagramAt(int index, ChordFinderStyle chordFinderStyle)
         {
-            ChordFinderResult result = ResultAt(index);
+            IChordFinderResult result = ResultAt(index);
             return result.ToDiagram(chordFinderStyle);
         }
 

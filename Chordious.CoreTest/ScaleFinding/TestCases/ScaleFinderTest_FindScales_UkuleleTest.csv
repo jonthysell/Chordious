@@ -1,0 +1,4 @@
+# Instrument;Tuning;Scale;RootNote;NumFrets;MaxFret;MaxReach;AllowOpenStrings;AllowMutedStrings	allowExtras	result1;result2;result3...
+
+# BVT scenarios
+Ukulele;UkuleleStandard;Major;C;4;5;4;True;True	False	1:5,2:2,2:4,2:5,3:3,4:0,4:2,4:3;1:5,2:2,2:4,2:5,3:3,3:5,4:2,4:3;2:0,2:2,3:0,3:1,3:3,4:0,4:2,4:3;2:0,2:2,2:4,3:1,3:3,4:0,4:2,4:3;2:0,2:2,2:4,2:5,3:3,4:0,4:2,4:3;2:0,2:2,2:4,2:5,3:3,3:5,4:2,4:3

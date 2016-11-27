@@ -1127,7 +1127,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             SelectedResults.CollectionChanged += SelectedResults_CollectionChanged;
         }
 
-        private void RefreshInstruments(Instrument selectedInstrument = null, Tuning selectedTuning = null)
+        private void RefreshInstruments(IInstrument selectedInstrument = null, ITuning selectedTuning = null)
         {
             Instruments = AppVM.GetInstruments();
             SelectedInstrument = null;
@@ -1163,7 +1163,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        private void RefreshChordQualities(ChordQuality selectedChordQuality = null)
+        private void RefreshChordQualities(IChordQuality selectedChordQuality = null)
         {
             ChordQualities = AppVM.GetChordQualities();
             SelectedChordQuality = null;
@@ -1224,7 +1224,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             });
         }
 
-        private Task<ObservableDiagram> RenderChordAsync(ChordFinderResult result)
+        private Task<ObservableDiagram> RenderChordAsync(IChordFinderResult result)
         {            
             return Task<ObservableDiagram>.Factory.StartNew(() =>
             {

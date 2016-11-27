@@ -25,12 +25,101 @@
 // THE SOFTWARE.
 
 using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Text;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.CoreTest
 {
     public class TestUtils
     {
-        public static int[] ParseIntArray(string s, char delimeter = ',')
+        public static void ExpectInnerException<T>(Action action) where T : Exception
+        {
+            try
+            {
+                action();
+                Assert.Fail("Exception of type {0} not thrown.", typeof(T));
+            }
+            catch (AggregateException ex)
+            {
+                Assert.IsInstanceOfType(ex.InnerException, typeof(T));
+            }
+        }
+
+        public static void AreEqual<T>(IEnumerable<T> expected, IEnumerable<T> actual, bool allowExtras = false) where T : class
+        {
+            if ((null == expected) != (null == actual))
+            {
+                Assert.AreEqual(expected, actual);
+            }
+
+            if (expected != null && actual != null)
+            {
+                Queue<T> expectedList = new Queue<T>(expected);
+                List<T> actualList = new List<T>(actual);
+
+                List<T> missingItems = new List<T>();
+
+                while (expectedList.Count > 0)
+                {
+                    T expectedItem = expectedList.Dequeue();
+
+                    T foundActualItem = null;
+
+                    foreach (T actualItem in actualList)
+                    {
+                        if (expectedItem.Equals(actualItem))
+                        {
+                            foundActualItem = actualItem;
+                            break;
+                        }
+                    }
+
+                    if (null != foundActualItem)
+                    {
+                        actualList.Remove(foundActualItem);
+                    }
+                    else
+                    {
+                        missingItems.Add(expectedItem);
+                    }
+                }
+
+                if (missingItems.Count > 0)
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.AppendLine(String.Format("{0} items missing from expected:", missingItems.Count));
+
+                    foreach (T item in missingItems)
+                    {
+                        sb.AppendLine(item.ToString());
+                    }
+
+                    Assert.Fail(sb.ToString());
+                }
+
+                if (actualList.Count > 0 && !allowExtras)
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.AppendLine(String.Format("{0} items extra in actual:", actualList.Count));
+
+                    foreach (T item in actualList)
+                    {
+                        sb.AppendLine(item.ToString());
+                    }
+
+                    Assert.Fail(sb.ToString());
+                }
+            }
+        }
+
+        public static int[] ParseIntArray(string s, char delimiter = ',')
         {
             if (String.IsNullOrWhiteSpace(s))
             {
@@ -39,7 +128,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
             s = s.Trim();
 
-            string[] arrayVals = s.Split(delimeter);
+            string[] arrayVals = s.Split(delimiter);
 
             int[] array = new int[arrayVals.Length];
             for (int i = 0; i < arrayVals.Length; i++)
@@ -49,5 +138,106 @@ namespace com.jonthysell.Chordious.CoreTest
 
             return array;
         }
+
+        public static IEnumerable<T> Parse<T>(string s, Func<string,T> parser, char delimiter = ',')
+        {
+            if (String.IsNullOrWhiteSpace(s))
+            {
+                throw new ArgumentNullException("s");
+            }
+
+            s = s.Trim();
+
+            string[] arrayVals = s.Split(delimiter);
+
+            T[] array = new T[arrayVals.Length];
+            for (int i = 0; i < arrayVals.Length; i++)
+            {
+                array[i] = parser(arrayVals[i]);
+            }
+
+            return array;
+        }
+
+        public static string ToString<T>(IEnumerable<T> items, char delimiter = ',')
+        {
+            if (null == items)
+            {
+                return "null";
+            }
+
+            StringBuilder sb = new StringBuilder();
+            foreach (T item in items)
+            {
+                sb.Append(item.ToString());
+                sb.Append(delimiter);
+            }
+
+            return sb.ToString().TrimEnd(delimiter);
+        }
+
+        public static void LoadAndExecuteTestCases<T>(string fileName) where T : ITestCase, new()
+        {
+            IEnumerable<T> testCases = LoadTestCases<T>(fileName);
+            ExecuteTestCases<T>(testCases);
+        }
+
+        public static IEnumerable<T> LoadTestCases<T>(string fileName) where T : ITestCase, new()
+        {
+            List<T> testCases = new List<T>();
+
+            using (StreamReader sr = new StreamReader(fileName))
+            {
+                string line;
+                while (null != (line = sr.ReadLine()))
+                {
+                    line = line.Trim();
+                    if (!String.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
+                    {
+                        T testCase = new T();
+                        testCase.Parse(line);
+                        testCases.Add(testCase);
+                    }
+                }
+            }
+
+            return testCases;
+        }
+
+        public static void ExecuteTestCases<T>(IEnumerable<T> testCases) where T : ITestCase, new()
+        {
+            List<T> failedTestCases = new List<T>();
+            StringBuilder failMessages = new StringBuilder();
+
+            foreach (T testCase in testCases)
+            {
+                try
+                {
+                    testCase.Execute();
+                }
+                catch (AssertFailedException ex)
+                {
+                    failedTestCases.Add(testCase);
+                    failMessages.AppendLine(String.Format("Test case \"{0}\" failed:", testCase));
+                    failMessages.AppendLine(ex.Message);
+                }
+            }
+
+            if (failedTestCases.Count > 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(String.Format("{0} test cases failed:", failedTestCases.Count));
+
+                sb.Append(failMessages.ToString());
+
+                Assert.Fail(sb.ToString());
+            }
+        }
+    }
+
+    public interface ITestCase
+    {
+        void Execute();
+        void Parse(string s);
     }
 }

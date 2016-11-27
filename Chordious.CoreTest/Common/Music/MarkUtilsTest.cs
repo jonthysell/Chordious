@@ -25,9 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -50,76 +47,16 @@ namespace com.jonthysell.Chordious.CoreTest
         [TestMethod]
         public void AutoBarrePosition_NoBarreTest()
         {
-            LoadAndExecuteAutoBarrePositionTestCases("MarkUtilsTest_AutoBarrePosition_NoBarreTest.csv");
+            TestUtils.LoadAndExecuteTestCases<AutoBarrePositionTestCase>("MarkUtilsTest_AutoBarrePosition_NoBarreTest.csv");
         }
 
         [TestMethod]
         public void AutoBarrePosition_BarreTest()
         {
-            LoadAndExecuteAutoBarrePositionTestCases("MarkUtilsTest_AutoBarrePosition_BarreTest.csv");
+            TestUtils.LoadAndExecuteTestCases<AutoBarrePositionTestCase>("MarkUtilsTest_AutoBarrePosition_BarreTest.csv");
         }
 
-        private void LoadAndExecuteAutoBarrePositionTestCases(string fileName)
-        {
-            IEnumerable<AutoBarrePositionTestCase> testCases = LoadAutoBarrePositionTestCases(fileName);
-            ExecuteAutoBarrePositionTestCases(testCases);
-        }
-
-        private IEnumerable<AutoBarrePositionTestCase> LoadAutoBarrePositionTestCases(string fileName)
-        {
-            List<AutoBarrePositionTestCase> testCases = new List<AutoBarrePositionTestCase>();
-
-            using (StreamReader sr = new StreamReader(fileName))
-            {
-                string line;
-                while (null != (line = sr.ReadLine()))
-                {
-                    line = line.Trim();
-                    if (!String.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
-                    {
-                        testCases.Add(AutoBarrePositionTestCase.Parse(line));
-                    }
-                }
-            }
-
-            return testCases;
-        }
-
-        private void ExecuteAutoBarrePositionTestCases(IEnumerable<AutoBarrePositionTestCase> testCases)
-        {
-            List<AutoBarrePositionTestCase> failedTestCases = new List<AutoBarrePositionTestCase>();
-
-            foreach (AutoBarrePositionTestCase testCase in testCases)
-            {
-                testCase.ActualResult = MarkUtils.AutoBarrePosition(testCase.marks, testCase.barreTypeOption, testCase.rightToLeft);
-                if (testCase.ExpectedResult != testCase.ActualResult)
-                {
-                    failedTestCases.Add(testCase);
-                }
-            }
-
-            if (failedTestCases.Count > 0)
-            {
-                StringBuilder sb = new StringBuilder();
-
-                sb.AppendLine(String.Format("{0} test cases failed:", failedTestCases.Count));
-
-                foreach (AutoBarrePositionTestCase failedTestCase in failedTestCases)
-                {
-                    sb.AppendLine(String.Format("Expected: <{3}>, Actual: <{4}> for test case \"{0};{1};{2};{3}\"",
-                        String.Join(",", failedTestCase.marks),
-                        failedTestCase.barreTypeOption,
-                        failedTestCase.rightToLeft,
-                        failedTestCase.ExpectedResult == null ? "null" : failedTestCase.ExpectedResult.ToString(),
-                        failedTestCase.ActualResult == null ? "null" : failedTestCase.ActualResult.ToString()
-                        ));
-                }
-
-                Assert.Fail(sb.ToString());
-            }
-        }
-
-        private class AutoBarrePositionTestCase
+        private class AutoBarrePositionTestCase : ITestCase
         {
             public int[] marks;
             public BarreTypeOption barreTypeOption;
@@ -128,7 +65,13 @@ namespace com.jonthysell.Chordious.CoreTest
             public BarrePosition ExpectedResult;
             public BarrePosition ActualResult;
 
-            public static AutoBarrePositionTestCase Parse(string s)
+            public void Execute()
+            {
+                ActualResult = MarkUtils.AutoBarrePosition(marks, barreTypeOption, rightToLeft);
+                Assert.AreEqual(ExpectedResult, ActualResult);
+            }
+
+            public void Parse(string s)
             {
                 if (String.IsNullOrWhiteSpace(s))
                 {
@@ -139,14 +82,21 @@ namespace com.jonthysell.Chordious.CoreTest
 
                 string[] vals = s.Split('\t');
 
-                int[] marks = TestUtils.ParseIntArray(vals[0]);
+                marks = TestUtils.ParseIntArray(vals[0]);
 
-                BarreTypeOption barreTypeOption = (BarreTypeOption)Enum.Parse(typeof(BarreTypeOption), vals[1]);
-                bool rightToLeft = Boolean.Parse(vals[2]);
+                barreTypeOption = (BarreTypeOption)Enum.Parse(typeof(BarreTypeOption), vals[1]);
+                rightToLeft = Boolean.Parse(vals[2]);
 
-                BarrePosition ExpectedResult = BarrePosition.Parse(vals[3]);
+                ExpectedResult = BarrePosition.Parse(vals[3]);
+            }
 
-                return new AutoBarrePositionTestCase { marks = marks, barreTypeOption = barreTypeOption, rightToLeft = rightToLeft, ExpectedResult = ExpectedResult };
+            public override string ToString()
+            {
+                return String.Join("\t",
+                    String.Join(",", marks),
+                    barreTypeOption,
+                    rightToLeft,
+                    null == ExpectedResult ? "null" : ExpectedResult.ToString());
             }
         }
 

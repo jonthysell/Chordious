@@ -51,8 +51,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ChordFinding\ChordFinderTest.cs" />
     <Compile Include="Common\Music\MarkUtilsTest.cs" />
+    <Compile Include="Common\Music\TestInstrument.cs" />
+    <Compile Include="Common\Music\TestTuning.cs" />
+    <Compile Include="Common\Music\TestTuningSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScaleFinding\ScaleFinderTest.cs" />
     <Compile Include="TestUtils.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,13 +67,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ChordFinding\TestCases\ChordFinderTest_FindChords_UkuleleTest.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Common\Music\TestCases\MarkUtilsTest_AutoBarrePosition_BarreTest.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Common\Music\TestCases\MarkUtilsTest_AutoBarrePosition_NoBarreTest.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScaleFinding\TestCases\ScaleFinderTest_FindScales_UkuleleTest.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

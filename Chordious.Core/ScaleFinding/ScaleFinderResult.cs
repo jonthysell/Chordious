@@ -29,7 +29,7 @@ using System.Collections.Generic;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class ScaleFinderResult : IComparable
+    public class ScaleFinderResult : IScaleFinderResult
     {
         public IEnumerable<MarkPosition> Marks
         {
@@ -60,7 +60,7 @@ namespace com.jonthysell.Chordious.Core
 
         public InternalNote NoteAt(MarkPosition position)
         {
-            return this.Parent.ScaleFinderOptions.Tuning.InternalNoteAt(position.String - 1, position.Fret);
+            return NoteUtils.Shift(this.Parent.ScaleFinderOptions.Tuning.RootNotes[position.String - 1].InternalNote, position.Fret);
         }
 
         private InternalNote NoteAt(int markPositionIndex)

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,16 +28,16 @@ using System;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class ScaleFinderOptions : FinderOptions
+    public class ScaleFinderOptions : FinderOptions, IScaleFinderOptions
     {
-        public Scale Scale
+        public IScale Scale
         {
             get
             {
                 return GetScale();
             }
         }
-        private Scale _cachedScale;
+        private IScale _cachedScale;
 
         public string ScaleLevel
         {
@@ -65,7 +65,7 @@ namespace com.jonthysell.Chordious.Core
             this._cachedScale = null;
         }
 
-        public Scale GetScale()
+        public IScale GetScale()
         {
             string longName = this.Settings[Prefix + "scale"];
 
@@ -98,7 +98,7 @@ namespace com.jonthysell.Chordious.Core
             return this._cachedScale;
         }
 
-        public void SetTarget(Note rootNote, Scale scale)
+        public void SetTarget(Note rootNote, IScale scale)
         {
             if (null == scale)
             {

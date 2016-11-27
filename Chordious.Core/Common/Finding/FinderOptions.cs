@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,27 +28,27 @@ using System;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public abstract class FinderOptions
+    public abstract class FinderOptions : IFinderOptions
     {
         public ChordiousSettings Settings { get; protected set; }
 
-        public Instrument Instrument
+        public IInstrument Instrument
         {
             get
             {
                 return GetInstrument();
             }
         }
-        protected Instrument _cachedInstrument;
+        protected IInstrument _cachedInstrument;
 
-        public Tuning Tuning
+        public ITuning Tuning
         {
             get
             {
                 return GetTuning();
             }
         }
-        protected Tuning _cachedTuning;
+        protected ITuning _cachedTuning;
 
         public string InstrumentTuningLevel
         {
@@ -193,7 +193,7 @@ namespace com.jonthysell.Chordious.Core
             this._cachedTuning = null;
         }
 
-        public Instrument GetInstrument()
+        public IInstrument GetInstrument()
         {
             string name = this.Settings[Prefix + "instrument"];
 
@@ -228,7 +228,7 @@ namespace com.jonthysell.Chordious.Core
             return this._cachedInstrument;
         }
 
-        public Tuning GetTuning()
+        public ITuning GetTuning()
         {
             string longName = this.Settings[Prefix + "tuning"];
 
@@ -242,7 +242,7 @@ namespace com.jonthysell.Chordious.Core
                 this._cachedTuning = null;
             }
 
-            Tuning t;
+            ITuning t;
             if (null != Instrument && Instrument.Tunings.TryGet(longName, out t))
             {
                 this._cachedTuning = t;
@@ -251,7 +251,7 @@ namespace com.jonthysell.Chordious.Core
             return this._cachedTuning;
         }
 
-        public void SetTarget(Instrument instrument, Tuning tuning)
+        public void SetTarget(IInstrument instrument, ITuning tuning)
         {
             if (null == instrument)
             {
@@ -279,8 +279,8 @@ namespace com.jonthysell.Chordious.Core
 
     public class InstrumentTuningMismatchException : ChordiousException
     {
-        public Instrument Instrument { get; private set; }
-        public Tuning Tuning { get; private set; }
+        public IInstrument Instrument { get; private set; }
+        public ITuning Tuning { get; private set; }
 
         public override string Message
         {
@@ -290,7 +290,7 @@ namespace com.jonthysell.Chordious.Core
             }
         }
 
-        public InstrumentTuningMismatchException(Instrument instrument, Tuning tuning) : base()
+        public InstrumentTuningMismatchException(IInstrument instrument, ITuning tuning) : base()
         {
             this.Instrument = instrument;
             this.Tuning = tuning;

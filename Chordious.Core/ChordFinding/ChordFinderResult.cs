@@ -28,7 +28,7 @@ using System;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class ChordFinderResult : IComparable
+    public class ChordFinderResult : IChordFinderResult
     {
         public int[] Marks { get; private set; }
 

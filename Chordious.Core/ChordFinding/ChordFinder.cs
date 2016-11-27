@@ -33,7 +33,7 @@ namespace com.jonthysell.Chordious.Core
 {
     public class ChordFinder
     {
-        public static ChordFinderResultSet FindChords(ChordFinderOptions chordFinderOptions)
+        public static ChordFinderResultSet FindChords(IChordFinderOptions chordFinderOptions)
         {
             CancellationTokenSource cts = new CancellationTokenSource();
 
@@ -43,19 +43,17 @@ namespace com.jonthysell.Chordious.Core
             return task.Result;
         }
 
-        public static async Task<ChordFinderResultSet> FindChordsAsync(ChordFinderOptions chordFinderOptions, CancellationToken cancelToken)
+        public static async Task<ChordFinderResultSet> FindChordsAsync(IChordFinderOptions chordFinderOptions, CancellationToken cancelToken)
         {
             if (null == chordFinderOptions)
             {
                 throw new ArgumentNullException("chordFinderOptions");
             }
 
-            chordFinderOptions = chordFinderOptions.Clone();
+            InternalNote root = NoteUtils.ToInternalNote(chordFinderOptions.RootNote);
+            IChordQuality chordQuality = chordFinderOptions.ChordQuality;
 
-            Note root = chordFinderOptions.RootNote;
-            ChordQuality chordQuality = chordFinderOptions.ChordQuality;
-
-            InternalNote[] notesInChord = chordQuality.GetNotes(NoteUtils.ToInternalNote(root));
+            InternalNote[] notesInChord = NamedInterval.GetNotes(root, chordQuality.Intervals);
 
             ChordFinderResultSet results = new ChordFinderResultSet(chordFinderOptions);
 
@@ -69,14 +67,14 @@ namespace com.jonthysell.Chordious.Core
             return results;
         }
 
-        private static async Task FindAllChordsAsync(ChordFinderResultSet results, NoteNode noteNode, InternalNote[] targetNotes, int str, ChordFinderOptions chordFinderOptions, CancellationToken cancelToken)
+        private static async Task FindAllChordsAsync(ChordFinderResultSet results, NoteNode noteNode, InternalNote[] targetNotes, int str, IChordFinderOptions chordFinderOptions, CancellationToken cancelToken)
         {
             if (cancelToken.IsCancellationRequested)
             {
                 return;
             }
 
-            Instrument instrument = chordFinderOptions.Instrument;
+            IInstrument instrument = chordFinderOptions.Instrument;
 
             if (str == instrument.NumStrings) // Build a chord result
             {
@@ -139,7 +137,7 @@ namespace com.jonthysell.Chordious.Core
                 int startingFret = chordFinderOptions.AllowOpenStrings ? 0 : 1;
                 for (int fret = startingFret; fret <= chordFinderOptions.MaxFret; fret++)
                 {
-                    InternalNote note = chordFinderOptions.Tuning.InternalNoteAt(str, fret);
+                    InternalNote note = NoteUtils.Shift(chordFinderOptions.Tuning.RootNotes[str].InternalNote, fret);
 
                     // See if the note is a target note
                     for (int i = 0; i < targetNotes.Length; i++)

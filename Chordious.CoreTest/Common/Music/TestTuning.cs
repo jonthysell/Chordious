@@ -1,10 +1,10 @@
-// 
-// ScaleFinderResultSet.cs
+﻿// 
+// TestTuning.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,58 +25,44 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
 
-namespace com.jonthysell.Chordious.Core
+using com.jonthysell.Chordious.Core;
+
+namespace com.jonthysell.Chordious.CoreTest
 {
-    public class ScaleFinderResultSet
+    public class TestTuning : ITuning
     {
-        public IScaleFinderOptions ScaleFinderOptions { get; private set; }
+        public ITuningSet Parent { get; private set; }
 
-        public int Count
+        public string Level
         {
             get
             {
-                return _results.Count;
+                return "Test";
             }
         }
 
-        public IEnumerable<ScaleFinderResult> Results
+        public string Name { get; private set; }
+        public string LongName
         {
             get
             {
-                foreach (ScaleFinderResult sfr in _results)
-                {
-                    yield return sfr;
-                }
+                return Name;
             }
         }
 
-        private List<ScaleFinderResult> _results;
+        public FullNote[] RootNotes { get; private set; }
 
-        internal ScaleFinderResultSet(IScaleFinderOptions scaleFinderOptions)
+        public TestTuning(TestTuningSet parent, string name, FullNote[] rootNotes)
         {
-            this.ScaleFinderOptions = scaleFinderOptions;
-            this._results = new List<ScaleFinderResult>();
+            Parent = parent;
+            Name = name;
+            RootNotes = rootNotes;
         }
 
-        public void AddResult(IEnumerable<MarkPosition> marks)
+        public int CompareTo(object obj)
         {
-            if (IsValid(marks))
-            {
-                _results.Add(new ScaleFinderResult(this, marks));
-                _results.Sort();
-            }
-        }
-
-        public ScaleFinderResult ResultAt(int index)
-        {
-            return _results[index];
-        }
-
-        private bool IsValid(IEnumerable<MarkPosition> marks)
-        {
-            return MarkUtils.ValidateScale(marks, ScaleFinderOptions);
+            throw new NotImplementedException();
         }
     }
 }

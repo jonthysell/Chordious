@@ -1,10 +1,10 @@
-// 
-// ScaleFinderResultSet.cs
+﻿// 
+// TestTuningSet.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,58 +25,75 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
-namespace com.jonthysell.Chordious.Core
+using com.jonthysell.Chordious.Core;
+
+namespace com.jonthysell.Chordious.CoreTest
 {
-    public class ScaleFinderResultSet
+    public class TestTuningSet : ITuningSet
     {
-        public IScaleFinderOptions ScaleFinderOptions { get; private set; }
+        public IInstrument Instrument { get; private set; }
 
         public int Count
         {
             get
             {
-                return _results.Count;
+                return _tunings.Count;
             }
         }
 
-        public IEnumerable<ScaleFinderResult> Results
+        private List<ITuning> _tunings;
+
+        public ITuning Get(string longName)
         {
-            get
+            foreach (ITuning tuning in _tunings)
             {
-                foreach (ScaleFinderResult sfr in _results)
+                if (tuning.LongName == longName)
                 {
-                    yield return sfr;
+                    return tuning;
                 }
             }
+
+            return null;
         }
 
-        private List<ScaleFinderResult> _results;
-
-        internal ScaleFinderResultSet(IScaleFinderOptions scaleFinderOptions)
+        public bool TryGet(string longName, out ITuning tuning)
         {
-            this.ScaleFinderOptions = scaleFinderOptions;
-            this._results = new List<ScaleFinderResult>();
+            throw new NotImplementedException();
         }
 
-        public void AddResult(IEnumerable<MarkPosition> marks)
+        public ITuning Add(string name, FullNote[] rootNotes)
         {
-            if (IsValid(marks))
-            {
-                _results.Add(new ScaleFinderResult(this, marks));
-                _results.Sort();
-            }
+            TestTuning tuning = new TestTuning(this, name, rootNotes);
+            _tunings.Add(tuning);
+            return tuning;
         }
 
-        public ScaleFinderResult ResultAt(int index)
+        public bool Remove(ITuning tuning)
         {
-            return _results[index];
+            throw new NotImplementedException();
         }
 
-        private bool IsValid(IEnumerable<MarkPosition> marks)
+        public void CopyFrom(ITuningSet tuningSet)
         {
-            return MarkUtils.ValidateScale(marks, ScaleFinderOptions);
+            throw new NotImplementedException();
+        }
+
+        public IEnumerator<ITuning> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public TestTuningSet(IInstrument instrument)
+        {
+            _tunings = new List<ITuning>();
         }
     }
 }

@@ -54,9 +54,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChordFinding\IChordFinderResult.cs" />
+    <Compile Include="ChordFinding\IChordFinderOptions.cs" />
     <Compile Include="Common\EnumUtils.cs" />
     <Compile Include="Common\Finding\FinderOptions.cs" />
+    <Compile Include="Common\Finding\IFinderOptions.cs" />
     <Compile Include="Common\ListUtils.cs" />
+    <Compile Include="Common\Music\ITuningSet.cs" />
+    <Compile Include="Common\Music\IScale.cs" />
+    <Compile Include="Common\Music\INamedInterval.cs" />
+    <Compile Include="Common\Music\IChordQuality.cs" />
+    <Compile Include="Common\Music\ITuning.cs" />
+    <Compile Include="Common\Music\IInstrument.cs" />
     <Compile Include="Common\Music\NamedIntervalSet.cs" />
     <Compile Include="Common\Music\ScaleSet.cs" />
     <Compile Include="Common\Music\ChordQualitySet.cs" />
@@ -109,6 +118,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="ScaleFinding\IScaleFinderResult.cs" />
+    <Compile Include="ScaleFinding\IScaleFinderOptions.cs" />
     <Compile Include="ScaleFinding\ScaleFinderStyle.cs" />
     <Compile Include="ScaleFinding\ScaleFinderResult.cs" />
     <Compile Include="ScaleFinding\ScaleFinderResultSet.cs" />

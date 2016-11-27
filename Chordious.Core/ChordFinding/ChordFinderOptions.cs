@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2014, 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2014, 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,16 +28,16 @@ using System;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class ChordFinderOptions : FinderOptions
+    public class ChordFinderOptions : FinderOptions, IChordFinderOptions
     {
-        public ChordQuality ChordQuality
+        public IChordQuality ChordQuality
         {
             get
             {
                 return GetChordQuality();
             }
         }
-        private ChordQuality _cachedChordQuality;
+        private IChordQuality _cachedChordQuality;
 
         public string ChordQualityLevel
         {
@@ -78,7 +78,7 @@ namespace com.jonthysell.Chordious.Core
             this._cachedChordQuality = null;
         }
 
-        public ChordQuality GetChordQuality()
+        public IChordQuality GetChordQuality()
         {
             string longName = this.Settings[Prefix + "chordquality"];
 
@@ -112,7 +112,7 @@ namespace com.jonthysell.Chordious.Core
             return this._cachedChordQuality;
         }
 
-        public void SetTarget(Note rootNote, ChordQuality chordQuality)
+        public void SetTarget(Note rootNote, IChordQuality chordQuality)
         {
             if (null == chordQuality)
             {

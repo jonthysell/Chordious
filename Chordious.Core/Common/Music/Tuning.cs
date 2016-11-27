@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2015, 2016 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,23 +29,15 @@ using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class Tuning : IReadOnly, IComparable
+    public class Tuning : ITuning, IReadOnly
     {
         public bool ReadOnly { get; private set; }
 
-        public TuningSet Parent
+        public ITuningSet Parent
         {
             get
             {
                 return _parent;
-            }
-            private set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-                _parent = value;
             }
         }
         private TuningSet _parent;
@@ -84,7 +76,7 @@ namespace com.jonthysell.Chordious.Core
                 // Resort with parent
                 if (UpdateParent)
                 {
-                    Parent.Resort(this, () =>
+                    _parent.Resort(this, () =>
                     {
                         _name = oldValue;
                     });
@@ -139,7 +131,7 @@ namespace com.jonthysell.Chordious.Core
                 // Resort with parent
                 if (UpdateParent)
                 {
-                    Parent.Resort(this, () =>
+                    _parent.Resort(this, () =>
                     {
                         _rootNotes = oldValue;
                     });
@@ -158,7 +150,7 @@ namespace com.jonthysell.Chordious.Core
             }
 
             this.ReadOnly = false;
-            this.Parent = parent;
+            this._parent = parent;
         }
 
         internal Tuning(TuningSet parent, string name, FullNote[] rootNotes) : this(parent)
@@ -234,7 +226,7 @@ namespace com.jonthysell.Chordious.Core
             this.Name = name;
             this.RootNotes = rootNotes;
 
-            Parent.Resort(this, () =>
+            _parent.Resort(this, () =>
             {
                 this.Name = oldName;
                 this.RootNotes = oldRootNotes;

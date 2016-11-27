@@ -64,7 +64,7 @@ namespace com.jonthysell.Chordious.Core
             return s;
         }
 
-        public static bool ValidateChord(int[] chordMarks, ChordFinderOptions chordFinderOptions)
+        public static bool ValidateChord(int[] chordMarks, IChordFinderOptions chordFinderOptions)
         {
             if (null == chordMarks)
             {
@@ -85,7 +85,7 @@ namespace com.jonthysell.Chordious.Core
             return reachPass && openPass && mutePass;
         }
 
-        public static bool ValidateScale(IEnumerable<MarkPosition> scaleMarks, ScaleFinderOptions scaleFinderOptions)
+        public static bool ValidateScale(IEnumerable<MarkPosition> scaleMarks, IScaleFinderOptions scaleFinderOptions)
         {
             if (null == scaleMarks)
             {
@@ -247,7 +247,7 @@ namespace com.jonthysell.Chordious.Core
             return relativeMarks;
         }
 
-        public static InternalNote?[] GetInternalNotes(int[] marks, Tuning tuning)
+        public static InternalNote?[] GetInternalNotes(int[] marks, ITuning tuning)
         {
             if (null == marks || marks.Length == 0)
             {
@@ -263,7 +263,7 @@ namespace com.jonthysell.Chordious.Core
 
             for (int i = 0; i < marks.Length; i++)
             {
-                notes[i] = marks[i] == -1 ? null : (InternalNote?)tuning.InternalNoteAt(i, marks[i]);
+                notes[i] = marks[i] == -1 ? null : (InternalNote?)NoteUtils.Shift(tuning.RootNotes[i].InternalNote, marks[i]);
             }
 
             return notes;

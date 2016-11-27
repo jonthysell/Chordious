@@ -994,7 +994,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             SelectedResults.CollectionChanged += SelectedResults_CollectionChanged;
         }
 
-        private void RefreshInstruments(Instrument selectedInstrument = null, Tuning selectedTuning = null)
+        private void RefreshInstruments(IInstrument selectedInstrument = null, ITuning selectedTuning = null)
         {
             Instruments = AppVM.GetInstruments();
             SelectedInstrument = null;
@@ -1030,7 +1030,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        private void RefreshScales(Scale selectedScale = null)
+        private void RefreshScales(IScale selectedScale = null)
         {
             Scales = AppVM.GetScales();
             SelectedScale = null;

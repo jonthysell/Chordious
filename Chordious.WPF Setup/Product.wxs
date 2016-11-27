@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-  <Product Id="*" Name="Chordious" Language="1033" Version="2.0.1" Manufacturer="Jon Thysell" UpgradeCode="a49f8d4a-4e86-490d-8b31-282e26ad5ccf">
+  <Product Id="*" Name="Chordious" Language="1033" Version="2.0.2" Manufacturer="Jon Thysell" UpgradeCode="a49f8d4a-4e86-490d-8b31-282e26ad5ccf">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Languages="1033"/>
     <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of Chordious is already installed."/>
     <?if $(var.Chordious.WPF.Configuration) = "Release"?>

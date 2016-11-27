@@ -1,5 +1,16 @@
 # Chordious Changelist #
 
+## 2.0.2 ##
+* Chord/Scale Finder searches can now be canceled with the 'Esc' key
+* Fixed bug with full barres in the Chord Finder crossing open/muted strings
+* Fixed bug with partial barres in the Chord Finder not mirroring properly
+* Fixed bug where reach wasn't calculating correctly in the Scale Finder
+* Fixed bug where scales past the 12th fret weren't found in the Scale Finder
+* Fixed bug where many scales were missed by the Scale Finder
+* Added CoreTest unit testing project
+* Added unit tests for finding where to barre in chords
+* Refactored Chord/Scale Finder code for testability added some unit tests
+
 ## 2.0.1 ##
 * Fixed bug where diagrams would render as black boxes in some locales
 * Fixed bug where marks on the fretboard could be pushed off the bottom

@@ -51,6 +51,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="..\Chordious.Core\Properties\SharedInfo.cs">
+      <Link>Properties\SharedInfo.cs</Link>
+    </Compile>
     <Compile Include="ChordFinding\ChordFinderTest.cs" />
     <Compile Include="Common\Music\MarkUtilsTest.cs" />
     <Compile Include="Common\Music\TestInstrument.cs" />

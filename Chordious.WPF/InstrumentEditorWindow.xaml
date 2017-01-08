@@ -5,9 +5,9 @@
     <StackPanel FocusManager.FocusedElement="{Binding ElementName=InputName}">
         <StackPanel Orientation="Horizontal">
             <Label Content="{Binding NameLabel, FallbackValue=Name}" ToolTip="{Binding NameToolTip}" Margin="5" />
-            <TextBox Name="InputName" Text="{Binding Name}" SelectedText="" ToolTip="{Binding NameToolTip}" Width="200" Margin="5" MaxLines="1" />
+            <TextBox Name="InputName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" SelectedText="" ToolTip="{Binding NameToolTip}" Width="200" Margin="5" MaxLines="1" />
             <Label Content="{Binding NumStringsLabel, FallbackValue=# of Strings}" ToolTip="{Binding NumStringsToolTip}" Margin="5" />
-            <TextBox Name="InputNumStrings" Text="{Binding NumStrings}" IsEnabled="{Binding IsNew}" SelectedText="" ToolTip="{Binding NumStringsToolTip}" Width="25" Margin="5" MaxLines="1" MaxLength="3" HorizontalContentAlignment="Center" />
+            <TextBox Name="InputNumStrings" Text="{Binding NumStrings, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsNew}" SelectedText="" ToolTip="{Binding NumStringsToolTip}" Width="25" Margin="5" MaxLines="1" MaxLength="3" HorizontalContentAlignment="Center" />
         </StackPanel>
         <WrapPanel FlowDirection="RightToLeft" Height="Auto">
             <Button Command="{Binding Cancel}" Content="{Binding AppVM.CancelLabel, FallbackValue=Cancel}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>

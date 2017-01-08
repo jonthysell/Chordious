@@ -4,7 +4,7 @@
         Title="{Binding Title, FallbackValue=Prompt}" WindowStartupLocation="CenterScreen" Icon="{StaticResource ChordiousIcon}" MinWidth="400" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
     <StackPanel FocusManager.FocusedElement="{Binding ElementName=InputTextBox}">
         <Label Content="{Binding Prompt, FallbackValue=Text Prompt}" Height="Auto" Margin="5"/>
-        <TextBox Name="InputTextBox" Text="{Binding Text}" SelectedText="" Height="Auto" Margin="10,5" MaxLines="1" />
+        <TextBox Name="InputTextBox" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" SelectedText="" Height="Auto" Margin="10,5" MaxLines="1" />
         <WrapPanel FlowDirection="RightToLeft" Height="Auto">
             <Button Command="{Binding Cancel}" Content="{Binding AppVM.CancelLabel, FallbackValue=Cancel}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
             <Button Command="{Binding Accept}" Content="{Binding AppVM.AcceptLabel, FallbackValue=OK}" Width="75" Margin="5" IsDefault="True" Style="{StaticResource CleanButton}"/>

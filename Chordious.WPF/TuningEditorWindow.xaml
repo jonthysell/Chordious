@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Content="{Binding NameLabel, FallbackValue=Name}" ToolTip="{Binding NameToolTip}" Margin="5" />
-        <TextBox Grid.Row="0" Grid.Column="1" Name="InputName" Text="{Binding Name}" SelectedText="" ToolTip="{Binding NameToolTip}" Margin="5" MaxLines="1" />
+        <TextBox Grid.Row="0" Grid.Column="1" Name="InputName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" SelectedText="" ToolTip="{Binding NameToolTip}" Margin="5" MaxLines="1" />
         <Label Grid.Row="1" Grid.Column="0" Content="{Binding RootNotesLabel, FallbackValue=Notes}" ToolTip="{Binding RootNotesToolTip}" Margin="5" />
         <ListView Grid.Row="1" Grid.Column="1" Name="RootNotesListView" ItemsSource="{Binding RootNotes}" SelectionMode="Single" ToolTip="{Binding RootNotesToolTip}" Margin="5" BorderThickness="0">
             <ListView.ItemsPanel>

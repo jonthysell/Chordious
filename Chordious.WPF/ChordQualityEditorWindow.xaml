@@ -15,9 +15,9 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
             <Label Content="{Binding NameLabel, FallbackValue=Name}" ToolTip="{Binding NameToolTip}" Margin="5" VerticalAlignment="Center" />
-            <TextBox Name="InputName" Text="{Binding Name}" SelectedText="" ToolTip="{Binding NameToolTip}" Width="150" Margin="5" MaxLines="1" />
+            <TextBox Name="InputName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" SelectedText="" ToolTip="{Binding NameToolTip}" Width="150" Margin="5" MaxLines="1" />
             <Label Content="{Binding AbbreviationLabel, FallbackValue=Abbreviation}" ToolTip="{Binding AbbreviationToolTip}" Margin="5" VerticalAlignment="Center" />
-            <TextBox Name="InputAbbreviation" Text="{Binding Abbreviation}" SelectedText="" ToolTip="{Binding AbbreviationToolTip}" Width="70" Margin="5" MaxLines="1" />
+            <TextBox Name="InputAbbreviation" Text="{Binding Abbreviation, UpdateSourceTrigger=PropertyChanged}" SelectedText="" ToolTip="{Binding AbbreviationToolTip}" Width="70" Margin="5" MaxLines="1" />
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
             <Label Content="{Binding IntervalsLabel, FallbackValue=Intervals}" ToolTip="{Binding IntervalsToolTip}" Margin="5" VerticalAlignment="Center" />

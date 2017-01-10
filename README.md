@@ -18,4 +18,11 @@ Chordious requires .NET 4.5 or later. See http://chordious.com/download/ for dow
 * Rich Diagram Editor
 * Automatic updates
 
-Chordious Copyright © 2013-2016 Jon Thysell <http://jonthysell.com>
+Chordious is open-source under the MIT license.
+
+Chordious proudly depends on the following open-source projects:
+
+* [MVVM Light Toolkit] (http://mvvmlight.net) for MVVM infrastructure
+* [SVG.NET] (https://github.com/vvvv/SVG) for rendering diagrams
+
+Chordious Copyright © 2013-2017 Jon Thysell <http://jonthysell.com>

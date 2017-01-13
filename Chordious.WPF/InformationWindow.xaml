@@ -1,18 +1,42 @@
-﻿<Window x:Class="com.jonthysell.Chordious.WPF.InformationWindow"
+<Window Icon="{StaticResource ChordiousIcon}"
+        MinHeight="100"
+        ResizeMode="NoResize"
+        SizeToContent="Height"
+        Title="{Binding Title, FallbackValue=INFORMATION}"
+        Width="500"
+        WindowStartupLocation="CenterScreen"
+        x:Class="com.jonthysell.Chordious.WPF.InformationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="{Binding Title, FallbackValue=Information}" WindowStartupLocation="CenterScreen" Icon="{StaticResource ChordiousIcon}" Width="500" MinHeight="100" SizeToContent="Height" ResizeMode="NoResize">
-    <StackPanel>
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Accept, Mode=OneWay}"
+                    Key="Escape" />
+    </Window.InputBindings>
+    <StackPanel FocusManager.FocusedElement="{Binding ElementName=MessageLabel}">
         <StackPanel Orientation="Horizontal">
-            <Image Source="{StaticResource InformationIcon32}" Margin="15" VerticalAlignment="Top" />
-            <Label Height="Auto" Width="390" Margin="5" VerticalAlignment="Center">
+            <Image Margin="15"
+                   Source="{StaticResource InformationIcon32}"
+                   VerticalAlignment="Top" />
+            <Label Focusable="True"
+                   Height="Auto"
+                   Margin="5"
+                   Name="MessageLabel"
+                   VerticalAlignment="Center"
+                   Width="390">
                 <Label.Content>
-                    <AccessText TextWrapping="Wrap" Text="{Binding Message}"/>
+                    <TextBlock Text="{Binding Message}"
+                               TextWrapping="Wrap" />
                 </Label.Content>
             </Label>
         </StackPanel>
-        <WrapPanel FlowDirection="RightToLeft">
-            <Button Command="{Binding Accept}" Content="{Binding AppVM.AcceptLabel, FallbackValue=OK}" Width="75" Margin="5" IsDefault="True" Style="{StaticResource CleanButton}" />
-        </WrapPanel>
+        <StackPanel HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button Command="{Binding Accept}"
+                    Content="{Binding AppVM.AcceptLabel, FallbackValue=OK}"
+                    IsDefault="True"
+                    Margin="5"
+                    Style="{StaticResource CleanButton}"
+                    Width="75" />
+        </StackPanel>
     </StackPanel>
 </Window>

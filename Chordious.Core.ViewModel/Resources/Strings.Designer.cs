@@ -71,11 +71,38 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Key.
+        /// </summary>
+        internal static string AdvancedDataEditorKeyHeaderLabel {
+            get {
+                return ResourceManager.GetString("AdvancedDataEditorKeyHeaderLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Level.
+        /// </summary>
+        internal static string AdvancedDataEditorLevelHeaderLabel {
+            get {
+                return ResourceManager.GetString("AdvancedDataEditorLevelHeaderLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Advanced Editor.
         /// </summary>
         internal static string AdvancedDataEditorTitle {
             get {
                 return ResourceManager.GetString("AdvancedDataEditorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        internal static string AdvancedDataEditorValueHeaderLabel {
+            get {
+                return ResourceManager.GetString("AdvancedDataEditorValueHeaderLabel", resourceCulture);
             }
         }
         
@@ -103,6 +130,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string AdvancedStyleEditorTitle {
             get {
                 return ResourceManager.GetString("AdvancedStyleEditorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apply.
+        /// </summary>
+        internal static string ApplyLabel {
+            get {
+                return ResourceManager.GetString("ApplyLabel", resourceCulture);
             }
         }
         
@@ -589,15 +625,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DeleteLabel {
             get {
                 return ResourceManager.GetString("DeleteLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string Diagram {
-            get {
-                return ResourceManager.GetString("Diagram", resourceCulture);
             }
         }
         
@@ -2771,6 +2798,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Result Diagram.
+        /// </summary>
+        internal static string FinderResultDiagramName {
+            get {
+                return ResourceManager.GetString("FinderResultDiagramName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save Selected.
         /// </summary>
         internal static string FinderSaveSelectedLabel {
@@ -3176,6 +3212,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Interval.
+        /// </summary>
+        internal static string NamedIntervalEditorIntervalValueLabel {
+            get {
+                return ResourceManager.GetString("NamedIntervalEditorIntervalValueLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The interval (in half-steps)..
+        /// </summary>
+        internal static string NamedIntervalEditorIntervalValueToolTip {
+            get {
+                return ResourceManager.GetString("NamedIntervalEditorIntervalValueToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string NamedIntervalEditorNameLabel {
@@ -3406,6 +3460,51 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ObservableDiagramLibraryNodeResetStylesSelectedToolTipSingleFormat {
             get {
                 return ResourceManager.GetString("ObservableDiagramLibraryNodeResetStylesSelectedToolTipSingleFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram.
+        /// </summary>
+        internal static string ObservableDiagramName {
+            get {
+                return ResourceManager.GetString("ObservableDiagramName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note.
+        /// </summary>
+        internal static string ObservableNoteNoteLabel {
+            get {
+                return ResourceManager.GetString("ObservableNoteNoteLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The note..
+        /// </summary>
+        internal static string ObservableNoteNoteToolTip {
+            get {
+                return ResourceManager.GetString("ObservableNoteNoteToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Octave.
+        /// </summary>
+        internal static string ObservableNoteOctaveLabel {
+            get {
+                return ResourceManager.GetString("ObservableNoteOctaveLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The octave of the note..
+        /// </summary>
+        internal static string ObservableNoteOctaveToolTip {
+            get {
+                return ResourceManager.GetString("ObservableNoteOctaveToolTip", resourceCulture);
             }
         }
         

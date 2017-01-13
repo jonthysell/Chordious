@@ -1,9 +1,15 @@
-﻿<Window x:Class="com.jonthysell.Chordious.WPF.DiagramExportWindow"
+<Window Cursor="{Binding IsIdle, Converter={StaticResource IdleBoolToWaitCursorConverter}}"
+        ForceCursor="True"
+        Height="230"
+        Icon="{StaticResource ChordiousIcon}"
+        ResizeMode="NoResize"
+        Title="{Binding Title, FallbackValue=DIAGRAM EXPORT}"
+        Width="400"
+        WindowStartupLocation="CenterScreen"
+        x:Class="com.jonthysell.Chordious.WPF.DiagramExportWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
-        Title="{Binding Title, FallbackValue=Diagram Export}" WindowStartupLocation="CenterScreen" Icon="{StaticResource ChordiousIcon}" Width="400" Height="230" ResizeMode="NoResize"
-        Cursor="{Binding IsIdle, Converter={StaticResource IdleBoolToWaitCursorConverter}}" ForceCursor="True">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid IsEnabled="{Binding IsIdle}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -18,28 +24,117 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="{Binding OutputPathLabel, FallbackValue=Path}" ToolTip="{Binding OutputPathToolTip}" Margin="5" />
-        <TextBox Grid.Row="0" Grid.Column="1" Name="OutputPathInput" Text="{Binding OutputPath}" ToolTip="{Binding OutputPathToolTip}" SelectedText="" Margin="5" MaxLines="1" />
-        <Button Grid.Row="0" Grid.Column="2" Command="{Binding ChooseOutputPath, Mode=OneWay}" Content="{Binding ChooseOutputPathLabel, FallbackValue=...}" ToolTip="{Binding ChooseOutputPathToolTip}"  Margin="5" Style="{StaticResource CleanButton}"/>
-        <Label Grid.Row="1" Grid.Column="0" Content="{Binding SelectedFilenameFormatLabel, FallbackValue=Filename}" ToolTip="{Binding SelectedFilenameFormatToolTip}"  Margin="5" />
-        <ComboBox Grid.Row="1" Grid.Column="1" Name="FilenameFormatInput" IsEditable="True" ItemsSource="{Binding FilenameFormats}" SelectedItem="{Binding SelectedFilenameFormat}" Text="{Binding SelectedFilenameFormat, UpdateSourceTrigger=LostFocus}" ToolTip="{Binding SelectedFilenameFormatToolTip}" Margin="5" Style="{StaticResource CleanComboBox}" />
-        <ComboBox Grid.Row="1" Grid.Column="3" ItemsSource="{Binding ExportFormats}" SelectedIndex="{Binding SelectedExportFormatIndex}" ToolTip="{Binding SelectedExportFormatToolTip}" VerticalAlignment="Center" Margin="5" Width="50" Style="{StaticResource CleanComboBox}"/>
-        <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" FlowDirection="LeftToRight" Height="Auto">
-            <Label Content="{Binding ExampleFilenameFormatLabel, FallbackValue=Example}" ToolTip="{Binding ExampleFilenameFormatToolTip}" Margin="5" />
-            <Label Name="ExampleFilenameFormat" Content="{Binding ExampleFilenameFormat}" ToolTip="{Binding ExampleFilenameFormatToolTip}" Margin="5" Width="300" FontStyle="Italic" />
+        <Label Content="{Binding OutputPathLabel, FallbackValue=PATH}"
+               Grid.Column="0"
+               Grid.Row="0"
+               Margin="5"
+               ToolTip="{Binding OutputPathToolTip}" />
+        <TextBox Grid.Column="1"
+                 Grid.Row="0"
+                 Margin="5"
+                 MaxLines="1"
+                 Name="OutputPathInput"
+                 SelectedText=""
+                 Text="{Binding OutputPath}"
+                 ToolTip="{Binding OutputPathToolTip}" />
+        <Button Command="{Binding ChooseOutputPath, Mode=OneWay}"
+                Content="{Binding ChooseOutputPathLabel, FallbackValue=...}"
+                Grid.Column="2"
+                Grid.Row="0"
+                Margin="5"
+                Style="{StaticResource CleanButton}"
+                ToolTip="{Binding ChooseOutputPathToolTip}" />
+        <Label Content="{Binding SelectedFilenameFormatLabel, FallbackValue=FILENAME}"
+               Grid.Column="0"
+               Grid.Row="1"
+               Margin="5"
+               ToolTip="{Binding SelectedFilenameFormatToolTip}" />
+        <ComboBox Grid.Column="1"
+                  Grid.Row="1"
+                  IsEditable="True"
+                  ItemsSource="{Binding FilenameFormats}"
+                  Margin="5"
+                  Name="FilenameFormatInput"
+                  SelectedItem="{Binding SelectedFilenameFormat}"
+                  Style="{StaticResource CleanComboBox}"
+                  Text="{Binding SelectedFilenameFormat, UpdateSourceTrigger=LostFocus}"
+                  ToolTip="{Binding SelectedFilenameFormatToolTip}" />
+        <ComboBox Grid.Column="3"
+                  Grid.Row="1"
+                  ItemsSource="{Binding ExportFormats}"
+                  Margin="5"
+                  SelectedIndex="{Binding SelectedExportFormatIndex}"
+                  Style="{StaticResource CleanComboBox}"
+                  ToolTip="{Binding SelectedExportFormatToolTip}"
+                  VerticalAlignment="Center"
+                  Width="50" />
+        <WrapPanel FlowDirection="LeftToRight"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="2"
+                   Height="Auto">
+            <Label Content="{Binding ExampleFilenameFormatLabel, FallbackValue=EXAMPLE}"
+                   Margin="5"
+                   ToolTip="{Binding ExampleFilenameFormatToolTip}" />
+            <Label Content="{Binding ExampleFilenameFormat}"
+                   FontStyle="Italic"
+                   Margin="5"
+                   Name="ExampleFilenameFormat"
+                   ToolTip="{Binding ExampleFilenameFormatToolTip}"
+                   Width="300" />
         </WrapPanel>
-        <WrapPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" FlowDirection="LeftToRight" Height="Auto" HorizontalAlignment="Center">
-            <Label Content="{Binding ScaleFactorLabel, FallbackValue=Scale}" ToolTip="{Binding ScaleFactorToolTip}" Margin="5" />
-            <TextBox Margin="5" Width="65" Text="{Binding ScaleFactor, Converter={StaticResource DecimalToPercentConverter}}" IsEnabled="{Binding CanScale}" ToolTip="{Binding ScaleFactorToolTip}" MaxLength="5" MaxLines="1" HorizontalContentAlignment="Center"/>
-            <Label Content="{Binding OverwriteFilesLabel, FallbackValue=Overwrite Files}" ToolTip="{Binding OverwriteFilesToolTip}"  Margin="5" />
-            <CheckBox Margin="5" IsChecked="{Binding OverwriteFiles}" ToolTip="{Binding OverwriteFilesToolTip}" VerticalAlignment="Center" />
+        <WrapPanel FlowDirection="LeftToRight"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="3"
+                   Height="Auto"
+                   HorizontalAlignment="Center">
+            <Label Content="{Binding ScaleFactorLabel, FallbackValue=SCALE}"
+                   Margin="5"
+                   ToolTip="{Binding ScaleFactorToolTip}" />
+            <TextBox HorizontalContentAlignment="Center"
+                     IsEnabled="{Binding CanScale}"
+                     Margin="5"
+                     MaxLength="5"
+                     MaxLines="1"
+                     Text="{Binding ScaleFactor, Converter={StaticResource DecimalToPercentConverter}}"
+                     ToolTip="{Binding ScaleFactorToolTip}"
+                     Width="65" />
+            <Label Content="{Binding OverwriteFilesLabel, FallbackValue=OVERWRITE FILES}"
+                   Margin="5"
+                   ToolTip="{Binding OverwriteFilesToolTip}" />
+            <CheckBox IsChecked="{Binding OverwriteFiles}"
+                      Margin="5"
+                      ToolTip="{Binding OverwriteFilesToolTip}"
+                      VerticalAlignment="Center" />
         </WrapPanel>
-        <WrapPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" FlowDirection="LeftToRight" Height="Auto" HorizontalAlignment="Right">
-            <ProgressBar Width="260" Height="20" Margin="5" Minimum="0.0" Maximum="1.0" Value="{Binding PercentComplete}" FlowDirection="LeftToRight" />
-            <Button Command="{Binding ExportAsync, IsAsync=True, Mode=OneWay}" ToolTip="{Binding ExportAsyncToolTip}" Margin="5" IsDefault="True" Style="{StaticResource CleanButtonNoBorder}">
+        <WrapPanel FlowDirection="LeftToRight"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="5"
+                   Height="Auto"
+                   HorizontalAlignment="Right">
+            <ProgressBar FlowDirection="LeftToRight"
+                         Height="20"
+                         Margin="5"
+                         Maximum="1.0"
+                         Minimum="0.0"
+                         Value="{Binding PercentComplete}"
+                         Width="260" />
+            <Button Command="{Binding ExportAsync, IsAsync=True, Mode=OneWay}"
+                    IsDefault="True"
+                    Margin="5"
+                    Style="{StaticResource CleanButtonNoBorder}"
+                    ToolTip="{Binding ExportAsyncToolTip}">
                 <StackPanel Orientation="Horizontal">
-                    <local:AutoDisableImage Source="{StaticResource ExportIcon16}" Width="16" Height="16" Margin="5" />
-                    <TextBlock Text="{Binding ExportAsyncLabel, FallbackValue=Export}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" />
+                    <local:AutoDisableImage Height="16"
+                                            Margin="5"
+                                            Source="{StaticResource ExportIcon16}"
+                                            Width="16" />
+                    <TextBlock HorizontalAlignment="Center"
+                               Margin="5"
+                               Text="{Binding ExportAsyncLabel, FallbackValue=EXPORT}"
+                               VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
         </WrapPanel>

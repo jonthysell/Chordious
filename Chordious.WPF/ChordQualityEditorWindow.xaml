@@ -1,8 +1,17 @@
-﻿<Window x:Class="com.jonthysell.Chordious.WPF.ChordQualityEditorWindow"
+<Window Icon="{StaticResource ChordiousIcon}"
+        MinWidth="400"
+        ResizeMode="CanResize"
+        SizeToContent="WidthAndHeight"
+        Title="{Binding Title, FallbackValue=CHORD QUALITY EDITOR}"
+        WindowStartupLocation="CenterScreen"
+        x:Class="com.jonthysell.Chordious.WPF.ChordQualityEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="{Binding Title, FallbackValue=Chord Quality Editor}" WindowStartupLocation="CenterScreen" Icon="{StaticResource ChordiousIcon}" MinWidth="400" SizeToContent="WidthAndHeight" ResizeMode="CanResize">
-    <Grid FocusManager.FocusedElement="{Binding ElementName=InputName}">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Cancel, Mode=OneWay}"
+                    Key="Escape" />
+    </Window.InputBindings>
+    <Grid FocusManager.FocusedElement="{Binding ElementName=NameTextBox}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
@@ -13,18 +22,76 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <Label Content="{Binding NameLabel, FallbackValue=Name}" ToolTip="{Binding NameToolTip}" Margin="5" VerticalAlignment="Center" />
-            <TextBox Name="InputName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" SelectedText="" ToolTip="{Binding NameToolTip}" Width="150" Margin="5" MaxLines="1" />
-            <Label Content="{Binding AbbreviationLabel, FallbackValue=Abbreviation}" ToolTip="{Binding AbbreviationToolTip}" Margin="5" VerticalAlignment="Center" />
-            <TextBox Name="InputAbbreviation" Text="{Binding Abbreviation, UpdateSourceTrigger=PropertyChanged}" SelectedText="" ToolTip="{Binding AbbreviationToolTip}" Width="70" Margin="5" MaxLines="1" />
+        <StackPanel Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="0"
+                    Orientation="Horizontal">
+            <Label Content="{Binding NameLabel, FallbackValue=NAME}"
+                   Margin="5"
+                   Name="NameLabel"
+                   Target="{Binding ElementName=NameTextBox}"
+                   ToolTip="{Binding NameToolTip}"
+                   VerticalAlignment="Center" />
+            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=NameLabel}"
+                     Margin="5"
+                     MaxLines="1"
+                     Name="NameTextBox"
+                     SelectedText=""
+                     Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding NameToolTip}"
+                     Width="150" />
+            <Label Content="{Binding AbbreviationLabel, FallbackValue=ABBREVIATION}"
+                   Margin="5"
+                   Name="AbbreviationLabel"
+                   Target="{Binding ElementName=AbbreviationTextBox}"
+                   ToolTip="{Binding AbbreviationToolTip}"
+                   VerticalAlignment="Center" />
+            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=AbbreviationLabel}"
+                     Margin="5"
+                     MaxLines="1"
+                     Name="AbbreviationTextBox"
+                     SelectedText=""
+                     Text="{Binding Abbreviation, UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding AbbreviationToolTip}"
+                     Width="70" />
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-            <Label Content="{Binding IntervalsLabel, FallbackValue=Intervals}" ToolTip="{Binding IntervalsToolTip}" Margin="5" VerticalAlignment="Center" />
-            <Button Command="{Binding AddInterval}" Content="{Binding AddIntervalLabel, FallbackValue=+}" ToolTip="{Binding AddIntervalToolTip}" Width="20" Height="30" Margin="0,5" VerticalAlignment="Center" Style="{StaticResource CleanButton}"/>
-            <Button Command="{Binding RemoveInterval}" Content="{Binding RemoveIntervalLabel, FallbackValue=-}" ToolTip="{Binding RemoveIntervalToolTip}" Width="20" Height="30" Margin="5" VerticalAlignment="Center" Style="{StaticResource CleanButton}"/>
+        <StackPanel Grid.Column="0"
+                    Grid.Row="1"
+                    Orientation="Horizontal">
+            <Label Content="{Binding IntervalsLabel, FallbackValue=INTERVALS}"
+                   Margin="5"
+                   Name="IntervalsLabel"
+                   Target="{Binding ElementName=IntervalsListView}"
+                   ToolTip="{Binding IntervalsToolTip}"
+                   VerticalAlignment="Center" />
+            <Button Command="{Binding AddInterval}"
+                    Content="{Binding AddIntervalLabel, FallbackValue=+}"
+                    Height="30"
+                    Margin="0,5"
+                    Style="{StaticResource CleanButton}"
+                    ToolTip="{Binding AddIntervalToolTip}"
+                    VerticalAlignment="Center"
+                    Width="20" />
+            <Button Command="{Binding RemoveInterval}"
+                    Content="{Binding RemoveIntervalLabel, FallbackValue=-}"
+                    Height="30"
+                    Margin="5"
+                    Style="{StaticResource CleanButton}"
+                    ToolTip="{Binding RemoveIntervalToolTip}"
+                    VerticalAlignment="Center"
+                    Width="20" />
         </StackPanel>
-        <ListView Grid.Row="1" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" Name="IntervalsListView" ItemsSource="{Binding Intervals}" SelectionMode="Single" ToolTip="{Binding IntervalsToolTip}" Margin="5" BorderThickness="0" VerticalAlignment="Center">
+        <ListView AutomationProperties.LabeledBy="{Binding ElementName=IntervalsLabel}"
+                  BorderThickness="0"
+                  Grid.Column="1"
+                  Grid.Row="1"
+                  ItemsSource="{Binding Intervals}"
+                  Margin="5"
+                  Name="IntervalsListView"
+                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                  SelectionMode="Single"
+                  ToolTip="{Binding IntervalsToolTip}"
+                  VerticalAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />
@@ -32,19 +99,46 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox Text="{Binding Value}" SelectedText="" Width="30" MaxLines="1" MaxLength="2" HorizontalContentAlignment="Center" />
-                    </StackPanel>
+                    <TextBox HorizontalContentAlignment="Center"
+                             MaxLength="2"
+                             MaxLines="1"
+                             SelectedText=""
+                             Text="{Binding Value}"
+                             ToolTip="{Binding ValueToolTip}"
+                             Width="30" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <Label Content="{Binding ExampleLabel, FallbackValue=Example in C:}" ToolTip="{Binding ExampleToolTip}" Margin="5" VerticalAlignment="Center" />
-            <Label Content="{Binding Example}" ToolTip="{Binding ExampleToolTip}" Margin="5" VerticalAlignment="Center" />
+        <StackPanel Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="2"
+                    Orientation="Horizontal">
+            <Label Content="{Binding ExampleLabel, FallbackValue=EXAMPLE IN C:}"
+                   Margin="5"
+                   ToolTip="{Binding ExampleToolTip}"
+                   VerticalAlignment="Center" />
+            <Label Content="{Binding Example}"
+                   Focusable="True"
+                   IsTabStop="True"
+                   Margin="5"
+                   ToolTip="{Binding ExampleToolTip}"
+                   VerticalAlignment="Center" />
         </StackPanel>
-        <WrapPanel Grid.Row="3" Grid.ColumnSpan="2" FlowDirection="RightToLeft" Height="Auto">
-            <Button Command="{Binding Cancel}" Content="{Binding AppVM.CancelLabel, FallbackValue=Cancel}" Width="75" Margin="5" Style="{StaticResource CleanButton}"/>
-            <Button Command="{Binding Accept}" Content="{Binding AppVM.AcceptLabel, FallbackValue=OK}" Width="75" Margin="5" IsDefault="True" Style="{StaticResource CleanButton}"/>
-        </WrapPanel>
+        <StackPanel Grid.ColumnSpan="2"
+                    Grid.Row="3"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button Command="{Binding Accept}"
+                    Content="{Binding AppVM.AcceptLabel, FallbackValue=OK}"
+                    IsDefault="True"
+                    Margin="5"
+                    Style="{StaticResource CleanButton}"
+                    Width="75" />
+            <Button Command="{Binding Cancel}"
+                    Content="{Binding AppVM.CancelLabel, FallbackValue=CANCEL}"
+                    Margin="5"
+                    Style="{StaticResource CleanButton}"
+                    Width="75" />
+        </StackPanel>
     </Grid>
 </Window>

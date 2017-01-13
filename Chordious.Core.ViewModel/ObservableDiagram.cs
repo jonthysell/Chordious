@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 using GalaSoft.MvvmLight;
@@ -863,6 +861,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _autorender;
 
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+                RaisePropertyChanged("Name");
+            }
+        }
+        private string _name;
+
         public ObservableDiagramStyle Style { get; private set; }
 
         internal Diagram Diagram
@@ -883,7 +895,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private Diagram _diagram;
 
-        public ObservableDiagram(Diagram diagram, bool autoRender = true) : base()
+        public ObservableDiagram(Diagram diagram, bool autoRender = true, string name = "") : base()
         {
             if (null == diagram)
             {
@@ -891,6 +903,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
 
             AutoRender = autoRender;
+            Name = name;
             Diagram = diagram;
 
             Style = new ObservableDiagramStyle(diagram.Style);
@@ -927,6 +940,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 ImageObject = AppViewModel.Instance.SvgTextToImage(SvgText, TotalWidth, TotalHeight, IsEditMode);
             });
+        }
+
+        public override string ToString()
+        {
+            if (!String.IsNullOrWhiteSpace(Name))
+            {
+                return Name;
+            }
+
+            return Strings.ObservableDiagramName;
         }
     }
 }

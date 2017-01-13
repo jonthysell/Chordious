@@ -1173,8 +1173,8 @@
   <data name="TuningEditorRootNotesToolTip" xml:space="preserve">
     <value>The notes of the tuning.</value>
   </data>
-  <data name="Diagram" xml:space="preserve">
-    <value />
+  <data name="ObservableDiagramName" xml:space="preserve">
+    <value>Diagram</value>
   </data>
   <data name="DiagramEditorResetStylesLabel" xml:space="preserve">
     <value>Reset Styles</value>
@@ -1520,5 +1520,38 @@
   </data>
   <data name="DiagramTitleTextToolTip" xml:space="preserve">
     <value>The title for the diagram.</value>
+  </data>
+  <data name="AdvancedDataEditorKeyHeaderLabel" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="AdvancedDataEditorLevelHeaderLabel" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="AdvancedDataEditorValueHeaderLabel" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="ApplyLabel" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="FinderResultDiagramName" xml:space="preserve">
+    <value>Result Diagram</value>
+  </data>
+  <data name="ObservableNoteNoteLabel" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="ObservableNoteNoteToolTip" xml:space="preserve">
+    <value>The note.</value>
+  </data>
+  <data name="ObservableNoteOctaveLabel" xml:space="preserve">
+    <value>Octave</value>
+  </data>
+  <data name="ObservableNoteOctaveToolTip" xml:space="preserve">
+    <value>The octave of the note.</value>
+  </data>
+  <data name="NamedIntervalEditorIntervalValueLabel" xml:space="preserve">
+    <value>Interval</value>
+  </data>
+  <data name="NamedIntervalEditorIntervalValueToolTip" xml:space="preserve">
+    <value>The interval (in half-steps).</value>
   </data>
 </root>

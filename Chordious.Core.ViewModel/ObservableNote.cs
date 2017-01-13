@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +32,8 @@ using GalaSoft.MvvmLight.Command;
 
 using com.jonthysell.Chordious.Core;
 
+using com.jonthysell.Chordious.Core.ViewModel.Resources;
+
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ObservableNote : ObservableObject
@@ -41,6 +43,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 return AppViewModel.Instance;
+            }
+        }
+
+        public string SelectedNoteLabel
+        {
+            get
+            {
+                return Strings.ObservableNoteNoteLabel;
+            }
+        }
+
+        public string SelectedNoteToolTip
+        {
+            get
+            {
+                return Strings.ObservableNoteNoteToolTip;
             }
         }
 
@@ -62,6 +80,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 return ObservableEnums.GetNotes();
+            }
+        }
+
+        public string OctaveLabel
+        {
+            get
+            {
+                return Strings.ObservableNoteOctaveLabel;
+            }
+        }
+
+        public string OctaveToolTip
+        {
+            get
+            {
+                return Strings.ObservableNoteOctaveToolTip;
             }
         }
 
@@ -93,6 +127,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
 
             FullNote = note;
+        }
+
+        public override string ToString()
+        {
+            return FullNote.ToString();
         }
     }
 }

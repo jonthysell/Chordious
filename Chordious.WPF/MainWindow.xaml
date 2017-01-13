@@ -1,80 +1,182 @@
-﻿<Window x:Class="com.jonthysell.Chordious.WPF.MainWindow"
+<Window Cursor="{Binding IsIdle, Converter={StaticResource IdleBoolToWaitCursorConverter}}"
+        ForceCursor="True"
+        Height="320"
+        Icon="{StaticResource ChordiousIcon}"
+        ResizeMode="CanMinimize"
+        SizeToContent="WidthAndHeight"
+        Title="{Binding Title, FallbackValue=TITLE}"
+        Width="480"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Normal"
+        x:Class="com.jonthysell.Chordious.WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
-        Title="{Binding Title, FallbackValue=Title}" Height="320" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="{StaticResource ChordiousIcon}" Width="480" WindowState="Normal"
-        Cursor="{Binding IsIdle, Converter={StaticResource IdleBoolToWaitCursorConverter}}" ForceCursor="True" SizeToContent="WidthAndHeight">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid IsEnabled="{Binding IsIdle}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
-            <Button Grid.Row="0" Margin="5" Command="{Binding ShowChordFinder, Mode=OneWay}" ToolTip="{Binding ShowChordFinderToolTip}" Style="{StaticResource CleanButtonNoBorder}">
+            <Button AutomationProperties.Name="{Binding ElementName=ShowChordFinderLabel, Path=Text}"
+                    Command="{Binding ShowChordFinder, Mode=OneWay}"
+                    Grid.Row="0"
+                    Margin="5"
+                    Style="{StaticResource CleanButtonNoBorder}"
+                    ToolTip="{Binding ShowChordFinderToolTip}">
                 <StackPanel>
-                    <local:AutoDisableImage Source="{StaticResource ChordFinderIcon48}" Width="48" Height="48" Margin="2" />
-                    <TextBlock Text="{Binding ShowChordFinderLabel, FallbackValue=Chord Finder}" HorizontalAlignment="Center" />
+                    <local:AutoDisableImage Height="48"
+                                            Margin="2"
+                                            Source="{StaticResource ChordFinderIcon48}"
+                                            Width="48" />
+                    <AccessText HorizontalAlignment="Center"
+                                Name="ShowChordFinderLabel"
+                                Text="{Binding ShowChordFinderLabel, FallbackValue=CHORD FINDER}" />
                 </StackPanel>
             </Button>
-            <Button Grid.Row="0" Grid.Column="1" Margin="5" Command="{Binding ShowScaleFinder, Mode=OneWay}" ToolTip="{Binding ShowScaleFinderToolTip}" Style="{StaticResource CleanButtonNoBorder}">
+            <Button AutomationProperties.Name="{Binding ElementName=ShowScaleFinderLabel, Path=Text}"
+                    Command="{Binding ShowScaleFinder, Mode=OneWay}"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Margin="5"
+                    Style="{StaticResource CleanButtonNoBorder}"
+                    ToolTip="{Binding ShowScaleFinderToolTip}">
                 <StackPanel>
-                    <local:AutoDisableImage Source="{StaticResource ScaleFinderIcon48}" Width="48" Height="48" Margin="2" />
-                    <TextBlock Text="{Binding ShowScaleFinderLabel, FallbackValue=Scale Finder}" HorizontalAlignment="Center" />
+                    <local:AutoDisableImage Height="48"
+                                            Margin="2"
+                                            Source="{StaticResource ScaleFinderIcon48}"
+                                            Width="48" />
+                    <AccessText HorizontalAlignment="Center"
+                                Name="ShowScaleFinderLabel"
+                                Text="{Binding ShowScaleFinderLabel, FallbackValue=SCALE FINDER}" />
                 </StackPanel>
             </Button>
-            <Button Grid.Row="1" Grid.Column="0" Margin="5" Command="{Binding ShowDiagramLibrary, Mode=OneWay}" ToolTip="{Binding ShowDiagramLibraryToolTip}" Style="{StaticResource CleanButtonNoBorder}">
+            <Button AutomationProperties.Name="{Binding ElementName=ShowDiagramLibraryLabel, Path=Text}"
+                    Command="{Binding ShowDiagramLibrary, Mode=OneWay}"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Margin="5"
+                    Style="{StaticResource CleanButtonNoBorder}"
+                    ToolTip="{Binding ShowDiagramLibraryToolTip}">
                 <StackPanel>
-                    <local:AutoDisableImage Source="{StaticResource LibraryIcon48}" Width="48" Height="48" Margin="2" />
-                    <TextBlock Text="{Binding ShowDiagramLibraryLabel, FallbackValue=Library}" HorizontalAlignment="Center" />
+                    <local:AutoDisableImage Height="48"
+                                            Margin="2"
+                                            Source="{StaticResource LibraryIcon48}"
+                                            Width="48" />
+                    <AccessText HorizontalAlignment="Center"
+                                Name="ShowDiagramLibraryLabel"
+                                Text="{Binding ShowDiagramLibraryLabel, FallbackValue=LIBRARY}" />
                 </StackPanel>
             </Button>
-            <Button Grid.Row="1" Grid.Column="1" Margin="5" Command="{Binding ShowInstrumentManager, Mode=OneWay}" ToolTip="{Binding ShowInstrumentManagerToolTip}" Style="{StaticResource CleanButtonNoBorder}">
+            <Button AutomationProperties.Name="{Binding ElementName=ShowInstrumentManagerLabel, Path=Text}"
+                    Command="{Binding ShowInstrumentManager, Mode=OneWay}"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="5"
+                    Style="{StaticResource CleanButtonNoBorder}"
+                    ToolTip="{Binding ShowInstrumentManagerToolTip}">
                 <StackPanel>
-                    <local:AutoDisableImage Source="{StaticResource InstrumentsIcon48}" Width="48" Height="48" Margin="2" />
-                    <TextBlock Text="{Binding ShowInstrumentManagerLabel, FallbackValue=Instruments}" HorizontalAlignment="Center" />
+                    <local:AutoDisableImage Height="48"
+                                            Margin="2"
+                                            Source="{StaticResource InstrumentsIcon48}"
+                                            Width="48" />
+                    <AccessText HorizontalAlignment="Center"
+                                Name="ShowInstrumentManagerLabel"
+                                Text="{Binding ShowInstrumentManagerLabel, FallbackValue=INSTRUMENTS}" />
                 </StackPanel>
             </Button>
-            <Button Grid.Row="2" Grid.Column="0" Margin="5" Command="{Binding ShowOptions, Mode=OneWay}" ToolTip="{Binding ShowOptionsToolTip}" Style="{StaticResource CleanButtonNoBorder}">
+            <Button AutomationProperties.Name="{Binding ElementName=ShowOptionsLabel, Path=Text}"
+                    Command="{Binding ShowOptions, Mode=OneWay}"
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Margin="5"
+                    Style="{StaticResource CleanButtonNoBorder}"
+                    ToolTip="{Binding ShowOptionsToolTip}">
                 <StackPanel>
-                    <local:AutoDisableImage Source="{StaticResource OptionsIcon48}" Width="48" Height="48" Margin="2" />
-                    <TextBlock Text="{Binding ShowOptionsLabel, FallbackValue=Options}" HorizontalAlignment="Center" />
+                    <local:AutoDisableImage Height="48"
+                                            Margin="2"
+                                            Source="{StaticResource OptionsIcon48}"
+                                            Width="48" />
+                    <AccessText HorizontalAlignment="Center"
+                                Name="ShowOptionsLabel"
+                                Text="{Binding ShowOptionsLabel, FallbackValue=OPTIONS}" />
                 </StackPanel>
             </Button>
-            <Button Grid.Row="2" Grid.Column="1" Margin="5" Command="{Binding ShowHelp, Mode=OneWay}" ToolTip="{Binding ShowHelpToolTip}" Style="{StaticResource CleanButtonNoBorder}">
+            <Button AutomationProperties.Name="{Binding ElementName=ShowHelpLabel, Path=Text}"
+                    Command="{Binding ShowHelp, Mode=OneWay}"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    Margin="5"
+                    Style="{StaticResource CleanButtonNoBorder}"
+                    ToolTip="{Binding ShowHelpToolTip}">
                 <StackPanel>
-                    <local:AutoDisableImage Source="{StaticResource HelpIcon48}" Width="48" Height="48" Margin="2" />
-                    <TextBlock Text="{Binding ShowHelpLabel, FallbackValue=Help}" HorizontalAlignment="Center" />
+                    <local:AutoDisableImage Height="48"
+                                            Margin="2"
+                                            Source="{StaticResource HelpIcon48}"
+                                            Width="48" />
+                    <AccessText HorizontalAlignment="Center"
+                                Name="ShowHelpLabel"
+                                Text="{Binding ShowHelpLabel, FallbackValue=HELP}" />
                 </StackPanel>
             </Button>
         </Grid>
         <StackPanel>
-            <local:AutoDisableImage Source="{StaticResource ChordiousIcon128}" Width="128" Height="128" Margin="0,16,0,0" />
-            <Label Content="{Binding FullProgramName, FallbackValue=Full Program Name}" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Center" />
-            <Label Content="{Binding Description, FallbackValue=Description}" FontSize="10" HorizontalContentAlignment="Center" TextBlock.TextAlignment="Center" />
+            <local:AutoDisableImage Height="128"
+                                    Margin="0,16,0,0"
+                                    Source="{StaticResource ChordiousIcon128}"
+                                    Width="128" />
+            <Label Content="{Binding FullProgramName, FallbackValue=FULL PROGRAM NAME}"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   HorizontalContentAlignment="Center" />
+            <Label Content="{Binding Description, FallbackValue=DESCRIPTION}"
+                   FontSize="10"
+                   HorizontalContentAlignment="Center"
+                   TextBlock.TextAlignment="Center" />
             <Grid Margin="5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Button Margin="5" Grid.Column="0" Command="{Binding LaunchWebsite, Mode=OneWay}" ToolTip="{Binding LaunchWebsiteToolTip}" Style="{StaticResource CleanButtonNoBorder}">
+                <Button AutomationProperties.Name="{Binding ElementName=LaunchWebsiteLabel, Path=Text}"
+                        Command="{Binding LaunchWebsite, Mode=OneWay}"
+                        Grid.Column="0"
+                        Margin="5"
+                        Style="{StaticResource CleanButtonNoBorder}"
+                        ToolTip="{Binding LaunchWebsiteToolTip}">
                     <StackPanel>
-                        <local:AutoDisableImage Source="{StaticResource WebsiteIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="{Binding LaunchWebsiteLabel, FallbackValue=Website}" HorizontalAlignment="Center" />
+                        <local:AutoDisableImage Height="16"
+                                                Margin="5"
+                                                Source="{StaticResource WebsiteIcon16}"
+                                                Width="16" />
+                        <AccessText HorizontalAlignment="Center"
+                                    Name="LaunchWebsiteLabel"
+                                    Text="{Binding LaunchWebsiteLabel, FallbackValue=WEBSITE}" />
                     </StackPanel>
                 </Button>
-                <Button Margin="5" Grid.Column="1" Command="{Binding ShowLicense, Mode=OneWay}" ToolTip="{Binding ShowLicenseToolTip}" Style="{StaticResource CleanButtonNoBorder}">
+                <Button AutomationProperties.Name="{Binding ElementName=ShowLicenseLabel, Path=Text}"
+                        Command="{Binding ShowLicense, Mode=OneWay}"
+                        Grid.Column="1"
+                        Margin="5"
+                        Style="{StaticResource CleanButtonNoBorder}"
+                        ToolTip="{Binding ShowLicenseToolTip}">
                     <StackPanel>
-                        <local:AutoDisableImage Source="{StaticResource LicenseIcon16}" Width="16" Height="16" Margin="5" />
-                        <TextBlock Text="{Binding ShowLicenseLabel, FallbackValue=License}" HorizontalAlignment="Center" />
+                        <local:AutoDisableImage Height="16"
+                                                Margin="5"
+                                                Source="{StaticResource LicenseIcon16}"
+                                                Width="16" />
+                        <AccessText HorizontalAlignment="Center"
+                                    Name="ShowLicenseLabel"
+                                    Text="{Binding ShowLicenseLabel, FallbackValue=LICENSE}" />
                     </StackPanel>
                 </Button>
             </Grid>

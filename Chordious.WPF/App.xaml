@@ -1,100 +1,139 @@
-﻿<Application x:Class="com.jonthysell.Chordious.WPF.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
-             StartupUri="MainWindow.xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+<Application StartupUri="MainWindow.xaml"
              d1p1:Ignorable="d"
-             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+             x:Class="com.jonthysell.Chordious.WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Application.Resources>
-        <BitmapImage x:Key="ChordiousIcon" >pack://application:,,,/Resources/chordious.ico</BitmapImage>
-        <BitmapImage x:Key="ChordiousIcon128" >pack://application:,,,/Resources/chordious128.png</BitmapImage>
-        <BitmapImage x:Key="ChordFinderIcon48" >pack://application:,,,/Resources/chordfinder48.png</BitmapImage>
-        <BitmapImage x:Key="ScaleFinderIcon48" >pack://application:,,,/Resources/scalefinder48.png</BitmapImage>
-        <BitmapImage x:Key="LibraryIcon48" >pack://application:,,,/Resources/library48.png</BitmapImage>
-        <BitmapImage x:Key="InstrumentsIcon48" >pack://application:,,,/Resources/instruments48.png</BitmapImage>
-        <BitmapImage x:Key="OptionsIcon48" >pack://application:,,,/Resources/options48.png</BitmapImage>
-        <BitmapImage x:Key="HelpIcon48" >pack://application:,,,/Resources/help48.png</BitmapImage>
-        <BitmapImage x:Key="WebsiteIcon16" >pack://application:,,,/Resources/website16.png</BitmapImage>
-        <BitmapImage x:Key="LicenseIcon16" >pack://application:,,,/Resources/license16.png</BitmapImage>
-        <BitmapImage x:Key="TransparentIcon16" >pack://application:,,,/Resources/transparent16.png</BitmapImage>
-        <BitmapImage x:Key="AddIcon16" >pack://application:,,,/Resources/add16.png</BitmapImage>
-        <BitmapImage x:Key="RemoveIcon16" >pack://application:,,,/Resources/remove16.png</BitmapImage>
-        <BitmapImage x:Key="EditIcon16" >pack://application:,,,/Resources/edit16.png</BitmapImage>
-        <BitmapImage x:Key="CloneIcon16" >pack://application:,,,/Resources/clone16.png</BitmapImage>
-        <BitmapImage x:Key="CopyIcon16" >pack://application:,,,/Resources/copy16.png</BitmapImage>
-        <BitmapImage x:Key="MoveIcon16" >pack://application:,,,/Resources/move16.png</BitmapImage>
-        <BitmapImage x:Key="SearchIcon16" >pack://application:,,,/Resources/search16.png</BitmapImage>
-        <BitmapImage x:Key="ImportIcon16" >pack://application:,,,/Resources/import16.png</BitmapImage>
-        <BitmapImage x:Key="ExportIcon16" >pack://application:,,,/Resources/export16.png</BitmapImage>
-        <BitmapImage x:Key="StyleIcon16" >pack://application:,,,/Resources/style16.png</BitmapImage>
-        <BitmapImage x:Key="ResetIcon16" >pack://application:,,,/Resources/reset16.png</BitmapImage>
-        <BitmapImage x:Key="ErrorIcon32" >pack://application:,,,/Resources/error32.png</BitmapImage>
-        <BitmapImage x:Key="WarningIcon32" >pack://application:,,,/Resources/warning32.png</BitmapImage>
-        <BitmapImage x:Key="InformationIcon32" >pack://application:,,,/Resources/information32.png</BitmapImage>
+        <BitmapImage x:Key="ChordiousIcon">pack://application:,,,/Resources/chordious.ico</BitmapImage>
+        <BitmapImage x:Key="ChordiousIcon128">pack://application:,,,/Resources/chordious128.png</BitmapImage>
+        <BitmapImage x:Key="ChordFinderIcon48">pack://application:,,,/Resources/chordfinder48.png</BitmapImage>
+        <BitmapImage x:Key="ScaleFinderIcon48">pack://application:,,,/Resources/scalefinder48.png</BitmapImage>
+        <BitmapImage x:Key="LibraryIcon48">pack://application:,,,/Resources/library48.png</BitmapImage>
+        <BitmapImage x:Key="InstrumentsIcon48">pack://application:,,,/Resources/instruments48.png</BitmapImage>
+        <BitmapImage x:Key="OptionsIcon48">pack://application:,,,/Resources/options48.png</BitmapImage>
+        <BitmapImage x:Key="HelpIcon48">pack://application:,,,/Resources/help48.png</BitmapImage>
+        <BitmapImage x:Key="WebsiteIcon16">pack://application:,,,/Resources/website16.png</BitmapImage>
+        <BitmapImage x:Key="LicenseIcon16">pack://application:,,,/Resources/license16.png</BitmapImage>
+        <BitmapImage x:Key="TransparentIcon16">pack://application:,,,/Resources/transparent16.png</BitmapImage>
+        <BitmapImage x:Key="AddIcon16">pack://application:,,,/Resources/add16.png</BitmapImage>
+        <BitmapImage x:Key="RemoveIcon16">pack://application:,,,/Resources/remove16.png</BitmapImage>
+        <BitmapImage x:Key="EditIcon16">pack://application:,,,/Resources/edit16.png</BitmapImage>
+        <BitmapImage x:Key="CloneIcon16">pack://application:,,,/Resources/clone16.png</BitmapImage>
+        <BitmapImage x:Key="CopyIcon16">pack://application:,,,/Resources/copy16.png</BitmapImage>
+        <BitmapImage x:Key="MoveIcon16">pack://application:,,,/Resources/move16.png</BitmapImage>
+        <BitmapImage x:Key="SearchIcon16">pack://application:,,,/Resources/search16.png</BitmapImage>
+        <BitmapImage x:Key="ImportIcon16">pack://application:,,,/Resources/import16.png</BitmapImage>
+        <BitmapImage x:Key="ExportIcon16">pack://application:,,,/Resources/export16.png</BitmapImage>
+        <BitmapImage x:Key="StyleIcon16">pack://application:,,,/Resources/style16.png</BitmapImage>
+        <BitmapImage x:Key="ResetIcon16">pack://application:,,,/Resources/reset16.png</BitmapImage>
+        <BitmapImage x:Key="ErrorIcon32">pack://application:,,,/Resources/error32.png</BitmapImage>
+        <BitmapImage x:Key="WarningIcon32">pack://application:,,,/Resources/warning32.png</BitmapImage>
+        <BitmapImage x:Key="InformationIcon32">pack://application:,,,/Resources/information32.png</BitmapImage>
         <local:IdleBoolToWaitCursorConverter x:Key="IdleBoolToWaitCursorConverter" />
         <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <local:DecimalToPercentConverter x:Key="DecimalToPercentConverter" />
         <!-- Adapted from http://www.infosysblogs.com/microsoft/2010/07/wpf_-_disabled_look_for_button.html -->
-        <Style x:Key="CleanButton" TargetType="{x:Type Button}" BasedOn="{x:Null}">
-            <Setter Property="FocusVisualStyle" Value="{DynamicResource SimpleButtonFocusVisual}"/>
-            <Setter Property="Background" Value="{DynamicResource NormalBrush}"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
-            <Setter Property="FontWeight" Value="Bold" />
+        <Style BasedOn="{x:Null}"
+               TargetType="{x:Type Button}"
+               x:Key="CleanButton">
+            <Setter Property="FocusVisualStyle"
+                    Value="{DynamicResource SimpleButtonFocusVisual}" />
+            <Setter Property="Background"
+                    Value="{DynamicResource NormalBrush}" />
+            <Setter Property="BorderBrush"
+                    Value="{DynamicResource NormalBorderBrush}" />
+            <Setter Property="FontWeight"
+                    Value="Bold" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <!-- We use Grid as a root because it is easy to add more elements to customize the button -->
                         <Grid x:Name="Grid">
-                            <Border x:Name="Border"
-                                    Background="{TemplateBinding Background}"
+                            <Border Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    Padding="{TemplateBinding Padding}"/>
+                                    Padding="{TemplateBinding Padding}"
+                                    x:Name="Border" />
                             <!-- Content Presenter is where the text content etc is placed by the control -->
                             <!-- The bindings are useful so that the control can be parameterized without editing the template -->
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    Margin="5"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    RecognizesAccessKey="True"/>
+                                              Margin="5"
+                                              RecognizesAccessKey="True"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                         </Grid>
                         <!--Each state sets a brush on the Border in the template -->
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsKeyboardFocused" Value="true">
-                                <Setter Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" TargetName="Border"/>
+                            <Trigger Property="IsKeyboardFocused"
+                                     Value="true">
+                                <Setter Property="BorderBrush"
+                                        TargetName="Border"
+                                        Value="{DynamicResource DefaultedBorderBrush}" />
                             </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" Value="{DynamicResource MouseOverBrush}" TargetName="Border"/>
+                            <Trigger Property="IsMouseOver"
+                                     Value="true">
+                                <Setter Property="Background"
+                                        TargetName="Border"
+                                        Value="{DynamicResource MouseOverBrush}" />
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" Value="{DynamicResource PressedBrush}" TargetName="Border"/>
-                                <Setter Property="BorderBrush" Value="{DynamicResource PressedBorderBrush}" TargetName="Border"/>
+                            <Trigger Property="IsPressed"
+                                     Value="true">
+                                <Setter Property="Background"
+                                        TargetName="Border"
+                                        Value="{DynamicResource PressedBrush}" />
+                                <Setter Property="BorderBrush"
+                                        TargetName="Border"
+                                        Value="{DynamicResource PressedBorderBrush}" />
                             </Trigger>
-                            <Trigger Property="IsEnabled" Value="true"/>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" TargetName="Border"/>
-                                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Border"/>
-                                <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+                            <Trigger Property="IsEnabled"
+                                     Value="true" />
+                            <Trigger Property="IsEnabled"
+                                     Value="false">
+                                <Setter Property="Background"
+                                        TargetName="Border"
+                                        Value="{DynamicResource DisabledBackgroundBrush}" />
+                                <Setter Property="BorderBrush"
+                                        TargetName="Border"
+                                        Value="{DynamicResource DisabledBorderBrush}" />
+                                <Setter Property="Foreground"
+                                        Value="{DynamicResource DisabledForegroundBrush}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="CleanButtonNoBorder" TargetType="{x:Type Button}" BasedOn="{StaticResource CleanButton}">
-            <Setter Property="BorderThickness" Value="0"/>
+        <Style BasedOn="{StaticResource CleanButton}"
+               TargetType="{x:Type Button}"
+               x:Key="CleanButtonNoBorder">
+            <Setter Property="BorderThickness"
+                    Value="0" />
         </Style>
-        <Style x:Key="CleanComboBox" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}">
-            <Setter Property="Background" Value="{DynamicResource NormalBrush}"/>
-            <Setter Property="Padding" Value="2"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Style BasedOn="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}"
+               TargetType="{x:Type ComboBox}"
+               x:Key="CleanComboBox">
+            <Setter Property="Background"
+                    Value="{DynamicResource NormalBrush}" />
+            <Setter Property="Padding"
+                    Value="2" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Stretch" />
+            <Setter Property="VerticalAlignment"
+                    Value="Stretch" />
         </Style>
-        <SolidColorBrush x:Key="NormalBrush" Color="White"/>
-        <SolidColorBrush x:Key="MouseOverBrush" Color="#BEE6FD"/>
-        <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="White"/>
-        <SolidColorBrush x:Key="DisabledForegroundBrush" Color="DarkGray"/>
-        <SolidColorBrush x:Key="NormalBorderBrush" Color="Black"/>
-        <SolidColorBrush x:Key="DisabledBorderBrush" Color="DarkGray"/>
+        <SolidColorBrush Color="White"
+                         x:Key="NormalBrush" />
+        <SolidColorBrush Color="#BEE6FD"
+                         x:Key="MouseOverBrush" />
+        <SolidColorBrush Color="White"
+                         x:Key="DisabledBackgroundBrush" />
+        <SolidColorBrush Color="DarkGray"
+                         x:Key="DisabledForegroundBrush" />
+        <SolidColorBrush Color="Black"
+                         x:Key="NormalBorderBrush" />
+        <SolidColorBrush Color="DarkGray"
+                         x:Key="DisabledBorderBrush" />
     </Application.Resources>
 </Application>

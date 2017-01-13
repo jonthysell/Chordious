@@ -4253,5 +4253,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             RaisePropertyChanged("MarkTextSizeRatioIsLocal");
             RaisePropertyChanged("MarkTextSizeRatio");
         }
+
+        public override string ToString()
+        {
+            return Level;
+        }
     }
 }

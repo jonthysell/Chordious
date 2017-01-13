@@ -710,5 +710,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             RaisePropertyChanged("ResetStylesSelected");
             RaisePropertyChanged("ResetStylesSelectedToolTip");
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

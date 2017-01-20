@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,9 +30,9 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Xml;
-using System.Windows;
 
 using GalaSoft.MvvmLight.Messaging;
 
@@ -128,7 +128,7 @@ namespace com.jonthysell.Chordious.WPF
             }
             catch (Exception ex)
             {
-                ExceptionUtils.HandleException(ex);
+                ExceptionUtils.HandleException(new UpdateException(ex));
             }
             finally
             {
@@ -141,6 +141,11 @@ namespace com.jonthysell.Chordious.WPF
             if (null == installerInfo)
             {
                 throw new ArgumentNullException("installerInfo");
+            }
+
+            if (!UpdateUtils.IsConnectedToInternet)
+            {
+                throw new UpdateNoInternetException();
             }
 
             string tempPath = Path.GetTempPath();
@@ -178,6 +183,11 @@ namespace com.jonthysell.Chordious.WPF
 
         public static List<InstallerInfo> GetLatestInstallerInfos()
         {
+            if (!UpdateUtils.IsConnectedToInternet)
+            {
+                throw new UpdateNoInternetException();
+            }
+
             List<InstallerInfo> installerInfos = new List<InstallerInfo>();
 
             HttpWebRequest request = WebRequest.CreateHttp(_updateUrl);
@@ -268,6 +278,18 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
+        public static bool IsConnectedToInternet
+        {
+            get
+            {
+                int Description;
+                return InternetGetConnectedState(out Description, 0);
+            }
+        }
+
+        [DllImport("wininet.dll")]
+        private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
+
         public static DateTime LastUpdateCheck
         {
             get
@@ -289,6 +311,32 @@ namespace com.jonthysell.Chordious.WPF
 
         private const string _updateUrl = "http://update.chordious.com";
         private const string _userAgent = "Mozilla/5.0";
+    }
+
+    public class UpdateException : Exception
+    {
+        public override string Message
+        {
+            get
+            {
+                return Strings.ChordiousUpdateExceptionMessage;
+            }
+        }
+
+        public UpdateException(Exception innerException) : base("", innerException) { }
+    }
+
+    public class UpdateNoInternetException : Exception
+    {
+        public override string Message
+        {
+            get
+            {
+                return Strings.ChordiousUpdateNoInternetExceptionMessage;
+            }
+        }
+
+        public UpdateNoInternetException() : base() { }
     }
 
     public class InstallerInfo

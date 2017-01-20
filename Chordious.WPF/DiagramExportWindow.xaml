@@ -28,12 +28,15 @@
                Grid.Column="0"
                Grid.Row="0"
                Margin="5"
+               Name="OutputPathLabel"
+               Target="{Binding OutputPathTextBox}"
                ToolTip="{Binding OutputPathToolTip}" />
-        <TextBox Grid.Column="1"
+        <TextBox AutomationProperties.LabeledBy="{Binding ElementName=OutputPathLabel}"
+                 Grid.Column="1"
                  Grid.Row="0"
                  Margin="5"
                  MaxLines="1"
-                 Name="OutputPathInput"
+                 Name="OutputPathTextBox"
                  SelectedText=""
                  Text="{Binding OutputPath}"
                  ToolTip="{Binding OutputPathToolTip}" />
@@ -48,18 +51,22 @@
                Grid.Column="0"
                Grid.Row="1"
                Margin="5"
+               Name="FilenameFormatLabel"
+               Target="{Binding FilenameFormatComboBox}"
                ToolTip="{Binding SelectedFilenameFormatToolTip}" />
-        <ComboBox Grid.Column="1"
+        <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=FilenameFormatLabel}"
+                  Grid.Column="1"
                   Grid.Row="1"
                   IsEditable="True"
                   ItemsSource="{Binding FilenameFormats}"
                   Margin="5"
-                  Name="FilenameFormatInput"
+                  Name="FilenameFormatComboBox"
                   SelectedItem="{Binding SelectedFilenameFormat}"
                   Style="{StaticResource CleanComboBox}"
                   Text="{Binding SelectedFilenameFormat, UpdateSourceTrigger=LostFocus}"
                   ToolTip="{Binding SelectedFilenameFormatToolTip}" />
-        <ComboBox Grid.Column="3"
+        <ComboBox AutomationProperties.Name="{Binding SelectedExportFormatLabel}"
+                  Grid.Column="3"
                   Grid.Row="1"
                   ItemsSource="{Binding ExportFormats}"
                   Margin="5"
@@ -77,7 +84,9 @@
                    Margin="5"
                    ToolTip="{Binding ExampleFilenameFormatToolTip}" />
             <Label Content="{Binding ExampleFilenameFormat}"
+                   Focusable="True"
                    FontStyle="Italic"
+                   IsTabStop="True"
                    Margin="5"
                    Name="ExampleFilenameFormat"
                    ToolTip="{Binding ExampleFilenameFormatToolTip}"
@@ -91,37 +100,46 @@
                    HorizontalAlignment="Center">
             <Label Content="{Binding ScaleFactorLabel, FallbackValue=SCALE}"
                    Margin="5"
+                   Name="ScaleFactorLabel"
+                   Target="{Binding ElementName=ScaleFactorTextBox}"
                    ToolTip="{Binding ScaleFactorToolTip}" />
-            <TextBox HorizontalContentAlignment="Center"
+            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=ScaleFactorLabel}"
+                     HorizontalContentAlignment="Center"
                      IsEnabled="{Binding CanScale}"
                      Margin="5"
                      MaxLength="5"
                      MaxLines="1"
+                     Name="ScaleFactorTextBox"
                      Text="{Binding ScaleFactor, Converter={StaticResource DecimalToPercentConverter}}"
                      ToolTip="{Binding ScaleFactorToolTip}"
                      Width="65" />
             <Label Content="{Binding OverwriteFilesLabel, FallbackValue=OVERWRITE FILES}"
                    Margin="5"
+                   Name="OverwriteFilesLabel"
+                   Target="{Binding ElementName=OverwriteFilesCheckBox}"
                    ToolTip="{Binding OverwriteFilesToolTip}" />
-            <CheckBox IsChecked="{Binding OverwriteFiles}"
+            <CheckBox AutomationProperties.LabeledBy="{Binding ElementName=OverwriteFilesLabel}"
+                      IsChecked="{Binding OverwriteFiles}"
                       Margin="5"
+                      Name="OverwriteFilesCheckBox"
                       ToolTip="{Binding OverwriteFilesToolTip}"
                       VerticalAlignment="Center" />
         </WrapPanel>
-        <WrapPanel FlowDirection="LeftToRight"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="3"
-                   Grid.Row="5"
-                   Height="Auto"
-                   HorizontalAlignment="Right">
+        <StackPanel Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="5"
+                    Height="Auto"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
             <ProgressBar FlowDirection="LeftToRight"
                          Height="20"
                          Margin="5"
                          Maximum="1.0"
                          Minimum="0.0"
                          Value="{Binding PercentComplete}"
-                         Width="260" />
-            <Button Command="{Binding ExportAsync, IsAsync=True, Mode=OneWay}"
+                         Width="275" />
+            <Button AutomationProperties.Name="{Binding ElementName=ExportAsyncLabel, Path=Text}"
+                    Command="{Binding ExportAsync, IsAsync=True, Mode=OneWay}"
                     IsDefault="True"
                     Margin="5"
                     Style="{StaticResource CleanButtonNoBorder}"
@@ -131,12 +149,13 @@
                                             Margin="5"
                                             Source="{StaticResource ExportIcon16}"
                                             Width="16" />
-                    <TextBlock HorizontalAlignment="Center"
-                               Margin="5"
-                               Text="{Binding ExportAsyncLabel, FallbackValue=EXPORT}"
-                               VerticalAlignment="Center" />
+                    <AccessText HorizontalAlignment="Center"
+                                Margin="5"
+                                Name="ExportAsyncLabel"
+                                Text="{Binding ExportAsyncLabel, FallbackValue=EXPORT}"
+                                VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
-        </WrapPanel>
+        </StackPanel>
     </Grid>
 </Window>

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,18 +25,9 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 using com.jonthysell.Chordious.Core.ViewModel;
 
@@ -47,31 +38,43 @@ namespace com.jonthysell.Chordious.WPF
     /// </summary>
     public partial class ChordFinderWindow : Window
     {
+        public ChordFinderViewModel VM
+        {
+            get
+            {
+                return _vm ?? (_vm = (DataContext as ChordFinderViewModel));
+            }
+        }
+        private ChordFinderViewModel _vm;
+
         public ChordFinderWindow()
         {
             InitializeComponent();
 
             // Handle the lack of binding selected listview items in WPF
             ResultsListView.SelectionChanged += ResultsListView_SelectionChanged;
+
+            Closing += ChordFinderWindow_Closing;
+        }
+
+        private void ChordFinderWindow_Closing(object sender, CancelEventArgs e)
+        {
+            VM.CancelSearch.Execute(null);
+            e.Cancel = false;
         }
 
         void ResultsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ChordFinderViewModel vm = DataContext as ChordFinderViewModel;
-
-            if (null != vm)
+            foreach (object item in e.AddedItems)
             {
-                foreach (object item in e.AddedItems)
-                {
-                    ObservableDiagram od = item as ObservableDiagram;
-                    vm.SelectedResults.Add(od);
-                }
+                ObservableDiagram od = item as ObservableDiagram;
+                VM.SelectedResults.Add(od);
+            }
 
-                foreach (object item in e.RemovedItems)
-                {
-                    ObservableDiagram od = item as ObservableDiagram;
-                    vm.SelectedResults.Remove(od);
-                }                
+            foreach (object item in e.RemovedItems)
+            {
+                ObservableDiagram od = item as ObservableDiagram;
+                VM.SelectedResults.Remove(od);
             }
         }
     }

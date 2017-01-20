@@ -7,6 +7,10 @@
         x:Class="com.jonthysell.Chordious.WPF.DiagramCollectionSelectorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Cancel, Mode=OneWay}"
+                    Key="Escape" />
+    </Window.InputBindings>
     <StackPanel FocusManager.FocusedElement="{Binding ElementName=CollectionNameComboBox}">
         <StackPanel Orientation="Horizontal">
             <Label Content="{Binding CollectionNameLabel, FallbackValue=COLLECTION NAME}"
@@ -38,7 +42,6 @@
                     Width="75" />
             <Button Command="{Binding Cancel}"
                     Content="{Binding AppVM.CancelLabel, FallbackValue=CANCEL}"
-                    IsCancel="True"
                     Margin="5"
                     Style="{StaticResource CleanButton}"
                     Width="75" />

@@ -28,9 +28,12 @@
             <Label Content="{Binding NodesLabel, FallbackValue=COLLECTION}"
                    FontWeight="Bold"
                    Margin="5,0"
+                   Name="NodesLabel"
+                   Target="{Binding ElementName=NodesListView}"
                    ToolTip="{Binding NodesToolTip}" />
         </WrapPanel>
-        <ListBox Grid.Column="0"
+        <ListBox AutomationProperties.LabeledBy="{Binding ElementName=NodesLabel}"
+                 Grid.Column="0"
                  Grid.Row="1"
                  HorizontalContentAlignment="Stretch"
                  ItemsSource="{Binding Nodes}"
@@ -95,16 +98,16 @@
                    Margin="5,0">
             <Label Content="{Binding AppVM.PathLabel, FallbackValue=PATH:}"
                    FontWeight="Bold" />
-            <Label Content="{Binding SelectedNode.Path, FallbackValue=/}" />
+            <Label Content="{Binding SelectedNode.Path}" />
             <Label Content="{Binding AppVM.NameLabel, FallbackValue=NAME:}"
                    FontWeight="Bold" />
-            <Label Content="{Binding SelectedNode.Name, FallbackValue=NAME}" />
+            <Label Content="{Binding SelectedNode.Name}" />
             <Label Content="{Binding AppVM.CountLabel, FallbackValue=COUNT:}"
                    FontWeight="Bold" />
-            <Label Content="{Binding SelectedNode.Diagrams.Count, FallbackValue=0}" />
-            <Label Content="{Binding AppVM.SelectedLabel, FallbackValue=COUNT:}"
+            <Label Content="{Binding SelectedNode.Diagrams.Count}" />
+            <Label Content="{Binding AppVM.SelectedLabel, FallbackValue=SELECTED:}"
                    FontWeight="Bold" />
-            <Label Content="{Binding SelectedNode.SelectedDiagrams.Count, FallbackValue=0}" />
+            <Label Content="{Binding SelectedNode.SelectedDiagrams.Count}" />
         </WrapPanel>
         <ListView Grid.Column="1"
                   Grid.Row="1"
@@ -201,7 +204,8 @@
                    HorizontalAlignment="Center">
             <StackPanel FlowDirection="LeftToRight"
                         Orientation="Horizontal">
-                <Button Command="{Binding CreateNode}"
+                <Button AutomationProperties.Name="{Binding CreateNodeLabel}"
+                        Command="{Binding CreateNode}"
                         Margin="5"
                         Style="{StaticResource CleanButtonNoBorder}"
                         ToolTip="{Binding CreateNodeToolTip}">
@@ -210,7 +214,8 @@
                                             Source="{StaticResource AddIcon16}"
                                             Width="16" />
                 </Button>
-                <Button Command="{Binding EditNode}"
+                <Button AutomationProperties.Name="{Binding EditNodeLabel}"
+                        Command="{Binding EditNode}"
                         Margin="5"
                         Style="{StaticResource CleanButtonNoBorder}"
                         ToolTip="{Binding EditNodeToolTip}">
@@ -219,7 +224,8 @@
                                             Source="{StaticResource EditIcon16}"
                                             Width="16" />
                 </Button>
-                <Button Command="{Binding DeleteNode}"
+                <Button AutomationProperties.Name="{Binding DeleteNodeLabel}"
+                        Command="{Binding DeleteNode}"
                         Margin="5"
                         Style="{StaticResource CleanButtonNoBorder}"
                         ToolTip="{Binding DeleteNodeToolTip}">
@@ -235,7 +241,8 @@
             </StackPanel>
             <StackPanel FlowDirection="LeftToRight"
                         Orientation="Horizontal">
-                <Button Command="{Binding SelectedNode.EditCollectionStyle}"
+                <Button AutomationProperties.Name="{Binding EditNodeStyleLabel}"
+                        Command="{Binding SelectedNode.EditCollectionStyle}"
                         IsEnabled="{Binding NodeIsSelected}"
                         Margin="5"
                         Style="{StaticResource CleanButtonNoBorder}"
@@ -252,7 +259,8 @@
                    HorizontalAlignment="Center">
             <StackPanel FlowDirection="LeftToRight"
                         Orientation="Horizontal">
-                <Button Command="{Binding SelectedNode.CreateDiagram}"
+                <Button AutomationProperties.Name="{Binding SelectedNode.CreateDiagramLabel}"
+                        Command="{Binding SelectedNode.CreateDiagram}"
                         IsEnabled="{Binding NodeIsSelected}"
                         Margin="5"
                         Style="{StaticResource CleanButtonNoBorder}"
@@ -262,7 +270,8 @@
                                             Source="{StaticResource AddIcon16}"
                                             Width="16" />
                 </Button>
-                <Button Command="{Binding SelectedNode.EditSelected}"
+                <Button AutomationProperties.Name="{Binding SelectedNode.EditSelectedLabel}"
+                        Command="{Binding SelectedNode.EditSelected}"
                         IsEnabled="{Binding NodeIsSelected}"
                         Margin="5"
                         Style="{StaticResource CleanButtonNoBorder}"
@@ -272,7 +281,8 @@
                                             Source="{StaticResource EditIcon16}"
                                             Width="16" />
                 </Button>
-                <Button Command="{Binding SelectedNode.DeleteSelected}"
+                <Button AutomationProperties.Name="{Binding SelectedNode.DeleteSelectedLabel}"
+                        Command="{Binding SelectedNode.DeleteSelected}"
                         IsEnabled="{Binding NodeIsSelected}"
                         Margin="5"
                         Style="{StaticResource CleanButtonNoBorder}"
@@ -289,7 +299,8 @@
             </StackPanel>
             <StackPanel FlowDirection="LeftToRight"
                         Orientation="Horizontal">
-                <Button Command="{Binding SelectedNode.ExportSelected}"
+                <Button AutomationProperties.Name="{Binding SelectedNode.ExportSelectedLabel}"
+                        Command="{Binding SelectedNode.ExportSelected}"
                         IsEnabled="{Binding NodeIsSelected}"
                         Margin="5"
                         Style="{StaticResource CleanButtonNoBorder}"

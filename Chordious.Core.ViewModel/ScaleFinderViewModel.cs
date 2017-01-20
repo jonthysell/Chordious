@@ -69,7 +69,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 _isIdle = value;
                 RaisePropertyChanged("IsIdle");
                 RaisePropertyChanged("SearchAsync");
-                RaisePropertyChanged("CancelSearch");
             }
         }
         private bool _isIdle = true;
@@ -232,7 +231,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showInstrumentManager ?? (_showInstrumentManager = new RelayCommand(() =>
                 {
                     try
                     {
@@ -245,9 +244,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showInstrumentManager;
 
         #region RootNode
 
@@ -382,7 +382,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showScaleManager ?? (_showScaleManager = new RelayCommand(() =>
                 {
                     try
                     {
@@ -395,9 +395,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showScaleManager;
 
         #endregion
 
@@ -728,7 +729,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _setAsDefaults ?? (_setAsDefaults = new RelayCommand(() =>
                 {
                     try
                     {
@@ -749,9 +750,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanSearch();
-                });
+                }));
             }
         }
+        private RelayCommand _setAsDefaults;
 
         public string ResetToDefaultsLabel
         {
@@ -773,7 +775,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _resetToDefaults ?? (_resetToDefaults = new RelayCommand(() =>
                 {
                     try
                     {
@@ -791,9 +793,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _resetToDefaults;
 
         public string SearchAsyncLabel
         {
@@ -815,7 +818,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(async () =>
+                return _searchAsync ?? (_searchAsync = new RelayCommand(async () =>
                 {
                     _searchAsyncCancellationTokenSource = new CancellationTokenSource();
 
@@ -858,9 +861,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanSearch();
-                });
+                }));
             }
         }
+        private RelayCommand _searchAsync;
 
         private CancellationTokenSource _searchAsyncCancellationTokenSource;
 
@@ -868,25 +872,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _cancelSearch ?? (_cancelSearch = new RelayCommand(() =>
                 {
                     try
                     {
-                        if (null != _searchAsyncCancellationTokenSource)
-                        {
-                            _searchAsyncCancellationTokenSource.Cancel();
-                        }
+                        _searchAsyncCancellationTokenSource?.Cancel();
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }, () =>
-                {
-                    return (null != _searchAsyncCancellationTokenSource);
-                });
+                }));
             }
         }
+        private RelayCommand _cancelSearch;
 
         public string SaveSelectedLabel
         {
@@ -908,7 +907,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _saveSelected ?? (_saveSelected = new RelayCommand(() =>
                 {
                     try
                     {
@@ -932,9 +931,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedResults.Count > 0;
-                });
+                }));
             }
         }
+        private RelayCommand _saveSelected;
 
         private static string LastDiagramCollectionName = "";
 
@@ -957,11 +957,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableDiagram> _selectedResults;
 
-        private void SelectedResults_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            RaisePropertyChanged("SaveSelected");
-        }
-
         public ObservableCollection<ObservableDiagram> Results
         {
             get
@@ -974,7 +969,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 RaisePropertyChanged("Results");
             }
         }
-        public ObservableCollection<ObservableDiagram> _results;
+        private ObservableCollection<ObservableDiagram> _results;
 
         internal ScaleFinderOptions Options { get; private set; }
         internal ScaleFinderStyle Style { get; private set; }
@@ -992,6 +987,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             SelectedResults = new ObservableCollection<ObservableDiagram>();
 
             SelectedResults.CollectionChanged += SelectedResults_CollectionChanged;
+        }
+
+        private void SelectedResults_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            RaisePropertyChanged("SaveSelected");
         }
 
         private void RefreshInstruments(IInstrument selectedInstrument = null, ITuning selectedTuning = null)

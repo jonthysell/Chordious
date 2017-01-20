@@ -53,7 +53,6 @@
                     Width="75" />
             <Button Command="{Binding Cancel}"
                     Content="{Binding AppVM.CancelLabel, FallbackValue=CANCEL}"
-                    IsCancel="True"
                     Margin="5"
                     Style="{StaticResource CleanButton}"
                     Width="75" />

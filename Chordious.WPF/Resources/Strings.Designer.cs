@@ -124,6 +124,24 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to update Chordious at this time. Please try again later..
+        /// </summary>
+        internal static string ChordiousUpdateExceptionMessage {
+            get {
+                return ResourceManager.GetString("ChordiousUpdateExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chordious failed to detect an active internet connection..
+        /// </summary>
+        internal static string ChordiousUpdateNoInternetExceptionMessage {
+            get {
+                return ResourceManager.GetString("ChordiousUpdateNoInternetExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chordious is up-to-date..
         /// </summary>
         internal static string ChordiousUpdateNotAvailableMessage {

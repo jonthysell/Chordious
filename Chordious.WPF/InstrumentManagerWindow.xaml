@@ -34,7 +34,7 @@
                    Target="{Binding ElementName=UserInstrumentsListView}"
                    ToolTip="{Binding UserInstrumentsGroupToolTip}" />
         </WrapPanel>
-        <ListBox AutomationProperties.LabeledBy="{Binding ElementName=UserInstrumentsGroupLabel}"
+        <ListBox AutomationProperties.Name="{Binding ElementName=UserInstrumentsGroupLabel}"
                  Grid.Column="0"
                  Grid.Row="1"
                  HorizontalContentAlignment="Stretch"

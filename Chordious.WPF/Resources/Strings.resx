@@ -138,6 +138,12 @@
   <data name="ChordiousUpdateAvailableUpdateNowMessageFormat" xml:space="preserve">
     <value>Chordious {0} is available. Would you like to update now?</value>
   </data>
+  <data name="ChordiousUpdateExceptionMessage" xml:space="preserve">
+    <value>Unable to update Chordious at this time. Please try again later.</value>
+  </data>
+  <data name="ChordiousUpdateNoInternetExceptionMessage" xml:space="preserve">
+    <value>Chordious failed to detect an active internet connection.</value>
+  </data>
   <data name="ChordiousUpdateNotAvailableMessage" xml:space="preserve">
     <value>Chordious is up-to-date.</value>
   </data>

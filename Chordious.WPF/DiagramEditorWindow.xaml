@@ -12,6 +12,8 @@
     <Window.InputBindings>
         <KeyBinding Command="{Binding ObservableDiagram.RenderImage}"
                     Key="F5" />
+        <KeyBinding Command="{Binding Cancel, Mode=OneWay}"
+                    Key="Escape" />
     </Window.InputBindings>
     <Grid>
         <Grid.ColumnDefinitions>

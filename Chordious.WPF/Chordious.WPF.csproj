@@ -88,83 +88,85 @@
     <Compile Include="..\Chordious.Core\Properties\SharedInfo.cs">
       <Link>Properties\SharedInfo.cs</Link>
     </Compile>
-    <Compile Include="AdvancedDataWindow.xaml.cs">
+    <Compile Include="Windows\AdvancedDataWindow.xaml.cs">
       <DependentUpon>AdvancedDataWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AutoDisableImage.cs" />
-    <Compile Include="DecimalToPercentConverter.cs" />
-    <Compile Include="ChordQualityEditorWindow.xaml.cs">
+    <Compile Include="Utils\AltKeyUtils.cs" />
+    <Compile Include="Controls\AutoDisableImage.cs" />
+    <Compile Include="Converters\TextToAccessTextConverter.cs" />
+    <Compile Include="Converters\DecimalToPercentConverter.cs" />
+    <Compile Include="Windows\ChordQualityEditorWindow.xaml.cs">
       <DependentUpon>ChordQualityEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BoolToVisibilityConverter.cs" />
-    <Compile Include="DiagramBarreEditorWindow.xaml.cs">
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Windows\DiagramBarreEditorWindow.xaml.cs">
       <DependentUpon>DiagramBarreEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DiagramStyleEditorWindow.xaml.cs">
+    <Compile Include="Windows\DiagramStyleEditorWindow.xaml.cs">
       <DependentUpon>DiagramStyleEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DiagramFretLabelEditorWindow.xaml.cs">
+    <Compile Include="Windows\DiagramFretLabelEditorWindow.xaml.cs">
       <DependentUpon>DiagramFretLabelEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InformationWindow.xaml.cs">
+    <Compile Include="Windows\InformationWindow.xaml.cs">
       <DependentUpon>InformationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DiagramEditorViewModelExtended.cs" />
-    <Compile Include="DiagramExportViewModel.cs" />
-    <Compile Include="DiagramExportWindow.xaml.cs">
+    <Compile Include="ViewModels\DiagramEditorViewModelExtended.cs" />
+    <Compile Include="ViewModels\DiagramExportViewModel.cs" />
+    <Compile Include="Windows\DiagramExportWindow.xaml.cs">
       <DependentUpon>DiagramExportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ConfirmationWindow.xaml.cs">
+    <Compile Include="Windows\ConfirmationWindow.xaml.cs">
       <DependentUpon>ConfirmationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FolderUtils.cs" />
-    <Compile Include="MouseUtils.cs" />
+    <Compile Include="Utils\FolderUtils.cs" />
+    <Compile Include="Utils\MouseUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Resources\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <Compile Include="ScaleEditorWindow.xaml.cs">
+    <Compile Include="Windows\ScaleEditorWindow.xaml.cs">
       <DependentUpon>ScaleEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NamedIntervalManagerWindow.xaml.cs">
+    <Compile Include="Windows\NamedIntervalManagerWindow.xaml.cs">
       <DependentUpon>NamedIntervalManagerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainViewModelExtended.cs" />
-    <Compile Include="ConfigPartsWindow.xaml.cs">
+    <Compile Include="ViewModels\MainViewModelExtended.cs" />
+    <Compile Include="Windows\ConfigPartsWindow.xaml.cs">
       <DependentUpon>ConfigPartsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExceptionWindow.xaml.cs">
+    <Compile Include="Windows\ExceptionWindow.xaml.cs">
       <DependentUpon>ExceptionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DiagramMarkEditorWindow.xaml.cs">
+    <Compile Include="Windows\DiagramMarkEditorWindow.xaml.cs">
       <DependentUpon>DiagramMarkEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DiagramCollectionSelectorWindow.xaml.cs">
+    <Compile Include="Windows\DiagramCollectionSelectorWindow.xaml.cs">
       <DependentUpon>DiagramCollectionSelectorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TuningEditorWindow.xaml.cs">
+    <Compile Include="Windows\TuningEditorWindow.xaml.cs">
       <DependentUpon>TuningEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InstrumentManagerWindow.xaml.cs">
+    <Compile Include="Windows\InstrumentManagerWindow.xaml.cs">
       <DependentUpon>InstrumentManagerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OptionsViewModelExtended.cs" />
-    <Compile Include="ScaleFinderWindow.xaml.cs">
+    <Compile Include="ViewModels\OptionsViewModelExtended.cs" />
+    <Compile Include="Windows\ScaleFinderWindow.xaml.cs">
       <DependentUpon>ScaleFinderWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChordFinderWindow.xaml.cs">
+    <Compile Include="Windows\ChordFinderWindow.xaml.cs">
       <DependentUpon>ChordFinderWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DiagramEditorWindow.xaml.cs">
+    <Compile Include="Windows\DiagramEditorWindow.xaml.cs">
       <DependentUpon>DiagramEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DiagramLibraryWindow.xaml.cs">
+    <Compile Include="Windows\DiagramLibraryWindow.xaml.cs">
       <DependentUpon>DiagramLibraryWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ImageUtils.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Utils\ImageUtils.cs" />
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MessageHandlers.cs" />
@@ -172,17 +174,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="IdleBoolToWaitCursorConverter.cs" />
-    <Compile Include="InstrumentEditorWindow.xaml.cs">
+    <Compile Include="Converters\IdleBoolToWaitCursorConverter.cs" />
+    <Compile Include="Windows\InstrumentEditorWindow.xaml.cs">
       <DependentUpon>InstrumentEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TextPromptWindow.xaml.cs">
+    <Compile Include="Windows\TextPromptWindow.xaml.cs">
       <DependentUpon>TextPromptWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UpdateUtils.cs" />
+    <Compile Include="Utils\UpdateUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OptionsWindow.xaml.cs">
+    <Compile Include="Windows\OptionsWindow.xaml.cs">
       <DependentUpon>OptionsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -220,99 +222,99 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="AdvancedDataWindow.xaml">
+    <Page Include="Windows\AdvancedDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ChordQualityEditorWindow.xaml">
+    <Page Include="Windows\ChordQualityEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DiagramBarreEditorWindow.xaml">
+    <Page Include="Windows\DiagramBarreEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DiagramStyleEditorWindow.xaml">
+    <Page Include="Windows\DiagramStyleEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DiagramFretLabelEditorWindow.xaml">
+    <Page Include="Windows\DiagramFretLabelEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="InformationWindow.xaml">
+    <Page Include="Windows\InformationWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DiagramExportWindow.xaml">
+    <Page Include="Windows\DiagramExportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ConfirmationWindow.xaml">
+    <Page Include="Windows\ConfirmationWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ScaleEditorWindow.xaml">
+    <Page Include="Windows\ScaleEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="NamedIntervalManagerWindow.xaml">
+    <Page Include="Windows\NamedIntervalManagerWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ConfigPartsWindow.xaml">
+    <Page Include="Windows\ConfigPartsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ExceptionWindow.xaml">
+    <Page Include="Windows\ExceptionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DiagramMarkEditorWindow.xaml">
+    <Page Include="Windows\DiagramMarkEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DiagramCollectionSelectorWindow.xaml">
+    <Page Include="Windows\DiagramCollectionSelectorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TuningEditorWindow.xaml">
+    <Page Include="Windows\TuningEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="InstrumentManagerWindow.xaml">
+    <Page Include="Windows\InstrumentManagerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ScaleFinderWindow.xaml">
+    <Page Include="Windows\ScaleFinderWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ChordFinderWindow.xaml">
+    <Page Include="Windows\ChordFinderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DiagramEditorWindow.xaml">
+    <Page Include="Windows\DiagramEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DiagramLibraryWindow.xaml">
+    <Page Include="Windows\DiagramLibraryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OptionsWindow.xaml">
+    <Page Include="Windows\OptionsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="InstrumentEditorWindow.xaml">
+    <Page Include="Windows\InstrumentEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TextPromptWindow.xaml">
+    <Page Include="Windows\TextPromptWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

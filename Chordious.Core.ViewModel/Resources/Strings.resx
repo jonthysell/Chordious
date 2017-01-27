@@ -307,7 +307,7 @@
     <value>Search for scales with the Scale Finder.</value>
   </data>
   <data name="YesAndRememberLabel" xml:space="preserve">
-    <value>Yes (stop asking me)</value>
+    <value>Yes (remember)</value>
   </data>
   <data name="YesLabel" xml:space="preserve">
     <value>Yes</value>

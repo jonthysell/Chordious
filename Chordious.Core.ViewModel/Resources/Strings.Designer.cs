@@ -4355,7 +4355,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yes (stop asking me).
+        ///   Looks up a localized string similar to Yes (remember).
         /// </summary>
         internal static string YesAndRememberLabel {
             get {

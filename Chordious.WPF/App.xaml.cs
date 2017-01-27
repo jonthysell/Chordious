@@ -61,7 +61,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             MessageHandlers.RegisterMessageHandlers(this);
 
-            UserConfigPath = !String.IsNullOrWhiteSpace(userConfigPath) ? userConfigPath : GetDefaultUserConfigPath();
+            UserConfigPath = !string.IsNullOrWhiteSpace(userConfigPath) ? userConfigPath : GetDefaultUserConfigPath();
 
             string defaultFile = GetDefaultConfigPath();
             string appFile = GetAppConfigPath();
@@ -84,7 +84,7 @@ namespace com.jonthysell.Chordious.WPF
                 {
                     Dispatcher.Invoke(action);
                 }
-            , this.GetFonts
+            , GetFonts
             , userFile);
 
             if (File.Exists(defaultFile))
@@ -169,7 +169,7 @@ namespace com.jonthysell.Chordious.WPF
                 else // Yes, backup and continue
                 {
                     string backupFile = ResetAndBackupUserConfig(userFile);
-                    string message = String.Format(Strings.ResetAndBackupUserConfigBackupFileMessageFormat, backupFile);
+                    string message = string.Format(Strings.ResetAndBackupUserConfigBackupFileMessageFormat, backupFile);
                     ExceptionUtils.HandleException(new Exception(message, ex));
                 }
             }));
@@ -177,7 +177,7 @@ namespace com.jonthysell.Chordious.WPF
 
         private string ResetAndBackupUserConfig(string userFile)
         {
-            if (String.IsNullOrWhiteSpace(userFile))
+            if (string.IsNullOrWhiteSpace(userFile))
             {
                 throw new ArgumentNullException("userFile");
             }
@@ -186,7 +186,7 @@ namespace com.jonthysell.Chordious.WPF
             string userFileName = Path.GetFileNameWithoutExtension(userFile);
             string userFileExt = Path.GetExtension(userFile);
 
-            string backupFile = Path.Combine(userFolder, String.Format("{0}.{1:yyyy.MM.dd.HH.mm.ss}{2}", userFileName, DateTime.UtcNow, userFileExt));
+            string backupFile = Path.Combine(userFolder, string.Format("{0}.{1:yyyy.MM.dd.HH.mm.ss}{2}", userFileName, DateTime.UtcNow, userFileExt));
 
             File.Move(userFile, backupFile);
 

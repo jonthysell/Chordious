@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -52,14 +52,14 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("parentStyle");
             }
 
-            this.Style = new DiagramStyle(parentStyle, LevelKey);
+            Style = new DiagramStyle(parentStyle, LevelKey);
 
             _diagrams = new List<Diagram>();
         }
 
         public DiagramCollection(DiagramStyle parentStyle, XmlReader xmlReader) : this(parentStyle)
         {
-            this.Read(xmlReader);
+            Read(xmlReader);
         }
 
         public void Add(Diagram diagram)
@@ -69,7 +69,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("diagram");
             }
 
-            diagram.Style.Parent = this.Style;
+            diagram.Style.Parent = Style;
             _diagrams.Add(diagram);
         }
 
@@ -111,7 +111,7 @@ namespace com.jonthysell.Chordious.Core
             int index = _diagrams.IndexOf(oldDiagram);
             _diagrams.RemoveAt(index);
 
-            newDiagram.Style.Parent = this.Style;
+            newDiagram.Style.Parent = Style;
             _diagrams.Insert(index, newDiagram);
         }
 
@@ -150,7 +150,7 @@ namespace com.jonthysell.Chordious.Core
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.GetEnumerator();
+            return GetEnumerator();
         }
 
         public void Read(XmlReader xmlReader)
@@ -169,11 +169,11 @@ namespace com.jonthysell.Chordious.Core
                         switch(xmlReader.Name)
                         {
                             case "diagram":
-                                Diagram diagram = new Diagram(this.Style, xmlReader.ReadSubtree());
+                                Diagram diagram = new Diagram(Style, xmlReader.ReadSubtree());
                                 Add(diagram);
                                 break;
                             case "style":
-                                this.Style.Read(xmlReader.ReadSubtree());
+                                Style.Read(xmlReader.ReadSubtree());
                                 break;
                         }
                     }
@@ -188,7 +188,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("xmlWriter");
             }
 
-            this.Style.Write(xmlWriter);
+            Style.Write(xmlWriter);
 
             foreach (Diagram d in _diagrams)
             {

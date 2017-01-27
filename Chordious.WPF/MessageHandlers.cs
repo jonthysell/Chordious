@@ -474,7 +474,7 @@ namespace com.jonthysell.Chordious.WPF
                 }
                 catch (Exception) { }
 
-                if (String.IsNullOrWhiteSpace(lastPath))
+                if (string.IsNullOrWhiteSpace(lastPath))
                 {
                     lastPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 }

@@ -274,10 +274,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         protected void OnRequestClose()
         {
-            if (null != RequestClose)
-            {
-                RequestClose();
-            }
+            RequestClose?.Invoke();
         }
 
         protected ConfigParts GetConfigParts()

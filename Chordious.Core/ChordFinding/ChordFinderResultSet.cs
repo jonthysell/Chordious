@@ -55,8 +55,8 @@ namespace com.jonthysell.Chordious.Core
 
         internal ChordFinderResultSet(IChordFinderOptions chordFinderOptions)
         {
-            this.ChordFinderOptions = chordFinderOptions;
-            this._results = new List<IChordFinderResult>();
+            ChordFinderOptions = chordFinderOptions;
+            _results = new List<IChordFinderResult>();
         }
 
         public void AddResult(int[] marks)

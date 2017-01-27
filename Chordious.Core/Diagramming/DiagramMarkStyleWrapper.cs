@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -48,11 +48,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.shape", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.shape", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.shape", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.shape", value, MarkType);
             }
         }
 
@@ -60,11 +60,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGetEnum<DiagramMarkShape>("mark.shape", this.MarkType);
+                return Style.MarkStyleGetEnum<DiagramMarkShape>("mark.shape", MarkType);
             }
             set
             {
-                Style.MarkStyleSet("mark.shape", value, this.MarkType);
+                Style.MarkStyleSet("mark.shape", value, MarkType);
             }
         }
 
@@ -72,11 +72,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.visible", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.visible", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.visible", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.visible", value, MarkType);
             }
         }
 
@@ -84,11 +84,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGetBoolean("mark.visible", this.MarkType);
+                return Style.MarkStyleGetBoolean("mark.visible", MarkType);
             }
             set
             {
-                Style.MarkStyleSet("mark.visible", value, this.MarkType);
+                Style.MarkStyleSet("mark.visible", value, MarkType);
             }
         }
 
@@ -96,11 +96,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.color", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.color", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.color", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.color", value, MarkType);
             }
         }
 
@@ -108,11 +108,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGetColor("mark.color", this.MarkType);
+                return Style.MarkStyleGetColor("mark.color", MarkType);
             }
             set
             {
-                Style.MarkStyleSetColor("mark.color", value, this.MarkType);
+                Style.MarkStyleSetColor("mark.color", value, MarkType);
             }
         }
 
@@ -120,11 +120,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.opacity", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.opacity", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.opacity", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.opacity", value, MarkType);
             }
         }
 
@@ -132,7 +132,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGetDouble("mark.opacity", this.MarkType);
+                return Style.MarkStyleGetDouble("mark.opacity", MarkType);
             }
             set
             {
@@ -141,7 +141,7 @@ namespace com.jonthysell.Chordious.Core
                     throw new ArgumentOutOfRangeException();
                 }
 
-                Style.MarkStyleSet("mark.opacity", value, this.MarkType);
+                Style.MarkStyleSet("mark.opacity", value, MarkType);
             }
         }
 
@@ -149,11 +149,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.textstyle", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.textstyle", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.textstyle", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.textstyle", value, MarkType);
             }
         }
 
@@ -161,11 +161,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGetEnum<DiagramTextStyle>("mark.textstyle", this.MarkType);
+                return Style.MarkStyleGetEnum<DiagramTextStyle>("mark.textstyle", MarkType);
             }
             set
             {
-                Style.MarkStyleSet("mark.textstyle", value, this.MarkType);
+                Style.MarkStyleSet("mark.textstyle", value, MarkType);
             }
         }
 
@@ -173,11 +173,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.textalignment", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.textalignment", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.textalignment", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.textalignment", value, MarkType);
             }
         }
 
@@ -185,11 +185,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGetEnum<DiagramHorizontalAlignment>("mark.textalignment", this.MarkType);
+                return Style.MarkStyleGetEnum<DiagramHorizontalAlignment>("mark.textalignment", MarkType);
             }
             set
             {
-                Style.MarkStyleSet("mark.textalignment", value, this.MarkType);
+                Style.MarkStyleSet("mark.textalignment", value, MarkType);
             }
         }
 
@@ -197,11 +197,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.textsizeratio", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.textsizeratio", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.textsizeratio", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.textsizeratio", value, MarkType);
             }
         }
 
@@ -209,7 +209,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGetDouble("mark.textsizeratio", this.MarkType);
+                return Style.MarkStyleGetDouble("mark.textsizeratio", MarkType);
             }
             set
             {
@@ -218,7 +218,7 @@ namespace com.jonthysell.Chordious.Core
                     throw new ArgumentOutOfRangeException();
                 }
 
-                Style.MarkStyleSet("mark.textsizeratio", value, this.MarkType);
+                Style.MarkStyleSet("mark.textsizeratio", value, MarkType);
             }
         }
 
@@ -226,11 +226,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.textvisible", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.textvisible", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.textvisible", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.textvisible", value, MarkType);
             }
         }
 
@@ -238,11 +238,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGetBoolean("mark.textvisible", this.MarkType);
+                return Style.MarkStyleGetBoolean("mark.textvisible", MarkType);
             }
             set
             {
-                Style.MarkStyleSet("mark.textvisible", value, this.MarkType);
+                Style.MarkStyleSet("mark.textvisible", value, MarkType);
             }
         }
 
@@ -250,11 +250,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.textcolor", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.textcolor", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.textcolor", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.textcolor", value, MarkType);
             }
         }
 
@@ -262,11 +262,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGetColor("mark.textcolor", this.MarkType);
+                return Style.MarkStyleGetColor("mark.textcolor", MarkType);
             }
             set
             {
-                Style.MarkStyleSetColor("mark.textcolor", value, this.MarkType);
+                Style.MarkStyleSetColor("mark.textcolor", value, MarkType);
             }
         }
 
@@ -274,11 +274,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.textopacity", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.textopacity", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.textopacity", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.textopacity", value, MarkType);
             }
         }
 
@@ -286,7 +286,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGetDouble("mark.textopacity", this.MarkType);
+                return Style.MarkStyleGetDouble("mark.textopacity", MarkType);
             }
             set
             {
@@ -295,7 +295,7 @@ namespace com.jonthysell.Chordious.Core
                     throw new ArgumentOutOfRangeException();
                 }
 
-                Style.MarkStyleSet("mark.textopacity", value, this.MarkType);
+                Style.MarkStyleSet("mark.textopacity", value, MarkType);
             }
         }
 
@@ -303,11 +303,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.fontfamily", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.fontfamily", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.fontfamily", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.fontfamily", value, MarkType);
             }
         }
 
@@ -315,11 +315,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGet("mark.fontfamily", this.MarkType);
+                return Style.MarkStyleGet("mark.fontfamily", MarkType);
             }
             set
             {
-                Style.MarkStyleSet("mark.fontfamily", value, this.MarkType);
+                Style.MarkStyleSet("mark.fontfamily", value, MarkType);
             }
         }
 
@@ -327,11 +327,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.radiusratio", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.radiusratio", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.radiusratio", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.radiusratio", value, MarkType);
             }
         }
 
@@ -339,7 +339,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGetDouble("mark.radiusratio", this.MarkType);
+                return Style.MarkStyleGetDouble("mark.radiusratio", MarkType);
             }
             set
             {
@@ -348,7 +348,7 @@ namespace com.jonthysell.Chordious.Core
                     throw new ArgumentOutOfRangeException();
                 }
 
-                Style.MarkStyleSet("mark.radiusratio", value, this.MarkType);
+                Style.MarkStyleSet("mark.radiusratio", value, MarkType);
             }
         }
 
@@ -356,11 +356,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.bordercolor", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.bordercolor", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.bordercolor", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.bordercolor", value, MarkType);
             }
         }
 
@@ -368,11 +368,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGetColor("mark.bordercolor", this.MarkType);
+                return Style.MarkStyleGetColor("mark.bordercolor", MarkType);
             }
             set
             {
-                Style.MarkStyleSetColor("mark.bordercolor", value, this.MarkType);
+                Style.MarkStyleSetColor("mark.bordercolor", value, MarkType);
             }
         }
 
@@ -380,11 +380,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleIsLocalGet("mark.borderthickness", this.MarkType);
+                return Style.MarkStyleIsLocalGet("mark.borderthickness", MarkType);
             }
             set
             {
-                Style.MarkStyleIsLocalSet("mark.borderthickness", value, this.MarkType);
+                Style.MarkStyleIsLocalSet("mark.borderthickness", value, MarkType);
             }
         }
 
@@ -392,7 +392,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Style.MarkStyleGetDouble("mark.borderthickness", this.MarkType);
+                return Style.MarkStyleGetDouble("mark.borderthickness", MarkType);
             }
             set
             {
@@ -401,7 +401,7 @@ namespace com.jonthysell.Chordious.Core
                     throw new ArgumentOutOfRangeException();
                 }
 
-                Style.MarkStyleSet("mark.borderthickness", value, this.MarkType);
+                Style.MarkStyleSet("mark.borderthickness", value, MarkType);
             }
         }
 
@@ -440,10 +440,7 @@ namespace com.jonthysell.Chordious.Core
 
         private void OnMarkTypeChanged()
         {
-            if (null != MarkTypeChanged)
-            {
-                MarkTypeChanged(MarkType);
-            }
+            MarkTypeChanged?.Invoke(MarkType);
         }
     }
 }

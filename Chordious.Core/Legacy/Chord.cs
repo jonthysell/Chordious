@@ -51,18 +51,18 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             get
             {
-                if (String.IsNullOrEmpty(this._fileName))
+                if (string.IsNullOrEmpty(_fileName))
                 {
-                    return this.Title;
+                    return Title;
                 }
                 else
                 {
-                    return this._fileName;
+                    return _fileName;
                 }
             }
             set
             {
-                this._fileName = value;
+                _fileName = value;
             }
         }
         private string _fileName;
@@ -71,7 +71,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             get
             {
-                return !String.IsNullOrEmpty(this._fileName);
+                return !string.IsNullOrEmpty(_fileName);
             }
         }
 
@@ -183,18 +183,18 @@ namespace com.jonthysell.Chordious.Core.Legacy
 
         public Chord(string fileName, string title, int numStrings, int numFrets, int baseLine, int barre, int[] marks)
         {
-            this.Title = title;
-            this.FileName = fileName;
-            this.NumStrings = numStrings;
-            this.NumFrets = numFrets;
-            this.BaseLine = baseLine;
-            this.Barre = barre;
-            this.Marks = marks;
+            Title = title;
+            FileName = fileName;
+            NumStrings = numStrings;
+            NumFrets = numFrets;
+            BaseLine = baseLine;
+            Barre = barre;
+            Marks = marks;
         }
 
         public Chord(string chordLine)
         {
-            if (String.IsNullOrEmpty(chordLine))
+            if (string.IsNullOrEmpty(chordLine))
             {
                 throw new ArgumentNullException("chordLine");
             }
@@ -206,20 +206,20 @@ namespace com.jonthysell.Chordious.Core.Legacy
             string fileName = name_parts.Length > 1 ? name_parts[0] : "";
             string title = name_parts.Length > 1 ? name_parts[1] : name_parts[0];
 
-            this.Title = title;
-            this.FileName = fileName;
+            Title = title;
+            FileName = fileName;
 
-            this.NumStrings = Int32.Parse(s[1]);
-            this.NumFrets = Int32.Parse(s[2]);
-            this.BaseLine = Int32.Parse(s[3]);
-            this.Barre = Int32.Parse(s[4]);
+            NumStrings = int.Parse(s[1]);
+            NumFrets = int.Parse(s[2]);
+            BaseLine = int.Parse(s[3]);
+            Barre = int.Parse(s[4]);
 
-            int[] marks = new int[(int)Math.Min(this.NumStrings, s.Length - 5)];
+            int[] marks = new int[(Math.Min(NumStrings, s.Length - 5))];
             for (int i = 0; i < marks.Length; i++)
             {
-                marks[i] = Int32.Parse(s[5 + i]);
+                marks[i] = int.Parse(s[5 + i]);
             }
-            this.Marks = marks;
+            Marks = marks;
         }
 
         public void CopyTo(Chord c)
@@ -229,31 +229,31 @@ namespace com.jonthysell.Chordious.Core.Legacy
                 throw new ArgumentNullException("c");
             }
 
-            c.Title = this.Title;
-            c.FileName = this.FileNameSet ? this._fileName : "";
-            c.NumStrings = this.NumStrings;
-            c.NumFrets = this.NumFrets;
-            c.BaseLine = this.BaseLine;
-            c.Barre = this.Barre;
-            c.Marks = (int[])this.Marks.Clone();
+            c.Title = Title;
+            c.FileName = FileNameSet ? _fileName : "";
+            c.NumStrings = NumStrings;
+            c.NumFrets = NumFrets;
+            c.BaseLine = BaseLine;
+            c.Barre = Barre;
+            c.Marks = (int[])Marks.Clone();
         }
 
         public override string ToString()
         {
             string s = "";
 
-            if (!String.IsNullOrEmpty(_fileName))
+            if (!string.IsNullOrEmpty(_fileName))
             {
                 s += _fileName + ":";
             }
 
             s += Title + ";";
 
-            s += String.Format("{0};{1};{2};{3}", NumStrings, NumFrets, BaseLine, Barre);
+            s += string.Format("{0};{1};{2};{3}", NumStrings, NumFrets, BaseLine, Barre);
 
-            for (int i = 0; i < this.Marks.Length; i++)
+            for (int i = 0; i < Marks.Length; i++)
             {
-                s+= ";" + this.Marks[i];
+                s+= ";" + Marks[i];
             }
 
             return s;

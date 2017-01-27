@@ -105,10 +105,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         Callback(Name, Abbreviation, GetIntervalArray());
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {
@@ -129,10 +126,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {

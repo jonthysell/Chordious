@@ -60,11 +60,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                if (null == _fontFamilies)
-                {
-                    _fontFamilies = GetFontFamilies();
-                }
-                return _fontFamilies;
+                return _fontFamilies ?? (_fontFamilies = GetFontFamilies());
             }
         }
         private static ObservableCollection<string> _fontFamilies;
@@ -226,7 +222,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 throw new ArgumentNullException("sortedCollection");
             }
 
-            if (String.IsNullOrWhiteSpace(value))
+            if (string.IsNullOrWhiteSpace(value))
             {
                 throw new ArgumentNullException("value");
             }

@@ -98,7 +98,7 @@ namespace com.jonthysell.Chordious.WPF
                 {
                     if (confirmUpdate)
                     {
-                        string message = String.Format(Strings.ChordiousUpdateAvailableUpdateNowMessageFormat, latestVersion.Version);
+                        string message = string.Format(Strings.ChordiousUpdateAvailableUpdateNowMessageFormat, latestVersion.Version);
                         AppVM.DoOnUIThread(() =>
                         {
                             Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (confirmed) =>
@@ -173,7 +173,7 @@ namespace com.jonthysell.Chordious.WPF
             AppVM.DoOnUIThread(() =>
             {
                 Process p = new Process();
-                p.StartInfo = new ProcessStartInfo("cmd.exe", String.Format("/c {0}", cmdFile));
+                p.StartInfo = new ProcessStartInfo("cmd.exe", string.Format("/c {0}", cmdFile));
                 p.StartInfo.CreateNoWindow = true;
                 p.Start();
 
@@ -215,7 +215,7 @@ namespace com.jonthysell.Chordious.WPF
 
         public static ulong LongVersion(string version)
         {
-            if (String.IsNullOrWhiteSpace(version))
+            if (string.IsNullOrWhiteSpace(version))
             {
                 throw new ArgumentNullException("version");
             }
@@ -283,12 +283,9 @@ namespace com.jonthysell.Chordious.WPF
             get
             {
                 int Description;
-                return InternetGetConnectedState(out Description, 0);
+                return NativeMethods.InternetGetConnectedState(out Description, 0);
             }
         }
-
-        [DllImport("wininet.dll")]
-        private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
 
         public static DateTime LastUpdateCheck
         {
@@ -313,32 +310,6 @@ namespace com.jonthysell.Chordious.WPF
         private const string _userAgent = "Mozilla/5.0";
     }
 
-    public class UpdateException : Exception
-    {
-        public override string Message
-        {
-            get
-            {
-                return Strings.ChordiousUpdateExceptionMessage;
-            }
-        }
-
-        public UpdateException(Exception innerException) : base("", innerException) { }
-    }
-
-    public class UpdateNoInternetException : Exception
-    {
-        public override string Message
-        {
-            get
-            {
-                return Strings.ChordiousUpdateNoInternetExceptionMessage;
-            }
-        }
-
-        public UpdateNoInternetException() : base() { }
-    }
-
     public class InstallerInfo
     {
         public string Version { get; private set; }
@@ -349,12 +320,12 @@ namespace com.jonthysell.Chordious.WPF
 
         public InstallerInfo(string version, string url, ReleaseChannel releaseChannel)
         {
-            if (String.IsNullOrWhiteSpace(version))
+            if (string.IsNullOrWhiteSpace(version))
             {
                 throw new ArgumentNullException("version");
             }
 
-            if (String.IsNullOrWhiteSpace(url))
+            if (string.IsNullOrWhiteSpace(url))
             {
                 throw new ArgumentNullException("url");
             }
@@ -369,5 +340,39 @@ namespace com.jonthysell.Chordious.WPF
     {
         Official,
         Preview
+    }
+
+    [Serializable]
+    public class UpdateException : Exception
+    {
+        public override string Message
+        {
+            get
+            {
+                return Strings.ChordiousUpdateExceptionMessage;
+            }
+        }
+
+        public UpdateException(Exception innerException) : base("", innerException) { }
+    }
+
+    [Serializable]
+    public class UpdateNoInternetException : Exception
+    {
+        public override string Message
+        {
+            get
+            {
+                return Strings.ChordiousUpdateNoInternetExceptionMessage;
+            }
+        }
+
+        public UpdateNoInternetException() : base() { }
+    }
+
+    internal static partial class NativeMethods
+    {
+        [DllImport("wininet.dll")]
+        internal extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
     }
 }

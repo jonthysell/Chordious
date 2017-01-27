@@ -85,7 +85,7 @@ namespace com.jonthysell.Chordious.Core
                 bool[] hasNotes = new bool[targetNotes.Length];
 
                 // Walk back up the tree to set the marks on the result and flag each target note
-                while (nn != null)
+                while (null != nn)
                 {
                     marks[str] = nn.Fret;
 

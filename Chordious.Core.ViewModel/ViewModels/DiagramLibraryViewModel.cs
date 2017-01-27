@@ -186,7 +186,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (NodeIsSelected)
                 {
-                    return String.Format(Strings.DiagramLibraryEditNodeLabelFormat, SelectedNode.Name);
+                    return string.Format(Strings.DiagramLibraryEditNodeLabelFormat, SelectedNode.Name);
                 }
 
                 return Strings.EditLabel;
@@ -211,7 +211,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         string path = SelectedNode.Path;
                         string oldName = SelectedNode.Name;
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(String.Format(Strings.DiagramLibraryRenameCollectionPromptFormat, oldName), oldName, (newName) =>
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(string.Format(Strings.DiagramLibraryRenameCollectionPromptFormat, oldName), oldName, (newName) =>
                         {
                             Library.Rename(path, oldName, newName);
                             ReloadNodes();
@@ -238,7 +238,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (NodeIsSelected)
                 {
-                    return String.Format(Strings.DiagramLibraryDeleteNodeLabelFormat, SelectedNode.Name);
+                    return string.Format(Strings.DiagramLibraryDeleteNodeLabelFormat, SelectedNode.Name);
                 }
 
                 return Strings.DeleteLabel;
@@ -263,7 +263,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         string path = SelectedNode.Path;
                         string name = SelectedNode.Name;
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format(Strings.DiagramLibraryDeleteNodePromptFormat, name), (confirmed) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(string.Format(Strings.DiagramLibraryDeleteNodePromptFormat, name), (confirmed) =>
                         {
                             if (confirmed)
                             {
@@ -293,7 +293,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (NodeIsSelected)
                 {
-                    return String.Format(Strings.DiagramLibraryCloneNodeLabelFormat, SelectedNode.Name);
+                    return string.Format(Strings.DiagramLibraryCloneNodeLabelFormat, SelectedNode.Name);
                 }
 
                 return Strings.CloneLabel;
@@ -318,7 +318,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         string path = SelectedNode.Path;
                         string oldName = SelectedNode.Name;
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(String.Format(Strings.DiagramLibraryCloneNodePromptFormat, oldName), Library.GetNewCollectionName(path, oldName), (newName) =>
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(string.Format(Strings.DiagramLibraryCloneNodePromptFormat, oldName), Library.GetNewCollectionName(path, oldName), (newName) =>
                         {
                             Library.Clone(path, oldName, newName);
                             ReloadNodes();
@@ -345,7 +345,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (NodeIsSelected)
                 {
-                    return String.Format(Strings.DiagramLibraryEditNodeStyleLabelFormat, SelectedNode.Name);
+                    return string.Format(Strings.DiagramLibraryEditNodeStyleLabelFormat, SelectedNode.Name);
                 }
 
                 return Strings.EditStyleLabel;

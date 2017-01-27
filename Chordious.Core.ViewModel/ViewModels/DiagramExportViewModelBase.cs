@@ -115,7 +115,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             set
             {
-                if (String.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     value = "";
                 }
@@ -174,7 +174,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         for (int i = 0; i < DiagramsToExport.Count; i++)
                         {
                             await ExportDiagramAsync(i);
-                            PercentComplete = (double)(i + 1) / (double)(DiagramsToExport.Count);
+                            PercentComplete = (i + 1) / (double)DiagramsToExport.Count;
                         }
                     }
                     catch (Exception ex)
@@ -245,18 +245,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void OnExportStart()
         {
-            if (null != ExportStart)
-            {
-                ExportStart();
-            }
+            ExportStart?.Invoke();
         }
 
         private void OnExportEnd()
         {
-            if (null != ExportEnd)
-            {
-                ExportEnd();
-            }
+            ExportEnd?.Invoke();
         }
     }
 }

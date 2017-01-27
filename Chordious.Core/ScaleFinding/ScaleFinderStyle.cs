@@ -34,20 +34,20 @@ namespace com.jonthysell.Chordious.Core
 
             if (null != chordiousSettings)
             {
-                this.Settings = chordiousSettings;
+                Settings = chordiousSettings;
             }
             else
             {
-                this.Settings = new ChordiousSettings(this._configFile.ChordiousSettings, level);
+                Settings = new ChordiousSettings(_configFile.ChordiousSettings, level);
             }
 
             if (null != diagramStyle)
             {
-                this.Style = diagramStyle;
+                Style = diagramStyle;
             }
             else
             {
-                this.Style = new DiagramStyle(this._configFile.DiagramStyle, level);
+                Style = new DiagramStyle(_configFile.DiagramStyle, level);
             }
         }
     }

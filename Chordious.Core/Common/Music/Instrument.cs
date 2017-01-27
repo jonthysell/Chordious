@@ -66,12 +66,12 @@ namespace com.jonthysell.Chordious.Core
             }
             set
             {
-                if (String.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentNullException();
                 }
 
-                if (this.ReadOnly)
+                if (ReadOnly)
                 {
                     throw new ObjectIsReadOnlyException(this);
                 }
@@ -103,7 +103,7 @@ namespace com.jonthysell.Chordious.Core
                     throw new ArgumentOutOfRangeException();
                 }
 
-                if (this.ReadOnly)
+                if (ReadOnly)
                 {
                     throw new ObjectIsReadOnlyException(this);
                 }
@@ -131,18 +131,18 @@ namespace com.jonthysell.Chordious.Core
 
         internal Instrument(InstrumentSet parent, string name, int numStrings) : this(parent)
         {
-            this.Name = name;
-            this.NumStrings = numStrings;
+            Name = name;
+            NumStrings = numStrings;
         }
 
         internal Instrument(InstrumentSet parent, XmlReader xmlReader) : this(parent)
         {
-            this.Read(xmlReader);
+            Read(xmlReader);
         }
 
         public void MarkAsReadOnly()
         {
-            this.ReadOnly = true;
+            ReadOnly = true;
             foreach (Tuning t in Tunings)
             {
                 t.MarkAsReadOnly();
@@ -160,8 +160,8 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (xmlReader.IsStartElement() && xmlReader.Name == "instrument")
                 {
-                    this.Name = xmlReader.GetAttribute("name");
-                    this.NumStrings = Int32.Parse(xmlReader.GetAttribute("strings"));
+                    Name = xmlReader.GetAttribute("name");
+                    NumStrings = int.Parse(xmlReader.GetAttribute("strings"));
 
                     while (xmlReader.Read())
                     {
@@ -183,8 +183,8 @@ namespace com.jonthysell.Chordious.Core
 
             xmlWriter.WriteStartElement("instrument");
 
-            xmlWriter.WriteAttributeString("name", this.Name);
-            xmlWriter.WriteAttributeString("strings", this.NumStrings.ToString());
+            xmlWriter.WriteAttributeString("name", Name);
+            xmlWriter.WriteAttributeString("strings", NumStrings.ToString());
 
             foreach (Tuning t in _tunings)
             {
@@ -207,7 +207,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentException();
             }
 
-            return this.Name.CompareTo(instrument.Name);
+            return Name.CompareTo(instrument.Name);
         }
 
         public override string ToString()

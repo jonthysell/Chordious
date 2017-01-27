@@ -49,7 +49,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             private set
             {
-                if (String.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException();
                 }
@@ -66,7 +66,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             private set
             {
-                if (String.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException();
                 }
@@ -83,10 +83,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {
@@ -109,10 +106,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void ProcessClose()
         {
-            if (null != Callback)
-            {
-                Callback();
-            }
+            Callback?.Invoke();
         }
     }
 }

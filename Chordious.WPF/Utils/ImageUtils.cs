@@ -71,7 +71,7 @@ namespace com.jonthysell.Chordious.WPF
 
         public static Bitmap SvgTextToBitmap(string svgText, int width, int height, float scaleFactor)
         {
-            if (String.IsNullOrEmpty(svgText))
+            if (string.IsNullOrEmpty(svgText))
             {
                 throw new ArgumentNullException("svgText");
             }
@@ -91,7 +91,7 @@ namespace com.jonthysell.Chordious.WPF
                 throw new ArgumentOutOfRangeException("scaleFactor");
             }
 
-            float maxDimension = scaleFactor * (float)Math.Max(width, height);
+            float maxDimension = scaleFactor * Math.Max(width, height);
 
             SvgDocument doc = SvgDocument.FromSvg<Svg.SvgDocument>(svgText);
 
@@ -149,8 +149,8 @@ namespace com.jonthysell.Chordious.WPF
 
         public static Bitmap CenterAndScale(Bitmap source, float width, float height, SvgRenderer svgRenderer)
         {
-            float totalWidth = (float)source.Width;
-            float totalHeight = (float)source.Height;
+            float totalWidth = source.Width;
+            float totalHeight = source.Height;
 
             // Need to resize?
             if ((totalHeight != height || totalWidth != width))
@@ -198,7 +198,7 @@ namespace com.jonthysell.Chordious.WPF
 
         public static void ExportImageFile(string svgText, int width, int height, ExportFormat exportFormat, float scaleFactor, string filePath)
         {
-            if (String.IsNullOrWhiteSpace(svgText))
+            if (string.IsNullOrWhiteSpace(svgText))
             {
                 throw new ArgumentNullException("svgText");
             }
@@ -218,7 +218,7 @@ namespace com.jonthysell.Chordious.WPF
                 throw new ArgumentOutOfRangeException("scaleFactor");
             }
 
-            if (String.IsNullOrWhiteSpace(filePath))
+            if (string.IsNullOrWhiteSpace(filePath))
             {
                 throw new ArgumentNullException("filePath");
             }
@@ -234,10 +234,9 @@ namespace com.jonthysell.Chordious.WPF
             {
                 if (exportFormat == ExportFormat.SVG)
                 {
-                    using (StreamWriter sw = new StreamWriter(fs))
-                    {
-                        sw.Write(svgText);
-                    }
+                    StreamWriter sw = new StreamWriter(fs);
+                    sw.Write(svgText);
+                    sw.Flush();
                 }
                 else
                 {
@@ -314,7 +313,7 @@ namespace com.jonthysell.Chordious.WPF
                 throw new ArgumentNullException("tags");
             }
 
-            if (String.IsNullOrWhiteSpace(value))
+            if (string.IsNullOrWhiteSpace(value))
             {
                 throw new ArgumentNullException("value");
             }
@@ -352,9 +351,9 @@ namespace com.jonthysell.Chordious.WPF
                 throw new ArgumentOutOfRangeException("height");
             }
 
-            float maxByDimensionConstraint = (float)MaxBitmapDimension / (float)Math.Max(width, height);
+            float maxByDimensionConstraint = MaxBitmapDimension / (float)Math.Max(width, height);
 
-            float maxByMemoryConstraint = (float)Math.Sqrt(((double)MaxBitmapDimension * (double)MaxBitmapDimension) / ((double)width * (double)height));
+            float maxByMemoryConstraint = (float)Math.Sqrt(MaxBitmapDimension * (MaxBitmapDimension / (width * (double)height)));
 
             return Math.Min(maxByDimensionConstraint, maxByMemoryConstraint);
         }

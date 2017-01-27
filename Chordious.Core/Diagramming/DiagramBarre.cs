@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -48,7 +48,7 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramBarre(Diagram parent, XmlReader xmlReader) : base(parent)
         {
-            this.Read(xmlReader);
+            Read(xmlReader);
         }
 
         public override sealed void Read(XmlReader xmlReader)
@@ -62,19 +62,19 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (xmlReader.IsStartElement() && xmlReader.Name == "barre")
                 {
-                    this.Text = xmlReader.GetAttribute("text");
+                    Text = xmlReader.GetAttribute("text");
 
-                    int fret = Int32.Parse(xmlReader.GetAttribute("fret"));
-                    int start = Int32.Parse(xmlReader.GetAttribute("start"));
-                    int end = Int32.Parse(xmlReader.GetAttribute("end"));
+                    int fret = int.Parse(xmlReader.GetAttribute("fret"));
+                    int start = int.Parse(xmlReader.GetAttribute("start"));
+                    int end = int.Parse(xmlReader.GetAttribute("end"));
 
-                    this.Position = new BarrePosition(fret, start, end);
+                    Position = new BarrePosition(fret, start, end);
 
                     while (xmlReader.Read())
                     {
                         if (xmlReader.IsStartElement() && xmlReader.Name == "style")
                         {
-                            this.Style.Read(xmlReader.ReadSubtree());
+                            Style.Read(xmlReader.ReadSubtree());
                         }
                     }
                 }
@@ -90,51 +90,51 @@ namespace com.jonthysell.Chordious.Core
 
             xmlWriter.WriteStartElement("barre");
 
-            xmlWriter.WriteAttributeString("text", this.Text);
-            xmlWriter.WriteAttributeString("fret", this.Position.Fret.ToString());
-            xmlWriter.WriteAttributeString("start", this.Position.StartString.ToString());
-            xmlWriter.WriteAttributeString("end", this.Position.EndString.ToString());
+            xmlWriter.WriteAttributeString("text", Text);
+            xmlWriter.WriteAttributeString("fret", Position.Fret.ToString());
+            xmlWriter.WriteAttributeString("start", Position.StartString.ToString());
+            xmlWriter.WriteAttributeString("end", Position.EndString.ToString());
 
-            this.Style.Write(xmlWriter, "barre");
+            Style.Write(xmlWriter, "barre");
 
             xmlWriter.WriteEndElement();
         }
 
         public override bool IsVisible()
         {
-            return this.Style.BarreVisible;
+            return Style.BarreVisible;
         }
 
         public override string ToSvg()
         {
             string svg = "";
 
-            if (this.IsVisible())
+            if (IsVisible())
             {
-                double startX = this.Parent.GridLeftEdge() + (this.Parent.Style.GridStringSpacing * (this.Position.StartString - 1));
-                double endX = this.Parent.GridLeftEdge() + (this.Parent.Style.GridStringSpacing * (this.Position.EndString - 1));
+                double startX = Parent.GridLeftEdge() + (Parent.Style.GridStringSpacing * (Position.StartString - 1));
+                double endX = Parent.GridLeftEdge() + (Parent.Style.GridStringSpacing * (Position.EndString - 1));
 
-                double centerY = this.Parent.GridTopEdge() + (this.Parent.Style.GridFretSpacing / 2.0) + (this.Parent.Style.GridFretSpacing * (this.Position.Fret - 1));
+                double centerY = Parent.GridTopEdge() + (Parent.Style.GridFretSpacing / 2.0) + (Parent.Style.GridFretSpacing * (Position.Fret - 1));
 
-                switch (this.Style.BarreVerticalAlignment)
+                switch (Style.BarreVerticalAlignment)
                 {
                     case DiagramVerticalAlignment.Bottom:
-                        centerY += this.Parent.Style.GridFretSpacing * 0.5;
+                        centerY += Parent.Style.GridFretSpacing * 0.5;
                         break;
                     case DiagramVerticalAlignment.Top:
-                        centerY -= this.Parent.Style.GridFretSpacing * 0.5;
+                        centerY -= Parent.Style.GridFretSpacing * 0.5;
                         break;
                     case DiagramVerticalAlignment.Middle:
                     default:
                         break;
                 }
 
-                string shapeStyle = this.Style.GetSvgStyle(DiagramBarre._shapeStyleMap);
+                string shapeStyle = Style.GetSvgStyle(DiagramBarre._shapeStyleMap);
                 shapeStyle += "fill-opacity:0;";
 
-                double radiusX = (this.Position.EndString - this.Position.StartString) * this.Parent.Style.GridStringSpacing;
-                double radiusY = this.Parent.Style.GridFretSpacing * this.Style.BarreArcRatio;
-                svg += String.Format(CultureInfo.InvariantCulture, SvgConstants.ARC, shapeStyle, startX, centerY, radiusX, radiusY, endX, centerY);
+                double radiusX = (Position.EndString - Position.StartString) * Parent.Style.GridStringSpacing;
+                double radiusY = Parent.Style.GridFretSpacing * Style.BarreArcRatio;
+                svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.ARC, shapeStyle, startX, centerY, radiusX, radiusY, endX, centerY);
             }
 
             return svg;

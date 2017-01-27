@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             get
             {
-                return this._width;
+                return _width;
             }
             set
             {
@@ -42,7 +42,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this._width = value;
+                _width = value;
             }
         }
         private double _width;
@@ -51,7 +51,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             get
             {
-                return this._height;
+                return _height;
             }
             set
             {
@@ -59,7 +59,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this._height = value;
+                _height = value;
             }
         }
         private double _height;
@@ -68,7 +68,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             get
             {
-                return this._strokeWidth;
+                return _strokeWidth;
             }
             set
             {
@@ -76,7 +76,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this._strokeWidth = value;
+                _strokeWidth = value;
             }
         }
         private double _strokeWidth;
@@ -85,7 +85,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             get
             {
-                return this._margin;
+                return _margin;
             }
             set
             {
@@ -93,7 +93,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this._margin = value;
+                _margin = value;
             }
         }
         private double _margin;
@@ -102,7 +102,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             get
             {
-                return this._fontSize;
+                return _fontSize;
             }
             set
             {
@@ -110,7 +110,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this._fontSize = value;
+                _fontSize = value;
             }
         }
         private double _fontSize;
@@ -119,15 +119,15 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             get
             {
-                return this._fontFamily;
+                return _fontFamily;
             }
             set
             {
-                if (String.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentNullException();
                 }
-                this._fontFamily = value;
+                _fontFamily = value;
             }
         }
         private string _fontFamily;
@@ -144,21 +144,21 @@ namespace com.jonthysell.Chordious.Core.Legacy
 
         public ChordOptions(double width, double height, double strokeWidth, double margin, double fontSize, string fontFamily, FontStyle fontStyle, BarreType barreType, OpenStringType openStringType, bool fullBarres)
         {
-            this.Width = width;
-            this.Height = height;
-            this.StrokeWidth = strokeWidth;
-            this.Margin = margin;
-            this.FontSize = fontSize;
-            this.FontFamily = fontFamily;
-            this.FontStyle = fontStyle;
-            this.BarreType = barreType;
-            this.OpenStringType = openStringType;
-            this.FullBarres = fullBarres;
+            Width = width;
+            Height = height;
+            StrokeWidth = strokeWidth;
+            Margin = margin;
+            FontSize = fontSize;
+            FontFamily = fontFamily;
+            FontStyle = fontStyle;
+            BarreType = barreType;
+            OpenStringType = openStringType;
+            FullBarres = fullBarres;
         }
 
         public ChordOptions(string optionLine) : this()
         {
-            if (String.IsNullOrEmpty(optionLine))
+            if (string.IsNullOrEmpty(optionLine))
             {
                 throw new ArgumentNullException("optionLine");
             }
@@ -167,16 +167,16 @@ namespace com.jonthysell.Chordious.Core.Legacy
 
             try
             {
-                this.Width = Double.Parse(s[0]);
-                this.Height = Double.Parse(s[1]);
-                this.StrokeWidth = Double.Parse(s[2]);
-                this.Margin = Double.Parse(s[3]);
-                this.FontSize = Double.Parse(s[4]);
-                this.FontFamily = s[5];
-                this.FontStyle = (FontStyle)Enum.Parse(typeof(FontStyle), s[6]);
-                this.BarreType = (BarreType)Enum.Parse(typeof(BarreType), s[7]);
-                this.OpenStringType = (OpenStringType)Enum.Parse(typeof(OpenStringType), s[8]);
-                this.FullBarres = Boolean.Parse(s[9]);
+                Width = double.Parse(s[0]);
+                Height = double.Parse(s[1]);
+                StrokeWidth = double.Parse(s[2]);
+                Margin = double.Parse(s[3]);
+                FontSize = double.Parse(s[4]);
+                FontFamily = s[5];
+                FontStyle = (FontStyle)Enum.Parse(typeof(FontStyle), s[6]);
+                BarreType = (BarreType)Enum.Parse(typeof(BarreType), s[7]);
+                OpenStringType = (OpenStringType)Enum.Parse(typeof(OpenStringType), s[8]);
+                FullBarres = Boolean.Parse(s[9]);
             }
             catch (IndexOutOfRangeException) { }
         }
@@ -188,16 +188,16 @@ namespace com.jonthysell.Chordious.Core.Legacy
                 throw new ArgumentNullException("co");
             }
 
-            co.Width = this.Width;
-            co.Height = this.Height;
-            co.StrokeWidth = this.StrokeWidth;
-            co.Margin = this.Margin;
-            co.FontSize = this.FontSize;
-            co.FontFamily = this.FontFamily;
-            co.FontStyle = this.FontStyle;
-            co.BarreType = this.BarreType;
-            co.OpenStringType = this.OpenStringType;
-            co.FullBarres = this.FullBarres;
+            co.Width = Width;
+            co.Height = Height;
+            co.StrokeWidth = StrokeWidth;
+            co.Margin = Margin;
+            co.FontSize = FontSize;
+            co.FontFamily = FontFamily;
+            co.FontStyle = FontStyle;
+            co.BarreType = BarreType;
+            co.OpenStringType = OpenStringType;
+            co.FullBarres = FullBarres;
         }
 
         public override string ToString()
@@ -205,7 +205,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
             string s = "";
 
             s += OptionsPrefix;
-            s += String.Format("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9}",
+            s += string.Format("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9}",
                                Width, Height, StrokeWidth, Margin, FontSize, FontFamily, FontStyle, BarreType, OpenStringType, FullBarres);
 
             return s;

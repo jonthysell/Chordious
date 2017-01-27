@@ -59,7 +59,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             private set
             {
-                if (String.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException();
                 }
@@ -82,7 +82,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return !String.IsNullOrWhiteSpace(_rememberAnswerKey);
+                return !string.IsNullOrWhiteSpace(_rememberAnswerKey);
             }
         }
         private string _rememberAnswerKey;
@@ -96,10 +96,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         Result = ConfirmationResult.AcceptAndRemember;
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {
@@ -121,10 +118,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         Result = ConfirmationResult.Accept;
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {
@@ -143,10 +137,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         Result = ConfirmationResult.Reject;
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {

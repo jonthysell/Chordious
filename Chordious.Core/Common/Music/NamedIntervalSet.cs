@@ -41,7 +41,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._level;
+                return _level;
             }
             set
             {
@@ -50,12 +50,12 @@ namespace com.jonthysell.Chordious.Core
                     throw new ArgumentNullException();
                 }
 
-                if (this.ReadOnly)
+                if (ReadOnly)
                 {
                     throw new ObjectIsReadOnlyException(this);
                 }
 
-                this._level = value;
+                _level = value;
             }
         }
         private string _level;
@@ -64,16 +64,16 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._parent;
+                return _parent;
             }
             set
             {
-                if (this.ReadOnly)
+                if (ReadOnly)
                 {
                     throw new ObjectIsReadOnlyException(this);
                 }
 
-                this._parent = value;
+                _parent = value;
             }
         }
         private NamedIntervalSet _parent;
@@ -116,7 +116,7 @@ namespace com.jonthysell.Chordious.Core
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.GetEnumerator();
+            return GetEnumerator();
         }
 
         public NamedInterval Get(string longName)
@@ -180,7 +180,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("namedinterval");
             }
 
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
@@ -224,7 +224,7 @@ namespace com.jonthysell.Chordious.Core
 
         public NamedIntervalSetException(NamedIntervalSet namedIntervalSet) : base()
         {
-            this.NamedIntervalSet = namedIntervalSet;
+            NamedIntervalSet = namedIntervalSet;
         }
     }
 
@@ -234,7 +234,7 @@ namespace com.jonthysell.Chordious.Core
 
         public TargetNamedIntervalException(NamedIntervalSet namedIntervalSet, string longName) : base(namedIntervalSet)
         {
-            this.LongName = longName;
+            LongName = longName;
         }
     }
 
@@ -246,14 +246,14 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (null != (NamedIntervalSet as ChordQualitySet))
                 {
-                    return String.Format(Strings.ChordQualityNotFoundExceptionMessage, LongName);
+                    return string.Format(Strings.ChordQualityNotFoundExceptionMessage, LongName);
                 }
                 else if (null != (NamedIntervalSet as ScaleSet))
                 {
-                    return String.Format(Strings.ScaleNotFoundExceptionMessage, LongName);
+                    return string.Format(Strings.ScaleNotFoundExceptionMessage, LongName);
                 }
 
-                return String.Format(Strings.NamedIntervalNotFoundExceptionMessage, LongName);
+                return string.Format(Strings.NamedIntervalNotFoundExceptionMessage, LongName);
             }
         }
 
@@ -268,14 +268,14 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (null != (NamedIntervalSet as ChordQualitySet))
                 {
-                    return String.Format(Strings.ChordQualityAlreadyExistsExceptionMessage, LongName);
+                    return string.Format(Strings.ChordQualityAlreadyExistsExceptionMessage, LongName);
                 }
                 else if ((null != NamedIntervalSet as ScaleSet))
                 {
-                    return String.Format(Strings.ScaleAlreadyExistsExceptionMessage, LongName);
+                    return string.Format(Strings.ScaleAlreadyExistsExceptionMessage, LongName);
                 }
 
-                return String.Format(Strings.NamedIntervalAlreadyExistsExceptionMessage, LongName);
+                return string.Format(Strings.NamedIntervalAlreadyExistsExceptionMessage, LongName);
             }
         }
 

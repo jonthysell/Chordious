@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 
 using com.jonthysell.Chordious.Core.Resources;
 
@@ -45,7 +44,7 @@ namespace com.jonthysell.Chordious.Core
             get
             {
                 string name = ReadOnlyObject.GetType().Name;
-                return String.Format(Strings.ObjectIsReadOnlyExceptionMessage, name);
+                return string.Format(Strings.ObjectIsReadOnlyExceptionMessage, name);
             }
         }
 

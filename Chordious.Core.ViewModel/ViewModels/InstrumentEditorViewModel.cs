@@ -149,10 +149,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         Callback(Name, NumStrings);
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {
@@ -173,10 +170,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {
@@ -204,7 +198,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private bool IsValid()
         {
-            return !String.IsNullOrWhiteSpace(Name) && NumStrings >= 0;
+            return !string.IsNullOrWhiteSpace(Name) && NumStrings >= 0;
         }
     }
 }

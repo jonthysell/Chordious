@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._string;
+                return _string;
             }
             private set
             {
@@ -42,7 +42,7 @@ namespace com.jonthysell.Chordious.Core
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this._string = value;
+                _string = value;
             }
         }
         private int _string;
@@ -51,7 +51,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._fret;
+                return _fret;
             }
             private set
             {
@@ -59,20 +59,20 @@ namespace com.jonthysell.Chordious.Core
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this._fret = value;
+                _fret = value;
             }
         }
         private int _fret;
 
         public MarkPosition(int @string, int fret)
         {
-            this.String = @string;
-            this.Fret = fret;
+            String = @string;
+            Fret = fret;
         }
 
         public override ElementPosition Clone()
         {
-            return new MarkPosition(this.String, this.Fret);
+            return new MarkPosition(String, Fret);
         }
 
         public static MarkPosition Parse(string s)
@@ -91,13 +91,13 @@ namespace com.jonthysell.Chordious.Core
 
             string[] vals = s.Split(':');
 
-            return new MarkPosition(Int32.Parse(vals[0]), Int32.Parse(vals[1]));
+            return new MarkPosition(int.Parse(vals[0]), int.Parse(vals[1]));
         }
 
         public override bool Equals(ElementPosition obj)
         {
             MarkPosition mp = (obj as MarkPosition);
-            return mp != null && mp.String == this.String && mp.Fret == this.Fret;
+            return null != mp && mp.String == String && mp.Fret == Fret;
         }
 
         public override int GetHashCode()
@@ -107,7 +107,7 @@ namespace com.jonthysell.Chordious.Core
 
         public override string ToString()
         {
-            return string.Format("{0}:{1}", this.String, this.Fret);
+            return string.Format("{0}:{1}", String, Fret);
         }
     }
 }

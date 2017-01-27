@@ -67,7 +67,7 @@ namespace com.jonthysell.Chordious.Core
 
         public Scale Add(string name, int[] intervals)
         {
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }

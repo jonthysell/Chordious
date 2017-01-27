@@ -79,7 +79,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return String.Format(Strings.ExceptionViewModelDetailsFormat, Exception.ToString());
+                return string.Format(Strings.ExceptionViewModelDetailsFormat, Exception.ToString());
             }
         }
 
@@ -91,10 +91,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {

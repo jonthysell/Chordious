@@ -73,7 +73,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
             public void Parse(string s)
             {
-                if (String.IsNullOrWhiteSpace(s))
+                if (string.IsNullOrWhiteSpace(s))
                 {
                     throw new ArgumentNullException("s");
                 }
@@ -92,8 +92,8 @@ namespace com.jonthysell.Chordious.CoreTest
 
             public override string ToString()
             {
-                return String.Join("\t",
-                    String.Join(",", marks),
+                return string.Join("\t",
+                    string.Join(",", marks),
                     barreTypeOption,
                     rightToLeft,
                     null == ExpectedResult ? "null" : ExpectedResult.ToString());

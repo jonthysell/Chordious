@@ -67,7 +67,7 @@ namespace com.jonthysell.Chordious.Core
         
         public ChordQuality Add(string name, string abbreviation, int[] intervals)
         {
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }

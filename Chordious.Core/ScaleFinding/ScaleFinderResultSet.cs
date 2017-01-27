@@ -55,8 +55,8 @@ namespace com.jonthysell.Chordious.Core
 
         internal ScaleFinderResultSet(IScaleFinderOptions scaleFinderOptions)
         {
-            this.ScaleFinderOptions = scaleFinderOptions;
-            this._results = new List<ScaleFinderResult>();
+            ScaleFinderOptions = scaleFinderOptions;
+            _results = new List<ScaleFinderResult>();
         }
 
         public void AddResult(IEnumerable<MarkPosition> marks)

@@ -328,7 +328,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (InstrumentIsSelected)
                 {
-                    return String.Format(Strings.InstrumentManagerEditInstrumentLabelFormat, SelectedInstrument.Name);
+                    return string.Format(Strings.InstrumentManagerEditInstrumentLabelFormat, SelectedInstrument.Name);
                 }
 
                 return Strings.EditLabel;
@@ -378,7 +378,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (InstrumentIsSelected)
                 {
-                    return String.Format(Strings.InstrumentManagerDeleteInstrumentLabelFormat, SelectedInstrument.Name);
+                    return string.Format(Strings.InstrumentManagerDeleteInstrumentLabelFormat, SelectedInstrument.Name);
                 }
 
                 return Strings.DeleteLabel;
@@ -401,7 +401,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format(Strings.InstrumentManagerDeleteInstrumentPromptFormat, SelectedInstrument.Name), (confirm) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(string.Format(Strings.InstrumentManagerDeleteInstrumentPromptFormat, SelectedInstrument.Name), (confirm) =>
                         {
                             try
                             {
@@ -485,7 +485,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (TuningIsSelected)
                 {
-                    return String.Format(Strings.InstrumentManagerEditTuningLabelFormat, SelectedTuning.Name);
+                    return string.Format(Strings.InstrumentManagerEditTuningLabelFormat, SelectedTuning.Name);
                 }
 
                 return Strings.EditLabel;
@@ -537,7 +537,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (TuningIsSelected)
                 {
-                    return String.Format(Strings.InstrumentManagerDeleteTuningLabelFormat, SelectedTuning.Name);
+                    return string.Format(Strings.InstrumentManagerDeleteTuningLabelFormat, SelectedTuning.Name);
                 }
 
                 return Strings.DeleteLabel;
@@ -560,7 +560,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(String.Format(Strings.InstrumentManagerDeleteTuningPromptFormat, SelectedTuning.Name), (confirm) =>
+                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(string.Format(Strings.InstrumentManagerDeleteTuningPromptFormat, SelectedTuning.Name), (confirm) =>
                         {
                             try
                             {

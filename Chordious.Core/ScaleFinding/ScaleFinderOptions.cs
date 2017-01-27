@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -43,11 +43,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this.Settings[Prefix + "slevel"];
+                return Settings[Prefix + "slevel"];
             }
             set
             {
-                this.Settings[Prefix + "slevel"] = value;
+                Settings[Prefix + "slevel"] = value;
             }
         }
 
@@ -55,31 +55,31 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null != chordiousSettings)
             {
-                this.Settings = chordiousSettings;
+                Settings = chordiousSettings;
             }
             else
             {
                 string settingsLevel = "ScaleFinderOptions";
-                this.Settings = new ChordiousSettings(this._configFile.ChordiousSettings, settingsLevel);
+                Settings = new ChordiousSettings(_configFile.ChordiousSettings, settingsLevel);
             }
-            this._cachedScale = null;
+            _cachedScale = null;
         }
 
         public IScale GetScale()
         {
-            string longName = this.Settings[Prefix + "scale"];
+            string longName = Settings[Prefix + "scale"];
 
-            string level = this.ScaleLevel;
+            string level = ScaleLevel;
 
-            if (null != this._cachedScale)
+            if (null != _cachedScale)
             {
-                if (this._cachedScale.LongName == longName && this._cachedScale.Level == level)
+                if (_cachedScale.LongName == longName && _cachedScale.Level == level)
                 {
-                    return this._cachedScale;
+                    return _cachedScale;
                 }
             }
 
-            ScaleSet scales = this._configFile.Scales;
+            ScaleSet scales = _configFile.Scales;
             while (null != scales)
             {
                 if (scales.Level == level)
@@ -87,7 +87,7 @@ namespace com.jonthysell.Chordious.Core
                     Scale scale;
                     if (scales.TryGet(longName, out scale))
                     {
-                        this._cachedScale = scale;
+                        _cachedScale = scale;
                         break;
                     }
                 }
@@ -95,7 +95,7 @@ namespace com.jonthysell.Chordious.Core
                 scales = scales.Parent;
             }
 
-            return this._cachedScale;
+            return _cachedScale;
         }
 
         public void SetTarget(Note rootNote, IScale scale)
@@ -105,19 +105,19 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("scale");
             }
 
-            this.Settings[Prefix + "rootnote"] = NoteUtils.ToString(rootNote);
-            this.Settings[Prefix + "scale"] = scale.LongName;
-            this.ScaleLevel = scale.Level;
+            Settings[Prefix + "rootnote"] = NoteUtils.ToString(rootNote);
+            Settings[Prefix + "scale"] = scale.LongName;
+            ScaleLevel = scale.Level;
 
-            this._cachedScale = scale;
+            _cachedScale = scale;
         }
 
         public ScaleFinderOptions Clone()
         {
-            ScaleFinderOptions sfo = new ScaleFinderOptions(this._configFile);
-            sfo.Settings.CopyFrom(this.Settings);
-            sfo.SetTarget(this.Instrument, this.Tuning);
-            sfo.SetTarget(this.RootNote, this.Scale);
+            ScaleFinderOptions sfo = new ScaleFinderOptions(_configFile);
+            sfo.Settings.CopyFrom(Settings);
+            sfo.SetTarget(Instrument, Tuning);
+            sfo.SetTarget(RootNote, Scale);
             return sfo;
         }
     }

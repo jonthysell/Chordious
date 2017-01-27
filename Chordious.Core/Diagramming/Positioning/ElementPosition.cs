@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -61,12 +61,12 @@ namespace com.jonthysell.Chordious.Core
 
         public ElementPositionException() : base()
         {
-            this.Position = null;
+            Position = null;
         }
 
         public ElementPositionException(ElementPosition position) : base()
         {
-            this.Position = position.Clone();
+            Position = position.Clone();
         }
     }
 }

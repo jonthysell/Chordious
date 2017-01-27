@@ -48,7 +48,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return Type.GetType("Mono.Runtime") != null;
+                return null != Type.GetType("Mono.Runtime");
             }
         }
 
@@ -59,7 +59,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                if (AppInfo.Assembly.GetName().Version.Minor % 2 == 0) // Official release
+                if (Assembly.GetName().Version.Minor % 2 == 0) // Official release
                 {
                     return ShortVersion;
                 }
@@ -77,8 +77,8 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                Version vers = AppInfo.Assembly.GetName().Version;
-                return vers.Build == 0 ? String.Format("{0}.{1}", vers.Major, vers.Minor) : String.Format("{0}.{1}.{2}", vers.Major, vers.Minor, vers.Build);
+                Version vers = Assembly.GetName().Version;
+                return vers.Build == 0 ? string.Format("{0}.{1}", vers.Major, vers.Minor) : string.Format("{0}.{1}.{2}", vers.Major, vers.Minor, vers.Build);
             }
         }
 
@@ -89,7 +89,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return AppInfo.Assembly.GetName().Version.ToString();
+                return Assembly.GetName().Version.ToString();
             }
         }
 
@@ -100,7 +100,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return AppInfo.Assembly.GetName().Name;
+                return Assembly.GetName().Name;
             }
         }
 
@@ -111,7 +111,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format("{0} {1}",
+                return string.Format("{0} {1}",
                                      AppInfo.ProgramName,
                                      AppInfo.Version);
             }
@@ -124,7 +124,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return AppInfo.Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;
+                return Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;
             }
         }
 
@@ -157,7 +157,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Strings.WatermarkFormat, ProgramTitle);
+                return string.Format(Strings.WatermarkFormat, ProgramTitle);
             }
         }
 
@@ -179,7 +179,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Join(Environment.NewLine + Environment.NewLine, _license);
+                return string.Join(Environment.NewLine + Environment.NewLine, _license);
             }
         }
 

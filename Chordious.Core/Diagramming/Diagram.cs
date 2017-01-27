@@ -45,7 +45,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._marks.AsEnumerable();
+                return _marks.AsEnumerable();
             }
         }
         private List<DiagramMark> _marks;
@@ -54,7 +54,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._fretLabels.AsEnumerable();
+                return _fretLabels.AsEnumerable();
             }
         }
         private List<DiagramFretLabel> _fretLabels;
@@ -63,7 +63,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._barres.AsEnumerable();
+                return _barres.AsEnumerable();
             }
         }
         private List<DiagramBarre> _barres;
@@ -76,11 +76,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._numStrings;
+                return _numStrings;
             }
             set
             {
-                this.Resize(value, this.NumFrets);             
+                Resize(value, NumFrets);             
             }
         }
         private int _numStrings;
@@ -89,11 +89,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._numFrets;
+                return _numFrets;
             }
             set
             {
-                this.Resize(this.NumStrings, value);
+                Resize(NumStrings, value);
             }
         }
         private int _numFrets;
@@ -109,20 +109,20 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("parentStyle");
             }
 
-            this._marks = new List<DiagramMark>();
-            this._fretLabels = new List<DiagramFretLabel>();
-            this._barres = new List<DiagramBarre>();
+            _marks = new List<DiagramMark>();
+            _fretLabels = new List<DiagramFretLabel>();
+            _barres = new List<DiagramBarre>();
 
-            this.Style = new DiagramStyle(parentStyle, LevelKey);
+            Style = new DiagramStyle(parentStyle, LevelKey);
 
-            this._numFrets = Style.NewDiagramNumFrets;
-            this._numStrings = Style.NewDiagramNumStrings;
+            _numFrets = Style.NewDiagramNumFrets;
+            _numStrings = Style.NewDiagramNumStrings;
         }
 
         public Diagram(DiagramStyle parentStyle, int numStrings, int numFrets) : this(parentStyle)
         {
-            this.NumStrings = numStrings;
-            this.NumFrets = numFrets;
+            NumStrings = numStrings;
+            NumFrets = numFrets;
         }
 
         public Diagram(DiagramStyle parentStyle, XmlReader xmlReader) : this(parentStyle)
@@ -132,7 +132,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("xmlReader");
             }
 
-            this.Read(xmlReader);
+            Read(xmlReader);
         }
 
         public void Read(XmlReader xmlReader)
@@ -146,10 +146,10 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (xmlReader.IsStartElement())
                 {
-                    this.Title = xmlReader.GetAttribute("title");
+                    Title = xmlReader.GetAttribute("title");
 
-                    this.NumStrings = Int32.Parse(xmlReader.GetAttribute("strings"));
-                    this.NumFrets = Int32.Parse(xmlReader.GetAttribute("frets"));
+                    NumStrings = int.Parse(xmlReader.GetAttribute("strings"));
+                    NumFrets = int.Parse(xmlReader.GetAttribute("frets"));
 
                     while (xmlReader.Read())
                     {
@@ -158,16 +158,16 @@ namespace com.jonthysell.Chordious.Core
                             switch(xmlReader.Name)
                             {
                                 case "mark":
-                                    this.NewMark(xmlReader.ReadSubtree());
+                                    NewMark(xmlReader.ReadSubtree());
                                     break;
                                 case "barre":
-                                    this.NewBarre(xmlReader.ReadSubtree());
+                                    NewBarre(xmlReader.ReadSubtree());
                                     break;
                                 case "fretlabel":
-                                    this.NewFretLabel(xmlReader.ReadSubtree());
+                                    NewFretLabel(xmlReader.ReadSubtree());
                                     break;
                                 case "style":
-                                    this.Style.Read(xmlReader.ReadSubtree());
+                                    Style.Read(xmlReader.ReadSubtree());
                                     break;
                             }
                         }
@@ -185,26 +185,26 @@ namespace com.jonthysell.Chordious.Core
 
             xmlWriter.WriteStartElement("diagram");
 
-            xmlWriter.WriteAttributeString("title", this.Title);
-            xmlWriter.WriteAttributeString("strings", this.NumStrings.ToString());
-            xmlWriter.WriteAttributeString("frets", this.NumFrets.ToString());
+            xmlWriter.WriteAttributeString("title", Title);
+            xmlWriter.WriteAttributeString("strings", NumStrings.ToString());
+            xmlWriter.WriteAttributeString("frets", NumFrets.ToString());
 
-            foreach (DiagramMark mark in this.Marks)
+            foreach (DiagramMark mark in Marks)
             {
                 mark.Write(xmlWriter);
             }
 
-            foreach (DiagramBarre barre in this.Barres)
+            foreach (DiagramBarre barre in Barres)
             {
                 barre.Write(xmlWriter);
             }
 
-            foreach (DiagramFretLabel fretLabel in this.FretLabels)
+            foreach (DiagramFretLabel fretLabel in FretLabels)
             {
                 fretLabel.Write(xmlWriter);
             }
 
-            this.Style.Write(xmlWriter);
+            Style.Write(xmlWriter);
 
             xmlWriter.WriteEndElement();
         }
@@ -213,23 +213,23 @@ namespace com.jonthysell.Chordious.Core
         {
             Diagram clone = new Diagram(Style.Parent, NumStrings, NumFrets);
 
-            clone.Title = this.Title;
-            clone.Style.CopyFrom(this.Style);
+            clone.Title = Title;
+            clone.Style.CopyFrom(Style);
 
-            foreach (DiagramMark mark in this.Marks)
+            foreach (DiagramMark mark in Marks)
             {
                 DiagramMark clonedMark = clone.NewMark(mark.Position, mark.Text);
                 clonedMark.Style.CopyFrom(mark.Style);
                 clonedMark.Type = mark.Type;
             }
 
-            foreach (DiagramBarre barre in this.Barres)
+            foreach (DiagramBarre barre in Barres)
             {
                 DiagramBarre clonedBarre = clone.NewBarre(barre.Position);
                 clonedBarre.Style.CopyFrom(barre.Style);
             }
 
-            foreach (DiagramFretLabel fretLabel in this.FretLabels)
+            foreach (DiagramFretLabel fretLabel in FretLabels)
             {
                 DiagramFretLabel clonedFretLabel = clone.NewFretLabel(fretLabel.Position, fretLabel.Text);
                 clonedFretLabel.Style.CopyFrom(fretLabel.Style);
@@ -255,7 +255,7 @@ namespace com.jonthysell.Chordious.Core
             List<DiagramMark> endMarks = new List<DiagramMark>();
 
             // Check through marks
-            foreach (DiagramMark mark in this.Marks)
+            foreach (DiagramMark mark in Marks)
             {
                 if (mark.Position.String > newNumStrings)
                 {
@@ -274,7 +274,7 @@ namespace com.jonthysell.Chordious.Core
             }
 
             // Check through fret labels
-            foreach (DiagramFretLabel fretLabel in this.FretLabels)
+            foreach (DiagramFretLabel fretLabel in FretLabels)
             {
                 if (fretLabel.Position.Fret > newNumFrets)
                 {
@@ -283,7 +283,7 @@ namespace com.jonthysell.Chordious.Core
             }
 
             // Check through barres
-            foreach (DiagramBarre barre in this.Barres)
+            foreach (DiagramBarre barre in Barres)
             {
                 if (barre.Position.Fret > newNumFrets ||
                     barre.Position.StartString > newNumStrings ||
@@ -293,13 +293,13 @@ namespace com.jonthysell.Chordious.Core
                 }
             }
 
-            this._numStrings = newNumStrings;
-            this._numFrets = newNumFrets;
+            _numStrings = newNumStrings;
+            _numFrets = newNumFrets;
 
             // Move end marks to new end
             foreach (DiagramMark endMark in endMarks)
             {
-                endMark.Position = new MarkPosition(endMark.Position.String, this.NumFrets + 1);
+                endMark.Position = new MarkPosition(endMark.Position.String, NumFrets + 1);
             }
         }
 
@@ -307,17 +307,17 @@ namespace com.jonthysell.Chordious.Core
         {
             Style.Clear();
 
-            foreach (DiagramMark mark in this.Marks)
+            foreach (DiagramMark mark in Marks)
             {
                 mark.Style.Clear();
             }
 
-            foreach (DiagramFretLabel fretLabel in this.FretLabels)
+            foreach (DiagramFretLabel fretLabel in FretLabels)
             {
                 fretLabel.Style.Clear();
             }
 
-            foreach (DiagramBarre barre in this.Barres)
+            foreach (DiagramBarre barre in Barres)
             {
                 barre.Style.Clear();
             }
@@ -337,17 +337,17 @@ namespace com.jonthysell.Chordious.Core
             if (position.GetType() == typeof(MarkPosition))
             {
                 MarkPosition mp = (MarkPosition)position;
-                return (mp.Fret <= this.NumFrets + 1) && (mp.String <= this.NumStrings);
+                return (mp.Fret <= NumFrets + 1) && (mp.String <= NumStrings);
             }
             else if (position.GetType() == typeof(FretLabelPosition))
             {
                 FretLabelPosition flp = (FretLabelPosition)position;
-                return (flp.Fret <= this.NumFrets);
+                return (flp.Fret <= NumFrets);
             }
             else if (position.GetType() == typeof(BarrePosition))
             {
                 BarrePosition bp = (BarrePosition)position;
-                return (bp.Fret <= this.NumFrets && bp.StartString <= this.NumStrings && bp.EndString <= this.NumStrings);
+                return (bp.Fret <= NumFrets && bp.StartString <= NumStrings && bp.EndString <= NumStrings);
             }
 
             return false;
@@ -367,7 +367,7 @@ namespace com.jonthysell.Chordious.Core
 
             if (position.GetType() == typeof(MarkPosition))
             {
-                foreach (DiagramMark mark in this.Marks)
+                foreach (DiagramMark mark in Marks)
                 {
                     if (mark.Position == position)
                     {
@@ -377,7 +377,7 @@ namespace com.jonthysell.Chordious.Core
             }
             else if (position.GetType() == typeof(FretLabelPosition))
             {
-                foreach (DiagramFretLabel fretLabel in this.FretLabels)
+                foreach (DiagramFretLabel fretLabel in FretLabels)
                 {
                     if (fretLabel.Position == position)
                     {
@@ -387,7 +387,7 @@ namespace com.jonthysell.Chordious.Core
             }
             else if (position.GetType() == typeof(BarrePosition))
             {
-                foreach (DiagramBarre barre in this.Barres)
+                foreach (DiagramBarre barre in Barres)
                 {
                     if (barre.Position == position)
                     {
@@ -416,7 +416,7 @@ namespace com.jonthysell.Chordious.Core
 
             if (position.GetType() == typeof(MarkPosition))
             {
-                foreach (DiagramMark mark in this.Marks)
+                foreach (DiagramMark mark in Marks)
                 {
                     if (mark.Position == position && element != mark)
                     {
@@ -426,7 +426,7 @@ namespace com.jonthysell.Chordious.Core
             }
             else if (position.GetType() == typeof(FretLabelPosition))
             {
-                foreach (DiagramFretLabel fretLabel in this.FretLabels)
+                foreach (DiagramFretLabel fretLabel in FretLabels)
                 {
                     if (fretLabel.Position == position && element != fretLabel)
                     {
@@ -436,7 +436,7 @@ namespace com.jonthysell.Chordious.Core
             }
             else if (position.GetType() == typeof(BarrePosition))
             {
-                foreach (DiagramBarre barre in this.Barres)
+                foreach (DiagramBarre barre in Barres)
                 {
                     if (barre.Position.Overlaps((BarrePosition)position) && element != barre)
                     {
@@ -450,12 +450,12 @@ namespace com.jonthysell.Chordious.Core
 
         public bool HasVisibleTitle()
         {
-            return !String.IsNullOrEmpty(this.Title) && this.Style.TitleVisible;
+            return !string.IsNullOrEmpty(Title) && Style.TitleVisible;
         }
 
         public bool HasVisibleFretLabels(FretLabelSide side)
         {
-            foreach (DiagramFretLabel fretLabel in this.FretLabels)
+            foreach (DiagramFretLabel fretLabel in FretLabels)
             {
                 if (fretLabel.IsVisible() && fretLabel.Position.Side == side)
                 {
@@ -469,7 +469,7 @@ namespace com.jonthysell.Chordious.Core
         public double MaxFretLabelWidth(FretLabelSide side)
         {
             double maxWidth = 0;
-            foreach (DiagramFretLabel fretLabel in this.FretLabels)
+            foreach (DiagramFretLabel fretLabel in FretLabels)
             {
                 if (fretLabel.IsVisible() && fretLabel.Position.Side == side)
                 {
@@ -486,7 +486,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool HasMarksAboveTopEdge()
         {
-            foreach (DiagramMark mark in this.Marks)
+            foreach (DiagramMark mark in Marks)
             {
                 if (mark.IsVisible() && mark.IsAboveTopEdge())
                 {
@@ -499,7 +499,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool HasMarksBelowBottomEdge()
         {
-            foreach (DiagramMark mark in this.Marks)
+            foreach (DiagramMark mark in Marks)
             {
                 if (mark.IsVisible() && mark.IsBelowBottomEdge())
                 {
@@ -532,14 +532,14 @@ namespace com.jonthysell.Chordious.Core
         public DiagramMark NewMark(MarkPosition position, string text = "")
         {
             DiagramMark mark = new DiagramMark(this, position, text);
-            this._marks.Add(mark);
+            _marks.Add(mark);
             return mark;
         }
 
         internal DiagramMark NewMark(XmlReader xmlReader)
         {
             DiagramMark mark = new DiagramMark(this, xmlReader);
-            this._marks.Add(mark);
+            _marks.Add(mark);
             return mark;
         }
 
@@ -555,7 +555,7 @@ namespace com.jonthysell.Chordious.Core
 
         public void RemoveMark(MarkPosition position)
         {
-            this._marks.Remove((DiagramMark)ElementAt(position));
+            _marks.Remove((DiagramMark)ElementAt(position));
         }
 
         public bool CanAddNewFretLabelAt(FretLabelPosition position)
@@ -576,14 +576,14 @@ namespace com.jonthysell.Chordious.Core
         public DiagramFretLabel NewFretLabel(FretLabelPosition position, string text)
         {
             DiagramFretLabel fretLabel = new DiagramFretLabel(this, position, text);
-            this._fretLabels.Add(fretLabel);
+            _fretLabels.Add(fretLabel);
             return fretLabel;
         }
 
         internal DiagramFretLabel NewFretLabel(XmlReader xmlReader)
         {
             DiagramFretLabel fretLabel = new DiagramFretLabel(this, xmlReader);
-            this._fretLabels.Add(fretLabel);
+            _fretLabels.Add(fretLabel);
             return fretLabel;
         }
 
@@ -599,7 +599,7 @@ namespace com.jonthysell.Chordious.Core
 
         public void RemoveFretLabel(FretLabelPosition position)
         {
-            this._fretLabels.Remove((DiagramFretLabel)ElementAt(position));
+            _fretLabels.Remove((DiagramFretLabel)ElementAt(position));
         }
 
         public bool CanAddNewBarreAt(BarrePosition position)
@@ -627,14 +627,14 @@ namespace com.jonthysell.Chordious.Core
         public DiagramBarre NewBarre(BarrePosition position)
         {
             DiagramBarre barre = new DiagramBarre(this, position);
-            this._barres.Add(barre);
+            _barres.Add(barre);
             return barre;
         }
 
         internal DiagramBarre NewBarre(XmlReader xmlReader)
         {
             DiagramBarre barre = new DiagramBarre(this, xmlReader);
-            this._barres.Add(barre);
+            _barres.Add(barre);
             return barre;
         }
 
@@ -650,7 +650,7 @@ namespace com.jonthysell.Chordious.Core
 
         public void RemoveBarre(BarrePosition position)
         {
-            this._barres.Remove((DiagramBarre)ElementAt(position));
+            _barres.Remove((DiagramBarre)ElementAt(position));
         }
 
         #endregion
@@ -659,11 +659,11 @@ namespace com.jonthysell.Chordious.Core
 
         public double GridLeftEdge()
         {
-            double edge = this.Style.GridMarginLeft;
-            if (this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
-                || this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingHorizontal)
+            double edge = Style.GridMarginLeft;
+            if (Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
+                || Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingHorizontal)
             {
-                edge += this.MaxFretLabelWidth(FretLabelSide.Left);
+                edge += MaxFretLabelWidth(FretLabelSide.Left);
             }
 
             return edge;
@@ -671,20 +671,20 @@ namespace com.jonthysell.Chordious.Core
 
         public double GridTopEdge()
         {
-            double edge = this.Style.GridMarginTop;
+            double edge = Style.GridMarginTop;
 
-            if (this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
-                || this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingVertical)
+            if (Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
+                || Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingVertical)
             {
-                if (this.HasMarksAboveTopEdge())
+                if (HasMarksAboveTopEdge())
                 {
-                    edge += this.Style.GridFretSpacing;
+                    edge += Style.GridFretSpacing;
                 }
 
-                if (this.HasVisibleTitle())
+                if (HasVisibleTitle())
                 {
-                    edge += this.Style.TitleGridPadding;
-                    edge += this.Style.Orientation == DiagramOrientation.LeftRight ? this.Style.TitleTextSize * this.Title.Length : this.Style.TitleTextSize;
+                    edge += Style.TitleGridPadding;
+                    edge += Style.Orientation == DiagramOrientation.LeftRight ? Style.TitleTextSize * Title.Length : Style.TitleTextSize;
                 }
             }
 
@@ -703,12 +703,12 @@ namespace com.jonthysell.Chordious.Core
 
         public double GridHeight()
         {
-            return this.Style.GridFretSpacing * this.NumFrets;
+            return Style.GridFretSpacing * NumFrets;
         }
 
         public double GridWidth()
         {
-            return this.Style.GridStringSpacing * (this.NumStrings - 1);
+            return Style.GridStringSpacing * (NumStrings - 1);
         }
 
         public bool InGrid(double x, double y)
@@ -788,7 +788,7 @@ namespace com.jonthysell.Chordious.Core
             fret = -1;
 
             // Fix for left/right orientation
-            if (this.Style.Orientation == DiagramOrientation.LeftRight)
+            if (Style.Orientation == DiagramOrientation.LeftRight)
             {
                 double oldY = y;
                 y = x;
@@ -803,8 +803,8 @@ namespace com.jonthysell.Chordious.Core
             double leftMargin = leftEdge;
             double rightMargin = GetWidth() - rightEdge;
 
-            double fretSpacing = this.Style.GridFretSpacing;
-            double stringSpacing = this.Style.GridStringSpacing;
+            double fretSpacing = Style.GridFretSpacing;
+            double stringSpacing = Style.GridStringSpacing;
 
             double stringRange = stringSpacing / 2.0;
 
@@ -875,7 +875,7 @@ namespace com.jonthysell.Chordious.Core
 
         public double TotalHeight()
         {
-            if (this.Style.Orientation == DiagramOrientation.LeftRight)
+            if (Style.Orientation == DiagramOrientation.LeftRight)
             {
                 return GetWidth();
             }
@@ -885,14 +885,14 @@ namespace com.jonthysell.Chordious.Core
 
         private double GetHeight()
         {
-            double height = GridBottomEdge() + this.Style.GridMarginBottom;
+            double height = GridBottomEdge() + Style.GridMarginBottom;
 
-            if (this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
-                 || this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingVertical)
+            if (Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
+                 || Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingVertical)
             {
-                if (this.HasMarksBelowBottomEdge())
+                if (HasMarksBelowBottomEdge())
                 {
-                    height += this.Style.GridFretSpacing;
+                    height += Style.GridFretSpacing;
                 }
             }
 
@@ -901,7 +901,7 @@ namespace com.jonthysell.Chordious.Core
 
         public double TotalWidth()
         {
-            if (this.Style.Orientation == DiagramOrientation.LeftRight)
+            if (Style.Orientation == DiagramOrientation.LeftRight)
             {
                 return GetHeight();
             }
@@ -911,12 +911,12 @@ namespace com.jonthysell.Chordious.Core
 
         private double GetWidth()
         {
-            double width = GridRightEdge() + this.Style.GridMarginRight;
+            double width = GridRightEdge() + Style.GridMarginRight;
 
-            if (this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
-                 || this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingHorizontal)
+            if (Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
+                 || Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingHorizontal)
             {
-                width += this.MaxFretLabelWidth(FretLabelSide.Right);
+                width += MaxFretLabelWidth(FretLabelSide.Right);
             }
 
             return width;
@@ -927,28 +927,28 @@ namespace com.jonthysell.Chordious.Core
             switch (type)
             {
                 case ImageMarkupType.SVG:
-                    return this.ToSvg();
+                    return ToSvg();
                 case ImageMarkupType.XAML:
-                    return this.ToXaml();
+                    return ToXaml();
             }
 
-            return String.Empty;
+            return string.Empty;
         }
 
         private string ToSvg()
         {
             StringBuilder sb = new StringBuilder();
 
-            double totalWidth = this.GetWidth();
-            double totalHeight = this.GetHeight();
+            double totalWidth = GetWidth();
+            double totalHeight = GetHeight();
 
             // Add background
 
-            string baseStyle = this.Style.GetSvgStyle(Diagram._baseStyleMap);
+            string baseStyle = Style.GetSvgStyle(Diagram._baseStyleMap);
 
-            if (this.Style.DiagramBorderThickness > 0)
+            if (Style.DiagramBorderThickness > 0)
             {
-                baseStyle += this.Style.GetSvgStyle(Diagram._baseStyleMapBorder);
+                baseStyle += Style.GetSvgStyle(Diagram._baseStyleMapBorder);
             }
 
             sb.AppendFormat(CultureInfo.InvariantCulture,
@@ -960,13 +960,13 @@ namespace com.jonthysell.Chordious.Core
                             0);
 
             // Add grid rectangle
-            double rectX = this.GridLeftEdge();
-            double rectY = this.GridTopEdge();
+            double rectX = GridLeftEdge();
+            double rectY = GridTopEdge();
 
-            double rectWidth = this.GridWidth();
-            double rectHeight = this.GridHeight();
+            double rectWidth = GridWidth();
+            double rectHeight = GridHeight();
 
-            string gridRectStyle = this.Style.GetSvgStyle(Diagram._gridBaseStyleMap);
+            string gridRectStyle = Style.GetSvgStyle(Diagram._gridBaseStyleMap);
 
             sb.AppendFormat(CultureInfo.InvariantCulture,
                             SvgConstants.RECTANGLE,
@@ -976,10 +976,10 @@ namespace com.jonthysell.Chordious.Core
                             rectX,
                             rectY);
 
-            string lineStyle = this.Style.GetSvgStyle(Diagram._lineStyleMap);
+            string lineStyle = Style.GetSvgStyle(Diagram._lineStyleMap);
 
             // Add vertical Lines
-            double vSpacing = this.Style.GridStringSpacing;
+            double vSpacing = Style.GridStringSpacing;
             for (int vLine = 1; vLine < NumStrings - 1; vLine++)
             {
                 double x = rectX + (vLine * vSpacing);
@@ -995,7 +995,7 @@ namespace com.jonthysell.Chordious.Core
             }
 
             // Add horizontal Lines
-            double hSpacing = this.Style.GridFretSpacing;
+            double hSpacing = Style.GridFretSpacing;
             for (int hLine = 1; hLine < NumFrets; hLine++)
             {
                 double x1 = rectX;
@@ -1012,16 +1012,16 @@ namespace com.jonthysell.Chordious.Core
             }
 
             // Add nut
-            if (this.Style.GridNutVisible)
+            if (Style.GridNutVisible)
             {
-                double strokeCorrection = this.Style.GridLineThickness / 2.0;
+                double strokeCorrection = Style.GridLineThickness / 2.0;
 
                 double x1 = rectX - strokeCorrection;
                 double x2 = rectX + rectWidth + strokeCorrection;
                 double y = rectY - strokeCorrection;
 
-                string nutStyle = this.Style.GetSvgStyle(Diagram._nutStyleMap);
-                nutStyle += String.Format(CultureInfo.InvariantCulture, "stroke-width:{0};", this.Style.GridLineThickness * this.Style.GridNutRatio);
+                string nutStyle = Style.GetSvgStyle(Diagram._nutStyleMap);
+                nutStyle += string.Format(CultureInfo.InvariantCulture, "stroke-width:{0};", Style.GridLineThickness * Style.GridNutRatio);
 
                 sb.AppendFormat(CultureInfo.InvariantCulture,
                                 SvgConstants.LINE,
@@ -1033,7 +1033,7 @@ namespace com.jonthysell.Chordious.Core
             }
 
             // Add barres underneath the marks
-            foreach (DiagramBarre barre in this.Barres)
+            foreach (DiagramBarre barre in Barres)
             {
                 if (barre.Style.BarreStack == DiagramBarreStack.UnderMarks)
                 {
@@ -1042,13 +1042,13 @@ namespace com.jonthysell.Chordious.Core
             }
 
             // Add marks
-            foreach (DiagramMark mark in this.Marks)
+            foreach (DiagramMark mark in Marks)
             {
                 sb.Append(mark.ToSvg());
             }
 
             // Add barres on top of the marks
-            foreach (DiagramBarre barre in this.Barres)
+            foreach (DiagramBarre barre in Barres)
             {
                 if (barre.Style.BarreStack == DiagramBarreStack.OverMarks)
                 {
@@ -1057,7 +1057,7 @@ namespace com.jonthysell.Chordious.Core
             }
 
             // Add fret labels
-            foreach (DiagramFretLabel fretLabel in this.FretLabels)
+            foreach (DiagramFretLabel fretLabel in FretLabels)
             {
                 sb.Append(fretLabel.ToSvg());
             }
@@ -1066,11 +1066,11 @@ namespace com.jonthysell.Chordious.Core
             if (HasVisibleTitle())
             {
                 double titleX = rectX + (rectWidth / 2.0);
-                double titleY = rectY - this.Style.TitleGridPadding;
+                double titleY = rectY - Style.TitleGridPadding;
 
-                if (this.Style.Orientation == DiagramOrientation.UpDown)
+                if (Style.Orientation == DiagramOrientation.UpDown)
                 {
-                    switch (this.Style.TitleTextAlignment)
+                    switch (Style.TitleTextAlignment)
                     {
                         case DiagramHorizontalAlignment.Left:
                             titleX = rectX;
@@ -1081,61 +1081,61 @@ namespace com.jonthysell.Chordious.Core
                     }
                 }
 
-                if (this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
-                || this.Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingVertical)
+                if (Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingBoth
+                || Style.LabelLayoutModel == DiagramLabelLayoutModel.AddPaddingVertical)
                 {
-                    if (this.HasMarksAboveTopEdge())
+                    if (HasMarksAboveTopEdge())
                     {
-                        titleY -= this.Style.GridFretSpacing;
+                        titleY -= Style.GridFretSpacing;
                     }
                 }
 
-                string titleStyle = this.Style.GetSvgStyle(Diagram._titleStyleMap);
+                string titleStyle = Style.GetSvgStyle(Diagram._titleStyleMap);
 
-                if (this.Style.TitleLabelStyle == DiagramLabelStyle.ChordName && this.Title.Length > 1)
+                if (Style.TitleLabelStyle == DiagramLabelStyle.ChordName && Title.Length > 1)
                 {
-                    double modifierSize = this.Style.TitleTextSize * this.Style.TitleTextSizeModRatio;
-                    string modifierStyle = String.Format(CultureInfo.InvariantCulture, "font-size:{0}pt;", modifierSize);
+                    double modifierSize = Style.TitleTextSize * Style.TitleTextSizeModRatio;
+                    string modifierStyle = string.Format(CultureInfo.InvariantCulture, "font-size:{0}pt;", modifierSize);
                     string titleChordNameFormat = SvgConstants.TEXT_CHORDNAME;
-                    if (this.Style.Orientation == DiagramOrientation.LeftRight)
+                    if (Style.Orientation == DiagramOrientation.LeftRight)
                     {
                         titleChordNameFormat = SvgConstants.ROTATED_TEXT_CHORDNAME;
-                        titleX -= (this.Style.TitleTextSize - this.Style.TitleGridPadding) / 2.0;
-                        titleY -= (this.Style.TitleTextSize + (modifierSize * (this.Title.Length - 1))) / 2.0;
+                        titleX -= (Style.TitleTextSize - Style.TitleGridPadding) / 2.0;
+                        titleY -= (Style.TitleTextSize + (modifierSize * (Title.Length - 1))) / 2.0;
                     }
                     sb.AppendFormat(CultureInfo.InvariantCulture,
                             titleChordNameFormat,
                             titleStyle,
                             titleX,
                             titleY,
-                            this.Title[0].ToString(),
+                            Title[0].ToString(),
                             modifierStyle,
-                            this.Title.Substring(1));
+                            Title.Substring(1));
                 }
                 else
                 {
                     string titleFormat = SvgConstants.TEXT;
-                    if (this.Style.Orientation == DiagramOrientation.LeftRight)
+                    if (Style.Orientation == DiagramOrientation.LeftRight)
                     {
                         titleFormat = SvgConstants.ROTATED_TEXT;
-                        titleX -= (this.Style.TitleTextSize - this.Style.TitleGridPadding) / 2.0;
-                        titleY -= (this.Style.TitleTextSize * Title.Length) / 2.0;
+                        titleX -= (Style.TitleTextSize - Style.TitleGridPadding) / 2.0;
+                        titleY -= (Style.TitleTextSize * Title.Length) / 2.0;
                     }
                     sb.AppendFormat(CultureInfo.InvariantCulture,
                             titleFormat,
                             titleStyle,
                             titleX,
                             titleY,
-                            this.Title);
+                            Title);
                 }
             }
 
             string imageText = sb.ToString().Trim();
 
             // Apply rotation if necessary
-            if (this.Style.Orientation == DiagramOrientation.LeftRight)
+            if (Style.Orientation == DiagramOrientation.LeftRight)
             {
-                imageText = String.Format(CultureInfo.InvariantCulture,
+                imageText = string.Format(CultureInfo.InvariantCulture,
                     SvgConstants.ROTATE,
                     imageText,
                     -90,
@@ -1148,7 +1148,7 @@ namespace com.jonthysell.Chordious.Core
                 totalWidth = temp;
             }
 
-            return String.Format(CultureInfo.InvariantCulture, SvgConstants.BASE, totalWidth, totalHeight, AppInfo.Watermark, imageText);
+            return string.Format(CultureInfo.InvariantCulture, SvgConstants.BASE, totalWidth, totalHeight, AppInfo.Watermark, imageText);
         }
 
         private static string[][] _baseStyleMap =

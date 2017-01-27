@@ -39,11 +39,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                if (null == _originalImageSource)
-                {
-                    _originalImageSource = base.Source;
-                }
-                return _originalImageSource;
+                return _originalImageSource ?? (_originalImageSource = Source);
             }
         }
         private ImageSource _originalImageSource;
@@ -52,11 +48,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                if (null == _disabledImageSource)
-                {
-                    _disabledImageSource = GetDisabledImage(OriginalImageSource);
-                }
-                return _disabledImageSource;
+                return _disabledImageSource ?? (_disabledImageSource = GetDisabledImage(OriginalImageSource));
             }
         }
         private ImageSource _disabledImageSource;

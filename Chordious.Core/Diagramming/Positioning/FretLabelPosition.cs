@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._fret;
+                return _fret;
             }
             private set
             {
@@ -44,31 +44,31 @@ namespace com.jonthysell.Chordious.Core
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this._fret = value;
+                _fret = value;
             }
         }
         private int _fret;
 
         public FretLabelPosition(FretLabelSide side, int fret)
         {
-            this.Side = side;
-            this.Fret = fret;
+            Side = side;
+            Fret = fret;
         }
 
         public override ElementPosition Clone()
         {
-            return new FretLabelPosition(this.Side, this.Fret);
+            return new FretLabelPosition(Side, Fret);
         }
 
         public override bool Equals(ElementPosition obj)
         {
             FretLabelPosition flp = (obj as FretLabelPosition);
-            return flp != null && flp.Side == this.Side && flp.Fret == this.Fret;
+            return null != flp && flp.Side == Side && flp.Fret == Fret;
         }
 
         public override int GetHashCode()
         {
-            return string.Format("{0}:{1}", this.Side, this.Fret).GetHashCode();
+            return string.Format("{0}:{1}", Side, Fret).GetHashCode();
         }
     }
 

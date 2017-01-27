@@ -26,8 +26,8 @@
 
 using System;
 
-using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 
 using com.jonthysell.Chordious.Core.ViewModel.Resources;
 
@@ -103,10 +103,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                         Callback(Text);
                     }
                     catch (Exception ex)
@@ -115,7 +112,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return AllowBlank || !String.IsNullOrWhiteSpace(Text);
+                    return AllowBlank || !string.IsNullOrWhiteSpace(Text);
                 });
             }
         }
@@ -128,10 +125,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {

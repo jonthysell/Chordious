@@ -63,7 +63,7 @@ namespace com.jonthysell.Chordious.Core
                     throw new ArgumentNullException();
                 }
 
-                if (this.ReadOnly)
+                if (ReadOnly)
                 {
                     throw new ObjectIsReadOnlyException(this);
                 }
@@ -98,7 +98,7 @@ namespace com.jonthysell.Chordious.Core
 
                 notes = notes.TrimEnd();
 
-                return String.Format("{0} ({1})", Name, notes);
+                return string.Format("{0} ({1})", Name, notes);
             }
         }
 
@@ -120,7 +120,7 @@ namespace com.jonthysell.Chordious.Core
                     throw new ArgumentOutOfRangeException();
                 }
 
-                if (this.ReadOnly)
+                if (ReadOnly)
                 {
                     throw new ObjectIsReadOnlyException(this);
                 }
@@ -149,16 +149,16 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("parent");
             }
 
-            this.ReadOnly = false;
-            this._parent = parent;
+            ReadOnly = false;
+            _parent = parent;
         }
 
         internal Tuning(TuningSet parent, string name, FullNote[] rootNotes) : this(parent)
         {
-            this.Name = name;
-            this.RootNotes = rootNotes;
+            Name = name;
+            RootNotes = rootNotes;
 
-            this.UpdateParent = true;
+            UpdateParent = true;
         }
 
         internal Tuning(TuningSet parent, XmlReader xmlReader) : this(parent)
@@ -172,7 +172,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (xmlReader.IsStartElement() && xmlReader.Name == "tuning")
                 {
-                    this.Name = xmlReader.GetAttribute("name");
+                    Name = xmlReader.GetAttribute("name");
 
                     string notes = xmlReader.GetAttribute("notes");
 
@@ -189,11 +189,11 @@ namespace com.jonthysell.Chordious.Core
                     {
                         rootNotes[i] = FullNote.Parse(s[i]);
                     }
-                    this.RootNotes = rootNotes;
+                    RootNotes = rootNotes;
                 }
             }
 
-            this.UpdateParent = true;
+            UpdateParent = true;
         }
 
         public void Update(string name, FullNote[] rootNotes)
@@ -213,30 +213,30 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentOutOfRangeException();
             }
 
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
 
-            this.UpdateParent = false;
+            UpdateParent = false;
 
-            string oldName = this.Name;
-            FullNote[] oldRootNotes = this.RootNotes;
+            string oldName = Name;
+            FullNote[] oldRootNotes = RootNotes;
 
-            this.Name = name;
-            this.RootNotes = rootNotes;
+            Name = name;
+            RootNotes = rootNotes;
 
             _parent.Resort(this, () =>
             {
-                this.Name = oldName;
-                this.RootNotes = oldRootNotes;
+                Name = oldName;
+                RootNotes = oldRootNotes;
                 UpdateParent = true;
             });
         }
 
         public void MarkAsReadOnly()
         {
-            this.ReadOnly = true;
+            ReadOnly = true;
         }
 
         public InternalNote InternalNoteAt(int str, int fret)
@@ -278,7 +278,7 @@ namespace com.jonthysell.Chordious.Core
 
             xmlWriter.WriteStartElement("tuning");
 
-            xmlWriter.WriteAttributeString("name", this.Name);
+            xmlWriter.WriteAttributeString("name", Name);
 
             string rootNotes = "";
 
@@ -307,7 +307,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentException();
             }
 
-            return this.LongName.CompareTo(tuning.LongName);
+            return LongName.CompareTo(tuning.LongName);
         }
 
         public override string ToString()

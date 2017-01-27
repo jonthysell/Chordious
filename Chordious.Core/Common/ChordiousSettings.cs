@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -65,9 +65,9 @@ namespace com.jonthysell.Chordious.Core
 
         public ChordiousSettings Clone()
         {
-            ChordiousSettings cs = new ChordiousSettings(this.Level);
+            ChordiousSettings cs = new ChordiousSettings(Level);
 
-            if (null != this.Parent)
+            if (null != Parent)
             {
                 cs.Parent = Parent;
             }
@@ -79,7 +79,7 @@ namespace com.jonthysell.Chordious.Core
 
         public override string GetFriendlyKeyName(string key)
         {
-            if (String.IsNullOrEmpty(key))
+            if (string.IsNullOrEmpty(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -95,7 +95,7 @@ namespace com.jonthysell.Chordious.Core
 
         protected override string GetFriendlyLevel()
         {
-            return String.Format(Strings.ChordiousSettingsFriendlyLevelFormat, base.GetFriendlyLevel());
+            return string.Format(Strings.ChordiousSettingsFriendlyLevelFormat, base.GetFriendlyLevel());
         }
     }
 }

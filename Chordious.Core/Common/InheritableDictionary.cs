@@ -42,16 +42,16 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._parent;
+                return _parent;
             }
             set
             {
-                if (this.ReadOnly)
+                if (ReadOnly)
                 {
                     throw new ObjectIsReadOnlyException(this);
                 }
 
-                this._parent = value;
+                _parent = value;
             }
         }
         private InheritableDictionary _parent;
@@ -60,16 +60,16 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._level;
+                return _level;
             }
             set
             {
-                if (this.ReadOnly)
+                if (ReadOnly)
                 {
                     throw new ObjectIsReadOnlyException(this);
                 }
 
-                this._level = value;
+                _level = value;
             }
         }
         private string _level;
@@ -94,7 +94,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._localDictionary.Count;
+                return _localDictionary.Count;
             }
         }
 
@@ -113,13 +113,13 @@ namespace com.jonthysell.Chordious.Core
 
         public InheritableDictionary()
         {
-            this.ReadOnly = false;
-            this._localDictionary = new Dictionary<string, string>();
+            ReadOnly = false;
+            _localDictionary = new Dictionary<string, string>();
         }
 
         public InheritableDictionary(string level) : this()
         {
-            this.Level = level;
+            Level = level;
         }
 
         public InheritableDictionary(InheritableDictionary parent) : this()
@@ -129,17 +129,17 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("parent");
             }
 
-            this.Parent = parent;
+            Parent = parent;
         }
 
         public InheritableDictionary(InheritableDictionary parent, string level) : this(parent)
         {
-            this.Level = level;
+            Level = level;
         }
 
         public void MarkAsReadOnly()
         {
-            this.ReadOnly = true;
+            ReadOnly = true;
         }
 
         public void Read(XmlReader xmlReader, string localName)
@@ -154,7 +154,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("localName");
             }
 
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
@@ -181,18 +181,18 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("xmlWriter");
             }
 
-            foreach (string key in this.LocalKeys(filter))
+            foreach (string key in LocalKeys(filter))
             {
                 xmlWriter.WriteStartElement(localName);
                 xmlWriter.WriteAttributeString("key", key);
-                xmlWriter.WriteAttributeString("value", this._localDictionary[key]);
+                xmlWriter.WriteAttributeString("value", _localDictionary[key]);
                 xmlWriter.WriteEndElement();
             }
         }
 
         public void Clear()
         {
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
@@ -207,7 +207,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("key");
             }
 
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
@@ -219,15 +219,15 @@ namespace com.jonthysell.Chordious.Core
                 _localDictionary.Remove(key);
             }
             
-            if (null != this.Parent && !this.Parent.ReadOnly && recursive) // Recursively check parent
+            if (null != Parent && !Parent.ReadOnly && recursive) // Recursively check parent
             {
-                this.Parent.Clear(key, recursive);
+                Parent.Clear(key, recursive);
             }
         }
 
         public void ClearByPrefix(string prefix, bool recursive = false)
         {
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
@@ -254,9 +254,9 @@ namespace com.jonthysell.Chordious.Core
                 _localDictionary.Remove(key);
             }
 
-            if (null != this.Parent && recursive) // Recursively check parent
+            if (null != Parent && recursive) // Recursively check parent
             {
-                this.Parent.ClearByPrefix(prefix, recursive);
+                Parent.ClearByPrefix(prefix, recursive);
             }
         }
 
@@ -307,7 +307,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("value");
             }
 
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
@@ -354,9 +354,9 @@ namespace com.jonthysell.Chordious.Core
                 result = _localDictionary[key];
                 return true;
             }
-            else if (null != this.Parent && recursive) // Recursively check parent
+            else if (null != Parent && recursive) // Recursively check parent
             {
-                return this.Parent.TryGet(key, out result, recursive);
+                return Parent.TryGet(key, out result, recursive);
             }
 
             result = null;
@@ -377,9 +377,9 @@ namespace com.jonthysell.Chordious.Core
                 result = _localDictionary[key];
                 return true;
             }
-            else if (null != this.Parent && recursive) // Recursively check parent
+            else if (null != Parent && recursive) // Recursively check parent
             {
-                return this.Parent.TryGet(key, out result, recursive);
+                return Parent.TryGet(key, out result, recursive);
             }
 
             result = null;
@@ -463,13 +463,13 @@ namespace com.jonthysell.Chordious.Core
             if (TryGet(key, out rawResult, recursive))
             {
                 // Check with InvariantCulture as first default
-                if (Double.TryParse(rawResult, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
+                if (double.TryParse(rawResult, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
                 {
                     return true;
                 }
 
                 // Try again with CurrentCulture
-                return Double.TryParse(rawResult, out result);
+                return double.TryParse(rawResult, out result);
             }
 
             result = default(double);
@@ -547,7 +547,7 @@ namespace com.jonthysell.Chordious.Core
             string rawResult;
             if (TryGet(key, out rawResult, recursive))
             {
-                return Int32.TryParse(rawResult, out result);
+                return int.TryParse(rawResult, out result);
             }
 
             result = default(int);
@@ -664,12 +664,12 @@ namespace com.jonthysell.Chordious.Core
 
             if (_localDictionary.ContainsKey(key)) // Check locally
             {
-                level = this.Level;
+                level = Level;
                 return true;
             }
-            else if (null != this.Parent)
+            else if (null != Parent)
             {
-                return this.Parent.TryGetLevel(key, out level);
+                return Parent.TryGetLevel(key, out level);
             }
 
             level = null;
@@ -678,47 +678,47 @@ namespace com.jonthysell.Chordious.Core
 
         public void Flatten()
         {
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
 
-            List<string> allKeys = new List<string>(this.AllKeys());
+            List<string> allKeys = new List<string>(AllKeys());
 
             foreach (string key in allKeys)
             {
-                this.Set(key, this.Get(key));
+                Set(key, Get(key));
             }
         }
 
         public void SetParent()
         {
-            if (null == this.Parent)
+            if (null == Parent)
             {
                 throw new ParentNotFoundException();
             }
 
             foreach (string key in _localDictionary.Keys)
             {
-                this.SetParent(key);
+                SetParent(key);
             }
         }
 
         public void SetParent(string key)
         {
-            if (String.IsNullOrEmpty(key))
+            if (string.IsNullOrEmpty(key))
             {
                 throw new ArgumentNullException("key");
             }
 
             key = CleanKey(key);
 
-            if (null == this.Parent)
+            if (null == Parent)
             {
                 throw new ParentNotFoundException();
             }
 
-            this.Parent.Set(key, this[key]);
+            Parent.Set(key, this[key]);
         }
 
         public void CopyFrom(InheritableDictionary source)
@@ -730,13 +730,13 @@ namespace com.jonthysell.Chordious.Core
 
             foreach (string key in source.LocalKeys())
             {
-                this.Set(key, source.Get(key, false));
+                Set(key, source.Get(key, false));
             }
         }
 
         public bool HasKey(string key, bool recursive = true)
         {
-            if (String.IsNullOrEmpty(key))
+            if (string.IsNullOrEmpty(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -764,7 +764,7 @@ namespace com.jonthysell.Chordious.Core
                 hasFilter = true;
             }
 
-            foreach (string key in this._localDictionary.Keys)
+            foreach (string key in _localDictionary.Keys)
             {
                 if (!hasFilter || (hasFilter && key.StartsWith(filter)))
                 {
@@ -824,7 +824,7 @@ namespace com.jonthysell.Chordious.Core
 
         public virtual string GetFriendlyKeyName(string key)
         {
-            if (String.IsNullOrEmpty(key))
+            if (string.IsNullOrEmpty(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -834,7 +834,7 @@ namespace com.jonthysell.Chordious.Core
 
         public virtual string GetFriendlyValue(string key, bool recursive = true)
         {
-            if (String.IsNullOrEmpty(key))
+            if (string.IsNullOrEmpty(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -849,7 +849,7 @@ namespace com.jonthysell.Chordious.Core
 
         protected string GetFriendlyDoubleValue(string key, string format, bool recursive = true)
         {
-            if (String.IsNullOrEmpty(key))
+            if (string.IsNullOrEmpty(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -867,7 +867,7 @@ namespace com.jonthysell.Chordious.Core
 
             bool hasItems = false;
             
-            if (null != this.Parent)
+            if (null != Parent)
             {
                 sb.AppendFormat(": {0}", Parent.Level);
                 hasItems = true;
@@ -917,7 +917,7 @@ namespace com.jonthysell.Chordious.Core
 
         protected virtual string GetFriendlyLevel()
         {
-            switch (this.Level)
+            switch (Level)
             {
                 case ConfigFile.DefaultLevelKey:
                     return Strings.DefaultConfigFileFriendlyLevel;
@@ -932,7 +932,7 @@ namespace com.jonthysell.Chordious.Core
                 case DiagramLibrary.LevelKey:
                     return Strings.DiagramLibraryFriendlyLevel;
                 default:
-                    return this.Level;
+                    return Level;
             }
         }
 
@@ -942,7 +942,7 @@ namespace com.jonthysell.Chordious.Core
 
             bool hasItems = false;
 
-            if (null != this.Parent)
+            if (null != Parent)
             {
                 sb.Append(Parent.FriendlyLevel);
                 hasItems = true;
@@ -969,7 +969,7 @@ namespace com.jonthysell.Chordious.Core
         public InheritableDictionary InheritableDictionary { get; protected set; }
         public InheritableDictionaryKeyNotFoundException(InheritableDictionary inheritableDictionary, string key) : base(key)
         {
-            this.InheritableDictionary = inheritableDictionary;
+            InheritableDictionary = inheritableDictionary;
         }
     }
 
@@ -981,13 +981,13 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Strings.LevelNotFoundExceptionMessage, Level);
+                return string.Format(Strings.LevelNotFoundExceptionMessage, Level);
             }
         }
 
         public LevelNotFoundException(string level) : base()
         {
-            this.Level = level;
+            Level = level;
         }
     }
 

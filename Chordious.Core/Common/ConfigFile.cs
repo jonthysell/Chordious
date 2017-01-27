@@ -38,16 +38,16 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._parent;
+                return _parent;
             }
             set
             {
-                if (this.ReadOnly)
+                if (ReadOnly)
                 {
                     throw new ObjectIsReadOnlyException(this);
                 }
 
-                this._parent = value;
+                _parent = value;
                 FixInheritance();
             }
         }
@@ -57,7 +57,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._level;
+                return _level;
             }
             private set
             {
@@ -66,12 +66,12 @@ namespace com.jonthysell.Chordious.Core
                     throw new ArgumentNullException();
                 }
 
-                if (this.ReadOnly)
+                if (ReadOnly)
                 {
                     throw new ObjectIsReadOnlyException(this);
                 }
 
-                this._level = value;
+                _level = value;
             }
         }
         private string _level;
@@ -90,19 +90,19 @@ namespace com.jonthysell.Chordious.Core
 
         public ConfigFile(string level)
         {
-            this.Level = level;
+            Level = level;
 
-            this.ChordiousSettings = new ChordiousSettings(level);
-            this.DiagramStyle = new DiagramStyle(level);
-            this.Instruments = new InstrumentSet(level);
-            this.ChordQualities = new ChordQualitySet(level);
-            this.Scales = new ScaleSet(level);
-            this.DiagramLibrary = new DiagramLibrary(this.DiagramStyle);
+            ChordiousSettings = new ChordiousSettings(level);
+            DiagramStyle = new DiagramStyle(level);
+            Instruments = new InstrumentSet(level);
+            ChordQualities = new ChordQualitySet(level);
+            Scales = new ScaleSet(level);
+            DiagramLibrary = new DiagramLibrary(DiagramStyle);
         }
 
         public ConfigFile(ConfigFile parent, string level) : this(level)
         {
-            this.Parent = parent;
+            Parent = parent;
         }
 
         public ConfigFile(Stream inputStream, string level) : this(level)
@@ -135,27 +135,27 @@ namespace com.jonthysell.Chordious.Core
                     {
                         if (reader.Name == "settings" && ((configParts & ConfigParts.Settings) == ConfigParts.Settings))
                         {
-                            this.ChordiousSettings.Read(reader.ReadSubtree());
+                            ChordiousSettings.Read(reader.ReadSubtree());
                         }
                         else if (reader.Name == "styles" && ((configParts & ConfigParts.Styles) == ConfigParts.Styles))
                         {
-                            this.DiagramStyle.Read(reader.ReadSubtree());
+                            DiagramStyle.Read(reader.ReadSubtree());
                         }
                         else if (reader.Name == "instruments" && ((configParts & ConfigParts.Instruments) == ConfigParts.Instruments))
                         {
-                            this.Instruments.Read(reader.ReadSubtree());
+                            Instruments.Read(reader.ReadSubtree());
                         }
                         else if (reader.Name == "qualities" && ((configParts & ConfigParts.Qualities) == ConfigParts.Qualities))
                         {
-                            this.ChordQualities.Read(reader.ReadSubtree());
+                            ChordQualities.Read(reader.ReadSubtree());
                         }
                         else if (reader.Name == "scales" && ((configParts & ConfigParts.Scales) == ConfigParts.Scales))
                         {
-                            this.Scales.Read(reader.ReadSubtree());
+                            Scales.Read(reader.ReadSubtree());
                         }
                         else if (reader.Name == "library" && ((configParts & ConfigParts.Library) == ConfigParts.Library))
                         {
-                            this.DiagramLibrary.Read(reader.ReadSubtree());
+                            DiagramLibrary.Read(reader.ReadSubtree());
                         }
                     }
                 }
@@ -187,42 +187,42 @@ namespace com.jonthysell.Chordious.Core
                 if ((configParts & ConfigParts.Settings) == ConfigParts.Settings)
                 {
                     writer.WriteStartElement("settings");
-                    this.ChordiousSettings.Write(writer);
+                    ChordiousSettings.Write(writer);
                     writer.WriteEndElement();
                 }
 
                 if ((configParts & ConfigParts.Styles) == ConfigParts.Styles)
                 {
                     writer.WriteStartElement("styles");
-                    this.DiagramStyle.Write(writer);
+                    DiagramStyle.Write(writer);
                     writer.WriteEndElement();
                 }
 
                 if ((configParts & ConfigParts.Instruments) == ConfigParts.Instruments)
                 {
                     writer.WriteStartElement("instruments");
-                    this.Instruments.Write(writer);
+                    Instruments.Write(writer);
                     writer.WriteEndElement();
                 }
 
                 if ((configParts & ConfigParts.Qualities) == ConfigParts.Qualities)
                 {
                     writer.WriteStartElement("qualities");
-                    this.ChordQualities.Write(writer);
+                    ChordQualities.Write(writer);
                     writer.WriteEndElement();
                 }
 
                 if ((configParts & ConfigParts.Scales) == ConfigParts.Scales)
                 {
                     writer.WriteStartElement("scales");
-                    this.Scales.Write(writer);
+                    Scales.Write(writer);
                     writer.WriteEndElement();
                 }
 
                 if ((configParts & ConfigParts.Library) == ConfigParts.Library)
                 {
                     writer.WriteStartElement("library");
-                    this.DiagramLibrary.Write(writer);
+                    DiagramLibrary.Write(writer);
                     writer.WriteEndElement();
                 }
 
@@ -275,21 +275,21 @@ namespace com.jonthysell.Chordious.Core
 
         public void MarkAsReadOnly()
         {
-            this.ReadOnly = true;
-            this.ChordiousSettings.MarkAsReadOnly();
-            this.DiagramStyle.MarkAsReadOnly();
-            this.Instruments.MarkAsReadOnly();
-            this.ChordQualities.MarkAsReadOnly();
-            this.Scales.MarkAsReadOnly();
+            ReadOnly = true;
+            ChordiousSettings.MarkAsReadOnly();
+            DiagramStyle.MarkAsReadOnly();
+            Instruments.MarkAsReadOnly();
+            ChordQualities.MarkAsReadOnly();
+            Scales.MarkAsReadOnly();
         }
 
         private void FixInheritance()
         {
-            this.ChordiousSettings.Parent = (null == this.Parent) ? null : this.Parent.ChordiousSettings;
-            this.DiagramStyle.Parent = (null == this.Parent) ? null : this.Parent.DiagramStyle;
-            this.Instruments.Parent = (null == this.Parent) ? null : this.Parent.Instruments;
-            this.ChordQualities.Parent = (null == this.Parent) ? null : this.Parent.ChordQualities;
-            this.Scales.Parent = (null == this.Parent) ? null : this.Parent.Scales;
+            ChordiousSettings.Parent = (null == Parent) ? null : Parent.ChordiousSettings;
+            DiagramStyle.Parent = (null == Parent) ? null : Parent.DiagramStyle;
+            Instruments.Parent = (null == Parent) ? null : Parent.Instruments;
+            ChordQualities.Parent = (null == Parent) ? null : Parent.ChordQualities;
+            Scales.Parent = (null == Parent) ? null : Parent.Scales;
         }
 
         public const string DefaultLevelKey = "Default";

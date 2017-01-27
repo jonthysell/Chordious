@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -31,8 +31,6 @@ using System.Text;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using com.jonthysell.Chordious.Core;
-
 namespace com.jonthysell.Chordious.CoreTest
 {
     public class TestUtils
@@ -57,7 +55,7 @@ namespace com.jonthysell.Chordious.CoreTest
                 Assert.AreEqual(expected, actual);
             }
 
-            if (expected != null && actual != null)
+            if (null != expected && null != actual)
             {
                 Queue<T> expectedList = new Queue<T>(expected);
                 List<T> actualList = new List<T>(actual);
@@ -93,7 +91,7 @@ namespace com.jonthysell.Chordious.CoreTest
                 {
                     StringBuilder sb = new StringBuilder();
 
-                    sb.AppendLine(String.Format("{0} items missing from expected:", missingItems.Count));
+                    sb.AppendLine(string.Format("{0} items missing from expected:", missingItems.Count));
 
                     foreach (T item in missingItems)
                     {
@@ -107,7 +105,7 @@ namespace com.jonthysell.Chordious.CoreTest
                 {
                     StringBuilder sb = new StringBuilder();
 
-                    sb.AppendLine(String.Format("{0} items extra in actual:", actualList.Count));
+                    sb.AppendLine(string.Format("{0} items extra in actual:", actualList.Count));
 
                     foreach (T item in actualList)
                     {
@@ -121,7 +119,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
         public static int[] ParseIntArray(string s, char delimiter = ',')
         {
-            if (String.IsNullOrWhiteSpace(s))
+            if (string.IsNullOrWhiteSpace(s))
             {
                 throw new ArgumentNullException("s");
             }
@@ -133,7 +131,7 @@ namespace com.jonthysell.Chordious.CoreTest
             int[] array = new int[arrayVals.Length];
             for (int i = 0; i < arrayVals.Length; i++)
             {
-                array[i] = Int32.Parse(arrayVals[i]);
+                array[i] = int.Parse(arrayVals[i]);
             }
 
             return array;
@@ -141,7 +139,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
         public static IEnumerable<T> Parse<T>(string s, Func<string,T> parser, char delimiter = ',')
         {
-            if (String.IsNullOrWhiteSpace(s))
+            if (string.IsNullOrWhiteSpace(s))
             {
                 throw new ArgumentNullException("s");
             }
@@ -192,7 +190,7 @@ namespace com.jonthysell.Chordious.CoreTest
                 while (null != (line = sr.ReadLine()))
                 {
                     line = line.Trim();
-                    if (!String.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
+                    if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
                     {
                         T testCase = new T();
                         testCase.Parse(line);
@@ -218,7 +216,7 @@ namespace com.jonthysell.Chordious.CoreTest
                 catch (AssertFailedException ex)
                 {
                     failedTestCases.Add(testCase);
-                    failMessages.AppendLine(String.Format("Test case \"{0}\" failed:", testCase));
+                    failMessages.AppendLine(string.Format("Test case \"{0}\" failed:", testCase));
                     failMessages.AppendLine(ex.Message);
                 }
             }
@@ -226,7 +224,7 @@ namespace com.jonthysell.Chordious.CoreTest
             if (failedTestCases.Count > 0)
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine(String.Format("{0} test cases failed:", failedTestCases.Count));
+                sb.AppendLine(string.Format("{0} test cases failed:", failedTestCases.Count));
 
                 sb.Append(failMessages.ToString());
 

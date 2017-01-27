@@ -50,7 +50,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return String.Format(Strings.DiagramStyleSummaryLabelFormat, Style.FriendlyLevel);
+                return string.Format(Strings.DiagramStyleSummaryLabelFormat, Style.FriendlyLevel);
             }
         }
 
@@ -58,7 +58,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return String.Format(Strings.DiagramStyleSummaryToolTipFormat, Style.FriendlyLevel);
+                return string.Format(Strings.DiagramStyleSummaryToolTipFormat, Style.FriendlyLevel);
             }
         }
 
@@ -4022,11 +4022,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                if (null == _fontFamiles)
-                {
-                    _fontFamiles = new ObservableCollection<string>(ObservableEnums.FontFamilies);
-                }
-                return _fontFamiles;
+                return _fontFamiles ?? (_fontFamiles = new ObservableCollection<string>(ObservableEnums.FontFamilies));
             }
         }
         private ObservableCollection<string> _fontFamiles;
@@ -4035,11 +4031,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                if (null == _colors)
-                {
-                    _colors = ObservableEnums.GetColors();
-                }
-                return _colors;
+                return _colors ?? (_colors = ObservableEnums.GetColors());
             }
         }
         private ObservableCollection<string> _colors;
@@ -4058,10 +4050,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Messenger.Default.Send<ShowDiagramStyleEditorMessage>(new ShowDiagramStyleEditorMessage(this, (changed) =>
                         {
-                            if (null != PostEditCallback)
-                            {
-                                PostEditCallback(changed);
-                            }
+                            PostEditCallback?.Invoke(changed);
                         }));
                     }
                     catch (Exception ex)

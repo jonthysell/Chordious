@@ -86,7 +86,7 @@ namespace com.jonthysell.Chordious.Core
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.GetEnumerator();
+            return GetEnumerator();
         }
 
         public ITuning Get(string longName)
@@ -127,7 +127,7 @@ namespace com.jonthysell.Chordious.Core
 
         public ITuning Add(string name, FullNote[] rootNotes)
         {
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
@@ -162,7 +162,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("tuning");
             }
 
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
@@ -248,7 +248,7 @@ namespace com.jonthysell.Chordious.Core
 
         public TuningSetException(TuningSet tuningSet) : base()
         {
-            this.TuningSet = tuningSet;
+            TuningSet = tuningSet;
         }
     }
 
@@ -258,7 +258,7 @@ namespace com.jonthysell.Chordious.Core
 
         public TargetTuningException(TuningSet tuningSet, string longName) : base(tuningSet)
         {
-            this.LongName = longName;
+            LongName = longName;
         }
     }
 
@@ -268,7 +268,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Strings.TuningNotFoundExceptionMessage, LongName);
+                return string.Format(Strings.TuningNotFoundExceptionMessage, LongName);
             }
         }
 
@@ -281,7 +281,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Strings.TuningAlreadyExistsMessage, LongName);
+                return string.Format(Strings.TuningAlreadyExistsMessage, LongName);
             }
         }
 

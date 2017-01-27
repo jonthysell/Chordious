@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -70,7 +70,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
             public void Parse(string s)
             {
-                if (String.IsNullOrWhiteSpace(s))
+                if (string.IsNullOrWhiteSpace(s))
                 {
                     throw new ArgumentNullException("s");
                 }
@@ -102,7 +102,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
             public override string ToString()
             {
-                return String.Join("\t",
+                return string.Join("\t",
                     scaleFinderOptions,
                     allowExtras,
                     TestUtils.ToString<IScaleFinderResult>(ExpectedResult, ';'));
@@ -126,7 +126,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
             public static TestScaleFinderOptions Parse(string s)
             {
-                if (String.IsNullOrWhiteSpace(s))
+                if (string.IsNullOrWhiteSpace(s))
                 {
                     throw new ArgumentNullException("s");
                 }
@@ -161,9 +161,9 @@ namespace com.jonthysell.Chordious.CoreTest
                 
                 Note rootNote = (Note)Enum.Parse(typeof(Note), vals[3]);
 
-                int numFrets = Int32.Parse(vals[4]);
-                int maxFret = Int32.Parse(vals[5]);
-                int maxReach = Int32.Parse(vals[6]);
+                int numFrets = int.Parse(vals[4]);
+                int maxFret = int.Parse(vals[5]);
+                int maxReach = int.Parse(vals[6]);
                 bool allowOpenStrings = Boolean.Parse(vals[7]);
                 bool allowMutedStrings = Boolean.Parse(vals[8]);
 
@@ -172,7 +172,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
             public override string ToString()
             {
-                return String.Join(";",
+                return string.Join(";",
                     null == Instrument ? "null" : Instrument.Name,
                     null == Tuning ? "null" : Tuning.Name,
                     null == Scale ? "null" : Scale.Name,
@@ -205,11 +205,6 @@ namespace com.jonthysell.Chordious.CoreTest
                 return new TestScaleFinderResult(marks);
             }
 
-            public override bool Equals(object obj)
-            {
-                return CompareTo(obj) == 0;
-            }
-
             public int CompareTo(object obj)
             {
                 if (null == obj)
@@ -226,9 +221,19 @@ namespace com.jonthysell.Chordious.CoreTest
                 return (Marks.Except(sfr.Marks).Count() == 0 && sfr.Marks.Except(Marks).Count() == 0) ? 0 : -1;
             }
 
+            public override bool Equals(object obj)
+            {
+                return CompareTo(obj) == 0;
+            }
+
+            public override int GetHashCode()
+            {
+                return base.GetHashCode();
+            }
+
             public override string ToString()
             {
-                return TestUtils.ToString<MarkPosition>(this.Marks);
+                return TestUtils.ToString<MarkPosition>(Marks);
             }
         }
 
@@ -238,12 +243,7 @@ namespace com.jonthysell.Chordious.CoreTest
             {
                 get
                 {
-                    if (null == _majorScale)
-                    {
-                        _majorScale = new TestScale(MajorScaleName, new int[] { 0, 2, 4, 5, 7, 9, 11, 12 });
-                    }
-
-                    return _majorScale;
+                    return _majorScale ?? (_majorScale = new TestScale(MajorScaleName, new int[] { 0, 2, 4, 5, 7, 9, 11, 12 }));
                 }
             }
             private static TestScale _majorScale = null;

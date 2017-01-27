@@ -88,7 +88,7 @@ namespace com.jonthysell.Chordious.WPF
 
         private static IEnumerable<char> GetAltKeyCandidates(string labelValue)
         {
-            if (String.IsNullOrWhiteSpace(labelValue))
+            if (string.IsNullOrWhiteSpace(labelValue))
             {
                 yield break;
             }
@@ -159,7 +159,7 @@ namespace com.jonthysell.Chordious.WPF
 
         private static string CleanLabelKey(string labelKey)
         {
-            if (String.IsNullOrWhiteSpace(labelKey))
+            if (string.IsNullOrWhiteSpace(labelKey))
             {
                 throw new ArgumentNullException("labelKey");
             }

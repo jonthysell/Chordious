@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -54,13 +54,13 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("marks");
             }
 
-            this.Parent = parent;
+            Parent = parent;
             _marks = new List<MarkPosition>(marks);
         }
 
         public InternalNote NoteAt(MarkPosition position)
         {
-            return NoteUtils.Shift(this.Parent.ScaleFinderOptions.Tuning.RootNotes[position.String - 1].InternalNote, position.Fret);
+            return NoteUtils.Shift(Parent.ScaleFinderOptions.Tuning.RootNotes[position.String - 1].InternalNote, position.Fret);
         }
 
         private InternalNote NoteAt(int markPositionIndex)
@@ -75,27 +75,27 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentOutOfRangeException("mark");
             }
 
-            return NoteAt(mark) == NoteUtils.ToInternalNote(this.Parent.ScaleFinderOptions.RootNote);
+            return NoteAt(mark) == NoteUtils.ToInternalNote(Parent.ScaleFinderOptions.RootNote);
         }
 
         private bool IsRoot(int markPositionIndex)
         {
-            return NoteAt(markPositionIndex) == NoteUtils.ToInternalNote(this.Parent.ScaleFinderOptions.RootNote);
+            return NoteAt(markPositionIndex) == NoteUtils.ToInternalNote(Parent.ScaleFinderOptions.RootNote);
         }
 
         public Diagram ToDiagram(ScaleFinderStyle scaleFinderStyle)
         {
-            int numStrings = this.Parent.ScaleFinderOptions.Instrument.NumStrings;
-            int numFrets = this.Parent.ScaleFinderOptions.NumFrets;
+            int numStrings = Parent.ScaleFinderOptions.Instrument.NumStrings;
+            int numFrets = Parent.ScaleFinderOptions.NumFrets;
 
             int baseLine;
-            IEnumerable<MarkPosition> marks = MarkUtils.AbsoluteToRelativeMarks(this.Marks, out baseLine, numFrets, numStrings);
+            IEnumerable<MarkPosition> marks = MarkUtils.AbsoluteToRelativeMarks(Marks, out baseLine, numFrets, numStrings);
 
             Diagram d = new Diagram(scaleFinderStyle.Style, numStrings, numFrets);
 
             if (scaleFinderStyle.AddTitle)
             {
-                d.Title = NoteUtils.ToString(this.Parent.ScaleFinderOptions.RootNote) + " " + this.Parent.ScaleFinderOptions.Scale.Name;
+                d.Title = NoteUtils.ToString(Parent.ScaleFinderOptions.RootNote) + " " + Parent.ScaleFinderOptions.Scale.Name;
                 d.Style.TitleLabelStyle = DiagramLabelStyle.Regular;
             }
 
@@ -153,13 +153,13 @@ namespace com.jonthysell.Chordious.Core
             switch (markTextOption)
             {
                 case MarkTextOption.ShowNote_PreferFlats:
-                    text = NoteUtils.ToString(this.NoteAt(mark), InternalNoteStringStyle.PreferFlat);
+                    text = NoteUtils.ToString(NoteAt(mark), InternalNoteStringStyle.PreferFlat);
                     break;
                 case MarkTextOption.ShowNote_PreferSharps:
-                    text = NoteUtils.ToString(this.NoteAt(mark), InternalNoteStringStyle.PreferSharp);
+                    text = NoteUtils.ToString(NoteAt(mark), InternalNoteStringStyle.PreferSharp);
                     break;
                 case MarkTextOption.ShowNote_ShowBoth:
-                    text = NoteUtils.ToString(this.NoteAt(mark), InternalNoteStringStyle.ShowBoth);
+                    text = NoteUtils.ToString(NoteAt(mark), InternalNoteStringStyle.ShowBoth);
                     break;
             }
             return text;
@@ -183,12 +183,12 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentException();
             }
 
-            return MarkUtils.Compare(this.Marks, sfr.Marks, this.Parent.ScaleFinderOptions.Instrument.NumStrings);
+            return MarkUtils.Compare(Marks, sfr.Marks, Parent.ScaleFinderOptions.Instrument.NumStrings);
         }
 
         public override string ToString()
         {
-            return MarkUtils.ToString(this.Marks);
+            return MarkUtils.ToString(Marks);
         }
     }
 }

@@ -29,6 +29,7 @@ using System;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+
 using com.jonthysell.Chordious.Core.Legacy;
 
 using com.jonthysell.Chordious.Core.ViewModel.Resources;
@@ -738,7 +739,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
                         Messenger.Default.Send<PromptForLegacyImportMessage>(new PromptForLegacyImportMessage((fileName, inputStream) =>
                         {
-                            string proposedName = String.IsNullOrWhiteSpace(fileName) ? library.GetNewCollectionName() : fileName.Trim();
+                            string proposedName = string.IsNullOrWhiteSpace(fileName) ? library.GetNewCollectionName() : fileName.Trim();
                             Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(Strings.OptionsLegacyImportNewCollectionPrompt, proposedName, (name) =>
                             {
                                 DiagramCollection importedCollection = ChordDocument.Load(library.Style, inputStream);
@@ -789,10 +790,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         ApplyChangesOnClose = true;
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {
@@ -814,10 +812,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         ApplyChangesOnClose = false;
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {

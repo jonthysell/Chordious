@@ -114,10 +114,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public virtual void Process()
         {
             AppViewModel.Instance.SaveUserConfig();
-            if (null != Callback)
-            {
-                Callback();
-            }
+            Callback?.Invoke();
         }
     }
 
@@ -177,10 +174,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void Process()
         {
-            if (null != Callback)
-            {
-                Callback(TuningEditorVM.Accepted);
-            }
+            Callback?.Invoke(TuningEditorVM.Accepted);
         }
     }
 
@@ -254,10 +248,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public void Process()
         {
             bool saveChanges = DiagramEditorVM.ProcessClose();
-            if (null != Callback)
-            {
-                Callback(saveChanges);
-            }
+            Callback?.Invoke(saveChanges);
         }
     }
 
@@ -276,10 +267,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public void Process()
         {
             bool saveChanges = DiagramMarkEditorVM.ProcessClose();
-            if (null != Callback)
-            {
-                Callback(saveChanges);
-            }
+            Callback?.Invoke(saveChanges);
         }
     }
 
@@ -298,10 +286,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public void Process()
         {
             bool saveChanges = DiagramFretLabelEditorVM.ProcessClose();
-            if (null != Callback)
-            {
-                Callback(saveChanges);
-            }
+            Callback?.Invoke(saveChanges);
         }
     }
 
@@ -320,10 +305,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public void Process()
         {
             bool saveChanges = DiagramBarreEditorVM.ProcessClose();
-            if (null != Callback)
-            {
-                Callback(saveChanges);
-            }
+            Callback?.Invoke(saveChanges);
         }
     }
 
@@ -342,10 +324,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public void Process()
         {
             bool saveChanges = DiagramStyleEditorVM.ProcessClose();
-            if (null != Callback)
-            {
-                Callback(saveChanges);
-            }
+            Callback?.Invoke(saveChanges);
         }
     }
 
@@ -363,10 +342,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public void Process()
         {
             bool itemsChanged = OptionsVM.ProcessClose();
-            if (null != Callback)
-            {
-                Callback(itemsChanged);
-            }
+            Callback?.Invoke(itemsChanged);
         }
     }
 
@@ -385,10 +361,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public void Process()
         {
             bool itemsChanged = AdvancedDataVM.ProcessClose();
-            if (null != Callback)
-            {
-                Callback(itemsChanged);
-            }
+            Callback?.Invoke(itemsChanged);
         }
     }
 
@@ -452,10 +425,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void Process(Stream stream)
         {
-            if (null != Callback)
-            {
-                Callback(stream);
-            }
+            Callback?.Invoke(stream);
         }
     }
 
@@ -494,10 +464,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void Process(string fileName, Stream inputStream)
         {
-            if (null != Callback)
-            {
-                Callback(fileName, inputStream);
-            }
+            Callback?.Invoke(fileName, inputStream);
         }
     }
 }

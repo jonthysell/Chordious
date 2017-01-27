@@ -48,11 +48,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this.MarkStyle.MarkType;
+                return MarkStyle.MarkType;
             }
             set
             {
-                this.MarkStyle.MarkType = value;
+                MarkStyle.MarkType = value;
             }
         }
 
@@ -60,28 +60,28 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramMark(Diagram parent, MarkPosition position, string text = "") : base(parent, position, text)
         {
-            this.MarkStyle = new DiagramMarkStyleWrapper(this.Style);
+            MarkStyle = new DiagramMarkStyleWrapper(Style);
         }
 
         public DiagramMark(Diagram parent, XmlReader xmlReader) : base(parent)
         {
-            this.MarkStyle = new DiagramMarkStyleWrapper(this.Style);
-            this.Read(xmlReader);
+            MarkStyle = new DiagramMarkStyleWrapper(Style);
+            Read(xmlReader);
         }
 
         public override bool IsVisible()
         {
-            return this.MarkStyle.MarkVisible;
+            return MarkStyle.MarkVisible;
         }
 
         public bool IsAboveTopEdge()
         {
-            return (this.Position.Fret == 0);
+            return (Position.Fret == 0);
         }
 
         public bool IsBelowBottomEdge()
         {
-            return (this.Position.Fret == this.Parent.NumFrets + 1);
+            return (Position.Fret == Parent.NumFrets + 1);
         }
 
         public override sealed void Read(XmlReader xmlReader)
@@ -95,19 +95,19 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (xmlReader.IsStartElement() && xmlReader.Name == "mark")
                 {
-                    this.Text = xmlReader.GetAttribute("text");
-                    this.Type = (DiagramMarkType)Enum.Parse(typeof(DiagramMarkType), xmlReader.GetAttribute("type"));
+                    Text = xmlReader.GetAttribute("text");
+                    Type = (DiagramMarkType)Enum.Parse(typeof(DiagramMarkType), xmlReader.GetAttribute("type"));
 
-                    int @string = Int32.Parse(xmlReader.GetAttribute("string"));
-                    int fret = Int32.Parse(xmlReader.GetAttribute("fret"));
+                    int @string = int.Parse(xmlReader.GetAttribute("string"));
+                    int fret = int.Parse(xmlReader.GetAttribute("fret"));
 
-                    this.Position = new MarkPosition(@string, fret);
+                    Position = new MarkPosition(@string, fret);
 
                     while (xmlReader.Read())
                     {
                         if (xmlReader.IsStartElement() && xmlReader.Name == "style")
                         {
-                            this.Style.Read(xmlReader.ReadSubtree());
+                            Style.Read(xmlReader.ReadSubtree());
                         }
                     }
                 }
@@ -123,15 +123,15 @@ namespace com.jonthysell.Chordious.Core
 
             xmlWriter.WriteStartElement("mark");
 
-            xmlWriter.WriteAttributeString("text", this.Text);
-            xmlWriter.WriteAttributeString("type", this.Type.ToString());
-            xmlWriter.WriteAttributeString("string", this.Position.String.ToString());
-            xmlWriter.WriteAttributeString("fret", this.Position.Fret.ToString());
+            xmlWriter.WriteAttributeString("text", Text);
+            xmlWriter.WriteAttributeString("type", Type.ToString());
+            xmlWriter.WriteAttributeString("string", Position.String.ToString());
+            xmlWriter.WriteAttributeString("fret", Position.Fret.ToString());
 
-            string prefix = DiagramStyle.GetMarkStylePrefix(this.Type);
+            string prefix = DiagramStyle.GetMarkStylePrefix(Type);
 
             // Only write the styles that apply to the type of this mark
-            this.Style.Write(xmlWriter, prefix + "mark");
+            Style.Write(xmlWriter, prefix + "mark");
 
             xmlWriter.WriteEndElement();
         }
@@ -140,45 +140,45 @@ namespace com.jonthysell.Chordious.Core
         {
             string svg = "";
 
-            if (this.IsVisible())
+            if (IsVisible())
             {
-                string prefix = DiagramStyle.GetMarkStylePrefix(this.Type);
+                string prefix = DiagramStyle.GetMarkStylePrefix(Type);
 
-                DiagramMarkShape shape = this.MarkStyle.MarkShape;
-                double radius = this.MarkStyle.MarkRadiusRatio * 0.5 * Math.Min(this.Parent.Style.GridStringSpacing, this.Parent.Style.GridFretSpacing);
+                DiagramMarkShape shape = MarkStyle.MarkShape;
+                double radius = MarkStyle.MarkRadiusRatio * 0.5 * Math.Min(Parent.Style.GridStringSpacing, Parent.Style.GridFretSpacing);
 
-                double centerX = this.Parent.GridLeftEdge() + (this.Parent.Style.GridStringSpacing * (this.Position.String - 1));
-                double centerY = this.Parent.GridTopEdge() + (this.Parent.Style.GridFretSpacing / 2.0) + (this.Parent.Style.GridFretSpacing * (this.Position.Fret - 1));
+                double centerX = Parent.GridLeftEdge() + (Parent.Style.GridStringSpacing * (Position.String - 1));
+                double centerY = Parent.GridTopEdge() + (Parent.Style.GridFretSpacing / 2.0) + (Parent.Style.GridFretSpacing * (Position.Fret - 1));
 
                 // Draw shape
 
-                string shapeStyle = this.Style.GetSvgStyle(DiagramMark._shapeStyleMap, prefix);
+                string shapeStyle = Style.GetSvgStyle(DiagramMark._shapeStyleMap, prefix);
 
-                if (this.MarkStyle.MarkBorderThickness > 0)
+                if (MarkStyle.MarkBorderThickness > 0)
                 {
-                    shapeStyle += this.Style.GetSvgStyle(DiagramMark._shapeStyleMapBorder, prefix);
+                    shapeStyle += Style.GetSvgStyle(DiagramMark._shapeStyleMapBorder, prefix);
                 }
 
                 switch (shape)
                 {
                     case DiagramMarkShape.Circle:
-                        svg += String.Format(CultureInfo.InvariantCulture, SvgConstants.CIRCLE, shapeStyle, radius, centerX, centerY);
+                        svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.CIRCLE, shapeStyle, radius, centerX, centerY);
                         break;
                     case DiagramMarkShape.Square:
-                        svg += String.Format(CultureInfo.InvariantCulture, SvgConstants.RECTANGLE, shapeStyle, radius * 2.0, radius * 2.0, centerX - radius, centerY - radius);
+                        svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.RECTANGLE, shapeStyle, radius * 2.0, radius * 2.0, centerX - radius, centerY - radius);
                         break;
                     case DiagramMarkShape.Diamond:
                         string diamondPoints = "";
-                        diamondPoints += String.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX, centerY - radius);
-                        diamondPoints += String.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + radius, centerY);
-                        diamondPoints += String.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX, centerY + radius);
-                        diamondPoints += String.Format(CultureInfo.InvariantCulture, "{0},{1}", centerX - radius, centerY);
-                        svg += String.Format(CultureInfo.InvariantCulture, SvgConstants.POLYGON, shapeStyle, diamondPoints);
+                        diamondPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX, centerY - radius);
+                        diamondPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + radius, centerY);
+                        diamondPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX, centerY + radius);
+                        diamondPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1}", centerX - radius, centerY);
+                        svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.POLYGON, shapeStyle, diamondPoints);
                         break;
                     case DiagramMarkShape.X:
                         double xDelta = Math.Sqrt((radius * radius / 2.0));
-                        svg += String.Format(CultureInfo.InvariantCulture, SvgConstants.LINE, shapeStyle, centerX - xDelta, centerY - xDelta, centerX + xDelta, centerY + xDelta);
-                        svg += String.Format(CultureInfo.InvariantCulture, SvgConstants.LINE, shapeStyle, centerX - xDelta, centerY + xDelta, centerX + xDelta, centerY - xDelta);
+                        svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.LINE, shapeStyle, centerX - xDelta, centerY - xDelta, centerX + xDelta, centerY + xDelta);
+                        svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.LINE, shapeStyle, centerX - xDelta, centerY + xDelta, centerX + xDelta, centerY - xDelta);
                         break;
                     case DiagramMarkShape.None:
                     default:
@@ -186,35 +186,35 @@ namespace com.jonthysell.Chordious.Core
                 }
 
                 // Draw text
-                if (!StringUtils.IsNullOrWhiteSpace(this.Text) && this.MarkStyle.MarkTextVisible)
+                if (!StringUtils.IsNullOrWhiteSpace(Text) && MarkStyle.MarkTextVisible)
                 {
-                    double textSize = radius * 2.0 * this.MarkStyle.MarkTextSizeRatio;
+                    double textSize = radius * 2.0 * MarkStyle.MarkTextSizeRatio;
 
                     double textX = centerX;
                     double textY = centerY;
 
-                    switch (this.MarkStyle.MarkTextAlignment)
+                    switch (MarkStyle.MarkTextAlignment)
                     {
                         case DiagramHorizontalAlignment.Left:
-                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * textSize * 0.5 : -1.0 * radius; // D <-> U : L <-> R
-                            textY += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * radius : textSize * 0.5; // L <-> R : U <-> D
+                            textX += (Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * textSize * 0.5 : -1.0 * radius; // D <-> U : L <-> R
+                            textY += (Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * radius : textSize * 0.5; // L <-> R : U <-> D
                             break;
                         case DiagramHorizontalAlignment.Center:
-                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * textSize * 0.5 : 0; // D <-> U : L <-> R
-                            textY += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? 0 : textSize * 0.5; // L <-> R : U <-> D
+                            textX += (Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * textSize * 0.5 : 0; // D <-> U : L <-> R
+                            textY += (Parent.Style.Orientation == DiagramOrientation.LeftRight) ? 0 : textSize * 0.5; // L <-> R : U <-> D
                             break;
                         case DiagramHorizontalAlignment.Right:
-                            textX += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * textSize * 0.5 : radius; // D <-> U : L <-> R
-                            textY += (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? radius : textSize * 0.5; // L <-> R : U <-> D
+                            textX += (Parent.Style.Orientation == DiagramOrientation.LeftRight) ? -1.0 * textSize * 0.5 : radius; // D <-> U : L <-> R
+                            textY += (Parent.Style.Orientation == DiagramOrientation.LeftRight) ? radius : textSize * 0.5; // L <-> R : U <-> D
                             break;
                     }
 
-                    string textStyle = this.Style.GetSvgStyle(DiagramMark._textStyleMap, prefix);
-                    textStyle += String.Format(CultureInfo.InvariantCulture, "font-size:{0}pt;", textSize);
+                    string textStyle = Style.GetSvgStyle(DiagramMark._textStyleMap, prefix);
+                    textStyle += string.Format(CultureInfo.InvariantCulture, "font-size:{0}pt;", textSize);
 
-                    string textFormat = (this.Parent.Style.Orientation == DiagramOrientation.LeftRight) ? SvgConstants.ROTATED_TEXT : SvgConstants.TEXT;
+                    string textFormat = (Parent.Style.Orientation == DiagramOrientation.LeftRight) ? SvgConstants.ROTATED_TEXT : SvgConstants.TEXT;
 
-                    svg += String.Format(CultureInfo.InvariantCulture, textFormat, textStyle, textX, textY, this.Text);
+                    svg += string.Format(CultureInfo.InvariantCulture, textFormat, textStyle, textX, textY, Text);
                 }
             }
 

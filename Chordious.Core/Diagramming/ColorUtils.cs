@@ -63,7 +63,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 foreach (string colorName in NamedColors)
                 {
-                    if (String.Equals(colorName, s, StringComparison.CurrentCultureIgnoreCase))
+                    if (string.Equals(colorName, s, StringComparison.CurrentCultureIgnoreCase))
                     {
                         return colorName;
                     }
@@ -136,7 +136,7 @@ namespace com.jonthysell.Chordious.Core
                 {
                     foreach (string colorName in NamedColors)
                     {
-                        if (String.Equals(colorName, s, StringComparison.CurrentCultureIgnoreCase))
+                        if (string.Equals(colorName, s, StringComparison.CurrentCultureIgnoreCase))
                         {
                             return true;
                         }

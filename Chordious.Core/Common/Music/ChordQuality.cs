@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2014, 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2014, 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -71,11 +71,11 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("parent");
             }
 
-            this.Name = name;
-            this.Abbreviation = abbreviation;
-            this.Intervals = intervals;
+            Name = name;
+            Abbreviation = abbreviation;
+            Intervals = intervals;
 
-            this.UpdateParent = true;
+            UpdateParent = true;
         }
 
         internal ChordQuality(ChordQualitySet parent, XmlReader xmlReader) : base(parent)
@@ -94,18 +94,18 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (ReadBase(xmlReader, "quality"))
                 {
-                    this.Abbreviation = xmlReader.GetAttribute("abbv");
+                    Abbreviation = xmlReader.GetAttribute("abbv");
                 }
             }
 
-            this.UpdateParent = true;
+            UpdateParent = true;
         }
 
         protected override string GetLongName()
         {
             if (!StringUtils.IsNullOrWhiteSpace(Abbreviation))
             {
-                return String.Format("{0} \"{1}\" ({2})", Name, Abbreviation, GetIntervalString());
+                return string.Format("{0} \"{1}\" ({2})", Name, Abbreviation, GetIntervalString());
             }
 
             return base.GetLongName();
@@ -128,21 +128,21 @@ namespace com.jonthysell.Chordious.Core
                 throw new ObjectIsReadOnlyException(this);
             }
 
-            this.UpdateParent = false;
+            UpdateParent = false;
 
-            string oldName = this.Name;
-            string oldAbbreviation = this.Abbreviation;
-            int[] oldIntervals = this.Intervals;
+            string oldName = Name;
+            string oldAbbreviation = Abbreviation;
+            int[] oldIntervals = Intervals;
 
-            this.Name = name;
-            this.Abbreviation = abbreviation;
-            this.Intervals = intervals;
+            Name = name;
+            Abbreviation = abbreviation;
+            Intervals = intervals;
 
             Parent.Resort(this, () =>
             {
-                this.Name = oldName;
-                this.Abbreviation = oldAbbreviation;
-                this.Intervals = oldIntervals;
+                Name = oldName;
+                Abbreviation = oldAbbreviation;
+                Intervals = oldIntervals;
                 UpdateParent = true;
             });
         }
@@ -156,7 +156,7 @@ namespace com.jonthysell.Chordious.Core
 
             WriteBase(xmlWriter, "quality");
 
-            xmlWriter.WriteAttributeString("abbv", this.Abbreviation);
+            xmlWriter.WriteAttributeString("abbv", Abbreviation);
 
             xmlWriter.WriteEndElement();
         }

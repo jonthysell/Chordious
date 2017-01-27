@@ -45,13 +45,13 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Strings.ChordiousKeyNotFoundExceptionMessage, Key);
+                return string.Format(Strings.ChordiousKeyNotFoundExceptionMessage, Key);
             }
         }
 
         public ChordiousKeyNotFoundException(string key) : base()
         {
-            this.Key = key;
+            Key = key;
         }
     }
 }

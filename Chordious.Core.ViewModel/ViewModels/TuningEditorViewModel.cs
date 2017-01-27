@@ -139,10 +139,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         Callback(Name, RootNotes);
 
                         Accepted = true;
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {
@@ -163,10 +160,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {
@@ -255,7 +249,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private bool IsValid()
         {
-            return !String.IsNullOrWhiteSpace(Name);
+            return !string.IsNullOrWhiteSpace(Name);
         }
     }
 }

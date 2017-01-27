@@ -103,7 +103,7 @@ namespace com.jonthysell.Chordious.WPF
             }
             set
             {
-                if (!String.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value))
                 {
                     if (!FilenameFormats.Contains(value))
                     {
@@ -284,7 +284,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 float result;
 
-                if (Single.TryParse(GetSetting("diagramexport.scalefactor"), out result))
+                if (float.TryParse(GetSetting("diagramexport.scalefactor"), out result))
                 {
                     return result;
                 }
@@ -359,12 +359,12 @@ namespace com.jonthysell.Chordious.WPF
 
             _createdFiles = new List<string>();
 
-            this.ExportStart += () =>
+            ExportStart += () =>
                 {
                     _createdFiles.Clear();
                 };
 
-            this.ExportEnd += () =>
+            ExportEnd += () =>
                 {
                     _createdFiles.Clear();
                 };
@@ -465,7 +465,7 @@ namespace com.jonthysell.Chordious.WPF
 
         private string CleanTitle(string title)
         {
-            if (String.IsNullOrWhiteSpace(title))
+            if (string.IsNullOrWhiteSpace(title))
             {
                 return "";
             }

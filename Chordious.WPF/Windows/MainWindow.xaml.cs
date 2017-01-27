@@ -40,9 +40,9 @@ namespace com.jonthysell.Chordious.WPF
         {
             InitializeComponent();
 
-            this.DataContext = new MainViewModelExtended();
+            DataContext = new MainViewModelExtended();
 
-            this.Loaded += MainWindow_Loaded;
+            Loaded += MainWindow_Loaded;
         }
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -52,7 +52,7 @@ namespace com.jonthysell.Chordious.WPF
                 // Fix annoying Windows 8.1 tablet forced maximization
                 WindowState = WindowState.Normal;
 
-                ((MainViewModelExtended)this.DataContext).OnLoaded();
+                ((MainViewModelExtended)DataContext).OnLoaded();
             }
             catch (Exception ex)
             {

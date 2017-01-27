@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -1571,9 +1571,9 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramStyle Clone()
         {
-            DiagramStyle ds = new DiagramStyle(this.Level);
+            DiagramStyle ds = new DiagramStyle(Level);
 
-            if (null != this.Parent)
+            if (null != Parent)
             {
                 ds.Parent = Parent;
             }
@@ -1694,7 +1694,7 @@ namespace com.jonthysell.Chordious.Core
             }
             else if (svgStyle == "font-size")
             {
-                return String.Format(CultureInfo.InvariantCulture, "{0}:{1}pt;", svgStyle, rawValue);
+                return string.Format(CultureInfo.InvariantCulture, "{0}:{1}pt;", svgStyle, rawValue);
             }
             else if (svgStyle == "text-anchor")
             {
@@ -1720,15 +1720,15 @@ namespace com.jonthysell.Chordious.Core
 
             if (!StringUtils.IsNullOrWhiteSpace(svgStyle))
             {
-                return String.Format("{0}:{1};", svgStyle, value);
+                return string.Format("{0}:{1};", svgStyle, value);
             }
 
-            return String.Empty;
+            return string.Empty;
         }
 
         public override string GetFriendlyKeyName(string key)
         {
-            if (String.IsNullOrEmpty(key))
+            if (string.IsNullOrEmpty(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -2006,7 +2006,7 @@ namespace com.jonthysell.Chordious.Core
 
         public override string GetFriendlyValue(string key, bool recursive = true)
         {
-            if (String.IsNullOrEmpty(key))
+            if (string.IsNullOrEmpty(key))
             {
                 throw new ArgumentNullException("key");
             }
@@ -2040,7 +2040,7 @@ namespace com.jonthysell.Chordious.Core
                 case "title.labelstyle":
                     return EnumUtils.GetFriendlyValue(GetEnum<DiagramLabelStyle>(key, recursive));
                 case "title.textsize":
-                    return String.Format("{0} pt", GetFriendlyDoubleValue(key, recursive));
+                    return string.Format("{0} pt", GetFriendlyDoubleValue(key, recursive));
                 case "mark.shape":
                 case "mutedmark.shape":
                 case "rootmark.shape":
@@ -2070,7 +2070,7 @@ namespace com.jonthysell.Chordious.Core
                 case "bottommark.borderthickness":
                 case "fretlabel.gridpadding":
                 case "barre.linethickness":
-                    return String.Format("{0} px", GetFriendlyDoubleValue(key, recursive));
+                    return string.Format("{0} px", GetFriendlyDoubleValue(key, recursive));
                 case "diagram.opacity":
                 case "title.textopacity":
                 case "title.textmodratio":
@@ -2130,7 +2130,7 @@ namespace com.jonthysell.Chordious.Core
 
         protected override string GetFriendlyLevel()
         {
-            return String.Format(Strings.DiagramStyleFriendlyLevelFormat, base.GetFriendlyLevel());
+            return string.Format(Strings.DiagramStyleFriendlyLevelFormat, base.GetFriendlyLevel());
         }
     }
 

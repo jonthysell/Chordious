@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -35,12 +35,7 @@ namespace com.jonthysell.Chordious.WPF
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            if (null == _converter)
-            {
-                _converter = new DecimalToPercentConverter();
-            }
-
-            return _converter;
+            return _converter ?? (_converter = new DecimalToPercentConverter());
         }
         private static DecimalToPercentConverter _converter = null;
 
@@ -69,7 +64,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             string sValue = value as string;
 
-            if (String.IsNullOrWhiteSpace(sValue))
+            if (string.IsNullOrWhiteSpace(sValue))
             {
                 return null;
             }
@@ -78,12 +73,12 @@ namespace com.jonthysell.Chordious.WPF
 
             if (targetType == typeof(double))
             {
-                double pValue = 0.01 * Double.Parse(sValue, culture);
+                double pValue = 0.01 * double.Parse(sValue, culture);
                 return Math.Round(pValue, 2);
             }
             else if (targetType == typeof(float))
             {
-                float pValue = 0.01F * Single.Parse(sValue, culture);
+                float pValue = 0.01F * float.Parse(sValue, culture);
                 return Math.Round(pValue, 2);
             }
 

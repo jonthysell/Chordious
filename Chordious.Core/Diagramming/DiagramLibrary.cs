@@ -101,7 +101,7 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramCollection Add(string path, string name)
         {
-            DiagramLibraryNode node = new DiagramLibraryNode(this.Style, path, name);
+            DiagramLibraryNode node = new DiagramLibraryNode(Style, path, name);
             AddNode(node);
             return node.DiagramCollection;
         }
@@ -306,7 +306,7 @@ namespace com.jonthysell.Chordious.Core
                 }
                 else
                 {
-                    name = String.Format("{0} ({1})", baseName, count);
+                    name = string.Format("{0} ({1})", baseName, count);
                     count++;
                 }
             }
@@ -418,11 +418,11 @@ namespace com.jonthysell.Chordious.Core
                         switch (xmlReader.Name)
                         {
                             case "diagrams":
-                                DiagramLibraryNode node = new DiagramLibraryNode(this.Style, xmlReader.ReadSubtree());
+                                DiagramLibraryNode node = new DiagramLibraryNode(Style, xmlReader.ReadSubtree());
                                 AddNode(node);
                                 break;
                             case "style":
-                                this.Style.Read(xmlReader.ReadSubtree());
+                                Style.Read(xmlReader.ReadSubtree());
                                 break;
                         }
                     }
@@ -437,7 +437,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("xmlWriter");
             }
 
-            this.Style.Write(xmlWriter);
+            Style.Write(xmlWriter);
 
             foreach (DiagramLibraryNode node in _nodes)
             {
@@ -496,7 +496,7 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramLibraryException(DiagramLibrary diagramLibrary) : base()
         {
-            this.DiagramLibrary = diagramLibrary;
+            DiagramLibrary = diagramLibrary;
         }
     }
 
@@ -507,8 +507,8 @@ namespace com.jonthysell.Chordious.Core
 
         public TargetDiagramCollectionException(DiagramLibrary diagramLibrary, string path, string name) : base(diagramLibrary)
         {
-            this.Path = path;
-            this.Name = name;
+            Path = path;
+            Name = name;
         }
     }
 
@@ -518,7 +518,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Strings.DiagramCollectionNotFoundExceptionMessage, Name);
+                return string.Format(Strings.DiagramCollectionNotFoundExceptionMessage, Name);
             }
         }
 
@@ -531,7 +531,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Strings.DiagramCollectionNameAlreadyExistsMessage, Name);
+                return string.Format(Strings.DiagramCollectionNameAlreadyExistsMessage, Name);
             }
         }
 
@@ -544,7 +544,7 @@ namespace com.jonthysell.Chordious.Core
 
         public TargetPathException(DiagramLibrary diagramLibrary, string path) : base(diagramLibrary)
         {
-            this.Path = path;
+            Path = path;
         }
     }
 
@@ -554,7 +554,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Strings.PathNotFoundExceptionMessage, Path);
+                return string.Format(Strings.PathNotFoundExceptionMessage, Path);
             }
         }
 

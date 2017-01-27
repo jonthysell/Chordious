@@ -125,12 +125,12 @@ namespace com.jonthysell.Chordious.Core
 
         public FullNote Clone()
         {
-            return new FullNote(this.Note, this.Octave);
+            return new FullNote(Note, Octave);
         }
 
         public override string ToString()
         {
-            return String.Format("{0}{1}", NoteUtils.ToString(Note), Octave);
+            return string.Format("{0}{1}", NoteUtils.ToString(Note), Octave);
         }
 
         public static FullNote Parse(string s)
@@ -153,7 +153,7 @@ namespace com.jonthysell.Chordious.Core
             string octavePortion = s.Substring(splitIndex);
 
             Note note = NoteUtils.ParseNote(notePortion);
-            int octave = Int32.Parse(octavePortion);
+            int octave = int.Parse(octavePortion);
 
             return new FullNote(note, octave);
         }

@@ -278,7 +278,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         protected bool IsValid()
         {
-            return !String.IsNullOrWhiteSpace(Name) && (null != Intervals && Intervals.Count > 0);
+            return !string.IsNullOrWhiteSpace(Name) && (null != Intervals && Intervals.Count > 0);
         }
     }
 
@@ -313,10 +313,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     throw new ArgumentOutOfRangeException();
                 }
                 _value = value;
-                if (null != ValueChanged)
-                {
-                    ValueChanged();
-                }
+                ValueChanged?.Invoke();
             }
         }
         private int _value;

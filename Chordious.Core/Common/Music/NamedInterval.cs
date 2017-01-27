@@ -144,7 +144,7 @@ namespace com.jonthysell.Chordious.Core
 
         protected virtual string GetLongName()
         {
-            return String.Format("{0} ({1})", Name, GetIntervalString());
+            return string.Format("{0} ({1})", Name, GetIntervalString());
         }
 
         protected bool ReadBase(XmlReader xmlReader, string localName)
@@ -161,7 +161,7 @@ namespace com.jonthysell.Chordious.Core
 
             if (xmlReader.IsStartElement() && xmlReader.Name == localName)
             {
-                this.Name = xmlReader.GetAttribute("name");
+                Name = xmlReader.GetAttribute("name");
                 string steps = xmlReader.GetAttribute("steps");
 
                 SetIntervals(steps);
@@ -186,7 +186,7 @@ namespace com.jonthysell.Chordious.Core
 
             xmlWriter.WriteStartElement(localName);
 
-            xmlWriter.WriteAttributeString("name", this.Name);
+            xmlWriter.WriteAttributeString("name", Name);
 
             string intervals = GetIntervalString();
 
@@ -210,18 +210,18 @@ namespace com.jonthysell.Chordious.Core
                 throw new ObjectIsReadOnlyException(this);
             }
 
-            this.UpdateParent = false;
+            UpdateParent = false;
 
-            string oldName = this.Name;
-            int[] oldIntervals = this.Intervals;
+            string oldName = Name;
+            int[] oldIntervals = Intervals;
 
-            this.Name = name;
-            this.Intervals = intervals;
+            Name = name;
+            Intervals = intervals;
 
             Parent.Resort(this, () =>
             {
-                this.Name = oldName;
-                this.Intervals = oldIntervals;
+                Name = oldName;
+                Intervals = oldIntervals;
                 UpdateParent = true;
             });
         }
@@ -250,12 +250,12 @@ namespace com.jonthysell.Chordious.Core
 
         public void MarkAsReadOnly()
         {
-            this.ReadOnly = true;
+            ReadOnly = true;
         }
 
         public void SetIntervals(string intervalString)
         {
-            this.Intervals = ParseIntervalString(intervalString);
+            Intervals = ParseIntervalString(intervalString);
         }
 
         public static int[] ParseIntervalString(string intervalString)
@@ -273,7 +273,7 @@ namespace com.jonthysell.Chordious.Core
 
             for (int i = 0; i < intervals.Length; i++)
             {
-                intervals[i] = Int32.Parse(s[i]);
+                intervals[i] = int.Parse(s[i]);
             }
 
             return intervals;
@@ -311,7 +311,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentException();
             }
 
-            return this.LongName.CompareTo(namedInterval.LongName);
+            return LongName.CompareTo(namedInterval.LongName);
         }
 
         public override string ToString()

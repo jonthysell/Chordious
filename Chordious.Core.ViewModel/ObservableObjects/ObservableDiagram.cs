@@ -244,9 +244,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        MarkPosition mp = this.MarkPosition;
-                        FretLabelPosition flp = this.FretLabelPosition;
-                        BarrePosition bp = this.BarrePosition;
+                        MarkPosition mp = MarkPosition;
+                        FretLabelPosition flp = FretLabelPosition;
+                        BarrePosition bp = BarrePosition;
 
                         if (null != mp && Diagram.HasElementAt(mp))
                         {
@@ -307,7 +307,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        MarkPosition mp = this.MarkPosition;
+                        MarkPosition mp = MarkPosition;
                         DiagramMark dm = Diagram.NewMark(mp);
                         Messenger.Default.Send<ShowDiagramMarkEditorMessage>(new ShowDiagramMarkEditorMessage(dm, true, (changed) =>
                         {
@@ -336,7 +336,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                MarkPosition mp = this.MarkPosition;
+                MarkPosition mp = MarkPosition;
                 return (null != mp && Diagram.CanAddNewMarkAt(mp));
             }
         }
@@ -349,7 +349,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        DiagramMark dm = (DiagramMark)Diagram.ElementAt(this.MarkPosition);
+                        DiagramMark dm = (DiagramMark)Diagram.ElementAt(MarkPosition);
                         Messenger.Default.Send<ShowDiagramMarkEditorMessage>(new ShowDiagramMarkEditorMessage(dm, false, (changed) =>
                             {
                                 if (changed)
@@ -373,7 +373,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                MarkPosition mp = this.MarkPosition;
+                MarkPosition mp = MarkPosition;
                 return (null != mp && Diagram.ValidPosition(mp) && Diagram.HasElementAt(mp));
             }
         }
@@ -386,7 +386,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        MarkPosition mp = this.MarkPosition;
+                        MarkPosition mp = MarkPosition;
                         Diagram.RemoveMark(mp);
                         Refresh();
                     }
@@ -405,7 +405,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                MarkPosition mp = this.MarkPosition;
+                MarkPosition mp = MarkPosition;
                 return (null != mp && Diagram.CanRemoveMarkAt(mp));
             }
         }
@@ -430,7 +430,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        FretLabelPosition flp = this.FretLabelPosition;
+                        FretLabelPosition flp = FretLabelPosition;
                         DiagramFretLabel dfl = Diagram.NewFretLabel(flp, "");
                         Messenger.Default.Send<ShowDiagramFretLabelEditorMessage>(new ShowDiagramFretLabelEditorMessage(dfl, true, (changed) =>
                         {
@@ -459,7 +459,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                FretLabelPosition flp = this.FretLabelPosition;
+                FretLabelPosition flp = FretLabelPosition;
                 return (null != flp && Diagram.CanAddNewFretLabelAt(flp));
             }
         }
@@ -472,7 +472,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        DiagramFretLabel dfl = (DiagramFretLabel)Diagram.ElementAt(this.FretLabelPosition);
+                        DiagramFretLabel dfl = (DiagramFretLabel)Diagram.ElementAt(FretLabelPosition);
                         Messenger.Default.Send<ShowDiagramFretLabelEditorMessage>(new ShowDiagramFretLabelEditorMessage(dfl, false, (changed) =>
                         {
                             if (changed)
@@ -496,7 +496,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                FretLabelPosition flp = this.FretLabelPosition;
+                FretLabelPosition flp = FretLabelPosition;
                 return (null != flp && Diagram.ValidPosition(flp) && Diagram.HasElementAt(flp));
             }
         }
@@ -509,7 +509,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        FretLabelPosition flp = this.FretLabelPosition;
+                        FretLabelPosition flp = FretLabelPosition;
                         Diagram.RemoveFretLabel(flp);
                         Refresh();
                     }
@@ -528,7 +528,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                FretLabelPosition flp = this.FretLabelPosition;
+                FretLabelPosition flp = FretLabelPosition;
                 return (null != flp && Diagram.CanRemoveFretLabelAt(flp));
             }
         }
@@ -553,10 +553,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        BarrePosition bp = this.BarrePosition;
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(String.Format(Strings.ObservableDiagramAddBarrePromptFormat, 2, bp.Width), bp.Width.ToString(), (widthText) =>
+                        BarrePosition bp = BarrePosition;
+                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(string.Format(Strings.ObservableDiagramAddBarrePromptFormat, 2, bp.Width), bp.Width.ToString(), (widthText) =>
                         {
-                            int width = Int32.Parse(widthText);
+                            int width = int.Parse(widthText);
                             bp = new BarrePosition(bp.Fret, bp.StartString, bp.StartString + width - 1);
 
                             DiagramBarre db = Diagram.NewBarre(bp);
@@ -588,7 +588,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                BarrePosition bp = this.BarrePosition;
+                BarrePosition bp = BarrePosition;
                 return (null != bp && Diagram.CanAddNewBarreAt(bp));
             }
         }
@@ -601,7 +601,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        DiagramBarre db = (DiagramBarre)Diagram.ElementAt(this.BarrePosition);
+                        DiagramBarre db = (DiagramBarre)Diagram.ElementAt(BarrePosition);
                         Messenger.Default.Send<ShowDiagramBarreEditorMessage>(new ShowDiagramBarreEditorMessage(db, false, (changed) =>
                         {
                             if (changed)
@@ -625,7 +625,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                BarrePosition bp = this.BarrePosition;
+                BarrePosition bp = BarrePosition;
                 return (null != bp && Diagram.ValidPosition(bp) && Diagram.HasElementAt(bp));
             }
         }
@@ -638,7 +638,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        BarrePosition bp = this.BarrePosition;
+                        BarrePosition bp = BarrePosition;
                         Diagram.RemoveBarre(bp);
                         Refresh();
                     }
@@ -657,7 +657,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                BarrePosition bp = this.BarrePosition;
+                BarrePosition bp = BarrePosition;
                 return (null != bp && Diagram.CanRemoveBarreAt(bp));
             }
         }
@@ -732,7 +732,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public static bool IsCursorProperty(string property)
         {
-            if (String.IsNullOrWhiteSpace(property))
+            if (string.IsNullOrWhiteSpace(property))
             {
                 throw new ArgumentNullException("property");
             }
@@ -787,10 +787,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Messenger.Default.Send<ShowDiagramEditorMessage>(new ShowDiagramEditorMessage(this, false, (changed) =>
                         {
-                            if (null != PostEditCallback)
-                            {
-                                PostEditCallback(changed);
-                            }
+                            PostEditCallback?.Invoke(changed);
                         }));
                     }
                     catch (Exception ex)
@@ -942,7 +939,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public override string ToString()
         {
-            if (!String.IsNullOrWhiteSpace(Name))
+            if (!string.IsNullOrWhiteSpace(Name))
             {
                 return Name;
             }

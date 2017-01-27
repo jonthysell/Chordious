@@ -41,7 +41,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._position;
+                return _position;
             }
             set
             {
@@ -50,12 +50,12 @@ namespace com.jonthysell.Chordious.Core
                     throw new ElementAlreadyExistsAtPositionException(value);
                 }
 
-                if (!this.Parent.ValidPosition(value))
+                if (!Parent.ValidPosition(value))
                 {
                     throw new ElementPositionOffFretboardException(value);
                 }
 
-                this._position = value.Clone();
+                _position = value.Clone();
             }
         }
         private ElementPosition _position;
@@ -64,7 +64,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._text;
+                return _text;
             }
             set
             {
@@ -73,7 +73,7 @@ namespace com.jonthysell.Chordious.Core
                     value = "";
                 }
 
-                this._text = value.Trim();
+                _text = value.Trim();
             }
         }
         private string _text;
@@ -85,8 +85,8 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("parent");
             }
 
-            this.Parent = parent;
-            this.Style = new DiagramStyle(parent.Style, "Element");
+            Parent = parent;
+            Style = new DiagramStyle(parent.Style, "Element");
         }
 
         public DiagramElement(Diagram parent, ElementPosition position) : this(parent)
@@ -96,12 +96,12 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("position");
             }
 
-            this.Position = position;
+            Position = position;
         }
 
         public DiagramElement(Diagram parent, ElementPosition position, string text) : this(parent, position)
         {
-            this.Text = text;
+            Text = text;
         }
 
         public abstract bool IsVisible();
@@ -115,12 +115,12 @@ namespace com.jonthysell.Chordious.Core
             switch (type)
             {
                 case ImageMarkupType.SVG:
-                    return this.ToSvg();
+                    return ToSvg();
                 case ImageMarkupType.XAML:
-                    return this.ToXaml();
+                    return ToXaml();
             }
 
-            return String.Empty;
+            return string.Empty;
         }
 
         public abstract string ToSvg();

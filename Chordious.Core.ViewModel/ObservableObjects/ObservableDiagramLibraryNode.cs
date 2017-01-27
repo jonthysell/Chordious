@@ -220,7 +220,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 int count = SelectedDiagrams.Count;
-                return String.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeResetStylesSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeResetStylesSelectedToolTipPluralFormat, count);
+                return string.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeResetStylesSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeResetStylesSelectedToolTipPluralFormat, count);
             }
         }
 
@@ -233,7 +233,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         int count = SelectedDiagrams.Count;
-                        string message = String.Format(count < 2 ? Strings.ObservableDiagramLibraryNodeResetStylesSelectedPromptSingleFormat : Strings.ObservableDiagramLibraryNodeResetStylesSelectedPromptPluralFormat, count);
+                        string message = string.Format(count < 2 ? Strings.ObservableDiagramLibraryNodeResetStylesSelectedPromptSingleFormat : Strings.ObservableDiagramLibraryNodeResetStylesSelectedPromptPluralFormat, count);
 
                         Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (confirmed) =>
                         {
@@ -274,7 +274,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 int count = SelectedDiagrams.Count;
-                return String.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeCloneSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeCloneSelectedToolTipPluralFormat, count);
+                return string.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeCloneSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeCloneSelectedToolTipPluralFormat, count);
             }
         }
 
@@ -324,7 +324,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 int count = SelectedDiagrams.Count;
-                return String.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeCopySelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeCopySelectedToolTipPluralFormat, count);
+                return string.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeCopySelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeCopySelectedToolTipPluralFormat, count);
             }
         }
 
@@ -388,7 +388,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 int count = SelectedDiagrams.Count;
-                return String.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeMoveSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeMoveSelectedToolTipPluralFormat, count);
+                return string.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeMoveSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeMoveSelectedToolTipPluralFormat, count);
             }
         }
 
@@ -452,7 +452,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 int count = SelectedDiagrams.Count;
-                return String.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeExportSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeExportSelectedToolTipPluralFormat, count);
+                return string.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeExportSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeExportSelectedToolTipPluralFormat, count);
             }
         }
 
@@ -494,7 +494,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             get
             {
                 int count = SelectedDiagrams.Count;
-                return String.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeDeleteSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeDeleteSelectedToolTipPluralFormat, count);
+                return string.Format(count == 1 ? Strings.ObservableDiagramLibraryNodeDeleteSelectedToolTipSingleFormat : Strings.ObservableDiagramLibraryNodeDeleteSelectedToolTipPluralFormat, count);
             }
         }
 
@@ -507,7 +507,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         int count = SelectedDiagrams.Count;
-                        string message = String.Format(count < 2 ? Strings.DiagramLibraryDeleteSelectedDiagramsPromptSingleFormat : Strings.DiagramLibraryDeleteSelectedDiagramsPromptPluralFormat, count);
+                        string message = string.Format(count < 2 ? Strings.DiagramLibraryDeleteSelectedDiagramsPromptSingleFormat : Strings.DiagramLibraryDeleteSelectedDiagramsPromptPluralFormat, count);
 
                         Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (confirmed) =>
                         {
@@ -551,7 +551,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return String.Format(Strings.ObservableDiagramLibraryNodeEditCollectionStyleToolTipFormat, Name);
+                return string.Format(Strings.ObservableDiagramLibraryNodeEditCollectionStyleToolTipFormat, Name);
             }
         }
 
@@ -571,11 +571,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                if (null == _collection)
-                {
-                    _collection = Library.Get(Path, Name);
-                }
-                return _collection;
+                return _collection ?? (_collection = Library.Get(Path, Name));
             }
         }
         private DiagramCollection _collection;
@@ -631,10 +627,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void Redraw(bool reload = false)
         {
-            if (null != _redrawCallback)
-            {
-                _redrawCallback(reload);
-            }
+            _redrawCallback?.Invoke(reload);
         }
 
         internal void RedrawDiagrams()

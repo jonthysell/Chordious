@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -180,7 +179,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (NamedIntervalIsSelected)
                 {
-                    return String.Format(Strings.NamedIntervalManagerEditNamedIntervalLabelFormat, SelectedNamedInterval.Name);
+                    return string.Format(Strings.NamedIntervalManagerEditNamedIntervalLabelFormat, SelectedNamedInterval.Name);
                 }
 
                 return Strings.EditLabel;
@@ -197,7 +196,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (NamedIntervalIsSelected)
                 {
-                    return String.Format(Strings.NamedIntervalManagerDeleteNamedIntervalLabelFormat, SelectedNamedInterval.Name);
+                    return string.Format(Strings.NamedIntervalManagerDeleteNamedIntervalLabelFormat, SelectedNamedInterval.Name);
                 }
 
                 return Strings.DeleteLabel;

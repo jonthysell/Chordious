@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
 
-            if (!String.IsNullOrWhiteSpace(defaultPath))
+            if (!string.IsNullOrWhiteSpace(defaultPath))
             {
                 dialog.SelectedPath = defaultPath;
             }
@@ -53,7 +53,7 @@ namespace com.jonthysell.Chordious.WPF
 
         public static string CleanPath(string path)
         {
-            if (String.IsNullOrWhiteSpace(path))
+            if (string.IsNullOrWhiteSpace(path))
             {
                 throw new ArgumentNullException("path");
             }
@@ -61,7 +61,7 @@ namespace com.jonthysell.Chordious.WPF
             path = path.Trim();
 
             bool isUnc = path.StartsWith(@"\\");
-            bool containsFile = !String.IsNullOrEmpty(Path.GetFileName(path));
+            bool containsFile = !string.IsNullOrEmpty(Path.GetFileName(path));
 
             string[] split = path.Trim().Split(Path.DirectorySeparatorChar);
 
@@ -71,7 +71,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 string part = split[i].Trim();
 
-                if (!String.IsNullOrWhiteSpace(part))
+                if (!string.IsNullOrWhiteSpace(part))
                 {
                     if (i == 0 && !isUnc) // First item, aka root with drive letter
                     {
@@ -96,7 +96,7 @@ namespace com.jonthysell.Chordious.WPF
 
         public static string ReplaceChars(string source, char[] oldValues, char? newValue = null)
         {
-            if (String.IsNullOrWhiteSpace(source))
+            if (string.IsNullOrWhiteSpace(source))
             {
                 throw new ArgumentNullException("source");
             }

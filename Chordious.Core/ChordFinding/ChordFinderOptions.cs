@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2014, 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2014, 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -43,11 +43,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this.Settings[Prefix + "cqlevel"];
+                return Settings[Prefix + "cqlevel"];
             }
             set
             {
-                this.Settings[Prefix + "cqlevel"] = value;
+                Settings[Prefix + "cqlevel"] = value;
             }
         }
 
@@ -55,11 +55,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this.Settings.GetBoolean(Prefix + "allowrootlesschords");
+                return Settings.GetBoolean(Prefix + "allowrootlesschords");
             }
             set
             {
-                this.Settings.Set(Prefix + "allowrootlesschords", value);
+                Settings.Set(Prefix + "allowrootlesschords", value);
             }
         }
 
@@ -67,33 +67,33 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null != chordiousSettings)
             {
-                this.Settings = chordiousSettings;
+                Settings = chordiousSettings;
             }
             else
             {
                 string settingsLevel = "ChordFinderOptions";
-                this.Settings = new ChordiousSettings(this._configFile.ChordiousSettings, settingsLevel);
+                Settings = new ChordiousSettings(_configFile.ChordiousSettings, settingsLevel);
             }
-            
-            this._cachedChordQuality = null;
+
+            _cachedChordQuality = null;
         }
 
         public IChordQuality GetChordQuality()
         {
-            string longName = this.Settings[Prefix + "chordquality"];
+            string longName = Settings[Prefix + "chordquality"];
 
-            string level = this.ChordQualityLevel;
+            string level = ChordQualityLevel;
 
-            if (null != this._cachedChordQuality)
+            if (null != _cachedChordQuality)
             {
-                if (this._cachedChordQuality.LongName == longName && this._cachedChordQuality.Level == level)
+                if (_cachedChordQuality.LongName == longName && _cachedChordQuality.Level == level)
                 {
-                    return this._cachedChordQuality;
+                    return _cachedChordQuality;
                 }
-                this._cachedChordQuality = null;
+                _cachedChordQuality = null;
             }
 
-            ChordQualitySet qualities = this._configFile.ChordQualities;
+            ChordQualitySet qualities = _configFile.ChordQualities;
             while (null != qualities)
             {
                 if (qualities.Level == level)
@@ -101,7 +101,7 @@ namespace com.jonthysell.Chordious.Core
                     ChordQuality cq;
                     if (qualities.TryGet(longName, out cq))
                     {
-                        this._cachedChordQuality = cq;
+                        _cachedChordQuality = cq;
                         break;
                     }
                 }
@@ -109,7 +109,7 @@ namespace com.jonthysell.Chordious.Core
                 qualities = qualities.Parent;
             }
 
-            return this._cachedChordQuality;
+            return _cachedChordQuality;
         }
 
         public void SetTarget(Note rootNote, IChordQuality chordQuality)
@@ -119,19 +119,19 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("chordQuality");
             }
 
-            this.Settings[Prefix + "rootnote"] = NoteUtils.ToString(rootNote);
-            this.Settings[Prefix + "chordquality"] = chordQuality.LongName;
-            this.ChordQualityLevel = chordQuality.Level;
+            Settings[Prefix + "rootnote"] = NoteUtils.ToString(rootNote);
+            Settings[Prefix + "chordquality"] = chordQuality.LongName;
+            ChordQualityLevel = chordQuality.Level;
 
-            this._cachedChordQuality = chordQuality;
+            _cachedChordQuality = chordQuality;
         }
 
         public ChordFinderOptions Clone()
         {
-            ChordFinderOptions cfo = new ChordFinderOptions(this._configFile);
-            cfo.Settings.CopyFrom(this.Settings);
-            cfo.SetTarget(this.Instrument, this.Tuning);
-            cfo.SetTarget(this.RootNote, this.ChordQuality);
+            ChordFinderOptions cfo = new ChordFinderOptions(_configFile);
+            cfo.Settings.CopyFrom(Settings);
+            cfo.SetTarget(Instrument, Tuning);
+            cfo.SetTarget(RootNote, ChordQuality);
             return cfo;
         }
     }

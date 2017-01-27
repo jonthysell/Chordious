@@ -66,18 +66,18 @@ namespace com.jonthysell.Chordious.Core
 
         private DiagramLibraryNode(DiagramStyle parentStyle)
         {
-            this.DiagramCollection = new DiagramCollection(parentStyle);
+            DiagramCollection = new DiagramCollection(parentStyle);
         }
 
         public DiagramLibraryNode(DiagramStyle parentStyle, string path, string name) : this(parentStyle)
         {
-            this.Path = path;
-            this.Name = name;
+            Path = path;
+            Name = name;
         }
 
         public DiagramLibraryNode(DiagramStyle parentStyle, XmlReader xmlReader) : this(parentStyle)
         {
-            this.Read(xmlReader);
+            Read(xmlReader);
         }
 
         public void Read(XmlReader xmlReader)
@@ -91,10 +91,10 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (xmlReader.IsStartElement() && xmlReader.Name == "diagrams")
                 {
-                    this.Path = xmlReader.GetAttribute("path");
-                    this.Name = xmlReader.GetAttribute("name");
+                    Path = xmlReader.GetAttribute("path");
+                    Name = xmlReader.GetAttribute("name");
 
-                    this.DiagramCollection.Read(xmlReader.ReadSubtree());
+                    DiagramCollection.Read(xmlReader.ReadSubtree());
                 }
             }
         }
@@ -108,10 +108,10 @@ namespace com.jonthysell.Chordious.Core
 
             xmlWriter.WriteStartElement("diagrams");
 
-            xmlWriter.WriteAttributeString("name", this.Name);
-            xmlWriter.WriteAttributeString("path", this.Path);
+            xmlWriter.WriteAttributeString("name", Name);
+            xmlWriter.WriteAttributeString("path", Path);
 
-            this.DiagramCollection.Write(xmlWriter);
+            DiagramCollection.Write(xmlWriter);
 
             xmlWriter.WriteEndElement();
         }
@@ -129,7 +129,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentException();
             }
             
-            int comparePaths = this.Path.CompareTo(node.Path);
+            int comparePaths = Path.CompareTo(node.Path);
 
             if (comparePaths != 0)
             {
@@ -137,7 +137,7 @@ namespace com.jonthysell.Chordious.Core
             }
             else
             {
-                return this.Name.CompareTo(node.Name);
+                return Name.CompareTo(node.Name);
             }
         }
 

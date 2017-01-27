@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -332,7 +332,7 @@ namespace com.jonthysell.Chordious.Core
 
             ma.MeanFret /= ma.MarkCount;
 
-            if (ma.MinFret == Int32.MaxValue || ma.MaxFret == Int32.MinValue)
+            if (ma.MinFret == int.MaxValue || ma.MaxFret == int.MinValue)
             {
                 ma.MinFret = 0;
                 ma.MaxFret = 0;
@@ -378,7 +378,7 @@ namespace com.jonthysell.Chordious.Core
 
             ma.MeanFret /= ma.MarkCount;
 
-            if (ma.MinFret == Int32.MaxValue || ma.MaxFret == Int32.MinValue)
+            if (ma.MinFret == int.MaxValue || ma.MaxFret == int.MinValue)
             {
                 ma.MinFret = 0;
                 ma.MaxFret = 0;
@@ -411,9 +411,9 @@ namespace com.jonthysell.Chordious.Core
 
             public MarkAnalysis()
             {
-                MinFret = Int32.MaxValue;
+                MinFret = int.MaxValue;
                 MeanFret = 0.0;
-                MaxFret = Int32.MinValue;
+                MaxFret = int.MinValue;
                 Reach = 0;
                 MarkCount = 0;
                 HasOpenStrings = false;
@@ -428,57 +428,57 @@ namespace com.jonthysell.Chordious.Core
                 }
 
                 MarkAnalysis ma = obj as MarkAnalysis;
-                if ((object)ma == null)
+                if (null == ma)
                 {
                     throw new ArgumentException();
                 }
 
                 // Order by presence of muted strings
-                if (this.HasMutedStrings && !ma.HasMutedStrings)
+                if (HasMutedStrings && !ma.HasMutedStrings)
                 {
                     return 1;
                 }
-                else if (ma.HasMutedStrings && !this.HasMutedStrings)
+                else if (ma.HasMutedStrings && !HasMutedStrings)
                 {
                     return -1;
                 }
 
                 // Order by mean fret
-                if (this.MeanFret < ma.MeanFret)
+                if (MeanFret < ma.MeanFret)
                 {
                     return -1;
                 }
-                else if (this.MeanFret > ma.MeanFret)
+                else if (MeanFret > ma.MeanFret)
                 {
                     return 1;
                 }
 
                 // Order by mark count
-                if (this.MarkCount < ma.MarkCount)
+                if (MarkCount < ma.MarkCount)
                 {
                     return -1;
                 }
-                else if (this.MarkCount > ma.MarkCount)
+                else if (MarkCount > ma.MarkCount)
                 {
                     return 1;
                 }
 
                 // Order by reach
-                if (this.Reach < ma.Reach)
+                if (Reach < ma.Reach)
                 {
                     return -1;
                 }
-                else if (this.Reach > ma.Reach)
+                else if (Reach > ma.Reach)
                 {
                     return 1;
                 }
 
                 // Order by presence of open strings
-                if (this.HasOpenStrings && !ma.HasOpenStrings)
+                if (HasOpenStrings && !ma.HasOpenStrings)
                 {
                     return -1;
                 }
-                else if (ma.HasOpenStrings && !this.HasOpenStrings)
+                else if (ma.HasOpenStrings && !HasOpenStrings)
                 {
                     return 1;
                 }

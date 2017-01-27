@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2014, 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2014, 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -46,17 +46,17 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("marks");
             }
 
-            this.Parent = parent;
-            this.Marks = marks;
+            Parent = parent;
+            Marks = marks;
         }
 
         public Diagram ToDiagram(ChordFinderStyle chordFinderStyle)
         {
             int baseLine;
-            int[] marks = MarkUtils.AbsoluteToRelativeMarks(this.Marks, out baseLine, this.Parent.ChordFinderOptions.NumFrets);
+            int[] marks = MarkUtils.AbsoluteToRelativeMarks(Marks, out baseLine, Parent.ChordFinderOptions.NumFrets);
 
-            InternalNote?[] notes = MarkUtils.GetInternalNotes(this.Marks, this.Parent.ChordFinderOptions.Tuning);
-            InternalNote rootNote = NoteUtils.ToInternalNote(this.Parent.ChordFinderOptions.RootNote);
+            InternalNote?[] notes = MarkUtils.GetInternalNotes(Marks, Parent.ChordFinderOptions.Tuning);
+            InternalNote rootNote = NoteUtils.ToInternalNote(Parent.ChordFinderOptions.RootNote);
 
             if (chordFinderStyle.MirrorResults)
             {
@@ -66,13 +66,13 @@ namespace com.jonthysell.Chordious.Core
 
             int numStrings = marks.Length;
 
-            int numFrets = this.Parent.ChordFinderOptions.NumFrets;
+            int numFrets = Parent.ChordFinderOptions.NumFrets;
 
             Diagram d = new Diagram(chordFinderStyle.Style, numStrings, numFrets);
 
             if (chordFinderStyle.AddTitle)
             {
-                d.Title = NoteUtils.ToString(this.Parent.ChordFinderOptions.RootNote) + this.Parent.ChordFinderOptions.ChordQuality.Abbreviation;
+                d.Title = NoteUtils.ToString(Parent.ChordFinderOptions.RootNote) + Parent.ChordFinderOptions.ChordQuality.Abbreviation;
                 d.Style.TitleLabelStyle = DiagramLabelStyle.ChordName;
             }
 
@@ -182,12 +182,12 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentException();
             }
 
-            return MarkUtils.Compare(this.Marks, cfr.Marks);
+            return MarkUtils.Compare(Marks, cfr.Marks);
         }
 
         public override string ToString()
         {
-            return MarkUtils.ToString(this.Marks);
+            return MarkUtils.ToString(Marks);
         }
     }
 }

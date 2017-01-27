@@ -36,7 +36,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._fret;
+                return _fret;
             }
             private set
             {
@@ -44,7 +44,7 @@ namespace com.jonthysell.Chordious.Core
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this._fret = value;
+                _fret = value;
             }
         }
         private int _fret;
@@ -53,7 +53,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._startString;
+                return _startString;
             }
             private set
             {
@@ -61,7 +61,7 @@ namespace com.jonthysell.Chordious.Core
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this._startString = value;
+                _startString = value;
             }
         }
         private int _startString;
@@ -70,7 +70,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._endString;
+                return _endString;
             }
             private set
             {
@@ -78,7 +78,7 @@ namespace com.jonthysell.Chordious.Core
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this._endString = value;
+                _endString = value;
             }
         }
         private int _endString;
@@ -93,20 +93,20 @@ namespace com.jonthysell.Chordious.Core
 
         public BarrePosition(int fret, int startString, int endString)
         {
-            this.Fret = fret;
+            Fret = fret;
 
             if (startString >= endString)
             {
                 throw new BarrePositionInvalidSpanException(startString, endString);
             }
 
-            this.StartString = startString;
-            this.EndString = endString;
+            StartString = startString;
+            EndString = endString;
         }
 
         public override ElementPosition Clone()
         {
-            return new BarrePosition(this.Fret, this.StartString, this.EndString);
+            return new BarrePosition(Fret, StartString, EndString);
         }
 
         public bool Contains(int fret, int @string)
@@ -121,9 +121,9 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentOutOfRangeException("string");
             }
 
-            if (this.Fret == fret)
+            if (Fret == fret)
             {
-                if (this.StartString <= @string && this.EndString >= @string)
+                if (StartString <= @string && EndString >= @string)
                 {
                     return true;
                 }
@@ -144,22 +144,22 @@ namespace com.jonthysell.Chordious.Core
                 return true;
             }
 
-            if (this.Fret == position.Fret)
+            if (Fret == position.Fret)
             {
-                if (this.StartString == position.StartString || this.EndString == position.EndString)
+                if (StartString == position.StartString || EndString == position.EndString)
                 {
                     return true;
                 }
-                else if (this.StartString < position.StartString)
+                else if (StartString < position.StartString)
                 {
-                    if (this.EndString >= position.StartString)
+                    if (EndString >= position.StartString)
                     {
                         return true;
                     }
                 }
-                else if (this.StartString > position.StartString)
+                else if (StartString > position.StartString)
                 {
-                    if (position.EndString >= this.StartString)
+                    if (position.EndString >= StartString)
                     {
                         return true;
                     }
@@ -185,13 +185,13 @@ namespace com.jonthysell.Chordious.Core
 
             string[] vals = s.Split(':', '-');
 
-            return new BarrePosition(Int32.Parse(vals[0]), Int32.Parse(vals[1]), Int32.Parse(vals[2]));
+            return new BarrePosition(int.Parse(vals[0]), int.Parse(vals[1]), int.Parse(vals[2]));
         }
 
         public override bool Equals(ElementPosition obj)
         {
             BarrePosition bp = (obj as BarrePosition);
-            return bp != null && bp.Fret == this.Fret && bp.StartString == this.StartString && bp.EndString == this.EndString;
+            return null != bp && bp.Fret == Fret && bp.StartString == StartString && bp.EndString == EndString;
         }
 
         public override int GetHashCode()
@@ -201,7 +201,7 @@ namespace com.jonthysell.Chordious.Core
 
         public override string ToString()
         {
-            return String.Format("{0}:{1}-{2}", this.Fret, this.StartString, this.EndString);
+            return string.Format("{0}:{1}-{2}", Fret, StartString, EndString);
         }
     }
 
@@ -214,14 +214,14 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Strings.BarrePositionInvalidSpanExceptionMessage, AttemptedStartString, AttemptedEndString);
+                return string.Format(Strings.BarrePositionInvalidSpanExceptionMessage, AttemptedStartString, AttemptedEndString);
             }
         }
 
         public BarrePositionInvalidSpanException(int startString, int endString) : base()
         {
-            this.AttemptedStartString = startString;
-            this.AttemptedEndString = endString;
+            AttemptedStartString = startString;
+            AttemptedEndString = endString;
         }
     }
 }

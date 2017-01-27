@@ -139,10 +139,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         ApplyChangesOnClose = true;
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {
@@ -161,10 +158,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         ApplyChangesOnClose = false;
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {
@@ -235,7 +229,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             _clearedKeys = new List<string>();
 
-            Filter = String.IsNullOrEmpty(filter) ? "" : filter;
+            Filter = string.IsNullOrEmpty(filter) ? "" : filter;
 
             if (null != (inheritableDictionary as ChordiousSettings))
             {
@@ -325,7 +319,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             set
             {
-                if (String.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
                 {
                     AdvancedDataVM.Clear(Key);
                 }
@@ -359,7 +353,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return String.Format(Strings.AdvancedDataValidationErrorMessage, InnerException.Message);
+                return string.Format(Strings.AdvancedDataValidationErrorMessage, InnerException.Message);
             }
         }
 
@@ -372,7 +366,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public override string ToString()
         {
-            return String.Join(Environment.NewLine, Message, InnerException.StackTrace);
+            return string.Join(Environment.NewLine, Message, InnerException.StackTrace);
         }
     }
 }

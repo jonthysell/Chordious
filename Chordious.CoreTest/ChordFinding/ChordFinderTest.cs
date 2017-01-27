@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -70,7 +70,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
             public void Parse(string s)
             {
-                if (String.IsNullOrWhiteSpace(s))
+                if (string.IsNullOrWhiteSpace(s))
                 {
                     throw new ArgumentNullException("s");
                 }
@@ -102,7 +102,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
             public override string ToString()
             {
-                return String.Join("\t",
+                return string.Join("\t",
                     chordFinderOptions,
                     allowExtras,
                     TestUtils.ToString<IChordFinderResult>(ExpectedResult, ';'));
@@ -127,7 +127,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
             public static TestChordFinderOptions Parse(string s)
             {
-                if (String.IsNullOrWhiteSpace(s))
+                if (string.IsNullOrWhiteSpace(s))
                 {
                     throw new ArgumentNullException("s");
                 }
@@ -168,9 +168,9 @@ namespace com.jonthysell.Chordious.CoreTest
                 
                 Note rootNote = (Note)Enum.Parse(typeof(Note), vals[3]);
 
-                int numFrets = Int32.Parse(vals[4]);
-                int maxFret = Int32.Parse(vals[5]);
-                int maxReach = Int32.Parse(vals[6]);
+                int numFrets = int.Parse(vals[4]);
+                int maxFret = int.Parse(vals[5]);
+                int maxReach = int.Parse(vals[6]);
                 bool allowOpenStrings = Boolean.Parse(vals[7]);
                 bool allowMutedStrings = Boolean.Parse(vals[8]);
                 bool allowRootlessChords = Boolean.Parse(vals[9]);
@@ -180,7 +180,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
             public override string ToString()
             {
-                return String.Join(";",
+                return string.Join(";",
                     null == Instrument ? "null" : Instrument.Name,
                     null == Tuning ? "null" : Tuning.Name,
                     null == ChordQuality ? "null" : ChordQuality.Name,
@@ -214,11 +214,6 @@ namespace com.jonthysell.Chordious.CoreTest
                 return new TestChordFinderResult(marks);
             }
 
-            public override bool Equals(object obj)
-            {
-                return CompareTo(obj) == 0;
-            }
-
             public int CompareTo(object obj)
             {
                 if (null == obj)
@@ -235,9 +230,19 @@ namespace com.jonthysell.Chordious.CoreTest
                 return Marks.SequenceEqual(cfr.Marks) ? 0 : -1;
             }
 
+            public override bool Equals(object obj)
+            {
+                return CompareTo(obj) == 0;
+            }
+
+            public override int GetHashCode()
+            {
+                return base.GetHashCode();
+            }
+
             public override string ToString()
             {
-                return TestUtils.ToString<int>(this.Marks);
+                return TestUtils.ToString<int>(Marks);
             }
         }
 
@@ -247,12 +252,7 @@ namespace com.jonthysell.Chordious.CoreTest
             {
                 get
                 {
-                    if (null == _majorChord)
-                    {
-                        _majorChord = new TestChordQuality(MajorChordQualityName, "", new int[] { 0, 4, 7 });
-                    }
-
-                    return _majorChord;
+                    return _majorChord ?? (_majorChord = new TestChordQuality(MajorChordQualityName, "", new int[] { 0, 4, 7 }));
                 }
             }
             private static TestChordQuality _majorChord = null;
@@ -261,12 +261,7 @@ namespace com.jonthysell.Chordious.CoreTest
             {
                 get
                 {
-                    if (null == _dominantSeventhChord)
-                    {
-                        _dominantSeventhChord = new TestChordQuality(Dominant7thChordQualityName, "7", new int[] { 0, 4, 7, 10 });
-                    }
-
-                    return _dominantSeventhChord;
+                    return _dominantSeventhChord ?? (_dominantSeventhChord = new TestChordQuality(Dominant7thChordQualityName, "7", new int[] { 0, 4, 7, 10 }));
                 }
             }
             private static TestChordQuality _dominantSeventhChord = null;
@@ -275,12 +270,7 @@ namespace com.jonthysell.Chordious.CoreTest
             {
                 get
                 {
-                    if (null == _dominantNinthChord)
-                    {
-                        _dominantNinthChord = new TestChordQuality(Dominant9thChordQualityName, "9", new int[] { 0, 4, 7, 10, 14 });
-                    }
-
-                    return _dominantNinthChord;
+                    return _dominantNinthChord ?? (_dominantNinthChord = new TestChordQuality(Dominant9thChordQualityName, "9", new int[] { 0, 4, 7, 10, 14 }));
                 }
             }
             private static TestChordQuality _dominantNinthChord = null;

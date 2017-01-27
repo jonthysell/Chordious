@@ -101,11 +101,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                if (null == _existingCollections)
-                {
-                    _existingCollections = GetCollectionNames();
-                }
-                return _existingCollections;
+                return _existingCollections ?? (_existingCollections = GetCollectionNames());
             }
         }
         private ObservableCollection<string> _existingCollections;
@@ -118,10 +114,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                         ProcessClose();
                     }
                     catch (Exception ex)
@@ -130,7 +123,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return !String.IsNullOrWhiteSpace(CollectionName);
+                    return !string.IsNullOrWhiteSpace(CollectionName);
                 });
             }
         }
@@ -143,10 +136,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {
@@ -169,7 +159,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             Callback = callback;
 
-            if (String.IsNullOrWhiteSpace(defaultCollectionName))
+            if (string.IsNullOrWhiteSpace(defaultCollectionName))
             {
                 defaultCollectionName = AppVM.UserConfig.DiagramLibrary.GetNewCollectionName();
             }

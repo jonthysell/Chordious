@@ -34,15 +34,9 @@ namespace com.jonthysell.Chordious.WPF
 {
     public class IdleBoolToWaitCursorConverter : MarkupExtension, IValueConverter
     {
-        
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            if (null == _converter)
-            {
-                _converter = new IdleBoolToWaitCursorConverter();
-            }
-
-            return _converter;
+            return _converter ?? (_converter = new IdleBoolToWaitCursorConverter());
         }
         private static IdleBoolToWaitCursorConverter _converter = null;
 

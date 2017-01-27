@@ -41,7 +41,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._level;
+                return _level;
             }
             set
             {
@@ -50,12 +50,12 @@ namespace com.jonthysell.Chordious.Core
                     throw new ArgumentNullException();
                 }
 
-                if (this.ReadOnly)
+                if (ReadOnly)
                 {
                     throw new ObjectIsReadOnlyException(this);
                 }
 
-                this._level = value;
+                _level = value;
             }
         }
         private string _level;
@@ -64,16 +64,16 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this._parent;
+                return _parent;
             }
             set
             {
-                if (this.ReadOnly)
+                if (ReadOnly)
                 {
                     throw new ObjectIsReadOnlyException(this);
                 }
 
-                this._parent = value;
+                _parent = value;
             }
         }
         private InstrumentSet _parent;
@@ -116,7 +116,7 @@ namespace com.jonthysell.Chordious.Core
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.GetEnumerator();
+            return GetEnumerator();
         }
 
         public Instrument Get(string name)
@@ -157,7 +157,7 @@ namespace com.jonthysell.Chordious.Core
         
         public Instrument Add(string name, int numStrings)
         {
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
@@ -184,7 +184,7 @@ namespace com.jonthysell.Chordious.Core
 
         public void Remove(string name)
         {
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
@@ -199,7 +199,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("instrument");
             }
 
-            if (this.ReadOnly)
+            if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
             }
@@ -273,7 +273,7 @@ namespace com.jonthysell.Chordious.Core
 
         public InstrumentSetException(InstrumentSet instrumentSet) : base()
         {
-            this.InstrumentSet = instrumentSet;
+            InstrumentSet = instrumentSet;
         }
     }
 
@@ -283,7 +283,7 @@ namespace com.jonthysell.Chordious.Core
 
         public TargetInstrumentException(InstrumentSet instrumentSet, string name) : base(instrumentSet)
         {
-            this.Name = name;
+            Name = name;
         }
     }
 
@@ -293,7 +293,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Strings.InstrumentNotFoundExceptionMessage, Name);
+                return string.Format(Strings.InstrumentNotFoundExceptionMessage, Name);
             }
         }
 
@@ -306,7 +306,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Strings.InstrumentNameAlreadyExistsMessage, Name);
+                return string.Format(Strings.InstrumentNameAlreadyExistsMessage, Name);
             }
         }
 

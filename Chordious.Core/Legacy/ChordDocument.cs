@@ -50,7 +50,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
                 ChordOptions currentChordOptions = new ChordOptions();
 
                 string line;
-                while ((line = sr.ReadLine()) != null)
+                while (null != (line = sr.ReadLine()))
                 {
                     line = line.Trim();
                     try
@@ -63,7 +63,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
                         {
                             currentChordOptions = new ChordOptions(line);
                         }
-                        else if (!String.IsNullOrEmpty(line)) // treat line as a chord
+                        else if (!string.IsNullOrEmpty(line)) // treat line as a chord
                         {
                             Chord chord = new Chord(line);
 

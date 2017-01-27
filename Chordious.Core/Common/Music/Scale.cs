@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,10 +38,10 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("parent");
             }
 
-            this.Name = name;
-            this.Intervals = intervals;
+            Name = name;
+            Intervals = intervals;
 
-            this.UpdateParent = true;
+            UpdateParent = true;
         }
 
         internal Scale(ScaleSet parent, XmlReader xmlReader) : base(parent)
@@ -61,7 +61,7 @@ namespace com.jonthysell.Chordious.Core
                 ReadBase(xmlReader, "scale");
             }
 
-            this.UpdateParent = true;
+            UpdateParent = true;
         }
 
         public void Write(XmlWriter xmlWriter)

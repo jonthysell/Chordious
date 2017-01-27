@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+
 using GalaSoft.MvvmLight.Command;
 
 using com.jonthysell.Chordious.Core.ViewModel.Resources;
@@ -74,10 +75,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     try
                     {
                         Callback(Name, GetIntervalArray());
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {
@@ -98,10 +96,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        if (null != RequestClose)
-                        {
-                            RequestClose();
-                        }
+                        RequestClose?.Invoke();
                     }
                     catch (Exception ex)
                     {

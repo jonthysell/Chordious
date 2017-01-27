@@ -56,11 +56,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this.Settings[Prefix + "itlevel"];
+                return Settings[Prefix + "itlevel"];
             }
             set
             {
-                this.Settings[Prefix + "itlevel"] = value;
+                Settings[Prefix + "itlevel"] = value;
             }
         }
 
@@ -68,11 +68,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this.Settings.GetNote(Prefix + "rootnote");
+                return Settings.GetNote(Prefix + "rootnote");
             }
             set
             {
-                this.Settings.Set(Prefix + "rootnote", value);
+                Settings.Set(Prefix + "rootnote", value);
             }
         }
 
@@ -80,7 +80,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this.Settings.GetInt32(Prefix + "numfrets");
+                return Settings.GetInt32(Prefix + "numfrets");
             }
             set
             {
@@ -88,7 +88,9 @@ namespace com.jonthysell.Chordious.Core
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this.Settings.Set(Prefix + "numfrets", value);
+
+                Settings.Set(Prefix + "numfrets", value);
+
                 if (NumFrets < MaxReach)
                 {
                     MaxReach = NumFrets;
@@ -100,7 +102,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this.Settings.GetInt32(Prefix + "maxfret");
+                return Settings.GetInt32(Prefix + "maxfret");
             }
             set
             {
@@ -108,7 +110,8 @@ namespace com.jonthysell.Chordious.Core
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this.Settings.Set(Prefix + "maxfret", value);
+
+                Settings.Set(Prefix + "maxfret", value);
             }
         }
 
@@ -116,7 +119,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this.Settings.GetInt32(Prefix + "maxreach");
+                return Settings.GetInt32(Prefix + "maxreach");
             }
             set
             {
@@ -124,7 +127,9 @@ namespace com.jonthysell.Chordious.Core
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-                this.Settings.Set(Prefix + "maxreach", value);
+
+                Settings.Set(Prefix + "maxreach", value);
+
                 if (MaxReach > NumFrets)
                 {
                     NumFrets = MaxReach;
@@ -136,11 +141,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this.Settings.GetBoolean(Prefix + "allowopenstrings");
+                return Settings.GetBoolean(Prefix + "allowopenstrings");
             }
             set
             {
-                this.Settings.Set(Prefix + "allowopenstrings", value);
+                Settings.Set(Prefix + "allowopenstrings", value);
             }
         }
 
@@ -148,11 +153,11 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return this.Settings.GetBoolean(Prefix + "allowmutedstrings");
+                return Settings.GetBoolean(Prefix + "allowmutedstrings");
             }
             set
             {
-                this.Settings.Set(Prefix + "allowmutedstrings", value);
+                Settings.Set(Prefix + "allowmutedstrings", value);
             }
         }
 
@@ -188,30 +193,30 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("prefix");
             }
 
-            this._configFile = configFile;
-            this.Prefix = prefix;
+            _configFile = configFile;
+            Prefix = prefix;
 
-            this._cachedInstrument = null;
-            this._cachedTuning = null;
+            _cachedInstrument = null;
+            _cachedTuning = null;
         }
 
         public IInstrument GetInstrument()
         {
-            string name = this.Settings[Prefix + "instrument"];
+            string name = Settings[Prefix + "instrument"];
 
-            string level = this.InstrumentTuningLevel;
+            string level = InstrumentTuningLevel;
 
-            if (null != this._cachedInstrument)
+            if (null != _cachedInstrument)
             {
-                if (this._cachedInstrument.Name == name && this._cachedInstrument.Level == level)
+                if (_cachedInstrument.Name == name && _cachedInstrument.Level == level)
                 {
-                    return this._cachedInstrument;
+                    return _cachedInstrument;
                 }
-                this._cachedInstrument = null;
-                this._cachedTuning = null;
+                _cachedInstrument = null;
+                _cachedTuning = null;
             }
 
-            InstrumentSet instruments = this._configFile.Instruments;
+            InstrumentSet instruments = _configFile.Instruments;
             while (null != instruments)
             {
                 if (instruments.Level == level)
@@ -219,7 +224,7 @@ namespace com.jonthysell.Chordious.Core
                     Instrument i;
                     if (instruments.TryGet(name, out i))
                     {
-                        this._cachedInstrument = i;
+                        _cachedInstrument = i;
                         break;
                     }
                 }
@@ -227,30 +232,30 @@ namespace com.jonthysell.Chordious.Core
                 instruments = instruments.Parent;
             }
 
-            return this._cachedInstrument;
+            return _cachedInstrument;
         }
 
         public ITuning GetTuning()
         {
-            string longName = this.Settings[Prefix + "tuning"];
+            string longName = Settings[Prefix + "tuning"];
 
-            if (null != this._cachedInstrument && null != this._cachedTuning)
+            if (null != _cachedInstrument && null != _cachedTuning)
             {
-                string level = this.InstrumentTuningLevel;
-                if (this._cachedInstrument.Level == level && this._cachedTuning.LongName == longName && this._cachedTuning.Level == level)
+                string level = InstrumentTuningLevel;
+                if (_cachedInstrument.Level == level && _cachedTuning.LongName == longName && _cachedTuning.Level == level)
                 {
-                    return this._cachedTuning;
+                    return _cachedTuning;
                 }
-                this._cachedTuning = null;
+                _cachedTuning = null;
             }
 
             ITuning t;
             if (null != Instrument && Instrument.Tunings.TryGet(longName, out t))
             {
-                this._cachedTuning = t;
+                _cachedTuning = t;
             }
 
-            return this._cachedTuning;
+            return _cachedTuning;
         }
 
         public void SetTarget(IInstrument instrument, ITuning tuning)
@@ -270,12 +275,12 @@ namespace com.jonthysell.Chordious.Core
                 throw new InstrumentTuningMismatchException(instrument, tuning);
             }
 
-            this.Settings[Prefix + "instrument"] = instrument.Name;
-            this.Settings[Prefix + "tuning"] = tuning.LongName;
-            this.InstrumentTuningLevel = instrument.Level;
+            Settings[Prefix + "instrument"] = instrument.Name;
+            Settings[Prefix + "tuning"] = tuning.LongName;
+            InstrumentTuningLevel = instrument.Level;
 
-            this._cachedInstrument = instrument;
-            this._cachedTuning = tuning;
+            _cachedInstrument = instrument;
+            _cachedTuning = tuning;
         }
     }
 
@@ -288,14 +293,14 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Strings.InstrumentTuningMismatchExceptionMessage, Instrument.Name, Tuning.LongName);
+                return string.Format(Strings.InstrumentTuningMismatchExceptionMessage, Instrument.Name, Tuning.LongName);
             }
         }
 
         public InstrumentTuningMismatchException(IInstrument instrument, ITuning tuning) : base()
         {
-            this.Instrument = instrument;
-            this.Tuning = tuning;
+            Instrument = instrument;
+            Tuning = tuning;
         }
     }
 }

@@ -40,7 +40,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             private set
             {
-                if (String.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException();
                 }
@@ -54,7 +54,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return !String.IsNullOrWhiteSpace(_headerName);
+                return !string.IsNullOrWhiteSpace(_headerName);
             }
         }
 

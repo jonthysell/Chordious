@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -518,7 +518,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Resources.Strings.DiagramCollectionNotFoundExceptionMessage, Name);
+                return String.Format(Strings.DiagramCollectionNotFoundExceptionMessage, Name);
             }
         }
 
@@ -531,7 +531,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Resources.Strings.DiagramCollectionNameAlreadyExistsMessage, Name);
+                return String.Format(Strings.DiagramCollectionNameAlreadyExistsMessage, Name);
             }
         }
 
@@ -554,7 +554,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Resources.Strings.PathNotFoundExceptionMessage, Path);
+                return String.Format(Strings.PathNotFoundExceptionMessage, Path);
             }
         }
 

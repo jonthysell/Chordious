@@ -29,6 +29,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 
+using com.jonthysell.Chordious.Core.Resources;
+
 namespace com.jonthysell.Chordious.Core
 {
     public abstract class NamedIntervalSet : IReadOnly, IEnumerable<NamedInterval>
@@ -244,14 +246,14 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (null != (NamedIntervalSet as ChordQualitySet))
                 {
-                    return String.Format(Resources.Strings.ChordQualityNotFoundExceptionMessage, LongName);
+                    return String.Format(Strings.ChordQualityNotFoundExceptionMessage, LongName);
                 }
                 else if (null != (NamedIntervalSet as ScaleSet))
                 {
-                    return String.Format(Resources.Strings.ScaleNotFoundExceptionMessage, LongName);
+                    return String.Format(Strings.ScaleNotFoundExceptionMessage, LongName);
                 }
 
-                return String.Format(Resources.Strings.NamedIntervalNotFoundExceptionMessage, LongName);
+                return String.Format(Strings.NamedIntervalNotFoundExceptionMessage, LongName);
             }
         }
 
@@ -266,14 +268,14 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (null != (NamedIntervalSet as ChordQualitySet))
                 {
-                    return String.Format(Resources.Strings.ChordQualityAlreadyExistsExceptionMessage, LongName);
+                    return String.Format(Strings.ChordQualityAlreadyExistsExceptionMessage, LongName);
                 }
                 else if ((null != NamedIntervalSet as ScaleSet))
                 {
-                    return String.Format(Resources.Strings.ScaleAlreadyExistsExceptionMessage, LongName);
+                    return String.Format(Strings.ScaleAlreadyExistsExceptionMessage, LongName);
                 }
 
-                return String.Format(Resources.Strings.NamedIntervalAlreadyExistsExceptionMessage, LongName);
+                return String.Format(Strings.NamedIntervalAlreadyExistsExceptionMessage, LongName);
             }
         }
 

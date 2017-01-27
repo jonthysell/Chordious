@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.ObjectModel;
 
 using GalaSoft.MvvmLight;
 

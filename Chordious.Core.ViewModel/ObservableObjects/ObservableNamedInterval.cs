@@ -25,12 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.ObjectModel;
-
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-
-using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {

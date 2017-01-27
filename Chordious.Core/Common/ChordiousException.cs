@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,8 @@
 using System;
 using System.Collections.Generic;
 
+using com.jonthysell.Chordious.Core.Resources;
+
 namespace com.jonthysell.Chordious.Core
 {
     public class ChordiousException : Exception
@@ -43,7 +45,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Resources.Strings.ChordiousKeyNotFoundExceptionMessage, Key);
+                return String.Format(Strings.ChordiousKeyNotFoundExceptionMessage, Key);
             }
         }
 

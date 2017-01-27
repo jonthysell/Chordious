@@ -25,11 +25,8 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core.ViewModel;

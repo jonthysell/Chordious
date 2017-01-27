@@ -29,6 +29,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 
+using com.jonthysell.Chordious.Core.Resources;
+
 namespace com.jonthysell.Chordious.Core
 {
     public class TuningSet : ITuningSet, IReadOnly
@@ -266,7 +268,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Resources.Strings.TuningNotFoundExceptionMessage, LongName);
+                return String.Format(Strings.TuningNotFoundExceptionMessage, LongName);
             }
         }
 
@@ -279,7 +281,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return String.Format(Resources.Strings.TuningAlreadyExistsMessage, LongName);
+                return String.Format(Strings.TuningAlreadyExistsMessage, LongName);
             }
         }
 

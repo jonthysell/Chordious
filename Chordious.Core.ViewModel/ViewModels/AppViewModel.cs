@@ -32,8 +32,6 @@ using System.Reflection;
 
 using GalaSoft.MvvmLight;
 
-using com.jonthysell.Chordious.Core;
-
 using com.jonthysell.Chordious.Core.ViewModel.Resources;
 
 namespace com.jonthysell.Chordious.Core.ViewModel

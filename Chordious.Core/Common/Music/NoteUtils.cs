@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2014, 2015, 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2014, 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,8 @@
 
 using System;
 
+using com.jonthysell.Chordious.Core.Resources;
+
 namespace com.jonthysell.Chordious.Core
 {
     public class NoteUtils
@@ -38,7 +40,7 @@ namespace com.jonthysell.Chordious.Core
                 return note;
             }
 
-            throw new ArgumentException(Resources.Strings.InvalidNoteArgumentExceptionMessage);
+            throw new ArgumentException(Strings.InvalidNoteArgumentExceptionMessage);
         }
 
         public static bool TryParseNote(string s, out Note note)

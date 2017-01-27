@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,8 @@
 
 using System;
 
+using com.jonthysell.Chordious.Core.Resources;
+
 namespace com.jonthysell.Chordious.Core
 {
     public class ColorUtils
@@ -39,7 +41,7 @@ namespace com.jonthysell.Chordious.Core
 
             if (!IsColor(s))
             {
-                throw new ArgumentException(Resources.Strings.InvalidColorArgumentExceptionMessage);
+                throw new ArgumentException(Strings.InvalidColorArgumentExceptionMessage);
             }
 
             s = s.Trim();
@@ -69,7 +71,7 @@ namespace com.jonthysell.Chordious.Core
             }
 
             // This should never fire since we passed the IsColor check above
-            throw new ArgumentException(Resources.Strings.InvalidColorArgumentExceptionMessage);
+            throw new ArgumentException(Strings.InvalidColorArgumentExceptionMessage);
         }
 
         public static bool TryParseColor(string s, out string result)

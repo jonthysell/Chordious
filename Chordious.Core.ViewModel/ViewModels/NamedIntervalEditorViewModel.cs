@@ -66,7 +66,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 _name = value;
                 RaisePropertyChanged("Name");
-                RaisePropertyChanged("Accept");
+                Accept.RaiseCanExecuteChanged();
             }
         }
         private string _name;
@@ -81,25 +81,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public abstract string IntervalsToolTip { get; }
 
-        public ObservableCollection<NamedIntervalValue> Intervals
-        {
-            get
-            {
-                return _intervals;
-            }
-            private set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-                _intervals = value;
-                RaisePropertyChanged("Intervals");
-                RaisePropertyChanged("Example");
-                RaisePropertyChanged("Accept");
-            }
-        }
-        private ObservableCollection<NamedIntervalValue> _intervals;
+        public ObservableCollection<NamedIntervalValue> Intervals { get; private set; } = null;
 
         public string ExampleLabel
         {
@@ -168,22 +150,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _addInterval ?? (_addInterval = new RelayCommand(() =>
                 {
                     try
                     {
                         Intervals.Add(CreateNamedIntervalValue());
-                        RaisePropertyChanged("RemoveInterval");
+                        RemoveInterval.RaiseCanExecuteChanged();
                         RaisePropertyChanged("Example");
-                        RaisePropertyChanged("Accept");
+                        Accept.RaiseCanExecuteChanged();
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _addInterval;
 
         public string RemoveIntervalLabel
         {
@@ -205,16 +188,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _removeInterval ?? (_removeInterval = new RelayCommand(() =>
                 {
                     try
                     {
                         NamedIntervalValue niValue = Intervals[Intervals.Count - 1];
                         niValue.ValueChanged -= IntervalValueChanged;
                         Intervals.Remove(niValue);
-                        RaisePropertyChanged("RemoveInterval");
+                        RemoveInterval.RaiseCanExecuteChanged();
                         RaisePropertyChanged("Example");
-                        RaisePropertyChanged("Accept");
+                        Accept.RaiseCanExecuteChanged();
                     }
                     catch (Exception ex)
                     {
@@ -223,17 +206,58 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return Intervals.Count > 0;
-                });
+                }));
             }
         }
+        private RelayCommand _removeInterval;
 
-        public abstract RelayCommand Accept { get; }
+        public RelayCommand Accept
+        {
+            get
+            {
+                return _accept ?? (_accept = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        OnAccept();
+                        OnRequestClose();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return IsValid();
+                }));
+            }
+        }
+        private RelayCommand _accept;
 
-        public abstract RelayCommand Cancel { get; }
+        public RelayCommand Cancel
+        {
+            get
+            {
+                return _cancel ?? (_cancel = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        OnRequestClose();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }));
+            }
+        }
+        private RelayCommand _cancel;
+
+        public Action RequestClose;
 
         public NamedIntervalEditorViewModel(bool isNew)
         {
-            IsNew = isNew;
+            _isNew = isNew;
             Intervals = new ObservableCollection<NamedIntervalValue>();
         }
 
@@ -244,7 +268,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 throw new ArgumentNullException("intervals");
             }
 
-            Name = name;
+            _name = name;
 
             for (int i = 0; i < intervals.Length; i++)
             {
@@ -259,7 +283,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             return niValue;
         }
 
-        protected void IntervalValueChanged()
+        protected void IntervalValueChanged(object sender, EventArgs e)
         {
             RaisePropertyChanged("Example");
         }
@@ -280,7 +304,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             return !string.IsNullOrWhiteSpace(Name) && (null != Intervals && Intervals.Count > 0);
         }
+
+        protected abstract void OnAccept();
+
+        protected void OnRequestClose()
+        {
+            RequestClose?.Invoke();
+        }
     }
+
+    public delegate void ValueChangedEventHandler(object sender, EventArgs e);
 
     public class NamedIntervalValue : ObservableObject
     {
@@ -313,17 +346,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     throw new ArgumentOutOfRangeException();
                 }
                 _value = value;
-                ValueChanged?.Invoke();
+                ValueChanged?.Invoke(this, new EventArgs());
             }
         }
         private int _value;
 
-        public event Action ValueChanged;
+        public event ValueChangedEventHandler ValueChanged;
 
         public NamedIntervalValue(int value = 0)
         {
             Value = value;
-            ValueChanged += () =>
+            ValueChanged += (sender, e) =>
             {
                 RaisePropertyChanged("Value");
             };

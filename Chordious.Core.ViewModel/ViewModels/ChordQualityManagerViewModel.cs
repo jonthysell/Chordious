@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 
@@ -86,23 +87,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _addNamedInterval ?? (_addNamedInterval = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowChordQualityEditorMessage>(new ShowChordQualityEditorMessage(true, (name, abbreviation, intervals) =>
+                        Messenger.Default.Send(new ShowChordQualityEditorMessage(true, (name, abbreviation, intervals) =>
                         {
-                            ChordQuality addedChordQuality = AppVM.UserConfig.ChordQualities.Add(name, abbreviation, intervals);
-                            Refresh(addedChordQuality);
+                            try
+                            {
+                                ChordQuality addedChordQuality = AppVM.UserConfig.ChordQualities.Add(name, abbreviation, intervals);
+                                Refresh(addedChordQuality);
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _addNamedInterval;
 
         public override string EditNamedIntervalToolTip
         {
@@ -116,15 +125,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _editNamedInterval ?? (_editNamedInterval = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowChordQualityEditorMessage>(new ShowChordQualityEditorMessage(false, (name, abbreviation, intervals) =>
+                        Messenger.Default.Send(new ShowChordQualityEditorMessage(false, (name, abbreviation, intervals) =>
                         {
-                            ChordQuality cq = (ChordQuality)(SelectedNamedInterval.NamedInterval);
-                            cq.Update(name, abbreviation, intervals);
-                            Refresh(SelectedNamedInterval.NamedInterval);
+                            try
+                            {
+                                ChordQuality cq = (ChordQuality)(SelectedNamedInterval.NamedInterval);
+                                cq.Update(name, abbreviation, intervals);
+                                Refresh(SelectedNamedInterval.NamedInterval);
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }, SelectedNamedInterval.Name, ((ChordQuality)(SelectedNamedInterval.NamedInterval)).Abbreviation, SelectedNamedInterval.Intervals));
                     }
                     catch (Exception ex)
@@ -134,9 +150,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NamedIntervalIsSelected && SelectedNamedInterval.CanEdit;
-                });
+                }));
             }
         }
+        private RelayCommand _editNamedInterval;
 
         public override string DeleteNamedIntervalToolTip
         {
@@ -150,11 +167,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _deleteNamedInterval ?? (_deleteNamedInterval = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(string.Format(Strings.ChordQualityManagerDeleteNamedIntervalPromptFormat, SelectedNamedInterval.LongName), (confirm) =>
+                        Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.ChordQualityManagerDeleteNamedIntervalPromptFormat, SelectedNamedInterval.LongName), (confirm) =>
                         {
                             try
                             {
@@ -177,9 +194,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NamedIntervalIsSelected && SelectedNamedInterval.CanEdit;
-                });
+                }));
             }
         }
+        private RelayCommand _deleteNamedInterval;
 
         public ChordQualityManagerViewModel() : base(AppViewModel.Instance.GetDefaultChordQualities, AppViewModel.Instance.GetUserChordQualities, AppViewModel.Instance.UserConfig.ChordQualities.Remove) { }
     }

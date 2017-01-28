@@ -51,19 +51,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public string Prompt
-        {
-            get
-            {
-                return _prompt;
-            }
-            private set
-            {
-                _prompt = value;
-                RaisePropertyChanged("Prompt");
-            }
-        }
-        private string _prompt;
+        public string Prompt { get; private set; }
 
         public string Text
         {
@@ -75,7 +63,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 _text = value;
                 RaisePropertyChanged("Text");
-                RaisePropertyChanged("Accept");
+                Accept.RaiseCanExecuteChanged();
             }
         }
         private string _text;
@@ -99,7 +87,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _accept ?? (_accept = new RelayCommand(() =>
                 {
                     try
                     {
@@ -113,15 +101,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return AllowBlank || !string.IsNullOrWhiteSpace(Text);
-                });
+                }));
             }
         }
+        private RelayCommand _accept;
 
         public RelayCommand Cancel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _cancel ?? (_cancel = new RelayCommand(() =>
                 {
                     try
                     {
@@ -131,16 +120,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _cancel;
 
-        public event Action RequestClose;
+        public Action RequestClose;
 
         public Action<string> Callback { get; private set; }
 
         public TextPromptViewModel(string prompt, Action<string> callback)
         {
+            if (string.IsNullOrWhiteSpace(prompt))
+            {
+                throw new ArgumentNullException("prompt");
+            }
+
             if (null == callback)
             {
                 throw new ArgumentNullException("callback");

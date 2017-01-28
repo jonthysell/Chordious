@@ -192,7 +192,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 ExportFormat result;
 
-                if (Enum.TryParse<ExportFormat>(GetSetting("diagramexport.exportformat"), out result))
+                if (Enum.TryParse(GetSetting("diagramexport.exportformat"), out result))
                 {
                     return result;
                 }
@@ -214,9 +214,10 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                return GetExportFormats();
+                return _exportFormats ?? (_exportFormats = GetExportFormats());
             }
         }
+        private ObservableCollection<string> _exportFormats;
 
         public string OverwriteFilesLabel
         {
@@ -240,7 +241,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 bool result;
 
-                if (Boolean.TryParse(GetSetting("diagramexport.overwritefiles"), out result))
+                if (bool.TryParse(GetSetting("diagramexport.overwritefiles"), out result))
                 {
                     return result;
                 }
@@ -333,7 +334,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                return new RelayCommand(() =>
+                return _chooseOutputPath ?? (_chooseOutputPath = new RelayCommand(() =>
                 {
                     try
                     {
@@ -347,9 +348,10 @@ namespace com.jonthysell.Chordious.WPF
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _chooseOutputPath;
 
         private List<string> _createdFiles;
 
@@ -359,12 +361,12 @@ namespace com.jonthysell.Chordious.WPF
 
             _createdFiles = new List<string>();
 
-            ExportStart += () =>
+            ExportStart += (sender, e) =>
                 {
                     _createdFiles.Clear();
                 };
 
-            ExportEnd += () =>
+            ExportEnd += (sender, e) =>
                 {
                     _createdFiles.Clear();
                 };

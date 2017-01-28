@@ -51,24 +51,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public string Message
-        {
-            get
-            {
-                return _message;
-            }
-            private set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentNullException();
-                }
-                _message = value;
-            }
-        }
-        private string _message;
+        public string Message { get; private set; }
 
-        public bool DisplayDialog { get; private set; }
+        public bool DisplayDialog { get; private set; } = true;
 
         public string YesAndRememberLabel
         {
@@ -91,7 +76,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _acceptAndRemember ?? (_acceptAndRemember = new RelayCommand(() =>
                 {
                     try
                     {
@@ -105,15 +90,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return ShowAcceptAndRemember;
-                });
+                }));
             }
         }
+        private RelayCommand _acceptAndRemember;
 
         public RelayCommand Accept
         {
             get
             {
-                return new RelayCommand(() =>
+                return _accept ?? (_accept = new RelayCommand(() =>
                 {
                     try
                     {
@@ -124,15 +110,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _accept;
 
         public RelayCommand Reject
         {
             get
             {
-                return new RelayCommand(() =>
+                return _reject ?? (_reject = new RelayCommand(() =>
                 {
                     try
                     {
@@ -143,36 +130,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _reject;
 
         public ConfirmationResult Result { get; private set; }
 
-        public event Action RequestClose;
+        public Action RequestClose;
 
-        public Action<bool> Callback
-        {
-            get
-            {
-                return _callback;
-            }
-            private set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-                _callback = value;
-            }
-        }
-        private Action<bool> _callback;
+        public Action<bool> Callback { get; private set; }
 
         public ConfirmationViewModel(string message, Action<bool> callback, string rememberAnswerKey)
         {
+            if (string.IsNullOrWhiteSpace(message))
+            {
+                throw new ArgumentNullException("message");
+            }
+
+            if (null == callback)
+            {
+                throw new ArgumentNullException("callback");
+            }
+
             Message = message;
             Callback = callback;
-            DisplayDialog = true;
             Result = ConfirmationResult.None;
 
             _rememberAnswerKey = rememberAnswerKey;

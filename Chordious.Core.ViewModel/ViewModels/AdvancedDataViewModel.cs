@@ -113,7 +113,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _apply ?? (_apply = new RelayCommand(() =>
                 {
                     try
                     {
@@ -126,15 +126,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return Dirty;
-                });
+                }));
             }
         }
+        private RelayCommand _apply;
 
         public RelayCommand Accept
         {
             get
             {
-                return new RelayCommand(() =>
+                return _accept ?? (_accept = new RelayCommand(() =>
                 {
                     try
                     {
@@ -145,15 +146,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _accept;
 
         public RelayCommand Cancel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _cancel ?? (_cancel = new RelayCommand(() =>
                 {
                     try
                     {
@@ -164,11 +166,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _cancel;
 
-        public event Action RequestClose;
+        public Action RequestClose;
 
         internal InheritableDictionary LocalBuffer { get; private set; }
 
@@ -201,7 +204,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 _dirty = value;
                 RaisePropertyChanged("Dirty");
                 RaisePropertyChanged("Title");
-                RaisePropertyChanged("Apply");
+                Apply.RaiseCanExecuteChanged();
             }
         }
         private bool _dirty = false;

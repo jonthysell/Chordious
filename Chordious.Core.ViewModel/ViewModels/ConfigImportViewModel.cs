@@ -26,6 +26,7 @@
 
 using System;
 using System.IO;
+
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 
@@ -47,28 +48,39 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _accept ?? (_accept = new RelayCommand(() =>
                 {
                     try
                     {
                         IsIdle = false;
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.ConfigImportOverwritePromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.ConfigImportOverwritePromptMessage, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                TryImport();
-                                OnRequestClose();
+                                if (confirmed)
+                                {
+                                    TryImport();
+                                    OnRequestClose();
+                                }
                             }
-                            IsIdle = true;
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
+                            finally
+                            {
+                                IsIdle = true;
+                            }
                         }));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _accept;
 
         private Stream _inputStream;
 

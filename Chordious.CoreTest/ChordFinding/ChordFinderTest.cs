@@ -81,7 +81,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
                 chordFinderOptions = TestChordFinderOptions.Parse(vals[0]);
 
-                allowExtras = Boolean.Parse(vals[1]);
+                allowExtras = bool.Parse(vals[1]);
 
                 List<IChordFinderResult> expectedResult = null;
 
@@ -171,9 +171,9 @@ namespace com.jonthysell.Chordious.CoreTest
                 int numFrets = int.Parse(vals[4]);
                 int maxFret = int.Parse(vals[5]);
                 int maxReach = int.Parse(vals[6]);
-                bool allowOpenStrings = Boolean.Parse(vals[7]);
-                bool allowMutedStrings = Boolean.Parse(vals[8]);
-                bool allowRootlessChords = Boolean.Parse(vals[9]);
+                bool allowOpenStrings = bool.Parse(vals[7]);
+                bool allowMutedStrings = bool.Parse(vals[8]);
+                bool allowRootlessChords = bool.Parse(vals[9]);
 
                 return new TestChordFinderOptions { Instrument = instrument, Tuning = tuning, ChordQuality = chordQuality, RootNote = rootNote, NumFrets = numFrets, MaxFret = maxFret, MaxReach = maxReach, AllowOpenStrings = allowOpenStrings, AllowMutedStrings = allowMutedStrings, AllowRootlessChords = allowRootlessChords };
             }

@@ -94,14 +94,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() => {
+                return _launchWebsite ?? (_launchWebsite = new RelayCommand(() =>
+                {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.LaunchWebsitePromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.LaunchWebsitePromptMessage, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                Messenger.Default.Send<LaunchUrlMessage>(new LaunchUrlMessage(AppInfo.Website));
+                                if (confirmed)
+                                {
+                                    Messenger.Default.Send(new LaunchUrlMessage(AppInfo.Website));
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }, "confirmation.main.launchwebsite"));
                     }
@@ -109,9 +117,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _launchWebsite;
 
         #endregion
 
@@ -137,20 +146,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showLicense ?? (_showLicense = new RelayCommand(() =>
                 {
                     try
                     {
                         string text = string.Join(Environment.NewLine, AppInfo.Product + " " + AppInfo.Copyright, "", AppInfo.License);
-                        Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(text, Strings.LicenseTitle));
+                        Messenger.Default.Send(new ChordiousMessage(text, Strings.LicenseTitle));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showLicense;
 
         #endregion
 
@@ -176,19 +186,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showChordFinder ?? (_showChordFinder = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowChordFinderMessage>(new ShowChordFinderMessage());
+                        Messenger.Default.Send(new ShowChordFinderMessage());
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showChordFinder;
 
         #endregion
 
@@ -214,19 +225,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showScaleFinder ?? (_showScaleFinder = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowScaleFinderMessage>(new ShowScaleFinderMessage());
+                        Messenger.Default.Send(new ShowScaleFinderMessage());
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showScaleFinder;
 
         #endregion
 
@@ -252,19 +264,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showDiagramLibrary ?? (_showDiagramLibrary = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowDiagramLibraryMessage>(new ShowDiagramLibraryMessage());
+                        Messenger.Default.Send(new ShowDiagramLibraryMessage());
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showDiagramLibrary;
 
         #endregion
 
@@ -290,19 +303,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showInstrumentManager ?? (_showInstrumentManager = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowInstrumentManagerMessage>(new ShowInstrumentManagerMessage());
+                        Messenger.Default.Send(new ShowInstrumentManagerMessage());
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showInstrumentManager;
 
         #endregion
 
@@ -328,15 +342,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showOptions ?? (_showOptions = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowOptionsMessage>(new ShowOptionsMessage((itemsChanged) =>
+                        Messenger.Default.Send(new ShowOptionsMessage((itemsChanged) =>
                         {
-                            if (itemsChanged)
+                            try
                             {
-                                AppVM.SaveUserConfig();
+                                if (itemsChanged)
+                                {
+                                    AppVM.SaveUserConfig();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -344,9 +365,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showOptions;
 
         #endregion
 
@@ -372,15 +394,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showHelp ?? (_showHelp = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.ShowHelpPromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.ShowHelpPromptMessage, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                Messenger.Default.Send<LaunchUrlMessage>(new LaunchUrlMessage("http://chordious.com/help/"));
+                                if (confirmed)
+                                {
+                                    Messenger.Default.Send(new LaunchUrlMessage("http://chordious.com/help/"));
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }, "confirmation.main.showhelp"));
                     }
@@ -388,9 +417,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showHelp;
 
         #endregion
 

@@ -32,29 +32,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public abstract class ObservableHeaderObject : ObservableObject
     {
-        protected string HeaderName
-        {
-            get
-            {
-                return _headerName;
-            }
-            private set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentNullException();
-                }
-                _headerName = value.Trim();
-                RaisePropertyChanged("HeaderName");
-            }
-        }
-        private string _headerName = null;
+        protected string HeaderName { get; private set; } = null;
 
         public bool IsHeader
         {
             get
             {
-                return !string.IsNullOrWhiteSpace(_headerName);
+                return !string.IsNullOrWhiteSpace(HeaderName);
             }
         }
 
@@ -62,7 +46,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ObservableHeaderObject(string headerName)
         {
-            HeaderName = headerName;
+            if (string.IsNullOrWhiteSpace(headerName))
+            {
+                throw new ArgumentNullException("headerName");
+            }
+
+            HeaderName = headerName.Trim();
         }
 
         public override string ToString()

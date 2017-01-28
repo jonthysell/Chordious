@@ -87,23 +87,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _addNamedInterval ?? (_addNamedInterval = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowScaleEditorMessage>(new ShowScaleEditorMessage(true, (name, intervals) =>
+                        Messenger.Default.Send(new ShowScaleEditorMessage(true, (name, intervals) =>
                         {
-                            Scale addedScale = AppVM.UserConfig.Scales.Add(name, intervals);
-                            Refresh(addedScale);
+                            try
+                            {
+                                Scale addedScale = AppVM.UserConfig.Scales.Add(name, intervals);
+                                Refresh(addedScale);
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _addNamedInterval;
 
         public override string EditNamedIntervalToolTip
         {
@@ -117,14 +125,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _editNamedInterval ?? (_editNamedInterval = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowScaleEditorMessage>(new ShowScaleEditorMessage(false, (name, intervals) =>
+                        Messenger.Default.Send(new ShowScaleEditorMessage(false, (name, intervals) =>
                         {
-                            SelectedNamedInterval.NamedInterval.Update(name, intervals);
-                            Refresh(SelectedNamedInterval.NamedInterval);
+                            try
+                            {
+                                SelectedNamedInterval.NamedInterval.Update(name, intervals);
+                                Refresh(SelectedNamedInterval.NamedInterval);
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }, SelectedNamedInterval.Name, SelectedNamedInterval.Intervals));
                     }
                     catch (Exception ex)
@@ -134,9 +149,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NamedIntervalIsSelected && SelectedNamedInterval.CanEdit;
-                });
+                }));
             }
         }
+        private RelayCommand _editNamedInterval;
 
         public override string DeleteNamedIntervalToolTip
         {
@@ -150,11 +166,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _deleteNamedInterval ?? (_deleteNamedInterval = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(string.Format(Strings.ScaleManagerDeleteNamedIntervalPromptFormat, SelectedNamedInterval.LongName), (confirm) =>
+                        Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.ScaleManagerDeleteNamedIntervalPromptFormat, SelectedNamedInterval.LongName), (confirm) =>
                         {
                             try
                             {
@@ -177,9 +193,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NamedIntervalIsSelected && SelectedNamedInterval.CanEdit;
-                });
+                }));
             }
         }
+        private RelayCommand _deleteNamedInterval;
 
         public ScaleManagerViewModel() : base(AppViewModel.Instance.GetDefaultScales, AppViewModel.Instance.GetUserScales, AppViewModel.Instance.UserConfig.Scales.Remove) { }
     }

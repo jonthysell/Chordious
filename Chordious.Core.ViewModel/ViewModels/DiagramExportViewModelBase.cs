@@ -36,6 +36,10 @@ using com.jonthysell.Chordious.Core.ViewModel.Resources;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
+    public delegate void ExportStartEventHandler(object sender, EventArgs e);
+
+    public delegate void ExportEndEventHandler(object sender, EventArgs e);
+
     public abstract class DiagramExportViewModelBase : ViewModelBase
     {
         public AppViewModel AppVM
@@ -64,7 +68,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 _isIdle = value;
                 RaisePropertyChanged("IsIdle");
-                RaisePropertyChanged("ExportAsync");
+                ExportAsync.RaiseCanExecuteChanged();
             }
         }
         private bool _isIdle = true;
@@ -85,46 +89,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 RaisePropertyChanged("PercentComplete");
             }
         }
-        private double _percentComplete;
+        private double _percentComplete = 0.0;
 
-        public ObservableCollection<ObservableDiagram> DiagramsToExport
-        {
-            get
-            {
-                return _diagramsToExport;
-            }
-            protected set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-                _diagramsToExport = value;
-                RaisePropertyChanged("DiagramsToExport");
-                RaisePropertyChanged("MaxWidth");
-                RaisePropertyChanged("MaxHeight");
-            }
-        }
-        private ObservableCollection<ObservableDiagram> _diagramsToExport;
+        public string CollectionName { get; private set; }
 
-        public string CollectionName
-        {
-            get
-            {
-                return _collectionName;
-            }
-            set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    value = "";
-                }
-
-                _collectionName = value.Trim();
-                RaisePropertyChanged("CollectionName");
-            }
-        }
-        private string _collectionName;
+        public ObservableCollection<ObservableDiagram> DiagramsToExport { get; private set; }
 
         public int MaxWidth
         {
@@ -162,7 +131,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(async () =>
+                return _exportAsync ?? (_exportAsync = new RelayCommand(async () =>
                 {
                     try
                     {
@@ -191,13 +160,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanExport();
-                });
+                }));
             }
         }
+        private RelayCommand _exportAsync;
 
-        public event Action ExportStart;
+        public event ExportStartEventHandler ExportStart;
 
-        public event Action ExportEnd;
+        public event ExportEndEventHandler ExportEnd;
 
         internal ChordiousSettings SettingsBuffer { get; private set; }
 
@@ -209,7 +179,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
 
             DiagramsToExport = diagramsToExport;
-            CollectionName = collectionName;
+
+            if (string.IsNullOrWhiteSpace(collectionName))
+            {
+                collectionName = "";
+            }
+
+            CollectionName = collectionName.Trim();
 
             SettingsBuffer = new ChordiousSettings(AppVM.UserConfig.ChordiousSettings, "DiagramExport");
         }
@@ -245,12 +221,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void OnExportStart()
         {
-            ExportStart?.Invoke();
+            ExportStart?.Invoke(this, new EventArgs());
         }
 
         private void OnExportEnd()
         {
-            ExportEnd?.Invoke();
+            ExportEnd?.Invoke(this, new EventArgs());
         }
     }
 }

@@ -176,7 +176,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
                 FontStyle = (FontStyle)Enum.Parse(typeof(FontStyle), s[6]);
                 BarreType = (BarreType)Enum.Parse(typeof(BarreType), s[7]);
                 OpenStringType = (OpenStringType)Enum.Parse(typeof(OpenStringType), s[8]);
-                FullBarres = Boolean.Parse(s[9]);
+                FullBarres = bool.Parse(s[9]);
             }
             catch (IndexOutOfRangeException) { }
         }

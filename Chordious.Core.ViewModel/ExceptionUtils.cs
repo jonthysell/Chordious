@@ -44,7 +44,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             AppVM.DoOnUIThread(() =>
             {
-                Messenger.Default.Send<ExceptionMessage>(new ExceptionMessage(exception));
+                Messenger.Default.Send(new ExceptionMessage(exception));
             });
         }
     }

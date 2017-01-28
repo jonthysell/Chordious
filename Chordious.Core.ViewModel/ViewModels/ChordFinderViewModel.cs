@@ -234,7 +234,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowInstrumentManagerMessage>(new ShowInstrumentManagerMessage(() =>
+                        Messenger.Default.Send(new ShowInstrumentManagerMessage(() =>
                         {
                             RefreshInstruments(null != SelectedInstrument ? SelectedInstrument.Instrument : null, null != SelectedTuning ? SelectedTuning.Tuning : null);
                         }));
@@ -385,10 +385,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowChordQualityManagerMessage>(new ShowChordQualityManagerMessage(() =>
+                        Messenger.Default.Send(new ShowChordQualityManagerMessage(() =>
+                        {
+                            try
                             {
                                 RefreshChordQualities(null != SelectedChordQuality ? SelectedChordQuality.ChordQuality : null);
-                            }));
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {
@@ -864,13 +871,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.FinderOptionsSetAsDefaultsPromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.FinderOptionsSetAsDefaultsPromptMessage, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                Options.Settings.SetParent();
-                                Style.Settings.SetParent();
-                                RefreshSettings();
+                                if (confirmed)
+                                {
+                                    Options.Settings.SetParent();
+                                    Style.Settings.SetParent();
+                                    RefreshSettings();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }, "confirmation.chordfinder.setasdefaults"));
                     }
@@ -910,13 +924,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.FinderOptionsResetToDefaultsPromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.FinderOptionsResetToDefaultsPromptMessage, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                Options.Settings.Clear();
-                                Style.Settings.Clear();
-                                RefreshSettings();
+                                if (confirmed)
+                                {
+                                    Options.Settings.Clear();
+                                    Style.Settings.Clear();
+                                    RefreshSettings();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }, "confirmation.chordfinder.resettodefaults"));
                     }
@@ -966,7 +987,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         {
                             if (results.Count == 0 && !_searchAsyncCancellationTokenSource.IsCancellationRequested)
                             {
-                                Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.ChordFinderNoResultsMessage));
+                                Messenger.Default.Send(new ChordiousMessage(Strings.ChordFinderNoResultsMessage));
                             }
                             else
                             {
@@ -1043,17 +1064,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowDiagramCollectionSelectorMessage>(new ShowDiagramCollectionSelectorMessage((name, newCollection) =>
+                        Messenger.Default.Send(new ShowDiagramCollectionSelectorMessage((name, newCollection) =>
                         {
-                            DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
-                            DiagramCollection targetCollection = library.Get(name);
-
-                            foreach (ObservableDiagram od in SelectedResults)
+                            try
                             {
-                                targetCollection.Add(od.Diagram);
-                            }
+                                DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
+                                DiagramCollection targetCollection = library.Get(name);
 
-                            LastDiagramCollectionName = name.Trim();
+                                foreach (ObservableDiagram od in SelectedResults)
+                                {
+                                    targetCollection.Add(od.Diagram);
+                                }
+
+                                LastDiagramCollectionName = name.Trim();
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }, LastDiagramCollectionName));
                     }
                     catch (Exception ex)
@@ -1070,38 +1098,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private static string LastDiagramCollectionName = "";
 
-        public ObservableCollection<ObservableDiagram> SelectedResults
-        {
-            get
-            {
-                return _selectedResults;
-            }
-            private set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
+        public ObservableCollection<ObservableDiagram> SelectedResults { get; private set; } = null;
 
-                _selectedResults = value;
-                RaisePropertyChanged("SelectedResults");
-            }
-        }
-        private ObservableCollection<ObservableDiagram> _selectedResults;
-
-        public ObservableCollection<ObservableDiagram> Results
-        {
-            get
-            {
-                return _results;
-            }
-            private set
-            {
-                _results = value;
-                RaisePropertyChanged("Results");
-            }
-        }
-        private ObservableCollection<ObservableDiagram> _results;
+        public ObservableCollection<ObservableDiagram> Results { get; private set; } = null;
 
         internal ChordFinderOptions Options { get; private set; }
         internal ChordFinderStyle Style { get; private set; }

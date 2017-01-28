@@ -73,29 +73,37 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _resetStyles ?? (_resetStyles = new RelayCommand(() =>
                 {
-                    Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.DiagramEditorResetStylesPrompt, (confirmed) =>
+                    Messenger.Default.Send(new ConfirmationMessage(Strings.DiagramEditorResetStylesPrompt, (confirmed) =>
                     {
-                        if (confirmed)
+                        try
                         {
-                            ObservableDiagram.ResetStyles();
-                            RaisePropertyChanged("ResetStyles");
+                            if (confirmed)
+                            {
+                                ObservableDiagram.ResetStyles();
+                                ResetStyles.RaiseCanExecuteChanged();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            ExceptionUtils.HandleException(ex);
                         }
                     }, "confirmation.diagrameditor.resetstyles"));
                 },
                 () =>
                 {
                     return Style.LocalCount > 0;
-                });
+                }));
             }
         }
+        private RelayCommand _resetStyles;
 
         public RelayCommand Apply
         {
             get
             {
-                return new RelayCommand(() =>
+                return _apply ?? (_apply = new RelayCommand(() =>
                 {
                     try
                     {
@@ -108,15 +116,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return Dirty;
-                });
+                }));
             }
         }
+        private RelayCommand _apply;
 
         public RelayCommand Accept
         {
             get
             {
-                return new RelayCommand(() =>
+                return _accept ?? (_accept = new RelayCommand(() =>
                 {
                     try
                     {
@@ -127,15 +136,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _accept;
 
         public RelayCommand Cancel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _cancel ?? (_cancel = new RelayCommand(() =>
                 {
                     try
                     {
@@ -146,11 +156,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _cancel;
 
-        public event Action RequestClose;
+        public Action RequestClose;
 
         public bool ApplyChangesOnClose
         {
@@ -177,7 +188,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 _dirty = value;
                 RaisePropertyChanged("Dirty");
                 RaisePropertyChanged("Title");
-                RaisePropertyChanged("Apply");
+                Apply.RaiseCanExecuteChanged();
             }
         }
         private bool _dirty = false;
@@ -196,23 +207,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _diagramChanged = false;
 
-        public ObservableDiagram ObservableDiagram
-        {
-            get
-            {
-                return _observableDiagram;
-            }
-            private set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-                _observableDiagram = value;
-                RaisePropertyChanged("ObservableDiagram");
-            }
-        }
-        private ObservableDiagram _observableDiagram;
+        public ObservableDiagram ObservableDiagram { get; private set; }
 
         private ObservableDiagram OriginalObservableDiagram;
 
@@ -238,7 +233,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             if (isNew)
             {
-                Dirty = true;
+                _dirty = true;
             }
 
             ObservableDiagram.PropertyChanged += ObservableDiagram_PropertyChanged;
@@ -262,7 +257,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             if (e.PropertyName == "LocalCount")
             {
                 Dirty = true;
-                RaisePropertyChanged("ResetStyles");
+                ResetStyles.RaiseCanExecuteChanged();
             }
         }
 

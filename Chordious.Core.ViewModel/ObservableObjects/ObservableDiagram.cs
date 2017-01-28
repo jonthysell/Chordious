@@ -240,7 +240,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _editElement ?? (_editElement = new RelayCommand(() =>
                 {
                     try
                     {
@@ -251,33 +251,54 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         if (null != mp && Diagram.HasElementAt(mp))
                         {
                             DiagramMark dm = (DiagramMark)Diagram.ElementAt(mp);
-                            Messenger.Default.Send<ShowDiagramMarkEditorMessage>(new ShowDiagramMarkEditorMessage(dm, false, (changed) =>
+                            Messenger.Default.Send(new ShowDiagramMarkEditorMessage(dm, false, (changed) =>
                             {
-                                if (changed)
+                                try
                                 {
-                                    Refresh();
+                                    if (changed)
+                                    {
+                                        Refresh();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    ExceptionUtils.HandleException(ex);
                                 }
                             }));
                         }
                         else if (null != flp && Diagram.HasElementAt(flp))
                         {
                             DiagramFretLabel dfl = (DiagramFretLabel)Diagram.ElementAt(flp);
-                            Messenger.Default.Send<ShowDiagramFretLabelEditorMessage>(new ShowDiagramFretLabelEditorMessage(dfl, false, (changed) =>
+                            Messenger.Default.Send(new ShowDiagramFretLabelEditorMessage(dfl, false, (changed) =>
                             {
-                                if (changed)
+                                try
                                 {
-                                    Refresh();
+                                    if (changed)
+                                    {
+                                        Refresh();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    ExceptionUtils.HandleException(ex);
                                 }
                             }));
                         }
                         else if (null != bp && Diagram.HasElementAt(bp))
                         {
                             DiagramBarre db = (DiagramBarre)Diagram.ElementAt(bp);
-                            Messenger.Default.Send<ShowDiagramBarreEditorMessage>(new ShowDiagramBarreEditorMessage(db, false, (changed) =>
+                            Messenger.Default.Send(new ShowDiagramBarreEditorMessage(db, false, (changed) =>
                             {
-                                if (changed)
+                                try
                                 {
-                                    Refresh();
+                                    if (changed)
+                                    {
+                                        Refresh();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    ExceptionUtils.HandleException(ex);
                                 }
                             }));
                         }
@@ -291,9 +312,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return (CanEditMark || CanEditFretLabel || CanEditBarre);
-                });
+                }));
             }
         }
+        private RelayCommand _editElement;
 
         #endregion
 
@@ -303,21 +325,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _addMark ?? (_addMark = new RelayCommand(() =>
                 {
                     try
                     {
                         MarkPosition mp = MarkPosition;
                         DiagramMark dm = Diagram.NewMark(mp);
-                        Messenger.Default.Send<ShowDiagramMarkEditorMessage>(new ShowDiagramMarkEditorMessage(dm, true, (changed) =>
+                        Messenger.Default.Send(new ShowDiagramMarkEditorMessage(dm, true, (changed) =>
                         {
-                            if (changed)
-                            {
-                                Refresh();
+                            try
+                            { 
+                                if (changed)
+                                {
+                                    Refresh();
+                                }
+                                else
+                                {
+                                    Diagram.RemoveMark(mp);
+                                }
                             }
-                            else
+                            catch (Exception ex)
                             {
-                                Diagram.RemoveMark(mp);
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -328,9 +357,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanAddMark;
-                });
+                }));
             }
         }
+        private RelayCommand _addMark;
 
         public bool CanAddMark
         {
@@ -345,18 +375,25 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _editMark ?? (_editMark = new RelayCommand(() =>
                 {
                     try
                     {
                         DiagramMark dm = (DiagramMark)Diagram.ElementAt(MarkPosition);
-                        Messenger.Default.Send<ShowDiagramMarkEditorMessage>(new ShowDiagramMarkEditorMessage(dm, false, (changed) =>
+                        Messenger.Default.Send(new ShowDiagramMarkEditorMessage(dm, false, (changed) =>
+                        {
+                            try
                             {
                                 if (changed)
                                 {
                                     Refresh();
                                 }
-                            }));
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {
@@ -365,9 +402,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanEditMark;
-                });
+                }));
             }
         }
+        private RelayCommand _editMark;
 
         public bool CanEditMark
         {
@@ -382,7 +420,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _removeMark ?? (_removeMark = new RelayCommand(() =>
                 {
                     try
                     {
@@ -397,9 +435,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanRemoveMark;
-                });
+                }));
             }
         }
+        private RelayCommand _removeMark;
 
         public bool CanRemoveMark
         {
@@ -426,21 +465,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _addFretLabel ?? (_addFretLabel = new RelayCommand(() =>
                 {
                     try
                     {
                         FretLabelPosition flp = FretLabelPosition;
                         DiagramFretLabel dfl = Diagram.NewFretLabel(flp, "");
-                        Messenger.Default.Send<ShowDiagramFretLabelEditorMessage>(new ShowDiagramFretLabelEditorMessage(dfl, true, (changed) =>
+                        Messenger.Default.Send(new ShowDiagramFretLabelEditorMessage(dfl, true, (changed) =>
                         {
-                            if (changed)
+                            try
                             {
-                                Refresh();
+                                if (changed)
+                                {
+                                    Refresh();
+                                }
+                                else
+                                {
+                                    Diagram.RemoveFretLabel(flp);
+                                }
                             }
-                            else
+                            catch (Exception ex)
                             {
-                                Diagram.RemoveFretLabel(flp);
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -451,9 +497,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanAddFretLabel;
-                });
+                }));
             }
         }
+        private RelayCommand _addFretLabel;
 
         public bool CanAddFretLabel
         {
@@ -468,16 +515,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _editFretLabel ?? (_editFretLabel = new RelayCommand(() =>
                 {
                     try
                     {
                         DiagramFretLabel dfl = (DiagramFretLabel)Diagram.ElementAt(FretLabelPosition);
-                        Messenger.Default.Send<ShowDiagramFretLabelEditorMessage>(new ShowDiagramFretLabelEditorMessage(dfl, false, (changed) =>
+                        Messenger.Default.Send(new ShowDiagramFretLabelEditorMessage(dfl, false, (changed) =>
                         {
-                            if (changed)
+                            try
                             {
-                                Refresh();
+                                if (changed)
+                                {
+                                    Refresh();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -488,9 +542,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanEditFretLabel;
-                });
+                }));
             }
         }
+        private RelayCommand _editFretLabel;
 
         public bool CanEditFretLabel
         {
@@ -505,7 +560,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _removeFretLabel ?? (_removeFretLabel = new RelayCommand(() =>
                 {
                     try
                     {
@@ -520,9 +575,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanRemoveFretLabel;
-                });
+                }));
             }
         }
+        private RelayCommand _removeFretLabel;
 
         public bool CanRemoveFretLabel
         {
@@ -549,28 +605,42 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _addBarre ?? (_addBarre = new RelayCommand(() =>
                 {
                     try
                     {
                         BarrePosition bp = BarrePosition;
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(string.Format(Strings.ObservableDiagramAddBarrePromptFormat, 2, bp.Width), bp.Width.ToString(), (widthText) =>
+                        Messenger.Default.Send(new PromptForTextMessage(string.Format(Strings.ObservableDiagramAddBarrePromptFormat, 2, bp.Width), bp.Width.ToString(), (widthText) =>
                         {
-                            int width = int.Parse(widthText);
-                            bp = new BarrePosition(bp.Fret, bp.StartString, bp.StartString + width - 1);
-
-                            DiagramBarre db = Diagram.NewBarre(bp);
-                            Messenger.Default.Send<ShowDiagramBarreEditorMessage>(new ShowDiagramBarreEditorMessage(db, true, (changed) =>
+                            try
                             {
-                                if (changed)
+                                int width = int.Parse(widthText);
+                                bp = new BarrePosition(bp.Fret, bp.StartString, bp.StartString + width - 1);
+
+                                DiagramBarre db = Diagram.NewBarre(bp);
+                                Messenger.Default.Send(new ShowDiagramBarreEditorMessage(db, true, (changed) =>
                                 {
-                                    Refresh();
-                                }
-                                else
-                                {
-                                    Diagram.RemoveBarre(bp);
-                                }
-                            }));
+                                    try
+                                    {
+                                        if (changed)
+                                        {
+                                            Refresh();
+                                        }
+                                        else
+                                        {
+                                            Diagram.RemoveBarre(bp);
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        ExceptionUtils.HandleException(ex);
+                                    }
+                                }));
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }));
                     }
                     catch (Exception ex)
@@ -580,9 +650,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanAddBarre;
-                });
+                }));
             }
         }
+        private RelayCommand _addBarre;
 
         public bool CanAddBarre
         {
@@ -597,16 +668,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _editBarre ?? (_editBarre = new RelayCommand(() =>
                 {
                     try
                     {
                         DiagramBarre db = (DiagramBarre)Diagram.ElementAt(BarrePosition);
-                        Messenger.Default.Send<ShowDiagramBarreEditorMessage>(new ShowDiagramBarreEditorMessage(db, false, (changed) =>
+                        Messenger.Default.Send(new ShowDiagramBarreEditorMessage(db, false, (changed) =>
                         {
-                            if (changed)
+                            try
                             {
-                                Refresh();
+                                if (changed)
+                                {
+                                    Refresh();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -617,9 +695,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanEditBarre;
-                });
+                }));
             }
         }
+        private RelayCommand _editBarre;
 
         public bool CanEditBarre
         {
@@ -634,7 +713,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _removeBarre ?? (_removeBarre = new RelayCommand(() =>
                 {
                     try
                     {
@@ -649,9 +728,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanRemoveBarre;
-                });
+                }));
             }
         }
+        private RelayCommand _removeBarre;
 
         public bool CanRemoveBarre
         {
@@ -724,10 +804,37 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void RefreshCursor()
         {
-            foreach (string property in _cursorProperties)
-            {
-                RaisePropertyChanged(property);
-            }
+            RaisePropertyChanged("CursorInGrid");
+            RaisePropertyChanged("ValidCommandsAtCursor");
+
+            EditElement.RaiseCanExecuteChanged();
+
+            AddMark.RaiseCanExecuteChanged();
+            RaisePropertyChanged("CanAddMark");
+
+            EditMark.RaiseCanExecuteChanged();
+            RaisePropertyChanged("CanEditMark");
+
+            RemoveMark.RaiseCanExecuteChanged();
+            RaisePropertyChanged("CanRemoveMark");
+
+            AddFretLabel.RaiseCanExecuteChanged();
+            RaisePropertyChanged("CanAddFretLabel");
+
+            EditFretLabel.RaiseCanExecuteChanged();
+            RaisePropertyChanged("CanEditFretLabel");
+
+            RemoveFretLabel.RaiseCanExecuteChanged();
+            RaisePropertyChanged("CanRemoveFretLabel");
+
+            AddBarre.RaiseCanExecuteChanged();
+            RaisePropertyChanged("CanAddBarre");
+
+            EditBarre.RaiseCanExecuteChanged();
+            RaisePropertyChanged("CanEditBarre");
+
+            RemoveBarre.RaiseCanExecuteChanged();
+            RaisePropertyChanged("CanRemoveBarre");
         }
 
         public static bool IsCursorProperty(string property)
@@ -755,6 +862,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         private static string[] _cursorProperties = new string[] {
             "CursorInGrid",
             "ValidCommandsAtCursor",
+            "EditElement",
             "AddMark",
             "CanAddMark",
             "EditMark",
@@ -781,22 +889,30 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showEditor ?? (_showEditor = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowDiagramEditorMessage>(new ShowDiagramEditorMessage(this, false, (changed) =>
+                        Messenger.Default.Send(new ShowDiagramEditorMessage(this, false, (changed) =>
                         {
-                            PostEditCallback?.Invoke(changed);
+                            try
+                            {
+                                PostEditCallback?.Invoke(changed);
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showEditor;
 
         public bool IsEditMode
         {
@@ -835,26 +951,34 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _renderImage ?? (_renderImage = new RelayCommand(() =>
                 {
-                    Render();
-                });
+                    try
+                    {
+                        Render();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }));
             }
         }
+        private RelayCommand _renderImage;
 
         public bool AutoRender
         {
             get
             {
-                return _autorender;
+                return _autoRender;
             }
             set
             {
-                _autorender = value;
+                _autoRender = value;
                 RaisePropertyChanged("AutoRender");
             }
         }
-        private bool _autorender;
+        private bool _autoRender;
 
         public string Name
         {
@@ -897,12 +1021,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 throw new ArgumentNullException("diagram");
             }
 
-            AutoRender = autoRender;
-            Name = name;
-            Diagram = diagram;
+            _autoRender = autoRender;
+            _name = name;
+            _diagram = diagram;
 
             Style = new ObservableDiagramStyle(diagram.Style);
             Style.PropertyChanged += Style_PropertyChanged;
+
+            if (AutoRender)
+            {
+                Render();
+            }
         }
 
         private void Style_PropertyChanged(object sender, PropertyChangedEventArgs e)

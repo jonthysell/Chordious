@@ -79,9 +79,10 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                return ImageUtils.GetBackgrounds();
+                return _renderBackgrounds ?? (_renderBackgrounds = ImageUtils.GetBackgrounds());
             }
         }
+        private ObservableCollection<string> _renderBackgrounds;
 
         private Background RenderBackground
         {
@@ -89,7 +90,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 Background result;
 
-                if (Enum.TryParse<Background>(GetSetting("app.renderbackground"), out result))
+                if (Enum.TryParse(GetSetting("app.renderbackground"), out result))
                 {
                     return result;
                 }
@@ -135,9 +136,10 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                return ImageUtils.GetBackgrounds();
+                return _editorRenderBackgrounds ?? (_editorRenderBackgrounds = ImageUtils.GetBackgrounds());
             }
         }
+        private ObservableCollection<string> _editorRenderBackgrounds;
 
         private Background EditorRenderBackground
         {
@@ -145,7 +147,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 Background result;
 
-                if (Enum.TryParse<Background>(GetSetting("diagrameditor.renderbackground"), out result))
+                if (Enum.TryParse(GetSetting("diagrameditor.renderbackground"), out result))
                 {
                     return result;
                 }
@@ -211,9 +213,10 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                return GetReleaseChannels();
+                return _releaseChannels ?? (_releaseChannels = GetReleaseChannels());
             }
         }
+        private ObservableCollection<string> _releaseChannels;
 
         private ReleaseChannel ReleaseChannel
         {
@@ -221,7 +224,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 ReleaseChannel result;
 
-                if (Enum.TryParse<ReleaseChannel>(GetSetting("app.releasechannel"), out result))
+                if (Enum.TryParse(GetSetting("app.releasechannel"), out result))
                 {
                     return result;
                 }
@@ -257,7 +260,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 bool result;
 
-                if (Boolean.TryParse(GetSetting("app.checkupdateonstart"), out result))
+                if (bool.TryParse(GetSetting("app.checkupdateonstart"), out result))
                 {
                     return result;
                 }
@@ -322,7 +325,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                return new RelayCommand(async () =>
+                return _checkForUpdatesAsync ?? (_checkForUpdatesAsync = new RelayCommand(async () =>
                 {
                     try
                     {
@@ -340,10 +343,11 @@ namespace com.jonthysell.Chordious.WPF
                     }
                 }, () =>
                 {
-                    return !UpdateUtils.IsCheckingforUpdate;
-                });
+                    return UpdateUtils.UpdateEnabled;
+                }));
             }
         }
+        private RelayCommand _checkForUpdatesAsync;
 
         #endregion
 

@@ -26,8 +26,6 @@
 
 using System;
 
-using GalaSoft.MvvmLight.Command;
-
 using com.jonthysell.Chordious.Core.ViewModel.Resources;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
@@ -66,74 +64,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public override RelayCommand Accept
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        Callback(Name, GetIntervalArray());
-                        RequestClose?.Invoke();
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                }, () =>
-                {
-                    return IsValid();
-                });
-            }
-        }
-
-        public override RelayCommand Cancel
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        RequestClose?.Invoke();
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                });
-            }
-        }
-
-        public event Action RequestClose;
-
-        public Action<string, int[]> Callback
-        {
-            get
-            {
-                return _callback;
-            }
-            private set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-
-                _callback = value;
-            }
-        }
         private Action<string, int[]> _callback;
 
         public ScaleEditorViewModel(bool isNew, Action<string, int[]> callback) : base(isNew)
         {
-            Callback = callback;
+            if (null == callback)
+            {
+                throw new ArgumentNullException("callback");
+            }
+
+            _callback = callback;
         }
 
         public ScaleEditorViewModel(bool isNew, string name, int[] intervals, Action<string, int[]> callback) : base(isNew, name, intervals)
         {
-            Callback = callback;
+            if (null == callback)
+            {
+                throw new ArgumentNullException("callback");
+            }
+
+            _callback = callback;
+        }
+
+        protected override void OnAccept()
+        {
+            _callback(Name, GetIntervalArray());
         }
     }
 }

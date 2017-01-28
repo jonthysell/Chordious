@@ -92,7 +92,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     ExceptionUtils.HandleException(ex);
                 }
                 RaisePropertyChanged("CollectionName");
-                RaisePropertyChanged("Accept");
+                Accept.RaiseCanExecuteChanged();
             }
         }
         private string _collectionName;
@@ -110,7 +110,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _accept ?? (_accept = new RelayCommand(() =>
                 {
                     try
                     {
@@ -124,15 +124,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return !string.IsNullOrWhiteSpace(CollectionName);
-                });
+                }));
             }
         }
+        private RelayCommand _accept;
 
         public RelayCommand Cancel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _cancel ?? (_cancel = new RelayCommand(() =>
                 {
                     try
                     {
@@ -142,11 +143,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _cancel;
 
-        public event Action RequestClose;
+        public Action RequestClose;
 
         public Action<string, bool> Callback { get; private set; }
 
@@ -164,9 +166,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 defaultCollectionName = AppVM.UserConfig.DiagramLibrary.GetNewCollectionName();
             }
 
+            defaultCollectionName = defaultCollectionName.Trim();
+
             ObservableEnums.SortedInsert(CollectionNames, defaultCollectionName);
 
-            CollectionName = defaultCollectionName;
+            _collectionName = defaultCollectionName;
         }
 
         private void ProcessClose()

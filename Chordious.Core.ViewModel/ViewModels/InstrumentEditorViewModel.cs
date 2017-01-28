@@ -77,7 +77,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 _name = value;
                 RaisePropertyChanged("Name");
-                RaisePropertyChanged("Accept");
+                Accept.RaiseCanExecuteChanged();
             }
         }
         private string _name;
@@ -120,31 +120,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     ExceptionUtils.HandleException(ex);
                 }
                 RaisePropertyChanged("NumStrings");
-                RaisePropertyChanged("Accept");
+                Accept.RaiseCanExecuteChanged();
             }
         }
-        private int _numStrings;
+        private int _numStrings = 1;
 
-        public bool IsNew
-        {
-            get
-            {
-                return _isNew;
-            }
-            private set
-            {
-                _isNew = value;
-                RaisePropertyChanged("IsNew");
-                RaisePropertyChanged("Title");
-            }
-        }
-        private bool _isNew;
+        public bool IsNew { get; private set; }
 
         public RelayCommand Accept
         {
             get
             {
-                return new RelayCommand(() =>
+                return _accept ?? (_accept = new RelayCommand(() =>
                 {
                     try
                     {
@@ -158,15 +145,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return IsValid();
-                });
+                }));
             }
         }
+        private RelayCommand _accept;
 
         public RelayCommand Cancel
         {
             get
             {
-                return new RelayCommand(() =>
+                return (_cancel = new RelayCommand(() =>
                 {
                     try
                     {
@@ -176,11 +164,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _cancel;
 
-        public event Action RequestClose;
+        public Action RequestClose;
 
         public Action<string, int> Callback { get; private set; }
 
@@ -193,7 +182,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             IsNew = isNew;
             Callback = callback;
-            NumStrings = 1;
         }
 
         private bool IsValid()

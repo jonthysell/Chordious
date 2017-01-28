@@ -81,7 +81,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
                 scaleFinderOptions = TestScaleFinderOptions.Parse(vals[0]);
 
-                allowExtras = Boolean.Parse(vals[1]);
+                allowExtras = bool.Parse(vals[1]);
 
                 List<IScaleFinderResult> expectedResult = null;
 
@@ -164,8 +164,8 @@ namespace com.jonthysell.Chordious.CoreTest
                 int numFrets = int.Parse(vals[4]);
                 int maxFret = int.Parse(vals[5]);
                 int maxReach = int.Parse(vals[6]);
-                bool allowOpenStrings = Boolean.Parse(vals[7]);
-                bool allowMutedStrings = Boolean.Parse(vals[8]);
+                bool allowOpenStrings = bool.Parse(vals[7]);
+                bool allowMutedStrings = bool.Parse(vals[8]);
 
                 return new TestScaleFinderOptions { Instrument = instrument, Tuning = tuning, Scale = scale, RootNote = rootNote, NumFrets = numFrets, MaxFret = maxFret, MaxReach = maxReach, AllowOpenStrings = allowOpenStrings, AllowMutedStrings = allowMutedStrings };
             }

@@ -423,7 +423,7 @@ namespace com.jonthysell.Chordious.Core
             string rawResult;
             if (TryGet(key, out rawResult, recursive))
             {
-                return Boolean.TryParse(rawResult, out result);
+                return bool.TryParse(rawResult, out result);
             }
 
             result = default(bool);

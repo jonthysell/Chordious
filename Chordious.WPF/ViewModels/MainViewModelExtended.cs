@@ -57,7 +57,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 bool result;
 
-                if (Boolean.TryParse(AppVM.GetSetting("app.firstrun"), out result))
+                if (bool.TryParse(AppVM.GetSetting("app.firstrun"), out result))
                 {
                     return result;
                 }
@@ -73,7 +73,7 @@ namespace com.jonthysell.Chordious.WPF
 
         public MainViewModelExtended() : base()
         {
-            IsIdle = true;
+            _isIdle = true;
         }
 
         public void OnLoaded()
@@ -116,14 +116,21 @@ namespace com.jonthysell.Chordious.WPF
             {
                 if (UpdateUtils.UpdateEnabled)
                 {
-                    Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.FirstRunUpdateEnabledPrompt, (enableAutoUpdate) =>
+                    Messenger.Default.Send(new ConfirmationMessage(Strings.FirstRunUpdateEnabledPrompt, (enableAutoUpdate) =>
                     {
-                        UpdateUtils.CheckUpdateOnStart = enableAutoUpdate;
+                        try
+                        {
+                            UpdateUtils.CheckUpdateOnStart = enableAutoUpdate;
+                        }
+                        catch (Exception ex)
+                        {
+                            ExceptionUtils.HandleException(ex);
+                        }
                     }));
                 }
                 else
                 {
-                    Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.FirstRunMessage));
+                    Messenger.Default.Send(new ChordiousMessage(Strings.FirstRunMessage));
                 }
             });
         }

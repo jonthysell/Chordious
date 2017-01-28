@@ -245,7 +245,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _cancel ?? (_cancel = new RelayCommand(() =>
                 {
                     try
                     {
@@ -255,21 +255,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _cancel;
 
-        public event Action RequestClose;
+        public Action RequestClose;
 
         public ConfigViewModelBase()
         {
-            IncludeSettings = true;
-            IncludeStyles = true;
-            IncludeInstruments = true;
-            IncludeChordQualities = true;
-            IncludeScales = true;
-            IncludeLibrary = true;
-            IsIdle = true;
+            _includeSettings = true;
+            _includeStyles = true;
+            _includeInstruments = true;
+            _includeChordQualities = true;
+            _includeScales = true;
+            _includeLibrary = true;
+            _isIdle = true;
         }
 
         protected void OnRequestClose()

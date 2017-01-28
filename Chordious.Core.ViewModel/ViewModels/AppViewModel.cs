@@ -226,19 +226,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private GetConfigStream _saveUserConfigStream;
 
-        public string UserConfigPath
-        {
-            get
-            {
-                return _userConfigPath;
-            }
-            private set
-            {
-                _userConfigPath = value;
-                RaisePropertyChanged("UserConfigPath");
-            }
-        }
-        private string _userConfigPath = "";
+        public string UserConfigPath { get; private set; } = "";
 
         private Exception _userConfigLoadException = null;
         private Action<Exception> _userConfigLoadExceptionCallback = null;

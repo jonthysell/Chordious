@@ -101,11 +101,18 @@ namespace com.jonthysell.Chordious.WPF
                         string message = string.Format(Strings.ChordiousUpdateAvailableUpdateNowMessageFormat, latestVersion.Version);
                         AppVM.DoOnUIThread(() =>
                         {
-                            Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (confirmed) =>
+                            Messenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
                             {
-                                if (confirmed)
+                                try
                                 {
-                                    Update(latestVersion);
+                                    if (confirmed)
+                                    {
+                                        Update(latestVersion);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    ExceptionUtils.HandleException(new UpdateException(ex));
                                 }
                             }));
                         });
@@ -121,7 +128,7 @@ namespace com.jonthysell.Chordious.WPF
                     {
                         AppVM.DoOnUIThread(() =>
                         {
-                            Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.ChordiousUpdateNotAvailableMessage));
+                            Messenger.Default.Send(new ChordiousMessage(Strings.ChordiousUpdateNotAvailableMessage));
                         });
                     }
                 }
@@ -143,7 +150,7 @@ namespace com.jonthysell.Chordious.WPF
                 throw new ArgumentNullException("installerInfo");
             }
 
-            if (!UpdateUtils.IsConnectedToInternet)
+            if (!IsConnectedToInternet)
             {
                 throw new UpdateNoInternetException();
             }
@@ -183,7 +190,7 @@ namespace com.jonthysell.Chordious.WPF
 
         public static List<InstallerInfo> GetLatestInstallerInfos()
         {
-            if (!UpdateUtils.IsConnectedToInternet)
+            if (!IsConnectedToInternet)
             {
                 throw new UpdateNoInternetException();
             }
@@ -236,7 +243,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             ReleaseChannel result;
 
-            if (Enum.TryParse<ReleaseChannel>(AppVM.GetSetting("app.releasechannel"), out result))
+            if (Enum.TryParse(AppVM.GetSetting("app.releasechannel"), out result))
             {
                 return result;
             }
@@ -250,7 +257,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 bool result;
 
-                if (Boolean.TryParse(AppVM.GetSetting("app.updateenabled"), out result))
+                if (bool.TryParse(AppVM.GetSetting("app.updateenabled"), out result))
                 {
                     return result;
                 }
@@ -265,7 +272,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 bool result;
 
-                if (Boolean.TryParse(AppVM.GetSetting("app.checkupdateonstart"), out result))
+                if (bool.TryParse(AppVM.GetSetting("app.checkupdateonstart"), out result))
                 {
                     return result;
                 }

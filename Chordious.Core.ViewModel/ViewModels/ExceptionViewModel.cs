@@ -87,7 +87,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _accept ?? (_accept = new RelayCommand(() =>
                 {
                     try
                     {
@@ -97,31 +97,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _accept;
 
-        internal Exception Exception
-        {
-            get
-            {
-                return _exception;
-            }
-            private set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-                _exception = value;
-            }
-        }
-        private Exception _exception;
+        internal Exception Exception { get; private set; }
 
-        public event Action RequestClose;
+        public Action RequestClose;
 
         public ExceptionViewModel(Exception exception)
         {
+            if (null == exception)
+            {
+                throw new ArgumentNullException("exception");
+            }
+
             Exception = exception;
         }
     }

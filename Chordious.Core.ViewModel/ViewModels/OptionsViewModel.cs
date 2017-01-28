@@ -119,31 +119,38 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showAdvancedSettings ?? (_showAdvancedSettings = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsShowAdvancedSettingsPromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsShowAdvancedSettingsPromptMessage, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                Messenger.Default.Send<ShowAdvancedDataMessage>(new ShowAdvancedDataMessage(SettingsBuffer, "", (itemsChanged) =>
+                                if (confirmed)
                                 {
-                                    try
+                                    Messenger.Default.Send(new ShowAdvancedDataMessage(SettingsBuffer, "", (itemsChanged) =>
                                     {
-                                        if (itemsChanged)
+                                        try
                                         {
-                                            Dirty = true;
-                                            RefreshProperties();
-                                            AdvancedSettingsClean = true;
+                                            if (itemsChanged)
+                                            {
+                                                Dirty = true;
+                                                RefreshProperties();
+                                                AdvancedSettingsClean = true;
+                                            }
                                         }
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        ExceptionUtils.HandleException(new AdvancedDataValidationError(ex));
-                                        AdvancedSettingsClean = false;
-                                    }
-                                }));
+                                        catch (Exception ex)
+                                        {
+                                            ExceptionUtils.HandleException(new AdvancedDataValidationError(ex));
+                                            AdvancedSettingsClean = false;
+                                        }
+                                    }));
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -151,9 +158,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showAdvancedSettings;
 
         public string ResetUserSettingsLabel
         {
@@ -175,16 +183,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _resetUserSettings ?? (_resetUserSettings = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsResetUserSettingsPromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetUserSettingsPromptMessage, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                ClearUserSettings();
-                                RefreshProperties();
+                                if (confirmed)
+                                {
+                                    ClearUserSettings();
+                                    RefreshProperties();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -192,9 +207,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _resetUserSettings;
 
         public string ResetConfirmationsLabel
         {
@@ -216,16 +232,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _resetConfirmations ?? (_resetConfirmations = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsResetConfirmationsPromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetConfirmationsPromptMessage, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                ClearConfirmations();
-                                RefreshProperties();
+                                if (confirmed)
+                                {
+                                    ClearConfirmations();
+                                    RefreshProperties();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -233,9 +256,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _resetConfirmations;
 
         #endregion
 
@@ -314,31 +338,38 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showAdvancedStyle ?? (_showAdvancedStyle = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsShowAdvancedStylePromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsShowAdvancedStylePromptMessage, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                Messenger.Default.Send<ShowAdvancedDataMessage>(new ShowAdvancedDataMessage(StyleBuffer, "", (itemsChanged) =>
+                                if (confirmed)
                                 {
-                                    try
+                                    Messenger.Default.Send(new ShowAdvancedDataMessage(StyleBuffer, "", (itemsChanged) =>
                                     {
-                                        if (itemsChanged)
+                                        try
                                         {
-                                            Dirty = true;
-                                            RefreshProperties();
-                                            AdvancedStyleClean = true;
+                                            if (itemsChanged)
+                                            {
+                                                Dirty = true;
+                                                RefreshProperties();
+                                                AdvancedStyleClean = true;
+                                            }
                                         }
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        ExceptionUtils.HandleException(new AdvancedDataValidationError(ex));
-                                        AdvancedStyleClean = false;
-                                    }
-                                }));
+                                        catch (Exception ex)
+                                        {
+                                            ExceptionUtils.HandleException(new AdvancedDataValidationError(ex));
+                                            AdvancedStyleClean = false;
+                                        }
+                                    }));
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -346,9 +377,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showAdvancedStyle;
 
         public string ResetUserStylesLabel
         {
@@ -370,16 +402,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _resetUserStyles ?? (_resetUserStyles = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsResetUserStylesPromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetUserStylesPromptMessage, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                ClearUserStyles();
-                                RefreshProperties();
+                                if (confirmed)
+                                {
+                                    ClearUserStyles();
+                                    RefreshProperties();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -387,9 +426,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _resetUserStyles;
 
         #endregion
 
@@ -431,19 +471,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showInstrumentManager ?? (_showInstrumentManager = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowInstrumentManagerMessage>(new ShowInstrumentManagerMessage());
+                        Messenger.Default.Send(new ShowInstrumentManagerMessage());
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showInstrumentManager;
 
         public string ShowChordQualityManagerLabel
         {
@@ -465,19 +506,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showChordQualityManager ?? (_showChordQualityManager = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowChordQualityManagerMessage>(new ShowChordQualityManagerMessage());
+                        Messenger.Default.Send(new ShowChordQualityManagerMessage());
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showChordQualityManager;
 
         public string ShowScaleManagerLabel
         {
@@ -499,19 +541,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showScaleManager ?? (_showScaleManager = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowScaleManagerMessage>(new ShowScaleManagerMessage());
+                        Messenger.Default.Send(new ShowScaleManagerMessage());
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showScaleManager;
 
         public string FindersSearchDefaultsGroupLabel
         {
@@ -541,16 +584,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _resetChordFinderDefaults ?? (_resetChordFinderDefaults = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsResetChordFinderDefaultsPromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetChordFinderDefaultsPromptMessage, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                ResetByPrefix("chordfinder");
-                                RefreshProperties();
+                                if (confirmed)
+                                {
+                                    ResetByPrefix("chordfinder");
+                                    RefreshProperties();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -558,9 +608,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _resetChordFinderDefaults;
 
         public string ResetScaleFinderDefaultsLabel
         {
@@ -582,16 +633,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _resetScaleFinderDefaults ?? (_resetScaleFinderDefaults = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.OptionsResetScaleFinderDefaultsPromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetScaleFinderDefaultsPromptMessage, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                ResetByPrefix("scalefinder");
-                                RefreshProperties();
+                                if (confirmed)
+                                {
+                                    ResetByPrefix("scalefinder");
+                                    RefreshProperties();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -599,9 +657,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _resetScaleFinderDefaults;
 
         #endregion
 
@@ -643,17 +702,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showConfigImport ?? (_showConfigImport = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<PromptForConfigInputStreamMessage>(new PromptForConfigInputStreamMessage((inputStream) =>
+                        Messenger.Default.Send(new PromptForConfigInputStreamMessage((inputStream) =>
                         {
                             try
                             {
                                 if (null != inputStream)
                                 {
-                                    Messenger.Default.Send<ShowConfigImportMessage>(new ShowConfigImportMessage(inputStream));
+                                    Messenger.Default.Send(new ShowConfigImportMessage(inputStream));
                                 }
                             }
                             catch (Exception ex)
@@ -666,9 +725,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showConfigImport;
 
         public string ShowConfigExportLabel
         {
@@ -690,19 +750,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showConfigExport ?? (_showConfigExport = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowConfigExportMessage>(new ShowConfigExportMessage());
+                        Messenger.Default.Send(new ShowConfigExportMessage());
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showConfigExport;
 
         public string ConfigLegacyGroupLabel
         {
@@ -732,31 +793,46 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _legacyImport ?? (_legacyImport = new RelayCommand(() =>
                 {
                     try
                     {
                         DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
-                        Messenger.Default.Send<PromptForLegacyImportMessage>(new PromptForLegacyImportMessage((fileName, inputStream) =>
+                        Messenger.Default.Send(new PromptForLegacyImportMessage((fileName, inputStream) =>
                         {
-                            string proposedName = string.IsNullOrWhiteSpace(fileName) ? library.GetNewCollectionName() : fileName.Trim();
-                            Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(Strings.OptionsLegacyImportNewCollectionPrompt, proposedName, (name) =>
+                            try
                             {
-                                DiagramCollection importedCollection = ChordDocument.Load(library.Style, inputStream);
-                                DiagramCollection newCollection = library.Add(name);
+                                string proposedName = string.IsNullOrWhiteSpace(fileName) ? library.GetNewCollectionName() : fileName.Trim();
+                                Messenger.Default.Send(new PromptForTextMessage(Strings.OptionsLegacyImportNewCollectionPrompt, proposedName, (name) =>
+                                {
+                                    try
+                                    {
+                                        DiagramCollection importedCollection = ChordDocument.Load(library.Style, inputStream);
+                                        DiagramCollection newCollection = library.Add(name);
 
-                                newCollection.Add(importedCollection);
-                                ItemsChanged = true;
-                            }));
+                                        newCollection.Add(importedCollection);
+                                        ItemsChanged = true;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        ExceptionUtils.HandleException(ex);
+                                    }
+                                }));
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _legacyImport;
 
         #endregion
 
@@ -764,7 +840,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _apply ?? (_apply = new RelayCommand(() =>
                 {
                     try
                     {
@@ -777,15 +853,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return Dirty && AdvancedSettingsClean && AdvancedStyleClean;
-                });
+                }));
             }
         }
+        private RelayCommand _apply;
 
         public RelayCommand Accept
         {
             get
             {
-                return new RelayCommand(() =>
+                return _accept ?? (_accept = new RelayCommand(() =>
                 {
                     try
                     {
@@ -799,15 +876,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return AdvancedSettingsClean && AdvancedStyleClean;
-                });
+                }));
             }
         }
+        private RelayCommand _accept;
 
         public RelayCommand Cancel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _cancel ?? (_cancel = new RelayCommand(() =>
                 {
                     try
                     {
@@ -818,11 +896,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _cancel;
 
-        public event Action RequestClose;
+        public Action RequestClose;
 
         public bool ApplyChangesOnClose
         {
@@ -849,7 +928,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 _dirty = value;
                 RaisePropertyChanged("Dirty");
                 RaisePropertyChanged("Title");
-                RaisePropertyChanged("Apply");
+                Apply.RaiseCanExecuteChanged();
             }
         }
         private bool _dirty = false;
@@ -878,8 +957,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 _advancedSettingsClean = value;
                 RaisePropertyChanged("AdvancedSettingsClean");
-                RaisePropertyChanged("Accept");
-                RaisePropertyChanged("Apply");
+                Accept.RaiseCanExecuteChanged();
+                Apply.RaiseCanExecuteChanged();
             }
         }
         private bool _advancedSettingsClean;
@@ -894,8 +973,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 _advancedStyleClean = value;
                 RaisePropertyChanged("AdvancedStyleClean");
-                RaisePropertyChanged("Accept");
-                RaisePropertyChanged("Apply");
+                Accept.RaiseCanExecuteChanged();
+                Apply.RaiseCanExecuteChanged();
             }
         }
         private bool _advancedStyleClean;
@@ -908,8 +987,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             SettingsBuffer = new ChordiousSettings(AppVM.UserConfig.ChordiousSettings, "Options");
             StyleBuffer = new DiagramStyle(AppVM.UserConfig.DiagramStyle, "Options");
 
-            AdvancedSettingsClean = true;
-            AdvancedStyleClean = true;
+            _advancedSettingsClean = true;
+            _advancedStyleClean = true;
         }
 
         public bool ProcessClose()

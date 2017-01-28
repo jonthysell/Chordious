@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 
@@ -46,20 +47,30 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _accept ?? (_accept = new RelayCommand(() =>
                 {
                     try
                     {
                         IsIdle = false;
                         if (IncludeLibrary && !IncludeStyles)
                         {
-                            Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.ConfigExportLibraryWithoutStylesPromptMessage, (confirmed) =>
+                            Messenger.Default.Send(new ConfirmationMessage(Strings.ConfigExportLibraryWithoutStylesPromptMessage, (confirmed) =>
                             {
-                                if (confirmed)
+                                try
                                 {
-                                    PromptForExport();
+                                    if (confirmed)
+                                    {
+                                        PromptForExport();
+                                    }
                                 }
-                                IsIdle = true;
+                                catch (Exception ex)
+                                {
+                                    ExceptionUtils.HandleException(ex);
+                                }
+                                finally
+                                {
+                                    IsIdle = true;
+                                }
                             }));
                         }
                         else
@@ -72,9 +83,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _accept;
 
         public ConfigExportViewModel() : base()
         {
@@ -83,7 +95,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         private void PromptForExport()
         {
             ConfigParts configParts = GetConfigParts();
-            Messenger.Default.Send<PromptForConfigOutputStreamMessage>(new PromptForConfigOutputStreamMessage((outputStream) =>
+            Messenger.Default.Send(new PromptForConfigOutputStreamMessage((outputStream) =>
             {
                 try
                 {

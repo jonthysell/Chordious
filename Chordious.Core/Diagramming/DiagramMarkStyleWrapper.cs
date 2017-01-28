@@ -28,6 +28,8 @@ using System;
 
 namespace com.jonthysell.Chordious.Core
 {
+    public delegate void MarkTypeChangedEventHandler(object sender, EventArgs e);
+
     public class DiagramMarkStyleWrapper
     {
         public DiagramMarkType MarkType
@@ -407,7 +409,7 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramStyle Style { get; private set; }
 
-        public event Action<DiagramMarkType> MarkTypeChanged;
+        public event MarkTypeChangedEventHandler MarkTypeChanged;
 
         public DiagramMarkStyleWrapper(DiagramStyle style, DiagramMarkType markType = DiagramMarkType.Normal)
         {
@@ -440,7 +442,7 @@ namespace com.jonthysell.Chordious.Core
 
         private void OnMarkTypeChanged()
         {
-            MarkTypeChanged?.Invoke(MarkType);
+            MarkTypeChanged?.Invoke(this, new EventArgs());
         }
     }
 }

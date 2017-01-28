@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using GalaSoft.MvvmLight.Command;
 
 using com.jonthysell.Chordious.Core.ViewModel.Resources;
 
@@ -91,80 +90,37 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 _abbreviation = value;
                 RaisePropertyChanged("Abbreviation");
-                RaisePropertyChanged("Accept");
+                Accept.RaiseCanExecuteChanged();
             }
         }
         private string _abbreviation;
 
-        public override RelayCommand Accept
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        Callback(Name, Abbreviation, GetIntervalArray());
-                        RequestClose?.Invoke();
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                }, () =>
-                {
-                    return IsValid();
-                });
-            }
-        }
-
-        public override RelayCommand Cancel
-        {
-            get
-            {
-                return new RelayCommand(() =>
-                {
-                    try
-                    {
-                        RequestClose?.Invoke();
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionUtils.HandleException(ex);
-                    }
-                });
-            }
-        }
-
-        public event Action RequestClose;
-
-        public Action<string, string, int[]> Callback
-        {
-            get
-            {
-                return _callback;
-            }
-            private set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-
-                _callback = value;
-            }
-        }
         private Action<string, string, int[]> _callback;
 
         public ChordQualityEditorViewModel(bool isNew, Action<string, string, int[]> callback) : base(isNew)
         {
-            Callback = callback;
+            if (null == callback)
+            {
+                throw new ArgumentNullException("callback");
+            }
+
+            _callback = callback;
         }
 
         public ChordQualityEditorViewModel(bool isNew, string name, string abbreviation, int[] intervals, Action<string, string, int[]> callback) : base(isNew, name, intervals)
         {
-            Abbreviation = abbreviation;
-            Callback = callback;
+            if (null == callback)
+            {
+                throw new ArgumentNullException("callback");
+            }
+
+            _abbreviation = abbreviation;
+            _callback = callback;
+        }
+
+        protected override void OnAccept()
+        {
+            _callback(Name, Abbreviation, GetIntervalArray());
         }
     }
 }

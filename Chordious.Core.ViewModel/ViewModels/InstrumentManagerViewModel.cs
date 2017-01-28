@@ -95,11 +95,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     RaisePropertyChanged("SelectedInstrument");
                     RaisePropertyChanged("InstrumentIsSelected");
-                    RaisePropertyChanged("EditInstrument");
+                    EditInstrument.RaiseCanExecuteChanged();
                     RaisePropertyChanged("EditInstrumentLabel");
-                    RaisePropertyChanged("DeleteInstrument");
+                    DeleteInstrument.RaiseCanExecuteChanged();
                     RaisePropertyChanged("DeleteInstrumentLabel");
-                    RaisePropertyChanged("AddTuning");
+                    AddTuning.RaiseCanExecuteChanged();
                 }
             }
         }
@@ -255,9 +255,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     RaisePropertyChanged("SelectedTuning");
                     RaisePropertyChanged("TuningIsSelected");
-                    RaisePropertyChanged("EditTuning");
+                    EditTuning.RaiseCanExecuteChanged();
                     RaisePropertyChanged("EditTuningLabel");
-                    RaisePropertyChanged("DeleteTuning");
+                    DeleteTuning.RaiseCanExecuteChanged();
                     RaisePropertyChanged("DeleteTuningLabel");
                 }
             }
@@ -300,23 +300,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _addInstrument ?? (_addInstrument= new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowInstrumentEditorMessage>(new ShowInstrumentEditorMessage(true, (name, numStrings) =>
+                        Messenger.Default.Send(new ShowInstrumentEditorMessage(true, (name, numStrings) =>
                         {
-                            Instrument addedInstrument = AppVM.UserConfig.Instruments.Add(name, numStrings);
-                            Refresh(addedInstrument);
+                            try
+                            {
+                                Instrument addedInstrument = AppVM.UserConfig.Instruments.Add(name, numStrings);
+                                Refresh(addedInstrument);
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _addInstrument;
 
         #endregion
 
@@ -347,14 +355,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _editInstrument ?? (_editInstrument = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowInstrumentEditorMessage>(new ShowInstrumentEditorMessage(false, (name, numStrings) =>
+                        Messenger.Default.Send(new ShowInstrumentEditorMessage(false, (name, numStrings) =>
                         {
-                            SelectedInstrument.Instrument.Name = name;
-                            Refresh(SelectedInstrument.Instrument);
+                            try
+                            {
+                                SelectedInstrument.Instrument.Name = name;
+                                Refresh(SelectedInstrument.Instrument);
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }, SelectedInstrument.Name, SelectedInstrument.NumStrings));
                     }
                     catch (Exception ex)
@@ -364,9 +379,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return InstrumentIsSelected && SelectedInstrument.CanEdit;
-                });
+                }));
             }
         }
+        private RelayCommand _editInstrument;
 
         #endregion
 
@@ -397,11 +413,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _deleteInstrument ?? (_deleteInstrument = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(string.Format(Strings.InstrumentManagerDeleteInstrumentPromptFormat, SelectedInstrument.Name), (confirm) =>
+                        Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.InstrumentManagerDeleteInstrumentPromptFormat, SelectedInstrument.Name), (confirm) =>
                         {
                             try
                             {
@@ -424,9 +440,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return InstrumentIsSelected && SelectedInstrument.CanEdit;
-                });
+                }));
             }
         }
+        private RelayCommand _deleteInstrument;
 
         #endregion
 
@@ -452,15 +469,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _addTuning ?? (_addTuning = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowTuningEditorMessage>(new ShowTuningEditorMessage(SelectedInstrument, (accepted) =>
+                        Messenger.Default.Send(new ShowTuningEditorMessage(SelectedInstrument, (accepted) =>
                         {
-                            if (accepted)
+                            try
                             {
-                                Refresh(SelectedInstrument.Instrument);
+                                if (accepted)
+                                {
+                                    Refresh(SelectedInstrument.Instrument);
+                                }
+                            }
+                            catch(Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -471,9 +495,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return InstrumentIsSelected && SelectedInstrument.CanEdit;
-                });
+                }));
             }
         }
+        private RelayCommand _addTuning;
 
         #endregion
 
@@ -504,15 +529,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _editTuning ?? (_editTuning = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowTuningEditorMessage>(new ShowTuningEditorMessage(SelectedTuning, (accepted) =>
+                        Messenger.Default.Send(new ShowTuningEditorMessage(SelectedTuning, (accepted) =>
                         {
-                            if (accepted)
+                            try
                             {
-                                Refresh(SelectedInstrument.Instrument, SelectedTuning.Tuning);
+                                if (accepted)
+                                {
+                                    Refresh(SelectedInstrument.Instrument, SelectedTuning.Tuning);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }));
                     }
@@ -523,9 +555,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return InstrumentIsSelected && SelectedInstrument.CanEdit && TuningIsSelected && SelectedTuning.CanEdit;
-                });
+                }));
             }
         }
+        private RelayCommand _editTuning;
 
         #endregion
 
@@ -556,11 +589,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _deleteTuning ?? (_deleteTuning = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(string.Format(Strings.InstrumentManagerDeleteTuningPromptFormat, SelectedTuning.Name), (confirm) =>
+                        Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.InstrumentManagerDeleteTuningPromptFormat, SelectedTuning.Name), (confirm) =>
                         {
                             try
                             {
@@ -583,15 +616,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return InstrumentIsSelected && SelectedInstrument.CanEdit && TuningIsSelected && SelectedTuning.CanEdit;
-                });
+                }));
             }
         }
+        private RelayCommand _deleteTuning;
 
         #endregion
 
         public InstrumentManagerViewModel()
         {
-            Refresh();
+            _defaultInstruments = AppVM.GetDefaultInstruments();
+            _userInstruments = AppVM.GetUserInstruments();
         }
 
         internal void Refresh(Instrument selectedInstrument = null, Tuning selectedTuning = null)

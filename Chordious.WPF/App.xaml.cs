@@ -81,9 +81,9 @@ namespace com.jonthysell.Chordious.WPF
                 return new FileStream(userFile, FileMode.Create);
             },
             ImageUtils.SvgTextToBitmapImage, (action) =>
-                {
-                    Dispatcher.Invoke(action);
-                }
+            {
+                Dispatcher.Invoke(action);
+            }
             , GetFonts
             , userFile);
 
@@ -159,7 +159,7 @@ namespace com.jonthysell.Chordious.WPF
         public void HandleUserConfigLoadException(Exception ex)
         {
             string userFile = UserConfigPath;
-            Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.ResetAndBackupUserConfigConfirmationMessage, (confirmed) =>
+            Messenger.Default.Send(new ConfirmationMessage(Strings.ResetAndBackupUserConfigConfirmationMessage, (confirmed) =>
             {
                 if (!confirmed) // No, exit app
                 {

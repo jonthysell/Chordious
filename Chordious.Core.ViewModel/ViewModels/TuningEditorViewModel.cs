@@ -78,7 +78,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 _name = value;
                 RaisePropertyChanged("Name");
-                RaisePropertyChanged("Accept");
+                Accept.RaiseCanExecuteChanged();
             }
         }
         private string _name;
@@ -99,40 +99,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<ObservableNote> RootNotes
-        {
-            get
-            {
-                return _notes;
-            }
-            private set
-            {
-                _notes = value;
-                RaisePropertyChanged("RootNotes");
-            }
-        }
-        private ObservableCollection<ObservableNote> _notes;
+        public ObservableCollection<ObservableNote> RootNotes { get; private set; }
 
-        public bool IsNew
-        {
-            get
-            {
-                return _isNew;
-            }
-            private set
-            {
-                _isNew = value;
-                RaisePropertyChanged("IsNew");
-                RaisePropertyChanged("Title");
-            }
-        }
-        private bool _isNew;
+        public bool IsNew { get; private set; }
 
         public RelayCommand Accept
         {
             get
             {
-                return new RelayCommand(() =>
+                return _accept ?? (_accept = new RelayCommand(() =>
                 {
                     try
                     {
@@ -148,15 +123,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return IsValid();
-                });
+                }));
             }
         }
+        private RelayCommand _accept;
 
         public RelayCommand Cancel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _cancel ?? (_cancel = new RelayCommand(() =>
                 {
                     try
                     {
@@ -166,13 +142,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _cancel;
 
         public bool Accepted { get; private set; }
 
-        public event Action RequestClose;
+        public Action RequestClose;
 
         public Action<string, ObservableCollection<ObservableNote>> Callback { get; private set; }
 

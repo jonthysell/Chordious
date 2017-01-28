@@ -78,7 +78,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 Background result;
 
-                if (Enum.TryParse<Background>(AppVM.GetSetting("diagrameditor.renderbackground"), out result))
+                if (Enum.TryParse(AppVM.GetSetting("diagrameditor.renderbackground"), out result))
                 {
                     return result;
                 }

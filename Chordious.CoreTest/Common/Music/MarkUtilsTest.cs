@@ -85,7 +85,7 @@ namespace com.jonthysell.Chordious.CoreTest
                 marks = TestUtils.ParseIntArray(vals[0]);
 
                 barreTypeOption = (BarreTypeOption)Enum.Parse(typeof(BarreTypeOption), vals[1]);
-                rightToLeft = Boolean.Parse(vals[2]);
+                rightToLeft = bool.Parse(vals[2]);
 
                 ExpectedResult = BarrePosition.Parse(vals[3]);
             }

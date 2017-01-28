@@ -4044,22 +4044,30 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _showEditor ?? (_showEditor = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowDiagramStyleEditorMessage>(new ShowDiagramStyleEditorMessage(this, (changed) =>
+                        Messenger.Default.Send(new ShowDiagramStyleEditorMessage(this, (changed) =>
                         {
-                            PostEditCallback?.Invoke(changed);
+                            try
+                            {
+                                PostEditCallback?.Invoke(changed);
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _showEditor;
 
         #endregion
 
@@ -4085,16 +4093,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _reset ?? (_reset = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(Strings.DiagramStyleResetPrompt, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.DiagramStyleResetPrompt, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                Style.Clear();
-                                RaisePropertyChanged("");
+                                if (confirmed)
+                                {
+                                    Style.Clear();
+                                    RaisePropertyChanged("");
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }, "confirmation.diagramstyle.reset"));
                     }
@@ -4105,9 +4120,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return LocalCount > 0;
-                });
+                }));
             }
         }
+        private RelayCommand _reset;
 
         #endregion
 
@@ -4203,12 +4219,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 if (e.PropertyName != "Reset" && e.PropertyName != "LocalCount")
                 {
                     RaisePropertyChanged("LocalCount");
-                    RaisePropertyChanged("Reset");
+                    Reset.RaiseCanExecuteChanged();
                 }
             }
         }
 
-        private void MarkStyle_MarkTypeChanged(DiagramMarkType obj)
+        private void MarkStyle_MarkTypeChanged(object sender, EventArgs e)
         {
             RaisePropertyChanged("MarkShapeIsLocal");
             RaisePropertyChanged("SelectedMarkShapeIndex");

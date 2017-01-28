@@ -47,33 +47,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public string Path
-        {
-            get
-            {
-                return _path;
-            }
-            private set
-            {
-                _path = value;
-                RaisePropertyChanged("Path");
-            }
-        }
-        private string _path;
+        public string Path { get; private set; } = null;
 
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-            private set
-            {
-                _name = value;
-                RaisePropertyChanged("Name");
-            }
-        }
-        private string _name;
+        public string Name { get; private set; } = null;
 
         public ObservableCollection<ObservableDiagram> Diagrams
         {
@@ -89,33 +65,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
                 return _diagrams;
             }
-            private set
-            {
-                _diagrams = value;
-                RaisePropertyChanged("Diagrams");
-            }
         }
-        private ObservableCollection<ObservableDiagram> _diagrams;
+        private ObservableCollection<ObservableDiagram> _diagrams = null;
 
-        public ObservableCollection<ObservableDiagram> SelectedDiagrams
-        {
-            get
-            {
-                return _selectedDiagrams;
-            }
-            private set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-
-                _selectedDiagrams = value;
-                RaisePropertyChanged("SelectedDiagrams");
-                UpdateCommands();
-            }
-        }
-        private ObservableCollection<ObservableDiagram> _selectedDiagrams;
+        public ObservableCollection<ObservableDiagram> SelectedDiagrams { get; private set; } = null;
 
         #region CreateDiagram
 
@@ -139,21 +92,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _createDiagram ?? (_createDiagram = new RelayCommand(() =>
                 {
                     try
                     {
                         ObservableDiagram od = CreateObservableDiagram();
 
-                        Messenger.Default.Send<ShowDiagramEditorMessage>(new ShowDiagramEditorMessage(od, true, od.PostEditCallback));
+                        Messenger.Default.Send(new ShowDiagramEditorMessage(od, true, od.PostEditCallback));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _createDiagram;
 
         #endregion
 
@@ -186,11 +140,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
 
                 // If a single diagram isn't selected, throw an error
-                return new RelayCommand(() =>
+                return _editSelected ?? (_editSelected = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeEditedMessage));
+                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeEditedMessage));
                     }
                     catch (Exception ex)
                     {
@@ -199,9 +153,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                });
+                }));
             }
         }
+        private RelayCommand _editSelected;
 
         #endregion
 
@@ -228,21 +183,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _resetStylesSelected ?? (_resetStylesSelected = new RelayCommand(() =>
                 {
                     try
                     {
                         int count = SelectedDiagrams.Count;
                         string message = string.Format(count < 2 ? Strings.ObservableDiagramLibraryNodeResetStylesSelectedPromptSingleFormat : Strings.ObservableDiagramLibraryNodeResetStylesSelectedPromptPluralFormat, count);
 
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                foreach (ObservableDiagram od in SelectedDiagrams)
+                                if (confirmed)
                                 {
-                                    od.ResetStyles();
+                                    foreach (ObservableDiagram od in SelectedDiagrams)
+                                    {
+                                        od.ResetStyles();
+                                    }
                                 }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }, "confirmation.diagramlibrarynode.resetstyles"));
                     }
@@ -253,9 +215,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                });
+                }));
             }
         }
+        private RelayCommand _resetStylesSelected;
 
         #endregion
 
@@ -282,7 +245,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _cloneSelected ?? (_cloneSelected = new RelayCommand(() =>
                 {
                     try
                     {
@@ -303,9 +266,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                });
+                }));
             }
         }
+        private RelayCommand _cloneSelected;
 
         #endregion
 
@@ -332,13 +296,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _copySelected ?? (_copySelected = new RelayCommand(() =>
                 {
                     try
                     {
                         List<ObservableDiagram> itemsToCopy = new List<ObservableDiagram>(SelectedDiagrams);
 
-                        Messenger.Default.Send<ShowDiagramCollectionSelectorMessage>(new ShowDiagramCollectionSelectorMessage((name, newCollection) =>
+                        Messenger.Default.Send(new ShowDiagramCollectionSelectorMessage((name, newCollection) =>
                         {
                             try
                             {
@@ -367,9 +331,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                });
+                }));
             }
         }
+        private RelayCommand _copySelected;
 
         #endregion
 
@@ -396,13 +361,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _moveSelected ?? (_moveSelected = new RelayCommand(() =>
                 {
                     try
                     {
                         List<ObservableDiagram> itemsToMove = new List<ObservableDiagram>(SelectedDiagrams);
 
-                        Messenger.Default.Send<ShowDiagramCollectionSelectorMessage>(new ShowDiagramCollectionSelectorMessage((name, newCollection) =>
+                        Messenger.Default.Send(new ShowDiagramCollectionSelectorMessage((name, newCollection) =>
                         {
                             try
                             {
@@ -431,9 +396,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                });
+                }));
             }
         }
+        private RelayCommand _moveSelected;
 
         #endregion
 
@@ -460,11 +426,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _exportSelected ?? (_exportSelected = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ShowDiagramExportMessage>(new ShowDiagramExportMessage(SelectedDiagrams, Name));
+                        Messenger.Default.Send(new ShowDiagramExportMessage(SelectedDiagrams, Name));
                     }
                     catch (Exception ex)
                     {
@@ -473,9 +439,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                });
+                }));
             }
         }
+        private RelayCommand _exportSelected;
 
         #endregion
 
@@ -502,25 +469,32 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _deleteSelected ?? (_deleteSelected = new RelayCommand(() =>
                 {
                     try
                     {
                         int count = SelectedDiagrams.Count;
                         string message = string.Format(count < 2 ? Strings.DiagramLibraryDeleteSelectedDiagramsPromptSingleFormat : Strings.DiagramLibraryDeleteSelectedDiagramsPromptPluralFormat, count);
 
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(message, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                List<ObservableDiagram> itemsToDelete = new List<ObservableDiagram>(SelectedDiagrams);
-
-                                DiagramCollection collection = Library.Get(Path, Name);
-                                foreach (ObservableDiagram od in itemsToDelete)
+                                if (confirmed)
                                 {
-                                    collection.Remove(od.Diagram);
-                                    Diagrams.Remove(od);
+                                    List<ObservableDiagram> itemsToDelete = new List<ObservableDiagram>(SelectedDiagrams);
+
+                                    DiagramCollection collection = Library.Get(Path, Name);
+                                    foreach (ObservableDiagram od in itemsToDelete)
+                                    {
+                                        collection.Remove(od.Diagram);
+                                        Diagrams.Remove(od);
+                                    }
                                 }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }, "confirmation.diagramlibrarynode.deletediagram"));
                     }
@@ -531,9 +505,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                });
+                }));
             }
         }
+        private RelayCommand _deleteSelected;
 
         #endregion
 
@@ -565,7 +540,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
-        internal DiagramLibrary Library { get; private set; }
+        internal DiagramLibrary Library { get; private set; } = null;
 
         internal DiagramCollection Collection
         {
@@ -614,7 +589,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             _redrawCallback = redrawCallback;
 
-            Diagrams = new ObservableCollection<ObservableDiagram>();
+            _diagrams = new ObservableCollection<ObservableDiagram>();
 
             SelectedDiagrams = new ObservableCollection<ObservableDiagram>();
             SelectedDiagrams.CollectionChanged += SelectedDiagrams_CollectionChanged;
@@ -687,18 +662,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void UpdateCommands()
         {
-            RaisePropertyChanged("EditSelected");
-            RaisePropertyChanged("CloneSelected");
+            EditSelected.RaiseCanExecuteChanged();
+            CloneSelected.RaiseCanExecuteChanged();
             RaisePropertyChanged("CloneSelectedToolTip");
-            RaisePropertyChanged("CopySelected");
+            CopySelected.RaiseCanExecuteChanged();
             RaisePropertyChanged("CopySelectedToolTip");
-            RaisePropertyChanged("MoveSelected");
+            MoveSelected.RaiseCanExecuteChanged();
             RaisePropertyChanged("MoveSelectedToolTip");
-            RaisePropertyChanged("ExportSelected");
+            ExportSelected.RaiseCanExecuteChanged();
             RaisePropertyChanged("ExportSelectedToolTip");
-            RaisePropertyChanged("DeleteSelected");
+            DeleteSelected.RaiseCanExecuteChanged();
             RaisePropertyChanged("DeleteSelectedToolTip");
-            RaisePropertyChanged("ResetStylesSelected");
+            ResetStylesSelected.RaiseCanExecuteChanged();
             RaisePropertyChanged("ResetStylesSelectedToolTip");
         }
 

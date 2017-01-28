@@ -41,45 +41,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public string Title
-        {
-            get
-            {
-                return _title;
-            }
-            private set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentNullException();
-                }
-                _title = value;
-            }
-        }
-        private string _title;
+        public string Title { get; private set; }
 
-        public string Message
-        {
-            get
-            {
-                return _message;
-            }
-            private set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentNullException();
-                }
-                _message = value;
-            }
-        }
-        private string _message;
+        public string Message { get; private set; }
 
         public RelayCommand Accept
         {
             get
             {
-                return new RelayCommand(() =>
+                return _accept ?? (_accept = new RelayCommand(() =>
                 {
                     try
                     {
@@ -89,16 +59,28 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _accept;
 
-        public event Action RequestClose;
+        public Action RequestClose;
 
         public Action Callback { get; private set; }
 
         public InformationViewModel(string message, string title, Action callback = null)
         {
+
+            if (string.IsNullOrWhiteSpace(message))
+            {
+                throw new ArgumentNullException("message");
+            }
+
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                throw new ArgumentNullException("title");
+            }
+
             Title = title;
             Message = message;
             Callback = callback;

@@ -81,13 +81,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 _selectedNode = value;
                 RaisePropertyChanged("SelectedNode");
                 RaisePropertyChanged("NodeIsSelected");
-                RaisePropertyChanged("CreateNode");
+                CreateNode.RaiseCanExecuteChanged();
                 RaisePropertyChanged("CreateNodeLabel");
-                RaisePropertyChanged("EditNode");
+                EditNode.RaiseCanExecuteChanged();
                 RaisePropertyChanged("EditNodeLabel");
-                RaisePropertyChanged("DeleteNode");
+                DeleteNode.RaiseCanExecuteChanged();
                 RaisePropertyChanged("DeleteNodeLabel");
-                RaisePropertyChanged("CloneNode");
+                CloneNode.RaiseCanExecuteChanged();
                 RaisePropertyChanged("CloneNodeLabel");
                 RaisePropertyChanged("EditNodeStyle");
                 RaisePropertyChanged("EditNodeStyleLabel");
@@ -158,23 +158,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _createNode ?? (_createNode = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(Strings.DiagramLibraryCreateNodePrompt, Library.GetNewCollectionName(), (name) =>
+                        Messenger.Default.Send(new PromptForTextMessage(Strings.DiagramLibraryCreateNodePrompt, Library.GetNewCollectionName(), (name) =>
                         {
-                            Library.Add(name);
-                            ReloadNodes();
+                            try
+                            {
+                                Library.Add(name);
+                                ReloadNodes();
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                });
+                }));
             }
         }
+        private RelayCommand _createNode;
 
         #endregion
 
@@ -205,16 +213,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _editNode ?? (_editNode = new RelayCommand(() =>
                 {
                     try
                     {
                         string path = SelectedNode.Path;
                         string oldName = SelectedNode.Name;
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(string.Format(Strings.DiagramLibraryRenameCollectionPromptFormat, oldName), oldName, (newName) =>
+                        Messenger.Default.Send(new PromptForTextMessage(string.Format(Strings.DiagramLibraryRenameCollectionPromptFormat, oldName), oldName, (newName) =>
                         {
-                            Library.Rename(path, oldName, newName);
-                            ReloadNodes();
+                            try
+                            {
+                                Library.Rename(path, oldName, newName);
+                                ReloadNodes();
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }));
                     }
                     catch (Exception ex)
@@ -224,9 +239,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NodeIsSelected;
-                });
+                }));
             }
         }
+        private RelayCommand _editNode;
 
         #endregion
 
@@ -257,18 +273,25 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _deleteNode ?? (_deleteNode = new RelayCommand(() =>
                 {
                     try
                     {
                         string path = SelectedNode.Path;
                         string name = SelectedNode.Name;
-                        Messenger.Default.Send<ConfirmationMessage>(new ConfirmationMessage(string.Format(Strings.DiagramLibraryDeleteNodePromptFormat, name), (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.DiagramLibraryDeleteNodePromptFormat, name), (confirmed) =>
                         {
-                            if (confirmed)
+                            try
                             {
-                                Library.Remove(path, name);
-                                ReloadNodes();
+                                if (confirmed)
+                                {
+                                    Library.Remove(path, name);
+                                    ReloadNodes();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
                             }
                         }, "confirmation.diagramlibrary.deletenode"));
                     }
@@ -279,9 +302,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NodeIsSelected;
-                });
+                }));
             }
         }
+        private RelayCommand _deleteNode;
 
         #endregion
 
@@ -312,16 +336,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return new RelayCommand(() =>
+                return _cloneNode ?? (_cloneNode = new RelayCommand(() =>
                 {
                     try
                     {
                         string path = SelectedNode.Path;
                         string oldName = SelectedNode.Name;
-                        Messenger.Default.Send<PromptForTextMessage>(new PromptForTextMessage(string.Format(Strings.DiagramLibraryCloneNodePromptFormat, oldName), Library.GetNewCollectionName(path, oldName), (newName) =>
+                        Messenger.Default.Send(new PromptForTextMessage(string.Format(Strings.DiagramLibraryCloneNodePromptFormat, oldName), Library.GetNewCollectionName(path, oldName), (newName) =>
                         {
-                            Library.Clone(path, oldName, newName);
-                            ReloadNodes();
+                            try
+                            {
+                                Library.Clone(path, oldName, newName);
+                                ReloadNodes();
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
                         }));
                     }
                     catch (Exception ex)
@@ -331,9 +362,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NodeIsSelected;
-                });
+                }));
             }
         }
+        private RelayCommand _cloneNode;
 
         #endregion
 
@@ -369,11 +401,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     return SelectedNode.EditCollectionStyle;
                 }
 
-                return new RelayCommand(() =>
+                return _editNodeStyle ?? (_editNodeStyle = new RelayCommand(() =>
                 {
                     try
                     {
-                        Messenger.Default.Send<ChordiousMessage>(new ChordiousMessage(Strings.DiagramLibrarySelectNodeFirstMessage));
+                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibrarySelectNodeFirstMessage));
                     }
                     catch (Exception ex)
                     {
@@ -382,9 +414,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NodeIsSelected;
-                });
+                }));
             }
         }
+        private RelayCommand _editNodeStyle;
 
         #endregion
 

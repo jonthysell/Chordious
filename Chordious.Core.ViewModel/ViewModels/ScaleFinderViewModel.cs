@@ -66,7 +66,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 _isIdle = value;
                 RaisePropertyChanged("IsIdle");
-                RaisePropertyChanged("SearchAsync");
+                SearchAsync.RaiseCanExecuteChanged();
+                SetAsDefaults.RaiseCanExecuteChanged();
             }
         }
         private bool _isIdle = true;
@@ -122,8 +123,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 finally
                 {
                     RaisePropertyChanged("SelectedInstrument");
-                    RaisePropertyChanged("SearchAsync");
-                    RaisePropertyChanged("SetAsDefaults");
+                    SearchAsync.RaiseCanExecuteChanged();
+                    SetAsDefaults.RaiseCanExecuteChanged();
                 }
             }
         }
@@ -186,8 +187,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 finally
                 {
                     RaisePropertyChanged("SelectedTuning");
-                    RaisePropertyChanged("SearchAsync");
-                    RaisePropertyChanged("SetAsDefaults");
+                    SearchAsync.RaiseCanExecuteChanged();
+                    SetAsDefaults.RaiseCanExecuteChanged();
                 }
             }
         }
@@ -339,8 +340,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 finally
                 {
                     RaisePropertyChanged("SelectedScale");
-                    RaisePropertyChanged("SearchAsync");
-                    RaisePropertyChanged("SetAsDefaults");
+                    SearchAsync.RaiseCanExecuteChanged();
+                    SetAsDefaults.RaiseCanExecuteChanged();
                 }
             }
         }
@@ -989,7 +990,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void SelectedResults_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            RaisePropertyChanged("SaveSelected");
+            SaveSelected.RaiseCanExecuteChanged();
         }
 
         private void RefreshInstruments(IInstrument selectedInstrument = null, ITuning selectedTuning = null)

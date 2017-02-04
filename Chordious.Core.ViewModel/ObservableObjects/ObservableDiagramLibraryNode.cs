@@ -662,7 +662,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void UpdateCommands()
         {
-            EditSelected.RaiseCanExecuteChanged();
+            RaisePropertyChanged("EditSelected");
+            _editSelected?.RaiseCanExecuteChanged();
             CloneSelected.RaiseCanExecuteChanged();
             RaisePropertyChanged("CloneSelectedToolTip");
             CopySelected.RaiseCanExecuteChanged();

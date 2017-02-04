@@ -970,6 +970,51 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private RelayCommand _saveSelected;
 
+        public string EditSelectedLabel
+        {
+            get
+            {
+                return Strings.EditLabel;
+            }
+        }
+
+        public string EditSelectedToolTip
+        {
+            get
+            {
+                return Strings.FinderEditSelectedToolTip;
+            }
+        }
+
+        public RelayCommand EditSelected
+        {
+            get
+            {
+                // Use the built-in ObservableDiagram's RelayCommand if it's available
+                if (SelectedResults.Count == 1)
+                {
+                    return SelectedResults[0].ShowEditor;
+                }
+
+                // If a single result isn't selected, throw an error
+                return _editSelected ?? (_editSelected = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send(new ChordiousMessage(Strings.FinderOnlyOneResultCanBeEditedMessage));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedResults.Count > 0;
+                }));
+            }
+        }
+        private RelayCommand _editSelected;
+
         private static string LastDiagramCollectionName = "";
 
         public ObservableCollection<ObservableDiagram> SelectedResults { get; private set; } = null;
@@ -997,6 +1042,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         private void SelectedResults_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             SaveSelected.RaiseCanExecuteChanged();
+            RaisePropertyChanged("EditSelected");
+            _editSelected?.RaiseCanExecuteChanged();
         }
 
         private void RefreshInstruments(IInstrument selectedInstrument = null, ITuning selectedTuning = null)

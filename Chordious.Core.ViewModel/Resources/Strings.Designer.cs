@@ -2582,6 +2582,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit the selected result..
+        /// </summary>
+        internal static string FinderEditSelectedToolTip {
+            get {
+                return ResourceManager.GetString("FinderEditSelectedToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only one result can be edited at a time. Please select a single result and try again..
+        /// </summary>
+        internal static string FinderOnlyOneResultCanBeEditedMessage {
+            get {
+                return ResourceManager.GetString("FinderOnlyOneResultCanBeEditedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Root Notes.
         /// </summary>
         internal static string FinderOptionsAddRootNotesLabel {

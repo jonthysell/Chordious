@@ -31,6 +31,12 @@
                   Name="UserNamedIntervalsListView"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   SelectedIndex="{Binding SelectedUserNamedIntervalIndex}">
+            <ListView.InputBindings>
+                <KeyBinding Command="{Binding EditNamedInterval}"
+                            Key="Enter" />
+                <KeyBinding Command="{Binding EditNamedInterval}"
+                            Key="Space" />
+            </ListView.InputBindings>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding LongName}">

@@ -42,6 +42,12 @@
                  Margin="5,0"
                  Name="UserInstrumentsListView"
                  SelectedIndex="{Binding SelectedUserInstrumentIndex}">
+            <ListBox.InputBindings>
+                <KeyBinding Command="{Binding EditInstrument}"
+                            Key="Enter" />
+                <KeyBinding Command="{Binding EditInstrument}"
+                            Key="Space" />
+            </ListBox.InputBindings>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}">
@@ -118,6 +124,12 @@
                  ItemsSource="{Binding Tunings}"
                  Name="TuningsListView"
                  SelectedItem="{Binding SelectedTuning}">
+            <ListBox.InputBindings>
+                <KeyBinding Command="{Binding EditTuning}"
+                            Key="Enter" />
+                <KeyBinding Command="{Binding EditTuning}"
+                            Key="Space" />
+            </ListBox.InputBindings>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding LongName}">

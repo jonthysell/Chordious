@@ -383,6 +383,12 @@
                   Name="ResultsListView"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   SelectionMode="Extended">
+            <ListView.InputBindings>
+                <KeyBinding Command="{Binding EditSelected}"
+                            Key="Enter" />
+                <KeyBinding Command="{Binding EditSelected}"
+                            Key="Space" />
+            </ListView.InputBindings>
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Margin="5" />

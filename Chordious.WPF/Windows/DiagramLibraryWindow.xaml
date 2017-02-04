@@ -40,6 +40,12 @@
                  Margin="5,0"
                  Name="NodesListView"
                  SelectedItem="{Binding SelectedNode}">
+            <ListBox.InputBindings>
+                <KeyBinding Command="{Binding EditNode}"
+                            Key="Enter" />
+                <KeyBinding Command="{Binding EditNode}"
+                            Key="Space" />
+            </ListBox.InputBindings>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}">
@@ -117,6 +123,12 @@
                   Name="DiagramsListView"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   SelectionMode="Extended">
+            <ListView.InputBindings>
+                <KeyBinding Command="{Binding SelectedNode.EditSelected}"
+                            Key="Enter" />
+                <KeyBinding Command="{Binding SelectedNode.EditSelected}"
+                            Key="Space" />
+            </ListView.InputBindings>
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Margin="5" />

@@ -1554,4 +1554,10 @@
   <data name="NamedIntervalEditorIntervalValueToolTip" xml:space="preserve">
     <value>The interval (in half-steps).</value>
   </data>
+  <data name="FinderEditSelectedToolTip" xml:space="preserve">
+    <value>Edit the selected result.</value>
+  </data>
+  <data name="FinderOnlyOneResultCanBeEditedMessage" xml:space="preserve">
+    <value>Only one result can be edited at a time. Please select a single result and try again.</value>
+  </data>
 </root>

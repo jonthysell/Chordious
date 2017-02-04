@@ -12,11 +12,14 @@
                  InstallerVersion="200"
                  Languages="1033" />
         <MajorUpgrade AllowSameVersionUpgrades="yes"
-                      DowngradeErrorMessage="A newer version of Chordious is already installed." /><?if $(var.Chordious.WPF.Configuration) = "Release"?>
+                      DowngradeErrorMessage="A newer version of Chordious is already installed." />
+        <?if $(var.Chordious.WPF.Configuration) = "Release"?>
         <MediaTemplate CompressionLevel="high"
-                       EmbedCab="yes" /><?elseif $(var.Chordious.WPF.Configuration) = "Debug"?>
+                       EmbedCab="yes" />
+        <?elseif $(var.Chordious.WPF.Configuration) = "Debug"?>
         <MediaTemplate CompressionLevel="none"
-                       EmbedCab="yes" /><?endif?>
+                       EmbedCab="yes" />
+        <?endif?>
         <Feature Id="ChordiousWpfFeature"
                  Level="1"
                  Title="Chordious">

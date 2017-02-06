@@ -27,7 +27,7 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Button AutomationProperties.Name="{Binding ElementName=ShowChordFinderLabel, Path=Text}"
+            <Button AutomationProperties.Name="{Binding ShowChordFinderLabel}"
                     Command="{Binding ShowChordFinder, Mode=OneWay}"
                     Grid.Row="0"
                     Margin="5"
@@ -43,7 +43,7 @@
                                 Text="{Binding ShowChordFinderLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.ChordFinderLabel, FallbackValue=CHORD FINDER}" />
                 </StackPanel>
             </Button>
-            <Button AutomationProperties.Name="{Binding ElementName=ShowScaleFinderLabel, Path=Text}"
+            <Button AutomationProperties.Name="{Binding ShowScaleFinderLabel}"
                     Command="{Binding ShowScaleFinder, Mode=OneWay}"
                     Grid.Column="1"
                     Grid.Row="0"
@@ -60,7 +60,7 @@
                                 Text="{Binding ShowScaleFinderLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.ShowScaleFinderLabel, FallbackValue=SCALE FINDER}" />
                 </StackPanel>
             </Button>
-            <Button AutomationProperties.Name="{Binding ElementName=ShowDiagramLibraryLabel, Path=Text}"
+            <Button AutomationProperties.Name="{Binding ShowDiagramLibraryLabel}"
                     Command="{Binding ShowDiagramLibrary, Mode=OneWay}"
                     Grid.Column="0"
                     Grid.Row="1"
@@ -77,7 +77,7 @@
                                 Text="{Binding ShowDiagramLibraryLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.ShowDiagramLibraryLabel, FallbackValue=LIBRARY}" />
                 </StackPanel>
             </Button>
-            <Button AutomationProperties.Name="{Binding ElementName=ShowInstrumentManagerLabel, Path=Text}"
+            <Button AutomationProperties.Name="{Binding ShowInstrumentManagerLabel}"
                     Command="{Binding ShowInstrumentManager, Mode=OneWay}"
                     Grid.Column="1"
                     Grid.Row="1"
@@ -94,7 +94,7 @@
                                 Text="{Binding ShowInstrumentManagerLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.ShowInstrumentManagerLabel, FallbackValue=INSTRUMENTS}" />
                 </StackPanel>
             </Button>
-            <Button AutomationProperties.Name="{Binding ElementName=ShowOptionsLabel, Path=Text}"
+            <Button AutomationProperties.Name="{Binding ShowOptionsLabel}"
                     Command="{Binding ShowOptions, Mode=OneWay}"
                     Grid.Column="0"
                     Grid.Row="2"
@@ -111,7 +111,7 @@
                                 Text="{Binding ShowOptionsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.ShowOptionsLabel, FallbackValue=OPTIONS}" />
                 </StackPanel>
             </Button>
-            <Button AutomationProperties.Name="{Binding ElementName=ShowHelpLabel, Path=Text}"
+            <Button AutomationProperties.Name="{Binding ShowHelpLabel}"
                     Command="{Binding ShowHelp, Mode=OneWay}"
                     Grid.Column="1"
                     Grid.Row="2"
@@ -147,7 +147,7 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Button AutomationProperties.Name="{Binding ElementName=LaunchWebsiteLabel, Path=Text}"
+                <Button AutomationProperties.Name="{Binding LaunchWebsiteLabel}"
                         Command="{Binding LaunchWebsite, Mode=OneWay}"
                         Grid.Column="0"
                         Margin="5"
@@ -163,7 +163,7 @@
                                     Text="{Binding LaunchWebsiteLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.LaunchWebsiteLabel, FallbackValue=WEBSITE}" />
                     </StackPanel>
                 </Button>
-                <Button AutomationProperties.Name="{Binding ElementName=ShowLicenseLabel, Path=Text}"
+                <Button AutomationProperties.Name="{Binding ShowLicenseLabel}"
                         Command="{Binding ShowLicense, Mode=OneWay}"
                         Grid.Column="1"
                         Margin="5"

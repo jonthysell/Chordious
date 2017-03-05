@@ -13,13 +13,16 @@
     </Window.InputBindings>
     <StackPanel FocusManager.FocusedElement="{Binding ElementName=CollectionNameComboBox}">
         <StackPanel Orientation="Horizontal">
-            <Label Content="{Binding CollectionNameLabel, FallbackValue=COLLECTION NAME}"
+            <Label Content="{Binding CollectionNameLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramCollectionSelectorWindow.CollectionNameLabel, FallbackValue=COLLECTION NAME}"
                    Height="25"
                    Margin="5"
+                   Name="CollectionNameLabel"
+                   Target="{Binding ElementName=CollectionNameComboBox}"
                    ToolTip="{Binding CollectionNameToolTip}"
                    VerticalAlignment="Center"
                    VerticalContentAlignment="Center" />
-            <ComboBox Height="25"
+            <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=CollectionNameLabel}"
+                      Height="25"
                       IsEditable="True"
                       ItemsSource="{Binding CollectionNames}"
                       Margin="5"

@@ -27,7 +27,7 @@
         </Grid.ColumnDefinitions>
         <WrapPanel Grid.Column="0"
                    Grid.Row="0">
-            <Label Content="{Binding UserInstrumentsGroupLabel, FallbackValue=USER INSTRUMENTS}"
+            <Label Content="{Binding UserInstrumentsGroupLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=InstrumentManagerWindow.UserInstrumentsGroupLabel, FallbackValue=USER INSTRUMENTS}"
                    FontWeight="Bold"
                    Margin="5,0"
                    Name="UserInstrumentsGroupLabel"
@@ -61,21 +61,21 @@
             <ListBox.ContextMenu>
                 <ContextMenu Name="UserInstrumentsContextMenu">
                     <MenuItem Command="{Binding AddInstrument}"
-                              Header="{Binding AddInstrumentLabel, FallbackValue=NEW...}"
+                              Header="{Binding AddInstrumentLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=InstrumentManagerWindow.UserInstrumentsContextMenu.AddInstrumentLabel, FallbackValue=NEW...}"
                               ToolTip="{Binding AddInstrumentToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding EditInstrument}"
-                              Header="{Binding EditInstrumentLabel, FallbackValue=EDIT...}"
+                              Header="{Binding EditInstrumentLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=InstrumentManagerWindow.UserInstrumentsContextMenu.EditInstrumentLabel, FallbackValue=EDIT...}"
                               ToolTip="{Binding EditInstrumentToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding DeleteInstrument}"
-                              Header="{Binding DeleteInstrumentLabel, FallbackValue=DELETE}"
+                              Header="{Binding DeleteInstrumentLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=InstrumentManagerWindow.UserInstrumentsContextMenu.DeleteInstrumentLabel, FallbackValue=DELETE}"
                               ToolTip="{Binding DeleteInstrumentToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
@@ -86,7 +86,7 @@
         </ListBox>
         <WrapPanel Grid.Column="0"
                    Grid.Row="2">
-            <Label Content="{Binding DefaultInstrumentsGroupLabel, FallbackValue=DEFAULT INSTRUMENTS}"
+            <Label Content="{Binding DefaultInstrumentsGroupLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=InstrumentManagerWindow.DefaultInstrumentsGroupLabel, FallbackValue=DEFAULT INSTRUMENTS}"
                    FontWeight="Bold"
                    Margin="5,0"
                    Name="DefaultInstrumentsGroupLabel"
@@ -109,7 +109,7 @@
         </ListBox>
         <WrapPanel Grid.Column="1"
                    Grid.Row="0">
-            <Label Content="{Binding TuningsGroupLabel, FallbackValue=TUNINGS}"
+            <Label Content="{Binding TuningsGroupLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=InstrumentManagerWindow.TuningsGroupLabel, FallbackValue=TUNINGS}"
                    FontWeight="Bold"
                    Name="TuningsGroupLabel"
                    Target="{Binding ElementName=TuningsListView}"
@@ -143,21 +143,21 @@
             <ListBox.ContextMenu>
                 <ContextMenu Name="TuningContextMenu">
                     <MenuItem Command="{Binding AddTuning}"
-                              Header="{Binding AddTuningLabel, FallbackValue=NEW...}"
+                              Header="{Binding AddTuningLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=InstrumentManagerWindow.TuningMenu.AddTuningLabel, FallbackValue=NEW...}"
                               ToolTip="{Binding AddTuningToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding EditTuning}"
-                              Header="{Binding EditTuningLabel, FallbackValue=EDIT...}"
+                              Header="{Binding EditTuningLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=InstrumentManagerWindow.TuningMenu.EditTuningLabel, FallbackValue=EDIT...}"
                               ToolTip="{Binding EditTuningToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding DeleteTuning}"
-                              Header="{Binding DeleteTuningLabel, FallbackValue=DELETE}"
+                              Header="{Binding DeleteTuningLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=InstrumentManagerWindow.TuningMenu.DeleteTuningLabel, FallbackValue=DELETE}"
                               ToolTip="{Binding DeleteTuningToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />

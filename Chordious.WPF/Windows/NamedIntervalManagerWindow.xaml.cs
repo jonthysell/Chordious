@@ -26,6 +26,8 @@
 
 using System.Windows;
 
+using com.jonthysell.Chordious.Core.ViewModel;
+
 namespace com.jonthysell.Chordious.WPF
 {
     /// <summary>
@@ -33,8 +35,29 @@ namespace com.jonthysell.Chordious.WPF
     /// </summary>
     public partial class NamedIntervalManagerWindow : Window
     {
-        public NamedIntervalManagerWindow()
+        public NamedIntervalManagerViewModel VM
         {
+            get
+            {
+
+                return DataContext as NamedIntervalManagerViewModel;
+            }
+            private set
+            {
+                DataContext = value;
+            }
+        }
+
+        public NamedIntervalManagerWindow(NamedIntervalManagerViewModel vm)
+        {
+            VM = vm;
+
+            // Pre-seed labels
+            AltKeyUtils.TryRemove("NamedIntervalManagerWindow.", true);
+
+            AltKeyUtils.TryAddLabel("NamedIntervalManagerWindow.UserNamedIntervalGroupLabel", VM.UserNamedIntervalGroupLabel);
+            AltKeyUtils.TryAddLabel("NamedIntervalManagerWindow.DefaultNamedIntervalGroupLabel", VM.DefaultNamedIntervalGroupLabel);
+            
             InitializeComponent();
         }
     }

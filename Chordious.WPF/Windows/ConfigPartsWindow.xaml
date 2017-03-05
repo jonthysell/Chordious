@@ -8,6 +8,7 @@
         WindowStartupLocation="CenterScreen"
         x:Class="com.jonthysell.Chordious.WPF.ConfigPartsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Window.InputBindings>
         <KeyBinding Command="{Binding Cancel, Mode=OneWay}"
@@ -23,7 +24,7 @@
                   Margin="5">
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="{Binding IncludeSettingsLabel, FallbackValue=SETTINGS}"
+                    <Label Content="{Binding IncludeSettingsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ConfigPartsWindow.IncludeSettingsLabel, FallbackValue=SETTINGS}"
                            Margin="5"
                            Name="IncludeSettingsLabel"
                            Target="{Binding ElementName=IncludeSettingsCheckBox}"
@@ -38,7 +39,7 @@
                               VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="{Binding IncludeStylesLabel, FallbackValue=STYLES}"
+                    <Label Content="{Binding IncludeStylesLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ConfigPartsWindow.IncludeStylesLabel, FallbackValue=STYLES}"
                            Margin="5"
                            Name="IncludeStylesLabel"
                            Target="{Binding ElementName=IncludeStylesCheckBox}"
@@ -53,7 +54,7 @@
                               VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="{Binding IncludeInstrumentsLabel, FallbackValue=INSTRUMENTS}"
+                    <Label Content="{Binding IncludeInstrumentsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ConfigPartsWindow.IncludeInstrumentsLabel, FallbackValue=INSTRUMENTS}"
                            Margin="5"
                            Name="IncludeInstrumentsLabel"
                            Target="{Binding ElementName=IncludeInstrumentsCheckBox}"
@@ -68,7 +69,7 @@
                               VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="{Binding IncludeChordQualitiesLabel, FallbackValue=CHORD QUALITIES}"
+                    <Label Content="{Binding IncludeChordQualitiesLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ConfigPartsWindow.IncludeChordQualitiesLabel, FallbackValue=CHORD QUALITIES}"
                            Margin="5"
                            Name="IncludeChordQualitiesLabel"
                            Target="{Binding ElementName=IncludeChordQualitiesCheckBox}"
@@ -83,7 +84,7 @@
                               VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="{Binding IncludeScalesLabel, FallbackValue=SCALES}"
+                    <Label Content="{Binding IncludeScalesLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ConfigPartsWindow.IncludeScalesLabel, FallbackValue=SCALES}"
                            Margin="5"
                            Name="IncludeScalesLabel"
                            Target="{Binding ElementName=IncludeScalesCheckBox}"
@@ -98,7 +99,7 @@
                               VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="{Binding IncludeLibraryLabel, FallbackValue=LIBRARY}"
+                    <Label Content="{Binding IncludeLibraryLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ConfigPartsWindow.IncludeLibraryLabel, FallbackValue=LIBRARY}"
                            Margin="5"
                            Name="IncludeLibraryLabel"
                            Target="{Binding ElementName=IncludeLibraryCheckBox}"

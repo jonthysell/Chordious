@@ -33,6 +33,18 @@ namespace com.jonthysell.Chordious.WPF
     {
         private static Dictionary<string, AltKeyEntry> _labelMap = new Dictionary<string, AltKeyEntry>();
 
+        public static bool TryAddLabel(string labelKey, string labelValue)
+        {
+            try
+            {
+                AddLabel(labelKey, labelValue);
+                return true;
+            }
+            catch (Exception) { }
+
+            return false;
+        }
+
         public static void AddLabel(string labelKey, string labelValue)
         {
             labelKey = CleanLabelKey(labelKey);
@@ -55,21 +67,48 @@ namespace com.jonthysell.Chordious.WPF
             return Get(labelKey).LabelValue;
         }
 
-        private static bool TryGet(string labelKey, out AltKeyEntry result)
+        public static bool TryRemove(string labelKey, bool recursive = false)
         {
             try
             {
-                result = Get(labelKey);
+                Remove(labelKey, recursive);
+                return true;
             }
             catch (Exception) { }
 
-            result = null;
             return false;
+        }
+
+        public static void Remove(string labelKey, bool recursive = false)
+        {
+            labelKey = CleanLabelKey(labelKey);
+
+            if (!recursive)
+            {
+                _labelMap.Remove(labelKey);
+            }
+            else
+            {
+                List<string> keys = new List<string>();
+                foreach(KeyValuePair<string, AltKeyEntry> kvp in _labelMap)
+                {
+                    if (kvp.Key.StartsWith(labelKey))
+                    {
+                        keys.Add(kvp.Key);
+                    }
+                }
+
+                foreach (string key in keys)
+                {
+                    _labelMap.Remove(key);
+                }
+            }
         }
 
         private static AltKeyEntry Get(string labelKey)
         {
             labelKey = CleanLabelKey(labelKey);
+
             return _labelMap[labelKey];
         }
 
@@ -101,7 +140,7 @@ namespace com.jonthysell.Chordious.WPF
             foreach (string word in words)
             {
                 string cleanWord = CleanWord(word);
-                if (IsValidAltKeyCandidate(cleanWord[0]))
+                if (!string.IsNullOrEmpty(cleanWord) && IsValidAltKeyCandidate(cleanWord[0]))
                 {
                     yield return cleanWord[0];
                 }
@@ -111,11 +150,14 @@ namespace com.jonthysell.Chordious.WPF
             foreach (string word in words)
             {
                 string cleanWord = CleanWord(word);
-                for (int i = 1; i < cleanWord.Length; i++)
+                if (!string.IsNullOrEmpty(cleanWord))
                 {
-                    if (IsValidAltKeyCandidate(cleanWord[i]))
+                    for (int i = 1; i < cleanWord.Length; i++)
                     {
-                        yield return cleanWord[i];
+                        if (IsValidAltKeyCandidate(cleanWord[i]))
+                        {
+                            yield return cleanWord[i];
+                        }
                     }
                 }
             }
@@ -133,15 +175,17 @@ namespace com.jonthysell.Chordious.WPF
                 throw new ArgumentOutOfRangeException("labelKey");
             }
 
-            int delimIndex = labelKey.LastIndexOf(KeyPartsDelimiter);
+            int targetScope = labelKey.Split(KeyPartsDelimiter).Length;
 
+            int delimIndex = labelKey.LastIndexOf(KeyPartsDelimiter);
             while (delimIndex > 0)
             {
                 string lookupKey = labelKey.Substring(0, delimIndex + 1);
 
                 foreach (string key in _labelMap.Keys)
                 {
-                    if (key.StartsWith(lookupKey))
+                    int keyScope = key.Split(KeyPartsDelimiter).Length;
+                    if (key.StartsWith(lookupKey) && targetScope == keyScope)
                     {
                         if (_labelMap[key].AltKey.HasValue &&
                             _labelMap[key].AltKey.ToString().Equals(altKey.ToString(), StringComparison.InvariantCultureIgnoreCase))
@@ -152,6 +196,7 @@ namespace com.jonthysell.Chordious.WPF
                 }
 
                 delimIndex = labelKey.LastIndexOf(KeyPartsDelimiter, delimIndex - 1);
+                targetScope--;
             }
 
             return true;

@@ -240,8 +240,7 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowChordQualityManager(ShowChordQualityManagerMessage message)
         {
-            NamedIntervalManagerWindow window = new NamedIntervalManagerWindow();
-            window.DataContext = message.ChordQualityManagerVM;
+            NamedIntervalManagerWindow window = new NamedIntervalManagerWindow(message.ChordQualityManagerVM);
             window.ShowDialog();
             message.Process();
         }
@@ -259,8 +258,7 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowScaleManager(ShowScaleManagerMessage message)
         {
-            NamedIntervalManagerWindow window = new NamedIntervalManagerWindow();
-            window.DataContext = message.ScaleManagerVM;
+            NamedIntervalManagerWindow window = new NamedIntervalManagerWindow(message.ScaleManagerVM);
             window.ShowDialog();
             message.Process();
         }
@@ -340,8 +338,7 @@ namespace com.jonthysell.Chordious.WPF
         private static void ShowOptions(ShowOptionsMessage message)
         {
             OptionsWindow window = new OptionsWindow();
-            message.OptionsVM = new OptionsViewModelExtended();
-            window.DataContext = message.OptionsVM;
+            message.OptionsVM = window.VM;
             message.OptionsVM.RequestClose += () =>
             {
                 window.Close();

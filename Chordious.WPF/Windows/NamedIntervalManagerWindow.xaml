@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="0"
                    Margin="5,0">
-            <Label Content="{Binding UserNamedIntervalGroupLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=NamedIntervalManagerWindow.UserNamedIntervalGroupLabel, FallbackValue=USER NAMED INTERVALS}"
+            <Label Content="{Binding UserNamedIntervalGroupLabel, FallbackValue=USER NAMED INTERVALS}"
                    FontWeight="Bold"
                    Name="UserNamedIntervalGroupLabel"
                    Target="{Binding ElementName=UserNamedIntervalsListView}"
@@ -53,21 +53,21 @@
             <ListView.ContextMenu>
                 <ContextMenu Name="UserNamedIntervalContextMenu">
                     <MenuItem Command="{Binding AddNamedInterval}"
-                              Header="{Binding AddNamedIntervalLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=NamedIntervalManagerWindow.UserNamedIntervalContextMenu.AddNamedIntervalLabel, FallbackValue=NEW...}"
+                              Header="{Binding AddNamedIntervalLabel, FallbackValue=NEW...}"
                               ToolTip="{Binding AddNamedIntervalToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding EditNamedInterval}"
-                              Header="{Binding EditNamedIntervalLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=NamedIntervalManagerWindow.UserNamedIntervalContextMenu.EditNamedIntervalLabel, FallbackValue=EDIT...}"
+                              Header="{Binding EditNamedIntervalLabel, FallbackValue=EDIT...}"
                               ToolTip="{Binding EditNamedIntervalToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding DeleteNamedInterval}"
-                              Header="{Binding DeleteNamedIntervalLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=NamedIntervalManagerWindow.UserNamedIntervalContextMenu.DeleteNamedIntervalLabel, FallbackValue=DELETE}"
+                              Header="{Binding DeleteNamedIntervalLabel, FallbackValue=DELETE}"
                               ToolTip="{Binding DeleteNamedIntervalToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
@@ -78,7 +78,7 @@
         </ListView>
         <WrapPanel Grid.Row="2"
                    Margin="5,0">
-            <Label Content="{Binding DefaultNamedIntervalGroupLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=NamedIntervalManagerWindow.DefaultNamedIntervalGroupLabel, FallbackValue=DEFAULT NAMED INTERVALS}"
+            <Label Content="{Binding DefaultNamedIntervalGroupLabel, FallbackValue=DEFAULT NAMED INTERVALS}"
                    FontWeight="Bold"
                    Name="DefaultNamedIntervalGroupLabel"
                    Target="{Binding ElementName=DefaultNamedIntervalsListView}"

@@ -25,7 +25,7 @@
         </Grid.ColumnDefinitions>
         <WrapPanel Grid.Column="0"
                    Grid.Row="0">
-            <Label Content="{Binding NodesLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.NodesLabel, FallbackValue=COLLECTION}"
+            <Label Content="{Binding NodesLabel, FallbackValue=COLLECTION}"
                    FontWeight="Bold"
                    Margin="5,0"
                    Name="NodesLabel"
@@ -59,21 +59,21 @@
             <ListBox.ContextMenu>
                 <ContextMenu Name="NodeContextMenu">
                     <MenuItem Command="{Binding CreateNode}"
-                              Header="{Binding CreateNodeLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.NodeContextMenu.CreateNodeLabel, FallbackValue=NEW...}"
+                              Header="{Binding CreateNodeLabel, FallbackValue=NEW...}"
                               ToolTip="{Binding CreateNodeToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding EditNode}"
-                              Header="{Binding EditNodeLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.NodeContextMenu.EditNodeLabel, FallbackValue=EDIT...}"
+                              Header="{Binding EditNodeLabel, FallbackValue=EDIT...}"
                               ToolTip="{Binding EditNodeToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding DeleteNode}"
-                              Header="{Binding DeleteNodeLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.NodeContextMenu.DeleteNodeLabel, FallbackValue=DELETE}"
+                              Header="{Binding DeleteNodeLabel, FallbackValue=DELETE}"
                               ToolTip="{Binding DeleteNodeToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
@@ -81,7 +81,7 @@
                     </MenuItem>
                     <Separator />
                     <MenuItem Command="{Binding EditNodeStyle}"
-                              Header="{Binding EditNodeStyleLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.NodeContextMenu.EditNodeStyleLabel, FallbackValue=EDIT STYLE...}"
+                              Header="{Binding EditNodeStyleLabel, FallbackValue=EDIT STYLE...}"
                               ToolTip="{Binding EditNodeStyleToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource StyleIcon16}" />
@@ -89,7 +89,7 @@
                     </MenuItem>
                     <Separator />
                     <MenuItem Command="{Binding CloneNode}"
-                              Header="{Binding CloneNodeLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.NodeContextMenu.CloneNodeLabel, FallbackValue=CLONE...}"
+                              Header="{Binding CloneNodeLabel, FallbackValue=CLONE...}"
                               ToolTip="{Binding CloneNodeToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource CloneIcon16}" />
@@ -150,21 +150,21 @@
             <ListView.ContextMenu>
                 <ContextMenu Name="DiagramsListViewContextMenu">
                     <MenuItem Command="{Binding SelectedNode.CreateDiagram}"
-                              Header="{Binding SelectedNode.CreateDiagramLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.DiagramsListViewContextMenu.CreateDiagramLabel, FallbackValue=NEW...}"
+                              Header="{Binding SelectedNode.CreateDiagramLabel, FallbackValue=NEW...}"
                               ToolTip="{Binding SelectedNode.CreateDiagramToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding SelectedNode.EditSelected}"
-                              Header="{Binding SelectedNode.EditSelectedLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.DiagramsListViewContextMenu.EditSelectedLabel, FallbackValue=EDIT...}"
+                              Header="{Binding SelectedNode.EditSelectedLabel, FallbackValue=EDIT...}"
                               ToolTip="{Binding SelectedNode.EditSelectedToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding SelectedNode.DeleteSelected}"
-                              Header="{Binding SelectedNode.DeleteSelectedLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.DiagramsListViewContextMenu.DeleteSelectedLabel, FallbackValue=DELETE}"
+                              Header="{Binding SelectedNode.DeleteSelectedLabel, FallbackValue=DELETE}"
                               ToolTip="{Binding SelectedNode.DeleteSelectedToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
@@ -172,7 +172,7 @@
                     </MenuItem>
                     <Separator />
                     <MenuItem Command="{Binding SelectedNode.ExportSelected}"
-                              Header="{Binding SelectedNode.ExportSelectedLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.DiagramsListViewContextMenu.ExportSelectedLabel, FallbackValue=EXPORT...}"
+                              Header="{Binding SelectedNode.ExportSelectedLabel, FallbackValue=EXPORT...}"
                               ToolTip="{Binding SelectedNode.ExportSelectedToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource ExportIcon16}" />
@@ -180,7 +180,7 @@
                     </MenuItem>
                     <Separator />
                     <MenuItem Command="{Binding SelectedNode.ResetStylesSelected}"
-                              Header="{Binding SelectedNode.ResetStylesSelectedLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.DiagramsListViewContextMenu.ResetStylesSelectedLabel, FallbackValue=RESET STYLES...}"
+                              Header="{Binding SelectedNode.ResetStylesSelectedLabel, FallbackValue=RESET STYLES...}"
                               ToolTip="{Binding SelectedNode.ResetStylesSelectedToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource ResetIcon16}" />
@@ -188,21 +188,21 @@
                     </MenuItem>
                     <Separator />
                     <MenuItem Command="{Binding SelectedNode.CloneSelected}"
-                              Header="{Binding SelectedNode.CloneSelectedLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.DiagramsListViewContextMenu.CloneSelectedLabel, FallbackValue=CLONE...}"
+                              Header="{Binding SelectedNode.CloneSelectedLabel, FallbackValue=CLONE...}"
                               ToolTip="{Binding SelectedNode.CloneSelectedToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource CloneIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding SelectedNode.CopySelected}"
-                              Header="{Binding SelectedNode.CopySelectedLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.DiagramsListViewContextMenu.CopySelectedLabel, FallbackValue=COPY...}"
+                              Header="{Binding SelectedNode.CopySelectedLabel, FallbackValue=COPY...}"
                               ToolTip="{Binding SelectedNode.CopySelectedToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding SelectedNode.MoveSelected}"
-                              Header="{Binding SelectedNode.MoveSelectedLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramLibraryWindow.DiagramsListViewContextMenu.MoveSelectedLabel, FallbackValue=MOVE...}"
+                              Header="{Binding SelectedNode.MoveSelectedLabel, FallbackValue=MOVE...}"
                               ToolTip="{Binding SelectedNode.MoveSelectedToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource MoveIcon16}" />

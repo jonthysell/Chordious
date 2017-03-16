@@ -19,21 +19,30 @@
                 <DataGridTextColumn Binding="{Binding Key}"
                                     CanUserReorder="False"
                                     ClipboardContentBinding="{Binding Key}"
-                                    Header="{Binding KeyHeaderLabel, FallbackValue=KEY}"
                                     IsReadOnly="True"
-                                    Width="Auto" />
+                                    Width="Auto">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{Binding DataContext.KeyHeaderLabel, RelativeSource={RelativeSource AncestorType={x:Type Window}}, FallbackValue=KEY}" />
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Value}"
                                     CanUserReorder="False"
                                     CanUserSort="False"
                                     ClipboardContentBinding="{Binding Value}"
-                                    Header="{Binding ValueHeaderLabel, FallbackValue=VALUE}"
-                                    Width="*" />
+                                    Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{Binding DataContext.ValueHeaderLabel, RelativeSource={RelativeSource AncestorType={x:Type Window}}, FallbackValue=VALUE}" />
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Level}"
                                     CanUserReorder="False"
                                     ClipboardContentBinding="{Binding Level}"
-                                    Header="{Binding LevelHeaderLabel, FallbackValue=LEVEL}"
                                     IsReadOnly="True"
-                                    Width="Auto" />
+                                    Width="Auto">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{Binding DataContext.LevelHeaderLabel, RelativeSource={RelativeSource AncestorType={x:Type Window}}, FallbackValue=LEVEL}" />
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1"

@@ -166,19 +166,19 @@
     <value>An example of what the image filename will be.</value>
   </data>
   <data name="DiagramExportOutputPathLabel" xml:space="preserve">
-    <value>Path</value>
+    <value>_Path</value>
   </data>
   <data name="DiagramExportOutputPathToolTip" xml:space="preserve">
     <value>The path where you want to export the diagram image files.</value>
   </data>
   <data name="DiagramExportOverwriteFilesLabel" xml:space="preserve">
-    <value>Overwrite Files</value>
+    <value>_Overwrite Files</value>
   </data>
   <data name="DiagramExportOverwriteFilesToolTip" xml:space="preserve">
     <value>Overwrite files that already exist with the same name.</value>
   </data>
   <data name="DiagramExportScaleFactorLabel" xml:space="preserve">
-    <value>Scale</value>
+    <value>_Scale</value>
   </data>
   <data name="DiagramExportScaleFactorToolTip" xml:space="preserve">
     <value>Scale the image files to what percentage of the original size.</value>
@@ -190,7 +190,7 @@
     <value>The format of the exported image files.</value>
   </data>
   <data name="DiagramExportSelectedFilenameFormatLabel" xml:space="preserve">
-    <value>Filename</value>
+    <value>_Filename</value>
   </data>
   <data name="DiagramExportSelectedFilenameFormatToolTip" xml:space="preserve">
     <value>How to format the filenames of the exported images. Codes as follows:
@@ -212,13 +212,13 @@
     <value>Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? (Recommended) You can change your mind later in Options.</value>
   </data>
   <data name="OptionsCheckForUpdatesAsyncLabel" xml:space="preserve">
-    <value>Check For Updates</value>
+    <value>Ch_eck For Updates</value>
   </data>
   <data name="OptionsCheckForUpdatesAsyncToolTip" xml:space="preserve">
     <value>Manually check online for updates.</value>
   </data>
   <data name="OptionsCheckUpdateOnStartLabel" xml:space="preserve">
-    <value>Check For Updates On Start</value>
+    <value>C_heck For Updates On Start</value>
   </data>
   <data name="OptionsCheckUpdateOnStartToolTip" xml:space="preserve">
     <value>Chordious will check for updates automatically when the app starts.</value>
@@ -233,19 +233,19 @@
     <value>The last time that Chordious checked for updates.</value>
   </data>
   <data name="OptionsSelectedEditorRendererBackgroundLabel" xml:space="preserve">
-    <value>Diagram Editor</value>
+    <value>_Diagram Editor</value>
   </data>
   <data name="OptionsSelectedEditorRendererBackgroundToolTip" xml:space="preserve">
     <value>The background to show behind the diagrams in the Diagram Editor.</value>
   </data>
   <data name="OptionsSelectedReleaseChannelLabel" xml:space="preserve">
-    <value>Release Channel</value>
+    <value>_Release Channel</value>
   </data>
   <data name="OptionsSelectedReleaseChannelToolTip" xml:space="preserve">
     <value>The release channel that you want to get updates from.</value>
   </data>
   <data name="OptionsSelectedRendererBackgroundLabel" xml:space="preserve">
-    <value>Normal</value>
+    <value>_Normal</value>
   </data>
   <data name="OptionsSelectedRendererBackgroundToolTip" xml:space="preserve">
     <value>The background to show behind the diagrams in the Chordious UI.</value>
@@ -254,7 +254,7 @@
     <value>Background</value>
   </data>
   <data name="OptionsUpdatesGroupLabel" xml:space="preserve">
-    <value>Updates</value>
+    <value>_Updates</value>
   </data>
   <data name="ReleaseChannelOfficialFriendlyValue" xml:space="preserve">
     <value>Official</value>

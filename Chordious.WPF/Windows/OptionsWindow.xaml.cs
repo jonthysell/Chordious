@@ -48,18 +48,6 @@ namespace com.jonthysell.Chordious.WPF
         public OptionsWindow()
         {
             VM = new OptionsViewModelExtended();
-
-            // Pre-seed labels
-            AltKeyUtils.TryAddLabel("OptionsWindow.SettingsGroupLabel", VM.SettingsGroupLabel);
-            AltKeyUtils.TryAddLabel("OptionsWindow.StylesGroupLabel", VM.StylesGroupLabel);
-            AltKeyUtils.TryAddLabel("OptionsWindow.FindersGroupLabel", VM.FindersGroupLabel);
-            AltKeyUtils.TryAddLabel("OptionsWindow.ConfigGroupLabel", VM.ConfigGroupLabel);
-
-            if (UpdateUtils.UpdateEnabled)
-            {
-                AltKeyUtils.TryAddLabel("OptionsWindow.UpdatesGroupLabel", VM.UpdatesGroupLabel);
-            }
-
             InitializeComponent();
         }
     }

@@ -455,7 +455,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowInstrumentManagerLabel;
+                return Strings.OptionsShowInstrumentManagerLabel;
             }
         }
 
@@ -490,7 +490,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowChordQualityManagerLabel;
+                return Strings.OptionsShowChordQualityManagerLabel;
             }
         }
 
@@ -525,7 +525,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowScaleManagerLabel;
+                return Strings.OptionsShowScaleManagerLabel;
             }
         }
 

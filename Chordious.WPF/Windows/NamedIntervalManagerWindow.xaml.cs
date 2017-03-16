@@ -51,13 +51,6 @@ namespace com.jonthysell.Chordious.WPF
         public NamedIntervalManagerWindow(NamedIntervalManagerViewModel vm)
         {
             VM = vm;
-
-            // Pre-seed labels
-            AltKeyUtils.TryRemove("NamedIntervalManagerWindow.", true);
-
-            AltKeyUtils.TryAddLabel("NamedIntervalManagerWindow.UserNamedIntervalGroupLabel", VM.UserNamedIntervalGroupLabel);
-            AltKeyUtils.TryAddLabel("NamedIntervalManagerWindow.DefaultNamedIntervalGroupLabel", VM.DefaultNamedIntervalGroupLabel);
-            
             InitializeComponent();
         }
     }

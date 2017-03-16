@@ -34,18 +34,18 @@
                     HorizontalAlignment="Right"
                     Orientation="Horizontal">
             <Button Command="{Binding Accept}"
-                    Content="{Binding AppVM.YesLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ConfirmationWindow.YesLabel, FallbackValue=YES}"
+                    Content="{Binding AppVM.YesLabel, FallbackValue=YES}"
                     Margin="5"
                     Style="{StaticResource CleanButton}"
                     Width="75" />
             <Button Command="{Binding AcceptAndRemember}"
-                    Content="{Binding YesAndRememberLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ConfirmationWindow.YesAndRememberLabel, FallbackValue=YES (REMEMBER)}"
+                    Content="{Binding YesAndRememberLabel, FallbackValue=YES (REMEMBER)}"
                     Margin="5"
                     Style="{StaticResource CleanButton}"
                     Visibility="{Binding ShowAcceptAndRemember, Converter={StaticResource BoolToVisibilityConverter}}"
                     Width="150" />
             <Button Command="{Binding Reject}"
-                    Content="{Binding AppVM.NoLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ConfirmationWindow.NoLabel, FallbackValue=NO}"
+                    Content="{Binding AppVM.NoLabel, FallbackValue=NO}"
                     IsDefault="True"
                     Margin="5"
                     Style="{StaticResource CleanButton}"

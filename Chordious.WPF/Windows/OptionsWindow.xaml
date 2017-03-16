@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
         <TabControl Grid.Row="0"
                     Margin="5">
-            <TabItem Header="{Binding SettingsGroupLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.SettingsGroupLabel, FallbackValue=SETTINGS}">
+            <TabItem Header="{Binding SettingsGroupLabel, FallbackValue=SETTINGS}">
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden"
                               VerticalScrollBarVisibility="Visible">
                     <StackPanel>
@@ -32,7 +32,7 @@
                                   Margin="5">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Content="{Binding SelectedRenderBackgroundLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.SettingsGroupLabel.RenderBackgroundLabel, FallbackValue=NORMAL}"
+                                    <Label Content="{Binding SelectedRenderBackgroundLabel, FallbackValue=NORMAL}"
                                            Margin="5"
                                            Name="RenderBackgroundLabel"
                                            Target="{Binding ElementName=RenderBackgroundComboBox}"
@@ -49,7 +49,7 @@
                                               Width="100" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Content="{Binding SelectedEditorRenderBackgroundLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.SettingsGroupLabel.EditorRenderBackgroundLabel, FallbackValue=DIAGRAM EDITOR}"
+                                    <Label Content="{Binding SelectedEditorRenderBackgroundLabel, FallbackValue=DIAGRAM EDITOR}"
                                            Margin="5"
                                            Name="EditorRenderBackgroundLabel"
                                            Target="{Binding ElementName=EditorRenderBackgroundComboBox}"
@@ -71,17 +71,17 @@
                                   Margin="5">
                             <StackPanel>
                                 <Button Command="{Binding ShowAdvancedSettings, Mode=OneWay}"
-                                        Content="{Binding ShowAdvancedSettingsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.SettingsGroupLabel.ShowAdvancedSettingsLabel, FallbackValue=ADVANCED SETTINGS EDITOR}"
+                                        Content="{Binding ShowAdvancedSettingsLabel, FallbackValue=ADVANCED SETTINGS EDITOR}"
                                         Margin="5"
                                         Style="{DynamicResource CleanButton}"
                                         ToolTip="{Binding ShowAdvancedSettingsToolTip}" />
                                 <Button Command="{Binding ResetUserSettings, Mode=OneWay}"
-                                        Content="{Binding ResetUserSettingsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.SettingsGroupLabel.ResetUserSettingsLabel, FallbackValue=RESET SETTINGS}"
+                                        Content="{Binding ResetUserSettingsLabel, FallbackValue=RESET SETTINGS}"
                                         Margin="5"
                                         Style="{DynamicResource CleanButton}"
                                         ToolTip="{Binding ResetUserSettingsToolTip}" />
                                 <Button Command="{Binding ResetConfirmations, Mode=OneWay}"
-                                        Content="{Binding ResetConfirmationsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.SettingsGroupLabel.ResetConfirmationsLabel, FallbackValue=RESET CONFIRMATIONS}"
+                                        Content="{Binding ResetConfirmationsLabel, FallbackValue=RESET CONFIRMATIONS}"
                                         Margin="5"
                                         Style="{DynamicResource CleanButton}"
                                         ToolTip="{Binding ResetConfirmationsToolTip}" />
@@ -90,14 +90,14 @@
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="{Binding StylesGroupLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.StylesGroupLabel, FallbackValue=STYLES}">
+            <TabItem Header="{Binding StylesGroupLabel, FallbackValue=STYLES}">
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden"
                               VerticalScrollBarVisibility="Visible">
                     <StackPanel>
                         <GroupBox Header="{Binding StylesBasicGroupLabel, FallbackValue=BASIC}"
                                   Margin="5">
                             <Button Command="{Binding ShowStyleEditor}"
-                                    Content="{Binding ShowStyleEditorLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.StylesGroupLabel.ShowStyleEditorLabel, FallbackValue=USER STYLE EDITOR}"
+                                    Content="{Binding ShowStyleEditorLabel, FallbackValue=USER STYLE EDITOR}"
                                     Margin="5"
                                     Style="{DynamicResource CleanButton}"
                                     ToolTip="{Binding ShowStyleEditorToolTip}" />
@@ -106,12 +106,12 @@
                                   Margin="5">
                             <StackPanel>
                                 <Button Command="{Binding ShowAdvancedStyle, Mode=OneWay}"
-                                        Content="{Binding ShowAdvancedStyleLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.StylesGroupLabel.ShowAdvancedStyleLabel, FallbackValue=ADVANCED STYLE EDITOR}"
+                                        Content="{Binding ShowAdvancedStyleLabel, FallbackValue=ADVANCED STYLE EDITOR}"
                                         Margin="5"
                                         Style="{DynamicResource CleanButton}"
                                         ToolTip="{Binding ShowAdvancedStyleToolTip}" />
                                 <Button Command="{Binding ResetUserStyles, Mode=OneWay}"
-                                        Content="{Binding ResetUserStylesLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.StylesGroupLabel.ResetUserStylesLabel, FallbackValue=RESET STYLES}"
+                                        Content="{Binding ResetUserStylesLabel, FallbackValue=RESET STYLES}"
                                         Margin="5"
                                         Style="{DynamicResource CleanButton}"
                                         ToolTip="{Binding ResetUserStylesToolTip}" />
@@ -120,7 +120,7 @@
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="{Binding FindersGroupLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.FindersGroupLabel, FallbackValue=FINDERS}">
+            <TabItem Header="{Binding FindersGroupLabel, FallbackValue=FINDERS}">
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden"
                               VerticalScrollBarVisibility="Visible">
                     <StackPanel>
@@ -128,17 +128,17 @@
                                   Margin="5">
                             <StackPanel>
                                 <Button Command="{Binding ShowInstrumentManager, Mode=OneWay}"
-                                        Content="{Binding ShowInstrumentManagerLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.FindersGroupLabel.ShowInstrumentManagerLabel, FallbackValue=INSTRUMENTS}"
+                                        Content="{Binding ShowInstrumentManagerLabel, FallbackValue=INSTRUMENTS}"
                                         Margin="5"
                                         Style="{DynamicResource CleanButton}"
                                         ToolTip="{Binding ShowInstrumentManagerToolTip}" />
                                 <Button Command="{Binding ShowChordQualityManager, Mode=OneWay}"
-                                        Content="{Binding ShowChordQualityManagerLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.FindersGroupLabel.ShowChordQualityManagerLabel, FallbackValue=CHORD QUALITIES}"
+                                        Content="{Binding ShowChordQualityManagerLabel, FallbackValue=CHORD QUALITIES}"
                                         Margin="5"
                                         Style="{DynamicResource CleanButton}"
                                         ToolTip="{Binding ShowChordQualityManagerToolTip}" />
                                 <Button Command="{Binding ShowScaleManager, Mode=OneWay}"
-                                        Content="{Binding ShowScaleManagerLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.FindersGroupLabel.ShowScaleManagerLabel, FallbackValue=SCALES}"
+                                        Content="{Binding ShowScaleManagerLabel, FallbackValue=SCALES}"
                                         Margin="5"
                                         Style="{DynamicResource CleanButton}"
                                         ToolTip="{Binding ShowScaleManagerToolTip}" />
@@ -148,12 +148,12 @@
                                   Margin="5">
                             <StackPanel>
                                 <Button Command="{Binding ResetChordFinderDefaults, Mode=OneWay}"
-                                        Content="{Binding ResetChordFinderDefaultsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.FindersGroupLabel.ResetChordFinderDefaultsLabel, FallbackValue=RESET CHORD FINDER DEFAULTS}"
+                                        Content="{Binding ResetChordFinderDefaultsLabel, FallbackValue=RESET CHORD FINDER DEFAULTS}"
                                         Margin="5"
                                         Style="{DynamicResource CleanButton}"
                                         ToolTip="{Binding ResetChordFinderDefaultsToolTip}" />
                                 <Button Command="{Binding ResetScaleFinderDefaults, Mode=OneWay}"
-                                        Content="{Binding ResetScaleFinderDefaultsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.FindersGroupLabel.ResetScaleFinderDefaultsLabel, FallbackValue=RESET SCALE FINDER DEFAULTS}"
+                                        Content="{Binding ResetScaleFinderDefaultsLabel, FallbackValue=RESET SCALE FINDER DEFAULTS}"
                                         Margin="5"
                                         Style="{DynamicResource CleanButton}"
                                         ToolTip="{Binding ResetScaleFinderDefaultsToolTip}" />
@@ -162,7 +162,7 @@
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="{Binding ConfigGroupLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.ConfigGroupLabel, FallbackValue=CONFIG}">
+            <TabItem Header="{Binding ConfigGroupLabel, FallbackValue=CONFIG}">
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden"
                               VerticalScrollBarVisibility="Visible">
                     <StackPanel>
@@ -170,12 +170,12 @@
                                   Margin="5">
                             <StackPanel>
                                 <Button Command="{Binding ShowConfigImport, Mode=OneWay}"
-                                        Content="{Binding ShowConfigImportLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.ConfigGroupLabel.ShowConfigImportLabel, FallbackValue=IMPORT CONFIG}"
+                                        Content="{Binding ShowConfigImportLabel, FallbackValue=IMPORT CONFIG}"
                                         Margin="5"
                                         Style="{DynamicResource CleanButton}"
                                         ToolTip="{Binding ShowConfigImportToolTip}" />
                                 <Button Command="{Binding ShowConfigExport, Mode=OneWay}"
-                                        Content="{Binding ShowConfigExportLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.ConfigGroupLabel.ShowConfigExportLabel, FallbackValue=EXPORT CONFIG}"
+                                        Content="{Binding ShowConfigExportLabel, FallbackValue=EXPORT CONFIG}"
                                         Margin="5"
                                         Style="{DynamicResource CleanButton}"
                                         ToolTip="{Binding ShowConfigExportToolTip}" />
@@ -185,7 +185,7 @@
                                   Margin="5">
                             <StackPanel>
                                 <Button Command="{Binding LegacyImport, Mode=OneWay}"
-                                        Content="{Binding LegacyImportLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.ConfigGroupLabel.LegacyImportLabel, FallbackValue=IMPORT CHORDLINES}"
+                                        Content="{Binding LegacyImportLabel, FallbackValue=IMPORT CHORDLINES}"
                                         Margin="5"
                                         Style="{DynamicResource CleanButton}"
                                         ToolTip="{Binding LegacyImportToolTip}" />
@@ -194,13 +194,13 @@
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="{Binding UpdatesGroupLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.UpdatesGroupLabel, FallbackValue=UPDATES}"
+            <TabItem Header="{Binding UpdatesGroupLabel, FallbackValue=UPDATES}"
                      Visibility="{Binding UpdateEnabled, Converter={StaticResource BoolToVisibilityConverter}}">
                 <ScrollViewer HorizontalScrollBarVisibility="Hidden"
                               VerticalScrollBarVisibility="Visible">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding CheckUpdateOnStartLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.UpdatesGroupLabel.CheckUpdateOnStartLabel, FallbackValue=CHECK FOR UPDATES ON START}"
+                            <Label Content="{Binding CheckUpdateOnStartLabel, FallbackValue=CHECK FOR UPDATES ON START}"
                                    Margin="5"
                                    Name="CheckUpdateOnStartLabel"
                                    Target="{Binding ElementName=CheckUpdateOnStartCheckBox}"
@@ -216,7 +216,7 @@
                                       Width="65" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding SelectedReleaseChannelLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.UpdatesGroupLabel.ReleaseChannelLabel, FallbackValue=RELEASE CHANNEL}"
+                            <Label Content="{Binding SelectedReleaseChannelLabel, FallbackValue=RELEASE CHANNEL}"
                                    Margin="5"
                                    Name="ReleaseChannelLabel"
                                    Target="{Binding ElementName=ReleaseChannelComboBox}"
@@ -233,7 +233,7 @@
                                       Width="75" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding LastUpdateCheckLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.UpdatesGroupLabel.LastUpdateCheckLabel, FallbackValue=LAST CHECKED}"
+                            <Label Content="{Binding LastUpdateCheckLabel, FallbackValue=LAST CHECKED}"
                                    Margin="5"
                                    Name="LastUpdateCheckLabel"
                                    Target="{Binding ElementName=LastUpdateCheckTextBox}"
@@ -248,7 +248,7 @@
                                      VerticalAlignment="Center" />
                         </StackPanel>
                         <Button Command="{Binding CheckForUpdatesAsync, IsAsync=True}"
-                                Content="{Binding CheckForUpdatesAsyncLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=OptionsWindow.UpdatesGroupLabel.CheckForUpdatesAsyncLabel, FallbackValue=CHECK FOR UPDATES}"
+                                Content="{Binding CheckForUpdatesAsyncLabel, FallbackValue=CHECK FOR UPDATES}"
                                 Margin="15"
                                 Style="{DynamicResource CleanButton}"
                                 ToolTip="{Binding CheckForUpdatesAsyncToolTip}" />

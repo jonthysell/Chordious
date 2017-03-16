@@ -13,7 +13,7 @@
     </Window.InputBindings>
     <StackPanel FocusManager.FocusedElement="{Binding ElementName=CollectionNameComboBox}">
         <StackPanel Orientation="Horizontal">
-            <Label Content="{Binding CollectionNameLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=DiagramCollectionSelectorWindow.CollectionNameLabel, FallbackValue=COLLECTION NAME}"
+            <Label Content="{Binding CollectionNameLabel, FallbackValue=COLLECTION NAME}"
                    Height="25"
                    Margin="5"
                    Name="CollectionNameLabel"

@@ -78,7 +78,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.LaunchWebsiteLabel;
+                return Strings.MainLaunchWebsiteLabel;
             }
         }
 
@@ -86,7 +86,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.LaunchWebsiteToolTip;
+                return Strings.MainLaunchWebsiteToolTip;
             }
         }
 
@@ -98,7 +98,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.LaunchWebsitePromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.MainLaunchWebsitePromptMessage, (confirmed) =>
                         {
                             try
                             {
@@ -130,7 +130,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowLicenseLabel;
+                return Strings.MainShowLicenseLabel;
             }
         }
 
@@ -138,7 +138,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowLicenseToolTip;
+                return Strings.MainShowLicenseToolTip;
             }
         }
 
@@ -170,7 +170,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowChordFinderLabel;
+                return Strings.MainShowChordFinderLabel;
             }
         }
 
@@ -178,7 +178,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowChordFinderToolTip;
+                return Strings.MainShowChordFinderToolTip;
             }
         }
 
@@ -209,7 +209,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowScaleFinderLabel;
+                return Strings.MainShowScaleFinderLabel;
             }
         }
 
@@ -217,7 +217,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowScaleFinderToolTip;
+                return Strings.MainShowScaleFinderToolTip;
             }
         }
 
@@ -248,7 +248,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowDiagramLibraryLabel;
+                return Strings.MainShowDiagramLibraryLabel;
             }
         }
 
@@ -256,7 +256,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowDiagramLibraryToolTip;
+                return Strings.MainShowDiagramLibraryToolTip;
             }
         }
 
@@ -287,7 +287,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowInstrumentManagerLabel;
+                return Strings.MainShowInstrumentManagerLabel;
             }
         }
 
@@ -295,7 +295,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowInstrumentManagerToolTip;
+                return Strings.MainShowInstrumentManagerToolTip;
             }
         }
 
@@ -326,7 +326,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowOptionsLabel;
+                return Strings.MainShowOptionsLabel;
             }
         }
 
@@ -334,7 +334,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowOptionsToolTip;
+                return Strings.MainShowOptionsToolTip;
             }
         }
 
@@ -378,7 +378,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowHelpLabel;
+                return Strings.MainShowHelpLabel;
             }
         }
 
@@ -386,7 +386,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ShowHelpToolTip;
+                return Strings.MainShowHelpToolTip;
             }
         }
 
@@ -398,7 +398,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.ShowHelpPromptMessage, (confirmed) =>
+                        Messenger.Default.Send(new ConfirmationMessage(Strings.MainShowHelpPromptMessage, (confirmed) =>
                         {
                             try
                             {

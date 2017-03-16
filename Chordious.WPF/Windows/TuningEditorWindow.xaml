@@ -22,7 +22,7 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label Content="{Binding NameLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=TuningEditorWindow.NameLabel, FallbackValue=NAME}"
+        <Label Content="{Binding NameLabel, FallbackValue=NAME}"
                Grid.Column="0"
                Grid.Row="0"
                Margin="5"
@@ -38,7 +38,7 @@
                  SelectedText=""
                  Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
                  ToolTip="{Binding NameToolTip}" />
-        <Label Content="{Binding RootNotesLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=TuningEditorWindow.RootNotesLabel, FallbackValue=NOTES}"
+        <Label Content="{Binding RootNotesLabel, FallbackValue=NOTES}"
                Grid.Column="0"
                Grid.Row="1"
                Margin="5"

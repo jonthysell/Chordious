@@ -14,7 +14,7 @@
     </Window.InputBindings>
     <StackPanel FocusManager.FocusedElement="{Binding ElementName=NameTextBox}">
         <StackPanel Orientation="Horizontal">
-            <Label Content="{Binding NameLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=InstrumentEditorWindow.NameLabel, FallbackValue=NAME}"
+            <Label Content="{Binding NameLabel, FallbackValue=NAME}"
                    Margin="5"
                    Name="NameLabel"
                    Target="{Binding ElementName=NameTextBox}"
@@ -27,7 +27,7 @@
                      Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
                      ToolTip="{Binding NameToolTip}"
                      Width="200" />
-            <Label Content="{Binding NumStringsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=InstrumentEditorWindow.NumStringsLabel, FallbackValue=# OF STRINGS}"
+            <Label Content="{Binding NumStringsLabel, FallbackValue=# OF STRINGS}"
                    Margin="5"
                    Name="NumStringsLabel"
                    Target="{Binding ElementName=NumStringsTextBox}"

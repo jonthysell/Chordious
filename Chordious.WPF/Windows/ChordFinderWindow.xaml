@@ -45,7 +45,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Label Content="{Binding SelectedInstrumentLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.InstrumentLabel, FallbackValue=INSTRUMENT}"
+            <Label Content="{Binding SelectedInstrumentLabel, FallbackValue=INSTRUMENT}"
                    FontWeight="Bold"
                    Grid.Column="0"
                    Margin="5"
@@ -82,7 +82,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Label Content="{Binding SelectedTuningLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.TuningLabel, FallbackValue=TUNING}"
+            <Label Content="{Binding SelectedTuningLabel, FallbackValue=TUNING}"
                    FontWeight="Bold"
                    Grid.Column="2"
                    Margin="5"
@@ -116,7 +116,7 @@
                                         Source="{StaticResource EditIcon16}"
                                         Width="16" />
             </Button>
-            <Label Content="{Binding SelectedRootNoteLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.RootNoteLabel, FallbackValue=ROOT NOTE}"
+            <Label Content="{Binding SelectedRootNoteLabel, FallbackValue=ROOT NOTE}"
                    FontWeight="Bold"
                    Grid.Column="5"
                    Margin="5"
@@ -133,7 +133,7 @@
                       ToolTip="{Binding SelectedRootNoteToolTip}"
                       VerticalAlignment="Center"
                       Width="50" />
-            <Label Content="{Binding SelectedChordQualityLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.ChordQualityLabel, FallbackValue=QUALITY}"
+            <Label Content="{Binding SelectedChordQualityLabel, FallbackValue=QUALITY}"
                    FontWeight="Bold"
                    Grid.Column="7"
                    Margin="5"
@@ -202,7 +202,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Label Content="{Binding NumFretsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.NumFretsLabel, FallbackValue=# OF FRETS}"
+                        <Label Content="{Binding NumFretsLabel, FallbackValue=# OF FRETS}"
                                Grid.Column="0"
                                Grid.Row="0"
                                Margin="5"
@@ -219,7 +219,7 @@
                                  Name="NumFretsTextBox"
                                  Text="{Binding NumFrets}"
                                  ToolTip="{Binding NumFretsToolTip}" />
-                        <Label Content="{Binding MaxFretLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.MaxFretLabel, FallbackValue=MAX FRET}"
+                        <Label Content="{Binding MaxFretLabel, FallbackValue=MAX FRET}"
                                Grid.Column="0"
                                Grid.Row="1"
                                Margin="5"
@@ -236,7 +236,7 @@
                                  Name="MaxFretTextBox"
                                  Text="{Binding MaxFret}"
                                  ToolTip="{Binding MaxFretToolTip}" />
-                        <Label Content="{Binding MaxReachLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.MaxReachLabel, FallbackValue=MAX REACH}"
+                        <Label Content="{Binding MaxReachLabel, FallbackValue=MAX REACH}"
                                Grid.Column="0"
                                Grid.Row="2"
                                Margin="5"
@@ -253,7 +253,7 @@
                                  Name="MaxReachTextBox"
                                  Text="{Binding MaxReach}"
                                  ToolTip="{Binding MaxReachToolTip}" />
-                        <Label Content="{Binding AllowOpenStringsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.AllowOpenStringsLabel, FallbackValue=ALLOW OPEN STRINGS}"
+                        <Label Content="{Binding AllowOpenStringsLabel, FallbackValue=ALLOW OPEN STRINGS}"
                                Grid.Column="0"
                                Grid.Row="3"
                                Margin="5"
@@ -269,7 +269,7 @@
                                   Name="AllowOpenStringsCheckBox"
                                   ToolTip="{Binding AllowOpenStringsToolTip}"
                                   VerticalAlignment="Center" />
-                        <Label Content="{Binding AllowMutedStringsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.AllowMutedStringsLabel, FallbackValue=ALLOW MUTED STRINGS}"
+                        <Label Content="{Binding AllowMutedStringsLabel, FallbackValue=ALLOW MUTED STRINGS}"
                                Grid.Column="0"
                                Grid.Row="4"
                                Margin="5"
@@ -285,7 +285,7 @@
                                   Name="AllowMutedStringsCheckBox"
                                   ToolTip="{Binding AllowMutedStringsToolTip}"
                                   VerticalAlignment="Center" />
-                        <Label Content="{Binding AllowRootlessChordsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.AllowRootlessChordsLabel, FallbackValue=ALLOW ROOTLESS CHORDS}"
+                        <Label Content="{Binding AllowRootlessChordsLabel, FallbackValue=ALLOW ROOTLESS CHORDS}"
                                Grid.Column="0"
                                Grid.Row="5"
                                Margin="5"
@@ -319,7 +319,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Label Content="{Binding AddTitleLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.AddTitleLabel, FallbackValue=ADD TITLE}"
+                        <Label Content="{Binding AddTitleLabel, FallbackValue=ADD TITLE}"
                                Grid.Column="0"
                                Grid.Row="0"
                                Margin="5"
@@ -335,7 +335,7 @@
                                   Name="AddTitleCheckBox"
                                   ToolTip="{Binding AddTitleToolTip}"
                                   VerticalAlignment="Center" />
-                        <Label Content="{Binding MirrorResultsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.MirrorResultsLabel, FallbackValue=MIRROR RESULTS}"
+                        <Label Content="{Binding MirrorResultsLabel, FallbackValue=MIRROR RESULTS}"
                                Grid.Column="0"
                                Grid.Row="1"
                                Margin="5"
@@ -351,7 +351,7 @@
                                   Name="MirrorResultsCheckBox"
                                   ToolTip="{Binding MirrorResultsToolTip}"
                                   VerticalAlignment="Center" />
-                        <Label Content="{Binding AddRootNotesLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.AddRootNotesLabel, FallbackValue=ADD ROOT NOTES}"
+                        <Label Content="{Binding AddRootNotesLabel, FallbackValue=ADD ROOT NOTES}"
                                Grid.Column="0"
                                Grid.Row="2"
                                Margin="5"
@@ -367,7 +367,7 @@
                                   Name="AddRootNotesCheckBox"
                                   ToolTip="{Binding AddRootNotesToolTip}"
                                   VerticalAlignment="Center" />
-                        <Label Content="{Binding SelectedBarreTypeOptionLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.BarreTypeOptionLabel, FallbackValue=BARRE TYPE}"
+                        <Label Content="{Binding SelectedBarreTypeOptionLabel, FallbackValue=BARRE TYPE}"
                                Grid.Column="0"
                                Grid.Row="3"
                                Margin="5"
@@ -383,7 +383,7 @@
                                   Style="{StaticResource CleanComboBox}"
                                   ToolTip="{Binding SelectedBarreTypeOptionToolTip}"
                                   VerticalAlignment="Center" />
-                        <Label Content="{Binding SelectedMarkTextOptionLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.MarkTextOptionLabel, FallbackValue=MARK TEXT}"
+                        <Label Content="{Binding SelectedMarkTextOptionLabel, FallbackValue=MARK TEXT}"
                                Grid.Column="0"
                                Grid.Row="4"
                                Margin="5"
@@ -399,7 +399,7 @@
                                   Style="{StaticResource CleanComboBox}"
                                   ToolTip="{Binding SelectedMarkTextOptionToolTip}"
                                   VerticalAlignment="Center" />
-                        <Label Content="{Binding AddBottomMarksLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.AddBottomMarksLabel, FallbackValue=ADD BOTTOM MARKS}"
+                        <Label Content="{Binding AddBottomMarksLabel, FallbackValue=ADD BOTTOM MARKS}"
                                Grid.Column="0"
                                Grid.Row="5"
                                Margin="5"
@@ -415,7 +415,7 @@
                                   Name="AddBottomMarksCheckBox"
                                   ToolTip="{Binding AddBottomMarksToolTip}"
                                   VerticalAlignment="Center" />
-                        <Label Content="{Binding SelectedBottomMarkTextOptionLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.BottomMarkTextOptionLabel, FallbackValue=BOTTOM MARK TEXT}"
+                        <Label Content="{Binding SelectedBottomMarkTextOptionLabel, FallbackValue=BOTTOM MARK TEXT}"
                                Grid.Column="0"
                                Grid.Row="6"
                                IsEnabled="{Binding AddBottomMarks}"
@@ -436,12 +436,12 @@
                     </Grid>
                 </GroupBox>
                 <Button Command="{Binding SetAsDefaults, Mode=OneWay}"
-                        Content="{Binding SetAsDefaultsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.SetAsDefaultsLabel, FallbackValue=SET AS DEFAULTS}"
+                        Content="{Binding SetAsDefaultsLabel, FallbackValue=SET AS DEFAULTS}"
                         Margin="5"
                         Style="{StaticResource CleanButton}"
                         ToolTip="{Binding SetAsDefaultsToolTip}" />
                 <Button Command="{Binding ResetToDefaults, Mode=OneWay}"
-                        Content="{Binding ResetToDefaultsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.ResetToDefaultsLabel, FallbackValue=RESET TO DEFAULTS}"
+                        Content="{Binding ResetToDefaultsLabel, FallbackValue=RESET TO DEFAULTS}"
                         Margin="5"
                         Style="{StaticResource CleanButton}"
                         ToolTip="{Binding ResetToDefaultsToolTip}" />
@@ -492,7 +492,7 @@
                                         Width="16" />
                 <AccessText HorizontalAlignment="Center"
                             Name="SearchAsyncLabel"
-                            Text="{Binding SearchAsyncLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.SearchAsyncLabel, FallbackValue=SEARCH}"
+                            Text="{Binding SearchAsyncLabel, FallbackValue=SEARCH}"
                             VerticalAlignment="Center" />
             </StackPanel>
         </Button>
@@ -511,7 +511,7 @@
                                         Width="16" />
                 <AccessText HorizontalAlignment="Center"
                             Name="SaveSelectedLabel"
-                            Text="{Binding SaveSelectedLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=ChordFinderWindow.SaveSelectedLabel, FallbackValue=SAVE SELECTED}"
+                            Text="{Binding SaveSelectedLabel, FallbackValue=SAVE SELECTED}"
                             VerticalAlignment="Center" />
             </StackPanel>
         </Button>

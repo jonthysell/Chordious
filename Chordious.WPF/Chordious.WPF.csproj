@@ -91,9 +91,7 @@
     <Compile Include="Windows\AdvancedDataWindow.xaml.cs">
       <DependentUpon>AdvancedDataWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utils\AltKeyUtils.cs" />
     <Compile Include="Controls\AutoDisableImage.cs" />
-    <Compile Include="Converters\TextToAccessTextConverter.cs" />
     <Compile Include="Converters\DecimalToPercentConverter.cs" />
     <Compile Include="Windows\ChordQualityEditorWindow.xaml.cs">
       <DependentUpon>ChordQualityEditorWindow.xaml</DependentUpon>

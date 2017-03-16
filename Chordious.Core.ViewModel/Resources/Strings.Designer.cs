@@ -161,7 +161,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add Bottom Marks.
+        ///   Looks up a localized string similar to Add Bottom Mark_s.
         /// </summary>
         internal static string ChordFinderOptionsAddBottomMarksLabel {
             get {
@@ -179,7 +179,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allow Rootless Chords.
+        ///   Looks up a localized string similar to Allow Rootless _Chords.
         /// </summary>
         internal static string ChordFinderOptionsAllowRootlessChordsLabel {
             get {
@@ -197,7 +197,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Barre Type.
+        ///   Looks up a localized string similar to Barre T_ype.
         /// </summary>
         internal static string ChordFinderOptionsBarreTypeLabel {
             get {
@@ -215,7 +215,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bottom Mark Text.
+        ///   Looks up a localized string similar to _Bottom Mark Text.
         /// </summary>
         internal static string ChordFinderOptionsBottomMarkTextLabel {
             get {
@@ -233,7 +233,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quality.
+        ///   Looks up a localized string similar to _Quality.
         /// </summary>
         internal static string ChordFinderOptionsSelectedChordQualityLabel {
             get {
@@ -269,7 +269,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Abbreviation.
+        ///   Looks up a localized string similar to _Abbreviation.
         /// </summary>
         internal static string ChordQualityEditorAbbreviationLabel {
             get {
@@ -341,7 +341,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default Qualities.
+        ///   Looks up a localized string similar to _Default Qualities.
         /// </summary>
         internal static string ChordQualityManagerDefaultNamedIntervalGroupLabel {
             get {
@@ -395,7 +395,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Qualities.
+        ///   Looks up a localized string similar to _User Qualities.
         /// </summary>
         internal static string ChordQualityManagerUserNamedIntervalGroupLabel {
             get {
@@ -458,7 +458,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chord Qualities.
+        ///   Looks up a localized string similar to Chord _Qualities.
         /// </summary>
         internal static string ConfigPartsChordQualitiesLabel {
             get {
@@ -476,7 +476,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Instruments.
+        ///   Looks up a localized string similar to _Instruments.
         /// </summary>
         internal static string ConfigPartsInstrumentsLabel {
             get {
@@ -494,7 +494,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Library.
+        ///   Looks up a localized string similar to _Library.
         /// </summary>
         internal static string ConfigPartsLibraryLabel {
             get {
@@ -512,7 +512,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scales.
+        ///   Looks up a localized string similar to S_cales.
         /// </summary>
         internal static string ConfigPartsScalesLabel {
             get {
@@ -530,7 +530,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to _Settings.
         /// </summary>
         internal static string ConfigPartsSettingsLabel {
             get {
@@ -548,7 +548,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Styles.
+        ///   Looks up a localized string similar to S_tyles.
         /// </summary>
         internal static string ConfigPartsStylesLabel {
             get {
@@ -638,7 +638,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Collection Name.
+        ///   Looks up a localized string similar to _Collection Name.
         /// </summary>
         internal static string DiagramCollectionSelectorCollectionNameLabel {
             get {
@@ -899,7 +899,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Collections.
+        ///   Looks up a localized string similar to _Collections.
         /// </summary>
         internal static string DiagramLibraryNodesLabel {
             get {
@@ -2600,7 +2600,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add Root Notes.
+        ///   Looks up a localized string similar to Add R_oot Notes.
         /// </summary>
         internal static string FinderOptionsAddRootNotesLabel {
             get {
@@ -2618,7 +2618,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add Title.
+        ///   Looks up a localized string similar to A_dd Title.
         /// </summary>
         internal static string FinderOptionsAddTitleLabel {
             get {
@@ -2636,7 +2636,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allow Muted Strings.
+        ///   Looks up a localized string similar to Allo_w Muted Strings.
         /// </summary>
         internal static string FinderOptionsAllowMutedStringsLabel {
             get {
@@ -2654,7 +2654,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allow Open Strings.
+        ///   Looks up a localized string similar to Allow O_pen Strings.
         /// </summary>
         internal static string FinderOptionsAllowOpenStringsLabel {
             get {
@@ -2672,7 +2672,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mark Text.
+        ///   Looks up a localized string similar to Mar_k Text.
         /// </summary>
         internal static string FinderOptionsMarkTextLabel {
             get {
@@ -2690,7 +2690,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Max Fret.
+        ///   Looks up a localized string similar to Ma_x Fret.
         /// </summary>
         internal static string FinderOptionsMaxFretLabel {
             get {
@@ -2708,7 +2708,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Max Reach.
+        ///   Looks up a localized string similar to Max _Reach.
         /// </summary>
         internal static string FinderOptionsMaxReachLabel {
             get {
@@ -2726,7 +2726,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mirror Results.
+        ///   Looks up a localized string similar to _Mirror Results.
         /// </summary>
         internal static string FinderOptionsMirrorResultsLabel {
             get {
@@ -2744,7 +2744,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to # of Frets.
+        ///   Looks up a localized string similar to # of _Frets.
         /// </summary>
         internal static string FinderOptionsNumFretsLabel {
             get {
@@ -2762,7 +2762,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset to Defaults.
+        ///   Looks up a localized string similar to Reset to Defa_ults.
         /// </summary>
         internal static string FinderOptionsResetToDefaultsLabel {
             get {
@@ -2789,7 +2789,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set as Defaults.
+        ///   Looks up a localized string similar to Set as Def_aults.
         /// </summary>
         internal static string FinderOptionsSetAsDefaultsLabel {
             get {
@@ -2825,7 +2825,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save Selected.
+        ///   Looks up a localized string similar to Sa_ve Selected.
         /// </summary>
         internal static string FinderSaveSelectedLabel {
             get {
@@ -2843,7 +2843,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search.
+        ///   Looks up a localized string similar to S_earch.
         /// </summary>
         internal static string FinderSearchLabel {
             get {
@@ -2861,7 +2861,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Instrument.
+        ///   Looks up a localized string similar to _Instrument.
         /// </summary>
         internal static string FinderSelectedInstrumentLabel {
             get {
@@ -2879,7 +2879,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Root Note.
+        ///   Looks up a localized string similar to Root _Note.
         /// </summary>
         internal static string FinderSelectedRootNoteLabel {
             get {
@@ -2897,7 +2897,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tuning.
+        ///   Looks up a localized string similar to _Tuning.
         /// </summary>
         internal static string FinderSelectedTuningLabel {
             get {
@@ -2933,7 +2933,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to _Name.
         /// </summary>
         internal static string InstrumentEditorNameLabel {
             get {
@@ -2960,7 +2960,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to # of Strings.
+        ///   Looks up a localized string similar to # of _Strings.
         /// </summary>
         internal static string InstrumentEditorNumStringsLabel {
             get {
@@ -2996,7 +2996,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default Instruments.
+        ///   Looks up a localized string similar to _Default Instruments.
         /// </summary>
         internal static string InstrumentManagerDefaultInstrumentsGroupLabel {
             get {
@@ -3113,7 +3113,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tunings.
+        ///   Looks up a localized string similar to _Tunings.
         /// </summary>
         internal static string InstrumentManagerTuningsGroupLabel {
             get {
@@ -3131,7 +3131,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Instruments.
+        ///   Looks up a localized string similar to _User Instruments.
         /// </summary>
         internal static string InstrumentManagerUserInstrumentsGroupLabel {
             get {
@@ -3149,38 +3149,173 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Website.
+        ///   Looks up a localized string similar to License.
         /// </summary>
-        internal static string LaunchWebsiteLabel {
+        internal static string LicenseTitle {
             get {
-                return ResourceManager.GetString("LaunchWebsiteLabel", resourceCulture);
+                return ResourceManager.GetString("LicenseTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Website.
+        /// </summary>
+        internal static string MainLaunchWebsiteLabel {
+            get {
+                return ResourceManager.GetString("MainLaunchWebsiteLabel", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to This will open the Chordious website in your browser. Do you want to continue?.
         /// </summary>
-        internal static string LaunchWebsitePromptMessage {
+        internal static string MainLaunchWebsitePromptMessage {
             get {
-                return ResourceManager.GetString("LaunchWebsitePromptMessage", resourceCulture);
+                return ResourceManager.GetString("MainLaunchWebsitePromptMessage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Go to the Chordious website..
         /// </summary>
-        internal static string LaunchWebsiteToolTip {
+        internal static string MainLaunchWebsiteToolTip {
             get {
-                return ResourceManager.GetString("LaunchWebsiteToolTip", resourceCulture);
+                return ResourceManager.GetString("MainLaunchWebsiteToolTip", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to License.
+        ///   Looks up a localized string similar to _Chord Finder.
         /// </summary>
-        internal static string LicenseTitle {
+        internal static string MainShowChordFinderLabel {
             get {
-                return ResourceManager.GetString("LicenseTitle", resourceCulture);
+                return ResourceManager.GetString("MainShowChordFinderLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search for chords with the Chord Finder..
+        /// </summary>
+        internal static string MainShowChordFinderToolTip {
+            get {
+                return ResourceManager.GetString("MainShowChordFinderToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Library.
+        /// </summary>
+        internal static string MainShowDiagramLibraryLabel {
+            get {
+                return ResourceManager.GetString("MainShowDiagramLibraryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create and manage collections of your favorite diagrams..
+        /// </summary>
+        internal static string MainShowDiagramLibraryToolTip {
+            get {
+                return ResourceManager.GetString("MainShowDiagramLibraryToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Help.
+        /// </summary>
+        internal static string MainShowHelpLabel {
+            get {
+                return ResourceManager.GetString("MainShowHelpLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will open the Help section on the Chordious website in your browser. Do you want to continue?.
+        /// </summary>
+        internal static string MainShowHelpPromptMessage {
+            get {
+                return ResourceManager.GetString("MainShowHelpPromptMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go to the Help section on the Chordious website..
+        /// </summary>
+        internal static string MainShowHelpToolTip {
+            get {
+                return ResourceManager.GetString("MainShowHelpToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Instruments.
+        /// </summary>
+        internal static string MainShowInstrumentManagerLabel {
+            get {
+                return ResourceManager.GetString("MainShowInstrumentManagerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create and manage your favorite instruments and tunings..
+        /// </summary>
+        internal static string MainShowInstrumentManagerToolTip {
+            get {
+                return ResourceManager.GetString("MainShowInstrumentManagerToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lic_ense.
+        /// </summary>
+        internal static string MainShowLicenseLabel {
+            get {
+                return ResourceManager.GetString("MainShowLicenseLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View the license for using Chordious..
+        /// </summary>
+        internal static string MainShowLicenseToolTip {
+            get {
+                return ResourceManager.GetString("MainShowLicenseToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Options.
+        /// </summary>
+        internal static string MainShowOptionsLabel {
+            get {
+                return ResourceManager.GetString("MainShowOptionsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Chordious&apos; configuration..
+        /// </summary>
+        internal static string MainShowOptionsToolTip {
+            get {
+                return ResourceManager.GetString("MainShowOptionsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Scale Finder.
+        /// </summary>
+        internal static string MainShowScaleFinderLabel {
+            get {
+                return ResourceManager.GetString("MainShowScaleFinderLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search for scales with the Scale Finder..
+        /// </summary>
+        internal static string MainShowScaleFinderToolTip {
+            get {
+                return ResourceManager.GetString("MainShowScaleFinderToolTip", resourceCulture);
             }
         }
         
@@ -3221,7 +3356,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Intervals.
+        ///   Looks up a localized string similar to _Intervals.
         /// </summary>
         internal static string NamedIntervalEditorIntervalsLabel {
             get {
@@ -3248,7 +3383,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to _Name.
         /// </summary>
         internal static string NamedIntervalEditorNameLabel {
             get {
@@ -3311,7 +3446,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No.
+        ///   Looks up a localized string similar to _No.
         /// </summary>
         internal static string NoLabel {
             get {
@@ -3527,7 +3662,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Config.
+        ///   Looks up a localized string similar to _Config.
         /// </summary>
         internal static string OptionsConfigGroupLabel {
             get {
@@ -3554,7 +3689,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Finders.
+        ///   Looks up a localized string similar to _Finders.
         /// </summary>
         internal static string OptionsFindersGroupLabel {
             get {
@@ -3590,7 +3725,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Import ChordLines.
+        ///   Looks up a localized string similar to Import Chord_Lines.
         /// </summary>
         internal static string OptionsLegacyImportLabel {
             get {
@@ -3617,7 +3752,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset Chord Finder Defaults.
+        ///   Looks up a localized string similar to _Reset Chord Finder Defaults.
         /// </summary>
         internal static string OptionsResetChordFinderDefaultsLabel {
             get {
@@ -3644,7 +3779,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset Confirmations.
+        ///   Looks up a localized string similar to R_eset Confirmations.
         /// </summary>
         internal static string OptionsResetConfirmationsLabel {
             get {
@@ -3671,7 +3806,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset Scale Finder Defaults.
+        ///   Looks up a localized string similar to R_eset Scale Finder Defaults.
         /// </summary>
         internal static string OptionsResetScaleFinderDefaultsLabel {
             get {
@@ -3698,7 +3833,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset Settings.
+        ///   Looks up a localized string similar to _Reset Settings.
         /// </summary>
         internal static string OptionsResetUserSettingsLabel {
             get {
@@ -3725,7 +3860,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset Styles.
+        ///   Looks up a localized string similar to _Reset Styles.
         /// </summary>
         internal static string OptionsResetUserStylesLabel {
             get {
@@ -3761,7 +3896,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to _Settings.
         /// </summary>
         internal static string OptionsSettingsGroupLabel {
             get {
@@ -3770,7 +3905,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Advanced Settings Editor.
+        ///   Looks up a localized string similar to _Advanced Settings Editor.
         /// </summary>
         internal static string OptionsShowAdvancedSettingsLabel {
             get {
@@ -3797,7 +3932,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Advanced Style Editor.
+        ///   Looks up a localized string similar to _Advanced Style Editor.
         /// </summary>
         internal static string OptionsShowAdvancedStyleLabel {
             get {
@@ -3824,7 +3959,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export Config.
+        ///   Looks up a localized string similar to Chord _Qualities.
+        /// </summary>
+        internal static string OptionsShowChordQualityManagerLabel {
+            get {
+                return ResourceManager.GetString("OptionsShowChordQualityManagerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Export Config.
         /// </summary>
         internal static string OptionsShowConfigExportLabel {
             get {
@@ -3842,7 +3986,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Import Config.
+        ///   Looks up a localized string similar to _Import Config.
         /// </summary>
         internal static string OptionsShowConfigImportLabel {
             get {
@@ -3860,7 +4004,25 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Style Editor.
+        ///   Looks up a localized string similar to _Instruments.
+        /// </summary>
+        internal static string OptionsShowInstrumentManagerLabel {
+            get {
+                return ResourceManager.GetString("OptionsShowInstrumentManagerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sc_ales.
+        /// </summary>
+        internal static string OptionsShowScaleManagerLabel {
+            get {
+                return ResourceManager.GetString("OptionsShowScaleManagerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Style _Editor.
         /// </summary>
         internal static string OptionsShowStyleEditorLabel {
             get {
@@ -3896,7 +4058,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Styles.
+        ///   Looks up a localized string similar to S_tyles.
         /// </summary>
         internal static string OptionsStylesGroupLabel {
             get {
@@ -3986,7 +4148,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale.
+        ///   Looks up a localized string similar to _Scale.
         /// </summary>
         internal static string ScaleFinderOptionsSelectedScaleLabel {
             get {
@@ -4022,7 +4184,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default Scales.
+        ///   Looks up a localized string similar to _Default Scales.
         /// </summary>
         internal static string ScaleManagerDefaultNamedIntervalGroupLabel {
             get {
@@ -4076,7 +4238,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Scales.
+        ///   Looks up a localized string similar to _User Scales.
         /// </summary>
         internal static string ScaleManagerUserNamedIntervalGroupLabel {
             get {
@@ -4103,24 +4265,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chord Finder.
-        /// </summary>
-        internal static string ShowChordFinderLabel {
-            get {
-                return ResourceManager.GetString("ShowChordFinderLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search for chords with the Chord Finder..
-        /// </summary>
-        internal static string ShowChordFinderToolTip {
-            get {
-                return ResourceManager.GetString("ShowChordFinderToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Chord Qualities.
         /// </summary>
         internal static string ShowChordQualityManagerLabel {
@@ -4139,51 +4283,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Library.
-        /// </summary>
-        internal static string ShowDiagramLibraryLabel {
-            get {
-                return ResourceManager.GetString("ShowDiagramLibraryLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Create and manage collections of your favorite diagrams..
-        /// </summary>
-        internal static string ShowDiagramLibraryToolTip {
-            get {
-                return ResourceManager.GetString("ShowDiagramLibraryToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Help.
-        /// </summary>
-        internal static string ShowHelpLabel {
-            get {
-                return ResourceManager.GetString("ShowHelpLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This will open the Help section on the Chordious website in your browser. Do you want to continue?.
-        /// </summary>
-        internal static string ShowHelpPromptMessage {
-            get {
-                return ResourceManager.GetString("ShowHelpPromptMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Go to the Help section on the Chordious website..
-        /// </summary>
-        internal static string ShowHelpToolTip {
-            get {
-                return ResourceManager.GetString("ShowHelpToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Instruments.
         /// </summary>
         internal static string ShowInstrumentManagerLabel {
@@ -4198,60 +4297,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ShowInstrumentManagerToolTip {
             get {
                 return ResourceManager.GetString("ShowInstrumentManagerToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to License.
-        /// </summary>
-        internal static string ShowLicenseLabel {
-            get {
-                return ResourceManager.GetString("ShowLicenseLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to View the license for using Chordious..
-        /// </summary>
-        internal static string ShowLicenseToolTip {
-            get {
-                return ResourceManager.GetString("ShowLicenseToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Options.
-        /// </summary>
-        internal static string ShowOptionsLabel {
-            get {
-                return ResourceManager.GetString("ShowOptionsLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Change Chordious&apos; configuration..
-        /// </summary>
-        internal static string ShowOptionsToolTip {
-            get {
-                return ResourceManager.GetString("ShowOptionsToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scale Finder.
-        /// </summary>
-        internal static string ShowScaleFinderLabel {
-            get {
-                return ResourceManager.GetString("ShowScaleFinderLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search for scales with the Scale Finder..
-        /// </summary>
-        internal static string ShowScaleFinderToolTip {
-            get {
-                return ResourceManager.GetString("ShowScaleFinderToolTip", resourceCulture);
             }
         }
         
@@ -4301,7 +4346,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to _Name.
         /// </summary>
         internal static string TuningEditorNameLabel {
             get {
@@ -4328,7 +4373,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Notes.
+        ///   Looks up a localized string similar to N_otes.
         /// </summary>
         internal static string TuningEditorRootNotesLabel {
             get {
@@ -4373,7 +4418,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yes (remember).
+        ///   Looks up a localized string similar to Yes (_stop asking me).
         /// </summary>
         internal static string YesAndRememberLabel {
             get {
@@ -4382,7 +4427,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yes.
+        ///   Looks up a localized string similar to _Yes.
         /// </summary>
         internal static string YesLabel {
             get {

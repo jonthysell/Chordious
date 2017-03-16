@@ -205,7 +205,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Path.
+        ///   Looks up a localized string similar to _Path.
         /// </summary>
         internal static string DiagramExportOutputPathLabel {
             get {
@@ -223,7 +223,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overwrite Files.
+        ///   Looks up a localized string similar to _Overwrite Files.
         /// </summary>
         internal static string DiagramExportOverwriteFilesLabel {
             get {
@@ -241,7 +241,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale.
+        ///   Looks up a localized string similar to _Scale.
         /// </summary>
         internal static string DiagramExportScaleFactorLabel {
             get {
@@ -277,7 +277,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Filename.
+        ///   Looks up a localized string similar to _Filename.
         /// </summary>
         internal static string DiagramExportSelectedFilenameFormatLabel {
             get {
@@ -323,7 +323,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check For Updates.
+        ///   Looks up a localized string similar to Ch_eck For Updates.
         /// </summary>
         internal static string OptionsCheckForUpdatesAsyncLabel {
             get {
@@ -341,7 +341,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check For Updates On Start.
+        ///   Looks up a localized string similar to C_heck For Updates On Start.
         /// </summary>
         internal static string OptionsCheckUpdateOnStartLabel {
             get {
@@ -386,7 +386,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Diagram Editor.
+        ///   Looks up a localized string similar to _Diagram Editor.
         /// </summary>
         internal static string OptionsSelectedEditorRendererBackgroundLabel {
             get {
@@ -404,7 +404,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Release Channel.
+        ///   Looks up a localized string similar to _Release Channel.
         /// </summary>
         internal static string OptionsSelectedReleaseChannelLabel {
             get {
@@ -422,7 +422,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Normal.
+        ///   Looks up a localized string similar to _Normal.
         /// </summary>
         internal static string OptionsSelectedRendererBackgroundLabel {
             get {
@@ -449,7 +449,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updates.
+        ///   Looks up a localized string similar to _Updates.
         /// </summary>
         internal static string OptionsUpdatesGroupLabel {
             get {

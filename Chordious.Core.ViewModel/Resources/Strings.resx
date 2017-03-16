@@ -172,7 +172,7 @@
     <value>Edit the selected collection's properties.</value>
   </data>
   <data name="DiagramLibraryNodesLabel" xml:space="preserve">
-    <value>Collections</value>
+    <value>_Collections</value>
   </data>
   <data name="DiagramLibraryNodesToolTip" xml:space="preserve">
     <value>Your collections of diagrams.</value>
@@ -192,10 +192,10 @@
   <data name="ExportLabel" xml:space="preserve">
     <value>Export...</value>
   </data>
-  <data name="LaunchWebsiteLabel" xml:space="preserve">
-    <value>Website</value>
+  <data name="MainLaunchWebsiteLabel" xml:space="preserve">
+    <value>_Website</value>
   </data>
-  <data name="LaunchWebsiteToolTip" xml:space="preserve">
+  <data name="MainLaunchWebsiteToolTip" xml:space="preserve">
     <value>Go to the Chordious website.</value>
   </data>
   <data name="NameLabel" xml:space="preserve">
@@ -205,7 +205,7 @@
     <value>New...</value>
   </data>
   <data name="NoLabel" xml:space="preserve">
-    <value>No</value>
+    <value>_No</value>
   </data>
   <data name="ObservableDiagramLibraryNodeCloneSelectedToolTipPluralFormat" xml:space="preserve">
     <value>Create copies of the {0} selected diagrams in the existing collection.</value>
@@ -238,13 +238,13 @@
     <value>Path:</value>
   </data>
   <data name="ChordFinderOptionsSelectedChordQualityLabel" xml:space="preserve">
-    <value>Quality</value>
+    <value>_Quality</value>
   </data>
   <data name="ChordFinderOptionsSelectedChordQualityToolTip" xml:space="preserve">
     <value>The chord quality you want to use.</value>
   </data>
   <data name="FinderSelectedInstrumentLabel" xml:space="preserve">
-    <value>Instrument</value>
+    <value>_Instrument</value>
   </data>
   <data name="FinderSelectedInstrumentToolTip" xml:space="preserve">
     <value>The instrument you want to use.</value>
@@ -253,33 +253,33 @@
     <value>Selected:</value>
   </data>
   <data name="FinderSelectedRootNoteLabel" xml:space="preserve">
-    <value>Root Note</value>
+    <value>Root _Note</value>
   </data>
   <data name="FinderSelectedRootNoteToolTip" xml:space="preserve">
     <value>The root note you want to use.</value>
   </data>
   <data name="FinderSelectedTuningLabel" xml:space="preserve">
-    <value>Tuning</value>
+    <value>_Tuning</value>
   </data>
   <data name="FinderSelectedTuningToolTip" xml:space="preserve">
     <value>The tuning you want to use.</value>
   </data>
-  <data name="ShowChordFinderLabel" xml:space="preserve">
-    <value>Chord Finder</value>
+  <data name="MainShowChordFinderLabel" xml:space="preserve">
+    <value>_Chord Finder</value>
   </data>
-  <data name="ShowChordFinderToolTip" xml:space="preserve">
+  <data name="MainShowChordFinderToolTip" xml:space="preserve">
     <value>Search for chords with the Chord Finder.</value>
   </data>
-  <data name="ShowDiagramLibraryLabel" xml:space="preserve">
-    <value>Library</value>
+  <data name="MainShowDiagramLibraryLabel" xml:space="preserve">
+    <value>_Library</value>
   </data>
-  <data name="ShowDiagramLibraryToolTip" xml:space="preserve">
+  <data name="MainShowDiagramLibraryToolTip" xml:space="preserve">
     <value>Create and manage collections of your favorite diagrams.</value>
   </data>
-  <data name="ShowHelpLabel" xml:space="preserve">
-    <value>Help</value>
+  <data name="MainShowHelpLabel" xml:space="preserve">
+    <value>_Help</value>
   </data>
-  <data name="ShowHelpToolTip" xml:space="preserve">
+  <data name="MainShowHelpToolTip" xml:space="preserve">
     <value>Go to the Help section on the Chordious website.</value>
   </data>
   <data name="ShowInstrumentManagerLabel" xml:space="preserve">
@@ -288,131 +288,131 @@
   <data name="ShowInstrumentManagerToolTip" xml:space="preserve">
     <value>Create and manage your favorite instruments and tunings.</value>
   </data>
-  <data name="ShowLicenseLabel" xml:space="preserve">
-    <value>License</value>
+  <data name="MainShowLicenseLabel" xml:space="preserve">
+    <value>Lic_ense</value>
   </data>
-  <data name="ShowLicenseToolTip" xml:space="preserve">
+  <data name="MainShowLicenseToolTip" xml:space="preserve">
     <value>View the license for using Chordious.</value>
   </data>
-  <data name="ShowOptionsLabel" xml:space="preserve">
-    <value>Options</value>
+  <data name="MainShowOptionsLabel" xml:space="preserve">
+    <value>_Options</value>
   </data>
-  <data name="ShowOptionsToolTip" xml:space="preserve">
+  <data name="MainShowOptionsToolTip" xml:space="preserve">
     <value>Change Chordious' configuration.</value>
   </data>
-  <data name="ShowScaleFinderLabel" xml:space="preserve">
-    <value>Scale Finder</value>
+  <data name="MainShowScaleFinderLabel" xml:space="preserve">
+    <value>_Scale Finder</value>
   </data>
-  <data name="ShowScaleFinderToolTip" xml:space="preserve">
+  <data name="MainShowScaleFinderToolTip" xml:space="preserve">
     <value>Search for scales with the Scale Finder.</value>
   </data>
   <data name="YesAndRememberLabel" xml:space="preserve">
-    <value>Yes (remember)</value>
+    <value>Yes (_stop asking me)</value>
   </data>
   <data name="YesLabel" xml:space="preserve">
-    <value>Yes</value>
+    <value>_Yes</value>
   </data>
   <data name="StyleLabel" xml:space="preserve">
     <value>Style</value>
   </data>
   <data name="FinderOptionsAllowMutedStringsLabel" xml:space="preserve">
-    <value>Allow Muted Strings</value>
+    <value>Allo_w Muted Strings</value>
   </data>
   <data name="FinderOptionsAllowMutedStringsToolTip" xml:space="preserve">
     <value>Allow results that use muted strings.</value>
   </data>
   <data name="FinderOptionsAllowOpenStringsLabel" xml:space="preserve">
-    <value>Allow Open Strings</value>
+    <value>Allow O_pen Strings</value>
   </data>
   <data name="FinderOptionsAllowOpenStringsToolTip" xml:space="preserve">
     <value>Allow results that use open strings.</value>
   </data>
   <data name="ChordFinderOptionsAllowRootlessChordsLabel" xml:space="preserve">
-    <value>Allow Rootless Chords</value>
+    <value>Allow Rootless _Chords</value>
   </data>
   <data name="ChordFinderOptionsAllowRootlessChordsToolTip" xml:space="preserve">
     <value>Allow results that don't have the root note of the chord.</value>
   </data>
   <data name="FinderOptionsMaxFretLabel" xml:space="preserve">
-    <value>Max Fret</value>
+    <value>Ma_x Fret</value>
   </data>
   <data name="FinderOptionsMaxFretToolTip" xml:space="preserve">
     <value>The highest fret on the fretboard that a result can have.</value>
   </data>
   <data name="FinderOptionsMaxReachLabel" xml:space="preserve">
-    <value>Max Reach</value>
+    <value>Max _Reach</value>
   </data>
   <data name="FinderOptionsMaxReachToolTip" xml:space="preserve">
     <value>The number of frets a player will need to reach their fingers across in order to play the result.</value>
   </data>
   <data name="FinderOptionsNumFretsLabel" xml:space="preserve">
-    <value># of Frets</value>
+    <value># of _Frets</value>
   </data>
   <data name="FinderOptionsNumFretsToolTip" xml:space="preserve">
     <value>The number of frets to display in each result.</value>
   </data>
   <data name="ChordFinderOptionsAddBottomMarksLabel" xml:space="preserve">
-    <value>Add Bottom Marks</value>
+    <value>Add Bottom Mark_s</value>
   </data>
   <data name="ChordFinderOptionsAddBottomMarksToolTip" xml:space="preserve">
     <value>Include the note played by each string at the bottom of the diagram in each result.</value>
   </data>
   <data name="FinderOptionsAddRootNotesLabel" xml:space="preserve">
-    <value>Add Root Notes</value>
+    <value>Add R_oot Notes</value>
   </data>
   <data name="FinderOptionsAddRootNotesToolTip" xml:space="preserve">
     <value>Flag root notes in each result as such, so they may be styled differently.</value>
   </data>
   <data name="FinderOptionsAddTitleLabel" xml:space="preserve">
-    <value>Add Title</value>
+    <value>A_dd Title</value>
   </data>
   <data name="FinderOptionsAddTitleToolTip" xml:space="preserve">
     <value>Include the title in each result.</value>
   </data>
   <data name="ChordFinderOptionsBarreTypeLabel" xml:space="preserve">
-    <value>Barre Type</value>
+    <value>Barre T_ype</value>
   </data>
   <data name="ChordFinderOptionsBarreTypeToolTip" xml:space="preserve">
     <value>Which type of barre lines to include (if any) in each result.</value>
   </data>
   <data name="ChordFinderOptionsBottomMarkTextLabel" xml:space="preserve">
-    <value>Bottom Mark Text</value>
+    <value>_Bottom Mark Text</value>
   </data>
   <data name="ChordFinderOptionsBottomMarkTextToolTip" xml:space="preserve">
     <value>The style of the notes for the text at the bottom of the fretboard.</value>
   </data>
   <data name="FinderOptionsMarkTextLabel" xml:space="preserve">
-    <value>Mark Text</value>
+    <value>Mar_k Text</value>
   </data>
   <data name="FinderOptionsMarkTextToolTip" xml:space="preserve">
     <value>Include the note played by each string (and its style) on the mark in each result.</value>
   </data>
   <data name="FinderOptionsMirrorResultsLabel" xml:space="preserve">
-    <value>Mirror Results</value>
+    <value>_Mirror Results</value>
   </data>
   <data name="FinderOptionsMirrorResultsToolTip" xml:space="preserve">
     <value>Flip the order of the strings on each result.</value>
   </data>
   <data name="FinderOptionsResetToDefaultsLabel" xml:space="preserve">
-    <value>Reset to Defaults</value>
+    <value>Reset to Defa_ults</value>
   </data>
   <data name="FinderOptionsResetToDefaultsToolTip" xml:space="preserve">
     <value>Reset your current search parameters to the default values.</value>
   </data>
   <data name="FinderOptionsSetAsDefaultsLabel" xml:space="preserve">
-    <value>Set as Defaults</value>
+    <value>Set as Def_aults</value>
   </data>
   <data name="FinderOptionsSetAsDefaultsToolTip" xml:space="preserve">
     <value>Set your current search parameters as the new default values.</value>
   </data>
   <data name="FinderSaveSelectedLabel" xml:space="preserve">
-    <value>Save Selected</value>
+    <value>Sa_ve Selected</value>
   </data>
   <data name="FinderSaveSelectedToolTip" xml:space="preserve">
     <value>Save the selected diagrams to the Diagram Library.</value>
   </data>
   <data name="FinderSearchLabel" xml:space="preserve">
-    <value>Search</value>
+    <value>S_earch</value>
   </data>
   <data name="FinderSearchToolTip" xml:space="preserve">
     <value>Begin searching with the parameters selected. (F5)</value>
@@ -421,7 +421,7 @@
     <value>Scale Finder</value>
   </data>
   <data name="ScaleFinderOptionsSelectedScaleLabel" xml:space="preserve">
-    <value>Scale</value>
+    <value>_Scale</value>
   </data>
   <data name="ScaleFinderOptionsSelectedScaleToolTip" xml:space="preserve">
     <value>The scale you want to use.</value>
@@ -457,37 +457,37 @@
     <value>Config Import</value>
   </data>
   <data name="ConfigPartsChordQualitiesLabel" xml:space="preserve">
-    <value>Chord Qualities</value>
+    <value>Chord _Qualities</value>
   </data>
   <data name="ConfigPartsChordQualitiesToolTip" xml:space="preserve">
     <value>Include user chord qualities.</value>
   </data>
   <data name="ConfigPartsInstrumentsLabel" xml:space="preserve">
-    <value>Instruments</value>
+    <value>_Instruments</value>
   </data>
   <data name="ConfigPartsInstrumentsToolTip" xml:space="preserve">
     <value>Include user instruments and tunings.</value>
   </data>
   <data name="ConfigPartsLibraryLabel" xml:space="preserve">
-    <value>Library</value>
+    <value>_Library</value>
   </data>
   <data name="ConfigPartsLibraryToolTip" xml:space="preserve">
     <value>Include saved diagram collections.</value>
   </data>
   <data name="ConfigPartsScalesLabel" xml:space="preserve">
-    <value>Scales</value>
+    <value>S_cales</value>
   </data>
   <data name="ConfigPartsScalesToolTip" xml:space="preserve">
     <value>Include user scales.</value>
   </data>
   <data name="ConfigPartsSettingsLabel" xml:space="preserve">
-    <value>Settings</value>
+    <value>_Settings</value>
   </data>
   <data name="ConfigPartsSettingsToolTip" xml:space="preserve">
     <value>Include user settings.</value>
   </data>
   <data name="ConfigPartsStylesLabel" xml:space="preserve">
-    <value>Styles</value>
+    <value>S_tyles</value>
   </data>
   <data name="ConfigPartsStylesToolTip" xml:space="preserve">
     <value>Include user styles.</value>
@@ -817,7 +817,7 @@
     <value>Create a new chord quality.</value>
   </data>
   <data name="ChordQualityManagerDefaultNamedIntervalGroupLabel" xml:space="preserve">
-    <value>Default Qualities</value>
+    <value>_Default Qualities</value>
   </data>
   <data name="ChordQualityManagerDefaultNamedIntervalGroupToolTip" xml:space="preserve">
     <value>Built-in chord qualities.</value>
@@ -832,7 +832,7 @@
     <value>Chord Quality Manager</value>
   </data>
   <data name="ChordQualityManagerUserNamedIntervalGroupLabel" xml:space="preserve">
-    <value>User Qualities</value>
+    <value>_User Qualities</value>
   </data>
   <data name="ChordQualityManagerUserNamedIntervalGroupToolTip" xml:space="preserve">
     <value>User created chord qualities.</value>
@@ -847,7 +847,7 @@
     <value>Create a new scale.</value>
   </data>
   <data name="ScaleManagerDefaultNamedIntervalGroupLabel" xml:space="preserve">
-    <value>Default Scales</value>
+    <value>_Default Scales</value>
   </data>
   <data name="ScaleManagerDefaultNamedIntervalGroupToolTip" xml:space="preserve">
     <value>Built-in scales.</value>
@@ -862,13 +862,13 @@
     <value>Scale Manager</value>
   </data>
   <data name="ScaleManagerUserNamedIntervalGroupLabel" xml:space="preserve">
-    <value>User Scales</value>
+    <value>_User Scales</value>
   </data>
   <data name="ScaleManagerUserNamedIntervalGroupToolTip" xml:space="preserve">
     <value>User created scales.</value>
   </data>
   <data name="ChordQualityEditorAbbreviationLabel" xml:space="preserve">
-    <value>Abbreviation</value>
+    <value>_Abbreviation</value>
   </data>
   <data name="ChordQualityEditorAbbreviationToolTip" xml:space="preserve">
     <value>The abbreviation to be shown after the root note in the chord.</value>
@@ -919,7 +919,7 @@
     <value>Edit Instrument</value>
   </data>
   <data name="InstrumentEditorNameLabel" xml:space="preserve">
-    <value>Name</value>
+    <value>_Name</value>
   </data>
   <data name="InstrumentEditorNameToolTip" xml:space="preserve">
     <value>The name of the instrument.</value>
@@ -928,7 +928,7 @@
     <value>New Instrument</value>
   </data>
   <data name="InstrumentEditorNumStringsLabel" xml:space="preserve">
-    <value># of Strings</value>
+    <value># of _Strings</value>
   </data>
   <data name="InstrumentEditorNumStringsToolTip" xml:space="preserve">
     <value>The number of strings the instrument has.</value>
@@ -940,7 +940,7 @@
     <value>Create a new tuning for the selected instrument.</value>
   </data>
   <data name="InstrumentManagerDefaultInstrumentsGroupLabel" xml:space="preserve">
-    <value>Default Instruments</value>
+    <value>_Default Instruments</value>
   </data>
   <data name="InstrumentManagerDefaultInstrumentsGroupToolTip" xml:space="preserve">
     <value>Built-in instruments.</value>
@@ -973,18 +973,18 @@
     <value>Instrument Manager</value>
   </data>
   <data name="InstrumentManagerTuningsGroupLabel" xml:space="preserve">
-    <value>Tunings</value>
+    <value>_Tunings</value>
   </data>
   <data name="InstrumentManagerTuningsGroupToolTip" xml:space="preserve">
     <value>The available tunings for the selected instrument.</value>
   </data>
   <data name="InstrumentManagerUserInstrumentsGroupLabel" xml:space="preserve">
-    <value>User Instruments</value>
+    <value>_User Instruments</value>
   </data>
   <data name="InstrumentManagerUserInstrumentsGroupToolTip" xml:space="preserve">
     <value>User created instruments.</value>
   </data>
-  <data name="LaunchWebsitePromptMessage" xml:space="preserve">
+  <data name="MainLaunchWebsitePromptMessage" xml:space="preserve">
     <value>This will open the Chordious website in your browser. Do you want to continue?</value>
   </data>
   <data name="NamedIntervalEditorAddIntervalLabel" xml:space="preserve">
@@ -997,10 +997,10 @@
     <value>Example in C:</value>
   </data>
   <data name="NamedIntervalEditorIntervalsLabel" xml:space="preserve">
-    <value>Intervals</value>
+    <value>_Intervals</value>
   </data>
   <data name="NamedIntervalEditorNameLabel" xml:space="preserve">
-    <value>Name</value>
+    <value>_Name</value>
   </data>
   <data name="NamedIntervalEditorRemoveIntervalLabel" xml:space="preserve">
     <value>-</value>
@@ -1009,7 +1009,7 @@
     <value>Remove an interval.</value>
   </data>
   <data name="OptionsConfigGroupLabel" xml:space="preserve">
-    <value>Config</value>
+    <value>_Config</value>
   </data>
   <data name="OptionsConfigImportExportGroupLabel" xml:space="preserve">
     <value>Import / Export</value>
@@ -1018,7 +1018,7 @@
     <value>Legacy</value>
   </data>
   <data name="OptionsFindersGroupLabel" xml:space="preserve">
-    <value>Finders</value>
+    <value>_Finders</value>
   </data>
   <data name="OptionsFindersManagersGroupLabel" xml:space="preserve">
     <value>Managers</value>
@@ -1027,13 +1027,13 @@
     <value>Search Defaults</value>
   </data>
   <data name="OptionsLegacyImportLabel" xml:space="preserve">
-    <value>Import ChordLines</value>
+    <value>Import Chord_Lines</value>
   </data>
   <data name="OptionsLegacyImportToolTip" xml:space="preserve">
     <value>Import a Classic Chordious ChordLines file.</value>
   </data>
   <data name="OptionsResetChordFinderDefaultsLabel" xml:space="preserve">
-    <value>Reset Chord Finder Defaults</value>
+    <value>_Reset Chord Finder Defaults</value>
   </data>
   <data name="OptionsResetChordFinderDefaultsPromptMessage" xml:space="preserve">
     <value>This will reset your default search parameters to the built-in values. This cannot be undone. Do you want to continue?</value>
@@ -1042,7 +1042,7 @@
     <value>Reset your default search parameters to the built-in values.</value>
   </data>
   <data name="OptionsResetConfirmationsLabel" xml:space="preserve">
-    <value>Reset Confirmations</value>
+    <value>R_eset Confirmations</value>
   </data>
   <data name="OptionsResetConfirmationsPromptMessage" xml:space="preserve">
     <value>This will reset all of the confirmation dialogs you specified to stop prompting you. This cannot be undone. Do you want to continue?</value>
@@ -1051,7 +1051,7 @@
     <value>Reset all of the confirmation dialogs you specified to stop prompting you.</value>
   </data>
   <data name="OptionsResetScaleFinderDefaultsLabel" xml:space="preserve">
-    <value>Reset Scale Finder Defaults</value>
+    <value>R_eset Scale Finder Defaults</value>
   </data>
   <data name="OptionsResetScaleFinderDefaultsPromptMessage" xml:space="preserve">
     <value>This will reset your default search parameters to the built-in values. This cannot be undone. Do you want to continue?</value>
@@ -1060,7 +1060,7 @@
     <value>Reset your default search parameters to the built-in values.</value>
   </data>
   <data name="OptionsResetUserSettingsLabel" xml:space="preserve">
-    <value>Reset Settings</value>
+    <value>_Reset Settings</value>
   </data>
   <data name="OptionsResetUserSettingsPromptMessage" xml:space="preserve">
     <value>This will revert all of your user settings to the defaults. This cannot be undone. Do you want to continue?</value>
@@ -1069,7 +1069,7 @@
     <value>Revert your user settings to the defaults.</value>
   </data>
   <data name="OptionsResetUserStylesLabel" xml:space="preserve">
-    <value>Reset Styles</value>
+    <value>_Reset Styles</value>
   </data>
   <data name="OptionsResetUserStylesPromptMessage" xml:space="preserve">
     <value>This will revert your base user styles to the defaults. This cannot be undone. Do you want to continue?</value>
@@ -1081,10 +1081,10 @@
     <value>Advanced</value>
   </data>
   <data name="OptionsSettingsGroupLabel" xml:space="preserve">
-    <value>Settings</value>
+    <value>_Settings</value>
   </data>
   <data name="OptionsShowAdvancedSettingsLabel" xml:space="preserve">
-    <value>Advanced Settings Editor</value>
+    <value>_Advanced Settings Editor</value>
   </data>
   <data name="OptionsShowAdvancedSettingsPromptMessage" xml:space="preserve">
     <value>Careful! You can cause problems with Chordious if you don't know what you're doing in here. Do you want to continue?</value>
@@ -1093,7 +1093,7 @@
     <value>Edit all settings.</value>
   </data>
   <data name="OptionsShowAdvancedStyleLabel" xml:space="preserve">
-    <value>Advanced Style Editor</value>
+    <value>_Advanced Style Editor</value>
   </data>
   <data name="OptionsShowAdvancedStylePromptMessage" xml:space="preserve">
     <value>Careful! You can cause problems with Chordious if you don't know what you're doing in here. Do you want to continue?</value>
@@ -1102,19 +1102,19 @@
     <value>Edit all styles.</value>
   </data>
   <data name="OptionsShowConfigExportLabel" xml:space="preserve">
-    <value>Export Config</value>
+    <value>_Export Config</value>
   </data>
   <data name="OptionsShowConfigExportToolTip" xml:space="preserve">
     <value>Export your Chordious Config to a file.</value>
   </data>
   <data name="OptionsShowConfigImportLabel" xml:space="preserve">
-    <value>Import Config</value>
+    <value>_Import Config</value>
   </data>
   <data name="OptionsShowConfigImportToolTip" xml:space="preserve">
     <value>Import a Chordious Config file.</value>
   </data>
   <data name="OptionsShowStyleEditorLabel" xml:space="preserve">
-    <value>User Style Editor</value>
+    <value>User Style _Editor</value>
   </data>
   <data name="OptionsShowStyleEditorToolTip" xml:space="preserve">
     <value>Edit the base user style.</value>
@@ -1126,7 +1126,7 @@
     <value>Basic</value>
   </data>
   <data name="OptionsStylesGroupLabel" xml:space="preserve">
-    <value>Styles</value>
+    <value>S_tyles</value>
   </data>
   <data name="OptionsTitle" xml:space="preserve">
     <value>Options</value>
@@ -1149,7 +1149,7 @@
   <data name="ScaleManagerDeleteNamedIntervalPromptFormat" xml:space="preserve">
     <value>This will delete the chord quality "{0}". This cannot be undone. Do you want to continue?</value>
   </data>
-  <data name="ShowHelpPromptMessage" xml:space="preserve">
+  <data name="MainShowHelpPromptMessage" xml:space="preserve">
     <value>This will open the Help section on the Chordious website in your browser. Do you want to continue?</value>
   </data>
   <data name="TextPromptTitle" xml:space="preserve">
@@ -1159,7 +1159,7 @@
     <value>Edit Tuning</value>
   </data>
   <data name="TuningEditorNameLabel" xml:space="preserve">
-    <value>Name</value>
+    <value>_Name</value>
   </data>
   <data name="TuningEditorNameToolTip" xml:space="preserve">
     <value>The name of the tuning.</value>
@@ -1168,7 +1168,7 @@
     <value>New Tuning</value>
   </data>
   <data name="TuningEditorRootNotesLabel" xml:space="preserve">
-    <value>Notes</value>
+    <value>N_otes</value>
   </data>
   <data name="TuningEditorRootNotesToolTip" xml:space="preserve">
     <value>The notes of the tuning.</value>
@@ -1210,7 +1210,7 @@
     <value>Reset Styles...</value>
   </data>
   <data name="DiagramCollectionSelectorCollectionNameLabel" xml:space="preserve">
-    <value>Collection Name</value>
+    <value>_Collection Name</value>
   </data>
   <data name="DiagramCollectionSelectorCollectionNameLabelToolTip" xml:space="preserve">
     <value>The name of a new or existing diagram collection.</value>
@@ -1559,5 +1559,20 @@
   </data>
   <data name="FinderOnlyOneResultCanBeEditedMessage" xml:space="preserve">
     <value>Only one result can be edited at a time. Please select a single result and try again.</value>
+  </data>
+  <data name="MainShowInstrumentManagerLabel" xml:space="preserve">
+    <value>_Instruments</value>
+  </data>
+  <data name="MainShowInstrumentManagerToolTip" xml:space="preserve">
+    <value>Create and manage your favorite instruments and tunings.</value>
+  </data>
+  <data name="OptionsShowChordQualityManagerLabel" xml:space="preserve">
+    <value>Chord _Qualities</value>
+  </data>
+  <data name="OptionsShowInstrumentManagerLabel" xml:space="preserve">
+    <value>_Instruments</value>
+  </data>
+  <data name="OptionsShowScaleManagerLabel" xml:space="preserve">
+    <value>Sc_ales</value>
   </data>
 </root>

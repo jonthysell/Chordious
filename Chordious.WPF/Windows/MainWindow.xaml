@@ -40,7 +40,7 @@
                                             Width="48" />
                     <AccessText HorizontalAlignment="Center"
                                 Name="ShowChordFinderLabel"
-                                Text="{Binding ShowChordFinderLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.ChordFinderLabel, FallbackValue=CHORD FINDER}" />
+                                Text="{Binding ShowChordFinderLabel, FallbackValue=CHORD FINDER}" />
                 </StackPanel>
             </Button>
             <Button AutomationProperties.Name="{Binding ShowScaleFinderLabel}"
@@ -57,7 +57,7 @@
                                             Width="48" />
                     <AccessText HorizontalAlignment="Center"
                                 Name="ShowScaleFinderLabel"
-                                Text="{Binding ShowScaleFinderLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.ShowScaleFinderLabel, FallbackValue=SCALE FINDER}" />
+                                Text="{Binding ShowScaleFinderLabel, FallbackValue=SCALE FINDER}" />
                 </StackPanel>
             </Button>
             <Button AutomationProperties.Name="{Binding ShowDiagramLibraryLabel}"
@@ -74,7 +74,7 @@
                                             Width="48" />
                     <AccessText HorizontalAlignment="Center"
                                 Name="ShowDiagramLibraryLabel"
-                                Text="{Binding ShowDiagramLibraryLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.ShowDiagramLibraryLabel, FallbackValue=LIBRARY}" />
+                                Text="{Binding ShowDiagramLibraryLabel, FallbackValue=LIBRARY}" />
                 </StackPanel>
             </Button>
             <Button AutomationProperties.Name="{Binding ShowInstrumentManagerLabel}"
@@ -91,7 +91,7 @@
                                             Width="48" />
                     <AccessText HorizontalAlignment="Center"
                                 Name="ShowInstrumentManagerLabel"
-                                Text="{Binding ShowInstrumentManagerLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.ShowInstrumentManagerLabel, FallbackValue=INSTRUMENTS}" />
+                                Text="{Binding ShowInstrumentManagerLabel, FallbackValue=INSTRUMENTS}" />
                 </StackPanel>
             </Button>
             <Button AutomationProperties.Name="{Binding ShowOptionsLabel}"
@@ -108,7 +108,7 @@
                                             Width="48" />
                     <AccessText HorizontalAlignment="Center"
                                 Name="ShowOptionsLabel"
-                                Text="{Binding ShowOptionsLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.ShowOptionsLabel, FallbackValue=OPTIONS}" />
+                                Text="{Binding ShowOptionsLabel, FallbackValue=OPTIONS}" />
                 </StackPanel>
             </Button>
             <Button AutomationProperties.Name="{Binding ShowHelpLabel}"
@@ -125,7 +125,7 @@
                                             Width="48" />
                     <AccessText HorizontalAlignment="Center"
                                 Name="ShowHelpLabel"
-                                Text="{Binding ShowHelpLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.ShowHelpLabel, FallbackValue=HELP}" />
+                                Text="{Binding ShowHelpLabel, FallbackValue=HELP}" />
                 </StackPanel>
             </Button>
         </Grid>
@@ -160,7 +160,7 @@
                                                 Width="16" />
                         <AccessText HorizontalAlignment="Center"
                                     Name="LaunchWebsiteLabel"
-                                    Text="{Binding LaunchWebsiteLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.LaunchWebsiteLabel, FallbackValue=WEBSITE}" />
+                                    Text="{Binding LaunchWebsiteLabel, FallbackValue=WEBSITE}" />
                     </StackPanel>
                 </Button>
                 <Button AutomationProperties.Name="{Binding ShowLicenseLabel}"
@@ -176,7 +176,7 @@
                                                 Width="16" />
                         <AccessText HorizontalAlignment="Center"
                                     Name="ShowLicenseLabel"
-                                    Text="{Binding ShowLicenseLabel, Converter={StaticResource TextToAccessTextConverter}, ConverterParameter=MainWindow.ShowLicenseLabel, FallbackValue=LICENSE}" />
+                                    Text="{Binding ShowLicenseLabel, FallbackValue=LICENSE}" />
                     </StackPanel>
                 </Button>
             </Grid>

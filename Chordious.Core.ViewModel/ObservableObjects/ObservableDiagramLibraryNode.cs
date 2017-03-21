@@ -160,6 +160,100 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        #region SendSelectedToClipboard
+
+        public string SendSelectedImageToClipboardLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramLibraryNodeSendSelectedImageToClipboardLabel;
+            }
+        }
+
+        public string SendSelectedImageToClipboardToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramLibraryNodeSendSelectedImageToClipboardToolTip;
+            }
+        }
+
+        public RelayCommand SendSelectedImageToClipboard
+        {
+            get
+            {
+                // Use the built-in ObservableDiagram's RelayCommand if it's available
+                if (SelectedDiagrams.Count == 1)
+                {
+                    return SelectedDiagrams[0].SendImageToClipboard;
+                }
+
+                // If a single diagram isn't selected, throw an error
+                return _sendSelectedToClipboard ?? (_sendSelectedToClipboard = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeCopiedToClipboardMessage));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedDiagrams.Count > 0;
+                }));
+            }
+        }
+
+        public string SendSelectedTextToClipboardLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramLibraryNodeSendSelectedTextToClipboardLabel;
+            }
+        }
+
+        public string SendSelectedTextToClipboardToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramLibraryNodeSendSelectedTextToClipboardToolTip;
+            }
+        }
+
+        public RelayCommand SendSelectedTextToClipboard
+        {
+            get
+            {
+                // Use the built-in ObservableDiagram's RelayCommand if it's available
+                if (SelectedDiagrams.Count == 1)
+                {
+                    return SelectedDiagrams[0].SendTextToClipboard;
+                }
+
+                // If a single diagram isn't selected, throw an error
+                return _sendSelectedToClipboard ?? (_sendSelectedToClipboard = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeCopiedToClipboardMessage));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedDiagrams.Count > 0;
+                }));
+            }
+        }
+
+        private RelayCommand _sendSelectedToClipboard;
+
+        #endregion
+
         #region ResetStylesSelected
 
         public string ResetStylesSelectedLabel
@@ -664,6 +758,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             RaisePropertyChanged("EditSelected");
             _editSelected?.RaiseCanExecuteChanged();
+            RaisePropertyChanged("SendSelectedImageToClipboard");
+            RaisePropertyChanged("SendSelectedTextToClipboard");
+            _sendSelectedToClipboard?.RaiseCanExecuteChanged();
             CloneSelected.RaiseCanExecuteChanged();
             RaisePropertyChanged("CloneSelectedToolTip");
             CopySelected.RaiseCanExecuteChanged();

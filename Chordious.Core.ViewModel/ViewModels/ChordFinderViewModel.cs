@@ -1141,6 +1141,64 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private RelayCommand _editSelected;
 
+        public RelayCommand SendSelectedImageToClipboard
+        {
+            get
+            {
+                // Use the built-in ObservableDiagram's RelayCommand if it's available
+                if (SelectedResults.Count == 1)
+                {
+                    return SelectedResults[0].SendImageToClipboard;
+                }
+
+                // If a single result isn't selected, throw an error
+                return _sendSelectedToClipboard ?? (_sendSelectedToClipboard = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send(new ChordiousMessage(Strings.FinderOnlyOneResultCanBeCopiedToClipboardMessage));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedResults.Count > 0;
+                }));
+            }
+        }
+
+        public RelayCommand SendSelectedTextToClipboard
+        {
+            get
+            {
+                // Use the built-in ObservableDiagram's RelayCommand if it's available
+                if (SelectedResults.Count == 1)
+                {
+                    return SelectedResults[0].SendTextToClipboard;
+                }
+
+                // If a single result isn't selected, throw an error
+                return _sendSelectedToClipboard ?? (_sendSelectedToClipboard = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send(new ChordiousMessage(Strings.FinderOnlyOneResultCanBeCopiedToClipboardMessage));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedResults.Count > 0;
+                }));
+            }
+        }
+
+        private RelayCommand _sendSelectedToClipboard;
+
         private static string LastDiagramCollectionName = "";
 
         public ObservableCollection<ObservableDiagram> SelectedResults { get; private set; } = null;
@@ -1170,6 +1228,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             SaveSelected.RaiseCanExecuteChanged();
             RaisePropertyChanged("EditSelected");
             _editSelected?.RaiseCanExecuteChanged();
+            RaisePropertyChanged("SendSelectedImageToClipboard");
+            RaisePropertyChanged("SendSelectedTextToClipboard");
+            _sendSelectedToClipboard?.RaiseCanExecuteChanged();
         }
 
         private void RefreshInstruments(IInstrument selectedInstrument = null, ITuning selectedTuning = null)

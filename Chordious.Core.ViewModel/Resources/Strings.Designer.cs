@@ -917,6 +917,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only one diagram can be copied to the clipboard at a time. Please select a single diagram and try again..
+        /// </summary>
+        internal static string DiagramLibraryOnlyOneDiagramCanBeCopiedToClipboardMessage {
+            get {
+                return ResourceManager.GetString("DiagramLibraryOnlyOneDiagramCanBeCopiedToClipboardMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Only one diagram can be edited at a time. Please select a single diagram and try again..
         /// </summary>
         internal static string DiagramLibraryOnlyOneDiagramCanBeEditedMessage {
@@ -2591,6 +2600,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only one result can be copied to the clipboard at a time. Please select a single result and try again..
+        /// </summary>
+        internal static string FinderOnlyOneResultCanBeCopiedToClipboardMessage {
+            get {
+                return ResourceManager.GetString("FinderOnlyOneResultCanBeCopiedToClipboardMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Only one result can be edited at a time. Please select a single result and try again..
         /// </summary>
         internal static string FinderOnlyOneResultCanBeEditedMessage {
@@ -3613,6 +3631,42 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ObservableDiagramLibraryNodeResetStylesSelectedToolTipSingleFormat {
             get {
                 return ResourceManager.GetString("ObservableDiagramLibraryNodeResetStylesSelectedToolTipSingleFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy to Clipboard.
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeSendSelectedImageToClipboardLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeSendSelectedImageToClipboardLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy the selected diagram to the clipboard..
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeSendSelectedImageToClipboardToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeSendSelectedImageToClipboardToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy SVG to Clipboard.
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeSendSelectedTextToClipboardLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeSendSelectedTextToClipboardLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy the SVG text of the selected diagram to the clipboard..
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeSendSelectedTextToClipboardToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeSendSelectedTextToClipboardToolTip", resourceCulture);
             }
         }
         

@@ -29,6 +29,7 @@ using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 using Svg;
@@ -104,7 +105,22 @@ namespace com.jonthysell.Chordious.WPF
 
             Bitmap svgBitmap = doc.Draw();
             return svgBitmap;
-        } 
+        }
+
+        public static void SvgTextToClipboard(string svgText, int width, int height, bool renderImage)
+        {
+            if (!renderImage)
+            {
+                Clipboard.SetText(svgText);
+            }
+            else
+            {
+                BitmapImage bmp = SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, Background.White, 1.0f);
+                Clipboard.SetImage(bmp);
+            }
+
+            Clipboard.Flush();
+        }
 
         #endregion
 

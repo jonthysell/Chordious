@@ -458,6 +458,12 @@
                             Key="Enter" />
                 <KeyBinding Command="{Binding EditSelected}"
                             Key="Space" />
+                <KeyBinding Command="{Binding SendSelectedImageToClipboard}"
+                            Key="C"
+                            Modifiers="Ctrl" />
+                <KeyBinding Command="{Binding SendSelectedTextToClipboard}"
+                            Key="C"
+                            Modifiers="Ctrl+Shift" />
             </ListView.InputBindings>
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>

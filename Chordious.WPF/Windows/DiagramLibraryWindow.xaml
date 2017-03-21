@@ -128,6 +128,12 @@
                             Key="Enter" />
                 <KeyBinding Command="{Binding SelectedNode.EditSelected}"
                             Key="Space" />
+                <KeyBinding Command="{Binding SelectedNode.SendSelectedImageToClipboard}"
+                            Key="C"
+                            Modifiers="Ctrl" />
+                <KeyBinding Command="{Binding SelectedNode.SendSelectedTextToClipboard}"
+                            Key="C"
+                            Modifiers="Ctrl+Shift" />
             </ListView.InputBindings>
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -176,6 +182,20 @@
                               ToolTip="{Binding SelectedNode.ExportSelectedToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource ExportIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding SelectedNode.SendSelectedImageToClipboard}"
+                              Header="{Binding SelectedNode.SendSelectedImageToClipboardLabel, FallbackValue=COPY TO CLIPBOARD}"
+                              ToolTip="{Binding SelectedNode.SendSelectedImageToClipboardToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding SelectedNode.SendSelectedTextToClipboard}"
+                              Header="{Binding SelectedNode.SendSelectedTextToClipboardLabel, FallbackValue=COPY SVG TO CLIPBOARD}"
+                              ToolTip="{Binding SelectedNode.SendSelectedTextToClipboardToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator />

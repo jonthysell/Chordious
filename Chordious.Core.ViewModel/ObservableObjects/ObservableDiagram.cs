@@ -37,6 +37,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public class ObservableDiagram : ObservableObject
     {
+        public static AppViewModel AppVM
+        {
+            get
+            {
+                return AppViewModel.Instance;
+            }
+        }
+
         public string SvgText
         {
             get
@@ -885,6 +893,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        #region Editor
+
         public RelayCommand ShowEditor
         {
             get
@@ -946,6 +956,50 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private Action<bool> _postEditCallback;
+
+        #endregion
+
+        #region SendToClipboard
+
+        public RelayCommand SendImageToClipboard
+        {
+            get
+            {
+                return _sendImageToClipboard ?? (_sendImageToClipboard = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        AppVM.SvgTextToClipboard(SvgText, TotalWidth, TotalHeight, true);
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }));
+            }
+        }
+        private RelayCommand _sendImageToClipboard;
+
+        public RelayCommand SendTextToClipboard
+        {
+            get
+            {
+                return _sendTextToClipboard ?? (_sendTextToClipboard = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        AppVM.SvgTextToClipboard(SvgText, TotalWidth, TotalHeight, false);
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }));
+            }
+        }
+        private RelayCommand _sendTextToClipboard;
+
+        #endregion
 
         public RelayCommand RenderImage
         {
@@ -1060,9 +1114,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         protected void Render()
         {
-            AppViewModel.Instance.DoOnUIThread(() =>
+            AppVM.DoOnUIThread(() =>
             {
-                ImageObject = AppViewModel.Instance.SvgTextToImage(SvgText, TotalWidth, TotalHeight, IsEditMode);
+                ImageObject = AppVM.SvgTextToImage(SvgText, TotalWidth, TotalHeight, IsEditMode);
             });
         }
 

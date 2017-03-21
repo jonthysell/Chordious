@@ -79,8 +79,9 @@ namespace com.jonthysell.Chordious.WPF
             }, () =>
             {
                 return new FileStream(userFile, FileMode.Create);
-            },
-            ImageUtils.SvgTextToBitmapImage, (action) =>
+            }, ImageUtils.SvgTextToBitmapImage
+            , ImageUtils.SvgTextToClipboard
+            , (action) =>
             {
                 Dispatcher.Invoke(action);
             }

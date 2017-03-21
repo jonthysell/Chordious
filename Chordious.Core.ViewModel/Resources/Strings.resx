@@ -1575,4 +1575,22 @@
   <data name="OptionsShowScaleManagerLabel" xml:space="preserve">
     <value>Sc_ales</value>
   </data>
+  <data name="DiagramLibraryOnlyOneDiagramCanBeCopiedToClipboardMessage" xml:space="preserve">
+    <value>Only one diagram can be copied to the clipboard at a time. Please select a single diagram and try again.</value>
+  </data>
+  <data name="FinderOnlyOneResultCanBeCopiedToClipboardMessage" xml:space="preserve">
+    <value>Only one result can be copied to the clipboard at a time. Please select a single result and try again.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeSendSelectedImageToClipboardLabel" xml:space="preserve">
+    <value>Copy to Clipboard</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeSendSelectedImageToClipboardToolTip" xml:space="preserve">
+    <value>Copy the selected diagram to the clipboard.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeSendSelectedTextToClipboardLabel" xml:space="preserve">
+    <value>Copy SVG to Clipboard</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeSendSelectedTextToClipboardToolTip" xml:space="preserve">
+    <value>Copy the SVG text of the selected diagram to the clipboard.</value>
+  </data>
 </root>

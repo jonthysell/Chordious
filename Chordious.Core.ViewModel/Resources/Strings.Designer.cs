@@ -3473,11 +3473,119 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Barre....
+        /// </summary>
+        internal static string ObservableDiagramAddBarreLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramAddBarreLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Barre across how many strings? ({0}-{1}).
         /// </summary>
         internal static string ObservableDiagramAddBarrePromptFormat {
             get {
                 return ResourceManager.GetString("ObservableDiagramAddBarrePromptFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a barre to this location..
+        /// </summary>
+        internal static string ObservableDiagramAddBarreToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramAddBarreToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Fret Label....
+        /// </summary>
+        internal static string ObservableDiagramAddFretLabelLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramAddFretLabelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a fret label to this location..
+        /// </summary>
+        internal static string ObservableDiagramAddFretLabelToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramAddFretLabelToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Mark....
+        /// </summary>
+        internal static string ObservableDiagramAddMarkLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramAddMarkLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a mark to this location..
+        /// </summary>
+        internal static string ObservableDiagramAddMarkToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramAddMarkToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Barre....
+        /// </summary>
+        internal static string ObservableDiagramEditBarreLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramEditBarreLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the barre at this location..
+        /// </summary>
+        internal static string ObservableDiagramEditBarreToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramEditBarreToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Fret Label....
+        /// </summary>
+        internal static string ObservableDiagramEditFretLabelLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramEditFretLabelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the fret label at this location..
+        /// </summary>
+        internal static string ObservableDiagramEditFretLabelToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramEditFretLabelToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Mark....
+        /// </summary>
+        internal static string ObservableDiagramEditMarkLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramEditMarkLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the mark at this location..
+        /// </summary>
+        internal static string ObservableDiagramEditMarkToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramEditMarkToolTip", resourceCulture);
             }
         }
         
@@ -3676,6 +3784,96 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ObservableDiagramName {
             get {
                 return ResourceManager.GetString("ObservableDiagramName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Barre.
+        /// </summary>
+        internal static string ObservableDiagramRemoveBarreLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramRemoveBarreLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove the barre at this location..
+        /// </summary>
+        internal static string ObservableDiagramRemoveBarreToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramRemoveBarreToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Fret Label.
+        /// </summary>
+        internal static string ObservableDiagramRemoveFretLabelLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramRemoveFretLabelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove the fret label at this location..
+        /// </summary>
+        internal static string ObservableDiagramRemoveFretLabelToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramRemoveFretLabelToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Mark.
+        /// </summary>
+        internal static string ObservableDiagramRemoveMarkLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramRemoveMarkLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove the mark at this location..
+        /// </summary>
+        internal static string ObservableDiagramRemoveMarkToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramRemoveMarkToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy to Clipboard.
+        /// </summary>
+        internal static string ObservableDiagramSendImageToClipboardLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramSendImageToClipboardLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy the diagram to the clipboard..
+        /// </summary>
+        internal static string ObservableDiagramSendImageToClipboardToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramSendImageToClipboardToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy SVG to Clipboard.
+        /// </summary>
+        internal static string ObservableDiagramSendTextToClipboardLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramSendTextToClipboardLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy the SVG text of the diagram to the clipboard..
+        /// </summary>
+        internal static string ObservableDiagramSendTextToClipboardToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramSendTextToClipboardToolTip", resourceCulture);
             }
         }
         

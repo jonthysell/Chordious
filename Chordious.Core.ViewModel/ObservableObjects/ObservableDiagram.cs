@@ -329,6 +329,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region Marks
 
+        public string AddMarkLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramAddMarkLabel;
+            }
+        }
+
+        public string AddMarkToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramAddMarkToolTip;
+            }
+        }
+
         public RelayCommand AddMark
         {
             get
@@ -379,6 +395,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string EditMarkLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramEditMarkLabel;
+            }
+        }
+
+        public string EditMarkToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramEditMarkToolTip;
+            }
+        }
+
         public RelayCommand EditMark
         {
             get
@@ -421,6 +453,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 MarkPosition mp = MarkPosition;
                 return (null != mp && Diagram.ValidPosition(mp) && Diagram.HasElementAt(mp));
+            }
+        }
+
+        public string RemoveMarkLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramRemoveMarkLabel;
+            }
+        }
+
+        public string RemoveMarkToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramRemoveMarkToolTip;
             }
         }
 
@@ -468,6 +516,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         #endregion
 
         #region Fret Labels
+
+        public string AddFretLabelLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramAddFretLabelLabel;
+            }
+        }
+
+        public string AddFretLabelToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramAddFretLabelToolTip;
+            }
+        }
 
         public RelayCommand AddFretLabel
         {
@@ -519,6 +583,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string EditFretLabelLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramEditFretLabelLabel;
+            }
+        }
+
+        public string EditFretLabelToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramEditFretLabelToolTip;
+            }
+        }
+
         public RelayCommand EditFretLabel
         {
             get
@@ -561,6 +641,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 FretLabelPosition flp = FretLabelPosition;
                 return (null != flp && Diagram.ValidPosition(flp) && Diagram.HasElementAt(flp));
+            }
+        }
+
+        public string RemoveFretLabelLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramRemoveFretLabelLabel;
+            }
+        }
+
+        public string RemoveFretLabelToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramRemoveFretLabelToolTip;
             }
         }
 
@@ -608,6 +704,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         #endregion
 
         #region Barres
+
+        public string AddBarreLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramAddBarreLabel;
+            }
+        }
+
+        public string AddBarreToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramAddBarreToolTip;
+            }
+        }
 
         public RelayCommand AddBarre
         {
@@ -672,6 +784,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string EditBarreLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramEditBarreLabel;
+            }
+        }
+
+        public string EditBarreToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramEditBarreToolTip;
+            }
+        }
+
         public RelayCommand EditBarre
         {
             get
@@ -714,6 +842,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 BarrePosition bp = BarrePosition;
                 return (null != bp && Diagram.ValidPosition(bp) && Diagram.HasElementAt(bp));
+            }
+        }
+
+        public string RemoveBarreLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramRemoveBarreLabel;
+            }
+        }
+
+        public string RemoveBarreToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramRemoveBarreToolTip;
             }
         }
 
@@ -961,6 +1105,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region SendToClipboard
 
+        public string SendImageToClipboardLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramSendImageToClipboardLabel;
+            }
+        }
+
+        public string SendImageToClipboardToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramSendImageToClipboardToolTip;
+            }
+        }
+
         public RelayCommand SendImageToClipboard
         {
             get
@@ -979,6 +1139,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private RelayCommand _sendImageToClipboard;
+
+        public string SendTextToClipboardLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramSendTextToClipboardLabel;
+            }
+        }
+
+        public string SendTextToClipboardToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramSendTextToClipboardToolTip;
+            }
+        }
 
         public RelayCommand SendTextToClipboard
         {

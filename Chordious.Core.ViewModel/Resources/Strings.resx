@@ -1593,4 +1593,70 @@
   <data name="ObservableDiagramLibraryNodeSendSelectedTextToClipboardToolTip" xml:space="preserve">
     <value>Copy the SVG text of the selected diagram to the clipboard.</value>
   </data>
+  <data name="ObservableDiagramAddBarreLabel" xml:space="preserve">
+    <value>Add Barre...</value>
+  </data>
+  <data name="ObservableDiagramAddBarreToolTip" xml:space="preserve">
+    <value>Add a barre to this location.</value>
+  </data>
+  <data name="ObservableDiagramAddFretLabelLabel" xml:space="preserve">
+    <value>Add Fret Label...</value>
+  </data>
+  <data name="ObservableDiagramAddFretLabelToolTip" xml:space="preserve">
+    <value>Add a fret label to this location.</value>
+  </data>
+  <data name="ObservableDiagramAddMarkLabel" xml:space="preserve">
+    <value>Add Mark...</value>
+  </data>
+  <data name="ObservableDiagramAddMarkToolTip" xml:space="preserve">
+    <value>Add a mark to this location.</value>
+  </data>
+  <data name="ObservableDiagramEditBarreLabel" xml:space="preserve">
+    <value>Edit Barre...</value>
+  </data>
+  <data name="ObservableDiagramEditBarreToolTip" xml:space="preserve">
+    <value>Edit the barre at this location.</value>
+  </data>
+  <data name="ObservableDiagramEditFretLabelLabel" xml:space="preserve">
+    <value>Edit Fret Label...</value>
+  </data>
+  <data name="ObservableDiagramEditFretLabelToolTip" xml:space="preserve">
+    <value>Edit the fret label at this location.</value>
+  </data>
+  <data name="ObservableDiagramEditMarkLabel" xml:space="preserve">
+    <value>Edit Mark...</value>
+  </data>
+  <data name="ObservableDiagramEditMarkToolTip" xml:space="preserve">
+    <value>Edit the mark at this location.</value>
+  </data>
+  <data name="ObservableDiagramRemoveBarreLabel" xml:space="preserve">
+    <value>Remove Barre</value>
+  </data>
+  <data name="ObservableDiagramRemoveBarreToolTip" xml:space="preserve">
+    <value>Remove the barre at this location.</value>
+  </data>
+  <data name="ObservableDiagramRemoveFretLabelLabel" xml:space="preserve">
+    <value>Remove Fret Label</value>
+  </data>
+  <data name="ObservableDiagramRemoveFretLabelToolTip" xml:space="preserve">
+    <value>Remove the fret label at this location.</value>
+  </data>
+  <data name="ObservableDiagramRemoveMarkLabel" xml:space="preserve">
+    <value>Remove Mark</value>
+  </data>
+  <data name="ObservableDiagramRemoveMarkToolTip" xml:space="preserve">
+    <value>Remove the mark at this location.</value>
+  </data>
+  <data name="ObservableDiagramSendImageToClipboardLabel" xml:space="preserve">
+    <value>Copy to Clipboard</value>
+  </data>
+  <data name="ObservableDiagramSendImageToClipboardToolTip" xml:space="preserve">
+    <value>Copy the diagram to the clipboard.</value>
+  </data>
+  <data name="ObservableDiagramSendTextToClipboardLabel" xml:space="preserve">
+    <value>Copy SVG to Clipboard</value>
+  </data>
+  <data name="ObservableDiagramSendTextToClipboardToolTip" xml:space="preserve">
+    <value>Copy the SVG text of the diagram to the clipboard.</value>
+  </data>
 </root>

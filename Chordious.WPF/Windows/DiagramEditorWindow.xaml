@@ -613,67 +613,91 @@
                    Width="{Binding ObservableDiagram.TotalWidth}">
                 <Image.ContextMenu>
                     <ContextMenu Name="ImageContextMenu">
+                        <MenuItem Command="{Binding ObservableDiagram.SendImageToClipboard}"
+                                  Header="{Binding ObservableDiagram.SendImageToClipboardLabel, FallbackValue=COPY TO CLIPBOARD}"
+                                  ToolTip="{Binding ObservableDiagram.SendImageToClipboardToolTip}">
+                            <MenuItem.Icon>
+                                <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding ObservableDiagram.SendTextToClipboard}"
+                                  Header="{Binding ObservableDiagram.SendTextToClipboardLabel, FallbackValue=COPY SVG TO CLIPBOARD}"
+                                  ToolTip="{Binding ObservableDiagram.SendTextToClipboardToolTip}">
+                            <MenuItem.Icon>
+                                <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator Visibility="{Binding ObservableDiagram.ValidCommandsAtCursor, Converter={StaticResource BoolToVisibilityConverter}}" />
                         <MenuItem Command="{Binding ObservableDiagram.AddMark}"
-                                  Header="Add Mark"
+                                  Header="{Binding ObservableDiagram.AddMarkLabel, FallbackValue=ADD MARK...}"
+                                  ToolTip="{Binding ObservableDiagram.AddMarkToolTip}"
                                   Visibility="{Binding ObservableDiagram.CanAddMark, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{StaticResource AddIcon16}" />
+                                <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.EditMark}"
-                                  Header="Edit Mark"
+                                  Header="{Binding ObservableDiagram.EditMarkLabel, FallbackValue=EDIT MARK...}"
+                                  ToolTip="{Binding ObservableDiagram.EditMarkToolTip}"
                                   Visibility="{Binding ObservableDiagram.CanEditMark, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{StaticResource EditIcon16}" />
+                                <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.RemoveMark}"
-                                  Header="Remove Mark"
+                                  Header="{Binding ObservableDiagram.RemoveMarkLabel, FallbackValue=REMOVE MARK}"
+                                  ToolTip="{Binding ObservableDiagram.RemoveMarkToolTip}"
                                   Visibility="{Binding ObservableDiagram.CanRemoveMark, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{StaticResource RemoveIcon16}" />
+                                <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.AddFretLabel}"
-                                  Header="Add Fret Label"
+                                  Header="{Binding ObservableDiagram.AddFretLabelLabel, FallbackValue=ADD FRET LABEL...}"
+                                  ToolTip="{Binding ObservableDiagram.AddFretLabelToolTip}"
                                   Visibility="{Binding ObservableDiagram.CanAddFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{StaticResource AddIcon16}" />
+                                <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.EditFretLabel}"
-                                  Header="Edit Fret Label"
+                                  Header="{Binding ObservableDiagram.EditFretLabelLabel, FallbackValue=EDIT FRET LABEL...}"
+                                  ToolTip="{Binding ObservableDiagram.EditFretLabelToolTip}"
                                   Visibility="{Binding ObservableDiagram.CanEditFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{StaticResource EditIcon16}" />
+                                <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.RemoveFretLabel}"
-                                  Header="Remove Fret Label"
+                                  Header="{Binding ObservableDiagram.RemoveFretLabelLabel, FallbackValue=REMOVE FRET LABEL}"
+                                  ToolTip="{Binding ObservableDiagram.RemoveFretLabelToolTip}"
                                   Visibility="{Binding ObservableDiagram.CanRemoveFretLabel, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{StaticResource RemoveIcon16}" />
+                                <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.AddBarre}"
-                                  Header="Add Barre"
+                                  Header="{Binding ObservableDiagram.AddBarreLabel, FallbackValue=ADD BARRE...}"
+                                  ToolTip="{Binding ObservableDiagram.AddBarreToolTip}"
                                   Visibility="{Binding ObservableDiagram.CanAddBarre, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{StaticResource AddIcon16}" />
+                                <local:AutoDisableImage Source="{StaticResource AddIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.EditBarre}"
-                                  Header="Edit Barre"
+                                  Header="{Binding ObservableDiagram.EditBarreLabel, FallbackValue=EDIT BARRE...}"
+                                  ToolTip="{Binding ObservableDiagram.EditBarreToolTip}"
                                   Visibility="{Binding ObservableDiagram.CanEditBarre, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{StaticResource EditIcon16}" />
+                                <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding ObservableDiagram.RemoveBarre}"
-                                  Header="Remove Barre"
+                                  Header="{Binding ObservableDiagram.RemoveBarreLabel, FallbackValue=REMOVE BARRE}"
+                                  ToolTip="{Binding ObservableDiagram.RemoveBarreToolTip}"
                                   Visibility="{Binding ObservableDiagram.CanRemoveBarre, Converter={StaticResource BoolToVisibilityConverter}}">
                             <MenuItem.Icon>
-                                <Image Source="{StaticResource RemoveIcon16}" />
+                                <local:AutoDisableImage Source="{StaticResource RemoveIcon16}" />
                             </MenuItem.Icon>
                         </MenuItem>
                     </ContextMenu>

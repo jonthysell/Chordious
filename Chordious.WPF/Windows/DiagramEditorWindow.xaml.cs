@@ -44,11 +44,7 @@ namespace com.jonthysell.Chordious.WPF
 
         private void ImageContextMenu_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
-            bool validCommmandsAtCursor = UpdateCursorPosition();
-            if (!validCommmandsAtCursor)
-            {
-                e.Handled = true;
-            }
+            UpdateCursorPosition();
         }
 
         private void DiagramImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

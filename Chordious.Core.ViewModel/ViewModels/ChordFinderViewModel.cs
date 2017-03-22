@@ -1169,6 +1169,34 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public RelayCommand SendSelectedScaledImageToClipboard
+        {
+            get
+            {
+                // Use the built-in ObservableDiagram's RelayCommand if it's available
+                if (SelectedResults.Count == 1)
+                {
+                    return SelectedResults[0].SendScaledImageToClipboard;
+                }
+
+                // If a single diagram isn't selected, throw an error
+                return _sendSelectedToClipboard ?? (_sendSelectedToClipboard = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send(new ChordiousMessage(Strings.FinderOnlyOneResultCanBeCopiedToClipboardMessage));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedResults.Count > 0;
+                }));
+            }
+        }
+
         public RelayCommand SendSelectedTextToClipboard
         {
             get
@@ -1229,6 +1257,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             RaisePropertyChanged("EditSelected");
             _editSelected?.RaiseCanExecuteChanged();
             RaisePropertyChanged("SendSelectedImageToClipboard");
+            RaisePropertyChanged("SendSelectedScaledImageToClipboard");
             RaisePropertyChanged("SendSelectedTextToClipboard");
             _sendSelectedToClipboard?.RaiseCanExecuteChanged();
         }

@@ -38,7 +38,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public delegate Stream GetConfigStream();
     public delegate object SvgTextToImage(string svgText, int width, int height, bool editMode);
-    public delegate void SvgTextToClipboard(string svgText, int width, int height, bool renderImage);
+    public delegate void SvgTextToClipboard(string svgText, int width, int height, bool renderImage, float scaleFactor);
     public delegate IEnumerable<string> GetSystemFonts();
 
     public delegate void DoOnUIThread(Action action);

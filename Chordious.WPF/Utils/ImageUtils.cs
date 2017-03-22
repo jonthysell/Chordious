@@ -107,7 +107,7 @@ namespace com.jonthysell.Chordious.WPF
             return svgBitmap;
         }
 
-        public static void SvgTextToClipboard(string svgText, int width, int height, bool renderImage)
+        public static void SvgTextToClipboard(string svgText, int width, int height, bool renderImage, float scaleFactor)
         {
             if (!renderImage)
             {
@@ -115,7 +115,7 @@ namespace com.jonthysell.Chordious.WPF
             }
             else
             {
-                BitmapImage bmp = SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, Background.White, 1.0f);
+                BitmapImage bmp = SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, Background.White, scaleFactor);
                 Clipboard.SetImage(bmp);
             }
 

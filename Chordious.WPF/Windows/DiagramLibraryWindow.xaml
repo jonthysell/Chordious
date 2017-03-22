@@ -185,8 +185,15 @@
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Command="{Binding SelectedNode.SendSelectedImageToClipboard}"
-                              Header="{Binding SelectedNode.SendSelectedImageToClipboardLabel, FallbackValue=COPY TO CLIPBOARD}"
+                              Header="{Binding SelectedNode.SendSelectedImageToClipboardLabel, FallbackValue=COPY IMAGE TO CLIPBOARD}"
                               ToolTip="{Binding SelectedNode.SendSelectedImageToClipboardToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding SelectedNode.SendSelectedScaledImageToClipboard}"
+                              Header="{Binding SelectedNode.SendSelectedScaledImageToClipboardLabel, FallbackValue=COPY SCALED IMAGE TO CLIPBOARD...}"
+                              ToolTip="{Binding SelectedNode.SendSelectedScaledImageToClipboardToolTip}">
                         <MenuItem.Icon>
                             <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
                         </MenuItem.Icon>

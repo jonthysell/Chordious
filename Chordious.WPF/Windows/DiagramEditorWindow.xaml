@@ -614,8 +614,15 @@
                 <Image.ContextMenu>
                     <ContextMenu Name="ImageContextMenu">
                         <MenuItem Command="{Binding ObservableDiagram.SendImageToClipboard}"
-                                  Header="{Binding ObservableDiagram.SendImageToClipboardLabel, FallbackValue=COPY TO CLIPBOARD}"
+                                  Header="{Binding ObservableDiagram.SendImageToClipboardLabel, FallbackValue=COPY IMAGE TO CLIPBOARD}"
                                   ToolTip="{Binding ObservableDiagram.SendImageToClipboardToolTip}">
+                            <MenuItem.Icon>
+                                <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding ObservableDiagram.SendScaledImageToClipboard}"
+                                  Header="{Binding ObservableDiagram.SendScaledImageToClipboardLabel, FallbackValue=COPY SCALED IMAGE TO CLIPBOARD...}"
+                                  ToolTip="{Binding ObservableDiagram.SendScaledImageToClipboardToolTip}">
                             <MenuItem.Icon>
                                 <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
                             </MenuItem.Icon>

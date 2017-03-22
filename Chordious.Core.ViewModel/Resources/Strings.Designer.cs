@@ -3743,7 +3743,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy to Clipboard.
+        ///   Looks up a localized string similar to Copy Image to Clipboard.
         /// </summary>
         internal static string ObservableDiagramLibraryNodeSendSelectedImageToClipboardLabel {
             get {
@@ -3752,11 +3752,29 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy the selected diagram to the clipboard..
+        ///   Looks up a localized string similar to Copy the selected diagram image to the clipboard..
         /// </summary>
         internal static string ObservableDiagramLibraryNodeSendSelectedImageToClipboardToolTip {
             get {
                 return ResourceManager.GetString("ObservableDiagramLibraryNodeSendSelectedImageToClipboardToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy Scaled Image to Clipboard....
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeSendSelectedScaledImageToClipboardLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeSendSelectedScaledImageToClipboardLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale the selected diagram image and copy it to the clipboard..
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeSendSelectedScaledImageToClipboardToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeSendSelectedScaledImageToClipboardToolTip", resourceCulture);
             }
         }
         
@@ -3842,7 +3860,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy to Clipboard.
+        ///   Looks up a localized string similar to Copy Image to Clipboard.
         /// </summary>
         internal static string ObservableDiagramSendImageToClipboardLabel {
             get {
@@ -3851,11 +3869,38 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy the diagram to the clipboard..
+        ///   Looks up a localized string similar to Copy the diagram image to the clipboard..
         /// </summary>
         internal static string ObservableDiagramSendImageToClipboardToolTip {
             get {
                 return ResourceManager.GetString("ObservableDiagramSendImageToClipboardToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy Scaled Image to Clipboard....
+        /// </summary>
+        internal static string ObservableDiagramSendScaledImageToClipboardLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramSendScaledImageToClipboardLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By what percentage would you like to scale the image?.
+        /// </summary>
+        internal static string ObservableDiagramSendScaledImageToClipboardScalePercentagePrompt {
+            get {
+                return ResourceManager.GetString("ObservableDiagramSendScaledImageToClipboardScalePercentagePrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale the diagram image and copy it to the clipboard..
+        /// </summary>
+        internal static string ObservableDiagramSendScaledImageToClipboardToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramSendScaledImageToClipboardToolTip", resourceCulture);
             }
         }
         

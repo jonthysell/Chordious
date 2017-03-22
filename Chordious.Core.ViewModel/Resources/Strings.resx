@@ -1582,10 +1582,10 @@
     <value>Only one result can be copied to the clipboard at a time. Please select a single result and try again.</value>
   </data>
   <data name="ObservableDiagramLibraryNodeSendSelectedImageToClipboardLabel" xml:space="preserve">
-    <value>Copy to Clipboard</value>
+    <value>Copy Image to Clipboard</value>
   </data>
   <data name="ObservableDiagramLibraryNodeSendSelectedImageToClipboardToolTip" xml:space="preserve">
-    <value>Copy the selected diagram to the clipboard.</value>
+    <value>Copy the selected diagram image to the clipboard.</value>
   </data>
   <data name="ObservableDiagramLibraryNodeSendSelectedTextToClipboardLabel" xml:space="preserve">
     <value>Copy SVG to Clipboard</value>
@@ -1629,6 +1629,12 @@
   <data name="ObservableDiagramEditMarkToolTip" xml:space="preserve">
     <value>Edit the mark at this location.</value>
   </data>
+  <data name="ObservableDiagramLibraryNodeSendSelectedScaledImageToClipboardLabel" xml:space="preserve">
+    <value>Copy Scaled Image to Clipboard...</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeSendSelectedScaledImageToClipboardToolTip" xml:space="preserve">
+    <value>Scale the selected diagram image and copy it to the clipboard.</value>
+  </data>
   <data name="ObservableDiagramRemoveBarreLabel" xml:space="preserve">
     <value>Remove Barre</value>
   </data>
@@ -1648,10 +1654,19 @@
     <value>Remove the mark at this location.</value>
   </data>
   <data name="ObservableDiagramSendImageToClipboardLabel" xml:space="preserve">
-    <value>Copy to Clipboard</value>
+    <value>Copy Image to Clipboard</value>
   </data>
   <data name="ObservableDiagramSendImageToClipboardToolTip" xml:space="preserve">
-    <value>Copy the diagram to the clipboard.</value>
+    <value>Copy the diagram image to the clipboard.</value>
+  </data>
+  <data name="ObservableDiagramSendScaledImageToClipboardLabel" xml:space="preserve">
+    <value>Copy Scaled Image to Clipboard...</value>
+  </data>
+  <data name="ObservableDiagramSendScaledImageToClipboardScalePercentagePrompt" xml:space="preserve">
+    <value>By what percentage would you like to scale the image?</value>
+  </data>
+  <data name="ObservableDiagramSendScaledImageToClipboardToolTip" xml:space="preserve">
+    <value>Scale the diagram image and copy it to the clipboard.</value>
   </data>
   <data name="ObservableDiagramSendTextToClipboardLabel" xml:space="preserve">
     <value>Copy SVG to Clipboard</value>

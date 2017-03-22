@@ -1129,7 +1129,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        AppVM.SvgTextToClipboard(SvgText, TotalWidth, TotalHeight, true);
+                        AppVM.SvgTextToClipboard(SvgText, TotalWidth, TotalHeight, true, 1.0f);
                     }
                     catch (Exception ex)
                     {
@@ -1139,6 +1139,63 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private RelayCommand _sendImageToClipboard;
+
+        public string SendScaledImageToClipboardLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramSendScaledImageToClipboardLabel;
+            }
+        }
+
+        public string SendScaledImageToClipboardToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramSendScaledImageToClipboardToolTip;
+            }
+        }
+
+        public RelayCommand SendScaledImageToClipboard
+        {
+            get
+            {
+                return _sendScaledImageToClipboard ?? (_sendScaledImageToClipboard = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        float scaleFactor = AppVM.Settings.GetFloat("observablediagram.sendscaledimagetoclipboard.scalefactor", 1.0f);
+                        string defaultValue = ((int)(Math.Round(scaleFactor * 100))).ToString();
+
+                        Messenger.Default.Send(new PromptForTextMessage(Strings.ObservableDiagramSendScaledImageToClipboardScalePercentagePrompt, defaultValue, (percentText) =>
+                        {
+                            try
+                            {
+                                percentText = percentText.Trim();
+
+                                int result;
+                                if (int.TryParse(percentText, out result))
+                                {
+                                    scaleFactor = 0.01f * result;
+                                }
+
+                                AppVM.SvgTextToClipboard(SvgText, TotalWidth, TotalHeight, true, scaleFactor);
+                                AppVM.Settings.Set("observablediagram.sendscaledimagetoclipboard.scalefactor", scaleFactor);
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }));
+            }
+        }
+        private RelayCommand _sendScaledImageToClipboard;
 
         public string SendTextToClipboardLabel
         {
@@ -1164,7 +1221,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        AppVM.SvgTextToClipboard(SvgText, TotalWidth, TotalHeight, false);
+                        AppVM.SvgTextToClipboard(SvgText, TotalWidth, TotalHeight, false, 1.0f);
                     }
                     catch (Exception ex)
                     {

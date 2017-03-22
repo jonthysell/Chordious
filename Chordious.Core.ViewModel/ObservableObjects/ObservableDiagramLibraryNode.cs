@@ -206,6 +206,50 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string SendSelectedScaledImageToClipboardLabel
+        {
+            get
+            {
+                return Strings.ObservableDiagramLibraryNodeSendSelectedScaledImageToClipboardLabel;
+            }
+        }
+
+        public string SendSelectedScaledImageToClipboardToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramLibraryNodeSendSelectedScaledImageToClipboardToolTip;
+            }
+        }
+
+        public RelayCommand SendSelectedScaledImageToClipboard
+        {
+            get
+            {
+                // Use the built-in ObservableDiagram's RelayCommand if it's available
+                if (SelectedDiagrams.Count == 1)
+                {
+                    return SelectedDiagrams[0].SendScaledImageToClipboard;
+                }
+
+                // If a single diagram isn't selected, throw an error
+                return _sendSelectedToClipboard ?? (_sendSelectedToClipboard = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeCopiedToClipboardMessage));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return SelectedDiagrams.Count > 0;
+                }));
+            }
+        }
+
         public string SendSelectedTextToClipboardLabel
         {
             get
@@ -759,6 +803,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             RaisePropertyChanged("EditSelected");
             _editSelected?.RaiseCanExecuteChanged();
             RaisePropertyChanged("SendSelectedImageToClipboard");
+            RaisePropertyChanged("SendSelectedScaledImageToClipboard");
             RaisePropertyChanged("SendSelectedTextToClipboard");
             _sendSelectedToClipboard?.RaiseCanExecuteChanged();
             CloneSelected.RaiseCanExecuteChanged();

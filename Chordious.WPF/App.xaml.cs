@@ -33,6 +33,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 using GalaSoft.MvvmLight.Messaging;
@@ -197,6 +198,18 @@ namespace com.jonthysell.Chordious.WPF
             return backupFile;
         }
 
+        private void PreloadDisabledImages()
+        {
+            foreach (object obj in Resources.Values)
+            {
+                ImageSource imageSource = (obj as ImageSource);
+                if (null != imageSource)
+                {
+                    AutoDisableImage.LoadImage(imageSource);
+                }
+            }
+        }
+
         private void App_Exit(object sender, ExitEventArgs e)
         {
             try
@@ -215,6 +228,8 @@ namespace com.jonthysell.Chordious.WPF
             EventManager.RegisterClassHandler(typeof(TextBox), UIElement.PreviewMouseLeftButtonDownEvent, new MouseButtonEventHandler(SelectivelyHandleMouseButton), true);
             EventManager.RegisterClassHandler(typeof(TextBox), UIElement.GotKeyboardFocusEvent, new RoutedEventHandler(SelectAllText), true);
             EventManager.RegisterClassHandler(typeof(TextBox), UIElement.PreviewKeyUpEvent, new RoutedEventHandler(EnterUpdatesSource), true);
+
+            PreloadDisabledImages();
 
             base.OnStartup(e);
         }

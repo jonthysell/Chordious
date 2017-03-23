@@ -56,7 +56,16 @@ namespace com.jonthysell.Chordious.WPF
         static AutoDisableImage()
         {
             IsEnabledProperty.OverrideMetadata(typeof(AutoDisableImage), new FrameworkPropertyMetadata(true, new PropertyChangedCallback(OnAutoDisableImageIsEnabledPropertyChanged)));
-            _cachedDisabledImages = new Dictionary<ImageSource, ImageSource>();
+        }
+
+        public static void LoadImage(ImageSource imageSource)
+        {
+            if (null == imageSource)
+            {
+                throw new ArgumentNullException("imageSource");
+            }
+
+            GetDisabledImage(imageSource);
         }
 
         protected static AutoDisableImage GetImageWithSource(DependencyObject source)
@@ -115,6 +124,6 @@ namespace com.jonthysell.Chordious.WPF
             return disabledImage;
         }
 
-        protected static Dictionary<ImageSource, ImageSource> _cachedDisabledImages;
+        protected static Dictionary<ImageSource, ImageSource> _cachedDisabledImages = new Dictionary<ImageSource, ImageSource>();
     }
 }

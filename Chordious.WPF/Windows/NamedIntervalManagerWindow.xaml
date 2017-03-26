@@ -10,6 +10,10 @@
         xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
         xmlns:vm="clr-namespace:com.jonthysell.Chordious.Core.ViewModel;assembly=Chordious.Core.ViewModel"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Close, Mode=OneWay}"
+                    Key="Escape" />
+    </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

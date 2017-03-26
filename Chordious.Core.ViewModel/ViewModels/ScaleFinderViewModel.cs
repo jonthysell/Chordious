@@ -882,6 +882,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                     finally
                     {
+                        _lastSearchComplete = DateTime.Now;
                         _searchAsyncCancellationTokenSource = null;
                         IsIdle = true;
                     }
@@ -1015,6 +1016,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private RelayCommand _editSelected;
 
+        #region SendToClipboard
+
         public RelayCommand SendSelectedImageToClipboard
         {
             get
@@ -1100,6 +1103,38 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
 
         private RelayCommand _sendSelectedToClipboard;
+
+        #endregion
+
+        public Action RequestClose;
+
+        public RelayCommand CancelOrClose
+        {
+            get
+            {
+                return _cancelOrClose ?? (_cancelOrClose = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        if (null != _searchAsyncCancellationTokenSource)
+                        {
+                            _searchAsyncCancellationTokenSource.Cancel();
+                        }
+                        else if (!_lastSearchComplete.HasValue || (DateTime.Now - _lastSearchComplete.Value) > TimeSpan.FromMilliseconds(500))
+                        {
+                            RequestClose?.Invoke();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }));
+            }
+        }
+        private RelayCommand _cancelOrClose;
+
+        private DateTime? _lastSearchComplete = null;
 
         private static string LastDiagramCollectionName = "";
 

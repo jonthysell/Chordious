@@ -120,22 +120,42 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
     public class ShowChordFinderMessage : SaveUserConfigAfterHandlingMessageBase
     {
-        public ShowChordFinderMessage(Action callback = null) : base(callback) { }
+        public ChordFinderViewModel ChordFinderVM { get; private set; }
+
+        public ShowChordFinderMessage(Action callback = null) : base(callback)
+        {
+            ChordFinderVM = new ChordFinderViewModel();
+        }
     }
 
     public class ShowScaleFinderMessage : SaveUserConfigAfterHandlingMessageBase
     {
-        public ShowScaleFinderMessage(Action callback = null) : base(callback) { }
+        public ScaleFinderViewModel ScaleFinderVM { get; private set; }
+
+        public ShowScaleFinderMessage(Action callback = null) : base(callback)
+        {
+            ScaleFinderVM = new ScaleFinderViewModel();
+        }
     }
 
     public class ShowDiagramLibraryMessage : SaveUserConfigAfterHandlingMessageBase
     {
-        public ShowDiagramLibraryMessage(Action callback = null) : base(callback) { }
+        public DiagramLibraryViewModel DiagramLibraryVM { get; private set; }
+
+        public ShowDiagramLibraryMessage(Action callback = null) : base(callback)
+        {
+            DiagramLibraryVM = new DiagramLibraryViewModel();
+        }
     }
 
     public class ShowInstrumentManagerMessage : SaveUserConfigAfterHandlingMessageBase
     {
-        public ShowInstrumentManagerMessage(Action callback = null) : base(callback) { }
+        public InstrumentManagerViewModel InstrumentManagerVM { get; private set; }
+
+        public ShowInstrumentManagerMessage(Action callback = null) : base(callback)
+        {
+            InstrumentManagerVM = new InstrumentManagerViewModel();
+        }
     }
 
     public class ShowInstrumentEditorMessage : MessageBase

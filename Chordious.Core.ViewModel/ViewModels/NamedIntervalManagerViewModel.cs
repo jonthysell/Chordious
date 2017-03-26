@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -206,6 +207,27 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public abstract string DeleteNamedIntervalToolTip { get; }
 
         public abstract RelayCommand DeleteNamedInterval { get; }
+
+        public Action RequestClose;
+
+        public RelayCommand Close
+        {
+            get
+            {
+                return _close ?? (_close = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        RequestClose?.Invoke();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }));
+            }
+        }
+        private RelayCommand _close;
 
         private GetNamedIntervals _getUserNamedIntervals;
         private GetNamedIntervals _getDefaultNamedIntervals;

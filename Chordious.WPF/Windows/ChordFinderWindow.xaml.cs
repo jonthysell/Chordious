@@ -41,13 +41,18 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                return _vm ?? (_vm = (DataContext as ChordFinderViewModel));
+                return DataContext as ChordFinderViewModel;
+            }
+            private set
+            {
+                DataContext = value;
             }
         }
-        private ChordFinderViewModel _vm;
 
-        public ChordFinderWindow()
+        public ChordFinderWindow(ChordFinderViewModel vm)
         {
+            VM = vm;
+
             InitializeComponent();
 
             // Handle the lack of binding selected listview items in WPF

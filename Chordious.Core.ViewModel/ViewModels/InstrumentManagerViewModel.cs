@@ -623,6 +623,27 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        public Action RequestClose;
+
+        public RelayCommand Close
+        {
+            get
+            {
+                return _close ?? (_close = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        RequestClose?.Invoke();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }));
+            }
+        }
+        private RelayCommand _close;
+
         public InstrumentManagerViewModel()
         {
             _defaultInstruments = AppVM.GetDefaultInstruments();

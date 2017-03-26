@@ -41,13 +41,18 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                return _vm ?? (_vm = (DataContext as ScaleFinderViewModel));
+                return DataContext as ScaleFinderViewModel;
+            }
+            private set
+            {
+                DataContext = value;
             }
         }
-        private ScaleFinderViewModel _vm;
 
-        public ScaleFinderWindow()
+        public ScaleFinderWindow(ScaleFinderViewModel vm)
         {
+            VM = vm;
+
             InitializeComponent();
 
             // Handle the lack of binding selected listview items in WPF

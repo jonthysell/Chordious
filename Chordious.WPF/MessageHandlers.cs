@@ -1,5 +1,5 @@
 ﻿// 
-// MessageHandlers.cs
+// cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -40,48 +40,48 @@ namespace com.jonthysell.Chordious.WPF
     {
         public static void RegisterMessageHandlers(object recipient)
         {
-            Messenger.Default.Register<ChordiousMessage>(recipient, (message) => MessageHandlers.ShowNotification(message));
-            Messenger.Default.Register<ExceptionMessage>(recipient, (message) => MessageHandlers.ShowException(message));
-            Messenger.Default.Register<ConfirmationMessage>(recipient, (message) => MessageHandlers.ConfirmAction(message));
-            Messenger.Default.Register<PromptForTextMessage>(recipient, (message) => MessageHandlers.PromptForText(message));
+            Messenger.Default.Register<ChordiousMessage>(recipient, (message) => ShowNotification(message));
+            Messenger.Default.Register<ExceptionMessage>(recipient, (message) => ShowException(message));
+            Messenger.Default.Register<ConfirmationMessage>(recipient, (message) => ConfirmAction(message));
+            Messenger.Default.Register<PromptForTextMessage>(recipient, (message) => PromptForText(message));
 
-            Messenger.Default.Register<LaunchUrlMessage>(recipient, (message) => MessageHandlers.LaunchUrl(message));
+            Messenger.Default.Register<LaunchUrlMessage>(recipient, (message) => LaunchUrl(message));
 
-            Messenger.Default.Register<ShowChordFinderMessage>(recipient, (message) => MessageHandlers.ShowChordFinder(message));
-            Messenger.Default.Register<ShowScaleFinderMessage>(recipient, (message) => MessageHandlers.ShowScaleFinder(message));
+            Messenger.Default.Register<ShowChordFinderMessage>(recipient, (message) => ShowChordFinder(message));
+            Messenger.Default.Register<ShowScaleFinderMessage>(recipient, (message) => ShowScaleFinder(message));
 
-            Messenger.Default.Register<ShowDiagramLibraryMessage>(recipient, (message) => MessageHandlers.ShowDiagramLibrary(message));
+            Messenger.Default.Register<ShowDiagramLibraryMessage>(recipient, (message) => ShowDiagramLibrary(message));
 
-            Messenger.Default.Register<ShowDiagramEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramEditor(message));
-            Messenger.Default.Register<ShowDiagramMarkEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramMarkEditor(message));
-            Messenger.Default.Register<ShowDiagramFretLabelEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramFretLabelEditor(message));
-            Messenger.Default.Register<ShowDiagramBarreEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramBarreEditor(message));
-            Messenger.Default.Register<ShowDiagramStyleEditorMessage>(recipient, (message) => MessageHandlers.ShowDiagramStyleEditor(message));
+            Messenger.Default.Register<ShowDiagramEditorMessage>(recipient, (message) => ShowDiagramEditor(message));
+            Messenger.Default.Register<ShowDiagramMarkEditorMessage>(recipient, (message) => ShowDiagramMarkEditor(message));
+            Messenger.Default.Register<ShowDiagramFretLabelEditorMessage>(recipient, (message) => ShowDiagramFretLabelEditor(message));
+            Messenger.Default.Register<ShowDiagramBarreEditorMessage>(recipient, (message) => ShowDiagramBarreEditor(message));
+            Messenger.Default.Register<ShowDiagramStyleEditorMessage>(recipient, (message) => ShowDiagramStyleEditor(message));
 
-            Messenger.Default.Register<ShowInstrumentManagerMessage>(recipient, (message) => MessageHandlers.ShowInstrumentManager(message));
-            Messenger.Default.Register<ShowInstrumentEditorMessage>(recipient, (message) => MessageHandlers.ShowInstrumentEditor(message));
-            Messenger.Default.Register<ShowTuningEditorMessage>(recipient, (message) => MessageHandlers.ShowTuningEditor(message));
+            Messenger.Default.Register<ShowInstrumentManagerMessage>(recipient, (message) => ShowInstrumentManager(message));
+            Messenger.Default.Register<ShowInstrumentEditorMessage>(recipient, (message) => ShowInstrumentEditor(message));
+            Messenger.Default.Register<ShowTuningEditorMessage>(recipient, (message) => ShowTuningEditor(message));
 
-            Messenger.Default.Register<ShowChordQualityManagerMessage>(recipient, (message) => MessageHandlers.ShowChordQualityManager(message));
-            Messenger.Default.Register<ShowChordQualityEditorMessage>(recipient, (message) => MessageHandlers.ShowChordQualityEditor(message));
+            Messenger.Default.Register<ShowChordQualityManagerMessage>(recipient, (message) => ShowChordQualityManager(message));
+            Messenger.Default.Register<ShowChordQualityEditorMessage>(recipient, (message) => ShowChordQualityEditor(message));
 
-            Messenger.Default.Register<ShowScaleManagerMessage>(recipient, (message) => MessageHandlers.ShowScaleManager(message));
-            Messenger.Default.Register<ShowScaleEditorMessage>(recipient, (message) => MessageHandlers.ShowScaleEditor(message));
+            Messenger.Default.Register<ShowScaleManagerMessage>(recipient, (message) => ShowScaleManager(message));
+            Messenger.Default.Register<ShowScaleEditorMessage>(recipient, (message) => ShowScaleEditor(message));
 
-            Messenger.Default.Register<ShowOptionsMessage>(recipient, (message) => MessageHandlers.ShowOptions(message));
-            Messenger.Default.Register<ShowAdvancedDataMessage>(recipient, (message) => MessageHandlers.ShowAdvancedData(message));
+            Messenger.Default.Register<ShowOptionsMessage>(recipient, (message) => ShowOptions(message));
+            Messenger.Default.Register<ShowAdvancedDataMessage>(recipient, (message) => ShowAdvancedData(message));
 
-            Messenger.Default.Register<ShowDiagramExportMessage>(recipient, (message) => MessageHandlers.ShowDiagramExport(message));
+            Messenger.Default.Register<ShowDiagramExportMessage>(recipient, (message) => ShowDiagramExport(message));
 
-            Messenger.Default.Register<ShowConfigImportMessage>(recipient, (message) => MessageHandlers.ShowConfigImport(message));
-            Messenger.Default.Register<PromptForConfigInputStreamMessage>(recipient, (message) => MessageHandlers.PromptForConfigInputStream(message));
+            Messenger.Default.Register<ShowConfigImportMessage>(recipient, (message) => ShowConfigImport(message));
+            Messenger.Default.Register<PromptForConfigInputStreamMessage>(recipient, (message) => PromptForConfigInputStream(message));
 
-            Messenger.Default.Register<ShowConfigExportMessage>(recipient, (message) => MessageHandlers.ShowConfigExport(message));
-            Messenger.Default.Register<PromptForConfigOutputStreamMessage>(recipient, (message) => MessageHandlers.PromptForConfigOutputStream(message));
+            Messenger.Default.Register<ShowConfigExportMessage>(recipient, (message) => ShowConfigExport(message));
+            Messenger.Default.Register<PromptForConfigOutputStreamMessage>(recipient, (message) => PromptForConfigOutputStream(message));
 
-            Messenger.Default.Register<ShowDiagramCollectionSelectorMessage>(recipient, (message) => MessageHandlers.ShowDiagramCollectionSelector(message));
+            Messenger.Default.Register<ShowDiagramCollectionSelectorMessage>(recipient, (message) => ShowDiagramCollectionSelector(message));
             
-            Messenger.Default.Register<PromptForLegacyImportMessage>(recipient, (message) => MessageHandlers.PromptForLegacyImport(message));
+            Messenger.Default.Register<PromptForLegacyImportMessage>(recipient, (message) => PromptForLegacyImport(message));
         }
 
         public static void UnregisterMessageHandlers(object recipient)
@@ -189,14 +189,22 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowChordFinder(ShowChordFinderMessage message)
         {
-            ChordFinderWindow window = new ChordFinderWindow();
+            ChordFinderWindow window = new ChordFinderWindow(message.ChordFinderVM);
+            window.VM.RequestClose += () =>
+            {
+                window.Close();
+            };
             window.ShowDialog();
             message.Process();
         }
 
         private static void ShowScaleFinder(ShowScaleFinderMessage message)
         {
-            ScaleFinderWindow window = new ScaleFinderWindow();
+            ScaleFinderWindow window = new ScaleFinderWindow(message.ScaleFinderVM);
+            window.VM.RequestClose += () =>
+            {
+                window.Close();
+            };
             window.ShowDialog();
             message.Process();
         }
@@ -204,6 +212,11 @@ namespace com.jonthysell.Chordious.WPF
         private static void ShowDiagramLibrary(ShowDiagramLibraryMessage message)
         {
             DiagramLibraryWindow window = new DiagramLibraryWindow();
+            window.DataContext = message.DiagramLibraryVM;
+            message.DiagramLibraryVM.RequestClose += () =>
+            {
+                window.Close();
+            };
             window.ShowDialog();
             message.Process();
         }
@@ -211,6 +224,11 @@ namespace com.jonthysell.Chordious.WPF
         private static void ShowInstrumentManager(ShowInstrumentManagerMessage message)
         {
             InstrumentManagerWindow window = new InstrumentManagerWindow();
+            window.DataContext = message.InstrumentManagerVM;
+            message.InstrumentManagerVM.RequestClose += () =>
+            {
+                window.Close();
+            };
             window.ShowDialog();
             message.Process();
         }
@@ -241,6 +259,10 @@ namespace com.jonthysell.Chordious.WPF
         private static void ShowChordQualityManager(ShowChordQualityManagerMessage message)
         {
             NamedIntervalManagerWindow window = new NamedIntervalManagerWindow(message.ChordQualityManagerVM);
+            window.VM.RequestClose += () =>
+            {
+                window.Close();
+            };
             window.ShowDialog();
             message.Process();
         }
@@ -259,6 +281,10 @@ namespace com.jonthysell.Chordious.WPF
         private static void ShowScaleManager(ShowScaleManagerMessage message)
         {
             NamedIntervalManagerWindow window = new NamedIntervalManagerWindow(message.ScaleManagerVM);
+            window.VM.RequestClose += () =>
+            {
+                window.Close();
+            };
             window.ShowDialog();
             message.Process();
         }
@@ -351,7 +377,8 @@ namespace com.jonthysell.Chordious.WPF
         {
             AdvancedDataWindow window = new AdvancedDataWindow();
             window.DataContext = message.AdvancedDataVM;
-            message.AdvancedDataVM.RequestClose += () => {
+            message.AdvancedDataVM.RequestClose += () =>
+            {
                 window.Close();
             };
             window.ShowDialog();

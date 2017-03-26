@@ -8,6 +8,10 @@
         x:Class="com.jonthysell.Chordious.WPF.AdvancedDataWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Cancel, Mode=OneWay}"
+                    Key="Escape" />
+    </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />

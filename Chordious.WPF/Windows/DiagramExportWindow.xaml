@@ -138,7 +138,7 @@
                          Minimum="0.0"
                          Value="{Binding PercentComplete}"
                          Width="275" />
-            <Button AutomationProperties.Name="{Binding ElementName=ExportAsyncLabel, Path=Text}"
+            <Button AutomationProperties.Name="{Binding ExportAsyncLabel, Converter={StaticResource AltTextToTextConverter}}"
                     Command="{Binding ExportAsync, IsAsync=True, Mode=OneWay}"
                     IsDefault="True"
                     Margin="5"

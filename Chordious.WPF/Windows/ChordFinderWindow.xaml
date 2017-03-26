@@ -481,8 +481,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button AutomationProperties.AccessKey="F5"
-                AutomationProperties.Name="{Binding ElementName=SearchAsyncLabel, Path=Text}"
+        <Button AutomationProperties.Name="{Binding SearchAsyncLabel, Converter={StaticResource AltTextToTextConverter}}"
                 Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}"
                 Grid.Row="2"
                 Margin="5"
@@ -499,7 +498,7 @@
                             VerticalAlignment="Center" />
             </StackPanel>
         </Button>
-        <Button AutomationProperties.Name="{Binding ElementName=SaveSelectedLabel, Path=Text}"
+        <Button AutomationProperties.Name="{Binding SaveSelectedLabel, Converter={StaticResource AltTextToTextConverter}}"
                 Command="{Binding SaveSelected}"
                 Grid.Column="1"
                 Grid.Row="2"

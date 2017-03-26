@@ -88,6 +88,7 @@
     <Compile Include="..\Chordious.Core\Properties\SharedInfo.cs">
       <Link>Properties\SharedInfo.cs</Link>
     </Compile>
+    <Compile Include="Converters\AltTextToTextConverter.cs" />
     <Compile Include="Windows\AdvancedDataWindow.xaml.cs">
       <DependentUpon>AdvancedDataWindow.xaml</DependentUpon>
     </Compile>

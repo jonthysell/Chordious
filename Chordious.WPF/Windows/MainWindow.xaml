@@ -27,7 +27,7 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Button AutomationProperties.Name="{Binding ShowChordFinderLabel}"
+            <Button AutomationProperties.Name="{Binding ShowChordFinderLabel, Converter={StaticResource AltTextToTextConverter}}"
                     Command="{Binding ShowChordFinder, Mode=OneWay}"
                     Grid.Row="0"
                     Margin="5"
@@ -43,7 +43,7 @@
                                 Text="{Binding ShowChordFinderLabel, FallbackValue=CHORD FINDER}" />
                 </StackPanel>
             </Button>
-            <Button AutomationProperties.Name="{Binding ShowScaleFinderLabel}"
+            <Button AutomationProperties.Name="{Binding ShowScaleFinderLabel, Converter={StaticResource AltTextToTextConverter}}"
                     Command="{Binding ShowScaleFinder, Mode=OneWay}"
                     Grid.Column="1"
                     Grid.Row="0"
@@ -60,7 +60,7 @@
                                 Text="{Binding ShowScaleFinderLabel, FallbackValue=SCALE FINDER}" />
                 </StackPanel>
             </Button>
-            <Button AutomationProperties.Name="{Binding ShowDiagramLibraryLabel}"
+            <Button AutomationProperties.Name="{Binding ShowDiagramLibraryLabel, Converter={StaticResource AltTextToTextConverter}}"
                     Command="{Binding ShowDiagramLibrary, Mode=OneWay}"
                     Grid.Column="0"
                     Grid.Row="1"
@@ -77,7 +77,7 @@
                                 Text="{Binding ShowDiagramLibraryLabel, FallbackValue=LIBRARY}" />
                 </StackPanel>
             </Button>
-            <Button AutomationProperties.Name="{Binding ShowInstrumentManagerLabel}"
+            <Button AutomationProperties.Name="{Binding ShowInstrumentManagerLabel, Converter={StaticResource AltTextToTextConverter}}"
                     Command="{Binding ShowInstrumentManager, Mode=OneWay}"
                     Grid.Column="1"
                     Grid.Row="1"
@@ -94,7 +94,7 @@
                                 Text="{Binding ShowInstrumentManagerLabel, FallbackValue=INSTRUMENTS}" />
                 </StackPanel>
             </Button>
-            <Button AutomationProperties.Name="{Binding ShowOptionsLabel}"
+            <Button AutomationProperties.Name="{Binding ShowOptionsLabel, Converter={StaticResource AltTextToTextConverter}}"
                     Command="{Binding ShowOptions, Mode=OneWay}"
                     Grid.Column="0"
                     Grid.Row="2"
@@ -111,7 +111,7 @@
                                 Text="{Binding ShowOptionsLabel, FallbackValue=OPTIONS}" />
                 </StackPanel>
             </Button>
-            <Button AutomationProperties.Name="{Binding ShowHelpLabel}"
+            <Button AutomationProperties.Name="{Binding ShowHelpLabel, Converter={StaticResource AltTextToTextConverter}}"
                     Command="{Binding ShowHelp, Mode=OneWay}"
                     Grid.Column="1"
                     Grid.Row="2"
@@ -147,7 +147,7 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Button AutomationProperties.Name="{Binding LaunchWebsiteLabel}"
+                <Button AutomationProperties.Name="{Binding LaunchWebsiteLabel, Converter={StaticResource AltTextToTextConverter}}"
                         Command="{Binding LaunchWebsite, Mode=OneWay}"
                         Grid.Column="0"
                         Margin="5"
@@ -163,7 +163,7 @@
                                     Text="{Binding LaunchWebsiteLabel, FallbackValue=WEBSITE}" />
                     </StackPanel>
                 </Button>
-                <Button AutomationProperties.Name="{Binding ShowLicenseLabel}"
+                <Button AutomationProperties.Name="{Binding ShowLicenseLabel, Converter={StaticResource AltTextToTextConverter}}"
                         Command="{Binding ShowLicense, Mode=OneWay}"
                         Grid.Column="1"
                         Margin="5"

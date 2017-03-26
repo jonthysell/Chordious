@@ -3041,7 +3041,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Begin searching with the parameters selected. (F5).
+        ///   Looks up a localized string similar to Begin searching with the parameters selected..
         /// </summary>
         internal static string FinderSearchToolTip {
             get {

@@ -35,6 +35,7 @@
         <local:IdleBoolToWaitCursorConverter x:Key="IdleBoolToWaitCursorConverter" />
         <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <local:DecimalToPercentConverter x:Key="DecimalToPercentConverter" />
+        <local:AltTextToTextConverter x:Key="AltTextToTextConverter" />
         <!-- Adapted from http://www.infosysblogs.com/microsoft/2010/07/wpf_-_disabled_look_for_button.html -->
         <Style BasedOn="{x:Null}"
                TargetType="{x:Type Button}"

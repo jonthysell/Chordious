@@ -415,7 +415,7 @@
     <value>S_earch</value>
   </data>
   <data name="FinderSearchToolTip" xml:space="preserve">
-    <value>Begin searching with the parameters selected. (F5)</value>
+    <value>Begin searching with the parameters selected.</value>
   </data>
   <data name="ScaleFinderTitle" xml:space="preserve">
     <value>Scale Finder</value>

@@ -69,14 +69,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region Dimensions
 
-        public string DimensionsGroupLabel
-        {
-            get
-            {
-                return Strings.DiagramDimensionsGroupLabel;
-            }
-        }
-
         public string TotalWidthLabel
         {
             get

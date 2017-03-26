@@ -53,6 +53,170 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        #region Group Labels
+
+        public string DimensionsGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorDimensionsGroupLabel;
+            }
+        }
+
+        public string DiagramLayoutGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorDiagramLayoutGroupLabel;
+            }
+        }
+
+        public string DiagramBackgroundGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorDiagramBackgroundGroupLabel;
+            }
+        }
+
+        public string DiagramBorderGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorDiagramBorderGroupLabel;
+            }
+        }
+
+        public string GridSpacingGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorGridSpacingGroupLabel;
+            }
+        }
+
+        public string GridMarginGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorGridMarginGroupLabel;
+            }
+        }
+
+        public string GridBackgroundGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorGridBackgroundGroupLabel;
+            }
+        }
+
+        public string GridLineGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorGridLineGroupLabel;
+            }
+        }
+
+        public string GridNutGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorGridNutGroupLabel;
+            }
+        }
+
+        public string TitleGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorTitleGroupLabel;
+            }
+        }
+
+        public string TitleTextGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorTitleTextGroupLabel;
+            }
+        }
+
+        public string TitleLayoutGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorTitleLayoutGroupLabel;
+            }
+        }
+
+        public string SelectedMarkTypeLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorSelectedMarkTypeLabel;
+            }
+        }
+
+        public string MarkBackgroundGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorMarkBackgroundGroupLabel;
+            }
+        }
+
+        public string MarkBorderGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorMarkBorderGroupLabel;
+            }
+        }
+
+        public string MarkTextGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorMarkTextGroupLabel;
+            }
+        }
+
+        public string FretLabelTextGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorFretLabelTextGroupLabel;
+            }
+        }
+
+        public string FretLabelLayoutGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorFretLabelLayoutGroupLabel;
+            }
+        }
+
+        public string BarreStyleGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorBarreStyleGroupLabel;
+            }
+        }
+
+        public string BarreLayoutGroupLabel
+        {
+            get
+            {
+                return Strings.DiagramEditorBarreLayoutGroupLabel;
+            }
+        }
+
+        #endregion
+
         public string ResetStylesLabel
         {
             get

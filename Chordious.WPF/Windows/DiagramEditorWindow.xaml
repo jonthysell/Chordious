@@ -30,7 +30,7 @@
                       HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <GroupBox Header="{Binding ObservableDiagram.DimensionsGroupLabel, FallbackValue=DIMENSIONS}"
+                <GroupBox Header="{Binding DimensionsGroupLabel, FallbackValue=DIMENSIONS}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -119,7 +119,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.DiagramLayoutGroupLabel, FallbackValue=DIAGRAM LAYOUT}"
+                <GroupBox Header="{Binding DiagramLayoutGroupLabel, FallbackValue=DIAGRAM LAYOUT}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -168,7 +168,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.DiagramBackgroundGroupLabel, FallbackValue=DIAGRAM BACKGROUND}"
+                <GroupBox Header="{Binding DiagramBackgroundGroupLabel, FallbackValue=DIAGRAM BACKGROUND}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -220,7 +220,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.DiagramBorderGroupLabel, FallbackValue=DIAGRAM BORDER}"
+                <GroupBox Header="{Binding DiagramBorderGroupLabel, FallbackValue=DIAGRAM BORDER}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -272,7 +272,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.GridSpacingGroupLabel, FallbackValue=GRID SPACINGS}"
+                <GroupBox Header="{Binding GridSpacingGroupLabel, FallbackValue=GRID SPACINGS}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -323,7 +323,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.GridMarginGroupLabel, FallbackValue=GRID MARGINS}"
+                <GroupBox Header="{Binding GridMarginGroupLabel, FallbackValue=GRID MARGINS}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -443,7 +443,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.GridBackgroundGroupLabel, FallbackValue=GRID BACKGROUND}"
+                <GroupBox Header="{Binding GridBackgroundGroupLabel, FallbackValue=GRID BACKGROUND}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel>
@@ -497,7 +497,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.GridLineGroupLabel, FallbackValue=GRID LINES}"
+                <GroupBox Header="{Binding GridLineGroupLabel, FallbackValue=GRID LINES}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -549,7 +549,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.GridNutGroupLabel, FallbackValue=GRID NUT}"
+                <GroupBox Header="{Binding GridNutGroupLabel, FallbackValue=GRID NUT}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -720,7 +720,7 @@
                       HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <GroupBox Header="{Binding Style.TitleGroupLabel, FallbackValue=TITLE}"
+                <GroupBox Header="{Binding TitleGroupLabel, FallbackValue=TITLE}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -741,7 +741,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.TitleTextGroupLabel, FallbackValue=TITLE TEXT}"
+                <GroupBox Header="{Binding TitleTextGroupLabel, FallbackValue=TITLE TEXT}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -906,7 +906,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.TitleLayoutGroupLabel, FallbackValue=TITLE LAYOUT}"
+                <GroupBox Header="{Binding TitleLayoutGroupLabel, FallbackValue=TITLE LAYOUT}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -977,7 +977,7 @@
                     </StackPanel>
                 </GroupBox>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="{Binding Style.SelectedMarkTypeLabel, FallbackValue=SELECTED MARK TYPE}"
+                    <Label Content="{Binding SelectedMarkTypeLabel, FallbackValue=SELECTED MARK TYPE}"
                            FontWeight="Bold"
                            Height="25"
                            Margin="5"
@@ -999,7 +999,7 @@
                               VerticalContentAlignment="Center"
                               Width="82" />
                 </StackPanel>
-                <GroupBox Header="{Binding Style.MarkBackgroundGroupLabel, FallbackValue=MARK BACKGROUND}"
+                <GroupBox Header="{Binding MarkBackgroundGroupLabel, FallbackValue=MARK BACKGROUND}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -1116,7 +1116,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.MarkBorderGroupLabel, FallbackValue=MARK BORDER}"
+                <GroupBox Header="{Binding MarkBorderGroupLabel, FallbackValue=MARK BORDER}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -1168,7 +1168,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.MarkTextGroupLabel, FallbackValue=MARK TEXT}"
+                <GroupBox Header="{Binding MarkTextGroupLabel, FallbackValue=MARK TEXT}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -1331,7 +1331,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.FretLabelTextGroupLabel, FallbackValue=FRET LABEL TEXT}"
+                <GroupBox Header="{Binding FretLabelTextGroupLabel, FallbackValue=FRET LABEL TEXT}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -1475,7 +1475,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.FretLabelLayoutGroupLabel, FallbackValue=FRET LABEL LAYOUT}"
+                <GroupBox Header="{Binding FretLabelLayoutGroupLabel, FallbackValue=FRET LABEL LAYOUT}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -1545,7 +1545,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.BarreStyleGroupLabel, FallbackValue=BARRE STYLE}"
+                <GroupBox Header="{Binding BarreStyleGroupLabel, FallbackValue=BARRE STYLE}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -1643,7 +1643,7 @@
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Style.BarreLayoutGroupLabel, FallbackValue=BARRE LAYOUT}"
+                <GroupBox Header="{Binding BarreLayoutGroupLabel, FallbackValue=BARRE LAYOUT}"
                           Margin="5">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">

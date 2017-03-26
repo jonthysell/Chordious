@@ -523,7 +523,7 @@
     <value>Summary of {0}</value>
   </data>
   <data name="DiagramStyleEditorSelectedStyleLabel" xml:space="preserve">
-    <value>Selected Style</value>
+    <value>_Selected Style</value>
   </data>
   <data name="DiagramStyleEditorSelectedStyleToolTip" xml:space="preserve">
     <value>The scope of the style you want to edit.</value>
@@ -576,8 +576,8 @@
   <data name="DiagramStyleLabelLayoutModelToolTip" xml:space="preserve">
     <value>How the labels and padding interact with one another.</value>
   </data>
-  <data name="DiagramDimensionsGroupLabel" xml:space="preserve">
-    <value>Dimensions</value>
+  <data name="DiagramEditorDimensionsGroupLabel" xml:space="preserve">
+    <value>Dimension_s</value>
   </data>
   <data name="DiagramTotalHeightLabel" xml:space="preserve">
     <value>Height (px)</value>
@@ -595,31 +595,31 @@
     <value>The width of the diagram in pixels.</value>
   </data>
   <data name="DiagramStyleDiagramBackgroundGroupLabel" xml:space="preserve">
-    <value>Diagram Background</value>
+    <value>Diagram B_ackground</value>
   </data>
   <data name="DiagramStyleDiagramBarresGroupLabel" xml:space="preserve">
-    <value>Barres</value>
+    <value>_Barres</value>
   </data>
   <data name="DiagramStyleDiagramBorderGroupLabel" xml:space="preserve">
-    <value>Diagram Border</value>
+    <value>Diagram B_order</value>
   </data>
   <data name="DiagramStyleDiagramFretLabelsGroupLabel" xml:space="preserve">
-    <value>Fret Labels</value>
+    <value>_Fret Labels</value>
   </data>
   <data name="DiagramStyleGridGroupLabel" xml:space="preserve">
-    <value>Grid</value>
+    <value>_Grid</value>
   </data>
   <data name="DiagramStyleDiagramGroupLabel" xml:space="preserve">
-    <value>Diagram</value>
+    <value>_Diagram</value>
   </data>
   <data name="DiagramStyleDiagramLayoutGroupLabel" xml:space="preserve">
-    <value>Diagram Layout</value>
+    <value>Diagram _Layout</value>
   </data>
   <data name="DiagramStyleDiagramMarksGroupLabel" xml:space="preserve">
-    <value>Marks</value>
+    <value>_Marks</value>
   </data>
   <data name="DiagramStyleNewDiagramGroupLabel" xml:space="preserve">
-    <value>New Diagrams</value>
+    <value>_New Diagrams</value>
   </data>
   <data name="DiagramStyleNewDiagramNumFretsLabel" xml:space="preserve">
     <value># of Frets</value>
@@ -646,7 +646,7 @@
     <value>The font to use for the title.</value>
   </data>
   <data name="DiagramStyleTitleTextGroupLabel" xml:space="preserve">
-    <value>Title Text</value>
+    <value>Title Te_xt</value>
   </data>
   <data name="DiagramStyleTitleGridPaddingLabel" xml:space="preserve">
     <value>Grid Padding (px)</value>
@@ -655,7 +655,7 @@
     <value>How much space to put between the title and the grid.</value>
   </data>
   <data name="DiagramStyleTitleGroupLabel" xml:space="preserve">
-    <value>Title</value>
+    <value>_Title</value>
   </data>
   <data name="DiagramStyleTitleLabelStyleLabel" xml:space="preserve">
     <value>Label Style</value>
@@ -664,7 +664,7 @@
     <value>Whether or not to show the title with modifiers of a different size.</value>
   </data>
   <data name="DiagramStyleTitleLayoutGroupLabel" xml:space="preserve">
-    <value>Title Layout</value>
+    <value>Title _Layout</value>
   </data>
   <data name="DiagramStyleTitleOpacityLabel" xml:space="preserve">
     <value>Opacity</value>
@@ -721,7 +721,7 @@
     <value>The number of strings.</value>
   </data>
   <data name="DiagramStyleGridBackgroundGroupLabel" xml:space="preserve">
-    <value>Grid Background</value>
+    <value>Grid B_ackground</value>
   </data>
   <data name="DiagramStyleGridColorLabel" xml:space="preserve">
     <value>Color</value>
@@ -742,7 +742,7 @@
     <value>The color of the grid lines.</value>
   </data>
   <data name="DiagramStyleGridLineGroupLabel" xml:space="preserve">
-    <value>Grid Lines</value>
+    <value>Grid _Lines</value>
   </data>
   <data name="DiagramStyleGridLineThicknessLabel" xml:space="preserve">
     <value>Thickness (px)</value>
@@ -757,7 +757,7 @@
     <value>The margin between the bottom edge of the grid and the bottom edge of the diagram.</value>
   </data>
   <data name="DiagramStyleGridMarginGroupLabel" xml:space="preserve">
-    <value>Grid Margins</value>
+    <value>Grid Ma_rgins</value>
   </data>
   <data name="DiagramStyleGridMarginLabel" xml:space="preserve">
     <value>Base (px)</value>
@@ -784,7 +784,7 @@
     <value>The margin between the top edge of the grid and the top edge of the diagram.</value>
   </data>
   <data name="DiagramStyleGridNutGroupLabel" xml:space="preserve">
-    <value>Grid Nut</value>
+    <value>Grid _Nut</value>
   </data>
   <data name="DiagramStyleGridNutRatioLabel" xml:space="preserve">
     <value>Ratio</value>
@@ -805,7 +805,7 @@
     <value>The opacity of the grid's background color.</value>
   </data>
   <data name="DiagramStyleGridSpacingGroupLabel" xml:space="preserve">
-    <value>Grid Spacings</value>
+    <value>Grid S_pacings</value>
   </data>
   <data name="DiagramStyleGridStringSpacingLabel" xml:space="preserve">
     <value>String Spacing (px)</value>
@@ -1237,7 +1237,7 @@
     <value>Move the selected diagram to another collection.</value>
   </data>
   <data name="DiagramStyleBarreLayoutGroupLabel" xml:space="preserve">
-    <value>Barre Layout</value>
+    <value>Barre _Layout</value>
   </data>
   <data name="DiagramStyleBarreArcRatioLabel" xml:space="preserve">
     <value>Arc Ratio</value>
@@ -1270,7 +1270,7 @@
     <value>Whether to put the barre under or over any diagram marks.</value>
   </data>
   <data name="DiagramStyleBarreStyleGroupLabel" xml:space="preserve">
-    <value>Barre Style</value>
+    <value>Barre St_yle</value>
   </data>
   <data name="DiagramStyleBarreVerticalAlignmentLabel" xml:space="preserve">
     <value>Alignment</value>
@@ -1291,7 +1291,7 @@
     <value>Diagram Fret Label Editor</value>
   </data>
   <data name="DiagramFretLabelEditorPropertiesGroupLabel" xml:space="preserve">
-    <value>Fret Label Properties</value>
+    <value>Fret Label _Properties</value>
   </data>
   <data name="DiagramFretLabelEditorTextLabel" xml:space="preserve">
     <value>Text</value>
@@ -1306,7 +1306,7 @@
     <value>The font to use for the fret label.</value>
   </data>
   <data name="DiagramStyleFretLabelTextGroupLabel" xml:space="preserve">
-    <value>Fret Label Text</value>
+    <value>Fret Label Te_xt</value>
   </data>
   <data name="DiagramStyleFretLabelGridPaddingLabel" xml:space="preserve">
     <value>Grid Padding (px)</value>
@@ -1315,7 +1315,7 @@
     <value>How much space to put between the fret label and the grid.</value>
   </data>
   <data name="DiagramStyleFretLabelLayoutGroupLabel" xml:space="preserve">
-    <value>Fret Label Layout</value>
+    <value>Fret Label _Layout</value>
   </data>
   <data name="DiagramStyleFretLabelTextAlignmentLabel" xml:space="preserve">
     <value>Alignment</value>
@@ -1360,7 +1360,7 @@
     <value>The ratio of the width of the fret label relative to the text size.</value>
   </data>
   <data name="DiagramStyleMarkBackgroundGroupLabel" xml:space="preserve">
-    <value>Mark Background</value>
+    <value>Mark B_ackground</value>
   </data>
   <data name="DiagramStyleMarkBorderColorLabel" xml:space="preserve">
     <value>Color</value>
@@ -1369,7 +1369,7 @@
     <value>The color of the mark's border.</value>
   </data>
   <data name="DiagramStyleMarkBorderGroupLabel" xml:space="preserve">
-    <value>Mark Border</value>
+    <value>Mark B_order</value>
   </data>
   <data name="DiagramStyleMarkBorderThicknessLabel" xml:space="preserve">
     <value>Thickness (px)</value>
@@ -1420,7 +1420,7 @@
     <value>The color of the mark text.</value>
   </data>
   <data name="DiagramStyleMarkTextGroupLabel" xml:space="preserve">
-    <value>Mark Text</value>
+    <value>Mark Te_xt</value>
   </data>
   <data name="DiagramStyleMarkTextOpacityLabel" xml:space="preserve">
     <value>Text Opacity</value>
@@ -1453,19 +1453,19 @@
     <value>Show the mark.</value>
   </data>
   <data name="DiagramStyleMarkTypeLabel" xml:space="preserve">
-    <value>Selected Mark Type</value>
+    <value>Selected Mark T_ype</value>
   </data>
   <data name="DiagramStyleMarkTypeToolTip" xml:space="preserve">
     <value>The type of mark that you want to change the style of.</value>
   </data>
   <data name="DiagramMarkEditorMarkTypeLabel" xml:space="preserve">
-    <value>Mark Type</value>
+    <value>Mark T_ype</value>
   </data>
   <data name="DiagramMarkEditorMarkTypeToolTip" xml:space="preserve">
     <value>The type of the mark.</value>
   </data>
   <data name="DiagramMarkEditorPropertiesGroupLabel" xml:space="preserve">
-    <value>Mark Properties</value>
+    <value>Mark _Properties</value>
   </data>
   <data name="DiagramMarkEditorTextLabel" xml:space="preserve">
     <value>Text</value>
@@ -1592,6 +1592,63 @@
   </data>
   <data name="ObservableDiagramLibraryNodeSendSelectedTextToClipboardToolTip" xml:space="preserve">
     <value>Copy the SVG text of the selected diagram to the clipboard.</value>
+  </data>
+  <data name="DiagramEditorBarreLayoutGroupLabel" xml:space="preserve">
+    <value>Barre La_yout</value>
+  </data>
+  <data name="DiagramEditorBarreStyleGroupLabel" xml:space="preserve">
+    <value>_Barre Style</value>
+  </data>
+  <data name="DiagramEditorDiagramBackgroundGroupLabel" xml:space="preserve">
+    <value>Diagram B_ackground</value>
+  </data>
+  <data name="DiagramEditorDiagramBorderGroupLabel" xml:space="preserve">
+    <value>Diagram B_order</value>
+  </data>
+  <data name="DiagramEditorDiagramLayoutGroupLabel" xml:space="preserve">
+    <value>_Diagram Layout</value>
+  </data>
+  <data name="DiagramEditorFretLabelLayoutGroupLabel" xml:space="preserve">
+    <value>_Fret Label Layout</value>
+  </data>
+  <data name="DiagramEditorFretLabelTextGroupLabel" xml:space="preserve">
+    <value>F_ret Label Text</value>
+  </data>
+  <data name="DiagramEditorGridBackgroundGroupLabel" xml:space="preserve">
+    <value>Grid Ba_ckground</value>
+  </data>
+  <data name="DiagramEditorGridLineGroupLabel" xml:space="preserve">
+    <value>Grid Li_nes</value>
+  </data>
+  <data name="DiagramEditorGridMarginGroupLabel" xml:space="preserve">
+    <value>Grid Mar_gins</value>
+  </data>
+  <data name="DiagramEditorGridNutGroupLabel" xml:space="preserve">
+    <value>Grid N_ut</value>
+  </data>
+  <data name="DiagramEditorGridSpacingGroupLabel" xml:space="preserve">
+    <value>Grid S_pacings</value>
+  </data>
+  <data name="DiagramEditorMarkBackgroundGroupLabel" xml:space="preserve">
+    <value>Mar_k Background</value>
+  </data>
+  <data name="DiagramEditorMarkBorderGroupLabel" xml:space="preserve">
+    <value>Mark Bord_er</value>
+  </data>
+  <data name="DiagramEditorMarkTextGroupLabel" xml:space="preserve">
+    <value>Mark Te_xt</value>
+  </data>
+  <data name="DiagramEditorSelectedMarkTypeLabel" xml:space="preserve">
+    <value>Selected _Mark Type</value>
+  </data>
+  <data name="DiagramEditorTitleGroupLabel" xml:space="preserve">
+    <value>_Title</value>
+  </data>
+  <data name="DiagramEditorTitleLayoutGroupLabel" xml:space="preserve">
+    <value>Title _Layout</value>
+  </data>
+  <data name="DiagramEditorTitleTextGroupLabel" xml:space="preserve">
+    <value>T_itle Text</value>
   </data>
   <data name="ObservableDiagramAddBarreLabel" xml:space="preserve">
     <value>Add Barre...</value>

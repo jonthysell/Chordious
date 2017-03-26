@@ -665,11 +665,146 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dimensions.
+        ///   Looks up a localized string similar to Barre La_yout.
         /// </summary>
-        internal static string DiagramDimensionsGroupLabel {
+        internal static string DiagramEditorBarreLayoutGroupLabel {
             get {
-                return ResourceManager.GetString("DiagramDimensionsGroupLabel", resourceCulture);
+                return ResourceManager.GetString("DiagramEditorBarreLayoutGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Barre Style.
+        /// </summary>
+        internal static string DiagramEditorBarreStyleGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorBarreStyleGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram B_ackground.
+        /// </summary>
+        internal static string DiagramEditorDiagramBackgroundGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorDiagramBackgroundGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram B_order.
+        /// </summary>
+        internal static string DiagramEditorDiagramBorderGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorDiagramBorderGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Diagram Layout.
+        /// </summary>
+        internal static string DiagramEditorDiagramLayoutGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorDiagramLayoutGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dimension_s.
+        /// </summary>
+        internal static string DiagramEditorDimensionsGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorDimensionsGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Fret Label Layout.
+        /// </summary>
+        internal static string DiagramEditorFretLabelLayoutGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorFretLabelLayoutGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F_ret Label Text.
+        /// </summary>
+        internal static string DiagramEditorFretLabelTextGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorFretLabelTextGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Ba_ckground.
+        /// </summary>
+        internal static string DiagramEditorGridBackgroundGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorGridBackgroundGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Li_nes.
+        /// </summary>
+        internal static string DiagramEditorGridLineGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorGridLineGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid Mar_gins.
+        /// </summary>
+        internal static string DiagramEditorGridMarginGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorGridMarginGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid N_ut.
+        /// </summary>
+        internal static string DiagramEditorGridNutGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorGridNutGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid S_pacings.
+        /// </summary>
+        internal static string DiagramEditorGridSpacingGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorGridSpacingGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mar_k Background.
+        /// </summary>
+        internal static string DiagramEditorMarkBackgroundGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorMarkBackgroundGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Bord_er.
+        /// </summary>
+        internal static string DiagramEditorMarkBorderGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorMarkBorderGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark Te_xt.
+        /// </summary>
+        internal static string DiagramEditorMarkTextGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorMarkTextGroupLabel", resourceCulture);
             }
         }
         
@@ -701,11 +836,47 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selected _Mark Type.
+        /// </summary>
+        internal static string DiagramEditorSelectedMarkTypeLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorSelectedMarkTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Diagram Editor.
         /// </summary>
         internal static string DiagramEditorTitle {
             get {
                 return ResourceManager.GetString("DiagramEditorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Title.
+        /// </summary>
+        internal static string DiagramEditorTitleGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorTitleGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title _Layout.
+        /// </summary>
+        internal static string DiagramEditorTitleLayoutGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorTitleLayoutGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T_itle Text.
+        /// </summary>
+        internal static string DiagramEditorTitleTextGroupLabel {
+            get {
+                return ResourceManager.GetString("DiagramEditorTitleTextGroupLabel", resourceCulture);
             }
         }
         
@@ -737,7 +908,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fret Label Properties.
+        ///   Looks up a localized string similar to Fret Label _Properties.
         /// </summary>
         internal static string DiagramFretLabelEditorPropertiesGroupLabel {
             get {
@@ -962,7 +1133,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mark Type.
+        ///   Looks up a localized string similar to Mark T_ype.
         /// </summary>
         internal static string DiagramMarkEditorMarkTypeLabel {
             get {
@@ -980,7 +1151,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mark Properties.
+        ///   Looks up a localized string similar to Mark _Properties.
         /// </summary>
         internal static string DiagramMarkEditorPropertiesGroupLabel {
             get {
@@ -1070,7 +1241,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Barre Layout.
+        ///   Looks up a localized string similar to Barre _Layout.
         /// </summary>
         internal static string DiagramStyleBarreLayoutGroupLabel {
             get {
@@ -1151,7 +1322,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Barre Style.
+        ///   Looks up a localized string similar to Barre St_yle.
         /// </summary>
         internal static string DiagramStyleBarreStyleGroupLabel {
             get {
@@ -1196,7 +1367,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Diagram Background.
+        ///   Looks up a localized string similar to Diagram B_ackground.
         /// </summary>
         internal static string DiagramStyleDiagramBackgroundGroupLabel {
             get {
@@ -1205,7 +1376,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Barres.
+        ///   Looks up a localized string similar to _Barres.
         /// </summary>
         internal static string DiagramStyleDiagramBarresGroupLabel {
             get {
@@ -1232,7 +1403,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Diagram Border.
+        ///   Looks up a localized string similar to Diagram B_order.
         /// </summary>
         internal static string DiagramStyleDiagramBorderGroupLabel {
             get {
@@ -1277,7 +1448,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fret Labels.
+        ///   Looks up a localized string similar to _Fret Labels.
         /// </summary>
         internal static string DiagramStyleDiagramFretLabelsGroupLabel {
             get {
@@ -1286,7 +1457,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Diagram.
+        ///   Looks up a localized string similar to _Diagram.
         /// </summary>
         internal static string DiagramStyleDiagramGroupLabel {
             get {
@@ -1295,7 +1466,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Diagram Layout.
+        ///   Looks up a localized string similar to Diagram _Layout.
         /// </summary>
         internal static string DiagramStyleDiagramLayoutGroupLabel {
             get {
@@ -1304,7 +1475,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Marks.
+        ///   Looks up a localized string similar to _Marks.
         /// </summary>
         internal static string DiagramStyleDiagramMarksGroupLabel {
             get {
@@ -1331,7 +1502,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selected Style.
+        ///   Looks up a localized string similar to _Selected Style.
         /// </summary>
         internal static string DiagramStyleEditorSelectedStyleLabel {
             get {
@@ -1394,7 +1565,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fret Label Layout.
+        ///   Looks up a localized string similar to Fret Label _Layout.
         /// </summary>
         internal static string DiagramStyleFretLabelLayoutGroupLabel {
             get {
@@ -1439,7 +1610,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fret Label Text.
+        ///   Looks up a localized string similar to Fret Label Te_xt.
         /// </summary>
         internal static string DiagramStyleFretLabelTextGroupLabel {
             get {
@@ -1538,7 +1709,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grid Background.
+        ///   Looks up a localized string similar to Grid B_ackground.
         /// </summary>
         internal static string DiagramStyleGridBackgroundGroupLabel {
             get {
@@ -1583,7 +1754,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grid.
+        ///   Looks up a localized string similar to _Grid.
         /// </summary>
         internal static string DiagramStyleGridGroupLabel {
             get {
@@ -1610,7 +1781,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grid Lines.
+        ///   Looks up a localized string similar to Grid _Lines.
         /// </summary>
         internal static string DiagramStyleGridLineGroupLabel {
             get {
@@ -1655,7 +1826,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grid Margins.
+        ///   Looks up a localized string similar to Grid Ma_rgins.
         /// </summary>
         internal static string DiagramStyleGridMarginGroupLabel {
             get {
@@ -1736,7 +1907,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grid Nut.
+        ///   Looks up a localized string similar to Grid _Nut.
         /// </summary>
         internal static string DiagramStyleGridNutGroupLabel {
             get {
@@ -1799,7 +1970,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grid Spacings.
+        ///   Looks up a localized string similar to Grid S_pacings.
         /// </summary>
         internal static string DiagramStyleGridSpacingGroupLabel {
             get {
@@ -1844,7 +2015,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mark Background.
+        ///   Looks up a localized string similar to Mark B_ackground.
         /// </summary>
         internal static string DiagramStyleMarkBackgroundGroupLabel {
             get {
@@ -1871,7 +2042,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mark Border.
+        ///   Looks up a localized string similar to Mark B_order.
         /// </summary>
         internal static string DiagramStyleMarkBorderGroupLabel {
             get {
@@ -2024,7 +2195,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mark Text.
+        ///   Looks up a localized string similar to Mark Te_xt.
         /// </summary>
         internal static string DiagramStyleMarkTextGroupLabel {
             get {
@@ -2105,7 +2276,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selected Mark Type.
+        ///   Looks up a localized string similar to Selected Mark T_ype.
         /// </summary>
         internal static string DiagramStyleMarkTypeLabel {
             get {
@@ -2141,7 +2312,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Diagrams.
+        ///   Looks up a localized string similar to _New Diagrams.
         /// </summary>
         internal static string DiagramStyleNewDiagramGroupLabel {
             get {
@@ -2303,7 +2474,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Title.
+        ///   Looks up a localized string similar to _Title.
         /// </summary>
         internal static string DiagramStyleTitleGroupLabel {
             get {
@@ -2330,7 +2501,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Title Layout.
+        ///   Looks up a localized string similar to Title _Layout.
         /// </summary>
         internal static string DiagramStyleTitleLayoutGroupLabel {
             get {
@@ -2375,7 +2546,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Title Text.
+        ///   Looks up a localized string similar to Title Te_xt.
         /// </summary>
         internal static string DiagramStyleTitleTextGroupLabel {
             get {

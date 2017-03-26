@@ -1,5 +1,22 @@
 # Chordious Changelist #
 
+## 2.0.3 ##
+* UI is now friendly to Narrator and other screen readers
+* Improved keyboard navigation with alt-keys for most controls, 'Enter' to open list items
+* Can now copy diagram images directly to the clipboard via context-menu and/or 'Ctrl+C', 'Ctrl+Shift+C'
+* Can now exit out of any window with the 'Esc' key
+* Improved handling of update failures
+* Fixed bug where changing text in dialogs didn't enable the 'OK' button
+* Fixed bug where closing a Finder during a long search may cause a crash later
+* Fixed automatic versioning code to remove dependency on VS extension
+* Fixed many miscellaneous string and localization bugs
+* Fixed Code Analysis warnings and issues to improve code quality and style
+* Fixed Setup warnings
+* Tidied XAML files for readability
+* Performance and reliability improvements
+* Updated Svg.NET to 2.3
+* Updated MVVMLightLibs to 5.3.0.0
+
 ## 2.0.2 ##
 * Chord/Scale Finder searches can now be canceled with the 'Esc' key
 * Fixed bug with full barres in the Chord Finder crossing open/muted strings

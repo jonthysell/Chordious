@@ -34,6 +34,7 @@
                    ToolTip="{Binding NameToolTip}"
                    VerticalAlignment="Center" />
             <TextBox AutomationProperties.LabeledBy="{Binding ElementName=NameLabel}"
+                     IsReadOnly="{Binding ReadOnly}"
                      Margin="5"
                      Name="NameTextBox"
                      SelectedText=""
@@ -86,6 +87,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBox HorizontalContentAlignment="Center"
+                             IsReadOnly="{Binding DataContext.ReadOnly, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
                              MaxLength="2"
                              MaxLines="1"
                              SelectedText=""

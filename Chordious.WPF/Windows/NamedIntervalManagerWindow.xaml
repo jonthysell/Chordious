@@ -96,9 +96,20 @@
                   Name="DefaultNamedIntervalsListView"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   SelectedIndex="{Binding SelectedDefaultNamedIntervalIndex}">
+            <ListView.InputBindings>
+                <KeyBinding Command="{Binding EditNamedInterval}"
+                            Key="Enter" />
+                <KeyBinding Command="{Binding EditNamedInterval}"
+                            Key="Space" />
+            </ListView.InputBindings>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding LongName}" />
+                    <TextBlock Text="{Binding LongName}">
+                        <TextBlock.InputBindings>
+                            <MouseBinding Command="{Binding DataContext.EditNamedInterval, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                                          Gesture="LeftDoubleClick" />
+                        </TextBlock.InputBindings>
+                    </TextBlock>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

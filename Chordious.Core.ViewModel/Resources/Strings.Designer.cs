@@ -287,6 +287,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Chord Quality (Read-Only).
+        /// </summary>
+        internal static string ChordQualityEditorEditReadOnlyTitle {
+            get {
+                return ResourceManager.GetString("ChordQualityEditorEditReadOnlyTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Chord Quality.
         /// </summary>
         internal static string ChordQualityEditorEditTitle {
@@ -4558,6 +4567,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ResetStylesLabel {
             get {
                 return ResourceManager.GetString("ResetStylesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Scale (Read-Only).
+        /// </summary>
+        internal static string ScaleEditorEditReadOnlyTitle {
+            get {
+                return ResourceManager.GetString("ScaleEditorEditReadOnlyTitle", resourceCulture);
             }
         }
         

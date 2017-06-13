@@ -1731,4 +1731,10 @@
   <data name="ObservableDiagramSendTextToClipboardToolTip" xml:space="preserve">
     <value>Copy the SVG text of the diagram to the clipboard.</value>
   </data>
+  <data name="ChordQualityEditorEditReadOnlyTitle" xml:space="preserve">
+    <value>Edit Chord Quality (Read-Only)</value>
+  </data>
+  <data name="ScaleEditorEditReadOnlyTitle" xml:space="preserve">
+    <value>Edit Scale (Read-Only)</value>
+  </data>
 </root>

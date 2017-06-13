@@ -91,7 +91,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowChordQualityEditorMessage(true, (name, abbreviation, intervals) =>
+                        Messenger.Default.Send(new ShowChordQualityEditorMessage((name, abbreviation, intervals) =>
                         {
                             try
                             {
@@ -129,7 +129,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowChordQualityEditorMessage(false, (name, abbreviation, intervals) =>
+                        Messenger.Default.Send(new ShowChordQualityEditorMessage(SelectedNamedInterval.Name, ((ChordQuality)(SelectedNamedInterval.NamedInterval)).Abbreviation, SelectedNamedInterval.Intervals, SelectedNamedInterval.ReadOnly, (name, abbreviation, intervals) =>
                         {
                             try
                             {
@@ -141,7 +141,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             {
                                 ExceptionUtils.HandleException(ex);
                             }
-                        }, SelectedNamedInterval.Name, ((ChordQuality)(SelectedNamedInterval.NamedInterval)).Abbreviation, SelectedNamedInterval.Intervals));
+                        }));
                     }
                     catch (Exception ex)
                     {
@@ -149,7 +149,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return NamedIntervalIsSelected && SelectedNamedInterval.CanEdit;
+                    return NamedIntervalIsSelected;
                 }));
             }
         }
@@ -193,7 +193,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return NamedIntervalIsSelected && SelectedNamedInterval.CanEdit;
+                    return NamedIntervalIsSelected && !SelectedNamedInterval.ReadOnly;
                 }));
             }
         }

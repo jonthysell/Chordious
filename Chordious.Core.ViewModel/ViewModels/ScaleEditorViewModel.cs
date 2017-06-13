@@ -36,7 +36,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return IsNew ? Strings.ScaleEditorNewTitle : Strings.ScaleEditorEditTitle;
+                return IsNew ? Strings.ScaleEditorNewTitle : (ReadOnly ? Strings.ScaleEditorEditReadOnlyTitle : Strings.ScaleEditorEditTitle);
             }
         }
 
@@ -66,7 +66,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private Action<string, int[]> _callback;
 
-        public ScaleEditorViewModel(bool isNew, Action<string, int[]> callback) : base(isNew)
+        public ScaleEditorViewModel(Action<string, int[]> callback) : base()
         {
             if (null == callback)
             {
@@ -76,7 +76,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             _callback = callback;
         }
 
-        public ScaleEditorViewModel(bool isNew, string name, int[] intervals, Action<string, int[]> callback) : base(isNew, name, intervals)
+        public ScaleEditorViewModel(string name, int[] intervals, bool readOnly, Action<string, int[]> callback) : base(name, intervals, readOnly)
         {
             if (null == callback)
             {

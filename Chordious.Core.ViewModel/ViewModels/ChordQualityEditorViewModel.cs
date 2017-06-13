@@ -36,7 +36,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return IsNew ? Strings.ChordQualityEditorNewTitle : Strings.ChordQualityEditorEditTitle;
+                return IsNew ? Strings.ChordQualityEditorNewTitle : (ReadOnly ? Strings.ChordQualityEditorEditReadOnlyTitle : Strings.ChordQualityEditorEditTitle);
             }
         }
 
@@ -97,7 +97,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private Action<string, string, int[]> _callback;
 
-        public ChordQualityEditorViewModel(bool isNew, Action<string, string, int[]> callback) : base(isNew)
+        public ChordQualityEditorViewModel(Action<string, string, int[]> callback) : base()
         {
             if (null == callback)
             {
@@ -107,7 +107,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             _callback = callback;
         }
 
-        public ChordQualityEditorViewModel(bool isNew, string name, string abbreviation, int[] intervals, Action<string, string, int[]> callback) : base(isNew, name, intervals)
+        public ChordQualityEditorViewModel(string name, string abbreviation, int[] intervals, bool readOnly, Action<string, string, int[]> callback) : base(name, intervals, readOnly)
         {
             if (null == callback)
             {

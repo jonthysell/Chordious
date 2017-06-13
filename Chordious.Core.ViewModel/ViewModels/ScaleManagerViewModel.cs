@@ -91,7 +91,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowScaleEditorMessage(true, (name, intervals) =>
+                        Messenger.Default.Send(new ShowScaleEditorMessage((name, intervals) =>
                         {
                             try
                             {
@@ -129,7 +129,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowScaleEditorMessage(false, (name, intervals) =>
+                        Messenger.Default.Send(new ShowScaleEditorMessage(SelectedNamedInterval.Name, SelectedNamedInterval.Intervals, SelectedNamedInterval.ReadOnly, (name, intervals) =>
                         {
                             try
                             {
@@ -140,7 +140,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             {
                                 ExceptionUtils.HandleException(ex);
                             }
-                        }, SelectedNamedInterval.Name, SelectedNamedInterval.Intervals));
+                        }));
                     }
                     catch (Exception ex)
                     {
@@ -148,7 +148,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return NamedIntervalIsSelected && SelectedNamedInterval.CanEdit;
+                    return NamedIntervalIsSelected;
                 }));
             }
         }
@@ -192,7 +192,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return NamedIntervalIsSelected && SelectedNamedInterval.CanEdit;
+                    return NamedIntervalIsSelected && !SelectedNamedInterval.ReadOnly;
                 }));
             }
         }

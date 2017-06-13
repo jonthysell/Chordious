@@ -70,11 +70,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public bool CanEdit
+        public bool ReadOnly
         {
             get
             {
-                return !NamedInterval.ReadOnly;
+                return NamedInterval.ReadOnly;
             }
         }
 

@@ -212,14 +212,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         public ChordQualityEditorViewModel ChordQualityEditorVM { get; private set; }
 
-        public ShowChordQualityEditorMessage(bool isNew, Action<string, string, int[]> callback) : base()
+        public ShowChordQualityEditorMessage(Action<string, string, int[]> callback) : base()
         {
-            ChordQualityEditorVM = new ChordQualityEditorViewModel(isNew, callback);
+            ChordQualityEditorVM = new ChordQualityEditorViewModel(callback);
         }
 
-        public ShowChordQualityEditorMessage(bool isNew, Action<string, string, int[]> callback, string name, string abbreviation, int[] intervals) : base()
+        public ShowChordQualityEditorMessage(string name, string abbreviation, int[] intervals, bool readOnly, Action<string, string, int[]> callback) : base()
         {
-            ChordQualityEditorVM = new ChordQualityEditorViewModel(isNew, name, abbreviation, intervals, callback);
+            ChordQualityEditorVM = new ChordQualityEditorViewModel(name, abbreviation, intervals, readOnly, callback);
         }
     }
 
@@ -237,14 +237,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         public ScaleEditorViewModel ScaleEditorVM { get; private set; }
 
-        public ShowScaleEditorMessage(bool isNew, Action<string, int[]> callback) : base()
+        public ShowScaleEditorMessage(Action<string, int[]> callback) : base()
         {
-            ScaleEditorVM = new ScaleEditorViewModel(isNew, callback);
+            ScaleEditorVM = new ScaleEditorViewModel(callback);
         }
 
-        public ShowScaleEditorMessage(bool isNew, Action<string, int[]> callback, string name, int[] intervals) : this(isNew, callback)
+        public ShowScaleEditorMessage(string name, int[] intervals, bool readOnly, Action<string, int[]> callback) : base()
         {
-            ScaleEditorVM = new ScaleEditorViewModel(isNew, name, intervals, callback);
+            ScaleEditorVM = new ScaleEditorViewModel(name, intervals, readOnly, callback);
         }
     }
 

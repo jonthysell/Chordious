@@ -130,6 +130,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _isNew;
 
+        public bool ReadOnly
+        {
+            get
+            {
+                return _readOnly;
+            }
+            private set
+            {
+                _readOnly = value;
+                RaisePropertyChanged("ReadOnly");
+                RaisePropertyChanged("Title");
+            }
+        }
+        private bool _readOnly;
+
         public string AddIntervalLabel
         {
             get
@@ -163,6 +178,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
+                }, () =>
+                {
+                    return  !ReadOnly;
                 }));
             }
         }
@@ -205,7 +223,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return Intervals.Count > 0;
+                    return Intervals.Count > 0 && !ReadOnly;
                 }));
             }
         }
@@ -228,7 +246,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return IsValid();
+                    return IsValid() && !ReadOnly;
                 }));
             }
         }
@@ -255,13 +273,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public Action RequestClose;
 
-        public NamedIntervalEditorViewModel(bool isNew)
+        protected NamedIntervalEditorViewModel(bool isNew = true, bool readOnly = false)
         {
+            if (isNew && readOnly)
+            {
+                throw new ArgumentOutOfRangeException("readOnly");
+            }
+
             _isNew = isNew;
+            _readOnly = readOnly;
             Intervals = new ObservableCollection<NamedIntervalValue>();
         }
 
-        public NamedIntervalEditorViewModel(bool isNew, string name, int[] intervals) : this(isNew)
+        public NamedIntervalEditorViewModel(string name, int[] intervals, bool readOnly) : this(false, readOnly)
         {
             if (null == intervals)
             {

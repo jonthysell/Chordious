@@ -30,6 +30,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Net;
+using System.Net.Cache;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Xml;
@@ -199,6 +200,7 @@ namespace com.jonthysell.Chordious.WPF
 
             HttpWebRequest request = WebRequest.CreateHttp(_updateUrl);
             request.UserAgent = _userAgent;
+            request.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore);
 
             using (XmlReader reader = XmlReader.Create(request.GetResponse().GetResponseStream()))
             {

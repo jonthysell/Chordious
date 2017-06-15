@@ -162,15 +162,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         public InstrumentEditorViewModel InstrumentEditorVM { get; private set; }
 
-        public ShowInstrumentEditorMessage(bool isNew, Action<string, int> callback) : base()
+        public ShowInstrumentEditorMessage(Action<string, int> callback) : base()
         {
-            InstrumentEditorVM = new InstrumentEditorViewModel(isNew, callback);
+            InstrumentEditorVM = new InstrumentEditorViewModel(callback);
         }
 
-        public ShowInstrumentEditorMessage(bool isNew, Action<string, int> callback, string name, int numStrings) : this(isNew, callback)
+        public ShowInstrumentEditorMessage(string name, int numStrings, bool readOnly, Action<string, int> callback) : base()
         {
-            InstrumentEditorVM.Name = name;
-            InstrumentEditorVM.NumStrings = numStrings;
+            InstrumentEditorVM = new InstrumentEditorViewModel(name, numStrings, readOnly, callback);
         }
     }
 

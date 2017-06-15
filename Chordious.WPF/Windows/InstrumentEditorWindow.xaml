@@ -20,6 +20,7 @@
                    Target="{Binding ElementName=NameTextBox}"
                    ToolTip="{Binding NameToolTip}" />
             <TextBox AutomationProperties.LabeledBy="{Binding ElementName=NameLabel}"
+                     IsReadOnly="{Binding ReadOnly}"
                      Margin="5"
                      MaxLines="1"
                      Name="NameTextBox"
@@ -34,7 +35,7 @@
                    ToolTip="{Binding NumStringsToolTip}" />
             <TextBox AutomationProperties.LabeledBy="{Binding ElementName=NumStringsLabel}"
                      HorizontalContentAlignment="Center"
-                     IsEnabled="{Binding IsNew}"
+                     IsReadOnly="{Binding DataContext.IsNew, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Converter={StaticResource InverseBoolConverter}}"
                      Margin="5"
                      MaxLength="3"
                      MaxLines="1"

@@ -102,9 +102,20 @@
                  Margin="5,0"
                  Name="DefaultInstrumentsListView"
                  SelectedIndex="{Binding SelectedDefaultInstrumentIndex}">
+            <ListBox.InputBindings>
+                <KeyBinding Command="{Binding EditInstrument}"
+                            Key="Enter" />
+                <KeyBinding Command="{Binding EditInstrument}"
+                            Key="Space" />
+            </ListBox.InputBindings>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text="{Binding Name}">
+                        <TextBlock.InputBindings>
+                            <MouseBinding Command="{Binding DataContext.EditInstrument, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                                          Gesture="LeftDoubleClick" />
+                        </TextBlock.InputBindings>
+                    </TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
@@ -208,7 +219,6 @@
                     Orientation="Horizontal">
             <Button AutomationProperties.Name="{Binding AddTuningLabel}"
                     Command="{Binding AddTuning}"
-                    IsEnabled="{Binding InstrumentIsSelected}"
                     Margin="5"
                     Style="{StaticResource CleanButtonNoBorder}"
                     ToolTip="{Binding AddTuningToolTip}">
@@ -219,7 +229,6 @@
             </Button>
             <Button AutomationProperties.Name="{Binding EditTuningLabel}"
                     Command="{Binding EditTuning}"
-                    IsEnabled="{Binding InstrumentIsSelected}"
                     Margin="5"
                     Style="{StaticResource CleanButtonNoBorder}"
                     ToolTip="{Binding EditTuningToolTip}">
@@ -230,7 +239,6 @@
             </Button>
             <Button AutomationProperties.Name="{Binding DeleteTuningLabel}"
                     Command="{Binding DeleteTuning}"
-                    IsEnabled="{Binding InstrumentIsSelected}"
                     Margin="5"
                     Style="{StaticResource CleanButtonNoBorder}"
                     ToolTip="{Binding DeleteTuningToolTip}">

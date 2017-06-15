@@ -304,7 +304,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowInstrumentEditorMessage(true, (name, numStrings) =>
+                        Messenger.Default.Send(new ShowInstrumentEditorMessage((name, numStrings) =>
                         {
                             try
                             {
@@ -359,7 +359,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowInstrumentEditorMessage(false, (name, numStrings) =>
+                        Messenger.Default.Send(new ShowInstrumentEditorMessage(SelectedInstrument.Name, SelectedInstrument.NumStrings, SelectedInstrument.ReadOnly, (name, numStrings) =>
                         {
                             try
                             {
@@ -370,7 +370,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             {
                                 ExceptionUtils.HandleException(ex);
                             }
-                        }, SelectedInstrument.Name, SelectedInstrument.NumStrings));
+                        }));
                     }
                     catch (Exception ex)
                     {
@@ -378,7 +378,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return InstrumentIsSelected && SelectedInstrument.CanEdit;
+                    return InstrumentIsSelected;
                 }));
             }
         }
@@ -439,7 +439,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return InstrumentIsSelected && SelectedInstrument.CanEdit;
+                    return InstrumentIsSelected && !SelectedInstrument.ReadOnly;
                 }));
             }
         }
@@ -494,7 +494,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return InstrumentIsSelected && SelectedInstrument.CanEdit;
+                    return InstrumentIsSelected && !SelectedInstrument.ReadOnly;
                 }));
             }
         }
@@ -554,7 +554,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return InstrumentIsSelected && SelectedInstrument.CanEdit && TuningIsSelected && SelectedTuning.CanEdit;
+                    return InstrumentIsSelected && TuningIsSelected;
                 }));
             }
         }
@@ -615,7 +615,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return InstrumentIsSelected && SelectedInstrument.CanEdit && TuningIsSelected && SelectedTuning.CanEdit;
+                    return InstrumentIsSelected && !SelectedInstrument.ReadOnly && TuningIsSelected && !SelectedTuning.ReadOnly;
                 }));
             }
         }

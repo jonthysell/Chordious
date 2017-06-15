@@ -1737,4 +1737,10 @@
   <data name="ScaleEditorEditReadOnlyTitle" xml:space="preserve">
     <value>Edit Scale (Read-Only)</value>
   </data>
+  <data name="InstrumentEditorEditReadOnlyTitle" xml:space="preserve">
+    <value>Edit Instrument (Read-Only)</value>
+  </data>
+  <data name="TuningEditorEditReadOnlyTitle" xml:space="preserve">
+    <value>Edit Tuning (Read-Only)</value>
+  </data>
 </root>

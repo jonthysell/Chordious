@@ -57,11 +57,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public bool CanEdit
+        public bool ReadOnly
         {
             get
             {
-                return !Tuning.ReadOnly;
+                return Tuning.ReadOnly;
             }
         }
 

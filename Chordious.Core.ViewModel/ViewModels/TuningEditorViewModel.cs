@@ -48,7 +48,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return IsNew ? Strings.TuningEditorNewTitle : Strings.TuningEditorEditTitle;
+                return IsNew ? Strings.TuningEditorNewTitle : (ReadOnly ? Strings.TuningEditorEditReadOnlyTitle : Strings.TuningEditorEditTitle);
             }
         }
 
@@ -101,7 +101,35 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ObservableCollection<ObservableNote> RootNotes { get; private set; }
 
-        public bool IsNew { get; private set; }
+        public bool IsNew
+        {
+            get
+            {
+                return _isNew;
+            }
+            private set
+            {
+                _isNew = value;
+                RaisePropertyChanged("IsNew");
+                RaisePropertyChanged("Title");
+            }
+        }
+        private bool _isNew;
+
+        public bool ReadOnly
+        {
+            get
+            {
+                return _readOnly;
+            }
+            private set
+            {
+                _readOnly = value;
+                RaisePropertyChanged("ReadOnly");
+                RaisePropertyChanged("Title");
+            }
+        }
+        private bool _readOnly;
 
         public RelayCommand Accept
         {
@@ -122,7 +150,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return IsValid();
+                    return IsValid() & !ReadOnly;
                 }));
             }
         }
@@ -147,25 +175,29 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private RelayCommand _cancel;
 
-        public bool Accepted { get; private set; }
+        public bool Accepted { get; private set; } = false;
 
         public Action RequestClose;
 
         public Action<string, ObservableCollection<ObservableNote>> Callback { get; private set; }
 
-        private TuningEditorViewModel(bool isNew, Action<string, ObservableCollection<ObservableNote>> callback)
+        private TuningEditorViewModel(bool isNew, bool readOnly, Action<string, ObservableCollection<ObservableNote>> callback)
         {
+            if (isNew && readOnly)
+            {
+                throw new ArgumentOutOfRangeException("readOnly");
+            }
+
             if (null == callback)
             {
                 throw new ArgumentNullException("callback");
             }
 
-            IsNew = isNew;
+            _isNew = isNew;
+            _readOnly = readOnly;
             Callback = callback;
 
             RootNotes = new ObservableCollection<ObservableNote>();
-
-            Accepted = false;
         }
 
         public static TuningEditorViewModel AddNewTuning(ObservableInstrument instrument)
@@ -175,7 +207,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 throw new ArgumentNullException("instrument");
             }
 
-            TuningEditorViewModel tuningEditorVM = new TuningEditorViewModel(true, (name, notes) =>
+            TuningEditorViewModel tuningEditorVM = new TuningEditorViewModel(true, false, (name, notes) =>
                 {
                     FullNote[] rootNotes = new FullNote[notes.Count];
 
@@ -202,7 +234,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 throw new ArgumentNullException("tuning");
             }
 
-            TuningEditorViewModel tuningEditorVM = new TuningEditorViewModel(false, (name, notes) =>
+            TuningEditorViewModel tuningEditorVM = new TuningEditorViewModel(false, tuning.ReadOnly, (name, notes) =>
             {
                 FullNote[] rootNotes = new FullNote[notes.Count];
 

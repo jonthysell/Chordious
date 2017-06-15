@@ -3122,6 +3122,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Instrument (Read-Only).
+        /// </summary>
+        internal static string InstrumentEditorEditReadOnlyTitle {
+            get {
+                return ResourceManager.GetString("InstrumentEditorEditReadOnlyTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Instrument.
         /// </summary>
         internal static string InstrumentEditorEditTitle {
@@ -4819,6 +4828,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string TextPromptTitle {
             get {
                 return ResourceManager.GetString("TextPromptTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Tuning (Read-Only).
+        /// </summary>
+        internal static string TuningEditorEditReadOnlyTitle {
+            get {
+                return ResourceManager.GetString("TuningEditorEditReadOnlyTitle", resourceCulture);
             }
         }
         

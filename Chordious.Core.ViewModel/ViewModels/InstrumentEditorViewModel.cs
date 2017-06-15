@@ -47,7 +47,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             get
             {
-                return IsNew ? Strings.InstrumentEditorNewTitle : Strings.InstrumentEditorEditTitle;
+                return IsNew ? Strings.InstrumentEditorNewTitle : (ReadOnly ? Strings.InstrumentEditorEditReadOnlyTitle : Strings.InstrumentEditorEditTitle);
             }
         }
 
@@ -125,7 +125,35 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private int _numStrings = 1;
 
-        public bool IsNew { get; private set; }
+        public bool IsNew
+        {
+            get
+            {
+                return _isNew;
+            }
+            private set
+            {
+                _isNew = value;
+                RaisePropertyChanged("IsNew");
+                RaisePropertyChanged("Title");
+            }
+        }
+        private bool _isNew;
+
+        public bool ReadOnly
+        {
+            get
+            {
+                return _readOnly;
+            }
+            private set
+            {
+                _readOnly = value;
+                RaisePropertyChanged("ReadOnly");
+                RaisePropertyChanged("Title");
+            }
+        }
+        private bool _readOnly;
 
         public RelayCommand Accept
         {
@@ -144,7 +172,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return IsValid();
+                    return IsValid() && !ReadOnly;
                 }));
             }
         }
@@ -173,20 +201,35 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public Action<string, int> Callback { get; private set; }
 
-        public InstrumentEditorViewModel(bool isNew, Action<string, int> callback)
+        private InstrumentEditorViewModel(bool isNew, bool readOnly, Action<string, int> callback)
         {
+            if (isNew && readOnly)
+            {
+                throw new ArgumentOutOfRangeException("readOnly");
+            }
+
             if (null == callback)
             {
                 throw new ArgumentNullException("callback");
             }
 
-            IsNew = isNew;
+            _isNew = isNew;
+            _readOnly = readOnly;
+
             Callback = callback;
+        }
+
+        public InstrumentEditorViewModel(Action<string, int> callback) : this(true, false, callback) { }
+
+        public InstrumentEditorViewModel(string name, int numStrings, bool readOnly, Action<string, int> callback) : this(false, readOnly, callback)
+        {
+            _name = name;
+            _numStrings = numStrings;
         }
 
         private bool IsValid()
         {
-            return !string.IsNullOrWhiteSpace(Name) && NumStrings >= 0;
+            return !string.IsNullOrWhiteSpace(Name) && NumStrings > 0;
         }
     }
 }

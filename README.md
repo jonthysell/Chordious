@@ -25,4 +25,4 @@ Chordious proudly depends on the following open-source projects:
 * [MVVM Light Toolkit] (http://mvvmlight.net) for MVVM infrastructure
 * [SVG.NET] (https://github.com/vvvv/SVG) for rendering diagrams
 
-Chordious Copyright © 2013-2017 Jon Thysell <http://jonthysell.com>
+Copyright (c) 2013-2017 Jon Thysell

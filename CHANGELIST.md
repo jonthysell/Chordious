@@ -1,5 +1,11 @@
 # Chordious Changelist #
 
+## 2.0.4 ##
+* Can now view default instruments/tunings
+* Can now view default scales/qualities
+* Copy to clipboard now standardized across Finders and Library
+* Fixed bug where checking for updates gets old cached version
+
 ## 2.0.3 ##
 * UI is now friendly to Narrator and other screen readers
 * Improved keyboard navigation with alt-keys for most controls, 'Enter' to open list items

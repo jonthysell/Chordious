@@ -461,6 +461,9 @@
                 <KeyBinding Command="{Binding SendSelectedScaledImageToClipboard}"
                             Key="C"
                             Modifiers="Ctrl+Shift" />
+                <KeyBinding Command="{Binding SendSelectedTextToClipboard}"
+                            Key="C"
+                            Modifiers="Ctrl+Shift+Alt" />
             </ListView.InputBindings>
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>

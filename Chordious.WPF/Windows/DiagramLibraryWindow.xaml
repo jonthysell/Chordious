@@ -132,9 +132,12 @@
                 <KeyBinding Command="{Binding SelectedNode.SendSelectedImageToClipboard}"
                             Key="C"
                             Modifiers="Ctrl" />
-                <KeyBinding Command="{Binding SelectedNode.SendSelectedTextToClipboard}"
+                <KeyBinding Command="{Binding SelectedNode.SendSelectedScaledImageToClipboard}"
                             Key="C"
                             Modifiers="Ctrl+Shift" />
+                <KeyBinding Command="{Binding SelectedNode.SendSelectedTextToClipboard}"
+                            Key="C"
+                            Modifiers="Ctrl+Shift+Alt" />
             </ListView.InputBindings>
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>

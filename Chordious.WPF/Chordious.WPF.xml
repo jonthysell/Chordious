@@ -3,10 +3,6 @@
   <settings>
     <setting key="app.firstrun" value="True" />
     <setting key="app.renderbackground" value="None" />
-    <setting key="app.releasechannel" value="Official" />
-    <setting key="app.updateenabled" value="True" />
-    <setting key="app.checkupdateonstart" value="False" />
-    <setting key="app.lastupdatecheck" value="0001-01-01T08:00:00" />
     <setting key="diagramexport.filenameformat" value="%t.%x" />
     <setting key="diagramexport.exportformat" value="SVG" />
     <setting key="diagramexport.overwritefiles" value="True" />

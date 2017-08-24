@@ -243,12 +243,11 @@ namespace com.jonthysell.Chordious.WPF
 
         public static ReleaseChannel GetReleaseChannel()
         {
-            ReleaseChannel result;
-
-            if (Enum.TryParse(AppVM.GetSetting("app.releasechannel"), out result))
+            try
             {
-                return result;
+                return (ReleaseChannel)Enum.Parse(typeof(ReleaseChannel), AppVM.GetSetting("app.releasechannel"));
             }
+            catch (Exception) { }
 
             return ReleaseChannel.Official;
         }
@@ -257,14 +256,11 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                bool result;
-
-                if (bool.TryParse(AppVM.GetSetting("app.updateenabled"), out result))
-                {
-                    return result;
-                }
-
+#if UPDATEENABLED
                 return true;
+#else
+                return false;
+#endif
             }
         }
 
@@ -272,12 +268,11 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                bool result;
-
-                if (bool.TryParse(AppVM.GetSetting("app.checkupdateonstart"), out result))
+                try
                 {
-                    return result;
+                    return bool.Parse(AppVM.GetSetting("app.checkupdateonstart"));
                 }
+                catch (Exception) { }
 
                 return false;
             }
@@ -300,12 +295,11 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                DateTime result;
-
-                if (DateTime.TryParse(AppVM.GetSetting("app.lastupdatecheck"), null, DateTimeStyles.AssumeUniversal, out result))
+                try
                 {
-                    return result;
+                    return DateTime.Parse(AppVM.GetSetting("app.lastupdatecheck"), null, DateTimeStyles.AssumeUniversal);
                 }
+                catch (Exception) { }
 
                 return DateTime.MinValue;
             }

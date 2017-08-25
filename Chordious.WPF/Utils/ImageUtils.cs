@@ -148,7 +148,7 @@ namespace com.jonthysell.Chordious.WPF
             }
             else if (background == Background.Transparent)
             {
-                Image transparent = new Bitmap(Properties.Resources.transparent16);
+                Image transparent = Transparent16;
                 for (int x = 0; x < source.Width; x += transparent.Width)
                 {
                     for (int y = 0; y < source.Height; y += transparent.Height)
@@ -207,6 +207,15 @@ namespace com.jonthysell.Chordious.WPF
             }
             return bitmapImage;
         }
+
+        public static Bitmap Transparent16
+        {
+            get
+            {
+                return _transparent16 ?? (_transparent16 = new Bitmap(Application.GetResourceStream(new Uri("pack://application:,,,/Resources/transparent16.png")).Stream));
+            }
+        }
+        private static Bitmap _transparent16;
 
         #endregion
 

@@ -325,9 +325,7 @@
     <Resource Include="Resources\chordious.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Chordious.WPF.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Chordious.WPF.xml" />
     <Resource Include="Resources\clone16.png" />
     <Resource Include="Resources\move16.png" />
     <Resource Include="Resources\reset16.png" />

@@ -171,23 +171,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
-        internal ConfigFile DefaultConfig { get; private set; }
-
-        public bool DefaultConfigLoaded
+        internal ConfigFile DefaultConfig
         {
             get
             {
-                return _defaultConfigLoaded;
-            }
-            private set
-            {
-                _defaultConfigLoaded = value;
-                RaisePropertyChanged("DefaultConfigLoaded");
+                return ConfigFile.DefaultConfig;
             }
         }
-        private bool _defaultConfigLoaded = false;
-
-        private GetConfigStream _loadDefaultConfigStream;
 
         internal ConfigFile AppConfig { get; private set; }
 
@@ -246,12 +236,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     return AppConfig.ChordiousSettings;
                 }
 
-                if (DefaultConfigLoaded)
-                {
-                    return DefaultConfig.ChordiousSettings;
-                }
-
-                return null;
+                return DefaultConfig.ChordiousSettings;
             }
         }
 
@@ -263,26 +248,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public DoOnUIThread DoOnUIThread { get; private set; }
 
-        public static void Init(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, SvgTextToClipboard svgTextToClipboard, DoOnUIThread doOnUIThread, GetSystemFonts getSystemFonts, string userConfigPath = "")
+        public static void Init(Assembly assembly, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, SvgTextToClipboard svgTextToClipboard, DoOnUIThread doOnUIThread, GetSystemFonts getSystemFonts, string userConfigPath = "")
         {
             if (null != Instance)
             {
                 throw new NotSupportedException();
             }
 
-            Instance = new AppViewModel(assembly, loadDefaultConfigStream, loadAppConfigStream, loadUserConfigStream, saveUserConfigStream, svgTextToImage, svgTextToClipboard, doOnUIThread, getSystemFonts, userConfigPath);
+            Instance = new AppViewModel(assembly, loadAppConfigStream, loadUserConfigStream, saveUserConfigStream, svgTextToImage, svgTextToClipboard, doOnUIThread, getSystemFonts, userConfigPath);
         }
 
-        private AppViewModel(Assembly assembly, GetConfigStream loadDefaultConfigStream, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, SvgTextToClipboard svgTextToClipboard, DoOnUIThread doOnUIThread, GetSystemFonts getSystemFonts, string userConfigPath)
+        private AppViewModel(Assembly assembly, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, SvgTextToClipboard svgTextToClipboard, DoOnUIThread doOnUIThread, GetSystemFonts getSystemFonts, string userConfigPath)
         {
             if (null == assembly)
             {
                 throw new ArgumentNullException("assembly");
-            }
-
-            if (null == loadDefaultConfigStream)
-            {
-                throw new ArgumentNullException("loadDefaultConfigStream");
             }
 
             if (null == loadAppConfigStream)
@@ -306,7 +286,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
 
             AppInfo.Assembly = assembly;
-            _loadDefaultConfigStream = loadDefaultConfigStream;
             _loadAppConfigStream = loadAppConfigStream;
             _loadUserConfigStream = loadUserConfigStream;
             _saveUserConfigStream = saveUserConfigStream;
@@ -317,19 +296,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             SvgTextToClipboard = svgTextToClipboard;
             DoOnUIThread = doOnUIThread;
 
-            DefaultConfig = new ConfigFile(ConfigFile.DefaultLevelKey);
             AppConfig = new ConfigFile(DefaultConfig, ConfigFile.AppLevelKey);
             UserConfig = new ConfigFile(AppConfig, ConfigFile.UserLevelKey);
-        }
-
-        public void LoadDefaultConfig()
-        {
-            using (Stream inputStream = _loadDefaultConfigStream())
-            {
-                DefaultConfig.LoadFile(inputStream);
-            }
-            DefaultConfig.MarkAsReadOnly();
-            DefaultConfigLoaded = true;
         }
 
         public void LoadAppConfig()

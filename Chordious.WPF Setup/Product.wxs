@@ -88,10 +88,6 @@
                                       Name="Chordious"
                                       WorkingDirectory="INSTALLFOLDER" />
                         </File>
-                        <File Id="ChordiousWpfCoreConfig"
-                              Source="$(var.Chordious.WPF.TargetDir)\Chordious.Core.xml" />
-                        <File Id="ChordiousWpfAppConfig"
-                              Source="$(var.Chordious.WPF.TargetDir)\Chordious.WPF.xml" />
                         <File Id="ChordiousWpfReadme"
                               Name="Readme.txt"
                               Source="$(var.SolutionDir)\README.md" />

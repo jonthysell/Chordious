@@ -26,12 +26,29 @@
 
 using System;
 using System.IO;
+using System.Reflection;
 using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
 {
     public class ConfigFile : IReadOnly
     {
+        public static ConfigFile DefaultConfig
+        {
+            get
+            {
+                if (null == _defaultConfig)
+                {
+                    _defaultConfig = new ConfigFile(DefaultLevelKey);
+                    _defaultConfig.LoadFile(typeof(ConfigFile).GetTypeInfo().Assembly.GetManifestResourceStream("com.jonthysell.Chordious.Core.Chordious.Core.xml"));
+                    _defaultConfig.MarkAsReadOnly();
+                }
+
+                return _defaultConfig;
+            }
+        }
+        private static ConfigFile _defaultConfig;
+
         public bool ReadOnly { get; private set; }
 
         public ConfigFile Parent

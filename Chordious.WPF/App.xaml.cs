@@ -64,16 +64,11 @@ namespace com.jonthysell.Chordious.WPF
 
             UserConfigPath = !string.IsNullOrWhiteSpace(userConfigPath) ? userConfigPath : GetDefaultUserConfigPath();
 
-            string defaultFile = GetDefaultConfigPath();
-            string appFile = GetAppConfigPath();
             string userFile = UserConfigPath;
 
             AppViewModel.Init(Assembly.GetEntryAssembly(), () =>
             {
-                return new FileStream(defaultFile, FileMode.Open, FileAccess.Read);
-            }, () =>
-            {
-                return new FileStream(appFile, FileMode.Open, FileAccess.Read);
+                return GetResourceStream(new Uri("pack://application:,,,/Chordious.WPF.xml")).Stream;
             }, () =>
             {
                 return new FileStream(userFile, FileMode.Open);
@@ -89,15 +84,7 @@ namespace com.jonthysell.Chordious.WPF
             , GetFonts
             , userFile);
 
-            if (File.Exists(defaultFile))
-            {
-                AppVM.LoadDefaultConfig();
-            }
-
-            if (File.Exists(appFile))
-            {
-                AppVM.LoadAppConfig();
-            }
+            AppVM.LoadAppConfig();
 
             if (!File.Exists(userFile))
             {
@@ -111,16 +98,6 @@ namespace com.jonthysell.Chordious.WPF
             FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
 
             Exit += App_Exit;
-        }
-
-        public string GetDefaultConfigPath()
-        {
-            return "Chordious.Core.xml";
-        }
-
-        public string GetAppConfigPath()
-        {
-            return "Chordious.WPF.xml";
         }
 
         public string GetDefaultUserConfigPath()

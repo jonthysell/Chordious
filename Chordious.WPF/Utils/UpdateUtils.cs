@@ -256,10 +256,10 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-#if UPDATEENABLED
-                return true;
-#else
+#if PORTABLE
                 return false;
+#else
+                return true;
 #endif
             }
         }

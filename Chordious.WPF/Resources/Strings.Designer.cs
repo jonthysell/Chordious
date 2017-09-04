@@ -305,7 +305,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thanks for installing Chordious!.
+        ///   Looks up a localized string similar to Welcome to Chordious!.
         /// </summary>
         internal static string FirstRunMessage {
             get {
@@ -314,7 +314,7 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thanks for installing Chordious! Would you like Chordious to check for updates when it starts? (Recommended) You can change your mind later in Options..
+        ///   Looks up a localized string similar to Welcome to Chordious! Would you like to check for updates when Chordious starts? (Recommended) You can change your mind later in Options..
         /// </summary>
         internal static string FirstRunUpdateEnabledPrompt {
             get {

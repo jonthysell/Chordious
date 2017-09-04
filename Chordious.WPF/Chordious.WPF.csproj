@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;UPDATEENABLED</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -29,7 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;UPDATEENABLED</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -41,7 +41,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release %28Portable%29|AnyCPU'">
     <OutputPath>bin\Release %28Portable%29\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <AssemblyName>ChordiousPortable</AssemblyName>
+    <DefineConstants>TRACE;PORTABLE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,7 +53,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug %28Portable%29|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug %28Portable%29\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <AssemblyName>ChordiousPortable</AssemblyName>
+    <DefineConstants>TRACE;DEBUG;PORTABLE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
@@ -356,6 +358,13 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <Target Name="AfterResolveReferences">
+    <ItemGroup Condition="'$(Configuration)' == 'Debug (Portable)' Or '$(Configuration)' == 'Release (Portable)'">
+    <EmbeddedResource Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.dll'">
+      <LogicalName>%(ReferenceCopyLocalPaths.DestinationSubDirectory)%(ReferenceCopyLocalPaths.Filename)%(ReferenceCopyLocalPaths.Extension)</LogicalName>
+    </EmbeddedResource>
+    </ItemGroup>
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

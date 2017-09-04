@@ -62,7 +62,11 @@ namespace com.jonthysell.Chordious.WPF
         {
             MessageHandlers.RegisterMessageHandlers(this);
 
-            UserConfigPath = !string.IsNullOrWhiteSpace(userConfigPath) ? userConfigPath : GetDefaultUserConfigPath();
+#if PORTABLE
+            UserConfigPath = !string.IsNullOrWhiteSpace(userConfigPath) ? userConfigPath : DefaultUserConfigFileName;
+#else
+            UserConfigPath = !string.IsNullOrWhiteSpace(userConfigPath) ? userConfigPath : GetAppDataUserConfigPath();
+#endif
 
             string userFile = UserConfigPath;
 
@@ -100,11 +104,10 @@ namespace com.jonthysell.Chordious.WPF
             Exit += App_Exit;
         }
 
-        public string GetDefaultUserConfigPath()
+        public string GetAppDataUserConfigPath()
         {
             string userFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             userFolder = Path.Combine(userFolder, "Chordious");
-
             if (!Directory.Exists(userFolder))
             {
                 Directory.CreateDirectory(userFolder);

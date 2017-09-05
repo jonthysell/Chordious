@@ -110,8 +110,7 @@
                               KeyPath="yes"
                               Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.dll" />
                         <File Id="MvvmLightLicense"
-                              Name="MVVM Light License.txt"
-                              Source="$(var.SolutionDir)\External\MVVMLight\LICENSE.md" />
+                              Source="$(var.Chordious.WPF.TargetDir)\MVVM Light License.txt" />
                     </Component>
                     <Component Id="MvvmExtrasLib">
                         <File Id="MvvmExtrasLib"
@@ -134,11 +133,7 @@
                               KeyPath="yes"
                               Source="$(var.Chordious.WPF.TargetDir)\Svg.dll" />
                         <File Id="SvgLicense"
-                              Name="SVG.NET License.txt"
-                              Source="$(var.SolutionDir)\External\SVG.NET\LICENSE.md" />
-                        <File Id="SvgReadme"
-                              Name="SVG.NET Readme.txt"
-                              Source="$(var.SolutionDir)\External\SVG.NET\README.md" />
+                              Source="$(var.Chordious.WPF.TargetDir)\SVG.NET License.txt" />
                     </Component>
                 </Directory>
             </Directory>

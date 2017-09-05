@@ -355,14 +355,16 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PreBuildEvent>copy /y "$(SolutionDir)README.md" "$(TargetDir)Readme.txt" &amp;&amp; copy /y "$(SolutionDir)LICENSE.md" "$(TargetDir)License.txt" &amp;&amp; copy /y "$(SolutionDir)External\MVVMLight\LICENSE.md" "$(TargetDir)MVVM Light License.txt" &amp;&amp; copy /y "$(SolutionDir)External\SVG.NET\LICENSE.md" "$(TargetDir)SVG.NET License.txt"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug (Portable)' Or '$(Configuration)' == 'Release (Portable)'">
+    <PostBuildEvent>cd "$(TargetDir)" &amp;&amp; rd /s /q "ChordiousPortable" &amp; md "ChordiousPortable" &amp;&amp; copy /y "$(TargetFileName)" "ChordiousPortable\" &amp;&amp; copy /y "*.txt" "ChordiousPortable\" &amp;&amp; powershell -Command "&amp; {&amp;'Compress-Archive' -Path "ChordiousPortable" -DestinationPath "ChordiousPortable.zip" -Force}"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterResolveReferences">
     <ItemGroup Condition="'$(Configuration)' == 'Debug (Portable)' Or '$(Configuration)' == 'Release (Portable)'">
-    <EmbeddedResource Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.dll'">
-      <LogicalName>%(ReferenceCopyLocalPaths.DestinationSubDirectory)%(ReferenceCopyLocalPaths.Filename)%(ReferenceCopyLocalPaths.Extension)</LogicalName>
-    </EmbeddedResource>
+      <EmbeddedResource Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.dll'">
+        <LogicalName>%(ReferenceCopyLocalPaths.DestinationSubDirectory)%(ReferenceCopyLocalPaths.Filename)%(ReferenceCopyLocalPaths.Extension)</LogicalName>
+      </EmbeddedResource>
     </ItemGroup>
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

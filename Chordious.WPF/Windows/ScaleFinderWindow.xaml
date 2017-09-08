@@ -413,6 +413,39 @@
                     </Image>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ContextMenu>
+                <ContextMenu Name="ResultsListViewContextMenu">
+                    <MenuItem Command="{Binding EditSelected}"
+                              Header="{Binding EditSelectedLabel, FallbackValue=EDIT...}"
+                              ToolTip="{Binding EditSelectedToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Command="{Binding SendSelectedImageToClipboard}"
+                              Header="{Binding SendSelectedImageToClipboardLabel, FallbackValue=COPY IMAGE TO CLIPBOARD}"
+                              ToolTip="{Binding SendSelectedImageToClipboardToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding SendSelectedScaledImageToClipboard}"
+                              Header="{Binding SendSelectedScaledImageToClipboardLabel, FallbackValue=COPY SCALED IMAGE TO CLIPBOARD...}"
+                              ToolTip="{Binding SendSelectedScaledImageToClipboardToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding SendSelectedTextToClipboard}"
+                              Header="{Binding SendSelectedTextToClipboardLabel, FallbackValue=COPY SVG TO CLIPBOARD}"
+                              ToolTip="{Binding SendSelectedTextToClipboardToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
         <Button AutomationProperties.Name="{Binding SearchAsyncLabel, Converter={StaticResource AltTextToTextConverter}}"
                 Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}"

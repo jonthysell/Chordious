@@ -1743,4 +1743,22 @@
   <data name="TuningEditorEditReadOnlyTitle" xml:space="preserve">
     <value>Edit Tuning (Read-Only)</value>
   </data>
+  <data name="FinderSendSelectedImageToClipboardLabel" xml:space="preserve">
+    <value>Copy Image to Clipboard</value>
+  </data>
+  <data name="FinderSendSelectedImageToClipboardToolTip" xml:space="preserve">
+    <value>Copy the result image to the clipboard.</value>
+  </data>
+  <data name="FinderSendSelectedScaledImageToClipboardLabel" xml:space="preserve">
+    <value>Copy Scaled Image to Clipboard...</value>
+  </data>
+  <data name="FinderSendSelectedScaledImageToClipboardToolTip" xml:space="preserve">
+    <value>Scale the result image and copy it to the clipboard.</value>
+  </data>
+  <data name="FinderSendSelectedTextToClipboardLabel" xml:space="preserve">
+    <value>Copy SVG to Clipboard</value>
+  </data>
+  <data name="FinderSendSelectedTextToClipboardToolTip" xml:space="preserve">
+    <value>Copy the SVG text of the result to the clipboard.</value>
+  </data>
 </root>

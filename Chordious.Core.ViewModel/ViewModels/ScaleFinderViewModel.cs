@@ -1018,6 +1018,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #region SendToClipboard
 
+        public string SendSelectedImageToClipboardLabel
+        {
+            get
+            {
+                return Strings.FinderSendSelectedImageToClipboardLabel;
+            }
+        }
+
+        public string SendSelectedImageToClipboardToolTip
+        {
+            get
+            {
+                return Strings.FinderSendSelectedImageToClipboardToolTip;
+            }
+        }
+
         public RelayCommand SendSelectedImageToClipboard
         {
             get
@@ -1046,6 +1062,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string SendSelectedScaledImageToClipboardLabel
+        {
+            get
+            {
+                return Strings.FinderSendSelectedScaledImageToClipboardLabel;
+            }
+        }
+
+        public string SendSelectedScaledImageToClipboardToolTip
+        {
+            get
+            {
+                return Strings.FinderSendSelectedScaledImageToClipboardToolTip;
+            }
+        }
+
         public RelayCommand SendSelectedScaledImageToClipboard
         {
             get
@@ -1071,6 +1103,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     return SelectedResults.Count > 0;
                 }));
+            }
+        }
+
+        public string SendSelectedTextToClipboardLabel
+        {
+            get
+            {
+                return Strings.FinderSendSelectedTextToClipboardLabel;
+            }
+        }
+
+        public string SendSelectedTextToClipboardToolTip
+        {
+            get
+            {
+                return Strings.FinderSendSelectedTextToClipboardToolTip;
             }
         }
 

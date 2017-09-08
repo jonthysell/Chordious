@@ -3113,6 +3113,60 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy Image to Clipboard.
+        /// </summary>
+        internal static string FinderSendSelectedImageToClipboardLabel {
+            get {
+                return ResourceManager.GetString("FinderSendSelectedImageToClipboardLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy the result image to the clipboard..
+        /// </summary>
+        internal static string FinderSendSelectedImageToClipboardToolTip {
+            get {
+                return ResourceManager.GetString("FinderSendSelectedImageToClipboardToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy Scaled Image to Clipboard....
+        /// </summary>
+        internal static string FinderSendSelectedScaledImageToClipboardLabel {
+            get {
+                return ResourceManager.GetString("FinderSendSelectedScaledImageToClipboardLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale the result image and copy it to the clipboard..
+        /// </summary>
+        internal static string FinderSendSelectedScaledImageToClipboardToolTip {
+            get {
+                return ResourceManager.GetString("FinderSendSelectedScaledImageToClipboardToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy SVG to Clipboard.
+        /// </summary>
+        internal static string FinderSendSelectedTextToClipboardLabel {
+            get {
+                return ResourceManager.GetString("FinderSendSelectedTextToClipboardLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy the SVG text of the result to the clipboard..
+        /// </summary>
+        internal static string FinderSendSelectedTextToClipboardToolTip {
+            get {
+                return ResourceManager.GetString("FinderSendSelectedTextToClipboardToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Include.
         /// </summary>
         internal static string IncludeLabel {

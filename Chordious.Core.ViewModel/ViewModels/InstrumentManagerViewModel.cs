@@ -623,6 +623,90 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
+        #region CopyTuning
+
+        public string CopyTuningLabel
+        {
+            get
+            {
+                if (TuningIsSelected)
+                {
+                    return string.Format(Strings.InstrumentManagerCopyTuningLabelFormat, SelectedTuning.Name);
+                }
+
+                return Strings.CopyLabel;
+            }
+        }
+
+        public string CopyTuningToolTip
+        {
+            get
+            {
+                return Strings.InstrumentManagerCopyTuningToolTip;
+            }
+        }
+
+        public RelayCommand CopyTuning
+        {
+            get
+            {
+                return _copyTuning ?? (_copyTuning = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        ObservableInstrument targetInstrument = SelectedInstrument;
+
+                        if (DefaultInstruments.Contains(targetInstrument))
+                        {
+                            // Try to find a suitable user instrument
+                            ObservableInstrument userInstrument = null;
+                            foreach (ObservableInstrument oi in UserInstruments)
+                            {
+                                if (oi.Name == targetInstrument.Name && oi.NumStrings == targetInstrument.NumStrings)
+                                {
+                                    userInstrument = oi;
+                                }
+                            }
+
+                            // No user instrument, try to create one
+                            if (null == userInstrument)
+                            {
+                                Instrument addedInstrument = AppVM.UserConfig.Instruments.Add(targetInstrument.Name, targetInstrument.NumStrings);
+                                userInstrument = new ObservableInstrument(addedInstrument);
+                            }
+
+                            targetInstrument = userInstrument;
+                        }
+
+                        Messenger.Default.Send(new ShowTuningEditorMessage(SelectedTuning, targetInstrument, (accepted) =>
+                        {
+                            try
+                            {
+                                if (accepted)
+                                {
+                                    Refresh(targetInstrument.Instrument);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
+                        }));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, () =>
+                {
+                    return InstrumentIsSelected;
+                }));
+            }
+        }
+        private RelayCommand _copyTuning;
+
+        #endregion
+
         public Action RequestClose;
 
         public RelayCommand Close

@@ -168,6 +168,13 @@
                             <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
+                    <MenuItem Command="{Binding CopyTuning}"
+                              Header="{Binding CopyTuningLabel, FallbackValue=COPY...}"
+                              ToolTip="{Binding CopyTuningToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <MenuItem Command="{Binding DeleteTuning}"
                               Header="{Binding DeleteTuningLabel, FallbackValue=DELETE}"
                               ToolTip="{Binding DeleteTuningToolTip}">

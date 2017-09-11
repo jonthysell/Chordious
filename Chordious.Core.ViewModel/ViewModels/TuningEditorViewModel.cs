@@ -208,16 +208,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
 
             TuningEditorViewModel tuningEditorVM = new TuningEditorViewModel(true, false, (name, notes) =>
+            {
+                FullNote[] rootNotes = new FullNote[notes.Count];
+
+                for (int i = 0; i < notes.Count; i++)
                 {
-                    FullNote[] rootNotes = new FullNote[notes.Count];
+                    rootNotes[i] = notes[i].FullNote;
+                }
 
-                    for (int i = 0; i < notes.Count; i++)
-                    {
-                        rootNotes[i] = notes[i].FullNote;
-                    }
-
-                    instrument.Instrument.Tunings.Add(name, rootNotes);
-                });
+                instrument.Instrument.Tunings.Add(name, rootNotes);
+            });
 
             for (int i = 0; i < instrument.NumStrings; i++)
             {
@@ -251,6 +251,56 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             foreach (ObservableNote note in tuning.Notes)
             {
                 tuningEditorVM.RootNotes.Add(new ObservableNote(note.FullNote.Clone()));
+            }
+
+            return tuningEditorVM;
+        }
+
+        public static TuningEditorViewModel CopyExistingTuning(ObservableTuning tuning, ObservableInstrument targetInstrument)
+        {
+            if (null == tuning)
+            {
+                throw new ArgumentNullException("tuning");
+            }
+
+            if (null == targetInstrument)
+            {
+                throw new ArgumentNullException("targetInstrument");
+            }
+
+            return CopyExistingTuning(tuning.Tuning, targetInstrument.Instrument);
+        }
+
+
+        private static TuningEditorViewModel CopyExistingTuning(Tuning tuning, Instrument targetInstrument)
+        {
+            if (null == tuning)
+            {
+                throw new ArgumentNullException("tuning");
+            }
+
+            if (null == targetInstrument)
+            {
+                throw new ArgumentNullException("targetInstrument");
+            }
+
+            TuningEditorViewModel tuningEditorVM = new TuningEditorViewModel(true, false, (name, notes) =>
+            {
+                FullNote[] rootNotes = new FullNote[notes.Count];
+
+                for (int i = 0; i < notes.Count; i++)
+                {
+                    rootNotes[i] = notes[i].FullNote;
+                }
+
+                targetInstrument.Tunings.Add(name, rootNotes);
+            });
+
+            tuningEditorVM.Name = tuning.Name;
+
+            foreach (FullNote note in tuning.RootNotes)
+            {
+                tuningEditorVM.RootNotes.Add(new ObservableNote(note.Clone()));
             }
 
             return tuningEditorVM;

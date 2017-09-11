@@ -3257,6 +3257,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy &quot;{0}&quot;....
+        /// </summary>
+        internal static string InstrumentManagerCopyTuningLabelFormat {
+            get {
+                return ResourceManager.GetString("InstrumentManagerCopyTuningLabelFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new tuning based on the selected tuning..
+        /// </summary>
+        internal static string InstrumentManagerCopyTuningToolTip {
+            get {
+                return ResourceManager.GetString("InstrumentManagerCopyTuningToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Default Instruments.
         /// </summary>
         internal static string InstrumentManagerDefaultInstrumentsGroupLabel {

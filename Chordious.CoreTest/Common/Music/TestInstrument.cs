@@ -24,6 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+using System;
+
 using com.jonthysell.Chordious.Core;
 
 namespace com.jonthysell.Chordious.CoreTest
@@ -50,6 +52,14 @@ namespace com.jonthysell.Chordious.CoreTest
             }
         }
         private static TestInstrument _ukulele = null;
+
+        public bool ReadOnly
+        {
+            get
+            {
+                return false;
+            }
+        }
 
         public InstrumentSet Parent
         {
@@ -78,6 +88,16 @@ namespace com.jonthysell.Chordious.CoreTest
             NumStrings = numStrings;
 
             Tunings = new TestTuningSet(this);
+        }
+
+        public void MarkAsReadOnly()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int CompareTo(object obj)
+        {
+            throw new NotImplementedException();
         }
 
         public const string UkuleleInstrumentName = "Ukulele";

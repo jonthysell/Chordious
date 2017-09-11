@@ -29,7 +29,7 @@ using System.Xml;
 
 namespace com.jonthysell.Chordious.Core
 {
-    public class Instrument : IInstrument, IReadOnly, IComparable
+    public class Instrument : IInstrument
     {
         public bool ReadOnly { get; private set; }
 

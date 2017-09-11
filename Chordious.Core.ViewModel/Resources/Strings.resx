@@ -1761,4 +1761,10 @@
   <data name="FinderSendSelectedTextToClipboardToolTip" xml:space="preserve">
     <value>Copy the SVG text of the result to the clipboard.</value>
   </data>
+  <data name="InstrumentManagerCopyTuningLabelFormat" xml:space="preserve">
+    <value>Copy "{0}"...</value>
+  </data>
+  <data name="InstrumentManagerCopyTuningToolTip" xml:space="preserve">
+    <value>Create a new tuning based on the selected tuning.</value>
+  </data>
 </root>

@@ -24,9 +24,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+using System;
+
 namespace com.jonthysell.Chordious.Core
 {
-    public interface IInstrument
+    public interface IInstrument : IReadOnly, IComparable
     {
         InstrumentSet Parent { get; }
 

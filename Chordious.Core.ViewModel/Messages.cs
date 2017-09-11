@@ -191,6 +191,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             Callback = callback;
         }
 
+        public ShowTuningEditorMessage(ObservableTuning tuning, ObservableInstrument targetInstrument, Action<bool> callback = null) : base()
+        {
+            TuningEditorVM = TuningEditorViewModel.CopyExistingTuning(tuning, targetInstrument);
+            Callback = callback;
+        }
+
         public void Process()
         {
             Callback?.Invoke(TuningEditorVM.Accepted);

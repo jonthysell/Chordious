@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <updates>
-  <update version="2.0.4" url="https://github.com/jonthysell/Chordious/releases/download/v2.0.4/ChordiousSetup.2.0.4.msi" channel="Official" />
-  <update version="2.0.4" url="https://github.com/jonthysell/Chordious/releases/download/v2.0.4/ChordiousSetup.2.0.4.msi" channel="Preview" />
+  <update version="2.0.5" url="https://github.com/jonthysell/Chordious/releases/download/v2.0.5/ChordiousSetup.2.0.5.msi" channel="Official" />
+  <update version="2.0.5" url="https://github.com/jonthysell/Chordious/releases/download/v2.0.5/ChordiousSetup.2.0.5.msi" channel="Preview" />
 </updates>

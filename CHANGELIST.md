@@ -1,5 +1,11 @@
 # Chordious Changelist #
 
+## 2.0.5 ##
+* The self-contained ChordiousPortable.exe is now available
+* Can now easily copy tunings in the Instrument Manager
+* Added context menus to the Finder results
+* Cleaned up unnecessary files
+
 ## 2.0.4 ##
 * Can now view default instruments/tunings
 * Can now view default scales/qualities

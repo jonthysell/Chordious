@@ -169,16 +169,30 @@ namespace com.jonthysell.Chordious.Core
                         break;
                     case DiagramMarkShape.Diamond:
                         string diamondPoints = "";
-                        diamondPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX, centerY - radius);
-                        diamondPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + radius, centerY);
-                        diamondPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX, centerY + radius);
-                        diamondPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1}", centerX - radius, centerY);
+                        for (int i = 0; i < 4; i++)
+                        {
+                            double angle = (i * 90.0) * (Math.PI / 180.0);
+                            diamondPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + (radius * Math.Cos(angle)), centerY + (radius * Math.Sin(angle)));
+                        }
                         svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.POLYGON, shapeStyle, diamondPoints);
                         break;
                     case DiagramMarkShape.X:
-                        double xDelta = Math.Sqrt((radius * radius / 2.0));
-                        svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.LINE, shapeStyle, centerX - xDelta, centerY - xDelta, centerX + xDelta, centerY + xDelta);
-                        svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.LINE, shapeStyle, centerX - xDelta, centerY + xDelta, centerX + xDelta, centerY - xDelta);
+                        string xPoints = "";
+                        for (int i = 0; i < 4; i++)
+                        {
+                            double angle = (45.0 + (i * 90.0));
+
+                            double rad0 = (angle - 45.0) * (Math.PI / 180.0); // Starting close point
+                            double len0 = Math.Sqrt(2 * Math.Pow(radius * Math.Sin(XThicknessAngle), 2));
+                            xPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + (len0 * Math.Cos(rad0)), centerY + (len0 * Math.Sin(rad0)));
+
+                            double rad1 = (angle * (Math.PI / 180.0)) - XThicknessAngle; // First far corner
+                            xPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + (radius * Math.Cos(rad1)), centerY + (radius * Math.Sin(rad1)));
+
+                            double rad2 = (angle * (Math.PI / 180.0)) + XThicknessAngle; // Second far corner
+                            xPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + (radius * Math.Cos(rad2)), centerY + (radius * Math.Sin(rad2)));
+                        }
+                        svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.POLYGON, shapeStyle, xPoints.Trim());
                         break;
                     case DiagramMarkShape.None:
                     default:
@@ -246,6 +260,8 @@ namespace com.jonthysell.Chordious.Core
             new string[] {"mark.textalignment", "text-anchor"},
             new string[] {"mark.textstyle", ""},
         };
+
+        private const double XThicknessAngle = 5.7 * (Math.PI / 180.0);
     }
 
     public enum DiagramMarkType

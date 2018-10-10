@@ -65,9 +65,6 @@
       <Name>WixNetFxExtension</Name>
     </WixExtension>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="update.xml" />
-  </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
     <PostBuildEvent />

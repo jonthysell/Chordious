@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2018 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,9 +26,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Net;
 using System.Net.Cache;
 using System.Runtime.InteropServices;
@@ -69,25 +67,25 @@ namespace com.jonthysell.Chordious.WPF
             {
                 IsCheckingforUpdate = true;
 
-                List<InstallerInfo> installerInfos = GetLatestInstallerInfos();
+                List<UpdateInfo> updateInfos = GetLatestUpdateInfos();
 
                 ReleaseChannel targetReleaseChannel = GetReleaseChannel();
 
                 ulong maxVersion = LongVersion(AppVM.FullVersion);
 
-                InstallerInfo latestVersion = null;
+                UpdateInfo latestVersion = null;
 
                 bool updateAvailable = false;
-                foreach (InstallerInfo installerInfo in installerInfos)
+                foreach (UpdateInfo updateInfo in updateInfos)
                 {
-                    if (installerInfo.ReleaseChannel == targetReleaseChannel)
+                    if (updateInfo.ReleaseChannel == targetReleaseChannel)
                     {
-                        ulong installerVersion = LongVersion(installerInfo.Version);
+                        ulong installerVersion = LongVersion(updateInfo.Version);
 
                         if (installerVersion > maxVersion)
                         {
                             updateAvailable = true;
-                            latestVersion = installerInfo;
+                            latestVersion = updateInfo;
                             maxVersion = installerVersion;
                         }
                     }
@@ -108,7 +106,7 @@ namespace com.jonthysell.Chordious.WPF
                                 {
                                     if (confirmed)
                                     {
-                                        Update(latestVersion);
+                                        Messenger.Default.Send(new LaunchUrlMessage(latestVersion.Url));
                                     }
                                 }
                                 catch (Exception ex)
@@ -120,7 +118,10 @@ namespace com.jonthysell.Chordious.WPF
                     }
                     else
                     {
-                        Update(latestVersion);
+                        AppVM.DoOnUIThread(() =>
+                        {
+                            Messenger.Default.Send(new LaunchUrlMessage(latestVersion.Url));
+                        });
                     }
                 }
                 else
@@ -144,62 +145,14 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
-        private static void Update(InstallerInfo installerInfo)
-        {
-            if (null == installerInfo)
-            {
-                throw new ArgumentNullException("installerInfo");
-            }
-
-            if (!IsConnectedToInternet)
-            {
-                throw new UpdateNoInternetException();
-            }
-
-            string tempPath = Path.GetTempPath();
-
-            string msiPath = Path.Combine(tempPath, "ChordiousSetup.msi");
-
-            if (File.Exists(msiPath))
-            {
-                File.Delete(msiPath);
-            }
-
-            using (WebClient client = new WebClient())
-            {
-                client.Headers["User-Agent"] = _userAgent;
-                SecurityProtocolType oldType = ServicePointManager.SecurityProtocol;
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; // Fix since Github only supports TLS1.2
-                client.DownloadFile(installerInfo.Url, msiPath);
-                ServicePointManager.SecurityProtocol = oldType;
-            }
-
-            string cmdFile = Path.Combine(tempPath, "UpdateChordious.cmd");
-
-            using (StreamWriter sw = new StreamWriter(new FileStream(cmdFile, FileMode.Create)))
-            {
-                sw.WriteLine("msiexec /i \"{0}\" /qb", msiPath);
-            }
-
-            AppVM.DoOnUIThread(() =>
-            {
-                Process p = new Process();
-                p.StartInfo = new ProcessStartInfo("cmd.exe", string.Format("/c {0}", cmdFile));
-                p.StartInfo.CreateNoWindow = true;
-                p.Start();
-
-                App.Current.Shutdown();
-            });
-        }
-
-        public static List<InstallerInfo> GetLatestInstallerInfos()
+        public static List<UpdateInfo> GetLatestUpdateInfos()
         {
             if (!IsConnectedToInternet)
             {
                 throw new UpdateNoInternetException();
             }
 
-            List<InstallerInfo> installerInfos = new List<InstallerInfo>();
+            List<UpdateInfo> updateInfos = new List<UpdateInfo>();
 
             HttpWebRequest request = WebRequest.CreateHttp(_updateUrl);
             request.UserAgent = _userAgent;
@@ -216,13 +169,13 @@ namespace com.jonthysell.Chordious.WPF
                             string version = reader.GetAttribute("version");
                             string url = reader.GetAttribute("url");
                             ReleaseChannel releaseChannel = (ReleaseChannel)Enum.Parse(typeof(ReleaseChannel), reader.GetAttribute("channel"));
-                            installerInfos.Add(new InstallerInfo(version, url, releaseChannel));
+                            updateInfos.Add(new UpdateInfo(version, url, releaseChannel));
                         }
                     }
                 }
             }
 
-            return installerInfos;
+            return updateInfos;
         }
 
         public static ulong LongVersion(string version)
@@ -259,11 +212,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-#if PORTABLE
-                return false;
-#else
                 return true;
-#endif
             }
         }
 
@@ -316,7 +265,7 @@ namespace com.jonthysell.Chordious.WPF
         private const string _userAgent = "Mozilla/5.0";
     }
 
-    public class InstallerInfo
+    public class UpdateInfo
     {
         public string Version { get; private set; }
 
@@ -324,7 +273,7 @@ namespace com.jonthysell.Chordious.WPF
 
         public ReleaseChannel ReleaseChannel { get; private set; }
 
-        public InstallerInfo(string version, string url, ReleaseChannel releaseChannel)
+        public UpdateInfo(string version, string url, ReleaseChannel releaseChannel)
         {
             if (string.IsNullOrWhiteSpace(version))
             {

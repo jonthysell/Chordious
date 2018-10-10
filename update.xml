@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<updates>
+  <update version="2.0.5" url="https://github.com/jonthysell/Chordious/releases/tag/v2.0.5" channel="Official" />
+  <update version="2.0.5" url="https://github.com/jonthysell/Chordious/releases/tag/v2.0.5" channel="Preview" />
+</updates>

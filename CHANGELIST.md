@@ -1,5 +1,11 @@
 # Chordious Changelist #
 
+## 2.0.6 ##
+* Added Major and Dominant 7th suspended chords
+* Fixed Added Tone chords
+* Fixed issue with X-shape not appearing unless the mark type was muted
+* Updating no longer downloads and runs the MSI, instead takes user to download page
+
 ## 2.0.5 ##
 * The self-contained ChordiousPortable.exe is now available
 * Can now easily copy tunings in the Instrument Manager

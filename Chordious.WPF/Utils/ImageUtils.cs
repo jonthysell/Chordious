@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -115,11 +115,29 @@ namespace com.jonthysell.Chordious.WPF
             }
             else
             {
-                BitmapImage bmp = SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, Background.White, scaleFactor);
-                Clipboard.SetImage(bmp);
+                DataObject data = SvgTextToDataObject(svgText, width, height, scaleFactor);
+                Clipboard.SetDataObject(data, true);
             }
 
             Clipboard.Flush();
+        }
+
+        public static DataObject SvgTextToDataObject(string svgText, int width, int height, float scaleFactor)
+        {
+            Bitmap bmp = SvgTextToBitmap(svgText, width, height, scaleFactor);
+
+            DataObject data = new DataObject();
+
+            // Standard bitmap, no transparency
+            data.SetData(DataFormats.Bitmap, AddBackground(bmp, Background.White));
+
+            // As PNG
+            data.SetData("PNG", BitmapToPngStream(bmp));
+
+            // As EMF
+            data.SetData(DataFormats.EnhancedMetafile, BitmapToMetafileStream(bmp));
+
+            return data;
         }
 
         #endregion
@@ -206,6 +224,34 @@ namespace com.jonthysell.Chordious.WPF
                 bitmapImage.EndInit();
             }
             return bitmapImage;
+        }
+
+        public static MemoryStream BitmapToPngStream(Bitmap image)
+        {
+            MemoryStream stream = new MemoryStream();
+            image.Save(stream, ImageFormat.Png);
+            return stream;
+        }
+
+        // Adapted from http://stackoverflow.com/questions/5270763/convert-an-image-into-wmf-with-net
+        public static MemoryStream BitmapToMetafileStream(Bitmap image)
+        {
+            MemoryStream stream = new MemoryStream();
+
+            using (Graphics g = Graphics.FromImage(image))
+            {
+                IntPtr hdc = g.GetHdc();
+                using (Metafile metafile = new Metafile(stream, hdc))
+                {
+                    g.ReleaseHdc();
+                    using (Graphics g2 = Graphics.FromImage(metafile))
+                    {
+                        g2.DrawImage(image, 0, 0);
+                    }
+                }
+            }
+
+            return stream;
         }
 
         public static Bitmap Transparent16

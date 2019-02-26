@@ -148,6 +148,7 @@
                 <DataTemplate>
                     <Image Height="{Binding TotalHeight}"
                            Margin="5"
+                           MouseMove="Image_MouseMove"
                            Source="{Binding ImageObject}"
                            Width="{Binding TotalWidth}">
                         <Image.InputBindings>

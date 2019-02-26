@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 using com.jonthysell.Chordious.Core.ViewModel;
 
@@ -79,6 +80,15 @@ namespace com.jonthysell.Chordious.WPF
             {
                 ObservableDiagram od = item as ObservableDiagram;
                 VM.SelectedResults.Remove(od);
+            }
+        }
+
+        private void Image_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (sender is Image image && image.DataContext is ObservableDiagram od && e.LeftButton == MouseButtonState.Pressed)
+            {
+                DataObject data = ImageUtils.SvgTextToDataObject(od.SvgText, od.TotalWidth, od.TotalHeight, 1.0f);
+                DragDrop.DoDragDrop(image, data, DragDropEffects.Copy);
             }
         }
     }

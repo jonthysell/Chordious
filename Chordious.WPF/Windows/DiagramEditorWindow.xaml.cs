@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -37,6 +37,15 @@ namespace com.jonthysell.Chordious.WPF
     /// </summary>
     public partial class DiagramEditorWindow : Window
     {
+        public DiagramEditorViewModel VM
+        {
+            get
+            {
+                return _vm ?? (_vm = DataContext as DiagramEditorViewModel);
+            }
+        }
+        private DiagramEditorViewModel _vm;
+
         public DiagramEditorWindow()
         {
             InitializeComponent();
@@ -54,7 +63,7 @@ namespace com.jonthysell.Chordious.WPF
 
         private bool UpdateCursorPosition()
         {
-            ObservableDiagram od = ((DiagramEditorViewModel)(DataContext)).ObservableDiagram as ObservableDiagram;
+            ObservableDiagram od = VM.ObservableDiagram;
             if (null != od)
             {
                 Point p = MouseUtils.CorrectGetPosition(DiagramImage);
@@ -63,6 +72,16 @@ namespace com.jonthysell.Chordious.WPF
                 return od.ValidCommandsAtCursor;
             }
             return false;
+        }
+
+        private void DiagramImage_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (sender is Image image && e.LeftButton == MouseButtonState.Pressed)
+            {
+                ObservableDiagram od = VM.ObservableDiagram;
+                DataObject data = ImageUtils.SvgTextToDataObject(od.SvgText, od.TotalWidth, od.TotalHeight, 1.0f);
+                DragDrop.DoDragDrop(image, data, DragDropEffects.Copy);
+            }
         }
     }
 }

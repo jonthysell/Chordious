@@ -608,6 +608,7 @@
                    Height="{Binding ObservableDiagram.TotalHeight}"
                    Margin="5"
                    MouseLeftButtonDown="DiagramImage_MouseLeftButtonDown"
+                   MouseMove="DiagramImage_MouseMove"
                    Name="DiagramImage"
                    Source="{Binding ObservableDiagram.ImageObject}"
                    Width="{Binding ObservableDiagram.TotalWidth}">

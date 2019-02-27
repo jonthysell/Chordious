@@ -26,6 +26,7 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -136,6 +137,9 @@ namespace com.jonthysell.Chordious.WPF
 
             // As EMF
             data.SetData(DataFormats.EnhancedMetafile, BitmapToMetafileStream(bmp));
+
+            // As PNG temp file
+            data.SetFileDropList(new StringCollection { BitmapToPngTempFile(bmp) });
 
             return data;
         }
@@ -252,6 +256,26 @@ namespace com.jonthysell.Chordious.WPF
             }
 
             return stream;
+        }
+
+        public static string BitmapToPngTempFile(Bitmap image)
+        {
+            string filePath = Path.Combine(Path.GetTempPath(), $"chordious.{Path.ChangeExtension(Path.GetRandomFileName(), "png")}");
+
+            using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            {
+                BitmapEncoder encoder = new PngBitmapEncoder();
+
+                BitmapImage bmpImage =  BitmapToBitmapImage(image, ImageFormat.Png);
+                BitmapMetadata frameMetadata = GetExportMetadata(ExportFormat.PNG);
+
+                BitmapFrame frame = BitmapFrame.Create(bmpImage, null, frameMetadata, null);
+
+                encoder.Frames.Add(frame);
+                encoder.Save(fs);
+            }
+
+            return filePath;
         }
 
         public static Bitmap Transparent16

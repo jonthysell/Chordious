@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -1121,7 +1121,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        AppVM.SvgTextToClipboard(SvgText, TotalWidth, TotalHeight, true, 1.0f);
+                        AppVM.DiagramToClipboard(this, true, 1.0f);
                     }
                     catch (Exception ex)
                     {
@@ -1171,7 +1171,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                                     scaleFactor = 0.01f * result;
                                 }
 
-                                AppVM.SvgTextToClipboard(SvgText, TotalWidth, TotalHeight, true, scaleFactor);
+                                AppVM.DiagramToClipboard(this, true, scaleFactor);
                                 AppVM.Settings.Set("observablediagram.sendscaledimagetoclipboard.scalefactor", scaleFactor);
                             }
                             catch (Exception ex)
@@ -1213,7 +1213,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        AppVM.SvgTextToClipboard(SvgText, TotalWidth, TotalHeight, false, 1.0f);
+                        AppVM.DiagramToClipboard(this, false, 1.0f);
                     }
                     catch (Exception ex)
                     {

@@ -79,7 +79,7 @@ namespace com.jonthysell.Chordious.WPF
             if (sender is Image image && e.LeftButton == MouseButtonState.Pressed)
             {
                 ObservableDiagram od = VM.ObservableDiagram;
-                DataObject data = ImageUtils.SvgTextToDataObject(od.SvgText, od.TotalWidth, od.TotalHeight, 1.0f);
+                DataObject data = ImageUtils.DiagramToDataObject(od, 1.0f);
                 DragDrop.DoDragDrop(image, data, DragDropEffects.Copy);
             }
         }

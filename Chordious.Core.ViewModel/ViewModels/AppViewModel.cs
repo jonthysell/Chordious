@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 {
     public delegate Stream GetConfigStream();
     public delegate object SvgTextToImage(string svgText, int width, int height, bool editMode);
-    public delegate void SvgTextToClipboard(string svgText, int width, int height, bool renderImage, float scaleFactor);
+    public delegate void DiagramToClipboard(ObservableDiagram diagram, bool renderImage, float scaleFactor);
     public delegate IEnumerable<string> GetSystemFonts();
 
     public delegate void DoOnUIThread(Action action);
@@ -242,23 +242,23 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public SvgTextToImage SvgTextToImage { get; private set; }
 
-        public SvgTextToClipboard SvgTextToClipboard { get; private set; }
+        public DiagramToClipboard DiagramToClipboard { get; private set; }
 
         public GetSystemFonts GetSystemFonts { get; private set; }
 
         public DoOnUIThread DoOnUIThread { get; private set; }
 
-        public static void Init(Assembly assembly, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, SvgTextToClipboard svgTextToClipboard, DoOnUIThread doOnUIThread, GetSystemFonts getSystemFonts, string userConfigPath = "")
+        public static void Init(Assembly assembly, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DiagramToClipboard diagramToClipboard, DoOnUIThread doOnUIThread, GetSystemFonts getSystemFonts, string userConfigPath = "")
         {
             if (null != Instance)
             {
                 throw new NotSupportedException();
             }
 
-            Instance = new AppViewModel(assembly, loadAppConfigStream, loadUserConfigStream, saveUserConfigStream, svgTextToImage, svgTextToClipboard, doOnUIThread, getSystemFonts, userConfigPath);
+            Instance = new AppViewModel(assembly, loadAppConfigStream, loadUserConfigStream, saveUserConfigStream, svgTextToImage, diagramToClipboard, doOnUIThread, getSystemFonts, userConfigPath);
         }
 
-        private AppViewModel(Assembly assembly, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, SvgTextToClipboard svgTextToClipboard, DoOnUIThread doOnUIThread, GetSystemFonts getSystemFonts, string userConfigPath)
+        private AppViewModel(Assembly assembly, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DiagramToClipboard diagramToClipboard, DoOnUIThread doOnUIThread, GetSystemFonts getSystemFonts, string userConfigPath)
         {
             if (null == assembly)
             {
@@ -293,7 +293,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             UserConfigPath = userConfigPath;
 
             SvgTextToImage = svgTextToImage;
-            SvgTextToClipboard = svgTextToClipboard;
+            DiagramToClipboard = diagramToClipboard;
             DoOnUIThread = doOnUIThread;
 
             AppConfig = new ConfigFile(DefaultConfig, ConfigFile.AppLevelKey);

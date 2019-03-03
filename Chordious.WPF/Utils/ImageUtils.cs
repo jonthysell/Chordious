@@ -108,24 +108,36 @@ namespace com.jonthysell.Chordious.WPF
             return svgBitmap;
         }
 
-        public static void SvgTextToClipboard(string svgText, int width, int height, bool renderImage, float scaleFactor)
+        public static void DiagramToClipboard(ObservableDiagram diagram, bool renderImage, float scaleFactor)
         {
+            if (null == diagram)
+            {
+                throw new ArgumentNullException("diagram");
+            }
+
             if (!renderImage)
             {
-                Clipboard.SetText(svgText);
+                Clipboard.SetText(diagram.SvgText);
             }
             else
             {
-                DataObject data = SvgTextToDataObject(svgText, width, height, scaleFactor);
+                DataObject data = DiagramToDataObject(diagram, scaleFactor);
                 Clipboard.SetDataObject(data, true);
             }
 
             Clipboard.Flush();
         }
 
-        public static DataObject SvgTextToDataObject(string svgText, int width, int height, float scaleFactor)
+        public static DataObject DiagramToDataObject(ObservableDiagram diagram, float scaleFactor)
         {
-            Bitmap bmp = SvgTextToBitmap(svgText, width, height, scaleFactor);
+            if (null == diagram)
+            {
+                throw new ArgumentNullException("diagram");
+            }
+
+            string svgText = diagram.SvgText;
+
+            Bitmap bmp = SvgTextToBitmap(svgText, diagram.TotalWidth, diagram.TotalHeight, scaleFactor);
 
             DataObject data = new DataObject();
 
@@ -139,7 +151,7 @@ namespace com.jonthysell.Chordious.WPF
             data.SetData(DataFormats.EnhancedMetafile, BitmapToMetafileStream(bmp));
 
             // As PNG temp file
-            data.SetFileDropList(new StringCollection { BitmapToPngTempFile(bmp) });
+            data.SetFileDropList(new StringCollection { BitmapToPngTempFile(bmp, diagram.Title) });
 
             return data;
         }
@@ -258,9 +270,19 @@ namespace com.jonthysell.Chordious.WPF
             return stream;
         }
 
-        public static string BitmapToPngTempFile(Bitmap image)
+        public static string BitmapToPngTempFile(Bitmap image, string title = null)
         {
-            string filePath = Path.Combine(Path.GetTempPath(), $"chordious.{Path.ChangeExtension(Path.GetRandomFileName(), "png")}");
+            string tempPath = Path.Combine(Path.GetTempPath(), "ChordiousTemp");
+
+            if (!Directory.Exists(tempPath))
+            {
+                Directory.CreateDirectory(tempPath);
+            }
+
+
+            string random = Path.GetRandomFileName().Substring(0, 8);
+
+            string filePath = Path.Combine(tempPath, string.IsNullOrWhiteSpace(title) ? $"chordious.{random}.png" : $"chordious.{title.Trim()}.{random}.png");
 
             using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
             {

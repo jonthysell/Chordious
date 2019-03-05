@@ -359,6 +359,24 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Enhanced Copy And Drag.
+        /// </summary>
+        internal static string OptionsEnhancedCopyLabel {
+            get {
+                return ResourceManager.GetString("OptionsEnhancedCopyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chordious will create temporary files when copying or dragging diagrams to external programs to improve compatibility..
+        /// </summary>
+        internal static string OptionsEnhancedCopyToolTip {
+            get {
+                return ResourceManager.GetString("OptionsEnhancedCopyToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last Checked.
         /// </summary>
         internal static string OptionsLastUpdateCheckLabel {
@@ -382,6 +400,24 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         internal static string OptionsLastUpdateCheckToolTip {
             get {
                 return ResourceManager.GetString("OptionsLastUpdateCheckToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _View Temporary Files.
+        /// </summary>
+        internal static string OptionsOpenTempFolderLabel {
+            get {
+                return ResourceManager.GetString("OptionsOpenTempFolderLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open the folder where Chordious stores temporary files..
+        /// </summary>
+        internal static string OptionsOpenTempFolderToolTip {
+            get {
+                return ResourceManager.GetString("OptionsOpenTempFolderToolTip", resourceCulture);
             }
         }
         
@@ -445,6 +481,15 @@ namespace com.jonthysell.Chordious.WPF.Resources {
         internal static string OptionsSettingsBackgroundGroupLabel {
             get {
                 return ResourceManager.GetString("OptionsSettingsBackgroundGroupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Integration.
+        /// </summary>
+        internal static string OptionsSettingsIntegrationGroupLabel {
+            get {
+                return ResourceManager.GetString("OptionsSettingsIntegrationGroupLabel", resourceCulture);
             }
         }
         

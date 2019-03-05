@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,7 @@ using System;
 using System.Collections.ObjectModel;
 
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 using com.jonthysell.Chordious.Core.ViewModel;
 
@@ -160,6 +161,90 @@ namespace com.jonthysell.Chordious.WPF
                 RaisePropertyChanged("SelectedEditorRenderBackgroundIndex");
             }
         }
+
+        #endregion
+
+        #region Integrations
+
+        public string SettingsIntegrationGroupLabel
+        {
+            get
+            {
+                return Strings.OptionsSettingsIntegrationGroupLabel;
+            }
+        }
+
+        public string EnhancedCopyLabel
+        {
+            get
+            {
+                return Strings.OptionsEnhancedCopyLabel;
+            }
+        }
+
+        public string EnhancedCopyToolTip
+        {
+            get
+            {
+                return Strings.OptionsEnhancedCopyToolTip;
+            }
+        }
+
+        public bool EnhancedCopy
+        {
+            get
+            {
+                bool result;
+
+                if (bool.TryParse(GetSetting("integration.enhancedcopy"), out result))
+                {
+                    return result;
+                }
+
+                return false;
+            }
+            set
+            {
+                SetSetting("integration.enhancedcopy", value);
+                RaisePropertyChanged("EnhancedCopy");
+            }
+        }
+
+        public string OpenTempFolderLabel
+        {
+            get
+            {
+                return Strings.OptionsOpenTempFolderLabel;
+            }
+        }
+
+        public string OpenTempFolderToolTip
+        {
+            get
+            {
+                return Strings.OptionsOpenTempFolderToolTip;
+            }
+        }
+
+        public RelayCommand OpenTempFolder
+        {
+            get
+            {
+                return _openTempFolder ?? (_openTempFolder = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        string path = IntegrationUtils.GetTempPathAndCreateIfNecessary();
+                        Messenger.Default.Send(new LaunchUrlMessage(path));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }));
+            }
+        }
+        private RelayCommand _openTempFolder;
 
         #endregion
 
@@ -372,6 +457,7 @@ namespace com.jonthysell.Chordious.WPF
             RaisePropertyChanged("SelectedRenderBackgroundIndex");
             RaisePropertyChanged("SelectedEditorRenderBackgroundIndex");
             RaisePropertyChanged("SelectedReleaseChannelIndex");
+            RaisePropertyChanged("EnhancedCopy");
             RaisePropertyChanged("CheckUpdateOnStart");
             RaisePropertyChanged("LastUpdateCheck");
         }

@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="Converters\AltTextToTextConverter.cs" />
     <Compile Include="Converters\InverseBoolConverter.cs" />
+    <Compile Include="Utils\IntegrationUtils.cs" />
     <Compile Include="Windows\AdvancedDataWindow.xaml.cs">
       <DependentUpon>AdvancedDataWindow.xaml</DependentUpon>
     </Compile>

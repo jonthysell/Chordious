@@ -10,5 +10,6 @@
     <setting key="diagramexport.overwritefiles" value="True" />
     <setting key="diagramexport.scalefactor" value="1.0" />
     <setting key="diagrameditor.renderbackground" value="Transparent" />
+    <setting key="integration.enhancedcopy" value="False" />
   </settings>
 </chordious>

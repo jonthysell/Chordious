@@ -1,6 +1,6 @@
 <Window Cursor="{Binding IsIdle, Converter={StaticResource IdleBoolToWaitCursorConverter}}"
         ForceCursor="True"
-        Height="400"
+        Height="480"
         Icon="{DynamicResource ChordiousIcon}"
         MaxWidth="300"
         MinHeight="300"
@@ -65,6 +65,32 @@
                                               VerticalAlignment="Center"
                                               Width="100" />
                                 </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="{Binding SettingsIntegrationGroupLabel, FallbackValue=INTEGRATION}"
+                                  Margin="5">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="{Binding EnhancedCopyLabel, FallbackValue=ENHANCED COPY AND DRAG}"
+                                           Margin="5"
+                                           Name="EnhancedCopyLabel"
+                                           Target="{Binding ElementName=EnhancedCopyCheckBox}"
+                                           ToolTip="{Binding EnhancedCopyToolTip}"
+                                           Width="160" />
+                                    <CheckBox AutomationProperties.LabeledBy="{Binding ElementName=EnhancedCopyLabel}"
+                                              HorizontalAlignment="Center"
+                                              IsChecked="{Binding EnhancedCopy}"
+                                              Margin="5"
+                                              Name="EnhancedCopyCheckBox"
+                                              ToolTip="{Binding EnhancedCopyToolTip}"
+                                              VerticalAlignment="Center"
+                                              Width="50" />
+                                </StackPanel>
+                                <Button Command="{Binding OpenTempFolder, Mode=OneWay}"
+                                        Content="{Binding OpenTempFolderLabel, FallbackValue=VIEW TEMPORARY FILES}"
+                                        Margin="5"
+                                        Style="{DynamicResource CleanButton}"
+                                        ToolTip="{Binding OpenTempFolderToolTip}" />
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Header="{Binding SettingsAdvancedGroupLabel, FallbackValue=ADVANCED}"

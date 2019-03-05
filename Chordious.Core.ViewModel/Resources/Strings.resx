@@ -1042,7 +1042,7 @@
     <value>Reset your default search parameters to the built-in values.</value>
   </data>
   <data name="OptionsResetConfirmationsLabel" xml:space="preserve">
-    <value>R_eset Confirmations</value>
+    <value>Reset _Confirmations</value>
   </data>
   <data name="OptionsResetConfirmationsPromptMessage" xml:space="preserve">
     <value>This will reset all of the confirmation dialogs you specified to stop prompting you. This cannot be undone. Do you want to continue?</value>

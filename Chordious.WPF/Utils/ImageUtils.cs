@@ -108,54 +108,6 @@ namespace com.jonthysell.Chordious.WPF
             return svgBitmap;
         }
 
-        public static void DiagramToClipboard(ObservableDiagram diagram, bool renderImage, float scaleFactor)
-        {
-            if (null == diagram)
-            {
-                throw new ArgumentNullException("diagram");
-            }
-
-            if (!renderImage)
-            {
-                Clipboard.SetText(diagram.SvgText);
-            }
-            else
-            {
-                DataObject data = DiagramToDataObject(diagram, scaleFactor);
-                Clipboard.SetDataObject(data, true);
-            }
-
-            Clipboard.Flush();
-        }
-
-        public static DataObject DiagramToDataObject(ObservableDiagram diagram, float scaleFactor)
-        {
-            if (null == diagram)
-            {
-                throw new ArgumentNullException("diagram");
-            }
-
-            string svgText = diagram.SvgText;
-
-            Bitmap bmp = SvgTextToBitmap(svgText, diagram.TotalWidth, diagram.TotalHeight, scaleFactor);
-
-            DataObject data = new DataObject();
-
-            // Standard bitmap, no transparency
-            data.SetData(DataFormats.Bitmap, AddBackground(bmp, Background.White));
-
-            // As PNG
-            data.SetData("PNG", BitmapToPngStream(bmp));
-
-            // As EMF
-            data.SetData(DataFormats.EnhancedMetafile, BitmapToMetafileStream(bmp));
-
-            // As PNG temp file
-            data.SetFileDropList(new StringCollection { BitmapToPngTempFile(bmp, diagram.Title) });
-
-            return data;
-        }
-
         #endregion
 
         #region Manipulations
@@ -270,15 +222,9 @@ namespace com.jonthysell.Chordious.WPF
             return stream;
         }
 
-        public static string BitmapToPngTempFile(Bitmap image, string title = null)
+        public static string BitmapToPngTempFile(Bitmap image, string title)
         {
-            string tempPath = Path.Combine(Path.GetTempPath(), "ChordiousTemp");
-
-            if (!Directory.Exists(tempPath))
-            {
-                Directory.CreateDirectory(tempPath);
-            }
-
+            string tempPath = IntegrationUtils.GetTempPathAndCreateIfNecessary();
 
             string random = Path.GetRandomFileName().Substring(0, 8);
 

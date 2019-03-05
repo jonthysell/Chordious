@@ -80,7 +80,7 @@ namespace com.jonthysell.Chordious.WPF
             {
                 return new FileStream(userFile, FileMode.Create);
             }, ImageUtils.SvgTextToBitmapImage
-            , ImageUtils.DiagramToClipboard
+            , IntegrationUtils.DiagramToClipboard
             , (action) =>
             {
                 Dispatcher.Invoke(action);

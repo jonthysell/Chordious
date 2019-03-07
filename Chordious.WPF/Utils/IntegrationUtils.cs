@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Drawing;
 using System.IO;
@@ -67,38 +68,48 @@ namespace com.jonthysell.Chordious.WPF
             return tempPath;
         }
 
-        public static void DiagramToClipboard(ObservableDiagram diagram, bool renderImage, float scaleFactor)
+        public static void TextToClipboard(string text)
+        {
+            Clipboard.SetText(text);
+            Clipboard.Flush();
+        }
+
+        public static void DiagramToClipboard(ObservableDiagram diagram, float scaleFactor)
         {
             if (null == diagram)
             {
                 throw new ArgumentNullException("diagram");
             }
 
-            if (!renderImage)
-            {
-                Clipboard.SetText(diagram.SvgText);
-            }
-            else
-            {
-                DataObject data = DiagramToDataObject(diagram, scaleFactor);
-                Clipboard.SetDataObject(data, true);
-            }
+            DataObject data = DiagramToExternalDataObject(diagram, scaleFactor);
+            Clipboard.SetDataObject(data, true);
 
             Clipboard.Flush();
         }
 
-        public static DataObject DiagramToDataObject(ObservableDiagram diagram, float scaleFactor)
+        public static void DiagramToDragDrop(DependencyObject dragSource, ObservableDiagram diagram)
+        {
+            DataObject data = DiagramToExternalDataObject(diagram, 1.0f);
+            DragDrop.DoDragDrop(dragSource, data, DragDropEffects.Copy | DragDropEffects.Move);
+        }
+
+        public static DataObject DiagramToExternalDataObject(ObservableDiagram diagram, float scaleFactor)
         {
             if (null == diagram)
             {
                 throw new ArgumentNullException("diagram");
             }
 
-            string svgText = diagram.SvgText;
-
-            Bitmap bmp = ImageUtils.SvgTextToBitmap(svgText, diagram.TotalWidth, diagram.TotalHeight, scaleFactor);
-
             DataObject data = new DataObject();
+
+            AddImageFormats(data, diagram, scaleFactor);
+
+            return data;
+        }
+
+        private static void AddImageFormats(DataObject data, ObservableDiagram diagram, float scaleFactor)
+        {
+            Bitmap bmp = ImageUtils.SvgTextToBitmap(diagram.SvgText, diagram.TotalWidth, diagram.TotalHeight, scaleFactor);
 
             // Standard bitmap, no transparency
             data.SetData(DataFormats.Bitmap, ImageUtils.AddBackground(bmp, Background.White));
@@ -114,8 +125,6 @@ namespace com.jonthysell.Chordious.WPF
             {
                 data.SetFileDropList(new StringCollection { ImageUtils.BitmapToPngTempFile(bmp, diagram.Title) });
             }
-
-            return data;
         }
 
         #region Settings
@@ -131,12 +140,5 @@ namespace com.jonthysell.Chordious.WPF
         }
 
         #endregion
-    }
-
-    public enum TempFileFolder
-    {
-        None,
-        UserTemp,
-
     }
 }

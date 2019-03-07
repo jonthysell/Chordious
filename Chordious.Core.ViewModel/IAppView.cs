@@ -1,10 +1,10 @@
 ﻿// 
-// ExceptionUtils.cs
+// IAppView.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,27 +25,27 @@
 // THE SOFTWARE.
 
 using System;
-
-using GalaSoft.MvvmLight.Messaging;
+using System.Collections.Generic;
+using System.IO;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public class ExceptionUtils
+    public interface IAppView
     {
-        public static AppViewModel AppVM
-        {
-            get
-            {
-                return AppViewModel.Instance;
-            }
-        }
+        void DoOnUIThread(Action action);
 
-        public static void HandleException(Exception exception)
-        {
-            AppVM.AppView.DoOnUIThread(() =>
-            {
-                Messenger.Default.Send(new ExceptionMessage(exception));
-            });
-        }
+        Stream GetAppConfigStream();
+
+        Stream GetUserConfigStreamToRead();
+
+        Stream GetUserConfigStreamToWrite();
+
+        object SvgTextToImage(string svgText, int width, int height, bool editMode);
+
+        void TextToClipboard(string text);
+
+        void DiagramToClipboard(ObservableDiagram diagram, float scaleFactor);
+
+        IEnumerable<string> GetSystemFonts();
     }
 }

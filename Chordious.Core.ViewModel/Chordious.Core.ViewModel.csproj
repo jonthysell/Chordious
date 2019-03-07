@@ -62,6 +62,7 @@
     <Compile Include="..\Chordious.Core\Properties\SharedInfo.cs">
       <Link>Properties\SharedInfo.cs</Link>
     </Compile>
+    <Compile Include="IAppView.cs" />
     <Compile Include="ViewModels\AdvancedDataViewModel.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="ViewModels\ConfigViewModelBase.cs" />

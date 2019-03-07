@@ -46,7 +46,7 @@ namespace com.jonthysell.Chordious.WPF
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App : Application, IAppView
     {
         public AppViewModel AppVM
         {
@@ -68,29 +68,11 @@ namespace com.jonthysell.Chordious.WPF
             UserConfigPath = !string.IsNullOrWhiteSpace(userConfigPath) ? userConfigPath : GetAppDataUserConfigPath();
 #endif
 
-            string userFile = UserConfigPath;
-
-            AppViewModel.Init(Assembly.GetEntryAssembly(), () =>
-            {
-                return GetResourceStream(new Uri("pack://application:,,,/Chordious.WPF.xml")).Stream;
-            }, () =>
-            {
-                return new FileStream(userFile, FileMode.Open);
-            }, () =>
-            {
-                return new FileStream(userFile, FileMode.Create);
-            }, ImageUtils.SvgTextToBitmapImage
-            , IntegrationUtils.DiagramToClipboard
-            , (action) =>
-            {
-                Dispatcher.Invoke(action);
-            }
-            , GetFonts
-            , userFile);
+            AppViewModel.Init(Assembly.GetEntryAssembly(), this, UserConfigPath);
 
             AppVM.LoadAppConfig();
 
-            if (!File.Exists(userFile))
+            if (!File.Exists(UserConfigPath))
             {
                 // Makes sure that LoadUserConfig will be successful
                 AppVM.SaveUserConfig();
@@ -129,14 +111,6 @@ namespace com.jonthysell.Chordious.WPF
         }
 
         private const string DefaultUserConfigFileName = "Chordious.User.xml";
-
-        public IEnumerable<string> GetFonts()
-        {
-            foreach (System.Drawing.FontFamily font in System.Drawing.FontFamily.Families)
-            {
-                yield return font.Name;
-            }
-        }
 
         public void HandleUserConfigLoadException(Exception ex)
         {
@@ -248,5 +222,52 @@ namespace com.jonthysell.Chordious.WPF
                 }
             }
         }
+
+        #region IAppView
+
+        public void DoOnUIThread(Action action)
+        {
+            Dispatcher.Invoke(action);
+        }
+
+        public Stream GetAppConfigStream()
+        {
+            return GetResourceStream(new Uri("pack://application:,,,/Chordious.WPF.xml")).Stream;
+        }
+
+        public Stream GetUserConfigStreamToRead()
+        {
+            return new FileStream(UserConfigPath, FileMode.Open);
+        }
+
+        public Stream GetUserConfigStreamToWrite()
+        {
+            return new FileStream(UserConfigPath, FileMode.Create);
+        }
+
+        public object SvgTextToImage(string svgText, int width, int height, bool editMode)
+        {
+            return ImageUtils.SvgTextToBitmapImage(svgText, width, height, editMode);
+        }
+
+        public void TextToClipboard(string text)
+        {
+            IntegrationUtils.TextToClipboard(text);
+        }
+
+        public void DiagramToClipboard(ObservableDiagram diagram, float scaleFactor)
+        {
+            IntegrationUtils.DiagramToClipboard(diagram, scaleFactor);
+        }
+
+        public IEnumerable<string> GetSystemFonts()
+        {
+            foreach (System.Drawing.FontFamily font in System.Drawing.FontFamily.Families)
+            {
+                yield return font.Name;
+            }
+        }
+
+        #endregion
     }
 }

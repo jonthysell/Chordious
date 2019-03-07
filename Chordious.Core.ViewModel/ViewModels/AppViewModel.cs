@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
@@ -36,16 +35,11 @@ using com.jonthysell.Chordious.Core.ViewModel.Resources;
 
 namespace com.jonthysell.Chordious.Core.ViewModel
 {
-    public delegate Stream GetConfigStream();
-    public delegate object SvgTextToImage(string svgText, int width, int height, bool editMode);
-    public delegate void DiagramToClipboard(ObservableDiagram diagram, bool renderImage, float scaleFactor);
-    public delegate IEnumerable<string> GetSystemFonts();
-
-    public delegate void DoOnUIThread(Action action);
-
     public class AppViewModel : ViewModelBase
     {
         public static AppViewModel Instance { get; private set; }
+
+        public IAppView AppView { get; private set; }
 
         public string ProgramTitle
         {
@@ -195,8 +189,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private bool _appConfigLoaded = false;
 
-        private GetConfigStream _loadAppConfigStream;
-
         internal ConfigFile UserConfig { get; private set; }
 
         public bool UserConfigLoaded
@@ -212,10 +204,6 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private bool _userConfigLoaded = false;
-
-        private GetConfigStream _loadUserConfigStream;
-
-        private GetConfigStream _saveUserConfigStream;
 
         public string UserConfigPath { get; private set; } = "";
 
@@ -240,61 +228,31 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public SvgTextToImage SvgTextToImage { get; private set; }
-
-        public DiagramToClipboard DiagramToClipboard { get; private set; }
-
-        public GetSystemFonts GetSystemFonts { get; private set; }
-
-        public DoOnUIThread DoOnUIThread { get; private set; }
-
-        public static void Init(Assembly assembly, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DiagramToClipboard diagramToClipboard, DoOnUIThread doOnUIThread, GetSystemFonts getSystemFonts, string userConfigPath = "")
+        public static void Init(Assembly assembly, IAppView appView, string userConfigPath = "")
         {
             if (null != Instance)
             {
                 throw new NotSupportedException();
             }
 
-            Instance = new AppViewModel(assembly, loadAppConfigStream, loadUserConfigStream, saveUserConfigStream, svgTextToImage, diagramToClipboard, doOnUIThread, getSystemFonts, userConfigPath);
+            Instance = new AppViewModel(assembly, appView, userConfigPath);
         }
 
-        private AppViewModel(Assembly assembly, GetConfigStream loadAppConfigStream, GetConfigStream loadUserConfigStream, GetConfigStream saveUserConfigStream, SvgTextToImage svgTextToImage, DiagramToClipboard diagramToClipboard, DoOnUIThread doOnUIThread, GetSystemFonts getSystemFonts, string userConfigPath)
+        private AppViewModel(Assembly assembly, IAppView appView, string userConfigPath)
         {
             if (null == assembly)
             {
                 throw new ArgumentNullException("assembly");
             }
 
-            if (null == loadAppConfigStream)
+            if (null == appView)
             {
-                throw new ArgumentNullException("loadAppConfigStream");
-            }
-
-            if (null == loadUserConfigStream)
-            {
-                throw new ArgumentNullException("loadUserConfigStream");
-            }
-
-            if (null == saveUserConfigStream)
-            {
-                throw new ArgumentNullException("saveUserConfigStream");
-            }
-
-            if (null == getSystemFonts)
-            {
-                throw new ArgumentNullException("getSystemFonts");
+                throw new ArgumentNullException("appView");
             }
 
             AppInfo.Assembly = assembly;
-            _loadAppConfigStream = loadAppConfigStream;
-            _loadUserConfigStream = loadUserConfigStream;
-            _saveUserConfigStream = saveUserConfigStream;
-            GetSystemFonts = getSystemFonts;
+            AppView = appView;
             UserConfigPath = userConfigPath;
-
-            SvgTextToImage = svgTextToImage;
-            DiagramToClipboard = diagramToClipboard;
-            DoOnUIThread = doOnUIThread;
 
             AppConfig = new ConfigFile(DefaultConfig, ConfigFile.AppLevelKey);
             UserConfig = new ConfigFile(AppConfig, ConfigFile.UserLevelKey);
@@ -302,7 +260,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void LoadAppConfig()
         {
-            using (Stream inputStream = _loadAppConfigStream())
+            using (Stream inputStream = AppView.GetAppConfigStream())
             {
                 AppConfig.LoadFile(inputStream);
             }
@@ -316,7 +274,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
             try
             {
-                using (Stream inputStream = _loadUserConfigStream())
+                using (Stream inputStream = AppView.GetUserConfigStreamToRead())
                 {
                     UserConfig.LoadFile(inputStream);
                 }
@@ -330,7 +288,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void SaveUserConfig()
         {
-            using (Stream outputStream = _saveUserConfigStream())
+            using (Stream outputStream = AppView.GetUserConfigStreamToWrite())
             {
                 UserConfig.SaveFile(outputStream);
             }
@@ -348,7 +306,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (null != _userConfigLoadExceptionCallback)
                 {
-                    DoOnUIThread(() =>
+                    AppView.DoOnUIThread(() =>
                     {
                         _userConfigLoadExceptionCallback(_userConfigLoadException);
                     });

@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Chordious.Core.ViewModel")]
 [assembly: AssemblyDescription("ViewModel library for Chordious.")]
-[assembly: AssemblyCopyright("Copyright © 2015-2017 Jon Thysell <http://jonthysell.com>")]
+[assembly: AssemblyCopyright("Copyright © 2015-2019 Jon Thysell <http://jonthysell.com>")]
 
 [assembly: NeutralResourcesLanguage("en")]
 

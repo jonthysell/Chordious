@@ -1121,7 +1121,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        AppVM.DiagramToClipboard(this, true, 1.0f);
+                        AppVM.AppView.DiagramToClipboard(this, 1.0f);
                     }
                     catch (Exception ex)
                     {
@@ -1171,7 +1171,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                                     scaleFactor = 0.01f * result;
                                 }
 
-                                AppVM.DiagramToClipboard(this, true, scaleFactor);
+                                AppVM.AppView.DiagramToClipboard(this, scaleFactor);
                                 AppVM.Settings.Set("observablediagram.sendscaledimagetoclipboard.scalefactor", scaleFactor);
                             }
                             catch (Exception ex)
@@ -1213,7 +1213,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     try
                     {
-                        AppVM.DiagramToClipboard(this, false, 1.0f);
+                        AppVM.AppView.TextToClipboard(SvgText);
                     }
                     catch (Exception ex)
                     {
@@ -1339,9 +1339,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         protected void Render()
         {
-            AppVM.DoOnUIThread(() =>
+            AppVM.AppView.DoOnUIThread(() =>
             {
-                ImageObject = AppVM.SvgTextToImage(SvgText, TotalWidth, TotalHeight, IsEditMode);
+                ImageObject = AppVM.AppView.SvgTextToImage(SvgText, TotalWidth, TotalHeight, IsEditMode);
             });
         }
 

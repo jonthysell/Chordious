@@ -37,6 +37,15 @@ namespace com.jonthysell.Chordious.WPF
     /// </summary>
     public partial class DiagramLibraryWindow : Window
     {
+        public DiagramLibraryViewModel VM
+        {
+            get
+            {
+                return _vm ?? (_vm = DataContext as DiagramLibraryViewModel);
+            }
+        }
+        private DiagramLibraryViewModel _vm;
+
         public DiagramLibraryWindow()
         {
             InitializeComponent();
@@ -47,34 +56,60 @@ namespace com.jonthysell.Chordious.WPF
 
         void DiagramsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DiagramLibraryViewModel vm = DataContext as DiagramLibraryViewModel;
+            ObservableDiagramLibraryNode selectedNode = VM.SelectedNode;
 
-            if (null != vm)
+            if (null != selectedNode)
             {
-                ObservableDiagramLibraryNode selectedNode = vm.SelectedNode;
-
-                if (null != selectedNode)
+                foreach (object item in e.AddedItems)
                 {
-                    foreach (object item in e.AddedItems)
-                    {
-                        ObservableDiagram od = item as ObservableDiagram;
-                        selectedNode.SelectedDiagrams.Add(od);
-                    }
+                    ObservableDiagram od = item as ObservableDiagram;
+                    selectedNode.SelectedDiagrams.Add(od);
+                }
 
-                    foreach (object item in e.RemovedItems)
-                    {
-                        ObservableDiagram od = item as ObservableDiagram;
-                        selectedNode.SelectedDiagrams.Remove(od);
-                    }
+                foreach (object item in e.RemovedItems)
+                {
+                    ObservableDiagram od = item as ObservableDiagram;
+                    selectedNode.SelectedDiagrams.Remove(od);
                 }
             }
         }
 
-        private void Image_MouseMove(object sender, MouseEventArgs e)
+        private void DiagramImage_MouseMove(object sender, MouseEventArgs e)
         {
             if (sender is Image image && image.DataContext is ObservableDiagram od && e.LeftButton == MouseButtonState.Pressed)
             {
-                IntegrationUtils.DiagramToDragDrop(image, od);
+                IntegrationUtils.DiagramLibraryNodeToDragDrop(DiagramsListView, VM.SelectedNode, true);
+            }
+        }
+
+        private void DiagramLibraryNode_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (sender is FrameworkElement element && element.DataContext is ObservableDiagramLibraryNode sourceNode && e.LeftButton == MouseButtonState.Pressed)
+            {
+                IntegrationUtils.DiagramLibraryNodeToDragDrop(element, sourceNode, false);
+            }
+        }
+
+        private void DiagramsListView_Drop(object sender, DragEventArgs e)
+        {
+            if (sender == DiagramsListView && VM.NodeIsSelected)
+            {
+                IntegrationUtils.DragDropToDiagramLibraryNode(e.Data, VM.SelectedNode, IntegrationUtils.GetDropAction(e.KeyStates));
+                e.Handled = true;
+            }
+        }
+
+        private void DiagramLibraryNode_Drop(object sender, DragEventArgs e)
+        {
+            if (sender is FrameworkElement element && element.DataContext is ObservableDiagramLibraryNode destinationNode)
+            {
+                IntegrationUtils.DragDropToDiagramLibraryNode(e.Data, destinationNode, IntegrationUtils.GetDropAction(e.KeyStates));
+                e.Handled = true;
+            }
+            else if (sender == NodesListView)
+            {
+                IntegrationUtils.DragDropToDiagramLibraryNode(e.Data, null, IntegrationUtils.GetDropAction(e.KeyStates));
+                e.Handled = true;
             }
         }
     }

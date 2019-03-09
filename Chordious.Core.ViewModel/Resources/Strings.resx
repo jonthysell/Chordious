@@ -139,7 +139,7 @@
     <value>Clone "{0}"...</value>
   </data>
   <data name="DiagramLibraryCloneNodePromptFormat" xml:space="preserve">
-    <value>Create a clone of collection "{0}" named:</value>
+    <value>Create a copy of collection "{0}" named:</value>
   </data>
   <data name="DiagramLibraryCloneNodeToolTip" xml:space="preserve">
     <value>Create a copy of the selected collection.</value>
@@ -1766,5 +1766,29 @@
   </data>
   <data name="InstrumentManagerCopyTuningToolTip" xml:space="preserve">
     <value>Create a new tuning based on the selected tuning.</value>
+  </data>
+  <data name="DiagramLibraryCopyNodeLabelFormat" xml:space="preserve">
+    <value>Copy "{0}"...</value>
+  </data>
+  <data name="DiagramLibraryCopyNodeToolTip" xml:space="preserve">
+    <value>Copy the diagrams from the selected collection into another collection.</value>
+  </data>
+  <data name="DiagramLibraryMergeNodeLabelFormat" xml:space="preserve">
+    <value>Merge "{0}"...</value>
+  </data>
+  <data name="DiagramLibraryMergeNodeToolTip" xml:space="preserve">
+    <value>Move the diagrams from the selected collection into another collection.</value>
+  </data>
+  <data name="MergeLabel" xml:space="preserve">
+    <value>Merge...</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeCopyNodeToolTip" xml:space="preserve">
+    <value>Copy the diagrams from this collection into another collection.</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeDeleteEmptyPromptFormat" xml:space="preserve">
+    <value>The collection "{0}" no longer has any diagrams. Would you like to delete it?</value>
+  </data>
+  <data name="ObservableDiagramLibraryNodeMergeNodeToolTip" xml:space="preserve">
+    <value>Move the diagrams from this collection into another collection.</value>
   </data>
 </root>

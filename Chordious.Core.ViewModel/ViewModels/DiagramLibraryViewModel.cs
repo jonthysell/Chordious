@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -89,6 +89,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 RaisePropertyChanged("DeleteNodeLabel");
                 CloneNode.RaiseCanExecuteChanged();
                 RaisePropertyChanged("CloneNodeLabel");
+                RaisePropertyChanged("CopyNode");
+                RaisePropertyChanged("CopyNodeLabel");
+                RaisePropertyChanged("MergeNode");
+                RaisePropertyChanged("MergeNodeLabel");
                 RaisePropertyChanged("EditNodeStyle");
                 RaisePropertyChanged("EditNodeStyleLabel");
             }
@@ -366,6 +370,110 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private RelayCommand _cloneNode;
+
+        #endregion
+
+        #region CopyNode
+
+        public string CopyNodeLabel
+        {
+            get
+            {
+                if (NodeIsSelected)
+                {
+                    return string.Format(Strings.DiagramLibraryCopyNodeLabelFormat, SelectedNode.Name);
+                }
+
+                return Strings.CopyLabel;
+            }
+        }
+
+        public string CopyNodeToolTip
+        {
+            get
+            {
+                return Strings.DiagramLibraryCopyNodeToolTip;
+            }
+        }
+
+        public RelayCommand<string> CopyNode
+        {
+            get
+            {
+                if (NodeIsSelected)
+                {
+                    return SelectedNode.CopyNode;
+                }
+
+                return _copyNode ?? (_copyNode = new RelayCommand<string>((s) =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibrarySelectNodeFirstMessage));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, (s) =>
+                {
+                    return NodeIsSelected;
+                }));
+            }
+        }
+        private RelayCommand<string> _copyNode;
+
+        #endregion
+
+        #region MergeNode
+
+        public string MergeNodeLabel
+        {
+            get
+            {
+                if (NodeIsSelected)
+                {
+                    return string.Format(Strings.DiagramLibraryMergeNodeLabelFormat, SelectedNode.Name);
+                }
+
+                return Strings.MergeLabel;
+            }
+        }
+
+        public string MergeNodeToolTip
+        {
+            get
+            {
+                return Strings.DiagramLibraryMergeNodeToolTip;
+            }
+        }
+
+        public RelayCommand<string> MergeNode
+        {
+            get
+            {
+                if (NodeIsSelected)
+                {
+                    return SelectedNode.MergeNode;
+                }
+
+                return _mergeNode ?? (_mergeNode = new RelayCommand<string>((s) =>
+                {
+                    try
+                    {
+                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibrarySelectNodeFirstMessage));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }, (s) =>
+                {
+                    return NodeIsSelected;
+                }));
+            }
+        }
+        private RelayCommand<string> _mergeNode;
 
         #endregion
 

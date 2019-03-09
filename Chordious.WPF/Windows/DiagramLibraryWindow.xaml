@@ -33,7 +33,9 @@
                    Target="{Binding ElementName=NodesListView}"
                    ToolTip="{Binding NodesToolTip}" />
         </WrapPanel>
-        <ListBox AutomationProperties.LabeledBy="{Binding ElementName=NodesLabel}"
+        <ListBox AllowDrop="True"
+                 AutomationProperties.LabeledBy="{Binding ElementName=NodesLabel}"
+                 Drop="DiagramLibraryNode_Drop"
                  Grid.Column="0"
                  Grid.Row="1"
                  HorizontalContentAlignment="Stretch"
@@ -46,10 +48,15 @@
                             Key="Enter" />
                 <KeyBinding Command="{Binding EditNode}"
                             Key="Space" />
+                <KeyBinding Command="{Binding DeleteNode}"
+                            Key="Delete" />
             </ListBox.InputBindings>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}">
+                    <TextBlock AllowDrop="True"
+                               Drop="DiagramLibraryNode_Drop"
+                               MouseMove="DiagramLibraryNode_MouseMove"
+                               Text="{Binding Name}">
                         <TextBlock.InputBindings>
                             <MouseBinding Command="{Binding DataContext.EditNode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
                                           Gesture="LeftDoubleClick" />
@@ -96,6 +103,20 @@
                             <local:AutoDisableImage Source="{StaticResource CloneIcon16}" />
                         </MenuItem.Icon>
                     </MenuItem>
+                    <MenuItem Command="{Binding CopyNode}"
+                              Header="{Binding CopyNodeLabel, FallbackValue=COPY...}"
+                              ToolTip="{Binding CopyNodeToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding MergeNode}"
+                              Header="{Binding MergeNodeLabel, FallbackValue=MERGE...}"
+                              ToolTip="{Binding MergeNodeToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource MoveIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </ContextMenu>
             </ListBox.ContextMenu>
         </ListBox>
@@ -116,7 +137,9 @@
                    FontWeight="Bold" />
             <Label Content="{Binding SelectedNode.SelectedDiagrams.Count}" />
         </WrapPanel>
-        <ListView Grid.Column="1"
+        <ListView AllowDrop="True"
+                  Drop="DiagramsListView_Drop"
+                  Grid.Column="1"
                   Grid.Row="1"
                   IsEnabled="{Binding NodeIsSelected}"
                   ItemsSource="{Binding SelectedNode.Diagrams}"
@@ -138,6 +161,8 @@
                 <KeyBinding Command="{Binding SelectedNode.SendSelectedTextToClipboard}"
                             Key="C"
                             Modifiers="Ctrl+Shift+Alt" />
+                <KeyBinding Command="{Binding SelectedNode.DeleteSelected}"
+                            Key="Delete" />
             </ListView.InputBindings>
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -146,9 +171,10 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Image Height="{Binding TotalHeight}"
+                    <Image AllowDrop="False"
+                           Height="{Binding TotalHeight}"
                            Margin="5"
-                           MouseMove="Image_MouseMove"
+                           MouseMove="DiagramImage_MouseMove"
                            Source="{Binding ImageObject}"
                            Width="{Binding TotalWidth}">
                         <Image.InputBindings>

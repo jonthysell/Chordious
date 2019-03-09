@@ -962,7 +962,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a clone of collection &quot;{0}&quot; named:.
+        ///   Looks up a localized string similar to Create a copy of collection &quot;{0}&quot; named:.
         /// </summary>
         internal static string DiagramLibraryCloneNodePromptFormat {
             get {
@@ -976,6 +976,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramLibraryCloneNodeToolTip {
             get {
                 return ResourceManager.GetString("DiagramLibraryCloneNodeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy &quot;{0}&quot;....
+        /// </summary>
+        internal static string DiagramLibraryCopyNodeLabelFormat {
+            get {
+                return ResourceManager.GetString("DiagramLibraryCopyNodeLabelFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy the diagrams from the selected collection into another collection..
+        /// </summary>
+        internal static string DiagramLibraryCopyNodeToolTip {
+            get {
+                return ResourceManager.GetString("DiagramLibraryCopyNodeToolTip", resourceCulture);
             }
         }
         
@@ -1075,6 +1093,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string DiagramLibraryEditNodeToolTip {
             get {
                 return ResourceManager.GetString("DiagramLibraryEditNodeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merge &quot;{0}&quot;....
+        /// </summary>
+        internal static string DiagramLibraryMergeNodeLabelFormat {
+            get {
+                return ResourceManager.GetString("DiagramLibraryMergeNodeLabelFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move the diagrams from the selected collection into another collection..
+        /// </summary>
+        internal static string DiagramLibraryMergeNodeToolTip {
+            get {
+                return ResourceManager.GetString("DiagramLibraryMergeNodeToolTip", resourceCulture);
             }
         }
         
@@ -3599,6 +3635,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Merge....
+        /// </summary>
+        internal static string MergeLabel {
+            get {
+                return ResourceManager.GetString("MergeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Move....
         /// </summary>
         internal static string MoveLabel {
@@ -3869,6 +3914,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy the diagrams from this collection into another collection..
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeCopyNodeToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeCopyNodeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy the {0} selected diagrams to another collection..
         /// </summary>
         internal static string ObservableDiagramLibraryNodeCopySelectedToolTipPluralFormat {
@@ -3892,6 +3946,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ObservableDiagramLibraryNodeCreateDiagramToolTip {
             get {
                 return ResourceManager.GetString("ObservableDiagramLibraryNodeCreateDiagramToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The collection &quot;{0}&quot; no longer has any diagrams. Would you like to delete it?.
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeDeleteEmptyPromptFormat {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeDeleteEmptyPromptFormat", resourceCulture);
             }
         }
         
@@ -3946,6 +4009,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         internal static string ObservableDiagramLibraryNodeExportSelectedToolTipSingleFormat {
             get {
                 return ResourceManager.GetString("ObservableDiagramLibraryNodeExportSelectedToolTipSingleFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move the diagrams from this collection into another collection..
+        /// </summary>
+        internal static string ObservableDiagramLibraryNodeMergeNodeToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramLibraryNodeMergeNodeToolTip", resourceCulture);
             }
         }
         

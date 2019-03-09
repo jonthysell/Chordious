@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -430,49 +430,27 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public RelayCommand CopySelected
+        public RelayCommand<string> CopySelected
         {
             get
             {
-                return _copySelected ?? (_copySelected = new RelayCommand(() =>
+                return _copySelected ?? (_copySelected = new RelayCommand<string>((defaultCollectionName) =>
                 {
                     try
                     {
-                        List<ObservableDiagram> itemsToCopy = new List<ObservableDiagram>(SelectedDiagrams);
-
-                        Messenger.Default.Send(new ShowDiagramCollectionSelectorMessage((name, newCollection) =>
-                        {
-                            try
-                            {
-                                DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
-                                DiagramCollection targetCollection = library.Get(name);
-
-                                foreach (ObservableDiagram od in itemsToCopy)
-                                {
-                                    Diagram clone = od.Diagram.Clone();
-                                    targetCollection.Add(clone);
-                                }
-
-                                Redraw(newCollection);
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionUtils.HandleException(ex);
-                            }
-                        }
-                        , Name));
+                        CopyDiagrams(new List<ObservableDiagram>(SelectedDiagrams), defaultCollectionName);
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }, () =>
+                }, (defaultCollectionName) =>
                 {
                     return SelectedDiagrams.Count > 0;
                 }));
             }
         }
-        private RelayCommand _copySelected;
+        private RelayCommand<string> _copySelected;
 
         #endregion
 
@@ -495,49 +473,27 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
-        public RelayCommand MoveSelected
+        public RelayCommand<string> MoveSelected
         {
             get
             {
-                return _moveSelected ?? (_moveSelected = new RelayCommand(() =>
+                return _moveSelected ?? (_moveSelected = new RelayCommand<string>((defaultCollectionName) =>
                 {
                     try
                     {
-                        List<ObservableDiagram> itemsToMove = new List<ObservableDiagram>(SelectedDiagrams);
-
-                        Messenger.Default.Send(new ShowDiagramCollectionSelectorMessage((name, newCollection) =>
-                        {
-                            try
-                            {
-                                DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
-                                DiagramCollection targetCollection = library.Get(name);
-
-                                foreach (ObservableDiagram od in itemsToMove)
-                                {
-                                    Collection.Remove(od.Diagram);
-                                    targetCollection.Add(od.Diagram);
-                                }
-
-                                Redraw(newCollection);
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionUtils.HandleException(ex);
-                            }
-                        }
-                        , Name));
+                        MoveDiagrams(new List<ObservableDiagram>(SelectedDiagrams), defaultCollectionName);
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }, () =>
+                }, (defaultCollectionName) =>
                 {
                     return SelectedDiagrams.Count > 0;
                 }));
             }
         }
-        private RelayCommand _moveSelected;
+        private RelayCommand<string> _moveSelected;
 
         #endregion
 
@@ -647,6 +603,84 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
         private RelayCommand _deleteSelected;
+
+        #endregion
+
+        #region CopyNode
+
+        public string CopyNodeLabel
+        {
+            get
+            {
+                return Strings.CopyLabel;
+            }
+        }
+
+        public string CopyNodeToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramLibraryNodeCopyNodeToolTip;
+            }
+        }
+
+        public RelayCommand<string> CopyNode
+        {
+            get
+            {
+                return _copyNode ?? (_copyNode = new RelayCommand<string>((defaultCollectionName) =>
+                {
+                    try
+                    {
+                        CopyDiagrams(new List<ObservableDiagram>(Diagrams), defaultCollectionName);
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }));
+            }
+        }
+        private RelayCommand<string> _copyNode;
+
+        #endregion
+
+        #region MergeNode
+
+        public string MergeNodeLabel
+        {
+            get
+            {
+                return Strings.MergeLabel;
+            }
+        }
+
+        public string MergeNodeToolTip
+        {
+            get
+            {
+                return Strings.ObservableDiagramLibraryNodeMergeNodeToolTip;
+            }
+        }
+
+        public RelayCommand<string> MergeNode
+        {
+            get
+            {
+                return _mergeNode ?? (_mergeNode = new RelayCommand<string>((defaultCollectionName) =>
+                {
+                    try
+                    {
+                        MoveDiagrams(new List<ObservableDiagram>(Diagrams), defaultCollectionName);
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }));
+            }
+        }
+        private RelayCommand<string> _mergeNode;
 
         #endregion
 
@@ -796,6 +830,101 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     originalObservableDiagram.PostEditCallback = GetDiagramPostEditCallback(originalObservableDiagram);
                 }
             };
+        }
+
+        private void CopyDiagrams(IEnumerable<ObservableDiagram> itemsToCopy, string destinationName)
+        {
+            Action<string, bool> performCopy = (name, newCollection) =>
+            {
+                try
+                {
+                    DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
+                    DiagramCollection targetCollection = library.Get(name);
+
+                    foreach (ObservableDiagram od in itemsToCopy)
+                    {
+                        Diagram clone = od.Diagram.Clone();
+                        targetCollection.Add(clone);
+                    }
+
+                    Redraw(newCollection);
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            };
+
+            if (!string.IsNullOrWhiteSpace(destinationName))
+            {
+                // Target was specified
+                performCopy(destinationName.Trim(), false);
+            }
+            else
+            {
+                // Prompt for a target
+                Messenger.Default.Send(new ShowDiagramCollectionSelectorMessage(performCopy));
+            }
+        }
+
+        private void MoveDiagrams(IEnumerable<ObservableDiagram> itemsToMove, string destinationName, bool autoDeleteEmpty = false)
+        {
+            Action<string, bool> performMove = (name, newCollection) =>
+            {
+                try
+                {
+                    DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
+                    DiagramCollection targetCollection = library.Get(name);
+
+                    foreach (ObservableDiagram od in itemsToMove)
+                    {
+                        Collection.Remove(od.Diagram);
+                        targetCollection.Add(od.Diagram);
+                    }
+
+                    Redraw(newCollection);
+
+                    PromptToDeleteIfEmpty();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionUtils.HandleException(ex);
+                }
+            };
+
+            if (!string.IsNullOrWhiteSpace(destinationName))
+            {
+                // Target was specified
+                performMove(destinationName.Trim(), false);
+            }
+            else
+            {
+                // Prompt for a target
+                Messenger.Default.Send(new ShowDiagramCollectionSelectorMessage(performMove));
+            }
+        }
+
+        private void PromptToDeleteIfEmpty()
+        {
+            if (Collection.Count == 0)
+            {
+                Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.ObservableDiagramLibraryNodeDeleteEmptyPromptFormat, Name), (confirmed) =>
+                {
+                    try
+                    {
+                        if (confirmed)
+                        {
+                            AppVM.UserConfig.DiagramLibrary.Remove(Path, Name);
+                            Redraw(true);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+
+                }));
+            }
         }
 
         private void UpdateCommands()

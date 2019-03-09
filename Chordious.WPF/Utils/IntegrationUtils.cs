@@ -33,8 +33,6 @@ using System.Windows;
 
 using com.jonthysell.Chordious.Core.ViewModel;
 
-using com.jonthysell.Chordious.WPF.Resources;
-
 namespace com.jonthysell.Chordious.WPF
 {
     public class IntegrationUtils
@@ -81,7 +79,10 @@ namespace com.jonthysell.Chordious.WPF
                 throw new ArgumentNullException("diagram");
             }
 
-            DataObject data = DiagramToExternalDataObject(diagram, scaleFactor);
+            DataObject data = new DataObject();
+
+            AddImageFormats(data, diagram, scaleFactor);
+
             Clipboard.SetDataObject(data, true);
 
             Clipboard.Flush();
@@ -89,12 +90,11 @@ namespace com.jonthysell.Chordious.WPF
 
         public static void DiagramToDragDrop(DependencyObject dragSource, ObservableDiagram diagram)
         {
-            DataObject data = DiagramToExternalDataObject(diagram, 1.0f);
-            DragDrop.DoDragDrop(dragSource, data, DragDropEffects.Copy | DragDropEffects.Move);
-        }
+            if (null == dragSource)
+            {
+                throw new ArgumentNullException("dragSource");
+            }
 
-        public static DataObject DiagramToExternalDataObject(ObservableDiagram diagram, float scaleFactor)
-        {
             if (null == diagram)
             {
                 throw new ArgumentNullException("diagram");
@@ -102,9 +102,34 @@ namespace com.jonthysell.Chordious.WPF
 
             DataObject data = new DataObject();
 
-            AddImageFormats(data, diagram, scaleFactor);
+            AddImageFormats(data, diagram, 1.0f);
 
-            return data;
+            DragDrop.DoDragDrop(dragSource, data, DragDropEffects.Copy | DragDropEffects.Move);
+        }
+
+        public static void DiagramLibraryNodeToDragDrop(DependencyObject dragSource, ObservableDiagramLibraryNode diagramLibraryNode, bool useSelectedDiagrams)
+        {
+            if (null == dragSource)
+            {
+                throw new ArgumentNullException("dragSource");
+            }
+
+            if (null == diagramLibraryNode)
+            {
+                throw new ArgumentNullException("diagramLibraryNode");
+            }
+
+            DataObject data = new DataObject();
+
+            data.SetData(typeof(ObservableDiagramLibraryNode), diagramLibraryNode);
+            data.SetData(UseSelectedDiagramsFormat, useSelectedDiagrams);
+
+            if (useSelectedDiagrams && diagramLibraryNode.SelectedDiagrams.Count > 0)
+            {
+                AddImageFormats(data, diagramLibraryNode.SelectedDiagrams[0], 1.0f);
+            }
+
+            DragDrop.DoDragDrop(dragSource, data, DragDropEffects.Copy | DragDropEffects.Move);
         }
 
         private static void AddImageFormats(DataObject data, ObservableDiagram diagram, float scaleFactor)
@@ -127,6 +152,85 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
+        public static void DragDropToDiagramLibraryNode(IDataObject data, ObservableDiagramLibraryNode destinationNode, DiagramLibraryNodeDragDropAction dragDropAction)
+        {
+            if (null == data)
+            {
+                throw new ArgumentNullException("data");
+            }
+
+            if (data.GetDataPresent(typeof(ObservableDiagramLibraryNode)) && data.GetData(typeof(ObservableDiagramLibraryNode)) is ObservableDiagramLibraryNode sourceNode)
+            {
+                bool useSelectedDiagrams = data.GetData(UseSelectedDiagramsFormat) as bool? ?? false;
+
+                if (sourceNode == destinationNode)
+                {
+                    if (dragDropAction == DiagramLibraryNodeDragDropAction.Copy)
+                    {
+                        if (useSelectedDiagrams)
+                        {
+                            // Cloning diagrams within the same collection
+                            if (useSelectedDiagrams && sourceNode.CloneSelected.CanExecute(null))
+                            {
+                                sourceNode.CloneSelected.Execute(null);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (dragDropAction == DiagramLibraryNodeDragDropAction.Copy)
+                    {
+                        if (useSelectedDiagrams)
+                        {
+                            // Copy selected diagrams into the destination
+                            if (sourceNode.CopySelected.CanExecute(destinationNode?.Name))
+                            {
+                                sourceNode.CopySelected.Execute(destinationNode?.Name);
+                            }
+                        }
+                        else
+                        {
+                            // Copy all diagrams into the destination
+                            if (sourceNode.CopyNode.CanExecute(null))
+                            {
+                                sourceNode.CopyNode.Execute(destinationNode?.Name);
+                            }
+                        }
+                    }
+                    else if (dragDropAction == DiagramLibraryNodeDragDropAction.Move)
+                    {
+                        if (useSelectedDiagrams)
+                        {
+                            // Move all selected diagrams into the destination
+                            if (sourceNode.MoveSelected.CanExecute(destinationNode?.Name))
+                            {
+                                sourceNode.MoveSelected.Execute(destinationNode?.Name);
+                            }
+                        }
+                        else
+                        {
+                            // Move all diagrams into the destination (merge)
+                            if (sourceNode.MergeNode.CanExecute(null))
+                            {
+                                sourceNode.MergeNode.Execute(destinationNode?.Name);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static DiagramLibraryNodeDragDropAction GetDropAction(DragDropKeyStates states)
+        {
+            if (states.HasFlag(DragDropKeyStates.ControlKey))
+            {
+                return DiagramLibraryNodeDragDropAction.Copy;
+            }
+
+            return DiagramLibraryNodeDragDropAction.Move;
+        }
+
         #region Settings
 
         public static bool GetEnhancedCopy()
@@ -140,5 +244,15 @@ namespace com.jonthysell.Chordious.WPF
         }
 
         #endregion
+
+        public const string UseSelectedDiagramsFormat = "UseSelectedDiagrams";
+
+    }
+
+    public enum DiagramLibraryNodeDragDropAction
+    {
+        None,
+        Copy,
+        Move,
     }
 }

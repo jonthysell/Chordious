@@ -1,5 +1,11 @@
 # Chordious Changelist #
 
+## 2.0.7 ##
+* Improved compatibility when copying a diagram to the clipboard
+* Added drag/drop functionality for managing digrams in the library
+* Added drag/drop of diagrams directly into external apps
+* Added "Enhanced Copy And Drag" option to improve copy/drag compatibility with external apps
+
 ## 2.0.6 ##
 * Added Major and Dominant 7th suspended chords
 * Fixed Added Tone chords
@@ -89,7 +95,7 @@ the nut ratio != 2.0
 ## 1.9.16171.2005 ##
 * New diagram collection selector window
 * Chord/scale finder now use collection selector
-* Can now move/copy digrams bewteen collections in the library
+* Can now move/copy digrams between collections in the library
 * Rearranged diagram library context menus
 * Some icon/string updates
 

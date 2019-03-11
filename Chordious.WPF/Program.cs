@@ -48,7 +48,11 @@ namespace com.jonthysell.Chordious.WPF
             // Hook into assembly resolution since the assemblies are embedded
             AppDomain.CurrentDomain.AssemblyResolve += OnResolveAssembly;
 #endif
+            ChordiousMain(args);
+        }
 
+        private static void ChordiousMain(string[] args)
+        {
             _mutex = new Mutex(true, "Chordious.WPF");
 
             if (!_mutex.WaitOne(TimeSpan.Zero, false))

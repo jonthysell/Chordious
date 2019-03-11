@@ -175,6 +175,7 @@
                            Height="{Binding TotalHeight}"
                            Margin="5"
                            MouseMove="DiagramImage_MouseMove"
+                           PreviewMouseDown="DiagramImage_PreviewMouseDown"
                            Source="{Binding ImageObject}"
                            Width="{Binding TotalWidth}">
                         <Image.InputBindings>

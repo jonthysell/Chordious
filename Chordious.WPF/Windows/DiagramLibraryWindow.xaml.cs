@@ -82,6 +82,24 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
+        private void DiagramImage_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is Image image && image.DataContext is ObservableDiagram od)
+            {
+                if (e.ChangedButton == MouseButton.Left && e.ButtonState == MouseButtonState.Pressed && VM.SelectedNode.SelectedDiagrams.Contains(od) && image != _lastClicked)
+                {
+                    _lastClicked = image;
+                    e.Handled = true;
+                }
+                else
+                {
+                    _lastClicked = null;
+                }
+            }
+        }
+
+        private Image _lastClicked = null;
+
         private void DiagramLibraryNode_MouseMove(object sender, MouseEventArgs e)
         {
             if (sender is FrameworkElement element && element.DataContext is ObservableDiagramLibraryNode sourceNode && e.LeftButton == MouseButtonState.Pressed)

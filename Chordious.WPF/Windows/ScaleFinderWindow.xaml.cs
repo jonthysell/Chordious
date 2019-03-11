@@ -83,12 +83,30 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
-        private void Image_MouseMove(object sender, MouseEventArgs e)
+        private void DiagramImage_MouseMove(object sender, MouseEventArgs e)
         {
             if (sender is Image image && image.DataContext is ObservableDiagram od && e.LeftButton == MouseButtonState.Pressed)
             {
                 IntegrationUtils.DiagramToDragDrop(image, od);
             }
         }
+
+        private void DiagramImage_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is Image image && image.DataContext is ObservableDiagram od)
+            {
+                if (e.ChangedButton == MouseButton.Left && e.ButtonState == MouseButtonState.Pressed && VM.SelectedResults.Contains(od) && image != _lastClicked)
+                {
+                    _lastClicked = image;
+                    e.Handled = true;
+                }
+                else
+                {
+                    _lastClicked = null;
+                }
+            }
+        }
+
+        private Image _lastClicked = null;
     }
 }

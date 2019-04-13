@@ -95,7 +95,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (sender is Image image && image.DataContext is ObservableDiagram od)
             {
-                if (e.ChangedButton == MouseButton.Left && e.ButtonState == MouseButtonState.Pressed && VM.SelectedResults.Contains(od) && image != _lastClicked)
+                if (e.ChangedButton == MouseButton.Left && e.ButtonState == MouseButtonState.Pressed && e.ClickCount == 1 && VM.SelectedResults.Contains(od) && image != _lastClicked)
                 {
                     _lastClicked = image;
                     e.Handled = true;

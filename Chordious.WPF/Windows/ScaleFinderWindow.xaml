@@ -295,6 +295,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label Content="{Binding AddTitleLabel, FallbackValue=ADD TITLE}"
                                Grid.Column="0"
@@ -349,16 +350,32 @@
                                Grid.Row="3"
                                Margin="5"
                                Name="MarkTextOptionLabel"
-                               Target="{Binding ElementName=MarkTextOptioComboBox}"
+                               Target="{Binding ElementName=MarkTextOptionComboBox}"
                                ToolTip="{Binding SelectedMarkTextOptionToolTip}" />
                         <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=MarkTextOptionLabel}"
                                   Grid.Column="1"
                                   Grid.Row="3"
                                   ItemsSource="{Binding MarkTextOptions}"
-                                  Name="MarkTextOptioComboBox"
+                                  Name="MarkTextOptionComboBox"
                                   SelectedIndex="{Binding SelectedMarkTextOptionIndex}"
                                   Style="{StaticResource CleanComboBox}"
                                   ToolTip="{Binding SelectedMarkTextOptionToolTip}"
+                                  VerticalAlignment="Center" />
+                        <Label Content="{Binding SelectedFretLabelSideLabel, FallbackValue=FRET LABEL SIDE}"
+                               Grid.Column="0"
+                               Grid.Row="4"
+                               Margin="5"
+                               Name="FretLabelSideLabel"
+                               Target="{Binding ElementName=FretLabelSideComboBox}"
+                               ToolTip="{Binding SelectedFretLabelSideToolTip}" />
+                        <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=FretLabelSideLabel}"
+                                  Grid.Column="1"
+                                  Grid.Row="4"
+                                  ItemsSource="{Binding FretLabelSides}"
+                                  Name="FretLabelSideComboBox"
+                                  SelectedIndex="{Binding SelectedFretLabelSideIndex}"
+                                  Style="{StaticResource CleanComboBox}"
+                                  ToolTip="{Binding SelectedFretLabelSideToolTip}"
                                   VerticalAlignment="Center" />
                     </Grid>
                 </GroupBox>

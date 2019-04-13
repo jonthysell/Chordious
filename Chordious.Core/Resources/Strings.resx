@@ -735,4 +735,10 @@
   <data name="DiagramLibraryDefaultNewCollectionName" xml:space="preserve">
     <value>New Collection</value>
   </data>
+  <data name="FretLabelSideLeftFriendlyValue" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="FretLabelSideRightFriendlyValue" xml:space="preserve">
+    <value>Right</value>
+  </data>
 </root>

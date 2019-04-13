@@ -845,6 +845,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string SelectedFretLabelSideLabel
+        {
+            get
+            {
+                return Strings.FinderOptionsFretLabelSideLabel;
+            }
+        }
+
+        public string SelectedFretLabelSideToolTip
+        {
+            get
+            {
+                return Strings.FinderOptionsFretLabelSideToolTip;
+            }
+        }
+
+        public int SelectedFretLabelSideIndex
+        {
+            get
+            {
+                return (int)Style.FretLabelSide;
+            }
+            set
+            {
+                Style.FretLabelSide = (FretLabelSide)(value);
+                RaisePropertyChanged("SelectedFretLabelSideIndex");
+            }
+        }
+
+        public ObservableCollection<string> FretLabelSides
+        {
+            get
+            {
+                return ObservableEnums.GetFretLabelSides();
+            }
+        }
+
         #endregion
 
         public string SetAsDefaultsLabel
@@ -1418,6 +1455,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             RaisePropertyChanged("SelectedMarkTextOptionIndex");
             RaisePropertyChanged("AddBottomMarks");
             RaisePropertyChanged("SelectedBottomMarkTextOptionIndex");
+            RaisePropertyChanged("SelectedFretLabelSideIndex");
         }
 
         private Task<ChordFinderResultSet> FindChordsAsync(CancellationToken cancelToken)

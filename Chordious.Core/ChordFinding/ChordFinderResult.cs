@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2014, 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2014, 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -126,7 +126,7 @@ namespace com.jonthysell.Chordious.Core
             else
             {
                 d.Style.GridNutVisible = false;
-                FretLabelPosition flp = new FretLabelPosition(FretLabelSide.Right, 1);
+                FretLabelPosition flp = new FretLabelPosition(chordFinderStyle.FretLabelSide, 1);
                 d.NewFretLabel(flp, baseLine.ToString());
             }
 

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -213,6 +213,19 @@ namespace com.jonthysell.Chordious.Core
                     return Strings.BarreTypeOptionPartialFriendlyValue;
                 case BarreTypeOption.Full:
                     return Strings.BarreTypeOptionFullFriendlyValue;
+            }
+
+            return GetFriendlyValue((object)value);
+        }
+
+        public static string GetFriendlyValue(FretLabelSide value)
+        {
+            switch (value)
+            {
+                case FretLabelSide.Left:
+                    return Strings.FretLabelSideLeftFriendlyValue;
+                case FretLabelSide.Right:
+                    return Strings.FretLabelSideRightFriendlyValue;
             }
 
             return GetFriendlyValue((object)value);

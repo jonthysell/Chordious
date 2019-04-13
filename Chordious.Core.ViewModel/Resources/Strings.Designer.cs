@@ -2906,6 +2906,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fret _Label Side.
+        /// </summary>
+        internal static string FinderOptionsFretLabelSideLabel {
+            get {
+                return ResourceManager.GetString("FinderOptionsFretLabelSideLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Which side to put fret labels..
+        /// </summary>
+        internal static string FinderOptionsFretLabelSideToolTip {
+            get {
+                return ResourceManager.GetString("FinderOptionsFretLabelSideToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mar_k Text.
         /// </summary>
         internal static string FinderOptionsMarkTextLabel {

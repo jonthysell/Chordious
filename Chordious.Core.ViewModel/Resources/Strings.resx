@@ -1791,4 +1791,10 @@
   <data name="ObservableDiagramLibraryNodeMergeNodeToolTip" xml:space="preserve">
     <value>Move the diagrams from this collection into another collection.</value>
   </data>
+  <data name="FinderOptionsFretLabelSideLabel" xml:space="preserve">
+    <value>Fret _Label Side</value>
+  </data>
+  <data name="FinderOptionsFretLabelSideToolTip" xml:space="preserve">
+    <value>Which side to put fret labels.</value>
+  </data>
 </root>

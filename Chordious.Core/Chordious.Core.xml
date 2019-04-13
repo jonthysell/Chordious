@@ -20,6 +20,7 @@
     <setting key="chordfinderstyle.addbottommarks" value="False" />
     <setting key="chordfinderstyle.bottommarktextoption" value="ShowNote_ShowBoth" />
     <setting key="chordfinderstyle.mirrorresults" value="False" />
+    <setting key="chordfinderstyle.fretlabelside" value="Right" />
     <setting key="scalefinderoptions.instrument" value="Ukulele" />
     <setting key="scalefinderoptions.tuning" value="Reentrant C (G4 C4 E4 A4)" />
     <setting key="scalefinderoptions.itlevel" value="Default" />
@@ -35,6 +36,7 @@
     <setting key="scalefinderstyle.addrootnotes" value="True" />
     <setting key="scalefinderstyle.marktextoption" value="None" />
     <setting key="scalefinderstyle.mirrorresults" value="False" />
+    <setting key="scalefinderstyle.fretlabelside" value="Right" />
   </settings>
   <styles>
     <style key="newdiagram.numfrets" value="5" />

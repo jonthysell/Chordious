@@ -720,6 +720,43 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
         }
 
+        public string SelectedFretLabelSideLabel
+        {
+            get
+            {
+                return Strings.FinderOptionsFretLabelSideLabel;
+            }
+        }
+
+        public string SelectedFretLabelSideToolTip
+        {
+            get
+            {
+                return Strings.FinderOptionsFretLabelSideToolTip;
+            }
+        }
+
+        public int SelectedFretLabelSideIndex
+        {
+            get
+            {
+                return (int)Style.FretLabelSide;
+            }
+            set
+            {
+                Style.FretLabelSide = (FretLabelSide)(value);
+                RaisePropertyChanged("SelectedFretLabelSideIndex");
+            }
+        }
+
+        public ObservableCollection<string> FretLabelSides
+        {
+            get
+            {
+                return ObservableEnums.GetFretLabelSides();
+            }
+        }
+
         #endregion
 
         public string SetAsDefaultsLabel
@@ -1288,6 +1325,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             RaisePropertyChanged("MirrorResults");
             RaisePropertyChanged("AddRootNotes");
             RaisePropertyChanged("SelectedMarkTextOptionIndex");
+            RaisePropertyChanged("SelectedFretLabelSideIndex");
         }
 
         private Task<ScaleFinderResultSet> FindScalesAsync(CancellationToken cancelToken)

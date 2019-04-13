@@ -203,6 +203,16 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             return collection;
         }
 
+        public static ObservableCollection<string> GetFretLabelSides()
+        {
+            ObservableCollection<string> collection = new ObservableCollection<string>();
+
+            collection.Add(EnumUtils.GetFriendlyValue(FretLabelSide.Left));
+            collection.Add(EnumUtils.GetFriendlyValue(FretLabelSide.Right));
+
+            return collection;
+        }
+
         public static ObservableCollection<string> GetColors()
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();

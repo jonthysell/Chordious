@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2018 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2018, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -60,7 +60,7 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramMark(Diagram parent, MarkPosition position, string text = "") : base(parent, position, text)
         {
-            MarkStyle = new DiagramMarkStyleWrapper(Style);
+            MarkStyle = new DiagramMarkStyleWrapper(Style, position.Fret > parent.NumFrets ? DiagramMarkType.Bottom : DiagramMarkType.Normal);
         }
 
         public DiagramMark(Diagram parent, XmlReader xmlReader) : base(parent)

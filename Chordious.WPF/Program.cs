@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,8 +26,6 @@
 
 using System;
 using System.IO;
-using System.Globalization;
-using System.Reflection;
 using System.Threading;
 using System.Windows;
 
@@ -39,7 +37,7 @@ namespace com.jonthysell.Chordious.WPF
     {
         private static Mutex _mutex;
 
-        private static string userFile = null;
+        private static string _userFile = null;
 
         [STAThread]
         public static void Main(string[] args)
@@ -53,32 +51,39 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ChordiousMain(string[] args)
         {
-            _mutex = new Mutex(true, "Chordious.WPF");
-
-            if (!_mutex.WaitOne(TimeSpan.Zero, false))
+            // Set user file from command-line args
+            if (null != args && args.Length > 0)
             {
-                MessageBox.Show(Strings.ChordiousAlreadyRunningErrorMessage, Strings.ChordiousDialogCaption, MessageBoxButton.OK, MessageBoxImage.Error);
+                _userFile = args[0];
             }
-            else
-            {
-                try
-                {
-                    if (null != args && args.Length > 0)
-                    {
-                        userFile = args[0];
-                    }
 
-                    App app = new App(userFile);
-                    app.InitializeComponent();
-                    app.Run();
-                }
-                catch (Exception ex)
+            try
+            {
+                _mutex = new Mutex(true, GetMutexName());
+
+                if (!_mutex.WaitOne(TimeSpan.Zero, false))
                 {
-                    string message = string.Join(Environment.NewLine, string.Format(Strings.ChordiousUnhandledExceptionMessageFormat, ex.Message), ex.StackTrace);
-                    MessageBox.Show(message, Strings.ChordiousDialogCaption, MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Strings.ChordiousAlreadyRunningErrorMessage, Strings.ChordiousDialogCaption, MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
+
+                App app = new App(_userFile);
+                app.InitializeComponent();
+                app.Run();
+            }
+            catch (Exception ex)
+            {
+                string message = string.Join(Environment.NewLine, string.Format(Strings.ChordiousUnhandledExceptionMessageFormat, ex.Message), ex.StackTrace);
+                MessageBox.Show(message, Strings.ChordiousDialogCaption, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private static string GetMutexName()
+        {
+            return string.Format("{0}.{1}", MutexBase, Path.GetFullPath(App.GetUserConfigPath(_userFile)).GetHashCode());
+        }
+
+        private const string MutexBase = "Chordious.WPF";
 
 #if PORTABLE
         // Adapted from http://www.digitallycreated.net/Blog/61/combining-multiple-assemblies-into-a-single-exe-for-a-wpf-application

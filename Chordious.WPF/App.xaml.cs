@@ -43,9 +43,6 @@ using com.jonthysell.Chordious.WPF.Resources;
 
 namespace com.jonthysell.Chordious.WPF
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application, IAppView
     {
         public AppViewModel AppVM
@@ -62,11 +59,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             MessageHandlers.RegisterMessageHandlers(this);
 
-#if PORTABLE
-            UserConfigPath = !string.IsNullOrWhiteSpace(userConfigPath) ? userConfigPath : DefaultUserConfigFileName;
-#else
-            UserConfigPath = !string.IsNullOrWhiteSpace(userConfigPath) ? userConfigPath : GetAppDataUserConfigPath();
-#endif
+            UserConfigPath = GetUserConfigPath(userConfigPath, true);
 
             AppViewModel.Init(Assembly.GetEntryAssembly(), this, UserConfigPath);
 
@@ -86,24 +79,43 @@ namespace com.jonthysell.Chordious.WPF
             Exit += App_Exit;
         }
 
-        public string GetAppDataUserConfigPath()
+        public static string GetUserConfigPath(string userConfigPath)
+        {
+            return GetUserConfigPath(userConfigPath, false);
+        }
+
+        private static string GetUserConfigPath(string userConfigPath, bool setup)
+        {
+#if PORTABLE
+            userConfigPath = !string.IsNullOrWhiteSpace(userConfigPath) ? userConfigPath.Trim() : DefaultUserConfigFileName;
+#else
+            userConfigPath = !string.IsNullOrWhiteSpace(userConfigPath) ? userConfigPath.Trim() : GetAppDataUserConfigPath(setup);
+#endif
+            return userConfigPath;
+        }
+
+        private static string GetAppDataUserConfigPath(bool setup)
         {
             string userFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             userFolder = Path.Combine(userFolder, "Chordious");
-            if (!Directory.Exists(userFolder))
-            {
-                Directory.CreateDirectory(userFolder);
-            }
 
             string defaultConfigPath = Path.Combine(userFolder, DefaultUserConfigFileName);
 
-            if (!File.Exists(defaultConfigPath))
+            if (setup)
             {
-                // Migrate old config if necessary
-                string oldConfigPath = Path.Combine(userFolder, "Chordious.WPF.xml");
-                if (File.Exists(oldConfigPath))
+                if (!Directory.Exists(userFolder))
                 {
-                    File.Move(oldConfigPath, defaultConfigPath);
+                    Directory.CreateDirectory(userFolder);
+                }
+
+                if (!File.Exists(defaultConfigPath))
+                {
+                    // Migrate old config if necessary
+                    string oldConfigPath = Path.Combine(userFolder, "Chordious.WPF.xml");
+                    if (File.Exists(oldConfigPath))
+                    {
+                        File.Move(oldConfigPath, defaultConfigPath);
+                    }
                 }
             }
 

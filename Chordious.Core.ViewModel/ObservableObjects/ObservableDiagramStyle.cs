@@ -117,8 +117,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.OrientationIsLocal = value;
-                    RaisePropertyChanged("OrientationIsLocal");
-                    RaisePropertyChanged("SelectedOrientationIndex");
+                    RaisePropertyChanged(nameof(OrientationIsLocal));
+                    RaisePropertyChanged(nameof(SelectedOrientationIndex));
                 }
                 catch (Exception ex)
                 {
@@ -154,7 +154,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.Orientation = (DiagramOrientation)(value);
-                    RaisePropertyChanged("SelectedOrientationIndex");
+                    RaisePropertyChanged(nameof(SelectedOrientationIndex));
                 }
                 catch (Exception ex)
                 {
@@ -182,8 +182,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.LabelLayoutModelIsLocal = value;
-                    RaisePropertyChanged("LabelLayoutModelIsLocal");
-                    RaisePropertyChanged("SelectedLabelLayoutModelIndex");
+                    RaisePropertyChanged(nameof(LabelLayoutModelIsLocal));
+                    RaisePropertyChanged(nameof(SelectedLabelLayoutModelIndex));
                 }
                 catch (Exception ex)
                 {
@@ -219,7 +219,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.LabelLayoutModel = (DiagramLabelLayoutModel)(value);
-                    RaisePropertyChanged("SelectedLabelLayoutModelIndex");
+                    RaisePropertyChanged(nameof(SelectedLabelLayoutModelIndex));
                 }
                 catch (Exception ex)
                 {
@@ -259,8 +259,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.DiagramColorIsLocal = value;
-                    RaisePropertyChanged("DiagramColorIsLocal");
-                    RaisePropertyChanged("DiagramColor");
+                    RaisePropertyChanged(nameof(DiagramColorIsLocal));
+                    RaisePropertyChanged(nameof(DiagramColor));
                 }
                 catch (Exception ex)
                 {
@@ -299,7 +299,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Style.DiagramColor = value;
                         ObservableEnums.SortedInsert(Colors, DiagramColor);
-                        RaisePropertyChanged("DiagramColor");
+                        RaisePropertyChanged(nameof(DiagramColor));
                     }
                 }
                 catch (Exception ex)
@@ -320,8 +320,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.DiagramOpacityIsLocal = value;
-                    RaisePropertyChanged("DiagramOpacityIsLocal");
-                    RaisePropertyChanged("DiagramOpacity");
+                    RaisePropertyChanged(nameof(DiagramOpacityIsLocal));
+                    RaisePropertyChanged(nameof(DiagramOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -357,7 +357,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.DiagramOpacity = value;
-                    RaisePropertyChanged("DiagramOpacity");
+                    RaisePropertyChanged(nameof(DiagramOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -389,8 +389,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.DiagramBorderColorIsLocal = value;
-                    RaisePropertyChanged("DiagramBorderColorIsLocal");
-                    RaisePropertyChanged("DiagramBorderColor");
+                    RaisePropertyChanged(nameof(DiagramBorderColorIsLocal));
+                    RaisePropertyChanged(nameof(DiagramBorderColor));
                 }
                 catch (Exception ex)
                 {
@@ -429,7 +429,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Style.DiagramBorderColor = value;
                         ObservableEnums.SortedInsert(Colors, DiagramBorderColor);
-                        RaisePropertyChanged("DiagramBorderColor");
+                        RaisePropertyChanged(nameof(DiagramBorderColor));
                     }
                 }
                 catch (Exception ex)
@@ -450,8 +450,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.DiagramBorderThicknessIsLocal = value;
-                    RaisePropertyChanged("DiagramBorderThicknessIsLocal");
-                    RaisePropertyChanged("DiagramBorderThickness");
+                    RaisePropertyChanged(nameof(DiagramBorderThicknessIsLocal));
+                    RaisePropertyChanged(nameof(DiagramBorderThickness));
                 }
                 catch (Exception ex)
                 {
@@ -487,7 +487,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.DiagramBorderThickness = value;
-                    RaisePropertyChanged("DiagramBorderThickness");
+                    RaisePropertyChanged(nameof(DiagramBorderThickness));
                 }
                 catch (Exception ex)
                 {
@@ -519,8 +519,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.NewDiagramNumStringsIsLocal = value;
-                    RaisePropertyChanged("NewDiagramNumStringsIsLocal");
-                    RaisePropertyChanged("NewDiagramNumStrings");
+                    RaisePropertyChanged(nameof(NewDiagramNumStringsIsLocal));
+                    RaisePropertyChanged(nameof(NewDiagramNumStrings));
                 }
                 catch (Exception ex)
                 {
@@ -556,7 +556,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.NewDiagramNumStrings = value;
-                    RaisePropertyChanged("NewDiagramNumStrings");
+                    RaisePropertyChanged(nameof(NewDiagramNumStrings));
                 }
                 catch (Exception ex)
                 {
@@ -576,8 +576,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.NewDiagramNumFretsIsLocal = value;
-                    RaisePropertyChanged("NewDiagramNumFretsIsLocal");
-                    RaisePropertyChanged("NewDiagramNumFrets");
+                    RaisePropertyChanged(nameof(NewDiagramNumFretsIsLocal));
+                    RaisePropertyChanged(nameof(NewDiagramNumFrets));
                 }
                 catch (Exception ex)
                 {
@@ -613,7 +613,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.NewDiagramNumFrets = value;
-                    RaisePropertyChanged("NewDiagramNumFrets");
+                    RaisePropertyChanged(nameof(NewDiagramNumFrets));
                 }
                 catch (Exception ex)
                 {
@@ -655,8 +655,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginIsLocal = value;
-                    RaisePropertyChanged("GridMarginIsLocal");
-                    RaisePropertyChanged("GridMargin");
+                    RaisePropertyChanged(nameof(GridMarginIsLocal));
+                    RaisePropertyChanged(nameof(GridMargin));
                 }
                 catch (Exception ex)
                 {
@@ -692,7 +692,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMargin = value;
-                    RaisePropertyChanged("GridMargin");
+                    RaisePropertyChanged(nameof(GridMargin));
                 }
                 catch (Exception ex)
                 {
@@ -712,8 +712,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginLeftIsLocal = value;
-                    RaisePropertyChanged("GridMarginLeftIsLocal");
-                    RaisePropertyChanged("GridMarginLeft");
+                    RaisePropertyChanged(nameof(GridMarginLeftIsLocal));
+                    RaisePropertyChanged(nameof(GridMarginLeft));
                 }
                 catch (Exception ex)
                 {
@@ -749,7 +749,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginLeft = value;
-                    RaisePropertyChanged("GridMarginLeft");
+                    RaisePropertyChanged(nameof(GridMarginLeft));
                 }
                 catch (Exception ex)
                 {
@@ -769,8 +769,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginRightIsLocal = value;
-                    RaisePropertyChanged("GridMarginRightIsLocal");
-                    RaisePropertyChanged("GridMarginRight");
+                    RaisePropertyChanged(nameof(GridMarginRightIsLocal));
+                    RaisePropertyChanged(nameof(GridMarginRight));
                 }
                 catch (Exception ex)
                 {
@@ -806,7 +806,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginRight = value;
-                    RaisePropertyChanged("GridMarginRight");
+                    RaisePropertyChanged(nameof(GridMarginRight));
                 }
                 catch (Exception ex)
                 {
@@ -826,8 +826,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginTopIsLocal = value;
-                    RaisePropertyChanged("GridMarginTopIsLocal");
-                    RaisePropertyChanged("GridMarginTop");
+                    RaisePropertyChanged(nameof(GridMarginTopIsLocal));
+                    RaisePropertyChanged(nameof(GridMarginTop));
                 }
                 catch (Exception ex)
                 {
@@ -863,7 +863,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginTop = value;
-                    RaisePropertyChanged("GridMarginTop");
+                    RaisePropertyChanged(nameof(GridMarginTop));
                 }
                 catch (Exception ex)
                 {
@@ -883,8 +883,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginBottomIsLocal = value;
-                    RaisePropertyChanged("GridMarginBottomIsLocal");
-                    RaisePropertyChanged("GridMarginBottom");
+                    RaisePropertyChanged(nameof(GridMarginBottomIsLocal));
+                    RaisePropertyChanged(nameof(GridMarginBottom));
                 }
                 catch (Exception ex)
                 {
@@ -920,7 +920,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginBottom = value;
-                    RaisePropertyChanged("GridMarginBottom");
+                    RaisePropertyChanged(nameof(GridMarginBottom));
                 }
                 catch (Exception ex)
                 {
@@ -948,8 +948,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridFretSpacingIsLocal = value;
-                    RaisePropertyChanged("GridFretSpacingIsLocal");
-                    RaisePropertyChanged("GridFretSpacing");
+                    RaisePropertyChanged(nameof(GridFretSpacingIsLocal));
+                    RaisePropertyChanged(nameof(GridFretSpacing));
                 }
                 catch (Exception ex)
                 {
@@ -985,7 +985,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridFretSpacing = value;
-                    RaisePropertyChanged("GridFretSpacing");
+                    RaisePropertyChanged(nameof(GridFretSpacing));
                 }
                 catch (Exception ex)
                 {
@@ -1005,8 +1005,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridStringSpacingIsLocal = value;
-                    RaisePropertyChanged("GridStringSpacingIsLocal");
-                    RaisePropertyChanged("GridStringSpacing");
+                    RaisePropertyChanged(nameof(GridStringSpacingIsLocal));
+                    RaisePropertyChanged(nameof(GridStringSpacing));
                 }
                 catch (Exception ex)
                 {
@@ -1042,7 +1042,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridStringSpacing = value;
-                    RaisePropertyChanged("GridStringSpacing");
+                    RaisePropertyChanged(nameof(GridStringSpacing));
                 }
                 catch (Exception ex)
                 {
@@ -1070,8 +1070,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridColorIsLocal = value;
-                    RaisePropertyChanged("GridColorIsLocal");
-                    RaisePropertyChanged("GridColor");
+                    RaisePropertyChanged(nameof(GridColorIsLocal));
+                    RaisePropertyChanged(nameof(GridColor));
                 }
                 catch (Exception ex)
                 {
@@ -1110,7 +1110,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Style.GridColor = value;
                         ObservableEnums.SortedInsert(Colors, GridColor);
-                        RaisePropertyChanged("GridColor");
+                        RaisePropertyChanged(nameof(GridColor));
                     }
                 }
                 catch (Exception ex)
@@ -1131,8 +1131,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridOpacityIsLocal = value;
-                    RaisePropertyChanged("GridOpacityIsLocal");
-                    RaisePropertyChanged("GridOpacity");
+                    RaisePropertyChanged(nameof(GridOpacityIsLocal));
+                    RaisePropertyChanged(nameof(GridOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -1168,7 +1168,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridOpacity = value;
-                    RaisePropertyChanged("GridOpacity");
+                    RaisePropertyChanged(nameof(GridOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -1196,8 +1196,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridLineColorIsLocal = value;
-                    RaisePropertyChanged("GridLineColorIsLocal");
-                    RaisePropertyChanged("GridLineColor");
+                    RaisePropertyChanged(nameof(GridLineColorIsLocal));
+                    RaisePropertyChanged(nameof(GridLineColor));
                 }
                 catch (Exception ex)
                 {
@@ -1236,7 +1236,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Style.GridLineColor = value;
                         ObservableEnums.SortedInsert(Colors, GridLineColor);
-                        RaisePropertyChanged("GridLineColor");
+                        RaisePropertyChanged(nameof(GridLineColor));
                     }
                 }
                 catch (Exception ex)
@@ -1257,8 +1257,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridLineThicknessIsLocal = value;
-                    RaisePropertyChanged("GridLineThicknessIsLocal");
-                    RaisePropertyChanged("GridLineThickness");
+                    RaisePropertyChanged(nameof(GridLineThicknessIsLocal));
+                    RaisePropertyChanged(nameof(GridLineThickness));
                 }
                 catch (Exception ex)
                 {
@@ -1294,7 +1294,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridLineThickness = value;
-                    RaisePropertyChanged("GridLineThickness");
+                    RaisePropertyChanged(nameof(GridLineThickness));
                 }
                 catch (Exception ex)
                 {
@@ -1322,8 +1322,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridNutVisibleIsLocal = value;
-                    RaisePropertyChanged("GridNutVisibleIsLocal");
-                    RaisePropertyChanged("GridNutVisible");
+                    RaisePropertyChanged(nameof(GridNutVisibleIsLocal));
+                    RaisePropertyChanged(nameof(GridNutVisible));
                 }
                 catch (Exception ex)
                 {
@@ -1359,7 +1359,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridNutVisible = value;
-                    RaisePropertyChanged("GridNutVisible");
+                    RaisePropertyChanged(nameof(GridNutVisible));
                 }
                 catch (Exception ex)
                 {
@@ -1379,8 +1379,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridNutRatioIsLocal = value;
-                    RaisePropertyChanged("GridNutRatioIsLocal");
-                    RaisePropertyChanged("GridNutRatio");
+                    RaisePropertyChanged(nameof(GridNutRatioIsLocal));
+                    RaisePropertyChanged(nameof(GridNutRatio));
                 }
                 catch (Exception ex)
                 {
@@ -1416,7 +1416,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.GridNutRatio = value;
-                    RaisePropertyChanged("GridNutRatio");
+                    RaisePropertyChanged(nameof(GridNutRatio));
                 }
                 catch (Exception ex)
                 {
@@ -1458,8 +1458,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleVisibleIsLocal = value;
-                    RaisePropertyChanged("TitleVisibleIsLocal");
-                    RaisePropertyChanged("TitleVisible");
+                    RaisePropertyChanged(nameof(TitleVisibleIsLocal));
+                    RaisePropertyChanged(nameof(TitleVisible));
                 }
                 catch (Exception ex)
                 {
@@ -1495,7 +1495,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleVisible = value;
-                    RaisePropertyChanged("TitleVisible");
+                    RaisePropertyChanged(nameof(TitleVisible));
                 }
                 catch (Exception ex)
                 {
@@ -1515,8 +1515,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleGridPaddingIsLocal = value;
-                    RaisePropertyChanged("TitleGridPaddingIsLocal");
-                    RaisePropertyChanged("TitleGridPadding");
+                    RaisePropertyChanged(nameof(TitleGridPaddingIsLocal));
+                    RaisePropertyChanged(nameof(TitleGridPadding));
                 }
                 catch (Exception ex)
                 {
@@ -1552,7 +1552,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleGridPadding = value;
-                    RaisePropertyChanged("TitleGridPadding");
+                    RaisePropertyChanged(nameof(TitleGridPadding));
                 }
                 catch (Exception ex)
                 {
@@ -1572,8 +1572,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextAlignmentIsLocal = value;
-                    RaisePropertyChanged("TitleTextAlignmentIsLocal");
-                    RaisePropertyChanged("SelectedTitleTextAlignmentIndex");
+                    RaisePropertyChanged(nameof(TitleTextAlignmentIsLocal));
+                    RaisePropertyChanged(nameof(SelectedTitleTextAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -1609,7 +1609,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextAlignment = (DiagramHorizontalAlignment)(value);
-                    RaisePropertyChanged("SelectedTitleTextAlignmentIndex");
+                    RaisePropertyChanged(nameof(SelectedTitleTextAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -1649,8 +1649,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleFontFamilyIsLocal = value;
-                    RaisePropertyChanged("TitleFontFamilyIsLocal");
-                    RaisePropertyChanged("TitleFontFamily");
+                    RaisePropertyChanged(nameof(TitleFontFamilyIsLocal));
+                    RaisePropertyChanged(nameof(TitleFontFamily));
                 }
                 catch (Exception ex)
                 {
@@ -1689,7 +1689,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Style.TitleFontFamily = value;
                         ObservableEnums.SortedInsert(FontFamilies, TitleFontFamily);
-                        RaisePropertyChanged("TitleFontFamily");
+                        RaisePropertyChanged(nameof(TitleFontFamily));
                     }
                 }
                 catch (Exception ex)
@@ -1710,8 +1710,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextSizeIsLocal = value;
-                    RaisePropertyChanged("TitleTextSizeIsLocal");
-                    RaisePropertyChanged("TitleTextSize");
+                    RaisePropertyChanged(nameof(TitleTextSizeIsLocal));
+                    RaisePropertyChanged(nameof(TitleTextSize));
                 }
                 catch (Exception ex)
                 {
@@ -1747,7 +1747,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextSize = value;
-                    RaisePropertyChanged("TitleTextSize");
+                    RaisePropertyChanged(nameof(TitleTextSize));
                 }
                 catch (Exception ex)
                 {
@@ -1767,8 +1767,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextSizeModRatioIsLocal = value;
-                    RaisePropertyChanged("TitleTextSizeModRatioIsLocal");
-                    RaisePropertyChanged("TitleTextSizeModRatio");
+                    RaisePropertyChanged(nameof(TitleTextSizeModRatioIsLocal));
+                    RaisePropertyChanged(nameof(TitleTextSizeModRatio));
                 }
                 catch (Exception ex)
                 {
@@ -1804,7 +1804,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextSizeModRatio = value;
-                    RaisePropertyChanged("TitleTextSizeModRatio");
+                    RaisePropertyChanged(nameof(TitleTextSizeModRatio));
                 }
                 catch (Exception ex)
                 {
@@ -1824,8 +1824,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextStyleIsLocal = value;
-                    RaisePropertyChanged("TitleTextStyleIsLocal");
-                    RaisePropertyChanged("SelectedTitleTextStyleIndex");
+                    RaisePropertyChanged(nameof(TitleTextStyleIsLocal));
+                    RaisePropertyChanged(nameof(SelectedTitleTextStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -1861,7 +1861,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextStyle = (DiagramTextStyle)(value);
-                    RaisePropertyChanged("SelectedTitleTextStyleIndex");
+                    RaisePropertyChanged(nameof(SelectedTitleTextStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -1889,8 +1889,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleLabelStyleIsLocal = value;
-                    RaisePropertyChanged("TitleLabelStyleIsLocal");
-                    RaisePropertyChanged("SelectedTitleLabelStyleIndex");
+                    RaisePropertyChanged(nameof(TitleLabelStyleIsLocal));
+                    RaisePropertyChanged(nameof(SelectedTitleLabelStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -1926,8 +1926,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleLabelStyle = (DiagramLabelStyle)(value);
-                    RaisePropertyChanged("SelectedTitleLabelStyleIndex");
-                    RaisePropertyChanged("IsTitleTextSizeModRatioEnabled");
+                    RaisePropertyChanged(nameof(SelectedTitleLabelStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -1955,8 +1954,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleColorIsLocal = value;
-                    RaisePropertyChanged("TitleColorIsLocal");
-                    RaisePropertyChanged("TitleColor");
+                    RaisePropertyChanged(nameof(TitleColorIsLocal));
+                    RaisePropertyChanged(nameof(TitleColor));
                 }
                 catch (Exception ex)
                 {
@@ -1995,7 +1994,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Style.TitleColor = value;
                         ObservableEnums.SortedInsert(Colors, TitleColor);
-                        RaisePropertyChanged("TitleColor");
+                        RaisePropertyChanged(nameof(TitleColor));
                     }
                 }
                 catch (Exception ex)
@@ -2016,8 +2015,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleOpacityIsLocal = value;
-                    RaisePropertyChanged("TitleOpacityIsLocal");
-                    RaisePropertyChanged("TitleOpacity");
+                    RaisePropertyChanged(nameof(TitleOpacityIsLocal));
+                    RaisePropertyChanged(nameof(TitleOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -2053,7 +2052,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleOpacity = value;
-                    RaisePropertyChanged("TitleOpacity");
+                    RaisePropertyChanged(nameof(TitleOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -2095,7 +2094,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkType = (DiagramMarkType)(value);
-                    RaisePropertyChanged("SelectedMarkTypeIndex");
+                    RaisePropertyChanged(nameof(SelectedMarkTypeIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2141,8 +2140,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkShapeIsLocal = value;
-                    RaisePropertyChanged("MarkShapeIsLocal");
-                    RaisePropertyChanged("SelectedMarkShapeIndex");
+                    RaisePropertyChanged(nameof(MarkShapeIsLocal));
+                    RaisePropertyChanged(nameof(SelectedMarkShapeIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2178,7 +2177,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkShape = (DiagramMarkShape)(value);
-                    RaisePropertyChanged("SelectedMarkShapeIndex");
+                    RaisePropertyChanged(nameof(SelectedMarkShapeIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2206,8 +2205,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkVisibleIsLocal = value;
-                    RaisePropertyChanged("MarkVisibleIsLocal");
-                    RaisePropertyChanged("MarkVisible");
+                    RaisePropertyChanged(nameof(MarkVisibleIsLocal));
+                    RaisePropertyChanged(nameof(MarkVisible));
                 }
                 catch (Exception ex)
                 {
@@ -2243,7 +2242,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkVisible = value;
-                    RaisePropertyChanged("MarkVisible");
+                    RaisePropertyChanged(nameof(MarkVisible));
                 }
                 catch (Exception ex)
                 {
@@ -2263,8 +2262,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkColorIsLocal = value;
-                    RaisePropertyChanged("MarkColorIsLocal");
-                    RaisePropertyChanged("MarkColor");
+                    RaisePropertyChanged(nameof(MarkColorIsLocal));
+                    RaisePropertyChanged(nameof(MarkColor));
                 }
                 catch (Exception ex)
                 {
@@ -2303,7 +2302,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         MarkStyle.MarkColor = value;
                         ObservableEnums.SortedInsert(Colors, MarkColor);
-                        RaisePropertyChanged("MarkColor");
+                        RaisePropertyChanged(nameof(MarkColor));
                     }
                 }
                 catch (Exception ex)
@@ -2324,8 +2323,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkOpacityIsLocal = value;
-                    RaisePropertyChanged("MarkOpacityIsLocal");
-                    RaisePropertyChanged("MarkOpacity");
+                    RaisePropertyChanged(nameof(MarkOpacityIsLocal));
+                    RaisePropertyChanged(nameof(MarkOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -2361,7 +2360,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkOpacity = value;
-                    RaisePropertyChanged("MarkOpacity");
+                    RaisePropertyChanged(nameof(MarkOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -2381,8 +2380,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkRadiusRatioIsLocal = value;
-                    RaisePropertyChanged("MarkRadiusRatioIsLocal");
-                    RaisePropertyChanged("MarkRadiusRatio");
+                    RaisePropertyChanged(nameof(MarkRadiusRatioIsLocal));
+                    RaisePropertyChanged(nameof(MarkRadiusRatio));
                 }
                 catch (Exception ex)
                 {
@@ -2418,7 +2417,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkRadiusRatio = value;
-                    RaisePropertyChanged("MarkRadiusRatio");
+                    RaisePropertyChanged(nameof(MarkRadiusRatio));
                 }
                 catch (Exception ex)
                 {
@@ -2450,8 +2449,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkBorderColorIsLocal = value;
-                    RaisePropertyChanged("MarkBorderColorIsLocal");
-                    RaisePropertyChanged("MarkBorderColor");
+                    RaisePropertyChanged(nameof(MarkBorderColorIsLocal));
+                    RaisePropertyChanged(nameof(MarkBorderColor));
                 }
                 catch (Exception ex)
                 {
@@ -2487,7 +2486,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkBorderColor = value;
-                    RaisePropertyChanged("MarkBorderColor");
+                    RaisePropertyChanged(nameof(MarkBorderColor));
                 }
                 catch (Exception ex)
                 {
@@ -2507,8 +2506,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkBorderThicknessIsLocal = value;
-                    RaisePropertyChanged("MarkBorderThicknessIsLocal");
-                    RaisePropertyChanged("MarkBorderThickness");
+                    RaisePropertyChanged(nameof(MarkBorderThicknessIsLocal));
+                    RaisePropertyChanged(nameof(MarkBorderThickness));
                 }
                 catch (Exception ex)
                 {
@@ -2544,7 +2543,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkBorderThickness = value;
-                    RaisePropertyChanged("MarkBorderThickness");
+                    RaisePropertyChanged(nameof(MarkBorderThickness));
                 }
                 catch (Exception ex)
                 {
@@ -2576,8 +2575,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextAlignmentIsLocal = value;
-                    RaisePropertyChanged("MarkTextAlignmentIsLocal");
-                    RaisePropertyChanged("SelectedMarkTextAlignmentIndex");
+                    RaisePropertyChanged(nameof(MarkTextAlignmentIsLocal));
+                    RaisePropertyChanged(nameof(SelectedMarkTextAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2613,7 +2612,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextAlignment = (DiagramHorizontalAlignment)(value);
-                    RaisePropertyChanged("SelectedMarkTextAlignmentIndex");
+                    RaisePropertyChanged(nameof(SelectedMarkTextAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2641,8 +2640,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextVisibleIsLocal = value;
-                    RaisePropertyChanged("MarkTextVisibleIsLocal");
-                    RaisePropertyChanged("MarkTextVisible");
+                    RaisePropertyChanged(nameof(MarkTextVisibleIsLocal));
+                    RaisePropertyChanged(nameof(MarkTextVisible));
                 }
                 catch (Exception ex)
                 {
@@ -2678,7 +2677,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextVisible = value;
-                    RaisePropertyChanged("MarkTextVisible");
+                    RaisePropertyChanged(nameof(MarkTextVisible));
                 }
                 catch (Exception ex)
                 {
@@ -2698,8 +2697,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextColorIsLocal = value;
-                    RaisePropertyChanged("MarkTextColorIsLocal");
-                    RaisePropertyChanged("MarkTextColor");
+                    RaisePropertyChanged(nameof(MarkTextColorIsLocal));
+                    RaisePropertyChanged(nameof(MarkTextColor));
                 }
                 catch (Exception ex)
                 {
@@ -2738,7 +2737,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         MarkStyle.MarkTextColor = value;
                         ObservableEnums.SortedInsert(Colors, MarkTextColor);
-                        RaisePropertyChanged("MarkTextColor");
+                        RaisePropertyChanged(nameof(MarkTextColor));
                     }
                 }
                 catch (Exception ex)
@@ -2759,8 +2758,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextOpacityIsLocal = value;
-                    RaisePropertyChanged("MarkTextOpacityIsLocal");
-                    RaisePropertyChanged("MarkTextOpacity");
+                    RaisePropertyChanged(nameof(MarkTextOpacityIsLocal));
+                    RaisePropertyChanged(nameof(MarkTextOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -2796,7 +2795,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextOpacity = value;
-                    RaisePropertyChanged("MarkTextOpacity");
+                    RaisePropertyChanged(nameof(MarkTextOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -2816,8 +2815,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkFontFamilyIsLocal = value;
-                    RaisePropertyChanged("MarkFontFamilyIsLocal");
-                    RaisePropertyChanged("MarkFontFamily");
+                    RaisePropertyChanged(nameof(MarkFontFamilyIsLocal));
+                    RaisePropertyChanged(nameof(MarkFontFamily));
                 }
                 catch (Exception ex)
                 {
@@ -2856,7 +2855,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         MarkStyle.MarkFontFamily = value;
                         ObservableEnums.SortedInsert(FontFamilies, MarkFontFamily);
-                        RaisePropertyChanged("MarkFontFamily");
+                        RaisePropertyChanged(nameof(MarkFontFamily));
                     }
                 }
                 catch (Exception ex)
@@ -2877,8 +2876,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextStyleIsLocal = value;
-                    RaisePropertyChanged("MarkTextStyleIsLocal");
-                    RaisePropertyChanged("SelectedMarkTextStyleIndex");
+                    RaisePropertyChanged(nameof(MarkTextStyleIsLocal));
+                    RaisePropertyChanged(nameof(SelectedMarkTextStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2914,7 +2913,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextStyle = (DiagramTextStyle)(value);
-                    RaisePropertyChanged("SelectedMarkTextStyleIndex");
+                    RaisePropertyChanged(nameof(SelectedMarkTextStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2942,8 +2941,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextSizeRatioIsLocal = value;
-                    RaisePropertyChanged("MarkTextSizeRatioIsLocal");
-                    RaisePropertyChanged("MarkTextSizeRatio");
+                    RaisePropertyChanged(nameof(MarkTextSizeRatioIsLocal));
+                    RaisePropertyChanged(nameof(MarkTextSizeRatio));
                 }
                 catch (Exception ex)
                 {
@@ -2979,7 +2978,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextSizeRatio = value;
-                    RaisePropertyChanged("MarkTextSizeRatio");
+                    RaisePropertyChanged(nameof(MarkTextSizeRatio));
                 }
                 catch (Exception ex)
                 {
@@ -3023,8 +3022,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextAlignmentIsLocal = value;
-                    RaisePropertyChanged("FretLabelTextAlignmentIsLocal");
-                    RaisePropertyChanged("SelectedFretLabelTextAlignmentIndex");
+                    RaisePropertyChanged(nameof(FretLabelTextAlignmentIsLocal));
+                    RaisePropertyChanged(nameof(SelectedFretLabelTextAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3060,7 +3059,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextAlignment = (DiagramHorizontalAlignment)(value);
-                    RaisePropertyChanged("SelectedFretLabelTextAlignmentIndex");
+                    RaisePropertyChanged(nameof(SelectedFretLabelTextAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3088,8 +3087,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextVisibleIsLocal = value;
-                    RaisePropertyChanged("FretLabelTextVisibleIsLocal");
-                    RaisePropertyChanged("FretLabelTextVisible");
+                    RaisePropertyChanged(nameof(FretLabelTextVisibleIsLocal));
+                    RaisePropertyChanged(nameof(FretLabelTextVisible));
                 }
                 catch (Exception ex)
                 {
@@ -3125,7 +3124,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextVisible = value;
-                    RaisePropertyChanged("FretLabelTextVisible");
+                    RaisePropertyChanged(nameof(FretLabelTextVisible));
                 }
                 catch (Exception ex)
                 {
@@ -3145,8 +3144,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelGridPaddingIsLocal = value;
-                    RaisePropertyChanged("FretLabelGridPaddingIsLocal");
-                    RaisePropertyChanged("FretLabelGridPadding");
+                    RaisePropertyChanged(nameof(FretLabelGridPaddingIsLocal));
+                    RaisePropertyChanged(nameof(FretLabelGridPadding));
                 }
                 catch (Exception ex)
                 {
@@ -3182,7 +3181,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelGridPadding = value;
-                    RaisePropertyChanged("FretLabelGridPadding");
+                    RaisePropertyChanged(nameof(FretLabelGridPadding));
                 }
                 catch (Exception ex)
                 {
@@ -3214,8 +3213,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextColorIsLocal = value;
-                    RaisePropertyChanged("FretLabelTextColorIsLocal");
-                    RaisePropertyChanged("FretLabelTextColor");
+                    RaisePropertyChanged(nameof(FretLabelTextColorIsLocal));
+                    RaisePropertyChanged(nameof(FretLabelTextColor));
                 }
                 catch (Exception ex)
                 {
@@ -3254,7 +3253,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Style.FretLabelTextColor = value;
                         ObservableEnums.SortedInsert(Colors, FretLabelTextColor);
-                        RaisePropertyChanged("FretLabelTextColor");
+                        RaisePropertyChanged(nameof(FretLabelTextColor));
                     }
                 }
                 catch (Exception ex)
@@ -3275,8 +3274,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextOpacityIsLocal = value;
-                    RaisePropertyChanged("FretLabelTextOpacityIsLocal");
-                    RaisePropertyChanged("FretLabelTextOpacity");
+                    RaisePropertyChanged(nameof(FretLabelTextOpacityIsLocal));
+                    RaisePropertyChanged(nameof(FretLabelTextOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -3312,7 +3311,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextOpacity = value;
-                    RaisePropertyChanged("FretLabelTextOpacity");
+                    RaisePropertyChanged(nameof(FretLabelTextOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -3332,8 +3331,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelFontFamilyIsLocal = value;
-                    RaisePropertyChanged("FretLabelFontFamilyIsLocal");
-                    RaisePropertyChanged("FretLabelFontFamily");
+                    RaisePropertyChanged(nameof(FretLabelFontFamilyIsLocal));
+                    RaisePropertyChanged(nameof(FretLabelFontFamily));
                 }
                 catch (Exception ex)
                 {
@@ -3372,7 +3371,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Style.FretLabelFontFamily = value;
                         ObservableEnums.SortedInsert(FontFamilies, FretLabelFontFamily);
-                        RaisePropertyChanged("FretLabelFontFamily");
+                        RaisePropertyChanged(nameof(FretLabelFontFamily));
                     }
                 }
                 catch (Exception ex)
@@ -3393,8 +3392,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextStyleIsLocal = value;
-                    RaisePropertyChanged("FretLabelTextStyleIsLocal");
-                    RaisePropertyChanged("SelectedFretLabelTextStyleIndex");
+                    RaisePropertyChanged(nameof(FretLabelTextStyleIsLocal));
+                    RaisePropertyChanged(nameof(SelectedFretLabelTextStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3430,7 +3429,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextStyle = (DiagramTextStyle)(value);
-                    RaisePropertyChanged("SelectedFretLabelTextStyleIndex");
+                    RaisePropertyChanged(nameof(SelectedFretLabelTextStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3458,8 +3457,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextSizeRatioIsLocal = value;
-                    RaisePropertyChanged("FretLabelTextSizeRatioIsLocal");
-                    RaisePropertyChanged("FretLabelTextSizeRatio");
+                    RaisePropertyChanged(nameof(FretLabelTextSizeRatioIsLocal));
+                    RaisePropertyChanged(nameof(FretLabelTextSizeRatio));
                 }
                 catch (Exception ex)
                 {
@@ -3495,7 +3494,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextSizeRatio = value;
-                    RaisePropertyChanged("FretLabelTextSizeRatio");
+                    RaisePropertyChanged(nameof(FretLabelTextSizeRatio));
                 }
                 catch (Exception ex)
                 {
@@ -3515,8 +3514,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextWidthRatioIsLocal = value;
-                    RaisePropertyChanged("FretLabelTextWidthRatioIsLocal");
-                    RaisePropertyChanged("FretLabelTextWidthRatio");
+                    RaisePropertyChanged(nameof(FretLabelTextWidthRatioIsLocal));
+                    RaisePropertyChanged(nameof(FretLabelTextWidthRatio));
                 }
                 catch (Exception ex)
                 {
@@ -3552,7 +3551,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextWidthRatio = value;
-                    RaisePropertyChanged("FretLabelTextWidthRatio");
+                    RaisePropertyChanged(nameof(FretLabelTextWidthRatio));
                 }
                 catch (Exception ex)
                 {
@@ -3596,8 +3595,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreVisibleIsLocal = value;
-                    RaisePropertyChanged("BarreVisibleIsLocal");
-                    RaisePropertyChanged("BarreVisible");
+                    RaisePropertyChanged(nameof(BarreVisibleIsLocal));
+                    RaisePropertyChanged(nameof(BarreVisible));
                 }
                 catch (Exception ex)
                 {
@@ -3633,7 +3632,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreVisible = value;
-                    RaisePropertyChanged("BarreVisible");
+                    RaisePropertyChanged(nameof(BarreVisible));
                 }
                 catch (Exception ex)
                 {
@@ -3653,8 +3652,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreVerticalAlignmentIsLocal = value;
-                    RaisePropertyChanged("BarreVerticalAlignmentIsLocal");
-                    RaisePropertyChanged("SelectedBarreVerticalAlignmentIndex");
+                    RaisePropertyChanged(nameof(BarreVerticalAlignmentIsLocal));
+                    RaisePropertyChanged(nameof(SelectedBarreVerticalAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3690,7 +3689,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreVerticalAlignment = (DiagramVerticalAlignment)(value);
-                    RaisePropertyChanged("SelectedBarreVerticalAlignmentIndex");
+                    RaisePropertyChanged(nameof(SelectedBarreVerticalAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3718,8 +3717,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreStackIsLocal = value;
-                    RaisePropertyChanged("BarreStackIsLocal");
-                    RaisePropertyChanged("SelectedBarreStackIndex");
+                    RaisePropertyChanged(nameof(BarreStackIsLocal));
+                    RaisePropertyChanged(nameof(SelectedBarreStackIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3755,7 +3754,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreStack = (DiagramBarreStack)(value);
-                    RaisePropertyChanged("SelectedBarreStackIndex");
+                    RaisePropertyChanged(nameof(SelectedBarreStackIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3795,8 +3794,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreArcRatioIsLocal = value;
-                    RaisePropertyChanged("BarreArcRatioIsLocal");
-                    RaisePropertyChanged("BarreArcRatio");
+                    RaisePropertyChanged(nameof(BarreArcRatioIsLocal));
+                    RaisePropertyChanged(nameof(BarreArcRatio));
                 }
                 catch (Exception ex)
                 {
@@ -3832,7 +3831,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreArcRatio = value;
-                    RaisePropertyChanged("BarreArcRatio");
+                    RaisePropertyChanged(nameof(BarreArcRatio));
                 }
                 catch (Exception ex)
                 {
@@ -3852,8 +3851,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreOpacityIsLocal = value;
-                    RaisePropertyChanged("BarreOpacityIsLocal");
-                    RaisePropertyChanged("BarreOpacity");
+                    RaisePropertyChanged(nameof(BarreOpacityIsLocal));
+                    RaisePropertyChanged(nameof(BarreOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -3889,7 +3888,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreOpacity = value;
-                    RaisePropertyChanged("BarreOpacity");
+                    RaisePropertyChanged(nameof(BarreOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -3909,8 +3908,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreLineColorIsLocal = value;
-                    RaisePropertyChanged("BarreLineColorIsLocal");
-                    RaisePropertyChanged("BarreLineColor");
+                    RaisePropertyChanged(nameof(BarreLineColorIsLocal));
+                    RaisePropertyChanged(nameof(BarreLineColor));
                 }
                 catch (Exception ex)
                 {
@@ -3946,7 +3945,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreLineColor = value;
-                    RaisePropertyChanged("BarreLineColor");
+                    RaisePropertyChanged(nameof(BarreLineColor));
                 }
                 catch (Exception ex)
                 {
@@ -3966,8 +3965,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreLineThicknessIsLocal = value;
-                    RaisePropertyChanged("BarreLineThicknessIsLocal");
-                    RaisePropertyChanged("BarreLineThickness");
+                    RaisePropertyChanged(nameof(BarreLineThicknessIsLocal));
+                    RaisePropertyChanged(nameof(BarreLineThickness));
                 }
                 catch (Exception ex)
                 {
@@ -4003,7 +4002,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreLineThickness = value;
-                    RaisePropertyChanged("BarreLineThickness");
+                    RaisePropertyChanged(nameof(BarreLineThickness));
                 }
                 catch (Exception ex)
                 {
@@ -4104,7 +4103,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                                 if (confirmed)
                                 {
                                     Style.Clear();
-                                    RaisePropertyChanged("");
+                                    RaisePropertyChanged();
                                 }
                             }
                             catch (Exception ex)
@@ -4136,7 +4135,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _postEditCallback = value ?? throw new ArgumentNullException();
-                RaisePropertyChanged("PostEditCallback");
+                RaisePropertyChanged(nameof(PostEditCallback));
             }
         }
         private Action<bool> _postEditCallback;
@@ -4200,12 +4199,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void ObservableDiagramStyle_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName != "Summary")
+            if (e.PropertyName != nameof(Summary))
             {
-                RaisePropertyChanged("Summary");
-                if (e.PropertyName != "Reset" && e.PropertyName != "LocalCount")
+                RaisePropertyChanged(nameof(Summary));
+                if (e.PropertyName != nameof(Reset) && e.PropertyName != nameof(LocalCount))
                 {
-                    RaisePropertyChanged("LocalCount");
+                    RaisePropertyChanged(nameof(LocalCount));
                     Reset.RaiseCanExecuteChanged();
                 }
             }
@@ -4213,34 +4212,34 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void MarkStyle_MarkTypeChanged(object sender, EventArgs e)
         {
-            RaisePropertyChanged("MarkShapeIsLocal");
-            RaisePropertyChanged("SelectedMarkShapeIndex");
-            RaisePropertyChanged("MarkVisibleIsLocal");
-            RaisePropertyChanged("MarkVisible");
-            RaisePropertyChanged("MarkColorIsLocal");
-            RaisePropertyChanged("MarkColor");
-            RaisePropertyChanged("MarkOpacityIsLocal");
-            RaisePropertyChanged("MarkOpacity");
-            RaisePropertyChanged("MarkRadiusRatioIsLocal");
-            RaisePropertyChanged("MarkRadiusRatio");
-            RaisePropertyChanged("MarkBorderColorIsLocal");
-            RaisePropertyChanged("MarkBorderColor");
-            RaisePropertyChanged("MarkBorderThicknessIsLocal");
-            RaisePropertyChanged("MarkBorderThickness");
-            RaisePropertyChanged("MarkTextAlignmentIsLocal");
-            RaisePropertyChanged("SelectedMarkTextAlignmentIndex");
-            RaisePropertyChanged("MarkTextVisibleIsLocal");
-            RaisePropertyChanged("MarkTextVisible");
-            RaisePropertyChanged("MarkTextColorIsLocal");
-            RaisePropertyChanged("MarkTextColor");
-            RaisePropertyChanged("MarkTextOpacityIsLocal");
-            RaisePropertyChanged("MarkTextOpacity");
-            RaisePropertyChanged("MarkFontFamilyIsLocal");
-            RaisePropertyChanged("MarkFontFamily");
-            RaisePropertyChanged("MarkTextStyleIsLocal");
-            RaisePropertyChanged("SelectedMarkTextStyleIndex");
-            RaisePropertyChanged("MarkTextSizeRatioIsLocal");
-            RaisePropertyChanged("MarkTextSizeRatio");
+            RaisePropertyChanged(nameof(MarkShapeIsLocal));
+            RaisePropertyChanged(nameof(SelectedMarkShapeIndex));
+            RaisePropertyChanged(nameof(MarkVisibleIsLocal));
+            RaisePropertyChanged(nameof(MarkVisible));
+            RaisePropertyChanged(nameof(MarkColorIsLocal));
+            RaisePropertyChanged(nameof(MarkColor));
+            RaisePropertyChanged(nameof(MarkOpacityIsLocal));
+            RaisePropertyChanged(nameof(MarkOpacity));
+            RaisePropertyChanged(nameof(MarkRadiusRatioIsLocal));
+            RaisePropertyChanged(nameof(MarkRadiusRatio));
+            RaisePropertyChanged(nameof(MarkBorderColorIsLocal));
+            RaisePropertyChanged(nameof(MarkBorderColor));
+            RaisePropertyChanged(nameof(MarkBorderThicknessIsLocal));
+            RaisePropertyChanged(nameof(MarkBorderThickness));
+            RaisePropertyChanged(nameof(MarkTextAlignmentIsLocal));
+            RaisePropertyChanged(nameof(SelectedMarkTextAlignmentIndex));
+            RaisePropertyChanged(nameof(MarkTextVisibleIsLocal));
+            RaisePropertyChanged(nameof(MarkTextVisible));
+            RaisePropertyChanged(nameof(MarkTextColorIsLocal));
+            RaisePropertyChanged(nameof(MarkTextColor));
+            RaisePropertyChanged(nameof(MarkTextOpacityIsLocal));
+            RaisePropertyChanged(nameof(MarkTextOpacity));
+            RaisePropertyChanged(nameof(MarkFontFamilyIsLocal));
+            RaisePropertyChanged(nameof(MarkFontFamily));
+            RaisePropertyChanged(nameof(MarkTextStyleIsLocal));
+            RaisePropertyChanged(nameof(SelectedMarkTextStyleIndex));
+            RaisePropertyChanged(nameof(MarkTextSizeRatioIsLocal));
+            RaisePropertyChanged(nameof(MarkTextSizeRatio));
         }
 
         public override string ToString()

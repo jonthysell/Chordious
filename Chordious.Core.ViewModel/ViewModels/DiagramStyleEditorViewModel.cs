@@ -126,7 +126,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _applyChangesOnClose = value;
-                RaisePropertyChanged("ApplyChangesOnClose");
+                RaisePropertyChanged(nameof(ApplyChangesOnClose));
             }
         }
         private bool _applyChangesOnClose = false;
@@ -140,8 +140,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _dirty = value;
-                RaisePropertyChanged("Dirty");
-                RaisePropertyChanged("Title");
+                RaisePropertyChanged(nameof(Dirty));
+                RaisePropertyChanged(nameof(Title));
                 Apply.RaiseCanExecuteChanged();
             }
         }
@@ -156,7 +156,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _diagramStyleChanged = value;
-                RaisePropertyChanged("DiagramStyleChanged");
+                RaisePropertyChanged(nameof(DiagramStyleChanged));
             }
         }
         private bool _diagramStyleChanged = false;
@@ -199,8 +199,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
 
                 _selectedStyleIndex = value;
-                RaisePropertyChanged("SelectedStyleIndex");
-                RaisePropertyChanged("Style");
+                RaisePropertyChanged(nameof(SelectedStyleIndex));
+                RaisePropertyChanged(nameof(Style));
             }
         }
         private int _selectedStyleIndex;
@@ -217,8 +217,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
 
             // Add original
-            _originalStyles = new ObservableCollection<ObservableDiagramStyle>();
-            _originalStyles.Add(diagramStyle);
+            _originalStyles = new ObservableCollection<ObservableDiagramStyle>
+            {
+                diagramStyle
+            };
 
             // Recursively parents up the tree
             DiagramStyle style = diagramStyle.Style.Parent;

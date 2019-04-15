@@ -60,7 +60,7 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 EditorRenderBackground = (Background)(value);
-                RaisePropertyChanged("SelectedEditorRenderBackgroundIndex");
+                RaisePropertyChanged(nameof(SelectedEditorRenderBackgroundIndex));
             }
         }
 
@@ -87,7 +87,7 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 AppVM.SetSetting("diagrameditor.renderbackground", value);
-                RaisePropertyChanged("EditorRenderBackground");
+                RaisePropertyChanged(nameof(EditorRenderBackground));
                 ObservableDiagram.Refresh();
             }
         }

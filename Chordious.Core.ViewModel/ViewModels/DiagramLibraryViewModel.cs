@@ -79,22 +79,22 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
 
                 _selectedNode = value;
-                RaisePropertyChanged("SelectedNode");
-                RaisePropertyChanged("NodeIsSelected");
+                RaisePropertyChanged(nameof(SelectedNode));
+                RaisePropertyChanged(nameof(NodeIsSelected));
                 CreateNode.RaiseCanExecuteChanged();
-                RaisePropertyChanged("CreateNodeLabel");
+                RaisePropertyChanged(nameof(CreateNodeLabel));
                 EditNode.RaiseCanExecuteChanged();
-                RaisePropertyChanged("EditNodeLabel");
+                RaisePropertyChanged(nameof(EditNodeLabel));
                 DeleteNode.RaiseCanExecuteChanged();
-                RaisePropertyChanged("DeleteNodeLabel");
+                RaisePropertyChanged(nameof(DeleteNodeLabel));
                 CloneNode.RaiseCanExecuteChanged();
-                RaisePropertyChanged("CloneNodeLabel");
-                RaisePropertyChanged("CopyNode");
-                RaisePropertyChanged("CopyNodeLabel");
-                RaisePropertyChanged("MergeNode");
-                RaisePropertyChanged("MergeNodeLabel");
-                RaisePropertyChanged("EditNodeStyle");
-                RaisePropertyChanged("EditNodeStyleLabel");
+                RaisePropertyChanged(nameof(CloneNodeLabel));
+                RaisePropertyChanged(nameof(CopyNode));
+                RaisePropertyChanged(nameof(CopyNodeLabel));
+                RaisePropertyChanged(nameof(MergeNode));
+                RaisePropertyChanged(nameof(MergeNodeLabel));
+                RaisePropertyChanged(nameof(EditNodeStyle));
+                RaisePropertyChanged(nameof(EditNodeStyleLabel));
             }
         }
         private ObservableDiagramLibraryNode _selectedNode;
@@ -573,7 +573,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         private void ReloadNodes()
         {
             _firstLoad = true;
-            RaisePropertyChanged("Nodes");
+            RaisePropertyChanged(nameof(Nodes));
         }
 
         private void RedrawNodes(bool reloadFirst)

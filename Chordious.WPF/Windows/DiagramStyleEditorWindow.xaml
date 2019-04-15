@@ -578,8 +578,7 @@
                                               VerticalContentAlignment="Center"
                                               Width="80" />
                                 </StackPanel>
-                                <StackPanel IsEnabled="{Binding Style.IsTitleTextSizeModRatioEnabled}"
-                                            Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal">
                                     <CheckBox Content="{Binding Style.GridNutRatioLabel, FallbackValue=RATIO}"
                                               Height="25"
                                               IsChecked="{Binding Style.GridNutRatioIsLocal}"

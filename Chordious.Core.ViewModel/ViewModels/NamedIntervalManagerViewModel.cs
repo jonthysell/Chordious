@@ -73,17 +73,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _namedInterval = value;
-                RaisePropertyChanged("SelectedNamedInterval");
-                RaisePropertyChanged("NamedIntervalIsSelected");
+                RaisePropertyChanged(nameof(SelectedNamedInterval));
+                RaisePropertyChanged(nameof(NamedIntervalIsSelected));
                 EditNamedInterval.RaiseCanExecuteChanged();
-                RaisePropertyChanged("EditNamedIntervalLabel");
-                RaisePropertyChanged("EditNamedIntervalToolTip");
+                RaisePropertyChanged(nameof(EditNamedIntervalLabel));
+                RaisePropertyChanged(nameof(EditNamedIntervalToolTip));
                 DeleteNamedInterval.RaiseCanExecuteChanged();
-                RaisePropertyChanged("DeleteNamedIntervalLabel");
-                RaisePropertyChanged("DeleteNamedIntervalToolTip");
+                RaisePropertyChanged(nameof(DeleteNamedIntervalLabel));
+                RaisePropertyChanged(nameof(DeleteNamedIntervalToolTip));
                 AddNamedInterval.RaiseCanExecuteChanged();
-                RaisePropertyChanged("AddNamedIntervalLabel");
-                RaisePropertyChanged("AddNamedIntervalToolTip");
+                RaisePropertyChanged(nameof(AddNamedIntervalLabel));
+                RaisePropertyChanged(nameof(AddNamedIntervalToolTip));
             }
         }
         private ObservableNamedInterval _namedInterval = null;
@@ -106,7 +106,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     SelectedNamedInterval = DefaultNamedIntervals[_selectedDefaultNamedIntervalIndex];
                     SelectedUserNamedIntervalIndex = -1; // Unselect user named interval
                 }
-                RaisePropertyChanged("SelectedDefaultNamedIntervalIndex");
+                RaisePropertyChanged(nameof(SelectedDefaultNamedIntervalIndex));
             }
         }
         private int _selectedDefaultNamedIntervalIndex = -1;
@@ -120,7 +120,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _defaultNamedIntervals = value;
-                RaisePropertyChanged("DefaultNamedIntervals");
+                RaisePropertyChanged(nameof(DefaultNamedIntervals));
             }
         }
         private ObservableCollection<ObservableNamedInterval> _defaultNamedIntervals;
@@ -143,7 +143,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     SelectedNamedInterval = UserNamedIntervals[_selectedUserNamedIntervalIndex];
                     SelectedDefaultNamedIntervalIndex = -1; // Unselect default named interval
                 }
-                RaisePropertyChanged("SelectedUserNamedIntervalIndex");
+                RaisePropertyChanged(nameof(SelectedUserNamedIntervalIndex));
             }
         }
         private int _selectedUserNamedIntervalIndex = -1;
@@ -157,7 +157,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _userNamedIntervals = value;
-                RaisePropertyChanged("UserNamedIntervals");
+                RaisePropertyChanged(nameof(UserNamedIntervals));
             }
         }
         private ObservableCollection<ObservableNamedInterval> _userNamedIntervals;

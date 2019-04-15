@@ -93,12 +93,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged("SelectedInstrument");
-                    RaisePropertyChanged("InstrumentIsSelected");
+                    RaisePropertyChanged(nameof(SelectedInstrument));
+                    RaisePropertyChanged(nameof(InstrumentIsSelected));
                     EditInstrument.RaiseCanExecuteChanged();
-                    RaisePropertyChanged("EditInstrumentLabel");
+                    RaisePropertyChanged(nameof(EditInstrumentLabel));
                     DeleteInstrument.RaiseCanExecuteChanged();
-                    RaisePropertyChanged("DeleteInstrumentLabel");
+                    RaisePropertyChanged(nameof(DeleteInstrumentLabel));
                     AddTuning.RaiseCanExecuteChanged();
                 }
             }
@@ -139,7 +139,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     SelectedInstrument = DefaultInstruments[_selectedDefaultInstrumentIndex];
                     SelectedUserInstrumentIndex = -1; // Unselect user instrument
                 }
-                RaisePropertyChanged("SelectedDefaultInstrumentIndex");
+                RaisePropertyChanged(nameof(SelectedDefaultInstrumentIndex));
             }
         }
         private int _selectedDefaultInstrumentIndex = -1;
@@ -153,7 +153,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _defaultInstruments = value;
-                RaisePropertyChanged("DefaultInstruments");
+                RaisePropertyChanged(nameof(DefaultInstruments));
             }
         }
         private ObservableCollection<ObservableInstrument> _defaultInstruments;
@@ -192,7 +192,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     SelectedInstrument = UserInstruments[_selectedUserInstrumentIndex];
                     SelectedDefaultInstrumentIndex = -1; // Unselect default instrument
                 }
-                RaisePropertyChanged("SelectedUserInstrumentIndex");
+                RaisePropertyChanged(nameof(SelectedUserInstrumentIndex));
             }
         }
         private int _selectedUserInstrumentIndex = -1;
@@ -206,7 +206,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _userInstruments = value;
-                RaisePropertyChanged("UserInstruments");
+                RaisePropertyChanged(nameof(UserInstruments));
             }
         }
         private ObservableCollection<ObservableInstrument> _userInstruments;
@@ -253,12 +253,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged("SelectedTuning");
-                    RaisePropertyChanged("TuningIsSelected");
+                    RaisePropertyChanged(nameof(SelectedTuning));
+                    RaisePropertyChanged(nameof(TuningIsSelected));
                     EditTuning.RaiseCanExecuteChanged();
-                    RaisePropertyChanged("EditTuningLabel");
+                    RaisePropertyChanged(nameof(EditTuningLabel));
                     DeleteTuning.RaiseCanExecuteChanged();
-                    RaisePropertyChanged("DeleteTuningLabel");
+                    RaisePropertyChanged(nameof(DeleteTuningLabel));
                 }
             }
         }
@@ -273,7 +273,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _tunings = value;
-                RaisePropertyChanged("Tunings");
+                RaisePropertyChanged(nameof(Tunings));
             }
         }
         private ObservableCollection<ObservableTuning> _tunings;

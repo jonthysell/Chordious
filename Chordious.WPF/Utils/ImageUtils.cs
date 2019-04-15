@@ -451,11 +451,12 @@ namespace com.jonthysell.Chordious.WPF
 
         public static ObservableCollection<string> GetBackgrounds()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(Strings.BackgroundNoneFriendlyValue);
-            collection.Add(Strings.BackgroundWhiteFriendlyValue);
-            collection.Add(Strings.BackgroundTransparentFriendlyValue);
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                Strings.BackgroundNoneFriendlyValue,
+                Strings.BackgroundWhiteFriendlyValue,
+                Strings.BackgroundTransparentFriendlyValue
+            };
 
             return collection;
         }

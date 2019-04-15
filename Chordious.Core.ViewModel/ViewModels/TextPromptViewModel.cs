@@ -62,7 +62,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _text = value;
-                RaisePropertyChanged("Text");
+                RaisePropertyChanged(nameof(Text));
                 Accept.RaiseCanExecuteChanged();
             }
         }
@@ -77,8 +77,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _allowBlank = value;
-                RaisePropertyChanged("AllowBlank");
-                RaisePropertyChanged("Accept");
+                RaisePropertyChanged(nameof(AllowBlank));
+                RaisePropertyChanged(nameof(Accept));
             }
         }
         private bool _allowBlank;

@@ -188,7 +188,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _applyChangesOnClose = value;
-                RaisePropertyChanged("ApplyChangesOnClose");
+                RaisePropertyChanged(nameof(ApplyChangesOnClose));
             }
         }
         private bool _applyChangesOnClose = false;
@@ -202,8 +202,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _dirty = value;
-                RaisePropertyChanged("Dirty");
-                RaisePropertyChanged("Title");
+                RaisePropertyChanged(nameof(Dirty));
+                RaisePropertyChanged(nameof(Title));
                 Apply.RaiseCanExecuteChanged();
             }
         }
@@ -218,7 +218,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _itemsChanged = value;
-                RaisePropertyChanged("ItemsChanged");
+                RaisePropertyChanged(nameof(ItemsChanged));
             }
         }
         private bool _itemsChanged = false;
@@ -295,7 +295,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             LocalBuffer.Clear();
             Dirty = false;
             ItemsChanged = true;
-            RaisePropertyChanged("Items");
+            RaisePropertyChanged(nameof(Items));
         }
 
         private void ApplyClears()
@@ -330,8 +330,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     AdvancedDataVM.Set(Key, value);
                 }
-                RaisePropertyChanged("Value");
-                RaisePropertyChanged("Level");
+                RaisePropertyChanged(nameof(Value));
+                RaisePropertyChanged(nameof(Level));
             }
         }
 

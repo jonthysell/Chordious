@@ -67,66 +67,72 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public static ObservableCollection<string> GetDiagramLabelStyles()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramLabelStyle.Regular));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramLabelStyle.ChordName));
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                EnumUtils.GetFriendlyValue(DiagramLabelStyle.Regular),
+                EnumUtils.GetFriendlyValue(DiagramLabelStyle.ChordName)
+            };
 
             return collection;
         }
 
         public static ObservableCollection<string> GetOrientations()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramOrientation.UpDown));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramOrientation.LeftRight));
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                EnumUtils.GetFriendlyValue(DiagramOrientation.UpDown),
+                EnumUtils.GetFriendlyValue(DiagramOrientation.LeftRight)
+            };
 
             return collection;
         }
 
         public static ObservableCollection<string> GetLabelLayoutModels()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramLabelLayoutModel.Overlap));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramLabelLayoutModel.AddPaddingHorizontal));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramLabelLayoutModel.AddPaddingVertical));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramLabelLayoutModel.AddPaddingBoth));
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                EnumUtils.GetFriendlyValue(DiagramLabelLayoutModel.Overlap),
+                EnumUtils.GetFriendlyValue(DiagramLabelLayoutModel.AddPaddingHorizontal),
+                EnumUtils.GetFriendlyValue(DiagramLabelLayoutModel.AddPaddingVertical),
+                EnumUtils.GetFriendlyValue(DiagramLabelLayoutModel.AddPaddingBoth)
+            };
 
             return collection;
         }
 
         public static ObservableCollection<string> GetHorizontalAlignments()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramHorizontalAlignment.Left));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramHorizontalAlignment.Center));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramHorizontalAlignment.Right));
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                EnumUtils.GetFriendlyValue(DiagramHorizontalAlignment.Left),
+                EnumUtils.GetFriendlyValue(DiagramHorizontalAlignment.Center),
+                EnumUtils.GetFriendlyValue(DiagramHorizontalAlignment.Right)
+            };
 
             return collection;
         }
 
         public static ObservableCollection<string> GetVerticalAlignments()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramVerticalAlignment.Top));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramVerticalAlignment.Middle));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramVerticalAlignment.Bottom));
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                EnumUtils.GetFriendlyValue(DiagramVerticalAlignment.Top),
+                EnumUtils.GetFriendlyValue(DiagramVerticalAlignment.Middle),
+                EnumUtils.GetFriendlyValue(DiagramVerticalAlignment.Bottom)
+            };
 
             return collection;
         }
 
         public static ObservableCollection<string> GetTextStyles()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramTextStyle.Regular));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramTextStyle.Bold));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramTextStyle.Italic));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramTextStyle.BoldItalic));
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                EnumUtils.GetFriendlyValue(DiagramTextStyle.Regular),
+                EnumUtils.GetFriendlyValue(DiagramTextStyle.Bold),
+                EnumUtils.GetFriendlyValue(DiagramTextStyle.Italic),
+                EnumUtils.GetFriendlyValue(DiagramTextStyle.BoldItalic)
+            };
 
             return collection;
         }
@@ -145,70 +151,76 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public static ObservableCollection<string> GetMarkTypes()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkType.Normal));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkType.Muted));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkType.Root));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkType.Open));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkType.OpenRoot));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkType.Bottom));
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                EnumUtils.GetFriendlyValue(DiagramMarkType.Normal),
+                EnumUtils.GetFriendlyValue(DiagramMarkType.Muted),
+                EnumUtils.GetFriendlyValue(DiagramMarkType.Root),
+                EnumUtils.GetFriendlyValue(DiagramMarkType.Open),
+                EnumUtils.GetFriendlyValue(DiagramMarkType.OpenRoot),
+                EnumUtils.GetFriendlyValue(DiagramMarkType.Bottom)
+            };
 
             return collection;
         }
 
         public static ObservableCollection<string> GetMarkShapes()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkShape.None));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkShape.Circle));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkShape.Square));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkShape.Diamond));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramMarkShape.X));
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                EnumUtils.GetFriendlyValue(DiagramMarkShape.None),
+                EnumUtils.GetFriendlyValue(DiagramMarkShape.Circle),
+                EnumUtils.GetFriendlyValue(DiagramMarkShape.Square),
+                EnumUtils.GetFriendlyValue(DiagramMarkShape.Diamond),
+                EnumUtils.GetFriendlyValue(DiagramMarkShape.X)
+            };
 
             return collection;
         }
 
         public static ObservableCollection<string> GetBarreStacks()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramBarreStack.UnderMarks));
-            collection.Add(EnumUtils.GetFriendlyValue(DiagramBarreStack.OverMarks));
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                EnumUtils.GetFriendlyValue(DiagramBarreStack.UnderMarks),
+                EnumUtils.GetFriendlyValue(DiagramBarreStack.OverMarks)
+            };
 
             return collection;
         }
 
         public static ObservableCollection<string> GetBarreTypeOptions()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(EnumUtils.GetFriendlyValue(BarreTypeOption.None));
-            collection.Add(EnumUtils.GetFriendlyValue(BarreTypeOption.Partial));
-            collection.Add(EnumUtils.GetFriendlyValue(BarreTypeOption.Full));
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                EnumUtils.GetFriendlyValue(BarreTypeOption.None),
+                EnumUtils.GetFriendlyValue(BarreTypeOption.Partial),
+                EnumUtils.GetFriendlyValue(BarreTypeOption.Full)
+            };
 
             return collection;
         }
 
         public static ObservableCollection<string> GetMarkTextOptions()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(EnumUtils.GetFriendlyValue(MarkTextOption.None));
-            collection.Add(EnumUtils.GetFriendlyValue(MarkTextOption.ShowNote_ShowBoth));
-            collection.Add(EnumUtils.GetFriendlyValue(MarkTextOption.ShowNote_PreferFlats));
-            collection.Add(EnumUtils.GetFriendlyValue(MarkTextOption.ShowNote_PreferSharps));
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                EnumUtils.GetFriendlyValue(MarkTextOption.None),
+                EnumUtils.GetFriendlyValue(MarkTextOption.ShowNote_ShowBoth),
+                EnumUtils.GetFriendlyValue(MarkTextOption.ShowNote_PreferFlats),
+                EnumUtils.GetFriendlyValue(MarkTextOption.ShowNote_PreferSharps)
+            };
 
             return collection;
         }
 
         public static ObservableCollection<string> GetFretLabelSides()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(EnumUtils.GetFriendlyValue(FretLabelSide.Left));
-            collection.Add(EnumUtils.GetFriendlyValue(FretLabelSide.Right));
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                EnumUtils.GetFriendlyValue(FretLabelSide.Left),
+                EnumUtils.GetFriendlyValue(FretLabelSide.Right)
+            };
 
             return collection;
         }

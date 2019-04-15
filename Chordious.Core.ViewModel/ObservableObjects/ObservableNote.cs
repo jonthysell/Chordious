@@ -68,7 +68,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 FullNote.Note = (Core.Note)(value);
-                RaisePropertyChanged("SelectedNoteIndex");
+                RaisePropertyChanged(nameof(SelectedNoteIndex));
             }
         }
 
@@ -105,7 +105,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 FullNote.Octave = value;
-                RaisePropertyChanged("Octave");
+                RaisePropertyChanged(nameof(Octave));
             }
         }
 

@@ -91,7 +91,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     _collectionName = lastValue;
                     ExceptionUtils.HandleException(ex);
                 }
-                RaisePropertyChanged("CollectionName");
+                RaisePropertyChanged(nameof(CollectionName));
                 Accept.RaiseCanExecuteChanged();
             }
         }

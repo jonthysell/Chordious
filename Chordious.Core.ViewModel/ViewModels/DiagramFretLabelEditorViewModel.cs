@@ -90,7 +90,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     _text = value;
                     Dirty = true;
-                    RaisePropertyChanged("Text");
+                    RaisePropertyChanged(nameof(Text));
                 }
                 catch (Exception ex)
                 {
@@ -175,7 +175,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _applyChangesOnClose = value;
-                RaisePropertyChanged("ApplyChangesOnClose");
+                RaisePropertyChanged(nameof(ApplyChangesOnClose));
             }
         }
         private bool _applyChangesOnClose = false;
@@ -189,8 +189,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _dirty = value;
-                RaisePropertyChanged("Dirty");
-                RaisePropertyChanged("Title");
+                RaisePropertyChanged(nameof(Dirty));
+                RaisePropertyChanged(nameof(Title));
                 Apply.RaiseCanExecuteChanged();
             }
         }
@@ -205,7 +205,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _diagramStyleChanged = value;
-                RaisePropertyChanged("DiagramStyleChanged");
+                RaisePropertyChanged(nameof(DiagramStyleChanged));
             }
         }
         private bool _diagramStyleChanged = false;

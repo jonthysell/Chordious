@@ -336,7 +336,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _applyChangesOnClose = value;
-                RaisePropertyChanged("ApplyChangesOnClose");
+                RaisePropertyChanged(nameof(ApplyChangesOnClose));
             }
         }
         private bool _applyChangesOnClose = false;
@@ -350,8 +350,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _dirty = value;
-                RaisePropertyChanged("Dirty");
-                RaisePropertyChanged("Title");
+                RaisePropertyChanged(nameof(Dirty));
+                RaisePropertyChanged(nameof(Title));
                 Apply.RaiseCanExecuteChanged();
             }
         }
@@ -366,7 +366,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _diagramChanged = value;
-                RaisePropertyChanged("DiagramChanged");
+                RaisePropertyChanged(nameof(DiagramChanged));
             }
         }
         private bool _diagramChanged = false;
@@ -406,9 +406,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             if (!ObservableDiagram.IsCursorProperty(e.PropertyName))
             {
                 Dirty = true;
-                if (e.PropertyName == "Style")
+                if (e.PropertyName == nameof(Style))
                 {
-                    RaisePropertyChanged("Style");
+                    RaisePropertyChanged(nameof(Style));
                 }
             }
         }

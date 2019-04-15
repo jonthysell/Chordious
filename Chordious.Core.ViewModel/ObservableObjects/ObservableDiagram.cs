@@ -62,7 +62,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _imageObject = value;
-                RaisePropertyChanged("ImageObject");
+                RaisePropertyChanged(nameof(ImageObject));
             }
         }
         private object _imageObject;
@@ -144,7 +144,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.NumFrets = value;
-                    RaisePropertyChanged("NumFrets");
+                    RaisePropertyChanged(nameof(NumFrets));
                     Refresh();
                 }
                 catch (Exception ex)
@@ -181,7 +181,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.NumStrings = value;
-                    RaisePropertyChanged("NumStrings");
+                    RaisePropertyChanged(nameof(NumStrings));
                     Refresh();
                 }
                 catch (Exception ex)
@@ -222,7 +222,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 try
                 {
                     Diagram.Title = value;
-                    RaisePropertyChanged("Title");
+                    RaisePropertyChanged(nameof(Title));
                     Refresh();
                 }
                 catch (Exception ex)
@@ -907,7 +907,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _cursorX = value;
-                RaisePropertyChanged("CursorX");
+                RaisePropertyChanged(nameof(CursorX));
                 RefreshCursor();
             }
         }
@@ -922,7 +922,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _cursorY = value;
-                RaisePropertyChanged("CursorY");
+                RaisePropertyChanged(nameof(CursorY));
                 RefreshCursor();
             }
         }
@@ -948,37 +948,37 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void RefreshCursor()
         {
-            RaisePropertyChanged("CursorInGrid");
-            RaisePropertyChanged("ValidCommandsAtCursor");
+            RaisePropertyChanged(nameof(CursorInGrid));
+            RaisePropertyChanged(nameof(ValidCommandsAtCursor));
 
             EditElement.RaiseCanExecuteChanged();
 
             AddMark.RaiseCanExecuteChanged();
-            RaisePropertyChanged("CanAddMark");
+            RaisePropertyChanged(nameof(CanAddMark));
 
             EditMark.RaiseCanExecuteChanged();
-            RaisePropertyChanged("CanEditMark");
+            RaisePropertyChanged(nameof(CanEditMark));
 
             RemoveMark.RaiseCanExecuteChanged();
-            RaisePropertyChanged("CanRemoveMark");
+            RaisePropertyChanged(nameof(CanRemoveMark));
 
             AddFretLabel.RaiseCanExecuteChanged();
-            RaisePropertyChanged("CanAddFretLabel");
+            RaisePropertyChanged(nameof(CanAddFretLabel));
 
             EditFretLabel.RaiseCanExecuteChanged();
-            RaisePropertyChanged("CanEditFretLabel");
+            RaisePropertyChanged(nameof(CanEditFretLabel));
 
             RemoveFretLabel.RaiseCanExecuteChanged();
-            RaisePropertyChanged("CanRemoveFretLabel");
+            RaisePropertyChanged(nameof(CanRemoveFretLabel));
 
             AddBarre.RaiseCanExecuteChanged();
-            RaisePropertyChanged("CanAddBarre");
+            RaisePropertyChanged(nameof(CanAddBarre));
 
             EditBarre.RaiseCanExecuteChanged();
-            RaisePropertyChanged("CanEditBarre");
+            RaisePropertyChanged(nameof(CanEditBarre));
 
             RemoveBarre.RaiseCanExecuteChanged();
-            RaisePropertyChanged("CanRemoveBarre");
+            RaisePropertyChanged(nameof(CanRemoveBarre));
         }
 
         public static bool IsCursorProperty(string property)
@@ -988,7 +988,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 throw new ArgumentNullException(nameof(property));
             }
 
-            if (property == "CursorX" || property == "CursorY")
+            if (property == nameof(CursorX) ||
+                property == nameof(CursorY))
             {
                 return true;
             }
@@ -1004,27 +1005,27 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
 
         private static readonly string[] _cursorProperties = new string[] {
-            "CursorInGrid",
-            "ValidCommandsAtCursor",
-            "EditElement",
-            "AddMark",
-            "CanAddMark",
-            "EditMark",
-            "CanEditMark",
-            "RemoveMark",
-            "CanRemoveMark",
-            "AddFretLabel",
-            "CanAddFretLabel",
-            "EditFretLabel",
-            "CanEditFretLabel",
-            "RemoveFretLabel",
-            "CanRemoveFretLabel",
-            "AddBarre",
-            "CanAddBarre",
-            "EditBarre",
-            "CanEditBarre",
-            "RemoveBarre",
-            "CanRemoveBarre"
+            nameof(CursorInGrid),
+            nameof(ValidCommandsAtCursor),
+            nameof(EditElement),
+            nameof(AddMark),
+            nameof(CanAddMark),
+            nameof(EditMark),
+            nameof(CanEditMark),
+            nameof(RemoveMark),
+            nameof(CanRemoveMark),
+            nameof(AddFretLabel),
+            nameof(CanAddFretLabel),
+            nameof(EditFretLabel),
+            nameof(CanEditFretLabel),
+            nameof(RemoveFretLabel),
+            nameof(CanRemoveFretLabel),
+            nameof(AddBarre),
+            nameof(CanAddBarre),
+            nameof(EditBarre),
+            nameof(CanEditBarre),
+            nameof(RemoveBarre),
+            nameof(CanRemoveBarre)
         };
 
         #endregion
@@ -1069,7 +1070,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _isEditMode = value;
-                RaisePropertyChanged("IsEditMode");
+                RaisePropertyChanged(nameof(IsEditMode));
                 Refresh();
             }
         }
@@ -1084,7 +1085,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _postEditCallback = value ?? throw new ArgumentNullException();
-                RaisePropertyChanged("PostEditCallback");
+                RaisePropertyChanged(nameof(PostEditCallback));
             }
         }
         private Action<bool> _postEditCallback;
@@ -1249,7 +1250,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _autoRender = value;
-                RaisePropertyChanged("AutoRender");
+                RaisePropertyChanged(nameof(AutoRender));
             }
         }
         private bool _autoRender;
@@ -1263,7 +1264,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _name = value;
-                RaisePropertyChanged("Name");
+                RaisePropertyChanged(nameof(Name));
             }
         }
         private string _name;
@@ -1307,15 +1308,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public void ResetStyles()
         {
             Diagram.ClearStyles();
-            RaisePropertyChanged("Style");
+            RaisePropertyChanged(nameof(Style));
             Refresh();
         }
 
         public void Refresh()
         {
-            RaisePropertyChanged("SvgText");
-            RaisePropertyChanged("TotalHeight");
-            RaisePropertyChanged("TotalWidth");
+            RaisePropertyChanged(nameof(SvgText));
+            RaisePropertyChanged(nameof(TotalHeight));
+            RaisePropertyChanged(nameof(TotalWidth));
 
             if (AutoRender)
             {

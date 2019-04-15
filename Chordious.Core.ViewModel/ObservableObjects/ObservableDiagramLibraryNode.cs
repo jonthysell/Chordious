@@ -780,7 +780,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 Diagrams.Clear();
                 _firstLoad = true;
-                RaisePropertyChanged("Diagrams");
+                RaisePropertyChanged(nameof(Diagrams));
             }
         }
 
@@ -926,24 +926,24 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private void UpdateCommands()
         {
-            RaisePropertyChanged("EditSelected");
+            RaisePropertyChanged(nameof(EditSelected));
             _editSelected?.RaiseCanExecuteChanged();
-            RaisePropertyChanged("SendSelectedImageToClipboard");
-            RaisePropertyChanged("SendSelectedScaledImageToClipboard");
-            RaisePropertyChanged("SendSelectedTextToClipboard");
+            RaisePropertyChanged(nameof(SendSelectedImageToClipboard));
+            RaisePropertyChanged(nameof(SendSelectedScaledImageToClipboard));
+            RaisePropertyChanged(nameof(SendSelectedTextToClipboard));
             _sendSelectedToClipboard?.RaiseCanExecuteChanged();
             CloneSelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged("CloneSelectedToolTip");
+            RaisePropertyChanged(nameof(CloneSelectedToolTip));
             CopySelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged("CopySelectedToolTip");
+            RaisePropertyChanged(nameof(CopySelectedToolTip));
             MoveSelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged("MoveSelectedToolTip");
+            RaisePropertyChanged(nameof(MoveSelectedToolTip));
             ExportSelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged("ExportSelectedToolTip");
+            RaisePropertyChanged(nameof(ExportSelectedToolTip));
             DeleteSelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged("DeleteSelectedToolTip");
+            RaisePropertyChanged(nameof(DeleteSelectedToolTip));
             ResetStylesSelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged("ResetStylesSelectedToolTip");
+            RaisePropertyChanged(nameof(ResetStylesSelectedToolTip));
         }
 
         public override string ToString()

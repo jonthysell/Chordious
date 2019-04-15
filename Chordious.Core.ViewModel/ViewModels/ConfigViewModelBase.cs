@@ -54,7 +54,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             protected set
             {
                 _isIdle = value;
-                RaisePropertyChanged("IsIdle");
+                RaisePropertyChanged(nameof(IsIdle));
             }
         }
         private bool _isIdle;
@@ -84,7 +84,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _includeSettings = value;
-                RaisePropertyChanged("IncludeSettings");
+                RaisePropertyChanged(nameof(IncludeSettings));
             }
         }
         private bool _includeSettings;
@@ -114,7 +114,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _includeStyles = value;
-                RaisePropertyChanged("IncludeStyles");
+                RaisePropertyChanged(nameof(IncludeStyles));
             }
         }
         private bool _includeStyles;
@@ -144,7 +144,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _includeInstruments = value;
-                RaisePropertyChanged("IncludeInstruments");
+                RaisePropertyChanged(nameof(IncludeInstruments));
             }
         }
         private bool _includeInstruments;
@@ -174,7 +174,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _includeChordQualities = value;
-                RaisePropertyChanged("IncludeChordQualities");
+                RaisePropertyChanged(nameof(IncludeChordQualities));
             }
         }
         private bool _includeChordQualities;
@@ -204,7 +204,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _includeScales = value;
-                RaisePropertyChanged("IncludeScales");
+                RaisePropertyChanged(nameof(IncludeScales));
             }
         }
         private bool _includeScales;
@@ -234,7 +234,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _includeLibrary = value;
-                RaisePropertyChanged("IncludeLibrary");
+                RaisePropertyChanged(nameof(IncludeLibrary));
             }
         }
         private bool _includeLibrary;

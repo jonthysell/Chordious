@@ -67,7 +67,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             protected set
             {
                 _isIdle = value;
-                RaisePropertyChanged("IsIdle");
+                RaisePropertyChanged(nameof(IsIdle));
                 ExportAsync.RaiseCanExecuteChanged();
             }
         }
@@ -86,7 +86,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     throw new ArgumentOutOfRangeException();
                 }
                 _percentComplete = value;
-                RaisePropertyChanged("PercentComplete");
+                RaisePropertyChanged(nameof(PercentComplete));
             }
         }
         private double _percentComplete = 0.0;

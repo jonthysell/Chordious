@@ -184,7 +184,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _appConfigLoaded = value;
-                RaisePropertyChanged("AppConfigLoaded");
+                RaisePropertyChanged(nameof(AppConfigLoaded));
             }
         }
         private bool _appConfigLoaded = false;
@@ -200,7 +200,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _userConfigLoaded = value;
-                RaisePropertyChanged("UserConfigLoaded");
+                RaisePropertyChanged(nameof(UserConfigLoaded));
             }
         }
         private bool _userConfigLoaded = false;

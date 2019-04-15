@@ -100,7 +100,7 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 SetSetting("app.renderbackground", value);
-                RaisePropertyChanged("SelectedRenderBackgroundIndex");
+                RaisePropertyChanged(nameof(SelectedRenderBackgroundIndex));
             }
         }
 
@@ -156,7 +156,7 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 SetSetting("diagrameditor.renderbackground", value);
-                RaisePropertyChanged("SelectedEditorRenderBackgroundIndex");
+                RaisePropertyChanged(nameof(SelectedEditorRenderBackgroundIndex));
             }
         }
 
@@ -203,7 +203,7 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 SetSetting("integration.enhancedcopy", value);
-                RaisePropertyChanged("EnhancedCopy");
+                RaisePropertyChanged(nameof(EnhancedCopy));
             }
         }
 
@@ -315,7 +315,7 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 SetSetting("app.releasechannel", value);
-                RaisePropertyChanged("SelectedReleaseChannelIndex");
+                RaisePropertyChanged(nameof(SelectedReleaseChannelIndex));
             }
         }
 
@@ -350,7 +350,7 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 SetSetting("app.checkupdateonstart", value);
-                RaisePropertyChanged("CheckUpdateOnStart");
+                RaisePropertyChanged(nameof(CheckUpdateOnStart));
             }
         }
 
@@ -419,7 +419,7 @@ namespace com.jonthysell.Chordious.WPF
                     finally
                     {
                         IsIdle = true;
-                        RaisePropertyChanged("LastUpdateCheck");
+                        RaisePropertyChanged(nameof(LastUpdateCheck));
                     }
                 }, () =>
                 {
@@ -438,10 +438,11 @@ namespace com.jonthysell.Chordious.WPF
 
         private static ObservableCollection<string> GetReleaseChannels()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(Strings.ReleaseChannelOfficialFriendlyValue);
-            collection.Add(Strings.ReleaseChannelPreviewFriendlyValue);
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                Strings.ReleaseChannelOfficialFriendlyValue,
+                Strings.ReleaseChannelPreviewFriendlyValue
+            };
 
             return collection;
         }
@@ -449,12 +450,12 @@ namespace com.jonthysell.Chordious.WPF
         public override void RefreshProperties()
         {
             base.RefreshProperties();
-            RaisePropertyChanged("SelectedRenderBackgroundIndex");
-            RaisePropertyChanged("SelectedEditorRenderBackgroundIndex");
-            RaisePropertyChanged("SelectedReleaseChannelIndex");
-            RaisePropertyChanged("EnhancedCopy");
-            RaisePropertyChanged("CheckUpdateOnStart");
-            RaisePropertyChanged("LastUpdateCheck");
+            RaisePropertyChanged(nameof(SelectedRenderBackgroundIndex));
+            RaisePropertyChanged(nameof(SelectedEditorRenderBackgroundIndex));
+            RaisePropertyChanged(nameof(SelectedReleaseChannelIndex));
+            RaisePropertyChanged(nameof(EnhancedCopy));
+            RaisePropertyChanged(nameof(CheckUpdateOnStart));
+            RaisePropertyChanged(nameof(LastUpdateCheck));
         }
     }
 }

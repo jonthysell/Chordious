@@ -65,7 +65,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _isIdle = value;
-                RaisePropertyChanged("IsIdle");
+                RaisePropertyChanged(nameof(IsIdle));
                 SearchAsync.RaiseCanExecuteChanged();
                 SetAsDefaults.RaiseCanExecuteChanged();
             }
@@ -122,7 +122,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged("SelectedInstrument");
+                    RaisePropertyChanged(nameof(SelectedInstrument));
                     SearchAsync.RaiseCanExecuteChanged();
                     SetAsDefaults.RaiseCanExecuteChanged();
                 }
@@ -139,7 +139,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _instruments = value;
-                RaisePropertyChanged("Instruments");
+                RaisePropertyChanged(nameof(Instruments));
             }
         }
         private ObservableCollection<ObservableInstrument> _instruments;
@@ -186,7 +186,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged("SelectedTuning");
+                    RaisePropertyChanged(nameof(SelectedTuning));
                     SearchAsync.RaiseCanExecuteChanged();
                     SetAsDefaults.RaiseCanExecuteChanged();
                 }
@@ -203,7 +203,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _tunings = value;
-                RaisePropertyChanged("Tunings");
+                RaisePropertyChanged(nameof(Tunings));
             }
         }
         private ObservableCollection<ObservableTuning> _tunings;
@@ -291,7 +291,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged("SelectedRootNote");
+                    RaisePropertyChanged(nameof(SelectedRootNote));
                 }
             }
         }
@@ -346,7 +346,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged("SelectedScale");
+                    RaisePropertyChanged(nameof(SelectedScale));
                     SearchAsync.RaiseCanExecuteChanged();
                     SetAsDefaults.RaiseCanExecuteChanged();
                 }
@@ -363,7 +363,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _scales = value;
-                RaisePropertyChanged("Scales");
+                RaisePropertyChanged(nameof(Scales));
             }
         }
         private ObservableCollection<ObservableScale> _scales;
@@ -449,8 +449,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged("NumFrets");
-                    RaisePropertyChanged("MaxReach");
+                    RaisePropertyChanged(nameof(NumFrets));
+                    RaisePropertyChanged(nameof(MaxReach));
                 }
             }
         }
@@ -489,8 +489,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged("MaxReach");
-                    RaisePropertyChanged("NumFrets");
+                    RaisePropertyChanged(nameof(MaxReach));
+                    RaisePropertyChanged(nameof(NumFrets));
                 }
             }
         }
@@ -529,7 +529,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged("MaxFret");
+                    RaisePropertyChanged(nameof(MaxFret));
                 }
             }
         }
@@ -559,7 +559,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 Options.AllowOpenStrings = value;
-                RaisePropertyChanged("AllowOpenStrings");
+                RaisePropertyChanged(nameof(AllowOpenStrings));
             }
         }
 
@@ -588,7 +588,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 Options.AllowMutedStrings = value;
-                RaisePropertyChanged("AllowMutedStrings");
+                RaisePropertyChanged(nameof(AllowMutedStrings));
             }
         }
 
@@ -621,7 +621,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 Style.AddTitle = value;
-                RaisePropertyChanged("AddTitle");
+                RaisePropertyChanged(nameof(AddTitle));
             }
         }
 
@@ -650,7 +650,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 Style.MirrorResults = value;
-                RaisePropertyChanged("MirrorResults");
+                RaisePropertyChanged(nameof(MirrorResults));
             }
         }
 
@@ -679,7 +679,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 Style.AddRootNotes = value;
-                RaisePropertyChanged("AddRootNotes");
+                RaisePropertyChanged(nameof(AddRootNotes));
             }
         }
 
@@ -708,7 +708,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 Style.MarkTextOption = (MarkTextOption)(value);
-                RaisePropertyChanged("SelectedMarkTextOptionIndex");
+                RaisePropertyChanged(nameof(SelectedMarkTextOptionIndex));
             }
         }
 
@@ -745,7 +745,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 Style.FretLabelSide = (FretLabelSide)(value);
-                RaisePropertyChanged("SelectedFretLabelSideIndex");
+                RaisePropertyChanged(nameof(SelectedFretLabelSideIndex));
             }
         }
 
@@ -1248,11 +1248,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         private void SelectedResults_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             SaveSelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged("EditSelected");
+            RaisePropertyChanged(nameof(EditSelected));
             _editSelected?.RaiseCanExecuteChanged();
-            RaisePropertyChanged("SendSelectedImageToClipboard");
-            RaisePropertyChanged("SendSelectedScaledImageToClipboard");
-            RaisePropertyChanged("SendSelectedTextToClipboard");
+            RaisePropertyChanged(nameof(SendSelectedImageToClipboard));
+            RaisePropertyChanged(nameof(SendSelectedScaledImageToClipboard));
+            RaisePropertyChanged(nameof(SendSelectedTextToClipboard));
             _sendSelectedToClipboard?.RaiseCanExecuteChanged();
         }
 
@@ -1315,17 +1315,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             RefreshInstruments(Options.Instrument, Options.Tuning);
             RefreshScales(Options.Scale);
 
-            RaisePropertyChanged("SelectedRootNote");
-            RaisePropertyChanged("NumFrets");
-            RaisePropertyChanged("MaxReach");
-            RaisePropertyChanged("MaxFret");
-            RaisePropertyChanged("AllowOpenStrings");
-            RaisePropertyChanged("AllowMutedStrings");
-            RaisePropertyChanged("AddTitle");
-            RaisePropertyChanged("MirrorResults");
-            RaisePropertyChanged("AddRootNotes");
-            RaisePropertyChanged("SelectedMarkTextOptionIndex");
-            RaisePropertyChanged("SelectedFretLabelSideIndex");
+            RaisePropertyChanged(nameof(SelectedRootNote));
+            RaisePropertyChanged(nameof(NumFrets));
+            RaisePropertyChanged(nameof(MaxReach));
+            RaisePropertyChanged(nameof(MaxFret));
+            RaisePropertyChanged(nameof(AllowOpenStrings));
+            RaisePropertyChanged(nameof(AllowMutedStrings));
+            RaisePropertyChanged(nameof(AddTitle));
+            RaisePropertyChanged(nameof(MirrorResults));
+            RaisePropertyChanged(nameof(AddRootNotes));
+            RaisePropertyChanged(nameof(SelectedMarkTextOptionIndex));
+            RaisePropertyChanged(nameof(SelectedFretLabelSideIndex));
         }
 
         private Task<ScaleFinderResultSet> FindScalesAsync(CancellationToken cancelToken)

@@ -76,7 +76,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             protected set
             {
                 _isIdle = value;
-                RaisePropertyChanged("IsIdle");
+                RaisePropertyChanged(nameof(IsIdle));
             }
         }
         private bool _isIdle;
@@ -912,7 +912,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _applyChangesOnClose = value;
-                RaisePropertyChanged("ApplyChangesOnClose");
+                RaisePropertyChanged(nameof(ApplyChangesOnClose));
             }
         }
         private bool _applyChangesOnClose = false;
@@ -926,8 +926,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _dirty = value;
-                RaisePropertyChanged("Dirty");
-                RaisePropertyChanged("Title");
+                RaisePropertyChanged(nameof(Dirty));
+                RaisePropertyChanged(nameof(Title));
                 Apply.RaiseCanExecuteChanged();
             }
         }
@@ -942,7 +942,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _itemsChanged = value;
-                RaisePropertyChanged("ItemsChanged");
+                RaisePropertyChanged(nameof(ItemsChanged));
             }
         }
         private bool _itemsChanged = false;
@@ -956,7 +956,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _advancedSettingsClean = value;
-                RaisePropertyChanged("AdvancedSettingsClean");
+                RaisePropertyChanged(nameof(AdvancedSettingsClean));
                 Accept.RaiseCanExecuteChanged();
                 Apply.RaiseCanExecuteChanged();
             }
@@ -972,7 +972,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _advancedStyleClean = value;
-                RaisePropertyChanged("AdvancedStyleClean");
+                RaisePropertyChanged(nameof(AdvancedStyleClean));
                 Accept.RaiseCanExecuteChanged();
                 Apply.RaiseCanExecuteChanged();
             }

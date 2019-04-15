@@ -74,8 +74,8 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 SetSetting("diagramexport.outputpath", value);
-                RaisePropertyChanged("OutputPath");
-                RaisePropertyChanged("ExampleFilenameFormat");
+                RaisePropertyChanged(nameof(OutputPath));
+                RaisePropertyChanged(nameof(ExampleFilenameFormat));
             }
         }
 
@@ -110,8 +110,8 @@ namespace com.jonthysell.Chordious.WPF
                         FilenameFormats.Add(value);
                     }
                     SetSetting("diagramexport.filenameformat", value);
-                    RaisePropertyChanged("SelectedFilenameFormat");
-                    RaisePropertyChanged("ExampleFilenameFormat");
+                    RaisePropertyChanged(nameof(SelectedFilenameFormat));
+                    RaisePropertyChanged(nameof(ExampleFilenameFormat));
                 }
             }
         }
@@ -125,7 +125,7 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 _filenameFormats = value ?? throw new ArgumentNullException();
-                RaisePropertyChanged("FilenameFormats");
+                RaisePropertyChanged(nameof(FilenameFormats));
             }
         }
         private ObservableCollection<string> _filenameFormats;
@@ -197,11 +197,10 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 SetSetting("diagramexport.exportformat", value);
-                RaisePropertyChanged("ExportFormat");
-                RaisePropertyChanged("SelectedExportFormatIndex");
-                RaisePropertyChanged("ExampleFilenameFormat");
-                RaisePropertyChanged("CanZoom");
-                RaisePropertyChanged("CanScale");
+                RaisePropertyChanged(nameof(ExportFormat));
+                RaisePropertyChanged(nameof(SelectedExportFormatIndex));
+                RaisePropertyChanged(nameof(ExampleFilenameFormat));
+                RaisePropertyChanged(nameof(CanScale));
             }
         }
 
@@ -245,7 +244,7 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 SetSetting("diagramexport.overwritefiles", value);
-                RaisePropertyChanged("OverwriteFiles");
+                RaisePropertyChanged(nameof(OverwriteFiles));
             }
         }
 
@@ -302,7 +301,7 @@ namespace com.jonthysell.Chordious.WPF
                 }
                 finally
                 {
-                    RaisePropertyChanged("ScaleFactor");
+                    RaisePropertyChanged(nameof(ScaleFactor));
                 }
             }
         }
@@ -494,9 +493,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private ObservableCollection<string> GetFilenameFormats()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add(SelectedFilenameFormat);
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                SelectedFilenameFormat
+            };
 
             foreach (string filenameFormat in DefaultFileNameFormats)
             {
@@ -511,12 +511,13 @@ namespace com.jonthysell.Chordious.WPF
 
         private ObservableCollection<string> GetExportFormats()
         {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            collection.Add("SVG");
-            collection.Add("PNG");
-            collection.Add("GIF");
-            collection.Add("JPG");
+            ObservableCollection<string> collection = new ObservableCollection<string>
+            {
+                "SVG",
+                "PNG",
+                "GIF",
+                "JPG"
+            };
 
             return collection;
         }

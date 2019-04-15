@@ -65,7 +65,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _name = value;
-                RaisePropertyChanged("Name");
+                RaisePropertyChanged(nameof(Name));
                 Accept.RaiseCanExecuteChanged();
             }
         }
@@ -124,8 +124,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _isNew = value;
-                RaisePropertyChanged("IsNew");
-                RaisePropertyChanged("Title");
+                RaisePropertyChanged(nameof(IsNew));
+                RaisePropertyChanged(nameof(Title));
             }
         }
         private bool _isNew;
@@ -139,8 +139,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _readOnly = value;
-                RaisePropertyChanged("ReadOnly");
-                RaisePropertyChanged("Title");
+                RaisePropertyChanged(nameof(ReadOnly));
+                RaisePropertyChanged(nameof(Title));
             }
         }
         private bool _readOnly;
@@ -171,7 +171,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Intervals.Add(CreateNamedIntervalValue());
                         RemoveInterval.RaiseCanExecuteChanged();
-                        RaisePropertyChanged("Example");
+                        RaisePropertyChanged(nameof(Example));
                         Accept.RaiseCanExecuteChanged();
                     }
                     catch (Exception ex)
@@ -214,7 +214,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         niValue.ValueChanged -= IntervalValueChanged;
                         Intervals.Remove(niValue);
                         RemoveInterval.RaiseCanExecuteChanged();
-                        RaisePropertyChanged("Example");
+                        RaisePropertyChanged(nameof(Example));
                         Accept.RaiseCanExecuteChanged();
                     }
                     catch (Exception ex)
@@ -309,7 +309,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         protected void IntervalValueChanged(object sender, EventArgs e)
         {
-            RaisePropertyChanged("Example");
+            RaisePropertyChanged(nameof(Example));
         }
 
         protected int[] GetIntervalArray()
@@ -382,7 +382,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             Value = value;
             ValueChanged += (sender, e) =>
             {
-                RaisePropertyChanged("Value");
+                RaisePropertyChanged(nameof(Value));
             };
         }
 

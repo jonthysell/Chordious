@@ -46,7 +46,7 @@ namespace com.jonthysell.Chordious.WPF
             private set
             {
                 _isIdle = value;
-                RaisePropertyChanged("IsIdle");
+                RaisePropertyChanged(nameof(IsIdle));
             }
         }
         private bool _isIdle;
@@ -66,7 +66,7 @@ namespace com.jonthysell.Chordious.WPF
             set
             {
                 AppVM.SetSetting("app.firstrun", value);
-                RaisePropertyChanged("IsFirstRun");
+                RaisePropertyChanged(nameof(IsFirstRun));
             }
         }
 

@@ -89,7 +89,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _abbreviation = value;
-                RaisePropertyChanged("Abbreviation");
+                RaisePropertyChanged(nameof(Abbreviation));
                 Accept.RaiseCanExecuteChanged();
             }
         }

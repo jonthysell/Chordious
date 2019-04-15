@@ -76,7 +76,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             set
             {
                 _name = value;
-                RaisePropertyChanged("Name");
+                RaisePropertyChanged(nameof(Name));
                 Accept.RaiseCanExecuteChanged();
             }
         }
@@ -119,7 +119,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-                RaisePropertyChanged("NumStrings");
+                RaisePropertyChanged(nameof(NumStrings));
                 Accept.RaiseCanExecuteChanged();
             }
         }
@@ -134,8 +134,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _isNew = value;
-                RaisePropertyChanged("IsNew");
-                RaisePropertyChanged("Title");
+                RaisePropertyChanged(nameof(IsNew));
+                RaisePropertyChanged(nameof(Title));
             }
         }
         private bool _isNew;
@@ -149,8 +149,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             private set
             {
                 _readOnly = value;
-                RaisePropertyChanged("ReadOnly");
-                RaisePropertyChanged("Title");
+                RaisePropertyChanged(nameof(ReadOnly));
+                RaisePropertyChanged(nameof(Title));
             }
         }
         private bool _readOnly;

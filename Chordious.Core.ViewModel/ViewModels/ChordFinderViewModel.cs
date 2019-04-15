@@ -236,7 +236,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                     {
                         Messenger.Default.Send(new ShowInstrumentManagerMessage(() =>
                         {
-                            RefreshInstruments(null != SelectedInstrument ? SelectedInstrument.Instrument : null, null != SelectedTuning ? SelectedTuning.Tuning : null);
+                            RefreshInstruments(SelectedInstrument?.Instrument, SelectedTuning?.Tuning);
                         }));
                     }
                     catch (Exception ex)
@@ -389,7 +389,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         {
                             try
                             {
-                                RefreshChordQualities(null != SelectedChordQuality ? SelectedChordQuality.ChordQuality : null);
+                                RefreshChordQualities(SelectedChordQuality?.ChordQuality);
                             }
                             catch (Exception ex)
                             {

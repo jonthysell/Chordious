@@ -227,8 +227,7 @@ namespace com.jonthysell.Chordious.WPF
             TextBox textBox = (e.OriginalSource as TextBox);
             if (null != textBox && !textBox.IsReadOnly)
             {
-                KeyEventArgs args = e as KeyEventArgs;
-                if (null != args && args.Key == Key.Enter)
+                if (e is KeyEventArgs args && args.Key == Key.Enter)
                 {
                     textBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 }

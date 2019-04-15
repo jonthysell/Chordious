@@ -154,12 +154,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public DiagramCollectionSelectorViewModel(Action<string, bool> callback, string defaultCollectionName = null)
         {
-            if (null == callback)
-            {
-                throw new ArgumentNullException("callback");
-            }
-
-            Callback = callback;
+            Callback = callback ?? throw new ArgumentNullException("callback");
 
             if (string.IsNullOrWhiteSpace(defaultCollectionName))
             {
@@ -174,10 +169,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         private void ProcessClose()
         {
             DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
-            DiagramCollection targetCollection = null;
 
             bool newCollection = false;
-            if (!library.TryGet(CollectionName, out targetCollection))
+            if (!library.TryGet(CollectionName, out DiagramCollection targetCollection))
             {
                 targetCollection = library.Add(CollectionName);
                 newCollection = true;

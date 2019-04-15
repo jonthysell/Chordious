@@ -38,23 +38,18 @@ namespace com.jonthysell.Chordious.Core
                 return _marks;
             }
         }
-        private List<MarkPosition> _marks;
+        private readonly List<MarkPosition> _marks;
 
         public ScaleFinderResultSet Parent { get; private set; }
 
         internal ScaleFinderResult(ScaleFinderResultSet parent, IEnumerable<MarkPosition> marks)
         {
-            if (null == parent)
-            {
-                throw new ArgumentNullException("parent");
-            }
-
             if (null == marks)
             {
                 throw new ArgumentNullException("marks");
             }
 
-            Parent = parent;
+            Parent = parent ?? throw new ArgumentNullException("parent");
             _marks = new List<MarkPosition>(marks);
         }
 
@@ -88,8 +83,7 @@ namespace com.jonthysell.Chordious.Core
             int numStrings = Parent.ScaleFinderOptions.Instrument.NumStrings;
             int numFrets = Parent.ScaleFinderOptions.NumFrets;
 
-            int baseLine;
-            IEnumerable<MarkPosition> marks = MarkUtils.AbsoluteToRelativeMarks(Marks, out baseLine, numFrets, numStrings);
+            IEnumerable<MarkPosition> marks = MarkUtils.AbsoluteToRelativeMarks(Marks, out int baseLine, numFrets, numStrings);
 
             Diagram d = new Diagram(scaleFinderStyle.Style, numStrings, numFrets);
 

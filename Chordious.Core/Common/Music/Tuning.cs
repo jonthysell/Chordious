@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -144,13 +144,8 @@ namespace com.jonthysell.Chordious.Core
 
         private Tuning(TuningSet parent)
         {
-            if (null == parent)
-            {
-                throw new ArgumentNullException("parent");
-            }
-
             ReadOnly = false;
-            _parent = parent;
+            _parent = parent ?? throw new ArgumentNullException("parent");
         }
 
         internal Tuning(TuningSet parent, string name, FullNote[] rootNotes) : this(parent)

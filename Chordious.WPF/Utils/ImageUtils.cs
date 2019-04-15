@@ -389,14 +389,14 @@ namespace com.jonthysell.Chordious.WPF
             }
         }
 
-        private static string[] _pngAppNameTags = { "/tEXt/Software" };
-        private static string[] _pngCommentTags = { "/tEXt/Comment" };
+        private static readonly string[] _pngAppNameTags = { "/tEXt/Software" };
+        private static readonly string[] _pngCommentTags = { "/tEXt/Comment" };
 
-        private static string[] _gifAppNameTags = { "/xmp/xmp:CreatorTool" };
-        private static string[] _gifCommentTags = { "/xmp/dc:description" };
+        private static readonly string[] _gifAppNameTags = { "/xmp/xmp:CreatorTool" };
+        private static readonly string[] _gifCommentTags = { "/xmp/dc:description" };
 
-        private static string[] _jpgAppNameTags = { "/app1/ifd/{ushort=305}" };
-        private static string[] _jpgCommentTags = { "/app1/ifd/exif/{ushort=37510}" };
+        private static readonly string[] _jpgAppNameTags = { "/app1/ifd/{ushort=305}" };
+        private static readonly string[] _jpgCommentTags = { "/app1/ifd/exif/{ushort=37510}" };
 
         #endregion
 
@@ -421,7 +421,7 @@ namespace com.jonthysell.Chordious.WPF
             return Math.Min(maxByDimensionConstraint, maxByMemoryConstraint);
         }
 
-        private static int MaxBitmapDimension = 32768;
+        private static readonly int MaxBitmapDimension = 32768;
 
         #endregion
 
@@ -429,9 +429,8 @@ namespace com.jonthysell.Chordious.WPF
 
         public static Background GetRenderBackground()
         {
-            Background result;
 
-            if (Enum.TryParse(AppVM.GetSetting("app.renderbackground"), out result))
+            if (Enum.TryParse(AppVM.GetSetting("app.renderbackground"), out Background result))
             {
                 return result;
             }
@@ -441,9 +440,8 @@ namespace com.jonthysell.Chordious.WPF
 
         public static Background GetEditorRenderBackground()
         {
-            Background result;
 
-            if (Enum.TryParse(AppVM.GetSetting("diagrameditor.renderbackground"), out result))
+            if (Enum.TryParse(AppVM.GetSetting("diagrameditor.renderbackground"), out Background result))
             {
                 return result;
             }

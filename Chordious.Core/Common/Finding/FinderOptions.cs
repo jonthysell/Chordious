@@ -193,17 +193,12 @@ namespace com.jonthysell.Chordious.Core
 
         protected FinderOptions(ConfigFile configFile, string prefix)
         {
-            if (null == configFile)
-            {
-                throw new ArgumentNullException("configFile");
-            }
-
             if (StringUtils.IsNullOrWhiteSpace(prefix))
             {
                 throw new ArgumentNullException("prefix");
             }
 
-            _configFile = configFile;
+            _configFile = configFile ?? throw new ArgumentNullException("configFile");
             Prefix = prefix;
 
             _cachedInstrument = null;
@@ -231,8 +226,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (instruments.Level == level)
                 {
-                    Instrument i;
-                    if (instruments.TryGet(name, out i))
+                    if (instruments.TryGet(name, out Instrument i))
                     {
                         _cachedInstrument = i;
                         break;
@@ -259,8 +253,7 @@ namespace com.jonthysell.Chordious.Core
                 _cachedTuning = null;
             }
 
-            ITuning t;
-            if (null != Instrument && Instrument.Tunings.TryGet(longName, out t))
+            if (null != Instrument && Instrument.Tunings.TryGet(longName, out ITuning t))
             {
                 _cachedTuning = t;
             }

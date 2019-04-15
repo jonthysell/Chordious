@@ -238,7 +238,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         {
                             try
                             {
-                                RefreshInstruments(null != SelectedInstrument ? SelectedInstrument.Instrument : null, null != SelectedTuning ? SelectedTuning.Tuning : null);
+                                RefreshInstruments(SelectedInstrument?.Instrument, SelectedTuning?.Tuning);
                             }
                             catch (Exception ex)
                             {
@@ -396,7 +396,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                         {
                             try
                             {
-                                RefreshScales(null != SelectedScale ? SelectedScale.Scale : null);
+                                RefreshScales(SelectedScale?.Scale);
                             }
                             catch (Exception ex)
                             {

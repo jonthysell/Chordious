@@ -729,13 +729,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             {
                 if (null == _collectionStyle)
                 {
-                    _collectionStyle = new ObservableDiagramStyle(Collection.Style);
-                    _collectionStyle.PostEditCallback = (changed) =>
+                    _collectionStyle = new ObservableDiagramStyle(Collection.Style)
                     {
-                        if (changed)
+                        PostEditCallback = (changed) =>
                         {
-                            Redraw();
-                        }                        
+                            if (changed)
+                            {
+                                Redraw();
+                            }
+                        }
                     };
                 }
                 return _collectionStyle;
@@ -745,19 +747,14 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private bool _firstLoad = true;
 
-        private Action<bool> _redrawCallback;
+        private readonly Action<bool> _redrawCallback;
 
         public ObservableDiagramLibraryNode(string path, string name, DiagramLibrary library, Action<bool> redrawCallback = null) : base()
         {
-            if (null == library)
-            {
-                throw new ArgumentNullException("library");
-            }
-
             Path = path;
             Name = name;
 
-            Library = library;
+            Library = library ?? throw new ArgumentNullException("library");
 
             _redrawCallback = redrawCallback;
 

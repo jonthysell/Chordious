@@ -1003,7 +1003,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             return false;
         }
 
-        private static string[] _cursorProperties = new string[] {
+        private static readonly string[] _cursorProperties = new string[] {
             "CursorInGrid",
             "ValidCommandsAtCursor",
             "EditElement",
@@ -1083,11 +1083,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             set
             {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-                _postEditCallback = value;
+                _postEditCallback = value ?? throw new ArgumentNullException();
                 RaisePropertyChanged("PostEditCallback");
             }
         }
@@ -1165,8 +1161,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                             {
                                 percentText = percentText.Trim();
 
-                                int result;
-                                if (int.TryParse(percentText, out result))
+                                if (int.TryParse(percentText, out int result))
                                 {
                                     scaleFactor = 0.01f * result;
                                 }
@@ -1283,11 +1278,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             }
             set
             {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-                _diagram = value;
+                _diagram = value ?? throw new ArgumentNullException();
                 Refresh();
             }
         }
@@ -1295,14 +1286,9 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ObservableDiagram(Diagram diagram, bool autoRender = true, string name = "") : base()
         {
-            if (null == diagram)
-            {
-                throw new ArgumentNullException("diagram");
-            }
-
             _autoRender = autoRender;
             _name = name;
-            _diagram = diagram;
+            _diagram = diagram ?? throw new ArgumentNullException("diagram");
 
             Style = new ObservableDiagramStyle(diagram.Style);
             Style.PropertyChanged += Style_PropertyChanged;

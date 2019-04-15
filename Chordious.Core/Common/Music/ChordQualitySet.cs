@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -54,8 +54,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool TryGet(string longName, out ChordQuality chordQuality)
         {
-            NamedInterval namedInterval;
-            if (base.TryGet(longName, out namedInterval))
+            if (base.TryGet(longName, out NamedInterval namedInterval))
             {
                 chordQuality = (ChordQuality)namedInterval;
                 return true;

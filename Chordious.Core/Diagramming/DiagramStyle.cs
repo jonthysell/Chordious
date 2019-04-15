@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -332,8 +332,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                double margin;
-                if (TryGet("grid.marginleft", out margin))
+                if (TryGet("grid.marginleft", out double margin))
                 {
                     return margin;
                 }
@@ -386,8 +385,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                double margin;
-                if (TryGet("grid.marginright", out margin))
+                if (TryGet("grid.marginright", out double margin))
                 {
                     return margin;
                 }
@@ -440,8 +438,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                double margin;
-                if (TryGet("grid.margintop", out margin))
+                if (TryGet("grid.margintop", out double margin))
                 {
                     return margin;
                 }
@@ -494,8 +491,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                double margin;
-                if (TryGet("grid.marginbottom", out margin))
+                if (TryGet("grid.marginbottom", out double margin))
                 {
                     return margin;
                 }
@@ -1016,8 +1012,7 @@ namespace com.jonthysell.Chordious.Core
         {
             string prefix = GetMarkStylePrefix(type);
 
-            string result;
-            if (TryGet(prefix + key, out result))
+            if (TryGet(prefix + key, out string result))
             {
                 return result;
             }
@@ -1029,8 +1024,7 @@ namespace com.jonthysell.Chordious.Core
         {
             string prefix = GetMarkStylePrefix(type);
 
-            string result;
-            if (TryGetColor(prefix + key, out result))
+            if (TryGetColor(prefix + key, out string result))
             {
                 return result;
             }
@@ -1042,8 +1036,7 @@ namespace com.jonthysell.Chordious.Core
         {
             string prefix = GetMarkStylePrefix(type);
 
-            bool result;
-            if (TryGet(prefix + key, out result))
+            if (TryGet(prefix + key, out bool result))
             {
                 return result;
             }
@@ -1055,8 +1048,7 @@ namespace com.jonthysell.Chordious.Core
         {
             string prefix = GetMarkStylePrefix(type);
 
-            double result;
-            if (TryGet(prefix + key, out result))
+            if (TryGet(prefix + key, out double result))
             {
                 return result;
             }
@@ -1068,8 +1060,7 @@ namespace com.jonthysell.Chordious.Core
         {
             string prefix = GetMarkStylePrefix(type);
 
-            TEnum result;
-            if (TryGet<TEnum>(prefix + key, out result))
+            if (TryGet<TEnum>(prefix + key, out TEnum result))
             {
                 return result;
             }
@@ -1596,8 +1587,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("key");
             }
 
-            string value;
-            if (TryGetColor(key, out value, recursive))
+            if (TryGetColor(key, out string value, recursive))
             {
                 return value;
             }
@@ -1618,8 +1608,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool TryGetColor(string key, out string result, bool recursive = true)
         {
-            string rawResult;
-            if (TryGet(key, out rawResult, recursive))
+            if (TryGet(key, out string rawResult, recursive))
             {
                 return ColorUtils.TryParseColor(rawResult, out result);
             }

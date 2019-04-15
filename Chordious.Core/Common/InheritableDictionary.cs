@@ -124,12 +124,7 @@ namespace com.jonthysell.Chordious.Core
 
         public InheritableDictionary(InheritableDictionary parent) : this()
         {
-            if (null == parent)
-            {
-                throw new ArgumentNullException("parent");
-            }
-
-            Parent = parent;
+            Parent = parent ?? throw new ArgumentNullException("parent");
         }
 
         public InheritableDictionary(InheritableDictionary parent, string level) : this(parent)
@@ -331,8 +326,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("key");
             }
 
-            string value;
-            if (TryGet(key, out value, recursive))
+            if (TryGet(key, out string value, recursive))
             {
                 return value;
             }
@@ -398,8 +392,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("key");
             }
 
-            bool value;
-            if (TryGet(key, out value, recursive))
+            if (TryGet(key, out bool value, recursive))
             {
                 return value;
             }
@@ -420,8 +413,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool TryGet(string key, out bool result, bool recursive = true)
         {
-            string rawResult;
-            if (TryGet(key, out rawResult, recursive))
+            if (TryGet(key, out string rawResult, recursive))
             {
                 return bool.TryParse(rawResult, out result);
             }
@@ -437,8 +429,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("key");
             }
 
-            double value;
-            if (TryGet(key, out value, recursive))
+            if (TryGet(key, out double value, recursive))
             {
                 return value;
             }
@@ -459,8 +450,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool TryGet(string key, out double result, bool recursive = true)
         {
-            string rawResult;
-            if (TryGet(key, out rawResult, recursive))
+            if (TryGet(key, out string rawResult, recursive))
             {
                 // Check with InvariantCulture as first default
                 if (double.TryParse(rawResult, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
@@ -483,8 +473,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("key");
             }
 
-            float value;
-            if (TryGet(key, out value, recursive))
+            if (TryGet(key, out float value, recursive))
             {
                 return value;
             }
@@ -505,8 +494,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool TryGet(string key, out float result, bool recursive = true)
         {
-            string rawResult;
-            if (TryGet(key, out rawResult, recursive))
+            if (TryGet(key, out string rawResult, recursive))
             {
                 return float.TryParse(rawResult, out result);
             }
@@ -522,8 +510,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("key");
             }
 
-            int value;
-            if (TryGet(key, out value, recursive))
+            if (TryGet(key, out int value, recursive))
             {
                 return value;
             }
@@ -544,8 +531,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool TryGet(string key, out int result, bool recursive = true)
         {
-            string rawResult;
-            if (TryGet(key, out rawResult, recursive))
+            if (TryGet(key, out string rawResult, recursive))
             {
                 return int.TryParse(rawResult, out result);
             }
@@ -561,8 +547,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("key");
             }
 
-            TEnum value;
-            if (TryGet<TEnum>(key, out value, recursive))
+            if (TryGet<TEnum>(key, out TEnum value, recursive))
             {
                 return value;
             }
@@ -583,8 +568,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool TryGet<TEnum>(string key, out TEnum result, bool recursive = true) where TEnum : struct
         {
-            string rawResult;
-            if (TryGet(key, out rawResult, recursive))
+            if (TryGet(key, out string rawResult, recursive))
             {
                 try
                 {
@@ -605,8 +589,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("key");
             }
 
-            Note value;
-            if (TryGet(key, out value, recursive))
+            if (TryGet(key, out Note value, recursive))
             {
                 return value;
             }
@@ -627,8 +610,7 @@ namespace com.jonthysell.Chordious.Core
 
         public bool TryGet(string key, out Note result, bool recursive = true)
         {
-            string rawResult;
-            if (TryGet(key, out rawResult, recursive))
+            if (TryGet(key, out string rawResult, recursive))
             {
                 return NoteUtils.TryParseNote(rawResult, out result);
             }
@@ -644,8 +626,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("key");
             }
 
-            string level;
-            if (TryGetLevel(key, out level))
+            if (TryGetLevel(key, out string level))
             {
                 return level;
             }
@@ -805,8 +786,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (value)
                 {
-                    object parentValue;
-                    if (TryGet(key, out parentValue))
+                    if (TryGet(key, out object parentValue))
                     {
                         Set(key, parentValue);
                     }

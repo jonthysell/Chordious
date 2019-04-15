@@ -72,8 +72,10 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public PromptForTextMessage(string prompt, Action<string> callback, bool allowBlank = false) : base()
         {
-            TextPromptVM = new TextPromptViewModel(prompt, callback);
-            TextPromptVM.AllowBlank = allowBlank;
+            TextPromptVM = new TextPromptViewModel(prompt, callback)
+            {
+                AllowBlank = allowBlank
+            };
         }
 
         public PromptForTextMessage(string prompt, string defaultText, Action<string> callback, bool allowBlank = false) : this(prompt, callback, allowBlank)
@@ -273,7 +275,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         public TuningEditorViewModel TuningEditorVM { get; private set; }
 
-        private Action<bool> Callback;
+        private readonly Action<bool> Callback;
 
         public ShowTuningEditorMessage(ObservableInstrument instrument, Action<bool> callback = null) : base()
         {
@@ -357,7 +359,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public bool IsNew { get; private set; }
 
-        private Action<bool> Callback;
+        private readonly Action<bool> Callback;
 
         public ShowDiagramEditorMessage(ObservableDiagram diagram, bool isNew, Action<bool> callback = null) : base()
         {
@@ -388,7 +390,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         public DiagramMarkEditorViewModel DiagramMarkEditorVM { get; private set; }
 
-        private Action<bool> Callback;
+        private readonly Action<bool> Callback;
 
         public ShowDiagramMarkEditorMessage(DiagramMark diagramMark, bool isNew, Action<bool> callback = null) : base()
         {
@@ -418,7 +420,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         public DiagramFretLabelEditorViewModel DiagramFretLabelEditorVM { get; private set; }
 
-        private Action<bool> Callback;
+        private readonly Action<bool> Callback;
 
         public ShowDiagramFretLabelEditorMessage(DiagramFretLabel diagramFretLabel, bool isNew, Action<bool> callback = null) : base()
         {
@@ -448,7 +450,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         public DiagramBarreEditorViewModel DiagramBarreEditorVM { get; private set; }
 
-        private Action<bool> Callback;
+        private readonly Action<bool> Callback;
 
         public ShowDiagramBarreEditorMessage(DiagramBarre diagrmBarre, bool isNew, Action<bool> callback = null) : base()
         {
@@ -478,7 +480,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         public DiagramStyleEditorViewModel DiagramStyleEditorVM { get; private set; }
 
-        private Action<bool> Callback;
+        private readonly Action<bool> Callback;
 
         public ShowDiagramStyleEditorMessage(ObservableDiagramStyle diagramStyle, Action<bool> callback = null) : base()
         {
@@ -508,7 +510,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         public OptionsViewModel OptionsVM { get; set; }
 
-        private Action<bool> Callback;
+        private readonly Action<bool> Callback;
 
         public ShowOptionsMessage(Action<bool> callback = null) : base()
         {
@@ -537,7 +539,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
     {
         public AdvancedDataViewModel AdvancedDataVM { get; private set; }
 
-        private Action<bool> Callback;
+        private readonly Action<bool> Callback;
 
         public ShowAdvancedDataMessage(InheritableDictionary inheritableDictionary, string filter, Action<bool> callback) : base()
         {
@@ -572,12 +574,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ShowDiagramExportMessage(ObservableCollection<ObservableDiagram> diagramsToExport, string collectionName, Action callback = null) : base(callback)
         {
-            if (null == diagramsToExport)
-            {
-                throw new ArgumentNullException("diagramsToExport");
-            }
-
-            DiagramsToExport = diagramsToExport;
+            DiagramsToExport = diagramsToExport ?? throw new ArgumentNullException("diagramsToExport");
             CollectionName = collectionName;
         }
 
@@ -620,15 +617,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
     public abstract class PromptForStreamMessage : MessageBase
     {
-        private Action<Stream> Callback;
+        private readonly Action<Stream> Callback;
 
         public PromptForStreamMessage(Action<Stream> callback) : base()
         {
-            if (null == callback)
-            {
-                throw new ArgumentNullException("callback");
-            }
-            Callback = callback;
+            Callback = callback ?? throw new ArgumentNullException("callback");
         }
 
         public void Process(Stream stream)
@@ -659,15 +652,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
     public class PromptForLegacyImportMessage : MessageBase
     {
-        private Action<string, Stream> Callback;
+        private readonly Action<string, Stream> Callback;
 
         public PromptForLegacyImportMessage(Action<string, Stream> callback) : base()
         {
-            if (null == callback)
-            {
-                throw new ArgumentNullException("callback");
-            }
-            Callback = callback;
+            Callback = callback ?? throw new ArgumentNullException("callback");
         }
 
         public void Process(string fileName, Stream inputStream)

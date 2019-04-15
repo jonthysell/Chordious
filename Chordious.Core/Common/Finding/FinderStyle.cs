@@ -115,17 +115,12 @@ namespace com.jonthysell.Chordious.Core
 
         protected FinderStyle(ConfigFile configFile, string prefix)
         {
-            if (null == configFile)
-            {
-                throw new ArgumentNullException("configFile");
-            }
-
             if (StringUtils.IsNullOrWhiteSpace(prefix))
             {
                 throw new ArgumentNullException("prefix");
             }
 
-            _configFile = configFile;
+            _configFile = configFile ?? throw new ArgumentNullException("configFile");
             Prefix = prefix;
         }
     }

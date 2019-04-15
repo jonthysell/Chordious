@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -133,8 +133,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowNotification(ChordiousMessage message)
         {
-            InformationWindow window = new InformationWindow();
-            window.DataContext = message.InformationVM;
+            InformationWindow window = new InformationWindow
+            {
+                DataContext = message.InformationVM
+            };
             message.InformationVM.RequestClose += () =>
             {
                 window.Close();
@@ -145,8 +147,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowException(ExceptionMessage message)
         {
-            ExceptionWindow window = new ExceptionWindow();
-            window.DataContext = message.ExceptionVM;
+            ExceptionWindow window = new ExceptionWindow
+            {
+                DataContext = message.ExceptionVM
+            };
             message.ExceptionVM.RequestClose += () =>
             {
                 window.Close();
@@ -161,8 +165,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ConfirmAction(ConfirmationMessage message)
         {
-            ConfirmationWindow window = new ConfirmationWindow();
-            window.DataContext = message.ConfirmationVM;
+            ConfirmationWindow window = new ConfirmationWindow
+            {
+                DataContext = message.ConfirmationVM
+            };
             message.ConfirmationVM.RequestClose += () =>
             {
                 window.Close();
@@ -178,8 +184,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void PromptForText(PromptForTextMessage message)
         {
-            TextPromptWindow window = new TextPromptWindow();
-            window.DataContext = message.TextPromptVM;
+            TextPromptWindow window = new TextPromptWindow
+            {
+                DataContext = message.TextPromptVM
+            };
             message.TextPromptVM.RequestClose += () =>
             {
                 window.Close();
@@ -211,8 +219,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowDiagramLibrary(ShowDiagramLibraryMessage message)
         {
-            DiagramLibraryWindow window = new DiagramLibraryWindow();
-            window.DataContext = message.DiagramLibraryVM;
+            DiagramLibraryWindow window = new DiagramLibraryWindow
+            {
+                DataContext = message.DiagramLibraryVM
+            };
             message.DiagramLibraryVM.RequestClose += () =>
             {
                 window.Close();
@@ -223,8 +233,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowInstrumentManager(ShowInstrumentManagerMessage message)
         {
-            InstrumentManagerWindow window = new InstrumentManagerWindow();
-            window.DataContext = message.InstrumentManagerVM;
+            InstrumentManagerWindow window = new InstrumentManagerWindow
+            {
+                DataContext = message.InstrumentManagerVM
+            };
             message.InstrumentManagerVM.RequestClose += () =>
             {
                 window.Close();
@@ -235,8 +247,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowInstrumentEditor(ShowInstrumentEditorMessage message)
         {
-            InstrumentEditorWindow window = new InstrumentEditorWindow();
-            window.DataContext = message.InstrumentEditorVM;
+            InstrumentEditorWindow window = new InstrumentEditorWindow
+            {
+                DataContext = message.InstrumentEditorVM
+            };
             message.InstrumentEditorVM.RequestClose += () =>
             {
                 window.Close();
@@ -246,8 +260,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowTuningEditor(ShowTuningEditorMessage message)
         {
-            TuningEditorWindow window = new TuningEditorWindow();
-            window.DataContext = message.TuningEditorVM;
+            TuningEditorWindow window = new TuningEditorWindow
+            {
+                DataContext = message.TuningEditorVM
+            };
             message.TuningEditorVM.RequestClose += () =>
             {
                 window.Close();
@@ -269,8 +285,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowChordQualityEditor(ShowChordQualityEditorMessage message)
         {
-            ChordQualityEditorWindow window = new ChordQualityEditorWindow();
-            window.DataContext = message.ChordQualityEditorVM;
+            ChordQualityEditorWindow window = new ChordQualityEditorWindow
+            {
+                DataContext = message.ChordQualityEditorVM
+            };
             message.ChordQualityEditorVM.RequestClose += () =>
             {
                 window.Close();
@@ -291,8 +309,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowScaleEditor(ShowScaleEditorMessage message)
         {
-            ScaleEditorWindow window = new ScaleEditorWindow();
-            window.DataContext = message.ScaleEditorVM;
+            ScaleEditorWindow window = new ScaleEditorWindow
+            {
+                DataContext = message.ScaleEditorVM
+            };
             message.ScaleEditorVM.RequestClose += () =>
             {
                 window.Close();
@@ -315,8 +335,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowDiagramMarkEditor(ShowDiagramMarkEditorMessage message)
         {
-            DiagramMarkEditorWindow window = new DiagramMarkEditorWindow();
-            window.DataContext = message.DiagramMarkEditorVM;
+            DiagramMarkEditorWindow window = new DiagramMarkEditorWindow
+            {
+                DataContext = message.DiagramMarkEditorVM
+            };
             message.DiagramMarkEditorVM.RequestClose += () =>
             {
                 window.Close();
@@ -327,8 +349,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowDiagramFretLabelEditor(ShowDiagramFretLabelEditorMessage message)
         {
-            DiagramFretLabelEditorWindow window = new DiagramFretLabelEditorWindow();
-            window.DataContext = message.DiagramFretLabelEditorVM;
+            DiagramFretLabelEditorWindow window = new DiagramFretLabelEditorWindow
+            {
+                DataContext = message.DiagramFretLabelEditorVM
+            };
             message.DiagramFretLabelEditorVM.RequestClose += () =>
             {
                 window.Close();
@@ -339,8 +363,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowDiagramBarreEditor(ShowDiagramBarreEditorMessage message)
         {
-            DiagramBarreEditorWindow window = new DiagramBarreEditorWindow();
-            window.DataContext = message.DiagramBarreEditorVM;
+            DiagramBarreEditorWindow window = new DiagramBarreEditorWindow
+            {
+                DataContext = message.DiagramBarreEditorVM
+            };
             message.DiagramBarreEditorVM.RequestClose += () =>
             {
                 window.Close();
@@ -351,8 +377,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowDiagramStyleEditor(ShowDiagramStyleEditorMessage message)
         {
-            DiagramStyleEditorWindow window = new DiagramStyleEditorWindow();
-            window.DataContext = message.DiagramStyleEditorVM;
+            DiagramStyleEditorWindow window = new DiagramStyleEditorWindow
+            {
+                DataContext = message.DiagramStyleEditorVM
+            };
             message.DiagramStyleEditorVM.RequestClose += () =>
             {
                 window.Close();
@@ -375,8 +403,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowAdvancedData(ShowAdvancedDataMessage message)
         {
-            AdvancedDataWindow window = new AdvancedDataWindow();
-            window.DataContext = message.AdvancedDataVM;
+            AdvancedDataWindow window = new AdvancedDataWindow
+            {
+                DataContext = message.AdvancedDataVM
+            };
             message.AdvancedDataVM.RequestClose += () =>
             {
                 window.Close();
@@ -396,8 +426,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowConfigExport(ShowConfigExportMessage message)
         {
-            ConfigPartsWindow window = new ConfigPartsWindow();
-            window.DataContext = message.ConfigExportVM;
+            ConfigPartsWindow window = new ConfigPartsWindow
+            {
+                DataContext = message.ConfigExportVM
+            };
             message.ConfigExportVM.RequestClose += () =>
             {
                 window.Close();
@@ -408,11 +440,13 @@ namespace com.jonthysell.Chordious.WPF
 
         public static void PromptForConfigOutputStream(PromptForConfigOutputStreamMessage message)
         {
-            SaveFileDialog dialog = new SaveFileDialog();
-            dialog.AddExtension = true;
-            dialog.DefaultExt = "*.xml";
-            dialog.Filter = "Chordious Config|*.xml";
-            dialog.InitialDirectory = LastPath;
+            SaveFileDialog dialog = new SaveFileDialog
+            {
+                AddExtension = true,
+                DefaultExt = "*.xml",
+                Filter = "Chordious Config|*.xml",
+                InitialDirectory = LastPath
+            };
 
             bool? result = dialog.ShowDialog();
 
@@ -426,8 +460,10 @@ namespace com.jonthysell.Chordious.WPF
 
         private static void ShowConfigImport(ShowConfigImportMessage message)
         {
-            ConfigPartsWindow window = new ConfigPartsWindow();
-            window.DataContext = message.ConfigImportVM;
+            ConfigPartsWindow window = new ConfigPartsWindow
+            {
+                DataContext = message.ConfigImportVM
+            };
             message.ConfigImportVM.RequestClose += () =>
             {
                 window.Close();
@@ -438,11 +474,13 @@ namespace com.jonthysell.Chordious.WPF
 
         public static void PromptForConfigInputStream(PromptForConfigInputStreamMessage message)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.AddExtension = true;
-            dialog.DefaultExt = "*.xml";
-            dialog.Filter = "Chordious Config|*.xml";
-            dialog.InitialDirectory = LastPath;
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                AddExtension = true,
+                DefaultExt = "*.xml",
+                Filter = "Chordious Config|*.xml",
+                InitialDirectory = LastPath
+            };
 
             bool? result = dialog.ShowDialog();
 
@@ -456,8 +494,10 @@ namespace com.jonthysell.Chordious.WPF
 
         public static void ShowDiagramCollectionSelector(ShowDiagramCollectionSelectorMessage message)
         {
-            DiagramCollectionSelectorWindow window = new DiagramCollectionSelectorWindow();
-            window.DataContext = message.DiagramCollectionSelectorVM;
+            DiagramCollectionSelectorWindow window = new DiagramCollectionSelectorWindow
+            {
+                DataContext = message.DiagramCollectionSelectorVM
+            };
             message.DiagramCollectionSelectorVM.RequestClose += () =>
             {
                 window.Close();
@@ -467,11 +507,13 @@ namespace com.jonthysell.Chordious.WPF
 
         public static void PromptForLegacyImport(PromptForLegacyImportMessage message)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.AddExtension = true;
-            dialog.DefaultExt = "*.txt";
-            dialog.Filter = "All Files|*.*|ChordLines|*.txt";
-            dialog.InitialDirectory = LastPath;
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                AddExtension = true,
+                DefaultExt = "*.txt",
+                Filter = "All Files|*.*|ChordLines|*.txt",
+                InitialDirectory = LastPath
+            };
 
             bool? result = dialog.ShowDialog();
 

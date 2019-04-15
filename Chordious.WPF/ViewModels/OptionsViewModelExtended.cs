@@ -89,9 +89,8 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                Background result;
 
-                if (Enum.TryParse(GetSetting("app.renderbackground"), out result))
+                if (Enum.TryParse(GetSetting("app.renderbackground"), out Background result))
                 {
                     return result;
                 }
@@ -146,9 +145,8 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                Background result;
 
-                if (Enum.TryParse(GetSetting("diagrameditor.renderbackground"), out result))
+                if (Enum.TryParse(GetSetting("diagrameditor.renderbackground"), out Background result))
                 {
                     return result;
                 }
@@ -194,9 +192,8 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                bool result;
 
-                if (bool.TryParse(GetSetting("integration.enhancedcopy"), out result))
+                if (bool.TryParse(GetSetting("integration.enhancedcopy"), out bool result))
                 {
                     return result;
                 }
@@ -307,9 +304,8 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                ReleaseChannel result;
 
-                if (Enum.TryParse(GetSetting("app.releasechannel"), out result))
+                if (Enum.TryParse(GetSetting("app.releasechannel"), out ReleaseChannel result))
                 {
                     return result;
                 }
@@ -343,9 +339,8 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                bool result;
 
-                if (bool.TryParse(GetSetting("app.checkupdateonstart"), out result))
+                if (bool.TryParse(GetSetting("app.checkupdateonstart"), out bool result))
                 {
                     return result;
                 }

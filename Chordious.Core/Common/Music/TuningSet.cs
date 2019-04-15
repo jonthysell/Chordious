@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@ namespace com.jonthysell.Chordious.Core
                 return _instrument;
             }
         }
-        private Instrument _instrument;
+        private readonly Instrument _instrument;
 
         public bool ReadOnly { get; private set; }
 
@@ -58,12 +58,7 @@ namespace com.jonthysell.Chordious.Core
 
         internal TuningSet(Instrument instrument)
         {
-            if (null == instrument)
-            {
-                throw new ArgumentNullException("instrument");
-            }
-
-            _instrument = instrument;
+            _instrument = instrument ?? throw new ArgumentNullException("instrument");
             _tunings = new List<ITuning>();
         }
 
@@ -96,8 +91,7 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("longName");
             }
 
-            ITuning tuning;
-            if (TryGet(longName, out tuning))
+            if (TryGet(longName, out ITuning tuning))
             {
                 return tuning;
             }
@@ -209,9 +203,8 @@ namespace com.jonthysell.Chordious.Core
 
             foreach (ITuning sourceTuning in tuningSet)
             {
-                ITuning tuning = null;
 
-                if (!TryGet(sourceTuning.LongName, out tuning))
+                if (!TryGet(sourceTuning.LongName, out ITuning tuning))
                 {
                     FullNote[] rootNotes = new FullNote[sourceTuning.RootNotes.Length];
                     sourceTuning.RootNotes.CopyTo(rootNotes, 0);

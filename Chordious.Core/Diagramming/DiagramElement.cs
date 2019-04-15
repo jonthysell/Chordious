@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -80,23 +80,13 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramElement(Diagram parent)
         {
-            if (null == parent)
-            {
-                throw new ArgumentNullException("parent");
-            }
-
-            Parent = parent;
+            Parent = parent ?? throw new ArgumentNullException("parent");
             Style = new DiagramStyle(parent.Style, "Element");
         }
 
         public DiagramElement(Diagram parent, ElementPosition position) : this(parent)
         {
-            if (null == position)
-            {
-                throw new ArgumentNullException("position");
-            }
-
-            Position = position;
+            Position = position ?? throw new ArgumentNullException("position");
         }
 
         public DiagramElement(Diagram parent, ElementPosition position, string text) : this(parent, position)

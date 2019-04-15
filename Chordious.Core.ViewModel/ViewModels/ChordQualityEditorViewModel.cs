@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -95,27 +95,17 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
         private string _abbreviation;
 
-        private Action<string, string, int[]> _callback;
+        private readonly Action<string, string, int[]> _callback;
 
         public ChordQualityEditorViewModel(Action<string, string, int[]> callback) : base()
         {
-            if (null == callback)
-            {
-                throw new ArgumentNullException("callback");
-            }
-
-            _callback = callback;
+            _callback = callback ?? throw new ArgumentNullException("callback");
         }
 
         public ChordQualityEditorViewModel(string name, string abbreviation, int[] intervals, bool readOnly, Action<string, string, int[]> callback) : base(name, intervals, readOnly)
         {
-            if (null == callback)
-            {
-                throw new ArgumentNullException("callback");
-            }
-
             _abbreviation = abbreviation;
-            _callback = callback;
+            _callback = callback ?? throw new ArgumentNullException("callback");
         }
 
         protected override void OnAccept()

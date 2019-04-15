@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -70,7 +70,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 return !string.IsNullOrWhiteSpace(_rememberAnswerKey);
             }
         }
-        private string _rememberAnswerKey;
+        private readonly string _rememberAnswerKey;
 
         public RelayCommand AcceptAndRemember
         {
@@ -148,21 +148,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 throw new ArgumentNullException("message");
             }
 
-            if (null == callback)
-            {
-                throw new ArgumentNullException("callback");
-            }
-
             Message = message;
-            Callback = callback;
+            Callback = callback ?? throw new ArgumentNullException("callback");
             Result = ConfirmationResult.None;
 
             _rememberAnswerKey = rememberAnswerKey;
 
             if (ShowAcceptAndRemember)
             {
-                bool value;
-                if (AppVM.Settings.TryGet(rememberAnswerKey, out value))
+                if (AppVM.Settings.TryGet(rememberAnswerKey, out bool value))
                 {
                     if (value)
                     {

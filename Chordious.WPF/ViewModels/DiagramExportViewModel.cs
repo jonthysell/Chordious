@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -124,11 +124,7 @@ namespace com.jonthysell.Chordious.WPF
             }
             set
             {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-                _filenameFormats = value;
+                _filenameFormats = value ?? throw new ArgumentNullException();
                 RaisePropertyChanged("FilenameFormats");
             }
         }
@@ -190,9 +186,8 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                ExportFormat result;
 
-                if (Enum.TryParse(GetSetting("diagramexport.exportformat"), out result))
+                if (Enum.TryParse(GetSetting("diagramexport.exportformat"), out ExportFormat result))
                 {
                     return result;
                 }
@@ -239,9 +234,8 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                bool result;
 
-                if (bool.TryParse(GetSetting("diagramexport.overwritefiles"), out result))
+                if (bool.TryParse(GetSetting("diagramexport.overwritefiles"), out bool result))
                 {
                     return result;
                 }
@@ -283,9 +277,8 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                float result;
 
-                if (float.TryParse(GetSetting("diagramexport.scalefactor"), out result))
+                if (float.TryParse(GetSetting("diagramexport.scalefactor"), out float result))
                 {
                     return result;
                 }
@@ -338,8 +331,7 @@ namespace com.jonthysell.Chordious.WPF
                 {
                     try
                     {
-                        string result;
-                        if (FolderUtils.PromptForFolder(OutputPath, out result))
+                        if (FolderUtils.PromptForFolder(OutputPath, out string result))
                         {
                             OutputPath = result;
                         }
@@ -529,7 +521,7 @@ namespace com.jonthysell.Chordious.WPF
             return collection;
         }
 
-        private static string[] DefaultFileNameFormats = {
+        private static readonly string[] DefaultFileNameFormats = {
                                                              "%t.%x",
                                                              "%1.%x",
                                                              "diagram (%1 of %#).%x",

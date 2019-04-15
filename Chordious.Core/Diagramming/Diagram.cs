@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -211,9 +211,10 @@ namespace com.jonthysell.Chordious.Core
 
         public Diagram Clone()
         {
-            Diagram clone = new Diagram(Style.Parent, NumStrings, NumFrets);
-
-            clone.Title = Title;
+            Diagram clone = new Diagram(Style.Parent, NumStrings, NumFrets)
+            {
+                Title = Title
+            };
             clone.Style.CopyFrom(Style);
 
             foreach (DiagramMark mark in Marks)
@@ -718,9 +719,7 @@ namespace com.jonthysell.Chordious.Core
 
         public ElementPosition GetPosition<T>(double x, double y) where T : ElementPosition
         {
-            int @string;
-            int fret;
-            GetPositionInternal(x, y, out @string, out fret);
+            GetPositionInternal(x, y, out int @string, out int fret);
 
             try
             {

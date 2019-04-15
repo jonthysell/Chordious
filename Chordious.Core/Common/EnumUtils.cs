@@ -34,8 +34,7 @@ namespace com.jonthysell.Chordious.Core
     {
         public static string GetFriendlyValue<TEnum>(string value) where TEnum : struct
         {
-            TEnum result;
-            if (Enum.TryParse(value, out result))
+            if (Enum.TryParse(value, out TEnum result))
             {
                 return GetFriendlyValue(result);
             }

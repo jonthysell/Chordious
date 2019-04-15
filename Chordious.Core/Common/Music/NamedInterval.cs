@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -41,11 +41,7 @@ namespace com.jonthysell.Chordious.Core
             }
             protected set
             {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-                _parent = value;
+                _parent = value ?? throw new ArgumentNullException();
             }
         }
         private NamedIntervalSet _parent;
@@ -109,18 +105,13 @@ namespace com.jonthysell.Chordious.Core
             }
             set
             {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-
                 if (ReadOnly)
                 {
                     throw new ObjectIsReadOnlyException(this);
                 }
 
                 int[] oldValue = _intervals;
-                _intervals = value;
+                _intervals = value ?? throw new ArgumentNullException();
 
                 // Resort with parent
                 if (UpdateParent)
@@ -200,11 +191,6 @@ namespace com.jonthysell.Chordious.Core
                 throw new ArgumentNullException("name");
             }
 
-            if (null == intervals)
-            {
-                throw new ArgumentNullException("intervals");
-            }
-
             if (ReadOnly)
             {
                 throw new ObjectIsReadOnlyException(this);
@@ -216,7 +202,7 @@ namespace com.jonthysell.Chordious.Core
             int[] oldIntervals = Intervals;
 
             Name = name;
-            Intervals = intervals;
+            Intervals = intervals ?? throw new ArgumentNullException("intervals");
 
             Parent.Resort(this, () =>
             {

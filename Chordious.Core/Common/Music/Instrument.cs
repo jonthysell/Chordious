@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -41,11 +41,7 @@ namespace com.jonthysell.Chordious.Core
             }
             private set
             {
-                if (null == value)
-                {
-                    throw new ArgumentNullException();
-                }
-                _parent = value;
+                _parent = value ?? throw new ArgumentNullException();
             }
         }
         private InstrumentSet _parent;
@@ -78,8 +74,7 @@ namespace com.jonthysell.Chordious.Core
 
                 value = value.Trim();
 
-                Instrument instrument;
-                if (Parent.TryGet(value, out instrument) && this != instrument)
+                if (Parent.TryGet(value, out Instrument instrument) && this != instrument)
                 {
                     throw new InstrumentNameAlreadyExistsException(Parent, value);
                 }

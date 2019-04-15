@@ -55,9 +55,8 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
-                bool result;
 
-                if (bool.TryParse(AppVM.GetSetting("app.firstrun"), out result))
+                if (bool.TryParse(AppVM.GetSetting("app.firstrun"), out bool result))
                 {
                     return result;
                 }

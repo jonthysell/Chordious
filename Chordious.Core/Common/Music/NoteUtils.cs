@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2014, 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2014, 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -34,8 +34,7 @@ namespace com.jonthysell.Chordious.Core
     {
         public static Note ParseNote(string s)
         {
-            Note note;
-            if (TryParseNote(s, out note))
+            if (TryParseNote(s, out Note note))
             {
                 return note;
             }
@@ -235,14 +234,14 @@ namespace com.jonthysell.Chordious.Core
             return Array.IndexOf<Note>(NaturalNotes, note) >= 0;
         }
 
-        private static Note[] NaturalNotes = { Note.C, Note.D, Note.E, Note.F, Note.G, Note.A, Note.B };
+        private static readonly Note[] NaturalNotes = { Note.C, Note.D, Note.E, Note.F, Note.G, Note.A, Note.B };
 
         public static bool IsNatural(InternalNote note)
         {
             return Array.IndexOf<InternalNote>(NaturalInternalNotes, note) >= 0;
         }
 
-        private static InternalNote[] NaturalInternalNotes = { InternalNote.C, InternalNote.D, InternalNote.E, InternalNote.F, InternalNote.G, InternalNote.A, InternalNote.B };
+        private static readonly InternalNote[] NaturalInternalNotes = { InternalNote.C, InternalNote.D, InternalNote.E, InternalNote.F, InternalNote.G, InternalNote.A, InternalNote.B };
     }
 
     public enum Note

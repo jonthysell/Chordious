@@ -36,24 +36,13 @@ namespace com.jonthysell.Chordious.Core
 
         internal ChordFinderResult(ChordFinderResultSet parent, int[] marks)
         {
-            if (null == parent)
-            {
-                throw new ArgumentNullException("parent");
-            }
-
-            if (null == marks)
-            {
-                throw new ArgumentNullException("marks");
-            }
-
-            Parent = parent;
-            Marks = marks;
+            Parent = parent ?? throw new ArgumentNullException("parent");
+            Marks = marks ?? throw new ArgumentNullException("marks");
         }
 
         public Diagram ToDiagram(ChordFinderStyle chordFinderStyle)
         {
-            int baseLine;
-            int[] marks = MarkUtils.AbsoluteToRelativeMarks(Marks, out baseLine, Parent.ChordFinderOptions.NumFrets);
+            int[] marks = MarkUtils.AbsoluteToRelativeMarks(Marks, out int baseLine, Parent.ChordFinderOptions.NumFrets);
 
             InternalNote?[] notes = MarkUtils.GetInternalNotes(Marks, Parent.ChordFinderOptions.Tuning);
             InternalNote rootNote = NoteUtils.ToInternalNote(Parent.ChordFinderOptions.RootNote);

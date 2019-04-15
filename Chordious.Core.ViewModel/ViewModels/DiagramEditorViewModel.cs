@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -385,15 +385,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public DiagramEditorViewModel(ObservableDiagram diagram, bool isNew)
         {
-            if (null == diagram)
+            OriginalObservableDiagram = diagram ?? throw new ArgumentNullException("diagram");
+
+            ObservableDiagram = new ObservableDiagram(diagram.Diagram.Clone())
             {
-                throw new ArgumentNullException("diagram");
-            }
-
-            OriginalObservableDiagram = diagram;
-
-            ObservableDiagram = new ObservableDiagram(diagram.Diagram.Clone());
-            ObservableDiagram.IsEditMode = true;
+                IsEditMode = true
+            };
 
             if (isNew)
             {

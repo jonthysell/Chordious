@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2014, 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2014, 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -127,8 +127,10 @@ namespace com.jonthysell.Chordious.Core
                 // Look at the muted string
                 if (chordFinderOptions.AllowMutedStrings)
                 {
-                    NoteNode muted = new NoteNode();
-                    muted.Parent = noteNode;
+                    NoteNode muted = new NoteNode
+                    {
+                        Parent = noteNode
+                    };
                     await FindAllChordsAsync(results, muted, targetNotes, str + 1, chordFinderOptions, cancelToken);
                 }
 

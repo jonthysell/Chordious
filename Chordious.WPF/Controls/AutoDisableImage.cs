@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -100,8 +100,7 @@ namespace com.jonthysell.Chordious.WPF
 
         protected static ImageSource GetDisabledImage(ImageSource imageSource)
         {
-            ImageSource disabledImage = null;
-            if (_cachedDisabledImages.TryGetValue(imageSource, out disabledImage))
+            if (_cachedDisabledImages.TryGetValue(imageSource, out ImageSource disabledImage))
             {
                 return disabledImage;
             }

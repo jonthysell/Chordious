@@ -29,6 +29,11 @@ using System.IO;
 using System.Threading;
 using System.Windows;
 
+#if PORTABLE
+using System.Globalization;
+using System.Reflection;
+#endif
+
 using com.jonthysell.Chordious.WPF.Resources;
 
 namespace com.jonthysell.Chordious.WPF

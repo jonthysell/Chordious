@@ -217,7 +217,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public DiagramFretLabelEditorViewModel(DiagramFretLabel diagramFretLabel, bool isNew)
         {
-            DiagramFretLabel = diagramFretLabel ?? throw new ArgumentNullException("diagramFretLabel");
+            DiagramFretLabel = diagramFretLabel ?? throw new ArgumentNullException(nameof(diagramFretLabel));
 
             // Save properties
             _text = diagramFretLabel.Text;

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -57,7 +57,7 @@ namespace com.jonthysell.Chordious.CoreTest
         {
             public TestScaleFinderOptions scaleFinderOptions;
             
-            public bool allowExtras { get; set; }
+            public bool AllowExtras { get; set; }
 
             public IEnumerable<IScaleFinderResult> ExpectedResult;
             public IEnumerable<IScaleFinderResult> ActualResult;
@@ -65,14 +65,14 @@ namespace com.jonthysell.Chordious.CoreTest
             public void Execute()
             {
                 ActualResult = ScaleFinder.FindScales(scaleFinderOptions).Results;
-                TestUtils.AreEqual<IScaleFinderResult>(ExpectedResult, ActualResult, allowExtras);
+                TestUtils.AreEqual<IScaleFinderResult>(ExpectedResult, ActualResult, AllowExtras);
             }
 
             public void Parse(string s)
             {
                 if (string.IsNullOrWhiteSpace(s))
                 {
-                    throw new ArgumentNullException("s");
+                    throw new ArgumentNullException(nameof(s));
                 }
 
                 s = s.Trim();
@@ -81,7 +81,7 @@ namespace com.jonthysell.Chordious.CoreTest
 
                 scaleFinderOptions = TestScaleFinderOptions.Parse(vals[0]);
 
-                allowExtras = bool.Parse(vals[1]);
+                AllowExtras = bool.Parse(vals[1]);
 
                 List<IScaleFinderResult> expectedResult = null;
 
@@ -104,7 +104,7 @@ namespace com.jonthysell.Chordious.CoreTest
             {
                 return string.Join("\t",
                     scaleFinderOptions,
-                    allowExtras,
+                    AllowExtras,
                     TestUtils.ToString<IScaleFinderResult>(ExpectedResult, ';'));
             }
         }
@@ -128,7 +128,7 @@ namespace com.jonthysell.Chordious.CoreTest
             {
                 if (string.IsNullOrWhiteSpace(s))
                 {
-                    throw new ArgumentNullException("s");
+                    throw new ArgumentNullException(nameof(s));
                 }
 
                 s = s.Trim();
@@ -209,7 +209,7 @@ namespace com.jonthysell.Chordious.CoreTest
             {
                 if (null == obj)
                 {
-                    throw new ArgumentNullException("obj");
+                    throw new ArgumentNullException(nameof(obj));
                 }
 
                 IScaleFinderResult sfr = obj as IScaleFinderResult;

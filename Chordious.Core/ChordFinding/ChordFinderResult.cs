@@ -36,8 +36,8 @@ namespace com.jonthysell.Chordious.Core
 
         internal ChordFinderResult(ChordFinderResultSet parent, int[] marks)
         {
-            Parent = parent ?? throw new ArgumentNullException("parent");
-            Marks = marks ?? throw new ArgumentNullException("marks");
+            Parent = parent ?? throw new ArgumentNullException(nameof(parent));
+            Marks = marks ?? throw new ArgumentNullException(nameof(marks));
         }
 
         public Diagram ToDiagram(ChordFinderStyle chordFinderStyle)
@@ -134,7 +134,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (str < 0 || str >= notes.Length)
             {
-                throw new ArgumentOutOfRangeException("str");
+                throw new ArgumentOutOfRangeException(nameof(str));
             }
 
             string text = "";
@@ -162,7 +162,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == obj)
             {
-                throw new ArgumentNullException("obj");
+                throw new ArgumentNullException(nameof(obj));
             }
 
             ChordFinderResult cfr = obj as ChordFinderResult;

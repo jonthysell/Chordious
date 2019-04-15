@@ -145,11 +145,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             if (string.IsNullOrWhiteSpace(message))
             {
-                throw new ArgumentNullException("message");
+                throw new ArgumentNullException(nameof(message));
             }
 
             Message = message;
-            Callback = callback ?? throw new ArgumentNullException("callback");
+            Callback = callback ?? throw new ArgumentNullException(nameof(callback));
             Result = ConfirmationResult.None;
 
             _rememberAnswerKey = rememberAnswerKey;

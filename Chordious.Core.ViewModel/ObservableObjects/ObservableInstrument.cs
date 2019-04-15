@@ -71,7 +71,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ObservableInstrument(Instrument instrument) : base()
         {
-            Instrument = instrument ?? throw new ArgumentNullException("instrument");
+            Instrument = instrument ?? throw new ArgumentNullException(nameof(instrument));
         }
 
         public ObservableInstrument(string headerName) : base(headerName) { }

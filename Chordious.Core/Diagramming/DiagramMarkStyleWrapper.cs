@@ -413,7 +413,7 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramMarkStyleWrapper(DiagramStyle style, DiagramMarkType markType = DiagramMarkType.Normal)
         {
-            Style = style ?? throw new ArgumentNullException("style");
+            Style = style ?? throw new ArgumentNullException(nameof(style));
             MarkType = markType;
         }
 
@@ -421,7 +421,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == action)
             {
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             }
 
             DiagramMarkType original = MarkType;

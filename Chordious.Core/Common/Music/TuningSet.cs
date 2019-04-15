@@ -58,7 +58,7 @@ namespace com.jonthysell.Chordious.Core
 
         internal TuningSet(Instrument instrument)
         {
-            _instrument = instrument ?? throw new ArgumentNullException("instrument");
+            _instrument = instrument ?? throw new ArgumentNullException(nameof(instrument));
             _tunings = new List<ITuning>();
         }
 
@@ -88,7 +88,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(longName))
             {
-                throw new ArgumentNullException("longName");
+                throw new ArgumentNullException(nameof(longName));
             }
 
             if (TryGet(longName, out ITuning tuning))
@@ -103,7 +103,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(longName))
             {
-                throw new ArgumentNullException("longName");
+                throw new ArgumentNullException(nameof(longName));
             }
 
             foreach (Tuning t in _tunings)
@@ -135,12 +135,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == tuning)
             {
-                throw new ArgumentNullException("tuning");
+                throw new ArgumentNullException(nameof(tuning));
             }
 
             if (tuning.Parent != this)
             {
-                throw new ArgumentOutOfRangeException("tuning");
+                throw new ArgumentOutOfRangeException(nameof(tuning));
             }
 
             if (!ListUtils.SortedInsert<ITuning>(_tunings, tuning))
@@ -153,7 +153,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == tuning)
             {
-                throw new ArgumentNullException("tuning");
+                throw new ArgumentNullException(nameof(tuning));
             }
 
             if (ReadOnly)
@@ -193,12 +193,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == tuningSet)
             {
-                throw new ArgumentNullException("tuningSet");
+                throw new ArgumentNullException(nameof(tuningSet));
             }
 
             if (Instrument.NumStrings != tuningSet.Instrument.NumStrings)
             {
-                throw new ArgumentOutOfRangeException("tuningSet");
+                throw new ArgumentOutOfRangeException(nameof(tuningSet));
             }
 
             foreach (ITuning sourceTuning in tuningSet)
@@ -218,7 +218,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlReader)
             {
-                throw new ArgumentNullException("xmlReader");
+                throw new ArgumentNullException(nameof(xmlReader));
             }
 
             using (xmlReader)

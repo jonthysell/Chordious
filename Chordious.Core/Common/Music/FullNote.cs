@@ -106,7 +106,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == obj)
             {
-                throw new ArgumentNullException("obj");
+                throw new ArgumentNullException(nameof(obj));
             }
 
             FullNote fullNote = obj as FullNote;
@@ -137,7 +137,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(s))
             {
-                throw new ArgumentNullException("s");
+                throw new ArgumentNullException(nameof(s));
             }
 
             s = s.Trim();

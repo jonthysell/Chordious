@@ -82,7 +82,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ObservableNamedInterval(NamedInterval namedInterval) : base()
         {
-            NamedInterval = namedInterval ?? throw new ArgumentNullException("namedInterval");
+            NamedInterval = namedInterval ?? throw new ArgumentNullException(nameof(namedInterval));
         }
 
         public ObservableNamedInterval(string headerName) : base(headerName) { }

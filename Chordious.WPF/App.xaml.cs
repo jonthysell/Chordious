@@ -147,7 +147,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (string.IsNullOrWhiteSpace(userFile))
             {
-                throw new ArgumentNullException("userFile");
+                throw new ArgumentNullException(nameof(userFile));
             }
 
             string userFolder = Path.GetDirectoryName(userFile);

@@ -86,7 +86,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ConfigImportViewModel(Stream inputStream) : base()
         {
-            _inputStream = inputStream ?? throw new ArgumentNullException("inputStream");
+            _inputStream = inputStream ?? throw new ArgumentNullException(nameof(inputStream));
         }
 
         private void TryImport()

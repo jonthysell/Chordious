@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -160,7 +160,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             if (string.IsNullOrEmpty(optionLine))
             {
-                throw new ArgumentNullException("optionLine");
+                throw new ArgumentNullException(nameof(optionLine));
             }
 
             string[] s = optionLine.TrimStart(OptionsPrefix[0]).Trim().Split(';');
@@ -185,7 +185,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             if (null == co)
             {
-                throw new ArgumentNullException("co");
+                throw new ArgumentNullException(nameof(co));
             }
 
             co.Width = Width;

@@ -80,13 +80,13 @@ namespace com.jonthysell.Chordious.Core
 
         public DiagramElement(Diagram parent)
         {
-            Parent = parent ?? throw new ArgumentNullException("parent");
+            Parent = parent ?? throw new ArgumentNullException(nameof(parent));
             Style = new DiagramStyle(parent.Style, "Element");
         }
 
         public DiagramElement(Diagram parent, ElementPosition position) : this(parent)
         {
-            Position = position ?? throw new ArgumentNullException("position");
+            Position = position ?? throw new ArgumentNullException(nameof(position));
         }
 
         public DiagramElement(Diagram parent, ElementPosition position, string text) : this(parent, position)

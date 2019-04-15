@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -49,7 +49,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == parentStyle)
             {
-                throw new ArgumentNullException("parentStyle");
+                throw new ArgumentNullException(nameof(parentStyle));
             }
 
             Style = new DiagramStyle(parentStyle, LevelKey);
@@ -66,7 +66,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == diagram)
             {
-                throw new ArgumentNullException("diagram");
+                throw new ArgumentNullException(nameof(diagram));
             }
 
             diagram.Style.Parent = Style;
@@ -77,7 +77,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == diagramCollection)
             {
-                throw new ArgumentNullException("diagramCollection");
+                throw new ArgumentNullException(nameof(diagramCollection));
             }
 
             foreach (Diagram d in diagramCollection)
@@ -90,7 +90,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == diagram)
             {
-                throw new ArgumentNullException("diagram");
+                throw new ArgumentNullException(nameof(diagram));
             }
 
             _diagrams.Remove(diagram);
@@ -100,12 +100,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == oldDiagram)
             {
-                throw new ArgumentNullException("oldDiagram");
+                throw new ArgumentNullException(nameof(oldDiagram));
             }
 
             if (null == newDiagram)
             {
-                throw new ArgumentNullException("newDiagram");
+                throw new ArgumentNullException(nameof(newDiagram));
             }
 
             int index = _diagrams.IndexOf(oldDiagram);
@@ -119,7 +119,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == diagram)
             {
-                throw new ArgumentNullException("diagram");
+                throw new ArgumentNullException(nameof(diagram));
             }
 
             return _diagrams.Contains(diagram);
@@ -134,7 +134,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (index < 0 || index > _diagrams.Count)
             {
-                throw new ArgumentOutOfRangeException("index");
+                throw new ArgumentOutOfRangeException(nameof(index));
             }
 
             return _diagrams[index];
@@ -157,7 +157,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlReader)
             {
-                throw new ArgumentNullException("xmlReader");
+                throw new ArgumentNullException(nameof(xmlReader));
             }
 
             using (xmlReader)
@@ -185,7 +185,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlWriter)
             {
-                throw new ArgumentNullException("xmlWriter");
+                throw new ArgumentNullException(nameof(xmlWriter));
             }
 
             Style.Write(xmlWriter);

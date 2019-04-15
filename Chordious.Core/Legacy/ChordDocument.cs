@@ -35,12 +35,12 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             if (null == parentStyle)
             {
-                throw new ArgumentNullException("parentStyle");
+                throw new ArgumentNullException(nameof(parentStyle));
             }
 
             if (null == inputStream)
             {
-                throw new ArgumentNullException("inputStream");
+                throw new ArgumentNullException(nameof(inputStream));
             }
 
             DiagramCollection collection = new DiagramCollection(parentStyle);
@@ -82,17 +82,17 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             if (null == chord)
             {
-                throw new ArgumentNullException("chord");
+                throw new ArgumentNullException(nameof(chord));
             }
 
             if (null == chordOptions)
             {
-                throw new ArgumentNullException("chordOptions");
+                throw new ArgumentNullException(nameof(chordOptions));
             }
 
             if (null == parentStyle)
             {
-                throw new ArgumentNullException("parentStyle");
+                throw new ArgumentNullException(nameof(parentStyle));
             }
 
             Diagram diagram = new Diagram(parentStyle, chord.NumStrings, chord.NumFrets);

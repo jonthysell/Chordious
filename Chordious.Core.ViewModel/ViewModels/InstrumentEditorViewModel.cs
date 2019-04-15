@@ -205,13 +205,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             if (isNew && readOnly)
             {
-                throw new ArgumentOutOfRangeException("readOnly");
+                throw new ArgumentOutOfRangeException(nameof(readOnly));
             }
 
             _isNew = isNew;
             _readOnly = readOnly;
 
-            Callback = callback ?? throw new ArgumentNullException("callback");
+            Callback = callback ?? throw new ArgumentNullException(nameof(callback));
         }
 
         public InstrumentEditorViewModel(Action<string, int> callback) : this(true, false, callback) { }

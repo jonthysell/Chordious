@@ -229,12 +229,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             if (null == sortedCollection)
             {
-                throw new ArgumentNullException("sortedCollection");
+                throw new ArgumentNullException(nameof(sortedCollection));
             }
 
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentNullException("value");
+                throw new ArgumentNullException(nameof(value));
             }
 
             value = value.Trim();

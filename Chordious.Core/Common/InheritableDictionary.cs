@@ -124,7 +124,7 @@ namespace com.jonthysell.Chordious.Core
 
         public InheritableDictionary(InheritableDictionary parent) : this()
         {
-            Parent = parent ?? throw new ArgumentNullException("parent");
+            Parent = parent ?? throw new ArgumentNullException(nameof(parent));
         }
 
         public InheritableDictionary(InheritableDictionary parent, string level) : this(parent)
@@ -141,12 +141,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlReader)
             {
-                throw new ArgumentNullException("xmlReader");
+                throw new ArgumentNullException(nameof(xmlReader));
             }
 
             if (StringUtils.IsNullOrWhiteSpace(localName))
             {
-                throw new ArgumentNullException("localName");
+                throw new ArgumentNullException(nameof(localName));
             }
 
             if (ReadOnly)
@@ -173,7 +173,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlWriter)
             {
-                throw new ArgumentNullException("xmlWriter");
+                throw new ArgumentNullException(nameof(xmlWriter));
             }
 
             foreach (string key in LocalKeys(filter))
@@ -199,7 +199,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             if (ReadOnly)
@@ -229,7 +229,7 @@ namespace com.jonthysell.Chordious.Core
 
             if (StringUtils.IsNullOrWhiteSpace(prefix))
             {
-                throw new ArgumentNullException("prefix");
+                throw new ArgumentNullException(nameof(prefix));
             }
 
             prefix = CleanPrefix(prefix);
@@ -259,7 +259,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             Set(key, NoteUtils.ToString(value));
@@ -269,7 +269,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             Set(key, value.ToString(CultureInfo.InvariantCulture));
@@ -279,12 +279,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             if (null == value)
             {
-                throw new ArgumentNullException("value");
+                throw new ArgumentNullException(nameof(value));
             }
 
             Set(key, value.ToString());
@@ -294,12 +294,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             if (StringUtils.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentNullException("value");
+                throw new ArgumentNullException(nameof(value));
             }
 
             if (ReadOnly)
@@ -323,7 +323,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             if (TryGet(key, out string value, recursive))
@@ -338,7 +338,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             key = CleanKey(key);
@@ -361,7 +361,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             key = CleanKey(key);
@@ -389,7 +389,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             if (TryGet(key, out bool value, recursive))
@@ -426,7 +426,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             if (TryGet(key, out double value, recursive))
@@ -470,7 +470,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             if (TryGet(key, out float value, recursive))
@@ -507,7 +507,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             if (TryGet(key, out int value, recursive))
@@ -544,7 +544,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             if (TryGet<TEnum>(key, out TEnum value, recursive))
@@ -586,7 +586,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             if (TryGet(key, out Note value, recursive))
@@ -623,7 +623,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             if (TryGetLevel(key, out string level))
@@ -638,7 +638,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             key = CleanKey(key);
@@ -689,7 +689,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             key = CleanKey(key);
@@ -706,7 +706,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == source)
             {
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
             }
 
             foreach (string key in source.LocalKeys())
@@ -719,7 +719,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             key = CleanKey(key);
@@ -806,7 +806,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             if (TryGet(key, out string result) && null != Parent && Parent.TryGet(key, out string parentResult))
@@ -821,7 +821,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             return CleanKey(key);
@@ -831,7 +831,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             return Get(key, recursive);
@@ -846,7 +846,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             double value = GetDouble(key, recursive);
@@ -902,7 +902,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             key = key.ToLower().Trim();

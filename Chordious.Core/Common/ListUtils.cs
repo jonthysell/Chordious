@@ -35,12 +35,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == sortedList)
             {
-                throw new ArgumentNullException("sortedList");
+                throw new ArgumentNullException(nameof(sortedList));
             }
 
             if (null == value)
             {
-                throw new ArgumentNullException("value");
+                throw new ArgumentNullException(nameof(value));
             }
 
             int index = sortedList.BinarySearch(value);

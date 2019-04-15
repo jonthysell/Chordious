@@ -53,7 +53,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
             }
 
             path = PathUtils.Clean(path);
@@ -75,7 +75,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
             }
 
             path = PathUtils.Clean(path);
@@ -161,7 +161,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
             }
 
             sourcePath = PathUtils.Clean(sourcePath);
@@ -193,12 +193,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
             }
 
             if (StringUtils.IsNullOrWhiteSpace(newName))
             {
-                throw new ArgumentNullException("newName");
+                throw new ArgumentNullException(nameof(newName));
             }
 
             path = PathUtils.Clean(path);
@@ -235,12 +235,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
             }
 
             if (StringUtils.IsNullOrWhiteSpace(newName))
             {
-                throw new ArgumentNullException("newName");
+                throw new ArgumentNullException(nameof(newName));
             }
 
             path = PathUtils.Clean(path);
@@ -277,12 +277,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(path))
             {
-                throw new ArgumentNullException("path");
+                throw new ArgumentNullException(nameof(path));
             }
 
             if (StringUtils.IsNullOrWhiteSpace(baseName))
             {
-                throw new ArgumentNullException("baseName");
+                throw new ArgumentNullException(nameof(baseName));
             }
 
             string name = baseName;
@@ -378,7 +378,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == diagramLibrary)
             {
-                throw new ArgumentNullException("diagramLibrary");
+                throw new ArgumentNullException(nameof(diagramLibrary));
             }
 
             foreach (KeyValuePair<string, DiagramCollection> sourceKVP in diagramLibrary.GetAll())
@@ -397,7 +397,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlReader)
             {
-                throw new ArgumentNullException("xmlReader");
+                throw new ArgumentNullException(nameof(xmlReader));
             }
 
             using (xmlReader)
@@ -425,7 +425,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlWriter)
             {
-                throw new ArgumentNullException("xmlWriter");
+                throw new ArgumentNullException(nameof(xmlWriter));
             }
 
             Style.Write(xmlWriter);
@@ -440,7 +440,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
             }
 
             path = PathUtils.Clean(path);
@@ -463,7 +463,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == node)
             {
-                throw new ArgumentNullException("node");
+                throw new ArgumentNullException(nameof(node));
             }
 
             string path = node.Path;

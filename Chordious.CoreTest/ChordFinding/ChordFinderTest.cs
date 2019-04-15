@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -72,7 +72,7 @@ namespace com.jonthysell.Chordious.CoreTest
             {
                 if (string.IsNullOrWhiteSpace(s))
                 {
-                    throw new ArgumentNullException("s");
+                    throw new ArgumentNullException(nameof(s));
                 }
 
                 s = s.Trim();
@@ -129,7 +129,7 @@ namespace com.jonthysell.Chordious.CoreTest
             {
                 if (string.IsNullOrWhiteSpace(s))
                 {
-                    throw new ArgumentNullException("s");
+                    throw new ArgumentNullException(nameof(s));
                 }
 
                 s = s.Trim();
@@ -218,7 +218,7 @@ namespace com.jonthysell.Chordious.CoreTest
             {
                 if (null == obj)
                 {
-                    throw new ArgumentNullException("obj");
+                    throw new ArgumentNullException(nameof(obj));
                 }
 
                 IChordFinderResult cfr = obj as IChordFinderResult;

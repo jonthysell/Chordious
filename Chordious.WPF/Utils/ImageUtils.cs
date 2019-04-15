@@ -75,22 +75,22 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (string.IsNullOrEmpty(svgText))
             {
-                throw new ArgumentNullException("svgText");
+                throw new ArgumentNullException(nameof(svgText));
             }
 
             if (width <= 0 || width > MaxBitmapDimension)
             {
-                throw new ArgumentOutOfRangeException("width");
+                throw new ArgumentOutOfRangeException(nameof(width));
             }
 
             if (height <= 0 || height > MaxBitmapDimension)
             {
-                throw new ArgumentOutOfRangeException("height");
+                throw new ArgumentOutOfRangeException(nameof(height));
             }
 
             if (scaleFactor <= 0 || scaleFactor > GetMaxScaleFactor(width, height))
             {
-                throw new ArgumentOutOfRangeException("scaleFactor");
+                throw new ArgumentOutOfRangeException(nameof(scaleFactor));
             }
 
             float maxDimension = scaleFactor * Math.Max(width, height);
@@ -116,12 +116,12 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (null == source)
             {
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
             }
 
             if (background == Background.None)
             {
-                throw new ArgumentOutOfRangeException("background");
+                throw new ArgumentOutOfRangeException(nameof(background));
             }
 
             Bitmap baseImage = new Bitmap(source.Width, source.Height);
@@ -263,27 +263,27 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (string.IsNullOrWhiteSpace(svgText))
             {
-                throw new ArgumentNullException("svgText");
+                throw new ArgumentNullException(nameof(svgText));
             }
 
             if (width <= 0 || (exportFormat != ExportFormat.SVG && width > MaxBitmapDimension))
             {
-                throw new ArgumentOutOfRangeException("width");
+                throw new ArgumentOutOfRangeException(nameof(width));
             }
 
             if (height <= 0 || (exportFormat != ExportFormat.SVG && height > MaxBitmapDimension))
             {
-                throw new ArgumentOutOfRangeException("height");
+                throw new ArgumentOutOfRangeException(nameof(height));
             }
 
             if (scaleFactor <= 0 || (exportFormat != ExportFormat.SVG && scaleFactor > GetMaxScaleFactor(width, height)))
             {
-                throw new ArgumentOutOfRangeException("scaleFactor");
+                throw new ArgumentOutOfRangeException(nameof(scaleFactor));
             }
 
             if (string.IsNullOrWhiteSpace(filePath))
             {
-                throw new ArgumentNullException("filePath");
+                throw new ArgumentNullException(nameof(filePath));
             }
 
             string directoryPath = Path.GetDirectoryName(filePath);
@@ -368,17 +368,17 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (null == metadata)
             {
-                throw new ArgumentNullException("metadata");
+                throw new ArgumentNullException(nameof(metadata));
             }
            
             if (null == tags)
             {
-                throw new ArgumentNullException("tags");
+                throw new ArgumentNullException(nameof(tags));
             }
 
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentNullException("value");
+                throw new ArgumentNullException(nameof(value));
             }
 
             value = value.Trim();
@@ -406,12 +406,12 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (width <= 0 || width > MaxBitmapDimension)
             {
-                throw new ArgumentOutOfRangeException("width");
+                throw new ArgumentOutOfRangeException(nameof(width));
             }
 
             if (height <= 0 || height > MaxBitmapDimension)
             {
-                throw new ArgumentOutOfRangeException("height");
+                throw new ArgumentOutOfRangeException(nameof(height));
             }
 
             float maxByDimensionConstraint = MaxBitmapDimension / (float)Math.Max(width, height);

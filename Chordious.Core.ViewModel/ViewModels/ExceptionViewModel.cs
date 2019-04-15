@@ -108,7 +108,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ExceptionViewModel(Exception exception)
         {
-            Exception = exception ?? throw new ArgumentNullException("exception");
+            Exception = exception ?? throw new ArgumentNullException(nameof(exception));
         }
     }
 }

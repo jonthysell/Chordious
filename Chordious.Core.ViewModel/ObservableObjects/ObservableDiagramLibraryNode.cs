@@ -754,7 +754,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
             Path = path;
             Name = name;
 
-            Library = library ?? throw new ArgumentNullException("library");
+            Library = library ?? throw new ArgumentNullException(nameof(library));
 
             _redrawCallback = redrawCallback;
 

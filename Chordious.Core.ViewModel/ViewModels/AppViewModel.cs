@@ -240,8 +240,8 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         private AppViewModel(Assembly assembly, IAppView appView, string userConfigPath)
         {
-            AppInfo.Assembly = assembly ?? throw new ArgumentNullException("assembly");
-            AppView = appView ?? throw new ArgumentNullException("appView");
+            AppInfo.Assembly = assembly ?? throw new ArgumentNullException(nameof(assembly));
+            AppView = appView ?? throw new ArgumentNullException(nameof(appView));
             UserConfigPath = userConfigPath;
 
             AppConfig = new ConfigFile(DefaultConfig, ConfigFile.AppLevelKey);

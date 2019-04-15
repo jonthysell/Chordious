@@ -68,12 +68,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ScaleEditorViewModel(Action<string, int[]> callback) : base()
         {
-            _callback = callback ?? throw new ArgumentNullException("callback");
+            _callback = callback ?? throw new ArgumentNullException(nameof(callback));
         }
 
         public ScaleEditorViewModel(string name, int[] intervals, bool readOnly, Action<string, int[]> callback) : base(name, intervals, readOnly)
         {
-            _callback = callback ?? throw new ArgumentNullException("callback");
+            _callback = callback ?? throw new ArgumentNullException(nameof(callback));
         }
 
         protected override void OnAccept()

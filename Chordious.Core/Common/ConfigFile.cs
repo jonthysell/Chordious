@@ -141,7 +141,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == inputStream)
             {
-                throw new ArgumentNullException("inputStream");
+                throw new ArgumentNullException(nameof(inputStream));
             }
 
             using (XmlReader reader = XmlReader.Create(inputStream))
@@ -188,7 +188,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == outputStream)
             {
-                throw new ArgumentNullException("outputStream");
+                throw new ArgumentNullException(nameof(outputStream));
             }
 
             XmlWriterSettings settings = new XmlWriterSettings
@@ -258,7 +258,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == configFile)
             {
-                throw new ArgumentNullException("configFile");
+                throw new ArgumentNullException(nameof(configFile));
             }
 
             if ((configParts & ConfigParts.Settings) == ConfigParts.Settings)

@@ -142,12 +142,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlReader)
             {
-                throw new ArgumentNullException("xmlReader");
+                throw new ArgumentNullException(nameof(xmlReader));
             }
 
             if (StringUtils.IsNullOrWhiteSpace(localName))
             {
-                throw new ArgumentNullException("localName");
+                throw new ArgumentNullException(nameof(localName));
             }
 
             if (xmlReader.IsStartElement() && xmlReader.Name == localName)
@@ -167,12 +167,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlWriter)
             {
-                throw new ArgumentNullException("xmlWriter");
+                throw new ArgumentNullException(nameof(xmlWriter));
             }
 
             if (StringUtils.IsNullOrWhiteSpace(localName))
             {
-                throw new ArgumentNullException("localName");
+                throw new ArgumentNullException(nameof(localName));
             }
 
             xmlWriter.WriteStartElement(localName);
@@ -188,7 +188,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
             }
 
             if (ReadOnly)
@@ -202,7 +202,7 @@ namespace com.jonthysell.Chordious.Core
             int[] oldIntervals = Intervals;
 
             Name = name;
-            Intervals = intervals ?? throw new ArgumentNullException("intervals");
+            Intervals = intervals ?? throw new ArgumentNullException(nameof(intervals));
 
             Parent.Resort(this, () =>
             {
@@ -221,7 +221,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == intervals || intervals.Length == 0)
             {
-                throw new ArgumentNullException("intervals");
+                throw new ArgumentNullException(nameof(intervals));
             }
 
             InternalNote[] notes = new InternalNote[intervals.Length];
@@ -248,7 +248,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(intervalString))
             {
-                throw new ArgumentNullException("intervalString");
+                throw new ArgumentNullException(nameof(intervalString));
             }
 
             intervalString = intervalString.Trim().TrimEnd(_separator);
@@ -288,7 +288,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == obj)
             {
-                throw new ArgumentNullException("obj");
+                throw new ArgumentNullException(nameof(obj));
             }
 
             NamedInterval namedInterval = obj as NamedInterval;

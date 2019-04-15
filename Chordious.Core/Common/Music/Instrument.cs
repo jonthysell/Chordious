@@ -148,7 +148,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlReader)
             {
-                throw new ArgumentNullException("xmlReader");
+                throw new ArgumentNullException(nameof(xmlReader));
             }
 
             using (xmlReader)
@@ -173,7 +173,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlWriter)
             {
-                throw new ArgumentNullException("xmlWriter");
+                throw new ArgumentNullException(nameof(xmlWriter));
             }
 
             xmlWriter.WriteStartElement("instrument");
@@ -193,7 +193,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == obj)
             {
-                throw new ArgumentNullException("obj");
+                throw new ArgumentNullException(nameof(obj));
             }
 
             Instrument instrument = obj as Instrument;

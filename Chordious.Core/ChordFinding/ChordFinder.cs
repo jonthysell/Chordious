@@ -46,7 +46,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == chordFinderOptions)
             {
-                throw new ArgumentNullException("chordFinderOptions");
+                throw new ArgumentNullException(nameof(chordFinderOptions));
             }
 
             InternalNote root = NoteUtils.ToInternalNote(chordFinderOptions.RootNote);

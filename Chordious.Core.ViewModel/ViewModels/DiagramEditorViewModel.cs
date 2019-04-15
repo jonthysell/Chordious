@@ -385,7 +385,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public DiagramEditorViewModel(ObservableDiagram diagram, bool isNew)
         {
-            OriginalObservableDiagram = diagram ?? throw new ArgumentNullException("diagram");
+            OriginalObservableDiagram = diagram ?? throw new ArgumentNullException(nameof(diagram));
 
             ObservableDiagram = new ObservableDiagram(diagram.Diagram.Clone())
             {

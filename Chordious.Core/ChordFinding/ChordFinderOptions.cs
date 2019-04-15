@@ -115,7 +115,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == chordQuality)
             {
-                throw new ArgumentNullException("chordQuality");
+                throw new ArgumentNullException(nameof(chordQuality));
             }
 
             Settings[Prefix + "rootnote"] = NoteUtils.ToString(rootNote);

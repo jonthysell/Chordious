@@ -89,7 +89,7 @@ namespace com.jonthysell.Chordious.Core
 
         internal InstrumentSet(InstrumentSet parent, string level) : this(level)
         {
-            Parent = parent ?? throw new ArgumentNullException("parent");
+            Parent = parent ?? throw new ArgumentNullException(nameof(parent));
         }
 
         public void MarkAsReadOnly()
@@ -118,7 +118,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
             }
 
             if (TryGet(name, out Instrument instrument))
@@ -133,7 +133,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
             }
 
             foreach (Instrument i in _instruments)
@@ -165,12 +165,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == instrument)
             {
-                throw new ArgumentNullException("instrument");
+                throw new ArgumentNullException(nameof(instrument));
             }
 
             if (instrument.Parent != this)
             {
-                throw new ArgumentOutOfRangeException("instrument");
+                throw new ArgumentOutOfRangeException(nameof(instrument));
             }
 
             ListUtils.SortedInsert<Instrument>(_instruments, instrument);
@@ -190,7 +190,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == instrument)
             {
-                throw new ArgumentNullException("instrument");
+                throw new ArgumentNullException(nameof(instrument));
             }
 
             if (ReadOnly)
@@ -208,7 +208,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == instrumentSet)
             {
-                throw new ArgumentNullException("instrumentSet");
+                throw new ArgumentNullException(nameof(instrumentSet));
             }
 
             foreach (Instrument sourceInstrument in instrumentSet)
@@ -230,7 +230,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlReader)
             {
-                throw new ArgumentNullException("xmlReader");
+                throw new ArgumentNullException(nameof(xmlReader));
             }
 
             using (xmlReader)
@@ -250,7 +250,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlWriter)
             {
-                throw new ArgumentNullException("xmlWriter");
+                throw new ArgumentNullException(nameof(xmlWriter));
             }
 
             foreach (Instrument i in _instruments)

@@ -62,7 +62,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (null == imageSource)
             {
-                throw new ArgumentNullException("imageSource");
+                throw new ArgumentNullException(nameof(imageSource));
             }
 
             GetDisabledImage(imageSource);

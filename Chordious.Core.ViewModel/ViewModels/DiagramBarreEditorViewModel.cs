@@ -167,7 +167,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public DiagramBarreEditorViewModel(DiagramBarre diagramBarre, bool isNew)
         {
-            DiagramBarre = diagramBarre ?? throw new ArgumentNullException("diagramBarre");
+            DiagramBarre = diagramBarre ?? throw new ArgumentNullException(nameof(diagramBarre));
 
             // Save original
             _originalStyle = new ObservableDiagramStyle(diagramBarre.Style);

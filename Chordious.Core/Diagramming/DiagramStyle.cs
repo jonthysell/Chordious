@@ -1163,7 +1163,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (value < 0 || value > 1.0)
                 {
-                    throw new ArgumentOutOfRangeException("value");
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("fretlabel.textopacity", value);
@@ -1264,7 +1264,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (value < 0 || value > 1.0)
                 {
-                    throw new ArgumentOutOfRangeException("value");
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("fretlabel.textsizeratio", value);
@@ -1317,7 +1317,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("value");
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("fretlabel.gridpadding", value);
@@ -1346,7 +1346,7 @@ namespace com.jonthysell.Chordious.Core
             {
                 if (value < 0 || value > 1.0)
                 {
-                    throw new ArgumentOutOfRangeException("value");
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("fretlabel.textwidthratio", value);
@@ -1584,7 +1584,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             if (TryGetColor(key, out string value, recursive))
@@ -1621,7 +1621,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == styleMap)
             {
-                throw new ArgumentNullException("styleMap");
+                throw new ArgumentNullException(nameof(styleMap));
             }
 
             string style = "";
@@ -1719,7 +1719,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             key = CleanKey(key);
@@ -1997,7 +1997,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             key = CleanKey(key);

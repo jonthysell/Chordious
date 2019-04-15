@@ -185,12 +185,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             if (isNew && readOnly)
             {
-                throw new ArgumentOutOfRangeException("readOnly");
+                throw new ArgumentOutOfRangeException(nameof(readOnly));
             }
 
             _isNew = isNew;
             _readOnly = readOnly;
-            Callback = callback ?? throw new ArgumentNullException("callback");
+            Callback = callback ?? throw new ArgumentNullException(nameof(callback));
 
             RootNotes = new ObservableCollection<ObservableNote>();
         }
@@ -199,7 +199,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             if (null == instrument)
             {
-                throw new ArgumentNullException("instrument");
+                throw new ArgumentNullException(nameof(instrument));
             }
 
             TuningEditorViewModel tuningEditorVM = new TuningEditorViewModel(true, false, (name, notes) =>
@@ -226,7 +226,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             if (null == tuning)
             {
-                throw new ArgumentNullException("tuning");
+                throw new ArgumentNullException(nameof(tuning));
             }
 
             TuningEditorViewModel tuningEditorVM = new TuningEditorViewModel(false, tuning.ReadOnly, (name, notes) =>
@@ -256,12 +256,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             if (null == tuning)
             {
-                throw new ArgumentNullException("tuning");
+                throw new ArgumentNullException(nameof(tuning));
             }
 
             if (null == targetInstrument)
             {
-                throw new ArgumentNullException("targetInstrument");
+                throw new ArgumentNullException(nameof(targetInstrument));
             }
 
             return CopyExistingTuning(tuning.Tuning, targetInstrument.Instrument);
@@ -272,12 +272,12 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             if (null == tuning)
             {
-                throw new ArgumentNullException("tuning");
+                throw new ArgumentNullException(nameof(tuning));
             }
 
             if (null == targetInstrument)
             {
-                throw new ArgumentNullException("targetInstrument");
+                throw new ArgumentNullException(nameof(targetInstrument));
             }
 
             TuningEditorViewModel tuningEditorVM = new TuningEditorViewModel(true, false, (name, notes) =>

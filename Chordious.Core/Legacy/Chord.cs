@@ -192,7 +192,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             if (string.IsNullOrEmpty(chordLine))
             {
-                throw new ArgumentNullException("chordLine");
+                throw new ArgumentNullException(nameof(chordLine));
             }
 
             string[] s = chordLine.Trim().Split(';');
@@ -222,7 +222,7 @@ namespace com.jonthysell.Chordious.Core.Legacy
         {
             if (null == c)
             {
-                throw new ArgumentNullException("c");
+                throw new ArgumentNullException(nameof(c));
             }
 
             c.Title = Title;

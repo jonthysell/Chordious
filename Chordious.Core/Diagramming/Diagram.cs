@@ -106,7 +106,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == parentStyle)
             {
-                throw new ArgumentNullException("parentStyle");
+                throw new ArgumentNullException(nameof(parentStyle));
             }
 
             _marks = new List<DiagramMark>();
@@ -129,7 +129,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlReader)
             {
-                throw new ArgumentNullException("xmlReader");
+                throw new ArgumentNullException(nameof(xmlReader));
             }
 
             Read(xmlReader);
@@ -139,7 +139,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlReader)
             {
-                throw new ArgumentNullException("xmlReader");
+                throw new ArgumentNullException(nameof(xmlReader));
             }
 
             using (xmlReader)
@@ -180,7 +180,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlWriter)
             {
-                throw new ArgumentNullException("xmlWriter");
+                throw new ArgumentNullException(nameof(xmlWriter));
             }
 
             xmlWriter.WriteStartElement("diagram");
@@ -245,12 +245,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (newNumStrings < 2)
             {
-                throw new ArgumentOutOfRangeException("newNumStrings");
+                throw new ArgumentOutOfRangeException(nameof(newNumStrings));
             }
 
             if (newNumFrets < 1)
             {
-                throw new ArgumentOutOfRangeException("newNumFrets");
+                throw new ArgumentOutOfRangeException(nameof(newNumFrets));
             }
 
             List<DiagramMark> endMarks = new List<DiagramMark>();
@@ -332,7 +332,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == position)
             {
-                throw new ArgumentNullException("position");
+                throw new ArgumentNullException(nameof(position));
             }
 
             if (position.GetType() == typeof(MarkPosition))
@@ -363,7 +363,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == position)
             {
-                throw new ArgumentNullException("position");
+                throw new ArgumentNullException(nameof(position));
             }
 
             if (position.GetType() == typeof(MarkPosition))
@@ -404,12 +404,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == element)
             {
-                throw new ArgumentNullException("element");
+                throw new ArgumentNullException(nameof(element));
             }
 
             if (null == position)
             {
-                throw new ArgumentNullException("position");
+                throw new ArgumentNullException(nameof(position));
             }
 
             // Warning: Do not use element.Position as this method can be called during
@@ -519,7 +519,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == position)
             {
-                throw new ArgumentNullException("position");
+                throw new ArgumentNullException(nameof(position));
             }
 
             if (ValidPosition(position) && !HasElementAt(position))
@@ -548,7 +548,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == position)
             {
-                throw new ArgumentNullException("position");
+                throw new ArgumentNullException(nameof(position));
             }
 
             return HasElementAt(position);
@@ -563,7 +563,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == position)
             {
-                throw new ArgumentNullException("position");
+                throw new ArgumentNullException(nameof(position));
             }
 
             if (ValidPosition(position) && !HasElementAt(position))
@@ -592,7 +592,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == position)
             {
-                throw new ArgumentNullException("position");
+                throw new ArgumentNullException(nameof(position));
             }
 
             return HasElementAt(position);
@@ -607,7 +607,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == position)
             {
-                throw new ArgumentNullException("position");
+                throw new ArgumentNullException(nameof(position));
             }
 
             if (ValidPosition(position) && !HasElementAt(position))
@@ -643,7 +643,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == position)
             {
-                throw new ArgumentNullException("position");
+                throw new ArgumentNullException(nameof(position));
             }
 
             return HasElementAt(position);
@@ -846,7 +846,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (range < 0)
             {
-                throw new ArgumentOutOfRangeException("range");
+                throw new ArgumentOutOfRangeException(nameof(range));
             }
 
             return (value >= (center - range)) && (value <= (center + range));

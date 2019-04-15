@@ -145,7 +145,7 @@ namespace com.jonthysell.Chordious.Core
         private Tuning(TuningSet parent)
         {
             ReadOnly = false;
-            _parent = parent ?? throw new ArgumentNullException("parent");
+            _parent = parent ?? throw new ArgumentNullException(nameof(parent));
         }
 
         internal Tuning(TuningSet parent, string name, FullNote[] rootNotes) : this(parent)
@@ -160,7 +160,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlReader)
             {
-                throw new ArgumentNullException("xmlReader");
+                throw new ArgumentNullException(nameof(xmlReader));
             }
 
             using (xmlReader)
@@ -195,7 +195,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
             }
 
             if (null == rootNotes)
@@ -238,12 +238,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (str < 0 || str >= RootNotes.Length)
             {
-                throw new ArgumentOutOfRangeException("str");
+                throw new ArgumentOutOfRangeException(nameof(str));
             }
 
             if (fret < 0)
             {
-                throw new ArgumentOutOfRangeException("fret");
+                throw new ArgumentOutOfRangeException(nameof(fret));
             }
 
             return NoteUtils.Shift(RootNotes[str].InternalNote, fret);
@@ -253,12 +253,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (str < 0 || str >= RootNotes.Length)
             {
-                throw new ArgumentOutOfRangeException("str");
+                throw new ArgumentOutOfRangeException(nameof(str));
             }
 
             if (fret < 0)
             {
-                throw new ArgumentOutOfRangeException("fret");
+                throw new ArgumentOutOfRangeException(nameof(fret));
             }
 
             return RootNotes[str].Shift(fret, style);
@@ -268,7 +268,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlWriter)
             {
-                throw new ArgumentNullException("xmlWriter");
+                throw new ArgumentNullException(nameof(xmlWriter));
             }
 
             xmlWriter.WriteStartElement("tuning");
@@ -293,7 +293,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == obj)
             {
-                throw new ArgumentNullException("obj");
+                throw new ArgumentNullException(nameof(obj));
             }
 
             Tuning tuning = obj as Tuning;

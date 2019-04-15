@@ -118,7 +118,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         internal ObservableNote(FullNote note)
         {
-            FullNote = note ?? throw new ArgumentNullException("note");
+            FullNote = note ?? throw new ArgumentNullException(nameof(note));
         }
 
         public override string ToString()

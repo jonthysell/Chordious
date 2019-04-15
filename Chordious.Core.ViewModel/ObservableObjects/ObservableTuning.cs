@@ -77,7 +77,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ObservableTuning(Tuning tuning)
         {
-            Tuning = tuning ?? throw new ArgumentNullException("tuning");
+            Tuning = tuning ?? throw new ArgumentNullException(nameof(tuning));
         }
 
         private ObservableCollection<ObservableNote> GetNotes()

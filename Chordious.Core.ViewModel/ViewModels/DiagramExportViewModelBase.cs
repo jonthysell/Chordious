@@ -173,7 +173,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public DiagramExportViewModelBase(ObservableCollection<ObservableDiagram> diagramsToExport, string collectionName = "")
         {
-            DiagramsToExport = diagramsToExport ?? throw new ArgumentNullException("diagramsToExport");
+            DiagramsToExport = diagramsToExport ?? throw new ArgumentNullException(nameof(diagramsToExport));
 
             if (string.IsNullOrWhiteSpace(collectionName))
             {

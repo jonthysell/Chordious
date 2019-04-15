@@ -68,7 +68,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == parent)
             {
-                throw new ArgumentNullException("parent");
+                throw new ArgumentNullException(nameof(parent));
             }
 
             Name = name;
@@ -82,12 +82,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == parent)
             {
-                throw new ArgumentNullException("parent");
+                throw new ArgumentNullException(nameof(parent));
             }
 
             if (null == xmlReader)
             {
-                throw new ArgumentNullException("xmlReader");
+                throw new ArgumentNullException(nameof(xmlReader));
             }
 
             using (xmlReader)
@@ -115,7 +115,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
             }
 
             if (ReadOnly)
@@ -131,7 +131,7 @@ namespace com.jonthysell.Chordious.Core
 
             Name = name;
             Abbreviation = abbreviation;
-            Intervals = intervals ?? throw new ArgumentNullException("intervals");
+            Intervals = intervals ?? throw new ArgumentNullException(nameof(intervals));
 
             Parent.Resort(this, () =>
             {
@@ -146,7 +146,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlWriter)
             {
-                throw new ArgumentNullException("xmlWriter");
+                throw new ArgumentNullException(nameof(xmlWriter));
             }
 
             WriteBase(xmlWriter, "quality");

@@ -75,7 +75,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (null == diagram)
             {
-                throw new ArgumentNullException("diagram");
+                throw new ArgumentNullException(nameof(diagram));
             }
 
             DataObject data = new DataObject();
@@ -91,12 +91,12 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (null == dragSource)
             {
-                throw new ArgumentNullException("dragSource");
+                throw new ArgumentNullException(nameof(dragSource));
             }
 
             if (null == diagram)
             {
-                throw new ArgumentNullException("diagram");
+                throw new ArgumentNullException(nameof(diagram));
             }
 
             DataObject data = new DataObject();
@@ -110,12 +110,12 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (null == dragSource)
             {
-                throw new ArgumentNullException("dragSource");
+                throw new ArgumentNullException(nameof(dragSource));
             }
 
             if (null == diagramLibraryNode)
             {
-                throw new ArgumentNullException("diagramLibraryNode");
+                throw new ArgumentNullException(nameof(diagramLibraryNode));
             }
 
             DataObject data = new DataObject();
@@ -155,7 +155,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (null == data)
             {
-                throw new ArgumentNullException("data");
+                throw new ArgumentNullException(nameof(data));
             }
 
             if (data.GetDataPresent(typeof(ObservableDiagramLibraryNode)) && data.GetData(typeof(ObservableDiagramLibraryNode)) is ObservableDiagramLibraryNode sourceNode)

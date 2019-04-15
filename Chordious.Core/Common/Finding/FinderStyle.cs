@@ -117,10 +117,10 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(prefix))
             {
-                throw new ArgumentNullException("prefix");
+                throw new ArgumentNullException(nameof(prefix));
             }
 
-            _configFile = configFile ?? throw new ArgumentNullException("configFile");
+            _configFile = configFile ?? throw new ArgumentNullException(nameof(configFile));
             Prefix = prefix;
         }
     }

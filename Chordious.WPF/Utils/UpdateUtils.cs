@@ -182,7 +182,7 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (string.IsNullOrWhiteSpace(version))
             {
-                throw new ArgumentNullException("version");
+                throw new ArgumentNullException(nameof(version));
             }
 
             ulong vers = 0;
@@ -276,12 +276,12 @@ namespace com.jonthysell.Chordious.WPF
         {
             if (string.IsNullOrWhiteSpace(version))
             {
-                throw new ArgumentNullException("version");
+                throw new ArgumentNullException(nameof(version));
             }
 
             if (string.IsNullOrWhiteSpace(url))
             {
-                throw new ArgumentNullException("url");
+                throw new ArgumentNullException(nameof(url));
             }
 
             Version = version.Trim();

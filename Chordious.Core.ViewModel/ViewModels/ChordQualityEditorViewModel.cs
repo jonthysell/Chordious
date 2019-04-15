@@ -99,13 +99,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ChordQualityEditorViewModel(Action<string, string, int[]> callback) : base()
         {
-            _callback = callback ?? throw new ArgumentNullException("callback");
+            _callback = callback ?? throw new ArgumentNullException(nameof(callback));
         }
 
         public ChordQualityEditorViewModel(string name, string abbreviation, int[] intervals, bool readOnly, Action<string, string, int[]> callback) : base(name, intervals, readOnly)
         {
             _abbreviation = abbreviation;
-            _callback = callback ?? throw new ArgumentNullException("callback");
+            _callback = callback ?? throw new ArgumentNullException(nameof(callback));
         }
 
         protected override void OnAccept()

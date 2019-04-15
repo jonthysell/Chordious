@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -68,12 +68,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == chordMarks)
             {
-                throw new ArgumentNullException("chordMarks");
+                throw new ArgumentNullException(nameof(chordMarks));
             }
 
             if (null == chordFinderOptions)
             {
-                throw new ArgumentNullException("chordFinderOptions");
+                throw new ArgumentNullException(nameof(chordFinderOptions));
             }
 
             MarkAnalysis ma = ChordAnalysis(chordMarks);
@@ -89,12 +89,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == scaleMarks)
             {
-                throw new ArgumentNullException("scaleMarks");
+                throw new ArgumentNullException(nameof(scaleMarks));
             }
 
             if (null == scaleFinderOptions)
             {
-                throw new ArgumentNullException("scaleFinderOptions");
+                throw new ArgumentNullException(nameof(scaleFinderOptions));
             }
 
             MarkAnalysis ma = ScaleAnalysis(scaleMarks, scaleFinderOptions.Instrument.NumStrings);
@@ -175,12 +175,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == marksA)
             {
-                throw new ArgumentNullException("marksA");
+                throw new ArgumentNullException(nameof(marksA));
             }
 
             if (null == marksB)
             {
-                throw new ArgumentNullException("marksB");
+                throw new ArgumentNullException(nameof(marksB));
             }
 
             if (marksA.Length != marksB.Length)
@@ -198,17 +198,17 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == marksA)
             {
-                throw new ArgumentNullException("marksA");
+                throw new ArgumentNullException(nameof(marksA));
             }
 
             if (null == marksB)
             {
-                throw new ArgumentNullException("marksB");
+                throw new ArgumentNullException(nameof(marksB));
             }
 
             if (numStrings <= 0)
             {
-                throw new ArgumentOutOfRangeException("numStrings");
+                throw new ArgumentOutOfRangeException(nameof(numStrings));
             }
 
             MarkAnalysis analysisA = ScaleAnalysis(marksA, numStrings);
@@ -221,14 +221,14 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == absoluteMarks)
             {
-                throw new ArgumentNullException("absoluteMarks");
+                throw new ArgumentNullException(nameof(absoluteMarks));
             }
 
             MarkAnalysis ma = ChordAnalysis(absoluteMarks);
 
             if (ma.Reach > numFrets)
             {
-                throw new ArgumentOutOfRangeException("numFrets");
+                throw new ArgumentOutOfRangeException(nameof(numFrets));
             }
 
             int[] relativeMarks = new int[absoluteMarks.Length];
@@ -251,12 +251,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == marks || marks.Length == 0)
             {
-                throw new ArgumentNullException("marks");
+                throw new ArgumentNullException(nameof(marks));
             }
 
             if (null == tuning)
             {
-                throw new ArgumentNullException("tuning");
+                throw new ArgumentNullException(nameof(tuning));
             }
 
             InternalNote?[] notes = new InternalNote?[marks.Length];
@@ -273,14 +273,14 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == absoluteMarks)
             {
-                throw new ArgumentNullException("absoluteMarks");
+                throw new ArgumentNullException(nameof(absoluteMarks));
             }
 
             MarkAnalysis ma = ScaleAnalysis(absoluteMarks, numStrings);
 
             if (ma.Reach > numFrets)
             {
-                throw new ArgumentOutOfRangeException("numFrets");
+                throw new ArgumentOutOfRangeException(nameof(numFrets));
             }
 
             List<MarkPosition> relativeMarks = new List<MarkPosition>();
@@ -306,7 +306,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == marks)
             {
-                throw new ArgumentNullException("marks");
+                throw new ArgumentNullException(nameof(marks));
             }
 
             MarkAnalysis ma = new MarkAnalysis();
@@ -347,7 +347,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == marks)
             {
-                throw new ArgumentNullException("marks");
+                throw new ArgumentNullException(nameof(marks));
             }
 
             MarkAnalysis ma = new MarkAnalysis();

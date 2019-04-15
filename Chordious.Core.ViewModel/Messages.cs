@@ -574,7 +574,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ShowDiagramExportMessage(ObservableCollection<ObservableDiagram> diagramsToExport, string collectionName, Action callback = null) : base(callback)
         {
-            DiagramsToExport = diagramsToExport ?? throw new ArgumentNullException("diagramsToExport");
+            DiagramsToExport = diagramsToExport ?? throw new ArgumentNullException(nameof(diagramsToExport));
             CollectionName = collectionName;
         }
 
@@ -621,7 +621,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public PromptForStreamMessage(Action<Stream> callback) : base()
         {
-            Callback = callback ?? throw new ArgumentNullException("callback");
+            Callback = callback ?? throw new ArgumentNullException(nameof(callback));
         }
 
         public void Process(Stream stream)
@@ -656,7 +656,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public PromptForLegacyImportMessage(Action<string, Stream> callback) : base()
         {
-            Callback = callback ?? throw new ArgumentNullException("callback");
+            Callback = callback ?? throw new ArgumentNullException(nameof(callback));
         }
 
         public void Process(string fileName, Stream inputStream)

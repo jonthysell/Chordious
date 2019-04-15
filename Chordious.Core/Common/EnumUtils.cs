@@ -234,7 +234,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == value)
             {
-                throw new ArgumentNullException("value");
+                throw new ArgumentNullException(nameof(value));
             }
 
             return value.ToString();

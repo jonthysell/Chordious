@@ -46,10 +46,10 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == marks)
             {
-                throw new ArgumentNullException("marks");
+                throw new ArgumentNullException(nameof(marks));
             }
 
-            Parent = parent ?? throw new ArgumentNullException("parent");
+            Parent = parent ?? throw new ArgumentNullException(nameof(parent));
             _marks = new List<MarkPosition>(marks);
         }
 
@@ -67,7 +67,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == mark)
             {
-                throw new ArgumentOutOfRangeException("mark");
+                throw new ArgumentOutOfRangeException(nameof(mark));
             }
 
             return NoteAt(mark) == NoteUtils.ToInternalNote(Parent.ScaleFinderOptions.RootNote);
@@ -168,7 +168,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == obj)
             {
-                throw new ArgumentNullException("obj");
+                throw new ArgumentNullException(nameof(obj));
             }
 
             ScaleFinderResult sfr = obj as ScaleFinderResult;

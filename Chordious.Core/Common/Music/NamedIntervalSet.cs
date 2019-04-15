@@ -89,7 +89,7 @@ namespace com.jonthysell.Chordious.Core
 
         protected NamedIntervalSet(NamedIntervalSet parent, string level) : this(level)
         {
-            Parent = parent ?? throw new ArgumentNullException("parent");
+            Parent = parent ?? throw new ArgumentNullException(nameof(parent));
         }
 
         public void MarkAsReadOnly()
@@ -118,7 +118,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(longName))
             {
-                throw new ArgumentNullException("longName");
+                throw new ArgumentNullException(nameof(longName));
             }
 
             if (TryGet(longName, out NamedInterval namedInterval))
@@ -133,7 +133,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (StringUtils.IsNullOrWhiteSpace(longName))
             {
-                throw new ArgumentNullException("longName");
+                throw new ArgumentNullException(nameof(longName));
             }
 
             foreach (NamedInterval ni in _namedIntervals)
@@ -153,12 +153,12 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == namedInterval)
             {
-                throw new ArgumentNullException("namedInterval");
+                throw new ArgumentNullException(nameof(namedInterval));
             }
 
             if (namedInterval.Parent != this)
             {
-                throw new ArgumentOutOfRangeException("namedInterval");
+                throw new ArgumentOutOfRangeException(nameof(namedInterval));
             }
 
             if (!ListUtils.SortedInsert<NamedInterval>(_namedIntervals, namedInterval))
@@ -171,7 +171,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == namedInterval)
             {
-                throw new ArgumentNullException("namedinterval");
+                throw new ArgumentNullException(nameof(namedInterval));
             }
 
             if (ReadOnly)

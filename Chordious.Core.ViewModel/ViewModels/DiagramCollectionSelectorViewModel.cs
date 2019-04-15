@@ -154,7 +154,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public DiagramCollectionSelectorViewModel(Action<string, bool> callback, string defaultCollectionName = null)
         {
-            Callback = callback ?? throw new ArgumentNullException("callback");
+            Callback = callback ?? throw new ArgumentNullException(nameof(callback));
 
             if (string.IsNullOrWhiteSpace(defaultCollectionName))
             {

@@ -985,7 +985,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             if (string.IsNullOrWhiteSpace(property))
             {
-                throw new ArgumentNullException("property");
+                throw new ArgumentNullException(nameof(property));
             }
 
             if (property == "CursorX" || property == "CursorY")
@@ -1288,7 +1288,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             _autoRender = autoRender;
             _name = name;
-            _diagram = diagram ?? throw new ArgumentNullException("diagram");
+            _diagram = diagram ?? throw new ArgumentNullException(nameof(diagram));
 
             Style = new ObservableDiagramStyle(diagram.Style);
             Style.PropertyChanged += Style_PropertyChanged;

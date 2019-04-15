@@ -4159,13 +4159,13 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public ObservableDiagramStyle(DiagramStyle diagramStyle, DiagramMarkStyleWrapper diagramMarkStyle = null) : base()
         {
-            Style = diagramStyle ?? throw new ArgumentNullException("diagramStyle");
+            Style = diagramStyle ?? throw new ArgumentNullException(nameof(diagramStyle));
 
             if (null != diagramMarkStyle)
             {
                 if (diagramMarkStyle.Style != diagramStyle)
                 {
-                    throw new ArgumentException("diagramMarkStyle");
+                    throw new ArgumentException("Unmatched style.", nameof(diagramMarkStyle));
                 }
 
                 MarkStyle = diagramMarkStyle;

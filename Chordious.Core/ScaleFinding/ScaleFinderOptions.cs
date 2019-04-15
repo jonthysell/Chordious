@@ -101,7 +101,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == scale)
             {
-                throw new ArgumentNullException("scale");
+                throw new ArgumentNullException(nameof(scale));
             }
 
             Settings[Prefix + "rootnote"] = NoteUtils.ToString(rootNote);

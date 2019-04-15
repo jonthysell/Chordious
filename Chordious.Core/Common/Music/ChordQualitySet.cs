@@ -80,7 +80,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == chordQualitySet)
             {
-                throw new ArgumentNullException("chordQualitySet");
+                throw new ArgumentNullException(nameof(chordQualitySet));
             }
 
             foreach (ChordQuality sourceChordQuality in chordQualitySet)
@@ -108,7 +108,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlReader)
             {
-                throw new ArgumentNullException("xmlReader");
+                throw new ArgumentNullException(nameof(xmlReader));
             }
 
             using (xmlReader)
@@ -128,7 +128,7 @@ namespace com.jonthysell.Chordious.Core
         {
             if (null == xmlWriter)
             {
-                throw new ArgumentNullException("xmlWriter");
+                throw new ArgumentNullException(nameof(xmlWriter));
             }
 
             foreach (NamedInterval namedInterval in _namedIntervals)

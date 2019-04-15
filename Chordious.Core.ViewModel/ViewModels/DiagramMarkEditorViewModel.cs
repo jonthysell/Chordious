@@ -263,7 +263,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public DiagramMarkEditorViewModel(DiagramMark diagramMark, bool isNew)
         {
-            DiagramMark = diagramMark ?? throw new ArgumentNullException("diagramMark");
+            DiagramMark = diagramMark ?? throw new ArgumentNullException(nameof(diagramMark));
 
             // Save properties
             _text = diagramMark.Text;

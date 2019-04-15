@@ -133,11 +133,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             if (string.IsNullOrWhiteSpace(prompt))
             {
-                throw new ArgumentNullException("prompt");
+                throw new ArgumentNullException(nameof(prompt));
             }
 
             Prompt = prompt;
-            Callback = callback ?? throw new ArgumentNullException("callback");
+            Callback = callback ?? throw new ArgumentNullException(nameof(callback));
         }
     }
 }

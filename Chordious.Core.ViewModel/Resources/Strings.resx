@@ -1797,4 +1797,7 @@
   <data name="FinderOptionsFretLabelSideToolTip" xml:space="preserve">
     <value>Which side to put fret labels.</value>
   </data>
+  <data name="FinderOptionsSaveTargetOnClosePromptMessageFormat" xml:space="preserve">
+    <value>You changed your target instrument to "{0}" with the "{1}" tuning. Would you like to save that as your default?</value>
+  </data>
 </root>

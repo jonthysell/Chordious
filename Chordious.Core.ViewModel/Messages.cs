@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -113,8 +113,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public virtual void Process()
         {
-            AppViewModel.Instance.SaveUserConfig();
-            Callback?.Invoke();
+            try
+            {
+                AppViewModel.Instance.SaveUserConfig();
+            }
+            catch (Exception ex)
+            {
+                ExceptionUtils.HandleException(ex);
+            }
+            finally
+            {
+                Callback?.Invoke();
+            }
         }
     }
 
@@ -126,6 +136,49 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         {
             ChordFinderVM = new ChordFinderViewModel();
         }
+
+        public override void Process()
+        {
+            bool callBaseProcessInFinally = true;
+            try
+            {
+                if (!ChordFinderVM.Options.UsingDefaultTarget)
+                {
+                    string message = string.Format(Strings.FinderOptionsSaveTargetOnClosePromptMessageFormat, ChordFinderVM.Options.Instrument.Name, ChordFinderVM.Options.Tuning.LongName);
+                    Messenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
+                    {
+                        try
+                        {
+                            if (confirmed)
+                            {
+                                ChordFinderVM.Options.SaveTargetAsDefault();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            ExceptionUtils.HandleException(ex);
+                        }
+                        finally
+                        {
+                            base.Process();
+                        }
+                    }));
+
+                    callBaseProcessInFinally = false; // Base process is called in the confirmation callback
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionUtils.HandleException(ex);
+            }
+            finally
+            {
+                if (callBaseProcessInFinally)
+                {
+                    base.Process();
+                }
+            }
+        }
     }
 
     public class ShowScaleFinderMessage : SaveUserConfigAfterHandlingMessageBase
@@ -135,6 +188,49 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         public ShowScaleFinderMessage(Action callback = null) : base(callback)
         {
             ScaleFinderVM = new ScaleFinderViewModel();
+        }
+
+        public override void Process()
+        {
+            bool callBaseProcessInFinally = true;
+            try
+            {
+                if (!ScaleFinderVM.Options.UsingDefaultTarget)
+                {
+                    string message = string.Format(Strings.FinderOptionsSaveTargetOnClosePromptMessageFormat, ScaleFinderVM.Options.Instrument.Name, ScaleFinderVM.Options.Tuning.LongName);
+                    Messenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
+                    {
+                        try
+                        {
+                            if (confirmed)
+                            {
+                                ScaleFinderVM.Options.SaveTargetAsDefault();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            ExceptionUtils.HandleException(ex);
+                        }
+                        finally
+                        {
+                            base.Process();
+                        }
+                    }));
+
+                    callBaseProcessInFinally = false; // Base process is called in the confirmation callback
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionUtils.HandleException(ex);
+            }
+            finally
+            {
+                if (callBaseProcessInFinally)
+                {
+                    base.Process();
+                }
+            }
         }
     }
 
@@ -272,8 +368,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void Process()
         {
-            bool saveChanges = DiagramEditorVM.ProcessClose();
-            Callback?.Invoke(saveChanges);
+            bool saveChanges = false;
+            try
+            {
+                saveChanges = DiagramEditorVM.ProcessClose();
+            }
+            catch (Exception ex)
+            {
+                ExceptionUtils.HandleException(ex);
+            }
+            finally
+            {
+                Callback?.Invoke(saveChanges);
+            }
         }
     }
 
@@ -291,8 +398,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void Process()
         {
-            bool saveChanges = DiagramMarkEditorVM.ProcessClose();
-            Callback?.Invoke(saveChanges);
+            bool saveChanges = false;
+            try
+            {
+                saveChanges = DiagramMarkEditorVM.ProcessClose();
+            }
+            catch (Exception ex)
+            {
+                ExceptionUtils.HandleException(ex);
+            }
+            finally
+            {
+                Callback?.Invoke(saveChanges);
+            }
         }
     }
 
@@ -310,8 +428,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void Process()
         {
-            bool saveChanges = DiagramFretLabelEditorVM.ProcessClose();
-            Callback?.Invoke(saveChanges);
+            bool saveChanges = false;
+            try
+            {
+                saveChanges = DiagramFretLabelEditorVM.ProcessClose();
+            }
+            catch (Exception ex)
+            {
+                ExceptionUtils.HandleException(ex);
+            }
+            finally
+            {
+                Callback?.Invoke(saveChanges);
+            }
         }
     }
 
@@ -329,8 +458,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void Process()
         {
-            bool saveChanges = DiagramBarreEditorVM.ProcessClose();
-            Callback?.Invoke(saveChanges);
+            bool saveChanges = false;
+            try
+            {
+                saveChanges = DiagramBarreEditorVM.ProcessClose();
+            }
+            catch (Exception ex)
+            {
+                ExceptionUtils.HandleException(ex);
+            }
+            finally
+            {
+                Callback?.Invoke(saveChanges);
+            }
         }
     }
 
@@ -348,8 +488,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void Process()
         {
-            bool saveChanges = DiagramStyleEditorVM.ProcessClose();
-            Callback?.Invoke(saveChanges);
+            bool saveChanges = false;
+            try
+            {
+                saveChanges = DiagramStyleEditorVM.ProcessClose();
+            }
+            catch (Exception ex)
+            {
+                ExceptionUtils.HandleException(ex);
+            }
+            finally
+            {
+                Callback?.Invoke(saveChanges);
+            }
         }
     }
 
@@ -366,8 +517,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void Process()
         {
-            bool itemsChanged = OptionsVM.ProcessClose();
-            Callback?.Invoke(itemsChanged);
+            bool itemsChanged = false;
+            try
+            {
+                itemsChanged = OptionsVM.ProcessClose();
+            }
+            catch (Exception ex)
+            {
+                ExceptionUtils.HandleException(ex);
+            }
+            finally
+            {
+                Callback?.Invoke(itemsChanged);
+            }
         }
     }
 
@@ -385,8 +547,19 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public void Process()
         {
-            bool itemsChanged = AdvancedDataVM.ProcessClose();
-            Callback?.Invoke(itemsChanged);
+            bool itemsChanged = false;
+            try
+            {
+                itemsChanged = AdvancedDataVM.ProcessClose();
+            }
+            catch (Exception ex)
+            {
+                ExceptionUtils.HandleException(ex);
+            }
+            finally
+            {
+                Callback?.Invoke(itemsChanged);
+            }
         }
     }
 
@@ -410,8 +583,18 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         public override void Process()
         {
-            DiagramExportVM.ProcessClose();
-            base.Process();
+            try
+            {
+                DiagramExportVM.ProcessClose();
+            }
+            catch (Exception ex)
+            {
+                ExceptionUtils.HandleException(ex);
+            }
+            finally
+            {
+                base.Process();
+            }
         }
     }
 

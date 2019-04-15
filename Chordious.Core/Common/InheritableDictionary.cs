@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -820,6 +820,21 @@ namespace com.jonthysell.Chordious.Core
                     Clear(key, false);
                 }
             }
+        }
+
+        public bool MatchesParentValue(string key)
+        {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            if (TryGet(key, out string result) && null != Parent && Parent.TryGet(key, out string parentResult))
+            {
+                return result == parentResult;
+            }
+
+            return false;
         }
 
         public virtual string GetFriendlyKeyName(string key)

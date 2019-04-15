@@ -3041,6 +3041,15 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You changed your target instrument to &quot;{0}&quot; with the &quot;{1}&quot; tuning. Would you like to save that as your default?.
+        /// </summary>
+        internal static string FinderOptionsSaveTargetOnClosePromptMessageFormat {
+            get {
+                return ResourceManager.GetString("FinderOptionsSaveTargetOnClosePromptMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set as Def_aults.
         /// </summary>
         internal static string FinderOptionsSetAsDefaultsLabel {

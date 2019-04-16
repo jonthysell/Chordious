@@ -69,6 +69,7 @@
         </InstallExecuteSequence>
         <WixVariable Id="WixUILicenseRtf"
                      Value="license.rtf" />
+      <Property Id="DISABLEADVTSHORTCUTS" Value="1" />
     </Product>
     <Fragment>
         <Directory Id="TARGETDIR"
@@ -81,9 +82,8 @@
                               KeyPath="yes"
                               Source="$(var.Chordious.WPF.TargetPath)">
                             <Shortcut Advertise="yes"
-                                      Description="Freboart diagram generator."
+                                      Description="Freboard diagram generator."
                                       Directory="ProgramMenuFolder"
-                                      Icon="icon.ico"
                                       Id="ChordiousWpfAppShortcut"
                                       Name="Chordious"
                                       WorkingDirectory="INSTALLFOLDER" />

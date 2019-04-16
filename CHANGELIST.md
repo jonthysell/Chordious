@@ -1,8 +1,16 @@
 # Chordious Changelist #
 
+## 2.0.8 ##
+* Can now specify which side to put fret labels in Finder results
+* Prompt to save instrument/tuning when exiting Finders
+* Can now run multiple instances as long as they're using different config files
+* Fixed bug with double-clicking to edit diagram
+* Fixed bug with adding bottom marks not using bottom mark style in editor
+* Code cleanup and miscellaneous bug fixes
+
 ## 2.0.7 ##
 * Improved compatibility when copying a diagram to the clipboard
-* Added drag/drop functionality for managing digrams in the library
+* Added drag/drop functionality for managing diagrams in the library
 * Added drag/drop of diagrams directly into external apps
 * Added "Enhanced Copy And Drag" option to improve copy/drag compatibility with external apps
 
@@ -95,7 +103,7 @@ the nut ratio != 2.0
 ## 1.9.16171.2005 ##
 * New diagram collection selector window
 * Chord/scale finder now use collection selector
-* Can now move/copy digrams between collections in the library
+* Can now move/copy diagrams between collections in the library
 * Rearranged diagram library context menus
 * Some icon/string updates
 
@@ -186,7 +194,7 @@ the nut ratio != 2.0
 ## 1.9.15295.1615 ##
 * Added F5 to "refresh" the Finders
 * New DiagramFretLabelEditor lets you customize fret label styles in the DiagramEditor
-* Fixed issues when selecting thew wrong marks/fret labels in the editor
+* Fixed issues when selecting the wrong marks/fret labels in the editor
 * Other minor bugfixes
 
 ## 1.9.15293.247 ##

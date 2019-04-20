@@ -228,7 +228,7 @@ namespace com.jonthysell.Chordious.WPF
 
             string random = Path.GetRandomFileName().Substring(0, 8);
 
-            string filePath = FolderUtils.CleanPath(Path.Combine(tempPath, string.IsNullOrWhiteSpace(title) ? $"chordious.{random}.png" : $"chordious.{title.Trim()}.{random}.png"));
+            string filePath = FolderUtils.CleanPath(Path.Combine(tempPath, string.IsNullOrWhiteSpace(title) ? $"chordious.{random}.png" : $"chordious.{FolderUtils.CleanTitle(title)}.{random}.png"));
 
             using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
             {

@@ -51,6 +51,16 @@ namespace com.jonthysell.Chordious.WPF
             return false;
         }
 
+        public static string CleanTitle(string title)
+        {
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                return "";
+            }
+
+            return ReplaceChars(title.Trim(), Path.GetInvalidFileNameChars());
+        }
+
         public static string CleanPath(string path)
         {
             if (string.IsNullOrWhiteSpace(path))

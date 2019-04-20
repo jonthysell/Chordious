@@ -389,7 +389,7 @@ namespace com.jonthysell.Chordious.WPF
                         switch(nextChar)
                         {
                             case 't':
-                                filePath += CleanTitle(DiagramsToExport[diagramIndex].Title);
+                                filePath += FolderUtils.CleanTitle(DiagramsToExport[diagramIndex].Title);
                                 break;
                             case 'c':
                                 filePath += CollectionName;
@@ -454,16 +454,6 @@ namespace com.jonthysell.Chordious.WPF
             }
 
             return testfileName;
-        }
-
-        private string CleanTitle(string title)
-        {
-            if (string.IsNullOrWhiteSpace(title))
-            {
-                return "";
-            }
-
-            return FolderUtils.ReplaceChars(title.Trim(), Path.GetInvalidFileNameChars());
         }
 
         protected override Task ExportDiagramAsync(int diagramIndex)

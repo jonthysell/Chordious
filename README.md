@@ -4,7 +4,7 @@ Chordious is a fretboard diagram generator for fretted stringed instruments like
 
 **Official Website:** http://chordious.com/
 
-Chordious requires .NET 4.5 or later. See http://chordious.com/download/ for download and installation details.
+Chordious requires .NET 4.6.2 or later. See http://chordious.com/download/ for download and installation details.
 
 ## Features ##
 

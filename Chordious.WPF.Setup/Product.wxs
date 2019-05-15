@@ -27,9 +27,7 @@
             <ComponentRef Id="ChordiousCoreLib" />
             <ComponentRef Id="ChordiousCoreViewModelLib" />
             <ComponentRef Id="MvvmLib" />
-            <ComponentRef Id="MvvmExtrasLib" />
             <ComponentRef Id="MvvmPlatformLib" />
-            <ComponentRef Id="PracticesServiceLocationLib" />
             <ComponentRef Id="WindowsInteractivityLib" />
             <ComponentRef Id="SvgLib" />
         </Feature>
@@ -41,10 +39,10 @@
                   Value="http://chordious.com" />
         <Property Id="ARPURLINFOABOUT"
                   Value="http://chordious.com" />
-        <PropertyRef Id="NETFRAMEWORK45" />
-        <Condition Message="This application requires .NET Framework 4.5. Please install the .NET Framework then run this installer again.">
-<![CDATA[Installed OR NETFRAMEWORK45]]>
-        </Condition>
+      <PropertyRef Id="WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED" />
+      <Condition Message="This application requires .NET Framework 4.6.2. Please install the .NET Framework then run this installer again.">
+        <![CDATA[Installed OR WIX_IS_NETFRAMEWORK_46_OR_LATER_INSTALLED]]>
+      </Condition>
         <Property Id="WixShellExecTarget"
                   Value="[#ChordiousWpfApp]" />
         <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT"
@@ -112,17 +110,9 @@
                         <File Id="MvvmLightLicense"
                               Source="$(var.Chordious.WPF.TargetDir)\MVVM Light License.txt" />
                     </Component>
-                    <Component Id="MvvmExtrasLib">
-                        <File Id="MvvmExtrasLib"
-                              Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.Extras.dll" />
-                    </Component>
                     <Component Id="MvvmPlatformLib">
                         <File Id="MvvmPlatformLib"
                               Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.Platform.dll" />
-                    </Component>
-                    <Component Id="PracticesServiceLocationLib">
-                        <File Id="PracticesServiceLocationLib"
-                              Source="$(var.Chordious.WPF.TargetDir)\Microsoft.Practices.ServiceLocation.dll" />
                     </Component>
                     <Component Id="WindowsInteractivityLib">
                         <File Id="WindowsInteractivityLib"

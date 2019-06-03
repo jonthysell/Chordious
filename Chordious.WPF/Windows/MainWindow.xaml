@@ -163,20 +163,20 @@
                                     Text="{Binding LaunchWebsiteLabel, FallbackValue=WEBSITE}" />
                     </StackPanel>
                 </Button>
-                <Button AutomationProperties.Name="{Binding ShowLicenseLabel, Converter={StaticResource AltTextToTextConverter}}"
-                        Command="{Binding ShowLicense, Mode=OneWay}"
+                <Button AutomationProperties.Name="{Binding ShowLicensesLabel, Converter={StaticResource AltTextToTextConverter}}"
+                        Command="{Binding ShowLicenses, Mode=OneWay}"
                         Grid.Column="1"
                         Margin="5"
                         Style="{StaticResource CleanButtonNoBorder}"
-                        ToolTip="{Binding ShowLicenseToolTip}">
+                        ToolTip="{Binding ShowLicensesToolTip}">
                     <StackPanel>
                         <local:AutoDisableImage Height="16"
                                                 Margin="5"
                                                 Source="{StaticResource LicenseIcon16}"
                                                 Width="16" />
                         <AccessText HorizontalAlignment="Center"
-                                    Name="ShowLicenseLabel"
-                                    Text="{Binding ShowLicenseLabel, FallbackValue=LICENSE}" />
+                                    Name="ShowLicensesLabel"
+                                    Text="{Binding ShowLicensesLabel, FallbackValue=LICENSES}" />
                     </StackPanel>
                 </Button>
             </Grid>

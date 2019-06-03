@@ -69,6 +69,9 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Register<ShowScaleEditorMessage>(recipient, (message) => ShowScaleEditor(message));
 
             Messenger.Default.Register<ShowOptionsMessage>(recipient, (message) => ShowOptions(message));
+
+            Messenger.Default.Register<ShowLicensesMessage>(recipient, (message) => ShowLicense(message));
+
             Messenger.Default.Register<ShowAdvancedDataMessage>(recipient, (message) => ShowAdvancedData(message));
 
             Messenger.Default.Register<ShowDiagramExportMessage>(recipient, (message) => ShowDiagramExport(message));
@@ -116,6 +119,9 @@ namespace com.jonthysell.Chordious.WPF
             Messenger.Default.Unregister<ShowScaleEditorMessage>(recipient);
             
             Messenger.Default.Unregister<ShowOptionsMessage>(recipient);
+
+            Messenger.Default.Unregister<ShowLicensesMessage>(recipient);
+
             Messenger.Default.Unregister<ShowAdvancedDataMessage>(recipient);
 
             Messenger.Default.Unregister<ShowDiagramExportMessage>(recipient);
@@ -394,6 +400,21 @@ namespace com.jonthysell.Chordious.WPF
             OptionsWindow window = new OptionsWindow();
             message.OptionsVM = window.VM;
             message.OptionsVM.RequestClose += () =>
+            {
+                window.Close();
+            };
+            window.ShowDialog();
+            message.Process();
+        }
+
+        private static void ShowLicense(ShowLicensesMessage message)
+        {
+            LicensesWindow window = new LicensesWindow();
+
+            message.LicensesVM.Licenses.Add(ImageUtils.GetSvgNetLicense());
+
+            window.DataContext = message.LicensesVM;
+            message.LicensesVM.RequestClose += () =>
             {
                 window.Close();
             };

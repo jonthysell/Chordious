@@ -288,11 +288,11 @@
   <data name="ShowInstrumentManagerToolTip" xml:space="preserve">
     <value>Create and manage your favorite instruments and tunings.</value>
   </data>
-  <data name="MainShowLicenseLabel" xml:space="preserve">
-    <value>Lic_ense</value>
+  <data name="MainShowLicensesLabel" xml:space="preserve">
+    <value>Lic_enses</value>
   </data>
-  <data name="MainShowLicenseToolTip" xml:space="preserve">
-    <value>View the license for using Chordious.</value>
+  <data name="MainShowLicensesToolTip" xml:space="preserve">
+    <value>View the licenses for using Chordious.</value>
   </data>
   <data name="MainShowOptionsLabel" xml:space="preserve">
     <value>_Options</value>
@@ -543,8 +543,8 @@
   <data name="ChordiousMessageTitle" xml:space="preserve">
     <value>Chordious</value>
   </data>
-  <data name="LicenseTitle" xml:space="preserve">
-    <value>License</value>
+  <data name="LicensesTitle" xml:space="preserve">
+    <value>Licenses</value>
   </data>
   <data name="DiagramStyleDiagramBorderColorLabel" xml:space="preserve">
     <value>Color</value>

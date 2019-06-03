@@ -63,6 +63,7 @@
       <Link>Properties\SharedInfo.cs</Link>
     </Compile>
     <Compile Include="IAppView.cs" />
+    <Compile Include="ObservableObjects\ObservableLicense.cs" />
     <Compile Include="ViewModels\AdvancedDataViewModel.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="ViewModels\ConfigViewModelBase.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="ViewModels\DiagramStyleEditorViewModel.cs" />
     <Compile Include="ViewModels\DiagramFretLabelEditorViewModel.cs" />
     <Compile Include="ViewModels\DiagramMarkEditorViewModel.cs" />
+    <Compile Include="ViewModels\LicenseViewModel.cs" />
     <Compile Include="ViewModels\InformationViewModel.cs" />
     <Compile Include="ViewModels\DiagramExportViewModelBase.cs" />
     <Compile Include="ViewModels\ConfirmationViewModel.cs" />

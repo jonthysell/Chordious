@@ -121,6 +121,9 @@
     <Compile Include="Windows\DiagramFretLabelEditorWindow.xaml.cs">
       <DependentUpon>DiagramFretLabelEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\LicensesWindow.xaml.cs">
+      <DependentUpon>LicensesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\InformationWindow.xaml.cs">
       <DependentUpon>InformationWindow.xaml</DependentUpon>
     </Compile>
@@ -237,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Windows\LicensesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\InformationWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -344,9 +351,14 @@
     <Resource Include="Resources\scalefinder48.png" />
     <Resource Include="Resources\library48.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy /y "$(SolutionDir)README.md" "$(TargetDir)Readme.txt" &amp;&amp; copy /y "$(SolutionDir)LICENSE.md" "$(TargetDir)License.txt" &amp;&amp; copy /y "$(SolutionDir)External\MVVMLight\LICENSE.md" "$(TargetDir)MVVM Light License.txt" &amp;&amp; copy /y "$(SolutionDir)External\SVG.NET\LICENSE.md" "$(TargetDir)SVG.NET License.txt"</PreBuildEvent>
+    <PreBuildEvent>copy /y "$(SolutionDir)README.md" "$(TargetDir)Readme.txt"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug (Portable)' Or '$(Configuration)' == 'Release (Portable)'">
     <PostBuildEvent>cd "$(TargetDir)" &amp;&amp; rd /s /q "ChordiousPortable" &amp; md "ChordiousPortable" &amp;&amp; copy /y "$(TargetFileName)" "ChordiousPortable\" &amp;&amp; copy /y "*.txt" "ChordiousPortable\" &amp;&amp; powershell -Command "&amp; {&amp;'Compress-Archive' -Path "ChordiousPortable" -DestinationPath "ChordiousPortable.zip" -Force}"</PostBuildEvent>

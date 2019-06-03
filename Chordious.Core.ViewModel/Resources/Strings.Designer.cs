@@ -3490,11 +3490,11 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to License.
+        ///   Looks up a localized string similar to Licenses.
         /// </summary>
-        internal static string LicenseTitle {
+        internal static string LicensesTitle {
             get {
-                return ResourceManager.GetString("LicenseTitle", resourceCulture);
+                return ResourceManager.GetString("LicensesTitle", resourceCulture);
             }
         }
         
@@ -3607,20 +3607,20 @@ namespace com.jonthysell.Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lic_ense.
+        ///   Looks up a localized string similar to Lic_enses.
         /// </summary>
-        internal static string MainShowLicenseLabel {
+        internal static string MainShowLicensesLabel {
             get {
-                return ResourceManager.GetString("MainShowLicenseLabel", resourceCulture);
+                return ResourceManager.GetString("MainShowLicensesLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View the license for using Chordious..
+        ///   Looks up a localized string similar to View the licenses for using Chordious..
         /// </summary>
-        internal static string MainShowLicenseToolTip {
+        internal static string MainShowLicensesToolTip {
             get {
-                return ResourceManager.GetString("MainShowLicenseToolTip", resourceCulture);
+                return ResourceManager.GetString("MainShowLicensesToolTip", resourceCulture);
             }
         }
         

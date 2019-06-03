@@ -124,34 +124,33 @@ namespace com.jonthysell.Chordious.Core.ViewModel
 
         #endregion
 
-        #region ShowLicense
+        #region ShowLicenses
 
-        public string ShowLicenseLabel
+        public string ShowLicensesLabel
         {
             get
             {
-                return Strings.MainShowLicenseLabel;
+                return Strings.MainShowLicensesLabel;
             }
         }
 
-        public string ShowLicenseToolTip
+        public string ShowLicensesToolTip
         {
             get
             {
-                return Strings.MainShowLicenseToolTip;
+                return Strings.MainShowLicensesToolTip;
             }
         }
 
-        public RelayCommand ShowLicense
+        public RelayCommand ShowLicenses
         {
             get
             {
-                return _showLicense ?? (_showLicense = new RelayCommand(() =>
+                return _showLicenses ?? (_showLicenses = new RelayCommand(() =>
                 {
                     try
                     {
-                        string text = string.Join(Environment.NewLine, AppInfo.Product + " " + AppInfo.Copyright, "", AppInfo.License);
-                        Messenger.Default.Send(new ChordiousMessage(text, Strings.LicenseTitle));
+                        Messenger.Default.Send(new ShowLicensesMessage());
                     }
                     catch (Exception ex)
                     {
@@ -160,7 +159,7 @@ namespace com.jonthysell.Chordious.Core.ViewModel
                 }));
             }
         }
-        private RelayCommand _showLicense;
+        private RelayCommand _showLicenses;
 
         #endregion
 

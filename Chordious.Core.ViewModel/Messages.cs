@@ -535,6 +535,21 @@ namespace com.jonthysell.Chordious.Core.ViewModel
         }
     }
 
+    public class ShowLicensesMessage : MessageBase
+    {
+        public LicensesViewModel LicensesVM { get; private set; }
+
+        public ShowLicensesMessage(Action callback = null) : base()
+        {
+            LicensesVM = new LicensesViewModel(callback);
+        }
+
+        public void Process()
+        {
+            LicensesVM.ProcessClose();
+        }
+    }
+
     public class ShowAdvancedDataMessage : MessageBase
     {
         public AdvancedDataViewModel AdvancedDataVM { get; private set; }

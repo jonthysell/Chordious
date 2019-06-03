@@ -41,7 +41,7 @@
                   Value="http://chordious.com" />
       <PropertyRef Id="WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED" />
       <Condition Message="This application requires .NET Framework 4.6.2. Please install the .NET Framework then run this installer again.">
-        <![CDATA[Installed OR WIX_IS_NETFRAMEWORK_46_OR_LATER_INSTALLED]]>
+        <![CDATA[Installed OR WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED]]>
       </Condition>
         <Property Id="WixShellExecTarget"
                   Value="[#ChordiousWpfApp]" />
@@ -88,10 +88,10 @@
                         </File>
                         <File Id="ChordiousWpfReadme"
                               Name="Readme.txt"
-                              Source="$(var.SolutionDir)\README.md" />
+                              Source="$(var.Chordious.WPF.TargetDir)\Readme.txt" />
                         <File Id="ChordiousWpfLicense"
                               Name="License.txt"
-                              Source="$(var.SolutionDir)\LICENSE.md" />
+                              Source="$(var.Chordious.WPF.TargetDir)\License.txt" />
                         <RemoveFolder Id="ApplicationProgramsFolder"
                                       On="uninstall" />
                     </Component>
@@ -107,8 +107,6 @@
                         <File Id="MvvmLib"
                               KeyPath="yes"
                               Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.dll" />
-                        <File Id="MvvmLightLicense"
-                              Source="$(var.Chordious.WPF.TargetDir)\MVVM Light License.txt" />
                     </Component>
                     <Component Id="MvvmPlatformLib">
                         <File Id="MvvmPlatformLib"
@@ -122,8 +120,6 @@
                         <File Id="SvgLib"
                               KeyPath="yes"
                               Source="$(var.Chordious.WPF.TargetDir)\Svg.dll" />
-                        <File Id="SvgLicense"
-                              Source="$(var.Chordious.WPF.TargetDir)\SVG.NET License.txt" />
                     </Component>
                 </Directory>
             </Directory>

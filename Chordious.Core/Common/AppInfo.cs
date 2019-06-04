@@ -144,7 +144,7 @@ namespace Chordious.Core
         {
             get
             {
-                return "Copyright � 2013-2019 Jon Thysell";
+                return "Copyright © 2013-2019 Jon Thysell";
             }
         }
 

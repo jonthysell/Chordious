@@ -374,13 +374,11 @@
     <Resource Include="Resources\library48.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="License.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="License.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy /y "$(SolutionDir)README.md" "$(TargetDir)Readme.txt"</PreBuildEvent>
+    <PreBuildEvent>copy /y "$(SolutionDir)README.md" "$(TargetDir)Readme.txt" &amp;&amp; copy /y "$(ProjectDir)License.txt" "$(TargetDir)License.txt"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug (Portable)' Or '$(Configuration)' == 'Release (Portable)'">
     <PostBuildEvent>cd "$(TargetDir)" &amp;&amp; rd /s /q "ChordiousPortable" &amp; md "ChordiousPortable" &amp;&amp; copy /y "$(TargetFileName)" "ChordiousPortable\" &amp;&amp; copy /y "*.txt" "ChordiousPortable\" &amp;&amp; powershell -Command "&amp; {&amp;'Compress-Archive' -Path "ChordiousPortable" -DestinationPath "ChordiousPortable.zip" -Force}"</PostBuildEvent>

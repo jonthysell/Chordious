@@ -212,7 +212,11 @@ namespace com.jonthysell.Chordious.WPF
         {
             get
             {
+#if UPDATES
                 return true;
+#else
+                return false;
+#endif
             }
         }
 

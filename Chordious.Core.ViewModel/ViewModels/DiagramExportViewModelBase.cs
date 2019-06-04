@@ -32,9 +32,9 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-using com.jonthysell.Chordious.Core.ViewModel.Resources;
+using Chordious.Core.ViewModel.Resources;
 
-namespace com.jonthysell.Chordious.Core.ViewModel
+namespace Chordious.Core.ViewModel
 {
     public delegate void ExportStartEventHandler(object sender, EventArgs e);
 

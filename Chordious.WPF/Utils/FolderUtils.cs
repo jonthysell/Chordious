@@ -28,7 +28,7 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 
-namespace com.jonthysell.Chordious.WPF
+namespace Chordious.WPF
 {
     public class FolderUtils
     {

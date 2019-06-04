@@ -30,9 +30,9 @@ using System.IO;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 
-using com.jonthysell.Chordious.Core.ViewModel.Resources;
+using Chordious.Core.ViewModel.Resources;
 
-namespace com.jonthysell.Chordious.Core.ViewModel
+namespace Chordious.Core.ViewModel
 {
     public class ConfigImportViewModel : ConfigViewModelBase
     {

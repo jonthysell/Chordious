@@ -4,9 +4,9 @@
         SizeToContent="WidthAndHeight"
         Title="{Binding Title, FallbackValue=CHORD QUALITY EDITOR}"
         WindowStartupLocation="CenterScreen"
-        x:Class="com.jonthysell.Chordious.WPF.ChordQualityEditorWindow"
+        x:Class="Chordious.WPF.ChordQualityEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
+        xmlns:local="clr-namespace:Chordious.WPF"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Window.InputBindings>
         <KeyBinding Command="{Binding Cancel, Mode=OneWay}"

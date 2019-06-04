@@ -28,9 +28,9 @@ using System;
 using System.Globalization;
 using System.Xml;
 
-using com.jonthysell.Chordious.Core.Resources;
+using Chordious.Core.Resources;
 
-namespace com.jonthysell.Chordious.Core
+namespace Chordious.Core
 {
     public class DiagramStyle : InheritableDictionary
     {

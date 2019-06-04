@@ -29,7 +29,7 @@ using System.Collections.ObjectModel;
 
 using GalaSoft.MvvmLight;
 
-namespace com.jonthysell.Chordious.Core.ViewModel
+namespace Chordious.Core.ViewModel
 {
     public class ObservableTuning : ObservableObject
     {

@@ -27,7 +27,7 @@
 using System;
 using System.IO;
 
-namespace com.jonthysell.Chordious.Core.Legacy
+namespace Chordious.Core.Legacy
 {
     public class ChordDocument
     {

@@ -31,9 +31,9 @@ using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight;
 
-using com.jonthysell.Chordious.Core.ViewModel.Resources;
+using Chordious.Core.ViewModel.Resources;
 
-namespace com.jonthysell.Chordious.Core.ViewModel
+namespace Chordious.Core.ViewModel
 {
     public class DiagramCollectionSelectorViewModel : ViewModelBase
     {

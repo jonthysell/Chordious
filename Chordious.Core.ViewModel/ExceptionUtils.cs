@@ -28,7 +28,7 @@ using System;
 
 using GalaSoft.MvvmLight.Messaging;
 
-namespace com.jonthysell.Chordious.Core.ViewModel
+namespace Chordious.Core.ViewModel
 {
     public class ExceptionUtils
     {

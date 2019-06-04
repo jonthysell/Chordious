@@ -29,9 +29,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 
-using com.jonthysell.Chordious.Core.Resources;
+using Chordious.Core.Resources;
 
-namespace com.jonthysell.Chordious.Core
+namespace Chordious.Core
 {
     public abstract class NamedIntervalSet : IReadOnly, IEnumerable<NamedInterval>
     {

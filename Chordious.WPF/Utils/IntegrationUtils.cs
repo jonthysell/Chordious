@@ -30,9 +30,9 @@ using System.Drawing;
 using System.IO;
 using System.Windows;
 
-using com.jonthysell.Chordious.Core.ViewModel;
+using Chordious.Core.ViewModel;
 
-namespace com.jonthysell.Chordious.WPF
+namespace Chordious.WPF
 {
     public class IntegrationUtils
     {

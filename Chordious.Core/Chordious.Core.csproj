@@ -8,7 +8,7 @@
     <ProjectGuid>{3D200375-095F-4AA8-A724-CD23931C4E1A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>com.jonthysell.Chordious.Core</RootNamespace>
+    <RootNamespace>Chordious.Core</RootNamespace>
     <AssemblyName>Chordious.Core</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>

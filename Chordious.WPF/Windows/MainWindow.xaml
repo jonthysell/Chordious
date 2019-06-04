@@ -8,9 +8,9 @@
         Width="480"
         WindowStartupLocation="CenterScreen"
         WindowState="Normal"
-        x:Class="com.jonthysell.Chordious.WPF.MainWindow"
+        x:Class="Chordious.WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
+        xmlns:local="clr-namespace:Chordious.WPF"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid IsEnabled="{Binding IsIdle}">
         <Grid.ColumnDefinitions>

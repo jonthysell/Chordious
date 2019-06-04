@@ -26,7 +26,7 @@
 
 using System;
 
-namespace com.jonthysell.Chordious.Core
+namespace Chordious.Core
 {
     public class PathUtils
     {

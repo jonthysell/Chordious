@@ -38,10 +38,10 @@ using System.Windows.Threading;
 
 using GalaSoft.MvvmLight.Messaging;
 
-using com.jonthysell.Chordious.Core.ViewModel;
-using com.jonthysell.Chordious.WPF.Resources;
+using Chordious.Core.ViewModel;
+using Chordious.WPF.Resources;
 
-namespace com.jonthysell.Chordious.WPF
+namespace Chordious.WPF
 {
     public partial class App : Application, IAppView
     {

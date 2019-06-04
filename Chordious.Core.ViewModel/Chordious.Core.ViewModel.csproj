@@ -8,7 +8,7 @@
     <ProjectGuid>{E36654B9-259B-4A81-B9B3-44BFD1EC0B5E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>com.jonthysell.Chordious.Core.ViewModel</RootNamespace>
+    <RootNamespace>Chordious.Core.ViewModel</RootNamespace>
     <AssemblyName>Chordious.Core.ViewModel</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>

@@ -26,7 +26,7 @@
 
 using System;
 
-namespace com.jonthysell.Chordious.Core.ViewModel
+namespace Chordious.Core.ViewModel
 {
     public class ObservableNamedInterval : ObservableHeaderObject
     {

@@ -34,11 +34,11 @@ using System.Windows.Media.Imaging;
 
 using Svg;
 
-using com.jonthysell.Chordious.Core.ViewModel;
+using Chordious.Core.ViewModel;
 
-using com.jonthysell.Chordious.WPF.Resources;
+using Chordious.WPF.Resources;
 
-namespace com.jonthysell.Chordious.WPF
+namespace Chordious.WPF
 {
     public class ImageUtils
     {

@@ -29,9 +29,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-using com.jonthysell.Chordious.Core.ViewModel;
+using Chordious.Core.ViewModel;
 
-namespace com.jonthysell.Chordious.WPF
+namespace Chordious.WPF
 {
     /// <summary>
     /// Interaction logic for ScaleFinderWindow.xaml

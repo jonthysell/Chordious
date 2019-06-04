@@ -31,7 +31,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
 
-namespace com.jonthysell.Chordious.WPF
+namespace Chordious.WPF
 {
     public class AutoDisableImage : Image
     {

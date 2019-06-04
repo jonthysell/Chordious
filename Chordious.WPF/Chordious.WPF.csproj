@@ -7,7 +7,7 @@
     <ProjectGuid>{C9562CB0-8AA8-44B9-BFBF-67DDFAC66A00}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>com.jonthysell.Chordious.WPF</RootNamespace>
+    <RootNamespace>Chordious.WPF</RootNamespace>
     <AssemblyName>Chordious.WPF</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>com.jonthysell.Chordious.WPF.Program</StartupObject>
+    <StartupObject>Chordious.WPF.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\chordious.ico</ApplicationIcon>

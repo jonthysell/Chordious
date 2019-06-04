@@ -4,7 +4,7 @@
         SizeToContent="WidthAndHeight"
         Title="{Binding Title, FallbackValue=SELECT A COLLECTION}"
         WindowStartupLocation="CenterScreen"
-        x:Class="com.jonthysell.Chordious.WPF.DiagramCollectionSelectorWindow"
+        x:Class="Chordious.WPF.DiagramCollectionSelectorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Window.InputBindings>

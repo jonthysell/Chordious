@@ -5,9 +5,9 @@
         Title="{Binding Title, FallbackValue=CONFIRMATION TITLE}"
         Width="500"
         WindowStartupLocation="CenterScreen"
-        x:Class="com.jonthysell.Chordious.WPF.ConfirmationWindow"
+        x:Class="Chordious.WPF.ConfirmationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
+        xmlns:local="clr-namespace:Chordious.WPF"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Window.InputBindings>
         <KeyBinding Command="{Binding Reject, Mode=OneWay}"

@@ -5,10 +5,10 @@
         Title="{Binding Title, FallbackValue=INSTRUMENT MANAGER}"
         Width="800"
         WindowStartupLocation="CenterScreen"
-        x:Class="com.jonthysell.Chordious.WPF.InstrumentManagerWindow"
+        x:Class="Chordious.WPF.InstrumentManagerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
-        xmlns:vm="clr-namespace:com.jonthysell.Chordious.Core.ViewModel;assembly=Chordious.Core.ViewModel"
+        xmlns:local="clr-namespace:Chordious.WPF"
+        xmlns:vm="clr-namespace:Chordious.Core.ViewModel;assembly=Chordious.Core.ViewModel"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Window.InputBindings>
         <KeyBinding Command="{Binding Close, Mode=OneWay}"

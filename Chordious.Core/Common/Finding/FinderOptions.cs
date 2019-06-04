@@ -26,9 +26,9 @@
 
 using System;
 
-using com.jonthysell.Chordious.Core.Resources;
+using Chordious.Core.Resources;
 
-namespace com.jonthysell.Chordious.Core
+namespace Chordious.Core
 {
     public abstract class FinderOptions : IFinderOptions
     {

@@ -27,7 +27,7 @@
 using System;
 using System.Xml;
 
-namespace com.jonthysell.Chordious.Core
+namespace Chordious.Core
 {
     public class ChordQualitySet : NamedIntervalSet
     {

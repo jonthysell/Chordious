@@ -27,9 +27,9 @@
 using System;
 using System.Reflection;
 
-using com.jonthysell.Chordious.Core.Resources;
+using Chordious.Core.Resources;
 
-namespace com.jonthysell.Chordious.Core
+namespace Chordious.Core
 {
     /// <summary>
     /// AppInfo contains methods to get app's name and version information.
@@ -144,7 +144,7 @@ namespace com.jonthysell.Chordious.Core
         {
             get
             {
-                return "Copyright © 2013-2019 Jon Thysell";
+                return "Copyright ï¿½ 2013-2019 Jon Thysell";
             }
         }
 

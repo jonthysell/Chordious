@@ -28,7 +28,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace com.jonthysell.Chordious.Core
+namespace Chordious.Core
 {
     public class ChordFinder
     {

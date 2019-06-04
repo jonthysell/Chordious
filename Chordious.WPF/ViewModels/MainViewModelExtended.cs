@@ -29,11 +29,11 @@ using System.Threading.Tasks;
 
 using GalaSoft.MvvmLight.Messaging;
 
-using com.jonthysell.Chordious.Core.ViewModel;
+using Chordious.Core.ViewModel;
 
-using com.jonthysell.Chordious.WPF.Resources;
+using Chordious.WPF.Resources;
 
-namespace com.jonthysell.Chordious.WPF
+namespace Chordious.WPF
 {
     public class MainViewModelExtended : MainViewModel, IIdle
     {

@@ -6,9 +6,9 @@
         Title="{Binding Title, FallbackValue=DIAGRAM EXPORT}"
         Width="400"
         WindowStartupLocation="CenterScreen"
-        x:Class="com.jonthysell.Chordious.WPF.DiagramExportWindow"
+        x:Class="Chordious.WPF.DiagramExportWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
+        xmlns:local="clr-namespace:Chordious.WPF"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid IsEnabled="{Binding IsIdle}">
         <Grid.ColumnDefinitions>

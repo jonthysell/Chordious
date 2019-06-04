@@ -26,7 +26,7 @@
 
 using System.Windows;
 
-namespace com.jonthysell.Chordious.WPF
+namespace Chordious.WPF
 {
     /// <summary>
     /// Interaction logic for LicensesWindow.xaml

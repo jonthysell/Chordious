@@ -4,9 +4,9 @@
         Title="{Binding Title, FallbackValue=INSTRUMENT EDITOR}"
         Width="400"
         WindowStartupLocation="CenterScreen"
-        x:Class="com.jonthysell.Chordious.WPF.InstrumentEditorWindow"
+        x:Class="Chordious.WPF.InstrumentEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:local="clr-namespace:com.jonthysell.Chordious.WPF"
+        xmlns:local="clr-namespace:Chordious.WPF"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Window.InputBindings>
         <KeyBinding Command="{Binding Cancel, Mode=OneWay}"

@@ -30,9 +30,9 @@ using System.Linq;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using com.jonthysell.Chordious.Core;
+using Chordious.Core;
 
-namespace com.jonthysell.Chordious.CoreTest
+namespace Chordious.CoreTest
 {
     [TestClass]
     [DeploymentItem("ChordFinding\\TestCases")]

@@ -28,9 +28,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using com.jonthysell.Chordious.Core;
+using Chordious.Core;
 
-namespace com.jonthysell.Chordious.CoreTest
+namespace Chordious.CoreTest
 {
     public class TestTuningSet : ITuningSet
     {

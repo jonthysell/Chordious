@@ -34,9 +34,9 @@ using System.Globalization;
 using System.Reflection;
 #endif
 
-using com.jonthysell.Chordious.WPF.Resources;
+using Chordious.WPF.Resources;
 
-namespace com.jonthysell.Chordious.WPF
+namespace Chordious.WPF
 {
     public class Program
     {

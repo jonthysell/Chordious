@@ -29,7 +29,7 @@ using System.IO;
 using System.Reflection;
 using System.Xml;
 
-namespace com.jonthysell.Chordious.Core
+namespace Chordious.Core
 {
     public class ConfigFile : IReadOnly
     {
@@ -40,7 +40,7 @@ namespace com.jonthysell.Chordious.Core
                 if (null == _defaultConfig)
                 {
                     _defaultConfig = new ConfigFile(DefaultLevelKey);
-                    _defaultConfig.LoadFile(typeof(ConfigFile).GetTypeInfo().Assembly.GetManifestResourceStream("com.jonthysell.Chordious.Core.Chordious.Core.xml"));
+                    _defaultConfig.LoadFile(typeof(ConfigFile).GetTypeInfo().Assembly.GetManifestResourceStream("Chordious.Core.Chordious.Core.xml"));
                     _defaultConfig.MarkAsReadOnly();
                 }
 

@@ -31,7 +31,7 @@ using System.Text;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace com.jonthysell.Chordious.CoreTest
+namespace Chordious.CoreTest
 {
     public class TestUtils
     {

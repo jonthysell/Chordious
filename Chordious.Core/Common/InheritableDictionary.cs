@@ -30,9 +30,9 @@ using System.Globalization;
 using System.Text;
 using System.Xml;
 
-using com.jonthysell.Chordious.Core.Resources;
+using Chordious.Core.Resources;
 
-namespace com.jonthysell.Chordious.Core
+namespace Chordious.Core
 {
     public abstract class InheritableDictionary : IReadOnly
     {

@@ -26,7 +26,7 @@
 
 using System;
 
-namespace com.jonthysell.Chordious.Core.Legacy
+namespace Chordious.Core.Legacy
 {
     internal class ChordOptions
     {

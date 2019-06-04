@@ -32,9 +32,9 @@ using Microsoft.Win32;
 
 using GalaSoft.MvvmLight.Messaging;
 
-using com.jonthysell.Chordious.Core.ViewModel;
+using Chordious.Core.ViewModel;
 
-namespace com.jonthysell.Chordious.WPF
+namespace Chordious.WPF
 {
     public class MessageHandlers
     {

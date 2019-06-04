@@ -27,7 +27,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace com.jonthysell.Chordious.Core
+namespace Chordious.Core
 {
     public class MarkUtils
     {

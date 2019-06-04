@@ -54,7 +54,7 @@ namespace Chordious.Core
 
         public bool TryGet(string longName, out Scale scale)
         {
-            if (base.TryGet(longName, out NamedInterval namedInterval))
+            if (TryGet(longName, out NamedInterval namedInterval))
             {
                 scale = (Scale)namedInterval;
                 return true;

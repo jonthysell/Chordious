@@ -70,7 +70,7 @@ namespace Chordious.Core.ViewModel
             {
                 return _selectedNode;
             }
-            private set
+            set
             {
                 // Make sure to deselect diagrams when selecting a new library node
                 if (null != SelectedNode)

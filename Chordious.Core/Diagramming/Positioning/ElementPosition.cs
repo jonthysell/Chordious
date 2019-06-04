@@ -39,9 +39,9 @@ namespace Chordious.Core
 
         public static bool operator ==(ElementPosition a, ElementPosition b)
         {
-            if (object.ReferenceEquals(a, null))
+            if (ReferenceEquals(a, null))
             {
-                return object.ReferenceEquals(b, null);
+                return ReferenceEquals(b, null);
             }
 
             return a.Equals(b);

@@ -943,11 +943,11 @@ namespace Chordious.Core
 
             // Add background
 
-            string baseStyle = Style.GetSvgStyle(Diagram._baseStyleMap);
+            string baseStyle = Style.GetSvgStyle(_baseStyleMap);
 
             if (Style.DiagramBorderThickness > 0)
             {
-                baseStyle += Style.GetSvgStyle(Diagram._baseStyleMapBorder);
+                baseStyle += Style.GetSvgStyle(_baseStyleMapBorder);
             }
 
             sb.AppendFormat(CultureInfo.InvariantCulture,
@@ -965,7 +965,7 @@ namespace Chordious.Core
             double rectWidth = GridWidth();
             double rectHeight = GridHeight();
 
-            string gridRectStyle = Style.GetSvgStyle(Diagram._gridBaseStyleMap);
+            string gridRectStyle = Style.GetSvgStyle(_gridBaseStyleMap);
 
             sb.AppendFormat(CultureInfo.InvariantCulture,
                             SvgConstants.RECTANGLE,
@@ -975,7 +975,7 @@ namespace Chordious.Core
                             rectX,
                             rectY);
 
-            string lineStyle = Style.GetSvgStyle(Diagram._lineStyleMap);
+            string lineStyle = Style.GetSvgStyle(_lineStyleMap);
 
             // Add vertical Lines
             double vSpacing = Style.GridStringSpacing;
@@ -1019,7 +1019,7 @@ namespace Chordious.Core
                 double x2 = rectX + rectWidth + strokeCorrection;
                 double y = rectY - strokeCorrection;
 
-                string nutStyle = Style.GetSvgStyle(Diagram._nutStyleMap);
+                string nutStyle = Style.GetSvgStyle(_nutStyleMap);
                 nutStyle += string.Format(CultureInfo.InvariantCulture, "stroke-width:{0};", Style.GridLineThickness * Style.GridNutRatio);
 
                 sb.AppendFormat(CultureInfo.InvariantCulture,
@@ -1089,7 +1089,7 @@ namespace Chordious.Core
                     }
                 }
 
-                string titleStyle = Style.GetSvgStyle(Diagram._titleStyleMap);
+                string titleStyle = Style.GetSvgStyle(_titleStyleMap);
 
                 if (Style.TitleLabelStyle == DiagramLabelStyle.ChordName && Title.Length > 1)
                 {

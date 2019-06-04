@@ -152,11 +152,11 @@ namespace Chordious.Core
 
                 // Draw shape
 
-                string shapeStyle = Style.GetSvgStyle(DiagramMark._shapeStyleMap, prefix);
+                string shapeStyle = Style.GetSvgStyle(_shapeStyleMap, prefix);
 
                 if (MarkStyle.MarkBorderThickness > 0)
                 {
-                    shapeStyle += Style.GetSvgStyle(DiagramMark._shapeStyleMapBorder, prefix);
+                    shapeStyle += Style.GetSvgStyle(_shapeStyleMapBorder, prefix);
                 }
 
                 switch (shape)
@@ -223,7 +223,7 @@ namespace Chordious.Core
                             break;
                     }
 
-                    string textStyle = Style.GetSvgStyle(DiagramMark._textStyleMap, prefix);
+                    string textStyle = Style.GetSvgStyle(_textStyleMap, prefix);
                     textStyle += string.Format(CultureInfo.InvariantCulture, "font-size:{0}pt;", textSize);
 
                     string textFormat = (Parent.Style.Orientation == DiagramOrientation.LeftRight) ? SvgConstants.ROTATED_TEXT : SvgConstants.TEXT;

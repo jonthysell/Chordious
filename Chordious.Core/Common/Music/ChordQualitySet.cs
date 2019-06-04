@@ -54,7 +54,7 @@ namespace Chordious.Core
 
         public bool TryGet(string longName, out ChordQuality chordQuality)
         {
-            if (base.TryGet(longName, out NamedInterval namedInterval))
+            if (TryGet(longName, out NamedInterval namedInterval))
             {
                 chordQuality = (ChordQuality)namedInterval;
                 return true;

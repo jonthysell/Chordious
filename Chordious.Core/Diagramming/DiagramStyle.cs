@@ -1552,12 +1552,12 @@ namespace Chordious.Core
 
         public void Read(XmlReader xmlReader)
         {
-            base.Read(xmlReader, "style");
+            Read(xmlReader, "style");
         }
 
         public void Write(XmlWriter xmlWriter, string filter = "")
         {
-            base.Write(xmlWriter, "style", filter);
+            Write(xmlWriter, "style", filter);
         }
 
         public DiagramStyle Clone()

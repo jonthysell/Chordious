@@ -42,7 +42,7 @@ namespace Chordious.Core
 
             for (int i = 0; i < marks.Length; i++)
             {
-                s += MarkUtils.ToString(marks[i]) + ",";
+                s += ToString(marks[i]) + ",";
             }
 
             s = s.TrimEnd(',');

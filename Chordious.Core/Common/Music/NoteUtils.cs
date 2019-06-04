@@ -65,9 +65,9 @@ namespace Chordious.Core
 
         public static string ToString(InternalNote note, InternalNoteStringStyle style)
         {
-            if (NoteUtils.IsNatural(note) || style != InternalNoteStringStyle.ShowBoth)
+            if (IsNatural(note) || style != InternalNoteStringStyle.ShowBoth)
             {
-                return NoteUtils.ToString(NoteUtils.ToNote(note, style));
+                return ToString(ToNote(note, style));
             }
             else
             {

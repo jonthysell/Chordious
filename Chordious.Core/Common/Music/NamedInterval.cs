@@ -214,7 +214,7 @@ namespace Chordious.Core
 
         public InternalNote[] GetNotes(InternalNote root)
         {
-            return NamedInterval.GetNotes(root, Intervals);
+            return GetNotes(root, Intervals);
         }
 
         public static InternalNote[] GetNotes(InternalNote root, int[] intervals)

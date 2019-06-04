@@ -168,7 +168,7 @@ namespace Chordious.Core
                     }
                 }
 
-                string textStyle = Style.GetSvgStyle(DiagramFretLabel._textStyleMap);
+                string textStyle = Style.GetSvgStyle(_textStyleMap);
                 textStyle += string.Format(CultureInfo.InvariantCulture, "font-size:{0}pt;", textSize);
 
                 string textFormat = (Parent.Style.Orientation == DiagramOrientation.LeftRight) ? SvgConstants.ROTATED_TEXT : SvgConstants.TEXT;

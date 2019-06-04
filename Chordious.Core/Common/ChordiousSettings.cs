@@ -55,12 +55,12 @@ namespace Chordious.Core
 
         public void Read(XmlReader xmlReader)
         {
-            base.Read(xmlReader, "setting");
+            Read(xmlReader, "setting");
         }
 
         public void Write(XmlWriter xmlWriter, string filter = "")
         {
-            base.Write(xmlWriter, "setting", filter);
+            Write(xmlWriter, "setting", filter);
         }
 
         public ChordiousSettings Clone()

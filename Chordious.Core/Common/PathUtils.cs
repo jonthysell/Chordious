@@ -38,11 +38,11 @@ namespace Chordious.Core
             }
 
             path = path.Trim();
-            path = path.TrimEnd(PathUtils.PathSeperator[0]);
+            path = path.TrimEnd(PathSeperator[0]);
 
-            if (!path.StartsWith(PathUtils.PathRoot))
+            if (!path.StartsWith(PathRoot))
             {
-                path = PathUtils.PathRoot + path;
+                path = PathRoot + path;
             }
 
             return path;

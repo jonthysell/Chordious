@@ -129,11 +129,11 @@ namespace Chordious.Core
                         break;
                 }
 
-                string shapeStyle = Style.GetSvgStyle(DiagramBarre._shapeStyleMap);
+                string shapeStyle = Style.GetSvgStyle(_shapeStyleMap);
                 shapeStyle += "fill-opacity:0;";
 
-                double radiusX = (Position.EndString - Position.StartString) * Parent.Style.GridStringSpacing;
-                double radiusY = Parent.Style.GridFretSpacing * Style.BarreArcRatio;
+                double radiusX = Math.Max((Position.EndString - Position.StartString) * Parent.Style.GridStringSpacing, ArcRadiusMin);
+                double radiusY = Math.Max(Parent.Style.GridFretSpacing * Style.BarreArcRatio, ArcRadiusMin);
                 svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.ARC, shapeStyle, startX, centerY, radiusX, radiusY, endX, centerY);
             }
 
@@ -146,6 +146,8 @@ namespace Chordious.Core
             new string[] {"barre.linecolor", "stroke"},
             new string[] {"barre.linethickness", "stroke-width"},
         };
+
+        private const double ArcRadiusMin = 0.01;
 
         public override string ToXaml()
         {

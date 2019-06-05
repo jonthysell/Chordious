@@ -1,3 +1,5 @@
+![Chordious Banner](./.github/banner.png)
+
 # Chordious #
 
 Chordious is a fretboard diagram generator for fretted stringed instruments like the ukulele, mandolin, and guitar.

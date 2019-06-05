@@ -1,5 +1,16 @@
 # Chordious Changelist #
 
+## 2.0.9 ##
+* New WinStore build for the Microsoft Store
+* Updated to .NET 4.6.2
+* Updated SVG.NET to v2.4.3
+* Updated MVVM Light to v5.4.1.1
+* Consolidated licenses for dependencies into the UI
+* Fixed a bug with the shortcut icon not loading on some machines
+* Fixed a bug with the temporary files created during "Enhanced Copy And Drag"
+* Fixed a bug where 0% barre arc ratios made the barre disappear
+* Code cleanup and miscellaneous bug fixes
+
 ## 2.0.8 ##
 * Can now specify which side to put fret labels in Finder results
 * Prompt to save instrument/tuning when exiting Finders

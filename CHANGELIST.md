@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## 2.0.10 ##
+* Fixed crash when trying to export diagrams
+
 ## 2.0.9 ##
 * New WinStore build for the Microsoft Store
 * Updated to .NET 4.6.2

@@ -63,6 +63,18 @@ namespace Chordious.Core
             }
         }
 
+        public bool AllowPartialChords
+        {
+            get
+            {
+                return Settings.GetBoolean(Prefix + "allowpartialchords");
+            }
+            set
+            {
+                Settings.Set(Prefix + "allowpartialchords", value);
+            }
+        }
+
         public ChordFinderOptions(ConfigFile configFile, ChordiousSettings chordiousSettings = null) : base(configFile, "chord")
         {
             if (null != chordiousSettings)

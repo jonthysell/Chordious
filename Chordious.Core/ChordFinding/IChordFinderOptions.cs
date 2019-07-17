@@ -30,5 +30,6 @@ namespace Chordious.Core
     {
         IChordQuality ChordQuality { get; }
         bool AllowRootlessChords { get; }
+        bool AllowPartialChords { get; }
     }
 }

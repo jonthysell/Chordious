@@ -198,6 +198,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label Content="{Binding NumFretsLabel, FallbackValue=# OF FRETS}"
                                Grid.Column="0"
@@ -297,6 +298,22 @@
                                   Margin="5"
                                   Name="AllowRootlessChordsCheckBox"
                                   ToolTip="{Binding AllowRootlessChordsToolTip}"
+                                  VerticalAlignment="Center" />
+                        <Label Content="{Binding AllowPartialChordsLabel, FallbackValue=ALLOW PARTIAL CHORDS}"
+                               Grid.Column="0"
+                               Grid.Row="6"
+                               Margin="5"
+                               Name="AllowPartialChordsLabel"
+                               Target="{Binding ElementName=AllowPartialChordsCheckBox}"
+                               ToolTip="{Binding AllowPartialChordsToolTip}" />
+                        <CheckBox AutomationProperties.LabeledBy="{Binding ElementName=AllowPartialChordsLabel}"
+                                  Grid.Column="1"
+                                  Grid.Row="6"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{Binding AllowPartialChords}"
+                                  Margin="5"
+                                  Name="AllowPartialChordsCheckBox"
+                                  ToolTip="{Binding AllowPartialChordsToolTip}"
                                   VerticalAlignment="Center" />
                     </Grid>
                 </GroupBox>

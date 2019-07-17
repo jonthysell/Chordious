@@ -13,6 +13,7 @@
     <setting key="chordfinderoptions.allowopenstrings" value="True" />
     <setting key="chordfinderoptions.allowmutedstrings" value="True" />
     <setting key="chordfinderoptions.allowrootlesschords" value="False" />
+    <setting key="chordfinderoptions.allowpartialchords" value="False" />
     <setting key="chordfinderstyle.addtitle" value="True" />
     <setting key="chordfinderstyle.barretypeoption" value="None" />
     <setting key="chordfinderstyle.addrootnotes" value="False" />

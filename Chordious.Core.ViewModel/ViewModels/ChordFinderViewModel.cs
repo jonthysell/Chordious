@@ -614,6 +614,35 @@ namespace Chordious.Core.ViewModel
             }
         }
 
+        public string AllowPartialChordsLabel
+        {
+            get
+            {
+                return Strings.ChordFinderOptionsAllowPartialChordsLabel;
+            }
+        }
+
+        public string AllowPartialChordsToolTip
+        {
+            get
+            {
+                return Strings.ChordFinderOptionsAllowPartialChordsToolTip;
+            }
+        }
+
+        public bool AllowPartialChords
+        {
+            get
+            {
+                return Options.AllowPartialChords;
+            }
+            set
+            {
+                Options.AllowPartialChords = value;
+                RaisePropertyChanged(nameof(AllowPartialChords));
+            }
+        }
+
         #endregion
 
         #region Styles

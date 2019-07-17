@@ -124,6 +124,7 @@ namespace Chordious.CoreTest
             public bool AllowOpenStrings { get; set; }
             public bool AllowMutedStrings { get; set; }
             public bool AllowRootlessChords { get; set; }
+            public bool AllowPartialChords { get; set; }
 
             public static TestChordFinderOptions Parse(string s)
             {
@@ -174,8 +175,9 @@ namespace Chordious.CoreTest
                 bool allowOpenStrings = bool.Parse(vals[7]);
                 bool allowMutedStrings = bool.Parse(vals[8]);
                 bool allowRootlessChords = bool.Parse(vals[9]);
+                bool allowPartialChords = bool.Parse(vals[10]);
 
-                return new TestChordFinderOptions { Instrument = instrument, Tuning = tuning, ChordQuality = chordQuality, RootNote = rootNote, NumFrets = numFrets, MaxFret = maxFret, MaxReach = maxReach, AllowOpenStrings = allowOpenStrings, AllowMutedStrings = allowMutedStrings, AllowRootlessChords = allowRootlessChords };
+                return new TestChordFinderOptions { Instrument = instrument, Tuning = tuning, ChordQuality = chordQuality, RootNote = rootNote, NumFrets = numFrets, MaxFret = maxFret, MaxReach = maxReach, AllowOpenStrings = allowOpenStrings, AllowMutedStrings = allowMutedStrings, AllowRootlessChords = allowRootlessChords, AllowPartialChords = allowPartialChords };
             }
 
             public override string ToString()
@@ -190,7 +192,8 @@ namespace Chordious.CoreTest
                     MaxReach,
                     AllowOpenStrings,
                     AllowMutedStrings,
-                    AllowRootlessChords);
+                    AllowRootlessChords,
+                    AllowPartialChords);
             }
         }
 

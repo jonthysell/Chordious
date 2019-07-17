@@ -178,6 +178,24 @@ namespace Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allow Partial Chords.
+        /// </summary>
+        internal static string ChordFinderOptionsAllowPartialChordsLabel {
+            get {
+                return ResourceManager.GetString("ChordFinderOptionsAllowPartialChordsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow results that don&apos;t have all of the notes of the chord..
+        /// </summary>
+        internal static string ChordFinderOptionsAllowPartialChordsToolTip {
+            get {
+                return ResourceManager.GetString("ChordFinderOptionsAllowPartialChordsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Allow Rootless _Chords.
         /// </summary>
         internal static string ChordFinderOptionsAllowRootlessChordsLabel {

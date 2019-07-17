@@ -103,21 +103,37 @@ namespace Chordious.Core
 
                 InternalNote rootNote = NoteUtils.ToInternalNote(chordFinderOptions.RootNote);
 
-                // Add result if it had all the target notes
-                bool valid = true;
+                // Check for necessary notes
+
+                bool rootInTarget = false;
+
+                bool hasAllNotes = true;
+                bool hasAllNonRootNotes = true;
+
+                bool hasRootNote = false;
+
                 for (int i = 0; i < hasNotes.Length; i++)
                 {
-                    // Validate:
-                    // 1. All notes when !AllowRootlessChords
-                    // 2. Non-root notes only when AllowRootlessChords
-                    if (!chordFinderOptions.AllowRootlessChords ||
-                       (chordFinderOptions.AllowRootlessChords && targetNotes[i] != rootNote))
+                    hasAllNotes = hasAllNotes && hasNotes[i];
+
+                    if (targetNotes[i] == rootNote)
                     {
-                        valid = valid && hasNotes[i];
+                        rootInTarget = true;
+
+                        if (hasNotes[i])
+                        {
+                            hasRootNote = true;
+                        }
+                    }
+                    else
+                    {
+                        hasAllNonRootNotes = hasAllNonRootNotes && hasNotes[i];
                     }
                 }
 
-                if (valid)
+                if (hasAllNotes // Allways accept: all notes present
+                    || (chordFinderOptions.AllowRootlessChords && (chordFinderOptions.AllowPartialChords || hasAllNonRootNotes)) // If allow rootless, accept: anything with allow partial, or all non-root notes present
+                    || (!chordFinderOptions.AllowRootlessChords && chordFinderOptions.AllowPartialChords && (!rootInTarget || (rootInTarget && hasRootNote)))) // If don't allow rootless and allow partial, accept: no root in target, or root in target is present
                 {
                     results.AddResult(marks);
                 }

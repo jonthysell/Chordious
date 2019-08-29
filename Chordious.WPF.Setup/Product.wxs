@@ -6,7 +6,7 @@
              Manufacturer="Jon Thysell"
              Name="Chordious"
              UpgradeCode="a49f8d4a-4e86-490d-8b31-282e26ad5ccf"
-             Version="2.0.10">
+             Version="!(bind.FileVersion.ChordiousWpfApp)">
         <Package Compressed="yes"
                  InstallScope="perMachine"
                  InstallerVersion="200"
@@ -27,8 +27,6 @@
             <ComponentRef Id="ChordiousCoreLib" />
             <ComponentRef Id="ChordiousCoreViewModelLib" />
             <ComponentRef Id="MvvmLib" />
-            <ComponentRef Id="MvvmPlatformLib" />
-            <ComponentRef Id="WindowsInteractivityLib" />
             <ComponentRef Id="SvgLib" />
         </Feature>
         <Icon Id="icon.ico"
@@ -80,7 +78,7 @@
                               KeyPath="yes"
                               Source="$(var.Chordious.WPF.TargetPath)">
                             <Shortcut Advertise="yes"
-                                      Description="Freboard diagram generator."
+                                      Description="Fretboard diagram generator."
                                       Directory="ProgramMenuFolder"
                                       Id="ChordiousWpfAppShortcut"
                                       Name="Chordious"
@@ -107,14 +105,6 @@
                         <File Id="MvvmLib"
                               KeyPath="yes"
                               Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.dll" />
-                    </Component>
-                    <Component Id="MvvmPlatformLib">
-                        <File Id="MvvmPlatformLib"
-                              Source="$(var.Chordious.WPF.TargetDir)\GalaSoft.MvvmLight.Platform.dll" />
-                    </Component>
-                    <Component Id="WindowsInteractivityLib">
-                        <File Id="WindowsInteractivityLib"
-                              Source="$(var.Chordious.WPF.TargetDir)\System.Windows.Interactivity.dll" />
                     </Component>
                     <Component Id="SvgLib">
                         <File Id="SvgLib"

@@ -2,8 +2,8 @@
 <#@ output extension=".cs" #>
 <#
     int major    = 2;
-    int minor    = 0; // Official == even, Preview == odd
-    int build    = 10;
+    int minor    = 1; // Official == even, Preview == odd
+    int build    = 0;
     int revision = 0;
 
     string version = String.Format("{0}.{1}.{2}.{3}", major, minor, build, revision);

@@ -29,6 +29,7 @@ using System.Collections.Specialized;
 using System.Drawing;
 using System.IO;
 using System.Windows;
+using System.Windows.Media;
 
 using Chordious.Core.ViewModel;
 
@@ -52,6 +53,14 @@ namespace Chordious.WPF
             }
         }
         private static string _tempPath;
+
+        public static double DpiScale
+        {
+            get
+            {
+                return VisualTreeHelper.GetDpi(Application.Current.MainWindow).DpiScaleY;
+            }
+        }
 
         public static string GetTempPathAndCreateIfNecessary()
         {

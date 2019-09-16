@@ -28,7 +28,9 @@ using System;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -94,8 +96,11 @@ namespace Chordious.WPF
 
             float maxDimension = scaleFactor * Math.Max(width, height);
 
-            SvgDocument doc = SvgDocument.FromSvg<Svg.SvgDocument>(svgText);
+            // SVG.NET doesn't render text properly on high DPI screens, correct it here
+            svgText = ResizeSvgFontSize(svgText, 1.0 / IntegrationUtils.DpiScale);
 
+            SvgDocument doc = SvgDocument.FromSvg<SvgDocument>(svgText);
+            
             if (scaleFactor != 1.0f)
             {
                 doc.Transforms.Add(new Svg.Transforms.SvgScale(scaleFactor));
@@ -106,6 +111,26 @@ namespace Chordious.WPF
             Bitmap svgBitmap = doc.Draw();
             return svgBitmap;
         }
+
+        private static string ResizeSvgFontSize(string svgText, double scaleFactor)
+        {
+            if (scaleFactor != 1.0)
+            {
+                foreach (Match m in FontSizeRegex.Matches(svgText))
+                {
+                    if (m.Groups.Count == 2 && double.TryParse(m.Groups[1].Value, out double result))
+                    {
+                        double newFontSize = result * scaleFactor;
+                        string newFontSizeString = string.Format(CultureInfo.InvariantCulture, "font-size:{0}pt", newFontSize);
+                        svgText = svgText.Replace(m.Value, newFontSizeString);
+                    }
+                }
+            }
+
+            return svgText;
+        }
+
+        private static Regex FontSizeRegex = new Regex(@"font\-size:(\d+\.?\d*)pt");
 
         #endregion
 

@@ -1,5 +1,10 @@
 # Chordious Changelist #
 
+# 2.1.X.X #
+* Chord Finder can now find "partial" chords
+* Removed unnecessary DLLs
+* Fixed issue with text scaling on high DPI monitors
+
 ## 2.0.10 ##
 * Fixed crash when trying to export diagrams
 

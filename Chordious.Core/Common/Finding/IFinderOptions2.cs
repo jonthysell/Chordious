@@ -1,5 +1,5 @@
 ﻿// 
-// IChordFinderOptions.cs
+// IFinderOptions2.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
@@ -26,10 +26,14 @@
 
 namespace Chordious.Core
 {
-    public interface IChordFinderOptions : IFinderOptions2
+    public interface IFinderOptions2 : IFinderOptions
     {
-        IChordQuality ChordQuality { get; }
-        bool AllowRootlessChords { get; }
-        bool AllowPartialChords { get; }
+        Note RootNote { get; }
+
+        int NumFrets { get; }
+        int MaxFret { get; }
+        int MaxReach { get; }
+        bool AllowOpenStrings { get; }
+        bool AllowMutedStrings { get; }
     }
 }

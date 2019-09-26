@@ -47,6 +47,13 @@
   <ItemGroup>
     <Compile Include="ChordFinding\IChordFinderResult.cs" />
     <Compile Include="ChordFinding\IChordFinderOptions.cs" />
+    <Compile Include="Common\Finding\FinderOptions2.cs" />
+    <Compile Include="Common\Finding\IFinderOptions2.cs" />
+    <Compile Include="ReverseChordFinder\ReverseChordFinderOptions.cs" />
+    <Compile Include="ReverseChordFinder\ReverseChordFinderResult.cs" />
+    <Compile Include="ReverseChordFinder\IReverseChordFinderOptions.cs" />
+    <Compile Include="ReverseChordFinder\IReverseChordFinderResult.cs" />
+    <Compile Include="ReverseChordFinder\ReverseChordFinder.cs" />
     <Compile Include="Common\EnumUtils.cs" />
     <Compile Include="Common\Finding\FinderOptions.cs" />
     <Compile Include="Common\Finding\IFinderOptions.cs" />
@@ -114,6 +121,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="ReverseChordFinder\ReverseChordFinderResultSet.cs" />
     <Compile Include="ScaleFinding\IScaleFinderResult.cs" />
     <Compile Include="ScaleFinding\IScaleFinderOptions.cs" />
     <Compile Include="ScaleFinding\ScaleFinderStyle.cs" />

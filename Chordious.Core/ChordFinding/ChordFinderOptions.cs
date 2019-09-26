@@ -28,7 +28,7 @@ using System;
 
 namespace Chordious.Core
 {
-    public class ChordFinderOptions : FinderOptions, IChordFinderOptions
+    public class ChordFinderOptions : FinderOptions2, IChordFinderOptions
     {
         public IChordQuality ChordQuality
         {

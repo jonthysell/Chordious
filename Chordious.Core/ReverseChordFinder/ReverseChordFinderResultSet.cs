@@ -1,10 +1,10 @@
 ﻿// 
-// IChordFinderOptions.cs
+// ReverseChordFinderResultSet.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,12 +24,43 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace Chordious.Core
 {
-    public interface IChordFinderOptions : IFinderOptions2
+    public class ReverseChordFinderResultSet
     {
-        IChordQuality ChordQuality { get; }
-        bool AllowRootlessChords { get; }
-        bool AllowPartialChords { get; }
+        public IReverseChordFinderOptions ReverseChordFinderOptions { get; private set; }
+
+        public int Count
+        {
+            get
+            {
+                return _results.Count;
+            }
+        }
+
+        public IEnumerable<IReverseChordFinderResult> Results
+        {
+            get
+            {
+                foreach (ReverseChordFinderResult rcfr in _results)
+                {
+                    yield return rcfr;
+                }
+            }
+        }
+
+        private List<IReverseChordFinderResult> _results;
+
+        internal ReverseChordFinderResultSet(IReverseChordFinderOptions reverseChordFinderOptions)
+        {
+            ReverseChordFinderOptions = reverseChordFinderOptions;
+            _results = new List<IReverseChordFinderResult>();
+        }
     }
 }

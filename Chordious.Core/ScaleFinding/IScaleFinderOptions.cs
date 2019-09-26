@@ -26,7 +26,7 @@
 
 namespace Chordious.Core
 {
-    public interface IScaleFinderOptions : IFinderOptions
+    public interface IScaleFinderOptions : IFinderOptions2
     {
         IScale Scale { get; }
     }

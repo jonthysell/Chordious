@@ -30,13 +30,5 @@ namespace Chordious.Core
     {
         IInstrument Instrument { get; }
         ITuning Tuning { get; }
-
-        Note RootNote { get; }
-
-        int NumFrets { get; }
-        int MaxFret { get; }
-        int MaxReach { get; }
-        bool AllowOpenStrings { get; }
-        bool AllowMutedStrings { get; }
     }
 }

@@ -28,7 +28,7 @@ using System;
 
 namespace Chordious.Core
 {
-    public class ScaleFinderOptions : FinderOptions, IScaleFinderOptions
+    public class ScaleFinderOptions : FinderOptions2, IScaleFinderOptions
     {
         public IScale Scale
         {

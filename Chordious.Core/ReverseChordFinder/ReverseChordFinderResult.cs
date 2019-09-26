@@ -1,10 +1,10 @@
 ﻿// 
-// IChordFinderOptions.cs
+// ReverseChordFinderResult.cs
 //  
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2019 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,12 +24,39 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+using System;
+
 namespace Chordious.Core
 {
-    public interface IChordFinderOptions : IFinderOptions2
+    public class ReverseChordFinderResult : IReverseChordFinderResult
     {
-        IChordQuality ChordQuality { get; }
-        bool AllowRootlessChords { get; }
-        bool AllowPartialChords { get; }
+        public Note RootNote { get; private set; }
+
+        public IChordQuality ChordQuality { get; private set; }
+
+        public ReverseChordFinderResultSet Parent { get; private set; }
+
+        internal ReverseChordFinderResult(ReverseChordFinderResultSet parent, Note rootNote, IChordQuality chordQuality)
+        {
+            Parent = parent ?? throw new ArgumentNullException(nameof(parent));
+            RootNote = rootNote;
+            ChordQuality = chordQuality ?? throw new ArgumentNullException(nameof(chordQuality));
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (null == obj)
+            {
+                throw new ArgumentNullException(nameof(obj));
+            }
+
+            ReverseChordFinderResult rcfr = obj as ReverseChordFinderResult;
+            if (null == rcfr)
+            {
+                throw new ArgumentException();
+            }
+
+            return RootNote.CompareTo(rcfr.RootNote);
+        }
     }
 }

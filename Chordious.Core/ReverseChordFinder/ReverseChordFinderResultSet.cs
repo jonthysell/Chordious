@@ -24,11 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Chordious.Core
 {
@@ -61,6 +57,12 @@ namespace Chordious.Core
         {
             ReverseChordFinderOptions = reverseChordFinderOptions;
             _results = new List<IReverseChordFinderResult>();
+        }
+
+        public void AddResult(InternalNote rootNote, IChordQuality chordQuality)
+        {
+            _results.Add(new ReverseChordFinderResult(this, rootNote, chordQuality));
+            _results.Sort();
         }
     }
 }

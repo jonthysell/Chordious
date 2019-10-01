@@ -25,13 +25,22 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
 
 using Chordious.Core.Resources;
 
 namespace Chordious.Core
 {
-    public class NoteUtils
+    public static class NoteUtils
     {
+        public static IEnumerable<InternalNote> InternalNotes
+        {
+            get
+            {
+                return (InternalNote[])Enum.GetValues(typeof(InternalNote));
+            }
+        }
+
         public static Note ParseNote(string s)
         {
             if (TryParseNote(s, out Note note))

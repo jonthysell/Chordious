@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
 
 namespace Chordious.Core
 {
@@ -37,7 +38,10 @@ namespace Chordious.Core
                 return GetMarks();
             }
         }
+
         private int[] _cachedMarks;
+
+        public IEnumerable<IChordQuality> ChordQualities { get; set; }
 
         public ReverseChordFinderOptions(ConfigFile configFile, ChordiousSettings chordiousSettings = null) : base(configFile, "reversechord")
         {

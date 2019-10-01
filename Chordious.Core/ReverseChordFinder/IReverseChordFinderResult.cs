@@ -30,7 +30,7 @@ namespace Chordious.Core
 {
     public interface IReverseChordFinderResult : IComparable
     {
-        Note RootNote { get; }
+        InternalNote RootNote { get; }
 
         IChordQuality ChordQuality { get; }
     }

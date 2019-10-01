@@ -30,13 +30,13 @@ namespace Chordious.Core
 {
     public class ReverseChordFinderResult : IReverseChordFinderResult
     {
-        public Note RootNote { get; private set; }
+        public InternalNote RootNote { get; private set; }
 
         public IChordQuality ChordQuality { get; private set; }
 
         public ReverseChordFinderResultSet Parent { get; private set; }
 
-        internal ReverseChordFinderResult(ReverseChordFinderResultSet parent, Note rootNote, IChordQuality chordQuality)
+        internal ReverseChordFinderResult(ReverseChordFinderResultSet parent, InternalNote rootNote, IChordQuality chordQuality)
         {
             Parent = parent ?? throw new ArgumentNullException(nameof(parent));
             RootNote = rootNote;

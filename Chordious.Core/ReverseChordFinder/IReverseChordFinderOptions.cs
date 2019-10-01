@@ -24,10 +24,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+using System.Collections.Generic;
+
 namespace Chordious.Core
 {
     public interface IReverseChordFinderOptions : IFinderOptions
     {
         int[] Marks { get; }
+
+        IEnumerable<IChordQuality> ChordQualities { get; }
     }
 }

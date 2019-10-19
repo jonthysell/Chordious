@@ -53,6 +53,10 @@ namespace Chordious.WPF
 
         public static bool IsCheckingforUpdate { get; private set; }
 
+        public static int TimeoutMS = 3000;
+
+        public const int MaxTimeoutMS = 100000;
+
         public static Task UpdateCheckAsync(bool confirmUpdate, bool showUpToDate)
         {
             return Task.Factory.StartNew(() =>
@@ -135,6 +139,15 @@ namespace Chordious.WPF
                     }
                 }
             }
+            catch (WebException ex)
+            {
+                if (ex.Status == WebExceptionStatus.Timeout)
+                {
+                    TimeoutMS = Math.Min(TimeoutMS + 1000, MaxTimeoutMS);
+                }
+
+                ExceptionUtils.HandleException(new UpdateException(ex));
+            }
             catch (Exception ex)
             {
                 ExceptionUtils.HandleException(new UpdateException(ex));
@@ -157,6 +170,7 @@ namespace Chordious.WPF
             HttpWebRequest request = WebRequest.CreateHttp(_updateUrl);
             request.UserAgent = _userAgent;
             request.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore);
+            request.Timeout = TimeoutMS;
 
             using (XmlReader reader = XmlReader.Create(request.GetResponse().GetResponseStream()))
             {
@@ -307,7 +321,12 @@ namespace Chordious.WPF
         {
             get
             {
-                return Strings.ChordiousUpdateExceptionMessage;
+                string message = Strings.ChordiousUpdateExceptionMessage;
+                if (InnerException is WebException wex)
+                {
+                    message = $"{message} ({wex.Status.ToString()})";
+                }
+                return message;
             }
         }
 

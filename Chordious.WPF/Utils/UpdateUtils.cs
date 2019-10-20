@@ -143,10 +143,13 @@ namespace Chordious.WPF
             {
                 if (ex.Status == WebExceptionStatus.Timeout)
                 {
-                    TimeoutMS = Math.Min(TimeoutMS + 1000, MaxTimeoutMS);
+                    TimeoutMS = (int)Math.Min(TimeoutMS * 1.5, MaxTimeoutMS);
                 }
 
-                ExceptionUtils.HandleException(new UpdateException(ex));
+                if (showUpToDate)
+                {
+                    ExceptionUtils.HandleException(new UpdateException(ex));
+                }
             }
             catch (Exception ex)
             {

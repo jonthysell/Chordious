@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <updates>
-  <update version="2.0.10" url="https://chordious.com/download/" channel="Official" />
+  <update version="2.0.11" url="https://chordious.com/download/" channel="Official" />
   <update version="2.1.0" url="https://chordious.com/download/" channel="Preview" />
 </updates>

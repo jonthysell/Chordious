@@ -1,6 +1,6 @@
 # Chordious Changelist #
 
-# 2.1.X.X #
+## 2.1.X.X ##
 * Chord Finder can now find "partial" chords
 
 ## 2.0.11 ##

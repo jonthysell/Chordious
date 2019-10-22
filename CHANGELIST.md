@@ -1,5 +1,11 @@
 # Chordious Changelist #
 
+## 2.0.11 ##
+* Removed unnecessary DLLs
+* Fixed issue with text scaling on high DPI monitors
+* Fixed issue with licenses UI
+* Fixed issue with update check failures
+
 ## 2.0.10 ##
 * Fixed crash when trying to export diagrams
 

@@ -34,6 +34,8 @@ namespace Chordious.Core.ViewModel
     {
         void DoOnUIThread(Action action);
 
+        object DoOnUIThread(Func<object> func);
+
         Stream GetAppConfigStream();
 
         Stream GetUserConfigStreamToRead();

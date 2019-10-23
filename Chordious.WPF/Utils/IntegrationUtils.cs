@@ -58,7 +58,10 @@ namespace Chordious.WPF
         {
             get
             {
-                return VisualTreeHelper.GetDpi(Application.Current.MainWindow).DpiScaleY;
+                return (double)AppVM.AppView.DoOnUIThread(() =>
+                {
+                    return VisualTreeHelper.GetDpi(Application.Current.MainWindow).DpiScaleY;
+                });
             }
         }
 

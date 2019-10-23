@@ -241,6 +241,11 @@ namespace Chordious.WPF
             Dispatcher.Invoke(action);
         }
 
+        public object DoOnUIThread(Func<object> func)
+        {
+            return Dispatcher.Invoke(func);
+        }
+
         public Stream GetAppConfigStream()
         {
             return GetResourceStream(new Uri("pack://application:,,,/Chordious.WPF.xml")).Stream;

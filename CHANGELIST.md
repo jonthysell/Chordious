@@ -3,6 +3,9 @@
 ## 2.1.X.X ##
 * Chord Finder can now find "partial" chords
 
+## 2.0.12 ##
+* Fixed issue with exporting diagrams
+
 ## 2.0.11 ##
 * Removed unnecessary DLLs
 * Fixed issue with text scaling on high DPI monitors

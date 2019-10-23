@@ -3,7 +3,7 @@
 <#
     int major    = 2;
     int minor    = 0; // Official == even, Preview == odd
-    int build    = 11;
+    int build    = 12;
     int revision = 0;
 
     string version = String.Format("{0}.{1}.{2}.{3}", major, minor, build, revision);

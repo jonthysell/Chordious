@@ -202,6 +202,8 @@ namespace Chordious.Core
         {
             DiagramCollection clone = new DiagramCollection(Style.Parent);
 
+            clone.Style.CopyFrom(Style);
+
             foreach (Diagram diagram in this)
             {
                 clone.Add(diagram.Clone());

@@ -3,6 +3,11 @@
 ## 2.1.X.X ##
 * Chord Finder can now find "partial" chords
 
+## 2.0.13 ##
+* Fixed issue with importing configs with collection styles
+* Fixed issue with cloning collections not cloning collection styles
+* Fixed issue with resetting styles not updating the UI
+
 ## 2.0.12 ##
 * Fixed issue with exporting diagrams
 

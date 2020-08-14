@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -79,6 +79,8 @@ namespace Chordious.Core
             {
                 throw new ArgumentNullException(nameof(diagramCollection));
             }
+
+            Style.CopyFrom(diagramCollection.Style);
 
             foreach (Diagram d in diagramCollection)
             {
@@ -199,6 +201,8 @@ namespace Chordious.Core
         public DiagramCollection Clone()
         {
             DiagramCollection clone = new DiagramCollection(Style.Parent);
+
+            clone.Style.CopyFrom(Style);
 
             foreach (Diagram diagram in this)
             {

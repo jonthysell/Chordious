@@ -80,6 +80,8 @@ namespace Chordious.Core
                 throw new ArgumentNullException(nameof(diagramCollection));
             }
 
+            Style.CopyFrom(diagramCollection.Style);
+
             foreach (Diagram d in diagramCollection)
             {
                 Add(d);

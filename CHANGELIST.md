@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## 2.0.XX ##
+* Fixed issue with importing configs with collection styles
+
 ## 2.0.12 ##
 * Fixed issue with exporting diagrams
 

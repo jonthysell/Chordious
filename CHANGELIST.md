@@ -1,6 +1,6 @@
 # Chordious Changelist #
 
-## 2.0.XX ##
+## 2.0.13 ##
 * Fixed issue with importing configs with collection styles
 * Fixed issue with cloning collections not cloning collection styles
 * Fixed issue with resetting styles not updating the UI

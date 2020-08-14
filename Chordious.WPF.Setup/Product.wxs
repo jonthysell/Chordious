@@ -6,7 +6,7 @@
              Manufacturer="Jon Thysell"
              Name="Chordious"
              UpgradeCode="a49f8d4a-4e86-490d-8b31-282e26ad5ccf"
-             Version="2.0.12">
+             Version="2.0.13">
         <Package Compressed="yes"
                  InstallScope="perMachine"
                  InstallerVersion="200"

@@ -144,7 +144,7 @@ namespace Chordious.Core
         {
             get
             {
-                return "Copyright © 2013-2020 Jon Thysell";
+                return Assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright; ;
             }
         }
 

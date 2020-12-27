@@ -11,8 +11,6 @@ using System.Windows;
 [assembly: AssemblyDescription("Desktop UI for Chordious.")]
 #endif
 
-[assembly: AssemblyCopyright("Copyright © 2015-2019 Jon Thysell")]
-
 [assembly: NeutralResourcesLanguage("en")]
 
 [assembly: ComVisible(false)]

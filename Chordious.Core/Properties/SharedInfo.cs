@@ -5,6 +5,7 @@ using System.Reflection;
 
 [assembly: AssemblyCompany("Jon Thysell")]
 [assembly: AssemblyProduct("Chordious")]
+[assembly: AssemblyCopyright("Copyright © 2013-2020 Jon Thysell")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

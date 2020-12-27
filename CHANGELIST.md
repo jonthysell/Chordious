@@ -3,6 +3,7 @@
 ## 2.1.X.X ##
 * Chord Finder can now find "partial" chords
 * Fixed issue with non-deterministic style summary text
+* Extended clickable area for editing fret labels
 
 ## 2.0.13 ##
 * Fixed issue with importing configs with collection styles

@@ -19,7 +19,7 @@ namespace Chordious.Core.ViewModel.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Strings {
@@ -3850,20 +3850,20 @@ namespace Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add Fret Label....
+        ///   Looks up a localized string similar to Add Left Fret Label....
         /// </summary>
-        internal static string ObservableDiagramAddFretLabelLabel {
+        internal static string ObservableDiagramAddLeftFretLabelLabel {
             get {
-                return ResourceManager.GetString("ObservableDiagramAddFretLabelLabel", resourceCulture);
+                return ResourceManager.GetString("ObservableDiagramAddLeftFretLabelLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add a fret label to this location..
+        ///   Looks up a localized string similar to Add a left fret label to this location..
         /// </summary>
-        internal static string ObservableDiagramAddFretLabelToolTip {
+        internal static string ObservableDiagramAddLeftFretLabelToolTip {
             get {
-                return ResourceManager.GetString("ObservableDiagramAddFretLabelToolTip", resourceCulture);
+                return ResourceManager.GetString("ObservableDiagramAddLeftFretLabelToolTip", resourceCulture);
             }
         }
         
@@ -3886,6 +3886,24 @@ namespace Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Right Fret Label....
+        /// </summary>
+        internal static string ObservableDiagramAddRightFretLabelLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramAddRightFretLabelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a right fret label to this location..
+        /// </summary>
+        internal static string ObservableDiagramAddRightFretLabelToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramAddRightFretLabelToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Barre....
         /// </summary>
         internal static string ObservableDiagramEditBarreLabel {
@@ -3904,20 +3922,20 @@ namespace Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit Fret Label....
+        ///   Looks up a localized string similar to Edit Left Fret Label....
         /// </summary>
-        internal static string ObservableDiagramEditFretLabelLabel {
+        internal static string ObservableDiagramEditLeftFretLabelLabel {
             get {
-                return ResourceManager.GetString("ObservableDiagramEditFretLabelLabel", resourceCulture);
+                return ResourceManager.GetString("ObservableDiagramEditLeftFretLabelLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit the fret label at this location..
+        ///   Looks up a localized string similar to Edit the left fret label at this location..
         /// </summary>
-        internal static string ObservableDiagramEditFretLabelToolTip {
+        internal static string ObservableDiagramEditLeftFretLabelToolTip {
             get {
-                return ResourceManager.GetString("ObservableDiagramEditFretLabelToolTip", resourceCulture);
+                return ResourceManager.GetString("ObservableDiagramEditLeftFretLabelToolTip", resourceCulture);
             }
         }
         
@@ -3936,6 +3954,24 @@ namespace Chordious.Core.ViewModel.Resources {
         internal static string ObservableDiagramEditMarkToolTip {
             get {
                 return ResourceManager.GetString("ObservableDiagramEditMarkToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Right Fret Label....
+        /// </summary>
+        internal static string ObservableDiagramEditRightFretLabelLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramEditRightFretLabelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the right fret label at this location..
+        /// </summary>
+        internal static string ObservableDiagramEditRightFretLabelToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramEditRightFretLabelToolTip", resourceCulture);
             }
         }
         
@@ -4201,20 +4237,20 @@ namespace Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove Fret Label.
+        ///   Looks up a localized string similar to Remove Left Fret Label.
         /// </summary>
-        internal static string ObservableDiagramRemoveFretLabelLabel {
+        internal static string ObservableDiagramRemoveLeftFretLabelLabel {
             get {
-                return ResourceManager.GetString("ObservableDiagramRemoveFretLabelLabel", resourceCulture);
+                return ResourceManager.GetString("ObservableDiagramRemoveLeftFretLabelLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove the fret label at this location..
+        ///   Looks up a localized string similar to Remove the left fret label at this location..
         /// </summary>
-        internal static string ObservableDiagramRemoveFretLabelToolTip {
+        internal static string ObservableDiagramRemoveLeftFretLabelToolTip {
             get {
-                return ResourceManager.GetString("ObservableDiagramRemoveFretLabelToolTip", resourceCulture);
+                return ResourceManager.GetString("ObservableDiagramRemoveLeftFretLabelToolTip", resourceCulture);
             }
         }
         
@@ -4233,6 +4269,24 @@ namespace Chordious.Core.ViewModel.Resources {
         internal static string ObservableDiagramRemoveMarkToolTip {
             get {
                 return ResourceManager.GetString("ObservableDiagramRemoveMarkToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Right Fret Label.
+        /// </summary>
+        internal static string ObservableDiagramRemoveRightFretLabelLabel {
+            get {
+                return ResourceManager.GetString("ObservableDiagramRemoveRightFretLabelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove the right fret label at this location..
+        /// </summary>
+        internal static string ObservableDiagramRemoveRightFretLabelToolTip {
+            get {
+                return ResourceManager.GetString("ObservableDiagramRemoveRightFretLabelToolTip", resourceCulture);
             }
         }
         

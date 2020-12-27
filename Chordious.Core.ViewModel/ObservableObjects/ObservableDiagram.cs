@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -245,10 +245,14 @@ namespace Chordious.Core.ViewModel
                     try
                     {
                         MarkPosition mp = MarkPosition;
-                        FretLabelPosition flp = FretLabelPosition;
                         BarrePosition bp = BarrePosition;
+                        FretLabelPosition flp = FretLabelPosition;
 
-                        if (null != mp && Diagram.HasElementAt(mp))
+                        bool hasMark = null != mp && Diagram.HasElementAt(mp);
+                        bool hasBarre = null != bp && Diagram.HasElementAt(bp);
+                        bool hasFretLabel = null != flp && Diagram.HasElementAt(flp);
+
+                        if (hasMark)
                         {
                             DiagramMark dm = (DiagramMark)Diagram.ElementAt(mp);
                             Messenger.Default.Send(new ShowDiagramMarkEditorMessage(dm, false, (changed) =>
@@ -266,25 +270,7 @@ namespace Chordious.Core.ViewModel
                                 }
                             }));
                         }
-                        else if (null != flp && Diagram.HasElementAt(flp))
-                        {
-                            DiagramFretLabel dfl = (DiagramFretLabel)Diagram.ElementAt(flp);
-                            Messenger.Default.Send(new ShowDiagramFretLabelEditorMessage(dfl, false, (changed) =>
-                            {
-                                try
-                                {
-                                    if (changed)
-                                    {
-                                        Refresh();
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    ExceptionUtils.HandleException(ex);
-                                }
-                            }));
-                        }
-                        else if (null != bp && Diagram.HasElementAt(bp))
+                        else if (hasBarre)
                         {
                             DiagramBarre db = (DiagramBarre)Diagram.ElementAt(bp);
                             Messenger.Default.Send(new ShowDiagramBarreEditorMessage(db, false, (changed) =>
@@ -302,7 +288,24 @@ namespace Chordious.Core.ViewModel
                                 }
                             }));
                         }
-
+                        else if (hasFretLabel)
+                        {
+                            DiagramFretLabel dfl = (DiagramFretLabel)Diagram.ElementAt(flp);
+                            Messenger.Default.Send(new ShowDiagramFretLabelEditorMessage(dfl, false, (changed) =>
+                            {
+                                try
+                                {
+                                    if (changed)
+                                    {
+                                        Refresh();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    ExceptionUtils.HandleException(ex);
+                                }
+                            }));
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -513,7 +516,8 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ObservableDiagramAddFretLabelLabel;
+                FretLabelPosition flp = FretLabelPosition;
+                return null != flp && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramAddLeftFretLabelLabel : Strings.ObservableDiagramAddRightFretLabelLabel;
             }
         }
 
@@ -521,7 +525,8 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ObservableDiagramAddFretLabelToolTip;
+                FretLabelPosition flp = FretLabelPosition;
+                return null != flp && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramAddLeftFretLabelToolTip : Strings.ObservableDiagramAddRightFretLabelToolTip;
             }
         }
 
@@ -579,7 +584,8 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ObservableDiagramEditFretLabelLabel;
+                FretLabelPosition flp = FretLabelPosition;
+                return null != flp && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramEditLeftFretLabelLabel : Strings.ObservableDiagramEditRightFretLabelLabel;
             }
         }
 
@@ -587,7 +593,8 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ObservableDiagramEditFretLabelToolTip;
+                FretLabelPosition flp = FretLabelPosition;
+                return null != flp && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramEditLeftFretLabelToolTip : Strings.ObservableDiagramEditRightFretLabelToolTip;
             }
         }
 
@@ -640,7 +647,8 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ObservableDiagramRemoveFretLabelLabel;
+                FretLabelPosition flp = FretLabelPosition;
+                return null != flp && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramRemoveLeftFretLabelLabel : Strings.ObservableDiagramRemoveRightFretLabelLabel;
             }
         }
 
@@ -648,7 +656,8 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return Strings.ObservableDiagramRemoveFretLabelToolTip;
+                FretLabelPosition flp = FretLabelPosition;
+                return null != flp && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramRemoveLeftFretLabelToolTip : Strings.ObservableDiagramRemoveRightFretLabelToolTip;
             }
         }
 
@@ -964,12 +973,18 @@ namespace Chordious.Core.ViewModel
 
             AddFretLabel.RaiseCanExecuteChanged();
             RaisePropertyChanged(nameof(CanAddFretLabel));
+            RaisePropertyChanged(nameof(AddFretLabelLabel));
+            RaisePropertyChanged(nameof(AddFretLabelToolTip));
 
             EditFretLabel.RaiseCanExecuteChanged();
             RaisePropertyChanged(nameof(CanEditFretLabel));
+            RaisePropertyChanged(nameof(EditFretLabelLabel));
+            RaisePropertyChanged(nameof(EditFretLabelToolTip));
 
             RemoveFretLabel.RaiseCanExecuteChanged();
             RaisePropertyChanged(nameof(CanRemoveFretLabel));
+            RaisePropertyChanged(nameof(RemoveFretLabelLabel));
+            RaisePropertyChanged(nameof(RemoveFretLabelToolTip));
 
             AddBarre.RaiseCanExecuteChanged();
             RaisePropertyChanged(nameof(CanAddBarre));

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -735,16 +735,16 @@ namespace Chordious.Core
                 {
                     FretLabelSide? fls = null;
 
-                    if (@string == 0)
+                    if (@string <= Math.Floor((double)NumStrings / 2))
                     {
                         fls = FretLabelSide.Left;
                     }
-                    else if (@string == NumStrings + 1)
+                    else if (@string > Math.Ceiling((double)NumStrings / 2))
                     {
                         fls = FretLabelSide.Right;
                     }
 
-                    if (fls.HasValue)
+                    if (null != fls)
                     {
                         FretLabelPosition flp = new FretLabelPosition(fls.Value, fret);
                         if (ValidPosition(flp))

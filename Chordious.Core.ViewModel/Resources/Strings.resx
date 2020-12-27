@@ -1656,11 +1656,11 @@
   <data name="ObservableDiagramAddBarreToolTip" xml:space="preserve">
     <value>Add a barre to this location.</value>
   </data>
-  <data name="ObservableDiagramAddFretLabelLabel" xml:space="preserve">
-    <value>Add Fret Label...</value>
+  <data name="ObservableDiagramAddLeftFretLabelLabel" xml:space="preserve">
+    <value>Add Left Fret Label...</value>
   </data>
-  <data name="ObservableDiagramAddFretLabelToolTip" xml:space="preserve">
-    <value>Add a fret label to this location.</value>
+  <data name="ObservableDiagramAddLeftFretLabelToolTip" xml:space="preserve">
+    <value>Add a left fret label to this location.</value>
   </data>
   <data name="ObservableDiagramAddMarkLabel" xml:space="preserve">
     <value>Add Mark...</value>
@@ -1674,11 +1674,11 @@
   <data name="ObservableDiagramEditBarreToolTip" xml:space="preserve">
     <value>Edit the barre at this location.</value>
   </data>
-  <data name="ObservableDiagramEditFretLabelLabel" xml:space="preserve">
-    <value>Edit Fret Label...</value>
+  <data name="ObservableDiagramEditLeftFretLabelLabel" xml:space="preserve">
+    <value>Edit Left Fret Label...</value>
   </data>
-  <data name="ObservableDiagramEditFretLabelToolTip" xml:space="preserve">
-    <value>Edit the fret label at this location.</value>
+  <data name="ObservableDiagramEditLeftFretLabelToolTip" xml:space="preserve">
+    <value>Edit the left fret label at this location.</value>
   </data>
   <data name="ObservableDiagramEditMarkLabel" xml:space="preserve">
     <value>Edit Mark...</value>
@@ -1698,11 +1698,11 @@
   <data name="ObservableDiagramRemoveBarreToolTip" xml:space="preserve">
     <value>Remove the barre at this location.</value>
   </data>
-  <data name="ObservableDiagramRemoveFretLabelLabel" xml:space="preserve">
-    <value>Remove Fret Label</value>
+  <data name="ObservableDiagramRemoveLeftFretLabelLabel" xml:space="preserve">
+    <value>Remove Left Fret Label</value>
   </data>
-  <data name="ObservableDiagramRemoveFretLabelToolTip" xml:space="preserve">
-    <value>Remove the fret label at this location.</value>
+  <data name="ObservableDiagramRemoveLeftFretLabelToolTip" xml:space="preserve">
+    <value>Remove the left fret label at this location.</value>
   </data>
   <data name="ObservableDiagramRemoveMarkLabel" xml:space="preserve">
     <value>Remove Mark</value>
@@ -1805,5 +1805,23 @@
   </data>
   <data name="ChordFinderOptionsAllowPartialChordsToolTip" xml:space="preserve">
     <value>Allow results that don't have all of the notes of the chord.</value>
+  </data>
+  <data name="ObservableDiagramAddRightFretLabelLabel" xml:space="preserve">
+    <value>Add Right Fret Label...</value>
+  </data>
+  <data name="ObservableDiagramAddRightFretLabelToolTip" xml:space="preserve">
+    <value>Add a right fret label to this location.</value>
+  </data>
+  <data name="ObservableDiagramEditRightFretLabelLabel" xml:space="preserve">
+    <value>Edit Right Fret Label...</value>
+  </data>
+  <data name="ObservableDiagramEditRightFretLabelToolTip" xml:space="preserve">
+    <value>Edit the right fret label at this location.</value>
+  </data>
+  <data name="ObservableDiagramRemoveRightFretLabelLabel" xml:space="preserve">
+    <value>Remove Right Fret Label</value>
+  </data>
+  <data name="ObservableDiagramRemoveRightFretLabelToolTip" xml:space="preserve">
+    <value>Remove the right fret label at this location.</value>
   </data>
 </root>

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2018, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2018, 2019, 2020 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -71,7 +71,7 @@ namespace Chordious.Core
 
         public override bool IsVisible()
         {
-            return MarkStyle.MarkVisible;
+            return (MarkStyle.MarkVisible && MarkStyle.MarkShape != DiagramMarkShape.None) || (MarkStyle.MarkTextVisible && !StringUtils.IsNullOrWhiteSpace(Text));
         }
 
         public bool IsAboveTopEdge()
@@ -151,56 +151,58 @@ namespace Chordious.Core
                 double centerY = Parent.GridTopEdge() + (Parent.Style.GridFretSpacing / 2.0) + (Parent.Style.GridFretSpacing * (Position.Fret - 1));
 
                 // Draw shape
-
-                string shapeStyle = Style.GetSvgStyle(_shapeStyleMap, prefix);
-
-                if (MarkStyle.MarkBorderThickness > 0)
+                if (MarkStyle.MarkVisible && MarkStyle.MarkShape != DiagramMarkShape.None)
                 {
-                    shapeStyle += Style.GetSvgStyle(_shapeStyleMapBorder, prefix);
-                }
+                    string shapeStyle = Style.GetSvgStyle(_shapeStyleMap, prefix);
 
-                switch (shape)
-                {
-                    case DiagramMarkShape.Circle:
-                        svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.CIRCLE, shapeStyle, radius, centerX, centerY);
-                        break;
-                    case DiagramMarkShape.Square:
-                        svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.RECTANGLE, shapeStyle, radius * 2.0, radius * 2.0, centerX - radius, centerY - radius);
-                        break;
-                    case DiagramMarkShape.Diamond:
-                        string diamondPoints = "";
-                        for (int i = 0; i < 4; i++)
-                        {
-                            double angle = (i * 90.0) * (Math.PI / 180.0);
-                            diamondPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + (radius * Math.Cos(angle)), centerY + (radius * Math.Sin(angle)));
-                        }
-                        svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.POLYGON, shapeStyle, diamondPoints);
-                        break;
-                    case DiagramMarkShape.X:
-                        string xPoints = "";
-                        for (int i = 0; i < 4; i++)
-                        {
-                            double angle = (45.0 + (i * 90.0));
+                    if (MarkStyle.MarkBorderThickness > 0)
+                    {
+                        shapeStyle += Style.GetSvgStyle(_shapeStyleMapBorder, prefix);
+                    }
 
-                            double rad0 = (angle - 45.0) * (Math.PI / 180.0); // Starting close point
-                            double len0 = Math.Sqrt(2 * Math.Pow(radius * Math.Sin(XThicknessAngle), 2));
-                            xPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + (len0 * Math.Cos(rad0)), centerY + (len0 * Math.Sin(rad0)));
+                    switch (shape)
+                    {
+                        case DiagramMarkShape.Circle:
+                            svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.CIRCLE, shapeStyle, radius, centerX, centerY);
+                            break;
+                        case DiagramMarkShape.Square:
+                            svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.RECTANGLE, shapeStyle, radius * 2.0, radius * 2.0, centerX - radius, centerY - radius);
+                            break;
+                        case DiagramMarkShape.Diamond:
+                            string diamondPoints = "";
+                            for (int i = 0; i < 4; i++)
+                            {
+                                double angle = (i * 90.0) * (Math.PI / 180.0);
+                                diamondPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + (radius * Math.Cos(angle)), centerY + (radius * Math.Sin(angle)));
+                            }
+                            svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.POLYGON, shapeStyle, diamondPoints);
+                            break;
+                        case DiagramMarkShape.X:
+                            string xPoints = "";
+                            for (int i = 0; i < 4; i++)
+                            {
+                                double angle = (45.0 + (i * 90.0));
 
-                            double rad1 = (angle * (Math.PI / 180.0)) - XThicknessAngle; // First far corner
-                            xPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + (radius * Math.Cos(rad1)), centerY + (radius * Math.Sin(rad1)));
+                                double rad0 = (angle - 45.0) * (Math.PI / 180.0); // Starting close point
+                                double len0 = Math.Sqrt(2 * Math.Pow(radius * Math.Sin(XThicknessAngle), 2));
+                                xPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + (len0 * Math.Cos(rad0)), centerY + (len0 * Math.Sin(rad0)));
 
-                            double rad2 = (angle * (Math.PI / 180.0)) + XThicknessAngle; // Second far corner
-                            xPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + (radius * Math.Cos(rad2)), centerY + (radius * Math.Sin(rad2)));
-                        }
-                        svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.POLYGON, shapeStyle, xPoints.Trim());
-                        break;
-                    case DiagramMarkShape.None:
-                    default:
-                        break;
+                                double rad1 = (angle * (Math.PI / 180.0)) - XThicknessAngle; // First far corner
+                                xPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + (radius * Math.Cos(rad1)), centerY + (radius * Math.Sin(rad1)));
+
+                                double rad2 = (angle * (Math.PI / 180.0)) + XThicknessAngle; // Second far corner
+                                xPoints += string.Format(CultureInfo.InvariantCulture, "{0},{1} ", centerX + (radius * Math.Cos(rad2)), centerY + (radius * Math.Sin(rad2)));
+                            }
+                            svg += string.Format(CultureInfo.InvariantCulture, SvgConstants.POLYGON, shapeStyle, xPoints.Trim());
+                            break;
+                        case DiagramMarkShape.None:
+                        default:
+                            break;
+                    }
                 }
 
                 // Draw text
-                if (!StringUtils.IsNullOrWhiteSpace(Text) && MarkStyle.MarkTextVisible)
+                if (MarkStyle.MarkTextVisible && !StringUtils.IsNullOrWhiteSpace(Text))
                 {
                     double textSize = radius * 2.0 * MarkStyle.MarkTextSizeRatio;
 

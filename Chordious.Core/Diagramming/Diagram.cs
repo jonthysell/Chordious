@@ -39,7 +39,18 @@ namespace Chordious.Core
     {
         #region Elements
 
-        public string Title { get; set; }
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                _title = value?.Trim();
+            }
+        }
+        private string _title;
 
         public IEnumerable<DiagramMark> Marks
         {
@@ -451,7 +462,7 @@ namespace Chordious.Core
 
         public bool HasVisibleTitle()
         {
-            return !string.IsNullOrEmpty(Title) && Style.TitleVisible;
+            return Style.TitleVisible && !StringUtils.IsNullOrWhiteSpace(Title);
         }
 
         public bool HasVisibleFretLabels(FretLabelSide side)

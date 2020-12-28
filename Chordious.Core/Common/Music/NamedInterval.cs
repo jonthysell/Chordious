@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,8 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 
 namespace Chordious.Core
@@ -215,6 +217,21 @@ namespace Chordious.Core
         public InternalNote[] GetNotes(InternalNote root)
         {
             return GetNotes(root, Intervals);
+        }
+
+        public InternalNote[] GetUniqueNotes(InternalNote root, bool includeRoot = true)
+        {
+            HashSet<InternalNote> uniqueNotes = new HashSet<InternalNote>();
+
+            foreach (InternalNote note in GetNotes(root))
+            {
+                if (note != root || includeRoot)
+                {
+                    uniqueNotes.Add(note);
+                }
+            }
+
+            return uniqueNotes.ToArray();
         }
 
         public static InternalNote[] GetNotes(InternalNote root, int[] intervals)

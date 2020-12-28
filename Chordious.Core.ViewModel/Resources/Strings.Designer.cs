@@ -160,6 +160,24 @@ namespace Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The chord quality you&apos;ve selected requires more notes than you have strings, making it impossible to play. Enabling &quot;Allow Partial Chords&quot; may help you find alternatives..
+        /// </summary>
+        internal static string ChordFinderNotEnoughStringsTryPartialMessage {
+            get {
+                return ResourceManager.GetString("ChordFinderNotEnoughStringsTryPartialMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The chord quality you&apos;ve selected requires more notes than you have strings, making it impossible to play. Enabling &quot;Allow Rootless Chords&quot; may help you find acceptable alternatives..
+        /// </summary>
+        internal static string ChordFinderNotEnoughStringsTryRootlessMessage {
+            get {
+                return ResourceManager.GetString("ChordFinderNotEnoughStringsTryRootlessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Bottom Mark_s.
         /// </summary>
         internal static string ChordFinderOptionsAddBottomMarksLabel {
@@ -178,7 +196,7 @@ namespace Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allow Partial Chords.
+        ///   Looks up a localized string similar to Allow Partial C_hords.
         /// </summary>
         internal static string ChordFinderOptionsAllowPartialChordsLabel {
             get {
@@ -187,7 +205,7 @@ namespace Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allow results that don&apos;t have all of the notes of the chord..
+        ///   Looks up a localized string similar to Allow results that don&apos;t have all of the notes of the chord. Warning: Due to the missing notes, partial chords may not sound anything like the desired chord..
         /// </summary>
         internal static string ChordFinderOptionsAllowPartialChordsToolTip {
             get {

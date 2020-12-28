@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -1043,6 +1043,24 @@ namespace Chordious.Core.ViewModel
                     try
                     {
                         IsIdle = false;
+
+                        int numStrings = SelectedInstrument.NumStrings;
+                        int numUniqueNotes = SelectedChordQuality.ChordQuality.GetUniqueNotes(NoteUtils.ToInternalNote(Options.RootNote)).Length;
+                        
+                        if (numUniqueNotes > numStrings)
+                        {
+                            int numUniqueNotesNoRoot = SelectedChordQuality.ChordQuality.GetUniqueNotes(NoteUtils.ToInternalNote(Options.RootNote), false).Length;
+                            if (numUniqueNotesNoRoot <= numStrings && !Options.AllowRootlessChords)
+                            {
+                                Messenger.Default.Send(new ChordiousMessage(Strings.ChordFinderNotEnoughStringsTryRootlessMessage));
+                                return;
+                            }
+                            else if (numUniqueNotesNoRoot > numStrings && !Options.AllowPartialChords)
+                            {
+                                Messenger.Default.Send(new ChordiousMessage(Strings.ChordFinderNotEnoughStringsTryPartialMessage));
+                                return;
+                            }
+                        }
 
                         Results.Clear();
                         SelectedResults.Clear();

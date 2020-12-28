@@ -1801,10 +1801,16 @@
     <value>You changed your target instrument to "{0}" with the "{1}" tuning. Would you like to save that as your default?</value>
   </data>
   <data name="ChordFinderOptionsAllowPartialChordsLabel" xml:space="preserve">
-    <value>Allow Partial Chords</value>
+    <value>Allow Partial C_hords</value>
   </data>
   <data name="ChordFinderOptionsAllowPartialChordsToolTip" xml:space="preserve">
-    <value>Allow results that don't have all of the notes of the chord.</value>
+    <value>Allow results that don't have all of the notes of the chord. Warning: Due to the missing notes, partial chords may not sound anything like the desired chord.</value>
+  </data>
+  <data name="ChordFinderNotEnoughStringsTryPartialMessage" xml:space="preserve">
+    <value>The chord quality you've selected requires more notes than you have strings, making it impossible to play. Enabling "Allow Partial Chords" may help you find alternatives.</value>
+  </data>
+  <data name="ChordFinderNotEnoughStringsTryRootlessMessage" xml:space="preserve">
+    <value>The chord quality you've selected requires more notes than you have strings, making it impossible to play. Enabling "Allow Rootless Chords" may help you find acceptable alternatives.</value>
   </data>
   <data name="ObservableDiagramAddRightFretLabelLabel" xml:space="preserve">
     <value>Add Right Fret Label...</value>

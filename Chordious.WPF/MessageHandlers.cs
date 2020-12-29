@@ -411,7 +411,8 @@ namespace Chordious.WPF
         {
             LicensesWindow window = new LicensesWindow();
 
-            message.LicensesVM.Licenses.Add(ImageUtils.GetSvgNetLicense());
+            message.LicensesVM.Licenses.Add(IntegrationUtils.GetSvgNetLicense());
+            message.LicensesVM.Licenses.Add(IntegrationUtils.GetExtendedWPFToolkitLicense());
 
             window.DataContext = message.LicensesVM;
             message.LicensesVM.RequestClose += () =>

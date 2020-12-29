@@ -3,6 +3,7 @@
 ## 2.1.X.X ##
 * Chord Finder can now find "partial" chords
 * Diagram export can now be interrupted, and dialog can optionally close afterward
+* Added Extended WPF Toolkit v3.8.2 dependency
 * Fixed issue with non-deterministic style summary text
 * Extended clickable area for editing fret labels
 * Fixed layout inconsistencies with visibility of elements with text

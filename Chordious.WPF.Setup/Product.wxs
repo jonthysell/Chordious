@@ -28,6 +28,7 @@
             <ComponentRef Id="ChordiousCoreViewModelLib" />
             <ComponentRef Id="MvvmLib" />
             <ComponentRef Id="SvgLib" />
+            <ComponentRef Id="XctkLib" />
         </Feature>
         <Icon Id="icon.ico"
               SourceFile="$(var.Chordious.WPF.ProjectDir)\Resources\chordious.ico" />
@@ -110,6 +111,10 @@
                         <File Id="SvgLib"
                               KeyPath="yes"
                               Source="$(var.Chordious.WPF.TargetDir)\Svg.dll" />
+                    </Component>
+                    <Component Id="XctkLib">
+                      <File Id="XctkLib"
+                            Source="$(var.Chordious.WPF.TargetDir)\Xceed.Wpf.Toolkit.dll" />
                     </Component>
                 </Directory>
             </Directory>

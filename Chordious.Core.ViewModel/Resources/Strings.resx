@@ -1812,6 +1812,12 @@
   <data name="ChordFinderNotEnoughStringsTryRootlessMessage" xml:space="preserve">
     <value>The chord quality you've selected requires more notes than you have strings, making it impossible to play. Enabling "Allow Rootless Chords" may help you find acceptable alternatives.</value>
   </data>
+  <data name="DiagramExportCancelledMessage" xml:space="preserve">
+    <value>Export was cancelled.</value>
+  </data>
+  <data name="DiagramExportCloseAfterCompletePrompt" xml:space="preserve">
+    <value>Export complete. Would you like to close the export dialog?</value>
+  </data>
   <data name="ObservableDiagramAddRightFretLabelLabel" xml:space="preserve">
     <value>Add Right Fret Label...</value>
   </data>

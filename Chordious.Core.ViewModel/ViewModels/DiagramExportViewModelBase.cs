@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,19 +27,17 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public delegate void ExportStartEventHandler(object sender, EventArgs e);
-
-    public delegate void ExportEndEventHandler(object sender, EventArgs e);
-
     public abstract class DiagramExportViewModelBase : ViewModelBase
     {
         public AppViewModel AppVM
@@ -133,6 +131,9 @@ namespace Chordious.Core.ViewModel
             {
                 return _exportAsync ?? (_exportAsync = new RelayCommand(async () =>
                 {
+                    _exportAsyncCancellationTokenSource = new CancellationTokenSource();
+                    bool cancelled = false;
+
                     try
                     {
                         IsIdle = false;
@@ -142,17 +143,38 @@ namespace Chordious.Core.ViewModel
 
                         for (int i = 0; i < DiagramsToExport.Count; i++)
                         {
+                            if (_exportAsyncCancellationTokenSource.IsCancellationRequested)
+                            {
+                                cancelled = true;
+                                break;
+                            }
                             await ExportDiagramAsync(i);
                             PercentComplete = (i + 1) / (double)DiagramsToExport.Count;
+                        }
+
+                        if (cancelled)
+                        {
+                            Messenger.Default.Send(new ChordiousMessage(Strings.DiagramExportCancelledMessage));
+                        }
+                        else
+                        {
+                            Messenger.Default.Send(new ConfirmationMessage(Strings.DiagramExportCloseAfterCompletePrompt, (confirm) =>
+                            {
+                                if (confirm)
+                                {
+                                    RequestClose?.Invoke();
+                                }
+                            }, "confirmation.diagramexport.close"));
                         }
                     }
                     catch (Exception ex)
                     {
+                        cancelled = true;
                         ExceptionUtils.HandleException(ex);
                     }
                     finally
                     {
-                        OnExportEnd();
+                        OnExportEnd(cancelled);
 
                         IsIdle = true;
                         PercentComplete = 0;
@@ -165,9 +187,41 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _exportAsync;
 
-        public event ExportStartEventHandler ExportStart;
+        private CancellationTokenSource _exportAsyncCancellationTokenSource;
 
-        public event ExportEndEventHandler ExportEnd;
+        public Action RequestClose;
+
+        public RelayCommand CancelOrClose
+        {
+            get
+            {
+                return _cancelOrClose ?? (_cancelOrClose = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        if (null != _exportAsyncCancellationTokenSource)
+                        {
+                            _exportAsyncCancellationTokenSource.Cancel();
+                        }
+                        else if (!_lastExportComplete.HasValue || (DateTime.Now - _lastExportComplete.Value) > TimeSpan.FromMilliseconds(500))
+                        {
+                            RequestClose?.Invoke();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }));
+            }
+        }
+        private RelayCommand _cancelOrClose;
+
+        private DateTime? _lastExportComplete = null;
+
+        public event EventHandler ExportStart;
+
+        public event EventHandler<ExportEndEventArgs> ExportEnd;
 
         internal ChordiousSettings SettingsBuffer { get; private set; }
 
@@ -219,9 +273,19 @@ namespace Chordious.Core.ViewModel
             ExportStart?.Invoke(this, new EventArgs());
         }
 
-        private void OnExportEnd()
+        private void OnExportEnd(bool canceled)
         {
-            ExportEnd?.Invoke(this, new EventArgs());
+            ExportEnd?.Invoke(this, new ExportEndEventArgs(canceled));
+        }
+    }
+
+    public class ExportEndEventArgs : EventArgs
+    {
+        public bool Cancelled { get; private set; }
+
+        public ExportEndEventArgs(bool cancelled)
+        {
+            Cancelled = cancelled;
         }
     }
 }

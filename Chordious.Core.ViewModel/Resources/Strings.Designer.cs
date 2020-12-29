@@ -925,6 +925,24 @@ namespace Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export was cancelled..
+        /// </summary>
+        internal static string DiagramExportCancelledMessage {
+            get {
+                return ResourceManager.GetString("DiagramExportCancelledMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export complete. Would you like to close the export dialog?.
+        /// </summary>
+        internal static string DiagramExportCloseAfterCompletePrompt {
+            get {
+                return ResourceManager.GetString("DiagramExportCloseAfterCompletePrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export.
         /// </summary>
         internal static string DiagramExportExportAsyncLabel {

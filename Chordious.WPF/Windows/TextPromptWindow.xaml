@@ -1,4 +1,5 @@
-<Window Icon="{StaticResource ChordiousIcon}"
+<Window FocusManager.FocusedElement="{Binding ElementName=InputTextBox}"
+        Icon="{StaticResource ChordiousIcon}"
         MinWidth="400"
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
@@ -11,7 +12,7 @@
         <KeyBinding Command="{Binding Cancel, Mode=OneWay}"
                     Key="Escape" />
     </Window.InputBindings>
-    <StackPanel FocusManager.FocusedElement="{Binding ElementName=InputTextBox}">
+    <StackPanel>
         <Label Content="{Binding Prompt, FallbackValue=TEXT PROMPT}"
                Height="Auto"
                Margin="5"
@@ -21,7 +22,6 @@
                  Margin="10,5"
                  MaxLines="1"
                  Name="InputTextBox"
-                 SelectedText=""
                  Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" />
         <StackPanel HorizontalAlignment="Right"
                     Orientation="Horizontal">

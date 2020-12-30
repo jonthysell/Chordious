@@ -191,25 +191,11 @@ namespace Chordious.WPF
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            EventManager.RegisterClassHandler(typeof(TextBox), UIElement.PreviewMouseLeftButtonDownEvent, new MouseButtonEventHandler(SelectivelyHandleMouseButton), true);
             EventManager.RegisterClassHandler(typeof(TextBox), UIElement.PreviewKeyUpEvent, new RoutedEventHandler(EnterUpdatesSource), true);
 
             PreloadDisabledImages();
 
             base.OnStartup(e);
-        }
-
-        private static void SelectivelyHandleMouseButton(object sender, MouseButtonEventArgs e)
-        {
-            TextBox textBox = (sender as TextBox);
-            if (null != textBox && !textBox.IsKeyboardFocusWithin)
-            {
-                if (e.OriginalSource.GetType().Name == "TextBoxView")
-                {
-                    e.Handled = true;
-                    textBox.Focus();
-                }
-            }
         }
 
         private static void EnterUpdatesSource(object sender, RoutedEventArgs e)

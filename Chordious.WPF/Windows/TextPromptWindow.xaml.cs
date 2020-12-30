@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +36,13 @@ namespace Chordious.WPF
         public TextPromptWindow()
         {
             InitializeComponent();
+            InputTextBox.TextChanged += InputTextBox_TextChanged;
+        }
+
+        private void InputTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            InputTextBox.SelectAll();
+            InputTextBox.TextChanged -= InputTextBox_TextChanged;
         }
     }
 }

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -187,6 +187,39 @@ namespace Chordious.Core
                     throw;
                 }
             }
+        }
+
+        public string GetNewTuningName()
+        {
+            return GetNewTuningName(Strings.TuningSetDefaultNewTuningName);
+        }
+
+        public string GetNewTuningName(string baseName)
+        {
+            if (StringUtils.IsNullOrWhiteSpace(baseName))
+            {
+                throw new ArgumentNullException(nameof(baseName));
+            }
+
+            string name = baseName;
+
+            bool valid = false;
+
+            int count = 1;
+            while (!valid)
+            {
+                if (!_tunings.Exists(tuning => tuning.Name == name))
+                {
+                    valid = true; // Found an unused name
+                }
+                else
+                {
+                    name = string.Format("{0} ({1})", baseName, count);
+                    count++;
+                }
+            }
+
+            return name;
         }
 
         public void CopyFrom(ITuningSet tuningSet)

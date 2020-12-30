@@ -741,4 +741,16 @@
   <data name="FretLabelSideRightFriendlyValue" xml:space="preserve">
     <value>Right</value>
   </data>
+  <data name="ChordQualitySetDefaultNewChordQualityName" xml:space="preserve">
+    <value>New Chord Quality</value>
+  </data>
+  <data name="InstrumentSetDefaultNewInstrumentName" xml:space="preserve">
+    <value>New Instrument</value>
+  </data>
+  <data name="ScaleSetDefaultNewScaleName" xml:space="preserve">
+    <value>New Scale</value>
+  </data>
+  <data name="TuningSetDefaultNewTuningName" xml:space="preserve">
+    <value>New Tuning</value>
+  </data>
 </root>

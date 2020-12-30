@@ -263,6 +263,7 @@ namespace Chordious.Core.ViewModel
         public ShowInstrumentEditorMessage(Action<string, int> callback) : base()
         {
             InstrumentEditorVM = new InstrumentEditorViewModel(callback);
+            InstrumentEditorVM.Name = AppViewModel.Instance.UserConfig.Instruments.GetNewInstrumentName();
         }
 
         public ShowInstrumentEditorMessage(string name, int numStrings, bool readOnly, Action<string, int> callback) : base()
@@ -280,6 +281,7 @@ namespace Chordious.Core.ViewModel
         public ShowTuningEditorMessage(ObservableInstrument instrument, Action<bool> callback = null) : base()
         {
             TuningEditorVM = TuningEditorViewModel.AddNewTuning(instrument);
+            TuningEditorVM.Name = (instrument.Instrument.Tunings as TuningSet)?.GetNewTuningName() ?? "";
             Callback = callback;
         }
 
@@ -292,6 +294,7 @@ namespace Chordious.Core.ViewModel
         public ShowTuningEditorMessage(ObservableTuning tuning, ObservableInstrument targetInstrument, Action<bool> callback = null) : base()
         {
             TuningEditorVM = TuningEditorViewModel.CopyExistingTuning(tuning, targetInstrument);
+            TuningEditorVM.Name = (targetInstrument.Instrument.Tunings as TuningSet)?.GetNewTuningName(tuning.Name) ?? "";
             Callback = callback;
         }
 
@@ -318,6 +321,7 @@ namespace Chordious.Core.ViewModel
         public ShowChordQualityEditorMessage(Action<string, string, int[]> callback) : base()
         {
             ChordQualityEditorVM = new ChordQualityEditorViewModel(callback);
+            ChordQualityEditorVM.Name = AppViewModel.Instance.UserConfig.ChordQualities.GetNewChordQualityName();
         }
 
         public ShowChordQualityEditorMessage(string name, string abbreviation, int[] intervals, bool readOnly, Action<string, string, int[]> callback) : base()
@@ -343,6 +347,7 @@ namespace Chordious.Core.ViewModel
         public ShowScaleEditorMessage(Action<string, int[]> callback) : base()
         {
             ScaleEditorVM = new ScaleEditorViewModel(callback);
+            ScaleEditorVM.Name = AppViewModel.Instance.UserConfig.Scales.GetNewScaleName();
         }
 
         public ShowScaleEditorMessage(string name, int[] intervals, bool readOnly, Action<string, int[]> callback) : base()

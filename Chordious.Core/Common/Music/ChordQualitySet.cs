@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,8 @@
 
 using System;
 using System.Xml;
+
+using Chordious.Core.Resources;
 
 namespace Chordious.Core
 {
@@ -74,6 +76,39 @@ namespace Chordious.Core
             ChordQuality chordQuality = new ChordQuality(this, name, abbreviation, intervals);
             Add(chordQuality);
             return chordQuality;
+        }
+
+        public string GetNewChordQualityName()
+        {
+            return GetNewChordQualityName(Strings.ChordQualitySetDefaultNewChordQualityName);
+        }
+
+        public string GetNewChordQualityName(string baseName)
+        {
+            if (StringUtils.IsNullOrWhiteSpace(baseName))
+            {
+                throw new ArgumentNullException(nameof(baseName));
+            }
+
+            string name = baseName;
+
+            bool valid = false;
+
+            int count = 1;
+            while (!valid)
+            {
+                if (!_namedIntervals.Exists(interval => interval.Name == name))
+                {
+                    valid = true; // Found an unused name
+                }
+                else
+                {
+                    name = string.Format("{0} ({1})", baseName, count);
+                    count++;
+                }
+            }
+
+            return name;
         }
 
         public void CopyFrom(ChordQualitySet chordQualitySet)

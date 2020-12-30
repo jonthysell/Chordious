@@ -212,7 +212,10 @@ namespace Chordious.Core.ViewModel
                 }
 
                 instrument.Instrument.Tunings.Add(name, rootNotes);
-            });
+            })
+            {
+                Name = (instrument.Instrument.Tunings as TuningSet)?.GetNewTuningName() ?? ""
+            };
 
             for (int i = 0; i < instrument.NumStrings; i++)
             {

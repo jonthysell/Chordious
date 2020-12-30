@@ -1,13 +1,14 @@
 <Window Icon="{StaticResource ChordiousIcon}"
         MinWidth="400"
-        ResizeMode="CanResize"
+        ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         Title="{Binding Title, FallbackValue=SCALE EDITOR}"
         WindowStartupLocation="CenterScreen"
         x:Class="Chordious.WPF.ScaleEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:local="clr-namespace:Chordious.WPF"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
     <Window.InputBindings>
         <KeyBinding Command="{Binding Cancel, Mode=OneWay}"
                     Key="Escape" />
@@ -23,32 +24,36 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Grid.Row="0"
-                    Orientation="Horizontal">
+        <Grid Grid.Column="0"
+              Grid.ColumnSpan="2"
+              Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
             <Label Content="{Binding NameLabel, FallbackValue=NAME}"
+                   Grid.Column="0"
                    Margin="5"
                    Name="NameLabel"
                    Target="{Binding ElementName=NameTextBox}"
                    ToolTip="{Binding NameToolTip}"
                    VerticalAlignment="Center" />
             <TextBox AutomationProperties.LabeledBy="{Binding ElementName=NameLabel}"
+                     Grid.Column="1"
                      IsReadOnly="{Binding ReadOnly}"
                      Margin="5"
+                     MaxLines="1"
                      Name="NameTextBox"
-                     SelectedText=""
                      Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
-                     ToolTip="{Binding NameToolTip}"
-                     Width="315" />
-        </StackPanel>
+                     ToolTip="{Binding NameToolTip}" />
+        </Grid>
         <StackPanel Grid.Column="0"
                     Grid.Row="1"
                     Orientation="Horizontal">
             <Label Content="{Binding IntervalsLabel, FallbackValue=INTERVALS}"
                    Margin="5"
                    Name="IntervalsLabel"
-                   Target="{Binding ElementName=IntervalsListView}"
+                   Target="{Binding ElementName=IntervalsItemsControl}"
                    ToolTip="{Binding IntervalsToolTip}"
                    VerticalAlignment="Center" />
             <Button Command="{Binding AddInterval}"
@@ -68,36 +73,29 @@
                     VerticalAlignment="Center"
                     Width="20" />
         </StackPanel>
-        <ListView AutomationProperties.LabeledBy="{Binding ElementName=IntervalsLabel}"
-                  BorderThickness="0"
-                  Grid.Column="1"
-                  Grid.Row="1"
-                  ItemsSource="{Binding Intervals}"
-                  Margin="5"
-                  Name="IntervalsListView"
-                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                  SelectionMode="Single"
-                  ToolTip="{Binding IntervalsToolTip}"
-                  VerticalAlignment="Center">
-            <ListView.ItemsPanel>
+        <ItemsControl AutomationProperties.LabeledBy="{Binding ElementName=IntervalsLabel}"
+                      Grid.Column="1"
+                      Grid.Row="1"
+                      ItemsSource="{Binding Intervals}"
+                      Margin="5"
+                      Name="IntervalsItemsControl"
+                      ToolTip="{Binding IntervalsToolTip}"
+                      VerticalAlignment="Center">
+            <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />
                 </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBox HorizontalContentAlignment="Center"
-                             IsReadOnly="{Binding DataContext.ReadOnly, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
-                             MaxLength="2"
-                             MaxLines="1"
-                             SelectedText=""
-                             Text="{Binding Value}"
-                             ToolTip="{Binding ValueToolTip}"
-                             VerticalAlignment="Center"
-                             Width="30" />
+                    <xctk:IntegerUpDown IsReadOnly="{Binding DataContext.ReadOnly, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                                        Margin="5"
+                                        Minimum="0"
+                                        ToolTip="{Binding ValueToolTip}"
+                                        Value="{Binding Value}" />
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         <StackPanel Grid.Column="0"
                     Grid.ColumnSpan="2"
                     Grid.Row="2"

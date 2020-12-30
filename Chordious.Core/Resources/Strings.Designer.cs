@@ -19,7 +19,7 @@ namespace Chordious.Core.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Strings {
@@ -363,6 +363,15 @@ namespace Chordious.Core.Resources {
         internal static string ChordQualityNotFoundExceptionMessage {
             get {
                 return ResourceManager.GetString("ChordQualityNotFoundExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Chord Quality.
+        /// </summary>
+        internal static string ChordQualitySetDefaultNewChordQualityName {
+            get {
+                return ResourceManager.GetString("ChordQualitySetDefaultNewChordQualityName", resourceCulture);
             }
         }
         
@@ -1020,6 +1029,15 @@ namespace Chordious.Core.Resources {
         internal static string InstrumentNotFoundExceptionMessage {
             get {
                 return ResourceManager.GetString("InstrumentNotFoundExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Instrument.
+        /// </summary>
+        internal static string InstrumentSetDefaultNewInstrumentName {
+            get {
+                return ResourceManager.GetString("InstrumentSetDefaultNewInstrumentName", resourceCulture);
             }
         }
         
@@ -1807,6 +1825,15 @@ namespace Chordious.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Scale.
+        /// </summary>
+        internal static string ScaleSetDefaultNewScaleName {
+            get {
+                return ResourceManager.GetString("ScaleSetDefaultNewScaleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Title Color.
         /// </summary>
         internal static string TitleColorFriendlyKeyName {
@@ -1911,6 +1938,15 @@ namespace Chordious.Core.Resources {
         internal static string TuningNotFoundExceptionMessage {
             get {
                 return ResourceManager.GetString("TuningNotFoundExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Tuning.
+        /// </summary>
+        internal static string TuningSetDefaultNewTuningName {
+            get {
+                return ResourceManager.GetString("TuningSetDefaultNewTuningName", resourceCulture);
             }
         }
         

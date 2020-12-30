@@ -29,6 +29,7 @@ using System.Collections.Specialized;
 using System.Drawing;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 using Chordious.Core.ViewModel;
@@ -240,6 +241,23 @@ namespace Chordious.WPF
             }
 
             return DiagramLibraryNodeDragDropAction.Move;
+        }
+
+        public static void EnableAutoSelectOnFirstLoad(TextBox textBox)
+        {
+            textBox.TextChanged += AutoSelectOnFirstLoad_TextChanged;
+        }
+
+        private static void AutoSelectOnFirstLoad_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                if (!textBox.IsReadOnly)
+                {
+                    textBox.SelectAll();
+                }
+                textBox.TextChanged -= AutoSelectOnFirstLoad_TextChanged;
+            }
         }
 
         #region Settings

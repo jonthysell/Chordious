@@ -36,13 +36,7 @@ namespace Chordious.WPF
         public TextPromptWindow()
         {
             InitializeComponent();
-            InputTextBox.TextChanged += InputTextBox_TextChanged;
-        }
-
-        private void InputTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            InputTextBox.SelectAll();
-            InputTextBox.TextChanged -= InputTextBox_TextChanged;
+            IntegrationUtils.EnableAutoSelectOnFirstLoad(InputTextBox);
         }
     }
 }

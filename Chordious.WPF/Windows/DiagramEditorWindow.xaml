@@ -8,7 +8,8 @@
         x:Class="Chordious.WPF.DiagramEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:local="clr-namespace:Chordious.WPF"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
     <Window.InputBindings>
         <KeyBinding Command="{Binding ObservableDiagram.RenderImage}"
                     Key="F5" />
@@ -80,42 +81,40 @@
                                    Height="25"
                                    Margin="5"
                                    Name="NumFretsLabel"
-                                   Target="{Binding ElementName=NumFretsTextBox}"
+                                   Target="{Binding ElementName=NumFretsUpDown}"
                                    ToolTip="{Binding ObservableDiagram.NumFretsToolTip}"
                                    Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=NumFretsLabel}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     Margin="5"
-                                     MaxLength="2"
-                                     MaxLines="1"
-                                     Name="NumFretsTextBox"
-                                     Text="{Binding ObservableDiagram.NumFrets}"
-                                     ToolTip="{Binding ObservableDiagram.NumFretsToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:IntegerUpDown AutomationProperties.LabeledBy="{Binding ElementName=NumFretsLabel}"
+                                                Height="25"
+                                                HorizontalContentAlignment="Center"
+                                                Margin="5"
+                                                Minimum="1"
+                                                Name="NumFretsUpDown"
+                                                ToolTip="{Binding ObservableDiagram.NumFretsToolTip}"
+                                                Value="{Binding ObservableDiagram.NumFrets}"
+                                                VerticalAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="{Binding ObservableDiagram.NumStringsLabel, FallbackValue=# OF STRINGS}"
                                    Height="25"
                                    Margin="5"
                                    Name="NumStringsLabel"
-                                   Target="{Binding ElementName=NumStringsTextBox}"
+                                   Target="{Binding ElementName=NumStringsUpDown}"
                                    ToolTip="{Binding ObservableDiagram.NumStringsToolTip}"
                                    Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=NumStringsLabel}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     Margin="5"
-                                     MaxLength="2"
-                                     MaxLines="1"
-                                     Name="NumStringsTextBox"
-                                     Text="{Binding ObservableDiagram.NumStrings}"
-                                     ToolTip="{Binding ObservableDiagram.NumStringsToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:IntegerUpDown AutomationProperties.LabeledBy="{Binding ElementName=NumStringsLabel}"
+                                                Height="25"
+                                                HorizontalContentAlignment="Center"
+                                                Margin="5"
+                                                Minimum="2"
+                                                Name="NumStringsUpDown"
+                                                ToolTip="{Binding ObservableDiagram.NumStringsToolTip}"
+                                                Value="{Binding ObservableDiagram.NumStrings}"
+                                                VerticalAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -205,18 +204,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=DiagramOpacityIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.DiagramOpacityIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.DiagramOpacity, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.DiagramOpacityToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=DiagramOpacityIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.DiagramOpacityIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource BoundPercentageUpDown}"
+                                               ToolTip="{Binding Style.DiagramOpacityToolTip}"
+                                               Value="{Binding Style.DiagramOpacity}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -257,18 +255,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=DiagramBorderThicknessIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.DiagramBorderThicknessIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.DiagramBorderThickness}"
-                                     ToolTip="{Binding Style.DiagramBorderThicknessToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=DiagramBorderThicknessIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.DiagramBorderThicknessIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.DiagramBorderThicknessToolTip}"
+                                               Value="{Binding Style.DiagramBorderThickness}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -285,18 +282,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=GridFretSpacingIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.GridFretSpacingIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.GridFretSpacing}"
-                                     ToolTip="{Binding Style.GridFretSpacingToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=GridFretSpacingIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.GridFretSpacingIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.GridFretSpacingToolTip}"
+                                               Value="{Binding Style.GridFretSpacing}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.GridStringSpacingLabel, FallbackValue=STRING SPACING (PX)}"
@@ -308,18 +304,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=GridStringSpacingIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.GridStringSpacingIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.GridStringSpacing}"
-                                     ToolTip="{Binding Style.GridStringSpacingToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=GridStringSpacingIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.GridStringSpacingIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.GridStringSpacingToolTip}"
+                                               Value="{Binding Style.GridStringSpacing}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -336,18 +331,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=GridMarginIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.GridMarginIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.GridMargin}"
-                                     ToolTip="{Binding Style.GridMarginToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=GridMarginIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.GridMarginIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.GridMarginToolTip}"
+                                               Value="{Binding Style.GridMargin}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.GridMarginLeftLabel, FallbackValue=LEFT (PX)}"
@@ -359,18 +353,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=GridMarginLeftIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.GridMarginLeftIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.GridMarginLeft}"
-                                     ToolTip="{Binding Style.GridMarginLeftToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=GridMarginLeftIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.GridMarginLeftIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.GridMarginLeftToolTip}"
+                                               Value="{Binding Style.GridMarginLeft}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.GridMarginRightLabel, FallbackValue=RIGHT (PX)}"
@@ -382,18 +375,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=GridMarginRightIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.GridMarginRightIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.GridMarginRight}"
-                                     ToolTip="{Binding Style.GridMarginRightToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=GridMarginRightIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.GridMarginRightIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.GridMarginRightToolTip}"
+                                               Value="{Binding Style.GridMarginRight}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.GridMarginTopLabel, FallbackValue=TOP (PX)}"
@@ -405,18 +397,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=GridMarginTopIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.GridMarginTopIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.GridMarginTop}"
-                                     ToolTip="{Binding Style.GridMarginTopToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=GridMarginTopIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.GridMarginTopIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.GridMarginTopToolTip}"
+                                               Value="{Binding Style.GridMarginTop}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.GridMarginBottomLabel, FallbackValue=BOTTOM (PX)}"
@@ -428,18 +419,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=GridMarginBottomIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.GridMarginBottomIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.GridMarginBottom}"
-                                     ToolTip="{Binding Style.GridMarginBottomToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=GridMarginBottomIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.GridMarginBottomIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.GridMarginBottomToolTip}"
+                                               Value="{Binding Style.GridMarginBottom}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -481,18 +471,17 @@
                                           VerticalAlignment="Center"
                                           VerticalContentAlignment="Center"
                                           Width="120" />
-                                <TextBox AutomationProperties.LabeledBy="{Binding ElementName=GridOpacityIsLocalCheckBox}"
-                                         Height="25"
-                                         HorizontalContentAlignment="Center"
-                                         IsEnabled="{Binding Style.GridOpacityIsLocal}"
-                                         Margin="5"
-                                         MaxLength="4"
-                                         MaxLines="1"
-                                         Text="{Binding Style.GridOpacity, Converter={StaticResource DecimalToPercentConverter}}"
-                                         ToolTip="{Binding Style.GridOpacityToolTip}"
-                                         VerticalAlignment="Center"
-                                         VerticalContentAlignment="Center"
-                                         Width="80" />
+                                <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=GridOpacityIsLocalCheckBox}"
+                                                   Height="25"
+                                                   HorizontalContentAlignment="Center"
+                                                   IsEnabled="{Binding Style.GridOpacityIsLocal}"
+                                                   Margin="5"
+                                                   Style="{StaticResource BoundPercentageUpDown}"
+                                                   ToolTip="{Binding Style.GridOpacityToolTip}"
+                                                   Value="{Binding Style.GridOpacity}"
+                                                   VerticalAlignment="Center"
+                                                   VerticalContentAlignment="Center"
+                                                   Width="80" />
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -534,18 +523,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=GridLineThicknessIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.GridLineThicknessIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.GridLineThickness}"
-                                     ToolTip="{Binding Style.GridLineThicknessToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=GridLineThicknessIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.GridLineThicknessIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.GridLineThicknessToolTip}"
+                                               Value="{Binding Style.GridLineThickness}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -582,18 +570,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=GridNutRatioIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.GridNutRatioIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.GridNutRatio, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.GridNutRatioToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=GridNutRatioIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.GridNutRatioIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PositivePercentageUpDown}"
+                                               ToolTip="{Binding Style.GridNutRatioToolTip}"
+                                               Value="{Binding Style.GridNutRatio}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -735,7 +722,7 @@
                                      Margin="5"
                                      MaxLines="1"
                                      Name="TitleTextBox"
-                                     Text="{Binding ObservableDiagram.Title}"
+                                     Text="{Binding ObservableDiagram.Title, UpdateSourceTrigger=PropertyChanged}"
                                      ToolTip="{Binding ObservableDiagram.TitleToolTip}"
                                      Width="80" />
                         </StackPanel>
@@ -800,17 +787,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=TitleTextSizeIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.TitleTextSizeIsLocal}"
-                                     Margin="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.TitleTextSize}"
-                                     ToolTip="{Binding Style.TitleTextSizeToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=TitleTextSizeIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.TitleTextSizeIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.TitleTextSizeToolTip}"
+                                               Value="{Binding Style.TitleTextSize}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.TitleColorLabel, FallbackValue=COLOR}"
@@ -846,18 +833,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=TitleOpacityIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.TitleOpacityIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.TitleOpacity, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.TitleOpacityToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=TitleOpacityIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.TitleOpacityIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource BoundPercentageUpDown}"
+                                               ToolTip="{Binding Style.TitleOpacityToolTip}"
+                                               Value="{Binding Style.TitleOpacity}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.SelectedTitleLabelStyleLabel, FallbackValue=LABEL STYLE}"
@@ -891,18 +877,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=TitleTextSizeModRatioIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.TitleTextSizeModRatioIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.TitleTextSizeModRatio, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.TitleTextSizeModRatioToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=TitleTextSizeModRatioIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.TitleTextSizeModRatioIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource BoundPercentageUpDown}"
+                                               ToolTip="{Binding Style.TitleTextSizeModRatioToolTip}"
+                                               Value="{Binding Style.TitleTextSizeModRatio}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -961,18 +946,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=TitleGridPaddingIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.TitleGridPaddingIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.TitleGridPadding}"
-                                     ToolTip="{Binding Style.TitleGridPaddingToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=TitleGridPaddingIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.TitleGridPaddingIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.TitleGridPaddingToolTip}"
+                                               Value="{Binding Style.TitleGridPadding}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -1078,18 +1062,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=MarkOpacityIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.MarkOpacityIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.MarkOpacity, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.MarkOpacityToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=MarkOpacityIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.MarkOpacityIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource BoundPercentageUpDown}"
+                                               ToolTip="{Binding Style.MarkOpacityToolTip}"
+                                               Value="{Binding Style.MarkOpacity}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.MarkRadiusRatioLabel, FallbackValue=SIZE RATIO}"
@@ -1101,18 +1084,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=MarkRadiusRatioIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.MarkRadiusRatioIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.MarkRadiusRatio, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.MarkRadiusRatioToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=MarkRadiusRatioIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.MarkRadiusRatioIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource BoundPercentageUpDown}"
+                                               ToolTip="{Binding Style.MarkRadiusRatioToolTip}"
+                                               Value="{Binding Style.MarkRadiusRatio}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -1153,18 +1135,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=MarkBorderThicknessIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.MarkBorderThicknessIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.MarkBorderThickness}"
-                                     ToolTip="{Binding Style.MarkBorderThicknessToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=MarkBorderThicknessIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.MarkBorderThicknessIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.MarkBorderThicknessToolTip}"
+                                               Value="{Binding Style.MarkBorderThickness}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -1293,18 +1274,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=MarkTextOpacityIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.MarkTextOpacityIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.MarkTextOpacity, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.MarkTextOpacityToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=MarkTextOpacityIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.MarkTextOpacityIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource BoundPercentageUpDown}"
+                                               ToolTip="{Binding Style.MarkTextOpacityToolTip}"
+                                               Value="{Binding Style.MarkTextOpacity}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.MarkTextSizeRatioLabel, FallbackValue=SIZE RATIO}"
@@ -1316,18 +1296,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=MarkTextSizeRatioIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.MarkTextSizeRatioIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.MarkTextSizeRatio, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.MarkTextSizeRatioToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=MarkTextSizeRatioIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.MarkTextSizeRatioIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource BoundPercentageUpDown}"
+                                               ToolTip="{Binding Style.MarkTextSizeRatioToolTip}"
+                                               Value="{Binding Style.MarkTextSizeRatio}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -1414,18 +1393,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=FretLabelTextOpacityIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.FretLabelTextOpacityIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.FretLabelTextOpacity, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.FretLabelTextOpacityToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=FretLabelTextOpacityIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.FretLabelTextOpacityIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource BoundPercentageUpDown}"
+                                               ToolTip="{Binding Style.FretLabelTextOpacityToolTip}"
+                                               Value="{Binding Style.FretLabelTextOpacity}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.FretLabelTextSizeRatioLabel, FallbackValue=SIZE RATIO}"
@@ -1437,18 +1415,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=FretLabelTextSizeRatioIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.FretLabelTextSizeRatioIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.FretLabelTextSizeRatio, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.FretLabelTextSizeRatioToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=FretLabelTextSizeRatioIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.FretLabelTextSizeRatioIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource BoundPercentageUpDown}"
+                                               ToolTip="{Binding Style.FretLabelTextSizeRatioToolTip}"
+                                               Value="{Binding Style.FretLabelTextSizeRatio}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.FretLabelTextWidthRatioLabel, FallbackValue=WIDTH RATIO}"
@@ -1460,18 +1437,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=FretLabelTextWidthRatioIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.FretLabelTextWidthRatioIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.FretLabelTextWidthRatio, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.FretLabelTextWidthRatioToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=FretLabelTextWidthRatioIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.FretLabelTextWidthRatioIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource BoundPercentageUpDown}"
+                                               ToolTip="{Binding Style.FretLabelTextWidthRatioToolTip}"
+                                               Value="{Binding Style.FretLabelTextWidthRatio}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -1530,18 +1506,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=FretLabelGridPaddingIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.FretLabelGridPaddingIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.FretLabelGridPadding}"
-                                     ToolTip="{Binding Style.FretLabelGridPaddingToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=FretLabelGridPaddingIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.FretLabelGridPaddingIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.FretLabelGridPaddingToolTip}"
+                                               Value="{Binding Style.FretLabelGridPadding}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
@@ -1558,18 +1533,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=BarreArcRatioIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.BarreArcRatioIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.BarreArcRatio, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.BarreArcRatioToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=BarreArcRatioIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.BarreArcRatioIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PositivePercentageUpDown}"
+                                               ToolTip="{Binding Style.BarreArcRatioToolTip}"
+                                               Value="{Binding Style.BarreArcRatio}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.BarreOpacityLabel, FallbackValue=OPACITY}"
@@ -1581,18 +1555,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=BarreOpacityIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.BarreOpacityIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.BarreOpacity, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.BarreOpacityToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=BarreOpacityIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.BarreOpacityIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource BoundPercentageUpDown}"
+                                               ToolTip="{Binding Style.BarreOpacityToolTip}"
+                                               Value="{Binding Style.BarreOpacity}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.BarreLineColorLabel, FallbackValue=COLOR}"
@@ -1628,18 +1601,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=BarreLineThicknessIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.BarreLineThicknessIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.BarreLineThickness}"
-                                     ToolTip="{Binding Style.BarreLineThicknessToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=BarreLineThicknessIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.BarreLineThicknessIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.BarreLineThicknessToolTip}"
+                                               Value="{Binding Style.BarreLineThickness}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>

@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Chordious.WPF"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
     <Application.Resources>
         <BitmapImage x:Key="ChordiousIcon">pack://application:,,,/Resources/chordious.ico</BitmapImage>
         <BitmapImage x:Key="ChordiousIcon128">pack://application:,,,/Resources/chordious128.png</BitmapImage>
@@ -34,7 +35,6 @@
         <BitmapImage x:Key="InformationIcon32">pack://application:,,,/Resources/information32.png</BitmapImage>
         <local:IdleBoolToWaitCursorConverter x:Key="IdleBoolToWaitCursorConverter" />
         <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-        <local:DecimalToPercentConverter x:Key="DecimalToPercentConverter" />
         <local:AltTextToTextConverter x:Key="AltTextToTextConverter" />
         <local:InverseBoolConverter x:Key="InverseBoolConverter" />
         <!-- Adapted from http://www.infosysblogs.com/microsoft/2010/07/wpf_-_disabled_look_for_button.html -->
@@ -124,6 +124,18 @@
                     Value="Stretch" />
             <Setter Property="VerticalAlignment"
                     Value="Stretch" />
+        </Style>
+        <Style BasedOn="{x:Null}" TargetType="{x:Type xctk:DoubleUpDown}" x:Key="PixelUpDown">
+            <Setter Property="Minimum" Value="0" />
+            <Setter Property="FormatString" Value="N" />
+        </Style>
+        <Style BasedOn="{x:Null}" TargetType="{x:Type xctk:DoubleUpDown}" x:Key="PositivePercentageUpDown">
+            <Setter Property="Minimum" Value="0" />
+            <Setter Property="Increment" Value="0.01" />
+            <Setter Property="FormatString" Value="P0" />
+        </Style>
+        <Style BasedOn="{StaticResource PositivePercentageUpDown}" TargetType="{x:Type xctk:DoubleUpDown}" x:Key="BoundPercentageUpDown">
+            <Setter Property="Maximum" Value="1" />
         </Style>
         <SolidColorBrush Color="White"
                          x:Key="NormalBrush" />

@@ -191,23 +191,9 @@ namespace Chordious.WPF
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            EventManager.RegisterClassHandler(typeof(TextBox), UIElement.PreviewKeyUpEvent, new RoutedEventHandler(EnterUpdatesSource), true);
-
             PreloadDisabledImages();
 
             base.OnStartup(e);
-        }
-
-        private static void EnterUpdatesSource(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = (e.OriginalSource as TextBox);
-            if (null != textBox && !textBox.IsReadOnly)
-            {
-                if (e is KeyEventArgs args && args.Key == Key.Enter)
-                {
-                    textBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                }
-            }
         }
 
         #region IAppView

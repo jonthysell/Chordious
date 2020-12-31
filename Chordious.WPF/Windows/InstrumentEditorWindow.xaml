@@ -50,10 +50,10 @@
                             HorizontalContentAlignment="Center"
                             IsReadOnly="{Binding DataContext.IsNew, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Converter={StaticResource InverseBoolConverter}}"
                             Margin="5"
-                            Minimum="1"
+                            Minimum="2"
                             Name="NumStringsUpDown"
-                            Text="{Binding NumStrings, UpdateSourceTrigger=PropertyChanged}"
-                            ToolTip="{Binding NumStringsToolTip}" />
+                            ToolTip="{Binding NumStringsToolTip}"
+                            Value="{Binding NumStrings}" />
         <StackPanel Grid.Column="0"
                     Grid.ColumnSpan="4"
                     Grid.Row="1"

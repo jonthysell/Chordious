@@ -9,7 +9,8 @@
         x:Class="Chordious.WPF.DiagramExportWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:local="clr-namespace:Chordious.WPF"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
     <Window.InputBindings>
         <KeyBinding Command="{Binding ExportAsync, IsAsync=True, Mode=OneWay}"
                     Key="F5" />
@@ -109,16 +110,18 @@
                    Name="ScaleFactorLabel"
                    Target="{Binding ElementName=ScaleFactorTextBox}"
                    ToolTip="{Binding ScaleFactorToolTip}" />
-            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=ScaleFactorLabel}"
-                     HorizontalContentAlignment="Center"
-                     IsEnabled="{Binding CanScale}"
-                     Margin="5"
-                     MaxLength="5"
-                     MaxLines="1"
-                     Name="ScaleFactorTextBox"
-                     Text="{Binding ScaleFactor, Converter={StaticResource DecimalToPercentConverter}}"
-                     ToolTip="{Binding ScaleFactorToolTip}"
-                     Width="65" />
+            <xctk:SingleUpDown AutomationProperties.LabeledBy="{Binding ElementName=ScaleFactorLabel}"
+                               FormatString="P0"
+                               HorizontalContentAlignment="Center"
+                               Increment="0.01"
+                               IsEnabled="{Binding CanScale}"
+                               Margin="5"
+                               Maximum="{Binding MaxScaleFactor}"
+                               Minimum="0.01"
+                               Name="ScaleFactorTextBox"
+                               ToolTip="{Binding ScaleFactorToolTip}"
+                               Value="{Binding ScaleFactor}"
+                               Width="80" />
             <Label Content="{Binding OverwriteFilesLabel, FallbackValue=OVERWRITE FILES}"
                    Margin="5"
                    Name="OverwriteFilesLabel"

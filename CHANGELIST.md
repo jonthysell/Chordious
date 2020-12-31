@@ -8,6 +8,7 @@
 * Fixed issue with non-deterministic style summary text
 * Extended clickable area for editing fret labels
 * Fixed layout inconsistencies with visibility of elements with text
+* Fixed issues with allowing one-string instruments
 
 ## 2.0.13 ##
 * Fixed issue with importing configs with collection styles

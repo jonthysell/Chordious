@@ -288,7 +288,7 @@ namespace Chordious.WPF
             {
                 try
                 {
-                    if (value <= 0.0f || value > ImageUtils.GetMaxScaleFactor(MaxWidth, MaxHeight))
+                    if (value <= 0.0f || value > MaxScaleFactor)
                     {
                         throw new ArgumentOutOfRangeException();
                     }
@@ -305,6 +305,8 @@ namespace Chordious.WPF
                 }
             }
         }
+
+        public float MaxScaleFactor => ImageUtils.GetMaxScaleFactor(MaxWidth, MaxHeight);
 
         public string ChooseOutputPathLabel
         {

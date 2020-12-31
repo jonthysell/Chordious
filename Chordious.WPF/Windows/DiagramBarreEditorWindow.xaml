@@ -7,7 +7,8 @@
         x:Class="Chordious.WPF.DiagramBarreEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:local="clr-namespace:Chordious.WPF"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
     <Window.InputBindings>
         <KeyBinding Command="{Binding Cancel, Mode=OneWay}"
                     Key="Escape" />
@@ -29,18 +30,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=BarreArcRatioIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.BarreArcRatioIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.BarreArcRatio, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.BarreArcRatioToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=BarreArcRatioIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.BarreArcRatioIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PositivePercentageUpDown}"
+                                               ToolTip="{Binding Style.BarreArcRatioToolTip}"
+                                               Value="{Binding Style.BarreArcRatio}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.BarreOpacityLabel, FallbackValue=OPACITY}"
@@ -52,18 +52,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=BarreOpacityIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.BarreOpacityIsLocal}"
-                                     Margin="5"
-                                     MaxLength="4"
-                                     MaxLines="1"
-                                     Text="{Binding Style.BarreOpacity, Converter={StaticResource DecimalToPercentConverter}}"
-                                     ToolTip="{Binding Style.BarreOpacityToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=BarreOpacityIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.BarreOpacityIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource BoundPercentageUpDown}"
+                                               ToolTip="{Binding Style.BarreOpacityToolTip}"
+                                               Value="{Binding Style.BarreOpacity}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.BarreLineColorLabel, FallbackValue=COLOR}"
@@ -99,18 +98,17 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <TextBox AutomationProperties.LabeledBy="{Binding ElementName=BarreLineThicknessIsLocalCheckBox}"
-                                     Height="25"
-                                     HorizontalContentAlignment="Center"
-                                     IsEnabled="{Binding Style.BarreLineThicknessIsLocal}"
-                                     Margin="5"
-                                     MaxLength="5"
-                                     MaxLines="1"
-                                     Text="{Binding Style.BarreLineThickness}"
-                                     ToolTip="{Binding Style.BarreLineThicknessToolTip}"
-                                     VerticalAlignment="Center"
-                                     VerticalContentAlignment="Center"
-                                     Width="80" />
+                            <xctk:DoubleUpDown AutomationProperties.LabeledBy="{Binding ElementName=BarreLineThicknessIsLocalCheckBox}"
+                                               Height="25"
+                                               HorizontalContentAlignment="Center"
+                                               IsEnabled="{Binding Style.BarreLineThicknessIsLocal}"
+                                               Margin="5"
+                                               Style="{StaticResource PixelUpDown}"
+                                               ToolTip="{Binding Style.BarreLineThicknessToolTip}"
+                                               Value="{Binding Style.BarreLineThickness}"
+                                               VerticalAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               Width="80" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>

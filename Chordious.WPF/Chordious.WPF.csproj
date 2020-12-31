@@ -126,7 +126,6 @@
       <DependentUpon>AdvancedDataWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\AutoDisableImage.cs" />
-    <Compile Include="Converters\DecimalToPercentConverter.cs" />
     <Compile Include="Windows\ChordQualityEditorWindow.xaml.cs">
       <DependentUpon>ChordQualityEditorWindow.xaml</DependentUpon>
     </Compile>

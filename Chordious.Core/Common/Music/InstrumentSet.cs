@@ -272,8 +272,12 @@ namespace Chordious.Core
                 {
                     if (xmlReader.IsStartElement() && xmlReader.Name == "instrument")
                     {
-                        Instrument instrument = new Instrument(this, xmlReader.ReadSubtree());
-                        Add(instrument);
+                        try
+                        {
+                            Instrument instrument = new Instrument(this, xmlReader.ReadSubtree());
+                            Add(instrument);
+                        }
+                        catch (ArgumentOutOfRangeException) { }
                     }
                 } while (xmlReader.Read());
             }

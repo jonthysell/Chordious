@@ -260,8 +260,12 @@ namespace Chordious.Core
                 {
                     if (xmlReader.IsStartElement() && xmlReader.Name == "tuning")
                     {
-                        Tuning tuning = new Tuning(this, xmlReader.ReadSubtree());
-                        Add(tuning);
+                        try
+                        {
+                            Tuning tuning = new Tuning(this, xmlReader.ReadSubtree());
+                            Add(tuning);
+                        }
+                        catch (ArgumentOutOfRangeException) { }
                     }
                 } while (xmlReader.Read());
             }

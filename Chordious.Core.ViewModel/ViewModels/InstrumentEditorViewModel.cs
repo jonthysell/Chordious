@@ -108,7 +108,7 @@ namespace Chordious.Core.ViewModel
             {
                 try
                 {
-                    if (value <= 0)
+                    if (value < 2)
                     {
                         throw new ArgumentOutOfRangeException();
                     }
@@ -123,7 +123,7 @@ namespace Chordious.Core.ViewModel
                 Accept.RaiseCanExecuteChanged();
             }
         }
-        private int _numStrings = 1;
+        private int _numStrings = 2;
 
         public bool IsNew
         {

@@ -74,19 +74,16 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=BarreLineColorIsLocalCheckBox}"
-                                      Height="25"
-                                      IsEditable="True"
-                                      IsEnabled="{Binding Style.BarreLineColorIsLocal}"
-                                      ItemsSource="{Binding Style.Colors}"
-                                      Margin="5"
-                                      SelectedItem="{Binding Style.BarreLineColor}"
-                                      Style="{StaticResource CleanComboBox}"
-                                      Text="{Binding Style.BarreLineColor, UpdateSourceTrigger=LostFocus}"
-                                      ToolTip="{Binding Style.BarreLineColorToolTip}"
-                                      VerticalAlignment="Center"
-                                      VerticalContentAlignment="Center"
-                                      Width="80" />
+                            <xctk:ColorPicker AutomationProperties.LabeledBy="{Binding ElementName=BarreLineColorIsLocalCheckBox}"
+                                              Height="25"
+                                              IsEnabled="{Binding Style.BarreLineColorIsLocal}"
+                                              Margin="5"
+                                              SelectedColor="{Binding Style.BarreLineColor, Converter={StaticResource StringToColorConverter}}"
+                                              Style="{StaticResource CleanColorPicker}"
+                                              ToolTip="{Binding Style.BarreLineColorToolTip}"
+                                              VerticalAlignment="Center"
+                                              VerticalContentAlignment="Center"
+                                              Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.BarreLineThicknessLabel, FallbackValue=THICKNESS (PX)}"

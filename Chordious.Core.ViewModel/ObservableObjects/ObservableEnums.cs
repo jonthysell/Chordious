@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -141,9 +141,9 @@ namespace Chordious.Core.ViewModel
         {
             ObservableCollection<string> collection = new ObservableCollection<string>(AppViewModel.Instance.AppView.GetSystemFonts());
 
-            SortedInsert(collection, "serif");
-            SortedInsert(collection, "sans-serif");
-            SortedInsert(collection, "monospace");
+            collection.SortedInsert("serif");
+            collection.SortedInsert("sans-serif");
+            collection.SortedInsert("monospace");
 
             return collection;
         }
@@ -235,39 +235,6 @@ namespace Chordious.Core.ViewModel
             }
 
             return collection;
-        }
-
-        public static void SortedInsert(ObservableCollection<string> sortedCollection, string value)
-        {
-            if (null == sortedCollection)
-            {
-                throw new ArgumentNullException(nameof(sortedCollection));
-            }
-
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            value = value.Trim();
-
-            List<string> tempList = new List<string>(sortedCollection);
-
-            int index = Array.BinarySearch<string>(tempList.ToArray(), value);
-
-            if (index < 0)
-            {
-                index = ~index;
-
-                if (index == sortedCollection.Count)
-                {
-                    sortedCollection.Add(value);
-                }
-                else
-                {
-                    sortedCollection.Insert(index, value);
-                }
-            }
         }
     }
 }

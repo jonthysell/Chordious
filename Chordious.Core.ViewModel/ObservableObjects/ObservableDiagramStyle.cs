@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2020, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -298,7 +298,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.DiagramColor = value;
-                        ObservableEnums.SortedInsert(Colors, DiagramColor);
+                        Colors.SortedInsert(DiagramColor);
                         RaisePropertyChanged(nameof(DiagramColor));
                     }
                 }
@@ -428,7 +428,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.DiagramBorderColor = value;
-                        ObservableEnums.SortedInsert(Colors, DiagramBorderColor);
+                        Colors.SortedInsert(DiagramBorderColor);
                         RaisePropertyChanged(nameof(DiagramBorderColor));
                     }
                 }
@@ -1109,7 +1109,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.GridColor = value;
-                        ObservableEnums.SortedInsert(Colors, GridColor);
+                        Colors.SortedInsert(GridColor);
                         RaisePropertyChanged(nameof(GridColor));
                     }
                 }
@@ -1235,7 +1235,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.GridLineColor = value;
-                        ObservableEnums.SortedInsert(Colors, GridLineColor);
+                        Colors.SortedInsert(GridLineColor);
                         RaisePropertyChanged(nameof(GridLineColor));
                     }
                 }
@@ -1688,7 +1688,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.TitleFontFamily = value;
-                        ObservableEnums.SortedInsert(FontFamilies, TitleFontFamily);
+                        FontFamilies.SortedInsert(TitleFontFamily);
                         RaisePropertyChanged(nameof(TitleFontFamily));
                     }
                 }
@@ -1993,7 +1993,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.TitleColor = value;
-                        ObservableEnums.SortedInsert(Colors, TitleColor);
+                        Colors.SortedInsert(TitleColor);
                         RaisePropertyChanged(nameof(TitleColor));
                     }
                 }
@@ -2301,7 +2301,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         MarkStyle.MarkColor = value;
-                        ObservableEnums.SortedInsert(Colors, MarkColor);
+                        Colors.SortedInsert(MarkColor);
                         RaisePropertyChanged(nameof(MarkColor));
                     }
                 }
@@ -2736,7 +2736,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         MarkStyle.MarkTextColor = value;
-                        ObservableEnums.SortedInsert(Colors, MarkTextColor);
+                        Colors.SortedInsert(MarkTextColor);
                         RaisePropertyChanged(nameof(MarkTextColor));
                     }
                 }
@@ -2854,7 +2854,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         MarkStyle.MarkFontFamily = value;
-                        ObservableEnums.SortedInsert(FontFamilies, MarkFontFamily);
+                        FontFamilies.SortedInsert(MarkFontFamily);
                         RaisePropertyChanged(nameof(MarkFontFamily));
                     }
                 }
@@ -3252,7 +3252,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.FretLabelTextColor = value;
-                        ObservableEnums.SortedInsert(Colors, FretLabelTextColor);
+                        Colors.SortedInsert(FretLabelTextColor);
                         RaisePropertyChanged(nameof(FretLabelTextColor));
                     }
                 }
@@ -3370,7 +3370,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.FretLabelFontFamily = value;
-                        ObservableEnums.SortedInsert(FontFamilies, FretLabelFontFamily);
+                        FontFamilies.SortedInsert(FretLabelFontFamily);
                         RaisePropertyChanged(nameof(FretLabelFontFamily));
                     }
                 }
@@ -4171,27 +4171,27 @@ namespace Chordious.Core.ViewModel
             }
 
             // Pre-seed used fonts
-            ObservableEnums.SortedInsert(FontFamilies, Style.TitleFontFamily);
+            FontFamilies.SortedInsert(Style.TitleFontFamily);
             MarkStyle.ForEachMarkType(() =>
             {
-                ObservableEnums.SortedInsert(FontFamilies, MarkStyle.MarkFontFamily);
+                FontFamilies.SortedInsert(MarkStyle.MarkFontFamily);
             });
-            ObservableEnums.SortedInsert(FontFamilies, Style.FretLabelFontFamily);
+            FontFamilies.SortedInsert(Style.FretLabelFontFamily);
 
             // Pre-seed used colors
-            ObservableEnums.SortedInsert(Colors, Style.DiagramColor);
-            ObservableEnums.SortedInsert(Colors, Style.DiagramBorderColor);
-            ObservableEnums.SortedInsert(Colors, Style.GridColor);
-            ObservableEnums.SortedInsert(Colors, Style.GridLineColor);
-            ObservableEnums.SortedInsert(Colors, Style.TitleColor);
+            Colors.SortedInsert(Style.DiagramColor);
+            Colors.SortedInsert(Style.DiagramBorderColor);
+            Colors.SortedInsert(Style.GridColor);
+            Colors.SortedInsert(Style.GridLineColor);
+            Colors.SortedInsert(Style.TitleColor);
             MarkStyle.ForEachMarkType(() =>
             {
-                ObservableEnums.SortedInsert(Colors, MarkStyle.MarkColor);
-                ObservableEnums.SortedInsert(Colors, MarkStyle.MarkTextColor);
-                ObservableEnums.SortedInsert(Colors, MarkStyle.MarkBorderColor);
+                Colors.SortedInsert(MarkStyle.MarkColor);
+                Colors.SortedInsert(MarkStyle.MarkTextColor);
+                Colors.SortedInsert(MarkStyle.MarkBorderColor);
             });
-            ObservableEnums.SortedInsert(Colors, Style.FretLabelTextColor);
-            ObservableEnums.SortedInsert(Colors, Style.BarreLineColor);
+            Colors.SortedInsert(Style.FretLabelTextColor);
+            Colors.SortedInsert(Style.BarreLineColor);
 
             PropertyChanged += ObservableDiagramStyle_PropertyChanged;
             MarkStyle.MarkTypeChanged += MarkStyle_MarkTypeChanged;

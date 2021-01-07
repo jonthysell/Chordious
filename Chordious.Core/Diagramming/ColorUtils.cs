@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ using Chordious.Core.Resources;
 
 namespace Chordious.Core
 {
-    public class ColorUtils
+    public static class ColorUtils
     {
         public static string ParseColor(string s, HexadecimalColorCase hexadecimalColorCase = DefaultHexadecimalColorCase)
         {
@@ -93,6 +93,29 @@ namespace Chordious.Core
             {
                 s = s.Trim();
 
+                if (TryParseRGB(s, out byte r, out byte g, out byte b))
+                {
+                    return true;
+                }
+                else
+                {
+                    foreach (string colorName in NamedColors)
+                    {
+                        if (string.Equals(colorName, s, StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static bool TryParseRGB(string s, out byte r, out byte g, out byte b)
+        {
+            try
+            {
+                s = s?.Trim() ?? "";
                 if (s.StartsWith("#"))
                 {
                     s = s.TrimStart('#');
@@ -114,35 +137,17 @@ namespace Chordious.Core
                         rawBlue = s.Substring(4, 2);
                     }
 
-                    if (StringUtils.IsNullOrWhiteSpace(rawRed) ||
-                        StringUtils.IsNullOrWhiteSpace(rawGreen) ||
-                        StringUtils.IsNullOrWhiteSpace(rawBlue))
-                    {
-                        return false;
-                    }
-
-                    try
-                    {
-                        byte red, green, blue;
-                        red = Convert.ToByte(rawRed, 16);
-                        green = Convert.ToByte(rawGreen, 16);
-                        blue = Convert.ToByte(rawBlue, 16);
-
-                        return true;
-                    }
-                    catch (Exception) { }
-                }
-                else
-                {
-                    foreach (string colorName in NamedColors)
-                    {
-                        if (string.Equals(colorName, s, StringComparison.CurrentCultureIgnoreCase))
-                        {
-                            return true;
-                        }
-                    }
+                    r = Convert.ToByte(rawRed, 16);
+                    g = Convert.ToByte(rawGreen, 16);
+                    b = Convert.ToByte(rawBlue, 16);
+                    return true;
                 }
             }
+            catch { }
+
+            r = default;
+            g = default;
+            b = default;
             return false;
         }
 

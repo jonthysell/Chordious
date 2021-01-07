@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2020, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
@@ -36,7 +37,10 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Threading;
 
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
+
+using Xceed.Wpf.Toolkit;
 
 using Chordious.Core.ViewModel;
 using Chordious.WPF.Resources;
@@ -195,6 +199,29 @@ namespace Chordious.WPF
 
             base.OnStartup(e);
         }
+
+        #region Colors
+
+        public ObservableCollection<ColorItem> StandardColors
+        {
+            get
+            {
+                if (null == _standardColors)
+                {
+                    _standardColors = new ObservableCollection<ColorItem>();
+                    foreach (var kvp in StringToColorConverter.NamedColors)
+                    {
+                        _standardColors.Add(new ColorItem(kvp.Value, kvp.Key));
+                    }
+                }
+                return _standardColors;
+            }
+        }
+        private ObservableCollection<ColorItem> _standardColors;
+
+        public ObservableCollection<ColorItem> RecentColors { get; } = new ObservableCollection<ColorItem>();
+
+        #endregion
 
         #region IAppView
 

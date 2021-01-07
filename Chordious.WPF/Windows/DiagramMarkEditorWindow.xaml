@@ -112,19 +112,16 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=MarkColorIsLocalCheckBox}"
-                                      Height="25"
-                                      IsEditable="True"
-                                      IsEnabled="{Binding Style.MarkColorIsLocal}"
-                                      ItemsSource="{Binding Style.Colors}"
-                                      Margin="5"
-                                      SelectedItem="{Binding Style.MarkColor}"
-                                      Style="{StaticResource CleanComboBox}"
-                                      Text="{Binding Style.MarkColor, UpdateSourceTrigger=LostFocus}"
-                                      ToolTip="{Binding Style.MarkColorToolTip}"
-                                      VerticalAlignment="Center"
-                                      VerticalContentAlignment="Center"
-                                      Width="80" />
+                            <xctk:ColorPicker AutomationProperties.LabeledBy="{Binding ElementName=MarkColorIsLocalCheckBox}"
+                                              Height="25"
+                                              IsEnabled="{Binding Style.MarkColorIsLocal}"
+                                              Margin="5"
+                                              SelectedColor="{Binding Style.MarkColor, Converter={StaticResource StringToColorConverter}}"
+                                              Style="{StaticResource CleanColorPicker}"
+                                              ToolTip="{Binding Style.MarkColorToolTip}"
+                                              VerticalAlignment="Center"
+                                              VerticalContentAlignment="Center"
+                                              Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.MarkOpacityLabel, FallbackValue=OPACITY}"
@@ -185,19 +182,16 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=MarkBorderColorIsLocalCheckBox}"
-                                      Height="25"
-                                      IsEditable="True"
-                                      IsEnabled="{Binding Style.MarkBorderColorIsLocal}"
-                                      ItemsSource="{Binding Style.Colors}"
-                                      Margin="5"
-                                      SelectedItem="{Binding Style.MarkBorderColor}"
-                                      Style="{StaticResource CleanComboBox}"
-                                      Text="{Binding Style.MarkBorderColor, UpdateSourceTrigger=LostFocus}"
-                                      ToolTip="{Binding Style.MarkBorderColorToolTip}"
-                                      VerticalAlignment="Center"
-                                      VerticalContentAlignment="Center"
-                                      Width="80" />
+                            <xctk:ColorPicker AutomationProperties.LabeledBy="{Binding ElementName=MarkBorderColorIsLocalCheckBox}"
+                                              Height="25"
+                                              IsEnabled="{Binding Style.MarkBorderColorIsLocal}"
+                                              Margin="5"
+                                              SelectedColor="{Binding Style.MarkBorderColor, Converter={StaticResource StringToColorConverter}}"
+                                              Style="{StaticResource CleanColorPicker}"
+                                              ToolTip="{Binding Style.MarkBorderColorToolTip}"
+                                              VerticalAlignment="Center"
+                                              VerticalContentAlignment="Center"
+                                              Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.MarkBorderThicknessLabel, FallbackValue=THICKNESS (PX)}"
@@ -326,19 +320,16 @@
                                       VerticalAlignment="Center"
                                       VerticalContentAlignment="Center"
                                       Width="120" />
-                            <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=MarkTextColorIsLocalCheckBox}"
-                                      Height="25"
-                                      IsEditable="True"
-                                      IsEnabled="{Binding Style.MarkTextColorIsLocal}"
-                                      ItemsSource="{Binding Style.Colors}"
-                                      Margin="5"
-                                      SelectedItem="{Binding Style.MarkTextColor}"
-                                      Style="{StaticResource CleanComboBox}"
-                                      Text="{Binding Style.MarkTextColor, UpdateSourceTrigger=LostFocus}"
-                                      ToolTip="{Binding Style.MarkTextColorToolTip}"
-                                      VerticalAlignment="Center"
-                                      VerticalContentAlignment="Center"
-                                      Width="80" />
+                            <xctk:ColorPicker AutomationProperties.LabeledBy="{Binding ElementName=MarkTextColorIsLocalCheckBox}"
+                                              Height="25"
+                                              IsEnabled="{Binding Style.MarkTextColorIsLocal}"
+                                              Margin="5"
+                                              SelectedColor="{Binding Style.MarkTextColor, Converter={StaticResource StringToColorConverter}}"
+                                              Style="{StaticResource CleanColorPicker}"
+                                              ToolTip="{Binding Style.MarkTextColorToolTip}"
+                                              VerticalAlignment="Center"
+                                              VerticalContentAlignment="Center"
+                                              Width="80" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Content="{Binding Style.MarkTextOpacityLabel, FallbackValue=OPACITY}"

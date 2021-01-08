@@ -1614,7 +1614,7 @@ namespace Chordious.Core
                 return ColorUtils.TryParseColor(rawResult, out result);
             }
 
-            result = default(string);
+            result = default;
             return false;
         }
 

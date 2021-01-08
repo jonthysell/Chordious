@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2019, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -81,10 +81,11 @@ namespace Chordious.Core.ViewModel
         {
             Callback = callback;
 
-            Licenses = new ObservableCollection<ObservableLicense>();
-
-            Licenses.Add(GetChordiousLicense());
-            Licenses.Add(GetMvvmLightLicense());
+            Licenses = new ObservableCollection<ObservableLicense>
+            {
+                GetChordiousLicense(),
+                GetMvvmLightLicense()
+            };
         }
 
         private ObservableLicense GetChordiousLicense()

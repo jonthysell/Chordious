@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -262,8 +262,10 @@ namespace Chordious.Core.ViewModel
 
         public ShowInstrumentEditorMessage(Action<string, int> callback) : base()
         {
-            InstrumentEditorVM = new InstrumentEditorViewModel(callback);
-            InstrumentEditorVM.Name = AppViewModel.Instance.UserConfig.Instruments.GetNewInstrumentName();
+            InstrumentEditorVM = new InstrumentEditorViewModel(callback)
+            {
+                Name = AppViewModel.Instance.UserConfig.Instruments.GetNewInstrumentName()
+            };
         }
 
         public ShowInstrumentEditorMessage(string name, int numStrings, bool readOnly, Action<string, int> callback) : base()
@@ -320,8 +322,10 @@ namespace Chordious.Core.ViewModel
 
         public ShowChordQualityEditorMessage(Action<string, string, int[]> callback) : base()
         {
-            ChordQualityEditorVM = new ChordQualityEditorViewModel(callback);
-            ChordQualityEditorVM.Name = AppViewModel.Instance.UserConfig.ChordQualities.GetNewChordQualityName();
+            ChordQualityEditorVM = new ChordQualityEditorViewModel(callback)
+            {
+                Name = AppViewModel.Instance.UserConfig.ChordQualities.GetNewChordQualityName()
+            };
         }
 
         public ShowChordQualityEditorMessage(string name, string abbreviation, int[] intervals, bool readOnly, Action<string, string, int[]> callback) : base()
@@ -346,8 +350,10 @@ namespace Chordious.Core.ViewModel
 
         public ShowScaleEditorMessage(Action<string, int[]> callback) : base()
         {
-            ScaleEditorVM = new ScaleEditorViewModel(callback);
-            ScaleEditorVM.Name = AppViewModel.Instance.UserConfig.Scales.GetNewScaleName();
+            ScaleEditorVM = new ScaleEditorViewModel(callback)
+            {
+                Name = AppViewModel.Instance.UserConfig.Scales.GetNewScaleName()
+            };
         }
 
         public ShowScaleEditorMessage(string name, int[] intervals, bool readOnly, Action<string, int[]> callback) : base()

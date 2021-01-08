@@ -59,7 +59,7 @@ namespace Chordious.Core
                 return _marks.AsEnumerable();
             }
         }
-        private List<DiagramMark> _marks;
+        private readonly List<DiagramMark> _marks;
 
         public IEnumerable<DiagramFretLabel> FretLabels
         {
@@ -68,7 +68,7 @@ namespace Chordious.Core
                 return _fretLabels.AsEnumerable();
             }
         }
-        private List<DiagramFretLabel> _fretLabels;
+        private readonly List<DiagramFretLabel> _fretLabels;
 
         public IEnumerable<DiagramBarre> Barres
         {
@@ -77,7 +77,7 @@ namespace Chordious.Core
                 return _barres.AsEnumerable();
             }
         }
-        private List<DiagramBarre> _barres;
+        private readonly List<DiagramBarre> _barres;
 
         #endregion
 
@@ -1184,19 +1184,19 @@ namespace Chordious.Core
             return string.Format(CultureInfo.InvariantCulture, SvgConstants.BASE, totalWidth, totalHeight, AppInfo.Watermark, imageText);
         }
 
-        private static string[][] _baseStyleMap =
+        private static readonly string[][] _baseStyleMap =
         {
             new string[] {"diagram.color", "fill"},
             new string[] {"diagram.opacity", "fill-opacity"},
         };
 
-        private static string[][] _baseStyleMapBorder =
+        private static readonly string[][] _baseStyleMapBorder =
         {
             new string[] {"diagram.bordercolor", "stroke"},
             new string[] {"diagram.borderthickness", "stroke-width"},
         };
 
-        private static string[][] _gridBaseStyleMap =
+        private static readonly string[][] _gridBaseStyleMap =
         {
             new string[] {"grid.color", "fill"},
             new string[] {"grid.opacity", "fill-opacity"},
@@ -1204,18 +1204,18 @@ namespace Chordious.Core
             new string[] {"grid.linethickness", "stroke-width"},
         };
 
-        private static string[][] _lineStyleMap =
+        private static readonly string[][] _lineStyleMap =
         {
             new string[] {"grid.linecolor", "stroke"},
             new string[] {"grid.linethickness", "stroke-width"},
         };
 
-        private static string[][] _nutStyleMap =
+        private static readonly string[][] _nutStyleMap =
         {
             new string[] {"grid.linecolor", "stroke"},
         };
 
-        private static string[][] _titleStyleMap =
+        private static readonly string[][] _titleStyleMap =
         {
             new string[] {"title.textcolor", "fill"},
             new string[] {"title.textopacity", "opacity"},

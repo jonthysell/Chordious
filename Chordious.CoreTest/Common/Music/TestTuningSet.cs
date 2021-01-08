@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -44,7 +44,7 @@ namespace Chordious.CoreTest
             }
         }
 
-        private List<ITuning> _tunings;
+        private readonly List<ITuning> _tunings;
 
         public ITuning Get(string longName)
         {
@@ -93,6 +93,7 @@ namespace Chordious.CoreTest
 
         public TestTuningSet(IInstrument instrument)
         {
+            Instrument = instrument;
             _tunings = new List<ITuning>();
         }
     }

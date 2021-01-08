@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2020, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -94,8 +94,6 @@ namespace Chordious.WPF
                 throw new ArgumentOutOfRangeException(nameof(scaleFactor));
             }
 
-            float maxDimension = scaleFactor * Math.Max(width, height);
-
             // SVG.NET doesn't render text properly on high DPI screens, correct it here
             svgText = ResizeSvgFontSize(svgText, 1.0 / IntegrationUtils.DpiScale);
 
@@ -130,7 +128,7 @@ namespace Chordious.WPF
             return svgText;
         }
 
-        private static Regex FontSizeRegex = new Regex(@"font\-size:(\d+\.?\d*)pt");
+        private static readonly Regex FontSizeRegex = new Regex(@"font\-size:(\d+\.?\d*)pt");
 
         #endregion
 
@@ -173,7 +171,7 @@ namespace Chordious.WPF
             return baseImage;
         }
 
-        public static Bitmap CenterAndScale(Bitmap source, float width, float height, SvgRenderer svgRenderer)
+        public static Bitmap CenterAndScale(Bitmap source, float width, float height)
         {
             float totalWidth = source.Width;
             float totalHeight = source.Height;

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016, 2017, 2019, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -57,7 +57,7 @@ namespace Chordious.CoreTest
         {
             public TestChordFinderOptions chordFinderOptions;
             
-            public bool allowExtras { get; set; }
+            public bool AllowExtras { get; set; }
 
             public IEnumerable<IChordFinderResult> ExpectedResult;
             public IEnumerable<IChordFinderResult> ActualResult;
@@ -65,7 +65,7 @@ namespace Chordious.CoreTest
             public void Execute()
             {
                 ActualResult = ChordFinder.FindChords(chordFinderOptions).Results;
-                TestUtils.AreEqual<IChordFinderResult>(ExpectedResult, ActualResult, allowExtras);
+                TestUtils.AreEqual<IChordFinderResult>(ExpectedResult, ActualResult, AllowExtras);
             }
 
             public void Parse(string s)
@@ -81,7 +81,7 @@ namespace Chordious.CoreTest
 
                 chordFinderOptions = TestChordFinderOptions.Parse(vals[0]);
 
-                allowExtras = bool.Parse(vals[1]);
+                AllowExtras = bool.Parse(vals[1]);
 
                 List<IChordFinderResult> expectedResult = null;
 
@@ -104,7 +104,7 @@ namespace Chordious.CoreTest
             {
                 return string.Join("\t",
                     chordFinderOptions,
-                    allowExtras,
+                    AllowExtras,
                     TestUtils.ToString<IChordFinderResult>(ExpectedResult, ';'));
             }
         }
@@ -224,8 +224,7 @@ namespace Chordious.CoreTest
                     throw new ArgumentNullException(nameof(obj));
                 }
 
-                IChordFinderResult cfr = obj as IChordFinderResult;
-                if (null == cfr)
+                if (!(obj is IChordFinderResult cfr))
                 {
                     throw new ArgumentException();
                 }

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2016, 2017, 2019, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -70,9 +70,7 @@ namespace Chordious.WPF
 
         protected static AutoDisableImage GetImageWithSource(DependencyObject source)
         {
-            AutoDisableImage image = source as AutoDisableImage;
-
-            if (null == image)
+            if (!(source is AutoDisableImage image))
             {
                 return null;
             }
@@ -105,17 +103,7 @@ namespace Chordious.WPF
                 return disabledImage;
             }
 
-            BitmapSource bitmapImage = null;
-
-            if (imageSource is BitmapSource)
-            {
-                bitmapImage = (BitmapSource)imageSource;
-            }
-            else
-            {
-                bitmapImage = new BitmapImage(new Uri(imageSource.ToString()));
-            }
-
+            BitmapSource bitmapImage = imageSource is BitmapSource bitmapSource ? bitmapSource : new BitmapImage(new Uri(imageSource.ToString()));
             disabledImage = new FormatConvertedBitmap(bitmapImage, PixelFormats.Indexed2, BitmapPalettes.Gray4, 0);
 
             _cachedDisabledImages.Add(imageSource, disabledImage);

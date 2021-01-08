@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2020, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -419,7 +419,7 @@ namespace Chordious.Core
                 return bool.TryParse(rawResult, out result);
             }
 
-            result = default(bool);
+            result = default;
             return false;
         }
 
@@ -463,7 +463,7 @@ namespace Chordious.Core
                 return double.TryParse(rawResult, out result);
             }
 
-            result = default(double);
+            result = default;
             return false;
         }
 
@@ -500,7 +500,7 @@ namespace Chordious.Core
                 return float.TryParse(rawResult, out result);
             }
 
-            result = default(float);
+            result = default;
             return false;
         }
 
@@ -537,7 +537,7 @@ namespace Chordious.Core
                 return int.TryParse(rawResult, out result);
             }
 
-            result = default(int);
+            result = default;
             return false;
         }
 
@@ -579,7 +579,7 @@ namespace Chordious.Core
                 catch (Exception) { }
             }
 
-            result = default(TEnum);
+            result = default;
             return false;
         }
 
@@ -616,7 +616,7 @@ namespace Chordious.Core
                 return NoteUtils.TryParseNote(rawResult, out result);
             }
 
-            result = default(Note);
+            result = default;
             return false;
         }
 

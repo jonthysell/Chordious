@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2017, 2019, 2020, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -83,7 +83,7 @@ namespace Chordious.Core
             }
             catch (Exception) { }
 
-            result = default(string);
+            result = default;
             return false;
         }
 
@@ -92,8 +92,7 @@ namespace Chordious.Core
             if (!StringUtils.IsNullOrWhiteSpace(s))
             {
                 s = s.Trim();
-
-                if (TryParseRGB(s, out byte r, out byte g, out byte b))
+                if (TryParseRGB(s, out _, out _, out _))
                 {
                     return true;
                 }

@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -155,16 +155,17 @@ namespace Chordious.Core.Legacy
 
             // Process marks
 
-            DiagramMarkStyleWrapper dmsw = new DiagramMarkStyleWrapper(diagram.Style);
-
-            dmsw.MarkType = DiagramMarkType.Normal;
-            dmsw.MarkVisible = true;
-            dmsw.MarkRadiusRatio = 0.67;
-            dmsw.MarkShape = DiagramMarkShape.Circle;
-            dmsw.MarkBorderThickness = 2;
-            dmsw.MarkColor = "Black";
-            dmsw.MarkOpacity = 1.0;
-            dmsw.MarkBorderColor = "Black";
+            DiagramMarkStyleWrapper dmsw = new DiagramMarkStyleWrapper(diagram.Style)
+            {
+                MarkType = DiagramMarkType.Normal,
+                MarkVisible = true,
+                MarkRadiusRatio = 0.67,
+                MarkShape = DiagramMarkShape.Circle,
+                MarkBorderThickness = 2,
+                MarkColor = "Black",
+                MarkOpacity = 1.0,
+                MarkBorderColor = "Black"
+            };
 
             dmsw.MarkType = DiagramMarkType.Muted;
             dmsw.MarkVisible = true;

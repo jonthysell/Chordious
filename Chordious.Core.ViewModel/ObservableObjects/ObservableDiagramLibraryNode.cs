@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -66,7 +66,7 @@ namespace Chordious.Core.ViewModel
                 return _diagrams;
             }
         }
-        private ObservableCollection<ObservableDiagram> _diagrams = null;
+        private readonly ObservableCollection<ObservableDiagram> _diagrams = null;
 
         public ObservableCollection<ObservableDiagram> SelectedDiagrams { get; private set; } = null;
 
@@ -831,7 +831,7 @@ namespace Chordious.Core.ViewModel
 
         private void CopyDiagrams(IEnumerable<ObservableDiagram> itemsToCopy, string destinationName)
         {
-            Action<string, bool> performCopy = (name, newCollection) =>
+            void performCopy(string name, bool newCollection)
             {
                 try
                 {
@@ -850,7 +850,7 @@ namespace Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-            };
+            }
 
             if (!string.IsNullOrWhiteSpace(destinationName))
             {
@@ -864,9 +864,9 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        private void MoveDiagrams(IEnumerable<ObservableDiagram> itemsToMove, string destinationName, bool autoDeleteEmpty = false)
+        private void MoveDiagrams(IEnumerable<ObservableDiagram> itemsToMove, string destinationName)
         {
-            Action<string, bool> performMove = (name, newCollection) =>
+            void performMove(string name, bool newCollection)
             {
                 try
                 {
@@ -887,7 +887,7 @@ namespace Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-            };
+            }
 
             if (!string.IsNullOrWhiteSpace(destinationName))
             {

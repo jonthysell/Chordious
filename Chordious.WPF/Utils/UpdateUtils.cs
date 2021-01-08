@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2018, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2018, 2019, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -259,7 +259,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return NativeMethods.InternetGetConnectedState(out int Description, 0);
+                return NativeMethods.InternetGetConnectedState(out _, 0);
             }
         }
 
@@ -327,7 +327,7 @@ namespace Chordious.WPF
                 string message = Strings.ChordiousUpdateExceptionMessage;
                 if (InnerException is WebException wex)
                 {
-                    message = $"{message} ({wex.Status.ToString()})";
+                    message = $"{message} ({wex.Status})";
                 }
                 return message;
             }

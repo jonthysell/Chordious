@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -373,7 +373,7 @@ namespace Chordious.Core.ViewModel
 
         public ObservableDiagram ObservableDiagram { get; private set; }
 
-        private ObservableDiagram OriginalObservableDiagram;
+        private readonly ObservableDiagram OriginalObservableDiagram;
 
         public ObservableDiagramStyle Style
         {

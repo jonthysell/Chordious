@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace Chordious.Core
     {
         public DiagramStyle Style { get; private set; }
 
-        private List<DiagramLibraryNode> _nodes;
+        private readonly List<DiagramLibraryNode> _nodes;
 
         public DiagramLibrary(DiagramStyle parentStyle)
         {
@@ -171,7 +171,7 @@ namespace Chordious.Core
 
             if (TryGetNode(sourcePath, name, out DiagramLibraryNode node))
             {
-                if (TryGetNode(destinationPath, name, out DiagramLibraryNode existingNode))
+                if (TryGetNode(destinationPath, name, out _))
                 {
                     throw new DiagramCollectionNameAlreadyExistsException(this, destinationPath, name);
                 }
@@ -210,7 +210,7 @@ namespace Chordious.Core
             {
                 if (TryGetNode(path, name, out DiagramLibraryNode node))
                 {
-                    if (TryGetNode(path, newName, out DiagramLibraryNode existingNode))
+                    if (TryGetNode(path, newName, out _))
                     {
                         throw new DiagramCollectionNameAlreadyExistsException(this, path, newName);
                     }
@@ -292,7 +292,7 @@ namespace Chordious.Core
             int count = 1;
             while (!valid)
             {
-                if (!TryGetNode(path, name, out DiagramLibraryNode node))
+                if (!TryGetNode(path, name, out _))
                 {
                     valid = true; // Found an unused name
                 }
@@ -468,8 +468,7 @@ namespace Chordious.Core
 
             string path = node.Path;
             string name = node.Name;
-
-            if (TryGetNode(path, name, out DiagramLibraryNode existingNode))
+            if (TryGetNode(path, name, out _))
             {
                 throw new DiagramCollectionNameAlreadyExistsException(this, path, name);
             }

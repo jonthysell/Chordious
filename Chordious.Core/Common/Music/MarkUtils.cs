@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2015, 2016, 2017, 2019, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -79,8 +79,8 @@ namespace Chordious.Core
             MarkAnalysis ma = ChordAnalysis(chordMarks);
 
             bool reachPass = ma.Reach <= chordFinderOptions.MaxReach;
-            bool openPass = chordFinderOptions.AllowOpenStrings ? true : !ma.HasOpenStrings;
-            bool mutePass = chordFinderOptions.AllowMutedStrings ? true : !ma.HasMutedStrings;
+            bool openPass = chordFinderOptions.AllowOpenStrings || !ma.HasOpenStrings;
+            bool mutePass = chordFinderOptions.AllowMutedStrings || !ma.HasMutedStrings;
 
             return reachPass && openPass && mutePass;
         }
@@ -100,8 +100,8 @@ namespace Chordious.Core
             MarkAnalysis ma = ScaleAnalysis(scaleMarks, scaleFinderOptions.Instrument.NumStrings);
 
             bool reachPass = ma.Reach <= scaleFinderOptions.MaxReach;
-            bool openPass = scaleFinderOptions.AllowOpenStrings ? true : !ma.HasOpenStrings;
-            bool mutePass = scaleFinderOptions.AllowMutedStrings ? true : !ma.HasMutedStrings;
+            bool openPass = scaleFinderOptions.AllowOpenStrings || !ma.HasOpenStrings;
+            bool mutePass = scaleFinderOptions.AllowMutedStrings || !ma.HasMutedStrings;
 
             return reachPass && openPass && mutePass;
         }
@@ -120,11 +120,10 @@ namespace Chordious.Core
                 MarkAnalysis ma = ChordAnalysis(marks);
 
                 int targetFret = ma.MinFret;
-                int startString = -1;
-                int endString = -1;
-
                 if (targetFret > 0)
                 {
+                    int startString;
+                    int endString;
                     if (leftToRight)
                     {
                         startString = 0;
@@ -136,9 +135,10 @@ namespace Chordious.Core
                                 break;
                             }
 
-                            if ((barreTypeOption == BarreTypeOption.Full && marks[i] >= targetFret ) ||
-                                (barreTypeOption == BarreTypeOption.Partial && marks[i] == targetFret))                            {
-                                    endString = i;
+                            if ((barreTypeOption == BarreTypeOption.Full && marks[i] >= targetFret) ||
+                                (barreTypeOption == BarreTypeOption.Partial && marks[i] == targetFret))
+                            {
+                                endString = i;
                             }
                         }
                     }
@@ -427,8 +427,7 @@ namespace Chordious.Core
                     throw new ArgumentException();
                 }
 
-                MarkAnalysis ma = obj as MarkAnalysis;
-                if (null == ma)
+                if (!(obj is MarkAnalysis ma))
                 {
                     throw new ArgumentException();
                 }

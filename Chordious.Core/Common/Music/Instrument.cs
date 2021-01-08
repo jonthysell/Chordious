@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2015, 2016, 2017, 2019, 2020 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2015, 2016, 2017, 2019, 2020, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -115,7 +115,7 @@ namespace Chordious.Core
                 return _tunings;
             }
         }
-        private TuningSet _tunings;
+        private readonly TuningSet _tunings;
 
         private Instrument(InstrumentSet parent)
         {
@@ -196,8 +196,7 @@ namespace Chordious.Core
                 throw new ArgumentNullException(nameof(obj));
             }
 
-            Instrument instrument = obj as Instrument;
-            if (null == instrument)
+            if (!(obj is Instrument instrument))
             {
                 throw new ArgumentException();
             }

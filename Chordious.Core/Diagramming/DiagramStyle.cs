@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Xml;
 
@@ -1615,6 +1616,17 @@ namespace Chordious.Core
 
             result = default(string);
             return false;
+        }
+
+        public IEnumerable<string> GetUsedColors(bool recursive)
+        {
+            foreach (var key in recursive ? AllKeys() : LocalKeys())
+            {
+                if (key.EndsWith("color") && TryGetColor(key, out string result, recursive))
+                {
+                    yield return result;
+                }
+            }
         }
 
         public string GetSvgStyle(string[][] styleMap, string prefix = "")

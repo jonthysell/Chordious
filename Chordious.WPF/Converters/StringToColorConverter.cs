@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2020 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2020, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +32,8 @@ using System.Windows.Markup;
 using System.Windows.Media;
 
 using Chordious.Core.ViewModel;
+
+using Xceed.Wpf.Toolkit;
 
 namespace Chordious.WPF
 {
@@ -112,6 +114,20 @@ namespace Chordious.WPF
             }
 
             return $"#{color.R:X2}{color.G:X2}{color.B:X2}";
+        }
+
+        public static bool TryParseColorItem(string str, out ColorItem result)
+        {
+            try
+            {
+                Color color = ParseColor(str);
+                result = new ColorItem(color, ColorToString(color));
+                return true;
+            }
+            catch { }
+
+            result = default;
+            return false;
         }
 
         public static IReadOnlyDictionary<string, Color> NamedColors = new Dictionary<string, Color>

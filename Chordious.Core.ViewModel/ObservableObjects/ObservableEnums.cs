@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Chordious.Core.ViewModel
@@ -221,18 +220,6 @@ namespace Chordious.Core.ViewModel
                 EnumUtils.GetFriendlyValue(FretLabelSide.Left),
                 EnumUtils.GetFriendlyValue(FretLabelSide.Right)
             };
-
-            return collection;
-        }
-
-        public static ObservableCollection<string> GetColors()
-        {
-            ObservableCollection<string> collection = new ObservableCollection<string>();
-
-            foreach (string color in ColorUtils.NamedColors)
-            {
-                collection.Add(color);
-            }
 
             return collection;
         }

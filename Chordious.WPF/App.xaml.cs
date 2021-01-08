@@ -77,6 +77,15 @@ namespace Chordious.WPF
 
             AppVM.LoadUserConfig(HandleUserConfigLoadException);
 
+            // Prepopulate RecentColors
+            foreach (var str in AppVM.GetUserColors())
+            {
+                if (StringToColorConverter.TryParseColorItem(str, out ColorItem result))
+                {
+                    RecentColors.Add(result);
+                }
+            }
+
             // Makes sure textboxes accept localized inputs
             FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
 

@@ -298,7 +298,6 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.DiagramColor = value;
-                        Colors.SortedInsert(DiagramColor);
                         RaisePropertyChanged(nameof(DiagramColor));
                     }
                 }
@@ -428,7 +427,6 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.DiagramBorderColor = value;
-                        Colors.SortedInsert(DiagramBorderColor);
                         RaisePropertyChanged(nameof(DiagramBorderColor));
                     }
                 }
@@ -1109,7 +1107,6 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.GridColor = value;
-                        Colors.SortedInsert(GridColor);
                         RaisePropertyChanged(nameof(GridColor));
                     }
                 }
@@ -1235,7 +1232,6 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.GridLineColor = value;
-                        Colors.SortedInsert(GridLineColor);
                         RaisePropertyChanged(nameof(GridLineColor));
                     }
                 }
@@ -1993,7 +1989,6 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.TitleColor = value;
-                        Colors.SortedInsert(TitleColor);
                         RaisePropertyChanged(nameof(TitleColor));
                     }
                 }
@@ -2301,7 +2296,6 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         MarkStyle.MarkColor = value;
-                        Colors.SortedInsert(MarkColor);
                         RaisePropertyChanged(nameof(MarkColor));
                     }
                 }
@@ -2736,7 +2730,6 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         MarkStyle.MarkTextColor = value;
-                        Colors.SortedInsert(MarkTextColor);
                         RaisePropertyChanged(nameof(MarkTextColor));
                     }
                 }
@@ -3252,7 +3245,6 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.FretLabelTextColor = value;
-                        Colors.SortedInsert(FretLabelTextColor);
                         RaisePropertyChanged(nameof(FretLabelTextColor));
                     }
                 }
@@ -4026,15 +4018,6 @@ namespace Chordious.Core.ViewModel
         }
         private ObservableCollection<string> _fontFamiles;
 
-        public ObservableCollection<string> Colors
-        {
-            get
-            {
-                return _colors ?? (_colors = ObservableEnums.GetColors());
-            }
-        }
-        private ObservableCollection<string> _colors;
-
         #endregion
 
         #region ShowEditor
@@ -4177,21 +4160,6 @@ namespace Chordious.Core.ViewModel
                 FontFamilies.SortedInsert(MarkStyle.MarkFontFamily);
             });
             FontFamilies.SortedInsert(Style.FretLabelFontFamily);
-
-            // Pre-seed used colors
-            Colors.SortedInsert(Style.DiagramColor);
-            Colors.SortedInsert(Style.DiagramBorderColor);
-            Colors.SortedInsert(Style.GridColor);
-            Colors.SortedInsert(Style.GridLineColor);
-            Colors.SortedInsert(Style.TitleColor);
-            MarkStyle.ForEachMarkType(() =>
-            {
-                Colors.SortedInsert(MarkStyle.MarkColor);
-                Colors.SortedInsert(MarkStyle.MarkTextColor);
-                Colors.SortedInsert(MarkStyle.MarkBorderColor);
-            });
-            Colors.SortedInsert(Style.FretLabelTextColor);
-            Colors.SortedInsert(Style.BarreLineColor);
 
             PropertyChanged += ObservableDiagramStyle_PropertyChanged;
             MarkStyle.MarkTypeChanged += MarkStyle_MarkTypeChanged;

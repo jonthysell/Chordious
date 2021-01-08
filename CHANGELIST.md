@@ -5,6 +5,7 @@
 * Diagram export can now be interrupted, and dialog can optionally close afterward
 * Added Extended WPF Toolkit v3.8.2 dependency
 * Upgraded numeric inputs from text boxes to numeric spinners
+* Upgraded color inputs from combo boxes to color pickers
 * Fixed issue with non-deterministic style summary text
 * Extended clickable area for editing fret labels
 * Fixed layout inconsistencies with visibility of elements with text

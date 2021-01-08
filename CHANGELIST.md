@@ -1,6 +1,7 @@
 # Chordious Changelist #
 
 ## 2.1.X.X ##
+* First 2.1 preview release
 * Chord Finder can now find "partial" chords
 * Diagram export can now be interrupted, and dialog can optionally close afterward
 * Added Extended WPF Toolkit v3.8.2 dependency

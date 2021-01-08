@@ -126,25 +126,49 @@
             <Setter Property="VerticalAlignment"
                     Value="Stretch" />
         </Style>
-        <Style BasedOn="{x:Null}" TargetType="{x:Type xctk:DoubleUpDown}" x:Key="PixelUpDown">
-            <Setter Property="Minimum" Value="0" />
-            <Setter Property="FormatString" Value="N" />
+        <Style BasedOn="{x:Null}"
+               TargetType="{x:Type xctk:DoubleUpDown}"
+               x:Key="PixelUpDown">
+            <Setter Property="Minimum"
+                    Value="0" />
+            <Setter Property="FormatString"
+                    Value="N" />
         </Style>
-        <Style BasedOn="{x:Null}" TargetType="{x:Type xctk:DoubleUpDown}" x:Key="PositivePercentageUpDown">
-            <Setter Property="Minimum" Value="0" />
-            <Setter Property="Increment" Value="0.01" />
-            <Setter Property="FormatString" Value="P0" />
+        <Style BasedOn="{x:Null}"
+               TargetType="{x:Type xctk:DoubleUpDown}"
+               x:Key="PositivePercentageUpDown">
+            <Setter Property="Minimum"
+                    Value="0" />
+            <Setter Property="Increment"
+                    Value="0.01" />
+            <Setter Property="FormatString"
+                    Value="P0" />
         </Style>
-        <Style BasedOn="{StaticResource PositivePercentageUpDown}" TargetType="{x:Type xctk:DoubleUpDown}" x:Key="BoundPercentageUpDown">
-            <Setter Property="Maximum" Value="1" />
+        <Style BasedOn="{StaticResource PositivePercentageUpDown}"
+               TargetType="{x:Type xctk:DoubleUpDown}"
+               x:Key="BoundPercentageUpDown">
+            <Setter Property="Maximum"
+                    Value="1" />
         </Style>
-        <Style BasedOn="{x:Null}" TargetType="{x:Type xctk:ColorPicker}" x:Key="CleanColorPicker">
-            <Setter Property="DisplayColorAndName" Value="True" />
-            <Setter Property="UsingAlphaChannel" Value="False" />
-            <Setter Property="ShowAvailableColors" Value="False" />
-            <Setter Property="ShowRecentColors" Value="True" />
-            <Setter Property="StandardColors" Value="{Binding AppVM.AppView.StandardColors}" />
-            <Setter Property="RecentColors" Value="{Binding AppVM.AppView.RecentColors}" />
+        <Style BasedOn="{x:Null}"
+               TargetType="{x:Type xctk:ColorPicker}"
+               x:Key="CleanColorPicker">
+            <Setter Property="DropDownBackground"
+                    Value="{DynamicResource NormalBrush}" />
+            <Setter Property="TabBackground"
+                    Value="{DynamicResource NormalBrush}" />
+            <Setter Property="DisplayColorAndName"
+                    Value="True" />
+            <Setter Property="UsingAlphaChannel"
+                    Value="False" />
+            <Setter Property="ShowAvailableColors"
+                    Value="False" />
+            <Setter Property="ShowRecentColors"
+                    Value="True" />
+            <Setter Property="StandardColors"
+                    Value="{Binding AppVM.AppView.StandardColors}" />
+            <Setter Property="RecentColors"
+                    Value="{Binding AppVM.AppView.RecentColors}" />
         </Style>
         <SolidColorBrush Color="White"
                          x:Key="NormalBrush" />

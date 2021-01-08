@@ -82,7 +82,7 @@ namespace Chordious.WPF
                 bool updateAvailable = false;
                 foreach (UpdateInfo updateInfo in updateInfos)
                 {
-                    if (updateInfo.ReleaseChannel == targetReleaseChannel)
+                    if (updateInfo.ReleaseChannel <= targetReleaseChannel)
                     {
                         ulong installerVersion = LongVersion(updateInfo.Version);
 

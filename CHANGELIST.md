@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## 2.1.X.X ##
+* Fixed update check to always suggest updates to higher official versions
+
 ## 2.1.0.0 ##
 * First 2.1 preview release
 * Chord Finder can now find "partial" chords

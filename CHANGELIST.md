@@ -2,6 +2,7 @@
 
 ## 2.1.X.X ##
 * Fixed update check to always suggest updates to higher official versions
+* Fixed issue with diagram text scaling on high DPI screens
 
 ## 2.1.0.0 ##
 * First 2.1 preview release

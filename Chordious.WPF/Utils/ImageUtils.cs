@@ -94,10 +94,20 @@ namespace Chordious.WPF
                 throw new ArgumentOutOfRangeException(nameof(scaleFactor));
             }
 
-            // SVG.NET doesn't render text properly on high DPI screens, correct it here
-            svgText = ResizeSvgFontSize(svgText, 1.0 / IntegrationUtils.DpiScale);
-
             SvgDocument doc = SvgDocument.FromSvg<SvgDocument>(svgText);
+
+            // SVG.NET doesn't render text properly on high DPI screens, correct it here
+            float textScaleFactor = 1.0f / (float)IntegrationUtils.DpiScale;
+            if (textScaleFactor != 1.0f)
+            {
+                doc.ApplyRecursive((element) =>
+                {
+                    if (element is SvgText text)
+                    {
+                        text.FontSize = new SvgUnit(text.FontSize.Type, text.FontSize.Value * textScaleFactor);
+                    }
+                });
+            }
             
             if (scaleFactor != 1.0f)
             {
@@ -109,26 +119,6 @@ namespace Chordious.WPF
             Bitmap svgBitmap = doc.Draw();
             return svgBitmap;
         }
-
-        private static string ResizeSvgFontSize(string svgText, double scaleFactor)
-        {
-            if (scaleFactor != 1.0)
-            {
-                foreach (Match m in FontSizeRegex.Matches(svgText))
-                {
-                    if (m.Groups.Count == 2 && double.TryParse(m.Groups[1].Value, out double result))
-                    {
-                        double newFontSize = result * scaleFactor;
-                        string newFontSizeString = string.Format(CultureInfo.InvariantCulture, "font-size:{0}pt", newFontSize);
-                        svgText = svgText.Replace(m.Value, newFontSizeString);
-                    }
-                }
-            }
-
-            return svgText;
-        }
-
-        private static readonly Regex FontSizeRegex = new Regex(@"font\-size:(\d+\.?\d*)pt");
 
         #endregion
 

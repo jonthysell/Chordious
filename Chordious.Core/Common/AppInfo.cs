@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -53,34 +53,22 @@ namespace Chordious.Core
         }
 
         /// <summary>
-        /// Short version string if an official release, full version string otherwise.
+        /// Short version string {Major}.{Minor} or {Major}.{Minor}.{Build} if {Build} > 0.
         /// </summary>
         public static string Version
         {
             get
             {
-                if (Assembly.GetName().Version.Minor % 2 == 0) // Official release
+                if (null == _version)
                 {
-                    return ShortVersion;
+                    Version vers = Assembly.GetName().Version;
+                    _version = vers is null ? "0" : (vers.Build == 0 ? $"{vers.Major}.{vers.Minor}" : $"{vers.Major}.{vers.Minor}.{vers.Build}");
                 }
-                else // Internal release
-                {
-                    return FullVersion;
-                }
+                return _version;
             }
         }
 
-        /// <summary>
-        /// Short version string {Major}.{Minor}.{Build}
-        /// </summary>
-        public static string ShortVersion
-        {
-            get
-            {
-                Version vers = Assembly.GetName().Version;
-                return vers.Build == 0 ? $"{vers.Major}.{vers.Minor}" : $"{vers.Major}.{vers.Minor}.{vers.Build}";
-            }
-        }
+        private static string _version = null;
 
         /// <summary>
         /// Full version string {Major}.{Minor}.{Build}.{Revision}.

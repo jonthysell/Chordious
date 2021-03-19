@@ -39,16 +39,13 @@
     <EmbeddedResource Include="Chordious.Core.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="Properties\SharedInfo.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SharedInfo.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChordFinding\IChordFinderResult.cs" />
     <Compile Include="ChordFinding\IChordFinderOptions.cs" />
     <Compile Include="Common\Finding\FinderOptions2.cs" />
     <Compile Include="Common\Finding\IFinderOptions2.cs" />
+    <Compile Include="Properties\SharedInfo.cs" />
     <Compile Include="ReverseChordFinder\ReverseChordFinderOptions.cs" />
     <Compile Include="ReverseChordFinder\ReverseChordFinderResult.cs" />
     <Compile Include="ReverseChordFinder\IReverseChordFinderOptions.cs" />
@@ -111,11 +108,6 @@
     <Compile Include="Common\InheritableDictionary.cs" />
     <Compile Include="Diagramming\SvgConstants.cs" />
     <Compile Include="Common\Music\Tuning.cs" />
-    <Compile Include="Properties\SharedInfo.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SharedInfo.tt</DependentUpon>
-    </Compile>
     <Compile Include="Resources\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

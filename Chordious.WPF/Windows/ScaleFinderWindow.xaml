@@ -198,6 +198,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label Content="{Binding NumFretsLabel, FallbackValue=# OF FRETS}"
                                Grid.Column="0"
@@ -275,6 +276,22 @@
                                   Margin="5"
                                   Name="AllowMutedStringsCheckBox"
                                   ToolTip="{Binding AllowMutedStringsToolTip}"
+                                  VerticalAlignment="Center" />
+                        <Label Content="{Binding StrictIntervalsLabel, FallbackValue=STRICT INTERVALS}"
+                               Grid.Column="0"
+                               Grid.Row="5"
+                               Margin="5"
+                               Name="StrictIntervalsLabel"
+                               Target="{Binding ElementName=StrictIntervalsCheckBox}"
+                               ToolTip="{Binding StrictIntervalsToolTip}" />
+                        <CheckBox AutomationProperties.LabeledBy="{Binding ElementName=StrictIntervalsLabel}"
+                                  Grid.Column="1"
+                                  Grid.Row="5"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{Binding StrictIntervals}"
+                                  Margin="5"
+                                  Name="StrictIntervalsCheckBox"
+                                  ToolTip="{Binding StrictIntervalsToolTip}"
                                   VerticalAlignment="Center" />
                     </Grid>
                 </GroupBox>

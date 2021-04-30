@@ -4,7 +4,7 @@
 // Author:
 //       Jon Thysell <thysell@gmail.com>
 // 
-// Copyright (c) 2015, 2016, 2017, 2019 Jon Thysell <http://jonthysell.com>
+// Copyright (c) 2015, 2016, 2017, 2019, 2021 Jon Thysell <http://jonthysell.com>
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -62,7 +62,7 @@ namespace Chordious.Core
                 return results;
             }
 
-            foreach (NoteNode startingNode in FindNodes(notesInScale[0], scaleFinderOptions))
+            foreach (NoteNode startingNode in FindStartingNoteNodes(notesInScale[0], scaleFinderOptions))
             {
                 await FindAllScalesAsync(results, startingNode, notesInScale, 1, startingNode.String, scaleFinderOptions, cancelToken);
             }
@@ -70,17 +70,18 @@ namespace Chordious.Core
             return results;
         }
 
-        private static IEnumerable<NoteNode> FindNodes(InternalNote targetNote, IScaleFinderOptions scaleFinderOptions)
+        private static IEnumerable<NoteNode> FindStartingNoteNodes(InternalNote targetNote, IScaleFinderOptions scaleFinderOptions)
         {
             for (int str = 0; str < scaleFinderOptions.Instrument.NumStrings; str++)
             {
-                InternalNote rootNote = scaleFinderOptions.Tuning.RootNotes[str].InternalNote;
+                FullInternalNote rootNote = scaleFinderOptions.Tuning.RootNotes[str].ToFullInternalNote();
 
-                int fret = NoteUtils.GetShift(rootNote, targetNote);
+                int fret = NoteUtils.GetShift(rootNote.Note, targetNote);
 
                 while (fret <= scaleFinderOptions.MaxFret)
                 {
-                    yield return new NoteNode(str, fret, targetNote, null);
+                    FullInternalNote newNote = rootNote.Shift(fret);
+                    yield return new NoteNode(str, fret, newNote, null);
                     fret += 12;
                 }
             }
@@ -124,12 +125,22 @@ namespace Chordious.Core
                     startingFret = noteNode.Fret + 1;
                 }
 
+                FullInternalNote stringRootNote = scaleFinderOptions.Tuning.RootNotes[str].ToFullInternalNote();
+
                 for (int fret = startingFret; fret <= scaleFinderOptions.MaxFret; fret++)
                 {
-                    InternalNote note = NoteUtils.Shift(scaleFinderOptions.Tuning.RootNotes[str].InternalNote, fret);
+                    FullInternalNote note = stringRootNote.Shift(fret);
 
                     // See if the note is the next target note
-                    if (note == targetNotes[nextNote])
+                    bool correctNote = note.Note == targetNotes[nextNote];
+                    if (correctNote && scaleFinderOptions.StrictIntervals)
+                    {
+                        // Check that it's the right number of steps from the previous interval
+                        int intervalSteps = scaleFinderOptions.Scale.Intervals[nextNote] - scaleFinderOptions.Scale.Intervals[nextNote - 1];
+                        correctNote = correctNote && noteNode.Note.GetShift(note) == intervalSteps;
+                    }
+
+                    if (correctNote)
                     {
                         NoteNode child = new NoteNode(str, fret, note, noteNode); // Add found note
                         await FindAllScalesAsync(results, child, targetNotes, nextNote + 1, str, scaleFinderOptions, cancelToken); // Look for the next note on the same string
@@ -144,10 +155,10 @@ namespace Chordious.Core
         {
             public int String { get; set; }
             public int Fret { get; set; }
-            public InternalNote? Note { get; set; }
+            public FullInternalNote Note { get; set; }
             public NoteNode Parent { get; set; }
 
-            public NoteNode(int @string, int fret, InternalNote? note, NoteNode parent)
+            public NoteNode(int @string, int fret, FullInternalNote note, NoteNode parent)
             {
                 String = @string;
                 Fret = fret;

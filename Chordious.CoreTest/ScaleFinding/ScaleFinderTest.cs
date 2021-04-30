@@ -123,6 +123,7 @@ namespace Chordious.CoreTest
             public int MaxReach { get; set; }
             public bool AllowOpenStrings { get; set; }
             public bool AllowMutedStrings { get; set; }
+            public bool StrictIntervals { get; set; }
 
             public static TestScaleFinderOptions Parse(string s)
             {

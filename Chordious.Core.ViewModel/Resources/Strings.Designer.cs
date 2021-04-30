@@ -4939,6 +4939,24 @@ namespace Chordious.Core.ViewModel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Strict Intervals.
+        /// </summary>
+        internal static string ScaleFinderOptionsStrictIntervalsLabel {
+            get {
+                return ResourceManager.GetString("ScaleFinderOptionsStrictIntervalsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only allow results which match the scale exactly, including the strings&apos; octaves..
+        /// </summary>
+        internal static string ScaleFinderOptionsStrictIntervalsToolTip {
+            get {
+                return ResourceManager.GetString("ScaleFinderOptionsStrictIntervalsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scale Finder.
         /// </summary>
         internal static string ScaleFinderTitle {

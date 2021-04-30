@@ -33,6 +33,7 @@
     <setting key="scalefinderoptions.maxreach" value="4" />
     <setting key="scalefinderoptions.allowopenstrings" value="True" />
     <setting key="scalefinderoptions.allowmutedstrings" value="True" />
+    <setting key="scalefinderoptions.strictintervals" value="False" />
     <setting key="scalefinderstyle.addtitle" value="False" />
     <setting key="scalefinderstyle.addrootnotes" value="True" />
     <setting key="scalefinderstyle.marktextoption" value="None" />

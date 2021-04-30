@@ -30,7 +30,7 @@ using Chordious.Core.Resources;
 
 namespace Chordious.Core
 {
-    public class FullNote : IComparable
+    public class FullNote : IComparable<FullNote>, IEquatable<FullNote>
     {
         public Note Note { get; set; }
 
@@ -69,57 +69,28 @@ namespace Chordious.Core
 
         public FullNote Shift(int steps, InternalNoteStringStyle style)
         {
-            if (steps == 0)
-            {
-                return new FullNote(NoteUtils.ToNote(InternalNote, style), Octave);
-            }
-
-            int direction = Math.Sign(steps);
-
-            InternalNote note = InternalNote;
-            int octave = Octave;
-
-            for (int i = 0; i < steps; i++)
-            {
-                int noteIndex = (int)note + direction;
-                if (noteIndex < 0)
-                {
-                    noteIndex += 12;
-                }
-
-                note = (InternalNote)(noteIndex % 12);
-
-                if (direction > 0 && note == InternalNote.C)
-                {
-                    octave++;
-                }
-                else if (direction < 0 && note == InternalNote.B)
-                {
-                    octave--;
-                }
-            }
-
-            return new FullNote(NoteUtils.ToNote(note, style), octave);
+            FullInternalNote shiftedNote = ToFullInternalNote().Shift(steps);
+            return new FullNote(NoteUtils.ToNote(shiftedNote.Note, style), shiftedNote.Octave);
         }
 
-        public int CompareTo(object obj)
+        public FullInternalNote ToFullInternalNote()
         {
-            if (null == obj)
+            return new FullInternalNote(InternalNote, Octave);
+        }
+
+        public int CompareTo(FullNote other)
+        {
+            if (other is null)
             {
-                throw new ArgumentNullException(nameof(obj));
+                throw new ArgumentNullException(nameof(other));
             }
 
-            if (!(obj is FullNote fullNote))
+            if (Octave == other.Octave)
             {
-                throw new ArgumentException();
+                return InternalNote.CompareTo(other.InternalNote);
             }
 
-            if (Octave == fullNote.Octave)
-            {
-                return InternalNote.CompareTo(fullNote.InternalNote);
-            }
-
-            return Octave.CompareTo(fullNote.Octave);
+            return Octave.CompareTo(other.Octave);
         }
 
         public FullNote Clone()
@@ -155,6 +126,16 @@ namespace Chordious.Core
             int octave = int.Parse(octavePortion);
 
             return new FullNote(note, octave);
+        }
+
+        public bool Equals(FullNote other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            return Note == other.Note && Octave == other.Octave;
         }
 
         private static readonly char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };

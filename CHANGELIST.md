@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## next ##
+* Added "Strict Intervals" option for Scale Finder
+
 ## 2.1.1 ##
 * Fixed update check to always suggest updates to higher official versions
 * Fixed issue with diagram text scaling on high DPI screens

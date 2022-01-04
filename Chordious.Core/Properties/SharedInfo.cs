@@ -1,4 +1,7 @@
-﻿using System.Reflection;
+﻿// Copyright (c) Jon Thysell <http://jonthysell.com>
+// Licensed under the MIT License.
+
+using System.Reflection;
 
 [assembly: AssemblyCompany("Jon Thysell")]
 [assembly: AssemblyProduct("Chordious")]

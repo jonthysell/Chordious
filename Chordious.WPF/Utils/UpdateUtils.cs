@@ -258,7 +258,7 @@ namespace Chordious.WPF
             }
         }
 
-        private const string _updateUrl = "https://gitcdn.link/repo/jonthysell/Chordious/master/update.xml";
+        private const string _updateUrl = "https://gitcdn.link/cdn/jonthysell/Chordious/main/update.xml";
         private const string _userAgent = "Mozilla/5.0";
     }
 

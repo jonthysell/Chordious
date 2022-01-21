@@ -3,7 +3,7 @@
   <settings>
     <setting key="app.firstrun" value="True" />
     <setting key="app.checkupdateonstart" value="True" />
-    <setting key="app.releasechannel" value="Preview" />
+    <setting key="app.releasechannel" value="Official" />
     <setting key="app.renderbackground" value="None" />
     <setting key="diagramexport.filenameformat" value="%t.%x" />
     <setting key="diagramexport.exportformat" value="SVG" />

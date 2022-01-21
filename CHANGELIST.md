@@ -1,6 +1,6 @@
 # Chordious Changelist #
 
-## next ##
+## 2.2 ##
 * Added "Strict Intervals" option for Scale Finder
 
 ## 2.1.1 ##

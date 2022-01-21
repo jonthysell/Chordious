@@ -1,0 +1,518 @@
+<Window Cursor="{Binding IsIdle, Converter={StaticResource IdleBoolToWaitCursorConverter}}"
+        ForceCursor="True"
+        Height="600"
+        Icon="{StaticResource ChordiousIcon}"
+        MinHeight="600"
+        MinWidth="800"
+        Title="{Binding Title, FallbackValue=SCALE FINDER}"
+        Width="800"
+        WindowStartupLocation="CenterScreen"
+        x:Class="Chordious.WPF.ScaleFinderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:local="clr-namespace:Chordious.WPF"
+        xmlns:vm="clr-namespace:Chordious.Core.ViewModel;assembly=Chordious.Core.ViewModel"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=DotNetProjects.Wpf.Extended.Toolkit">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}"
+                    Key="F5" />
+        <KeyBinding Command="{Binding CancelOrClose, Mode=OneWay}"
+                    Key="Escape" />
+    </Window.InputBindings>
+    <Grid IsEnabled="{Binding IsIdle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="2"
+              Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label Content="{Binding SelectedInstrumentLabel, FallbackValue=INSTRUMENT}"
+                   FontWeight="Bold"
+                   Grid.Column="0"
+                   Margin="5"
+                   Name="InstrumentLabel"
+                   Target="{Binding ElementName=InstrumentComboBox}"
+                   ToolTip="{Binding SelectedInstrumentToolTip}" />
+            <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=InstrumentLabel}"
+                      Grid.Column="1"
+                      ItemsSource="{Binding Instruments}"
+                      Margin="5"
+                      Name="InstrumentComboBox"
+                      SelectedItem="{Binding SelectedInstrument}"
+                      Style="{StaticResource CleanComboBox}"
+                      ToolTip="{Binding SelectedInstrumentToolTip}"
+                      VerticalAlignment="Center">
+                <ComboBox.ItemContainerStyle>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsHeader}"
+                                         Value="True">
+                                <Setter Property="ComboBoxItem.Focusable"
+                                        Value="False" />
+                                <Setter Property="ComboBoxItem.IsEnabled"
+                                        Value="False" />
+                                <Setter Property="ComboBoxItem.FontWeight"
+                                        Value="Bold" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.ItemContainerStyle>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="{Binding SelectedTuningLabel, FallbackValue=TUNING}"
+                   FontWeight="Bold"
+                   Grid.Column="2"
+                   Margin="5"
+                   Name="TuningLabel"
+                   Target="{Binding ElementName=TuningComboBox}"
+                   ToolTip="{Binding SelectedTuningToolTip}" />
+            <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=TuningLabel}"
+                      Grid.Column="3"
+                      ItemsSource="{Binding Tunings}"
+                      Margin="5"
+                      Name="TuningComboBox"
+                      SelectedItem="{Binding SelectedTuning}"
+                      Style="{StaticResource CleanComboBox}"
+                      ToolTip="{Binding SelectedTuningToolTip}"
+                      VerticalAlignment="Center">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding LongName}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button AutomationProperties.Name="{Binding ShowInstrumentManagerLabel}"
+                    Command="{Binding ShowInstrumentManager, Mode=OneWay}"
+                    Grid.Column="4"
+                    Margin="5"
+                    Style="{StaticResource CleanButtonNoBorder}"
+                    ToolTip="{Binding ShowInstrumentManagerToolTip}"
+                    Width="50">
+                <local:AutoDisableImage Height="16"
+                                        Margin="5,0,5,0"
+                                        Source="{StaticResource EditIcon16}"
+                                        Width="16" />
+            </Button>
+            <Label Content="{Binding SelectedRootNoteLabel, FallbackValue=ROOT NOTE}"
+                   FontWeight="Bold"
+                   Grid.Column="5"
+                   Margin="5"
+                   Name="RootNoteLabel"
+                   Target="{Binding ElementName=RootNoteComboBox}"
+                   ToolTip="{Binding SelectedRootNoteToolTip}" />
+            <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=RootNoteLabel}"
+                      Grid.Column="6"
+                      ItemsSource="{Binding RootNotes}"
+                      Margin="5"
+                      Name="RootNoteComboBox"
+                      SelectedItem="{Binding SelectedRootNote}"
+                      Style="{StaticResource CleanComboBox}"
+                      ToolTip="{Binding SelectedRootNoteToolTip}"
+                      VerticalAlignment="Center"
+                      Width="50" />
+            <Label Content="{Binding SelectedScaleLabel, FallbackValue=SCALE}"
+                   FontWeight="Bold"
+                   Grid.Column="7"
+                   Margin="5"
+                   Name="ScaleLabel"
+                   Target="{Binding ElementName=ScaleComboBox}"
+                   ToolTip="{Binding SelectedScaleToolTip}" />
+            <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=ScaleLabel}"
+                      Grid.Column="8"
+                      ItemsSource="{Binding Scales}"
+                      Margin="5"
+                      Name="ScaleComboBox"
+                      SelectedItem="{Binding SelectedScale}"
+                      Style="{StaticResource CleanComboBox}"
+                      ToolTip="{Binding SelectedScaleToolTip}"
+                      VerticalAlignment="Center">
+                <ComboBox.ItemContainerStyle>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsHeader}"
+                                         Value="True">
+                                <Setter Property="ComboBoxItem.Focusable"
+                                        Value="False" />
+                                <Setter Property="ComboBoxItem.IsEnabled"
+                                        Value="False" />
+                                <Setter Property="ComboBoxItem.FontWeight"
+                                        Value="Bold" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.ItemContainerStyle>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding LongName}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button AutomationProperties.Name="{Binding ShowScaleManagerLabel}"
+                    Command="{Binding ShowScaleManager}"
+                    Grid.Column="9"
+                    Margin="5"
+                    Style="{StaticResource CleanButtonNoBorder}"
+                    ToolTip="{Binding ShowScaleManagerToolTip}"
+                    Width="50">
+                <local:AutoDisableImage Height="16"
+                                        Margin="5,0,5,0"
+                                        Source="{StaticResource EditIcon16}"
+                                        Width="16" />
+            </Button>
+        </Grid>
+        <ScrollViewer Grid.Row="1"
+                      HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <GroupBox Header="{Binding AppVM.OptionsLabel, FallbackValue=OPTIONS}"
+                          Margin="5">
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Content="{Binding NumFretsLabel, FallbackValue=# OF FRETS}"
+                               Grid.Column="0"
+                               Grid.Row="0"
+                               Margin="5"
+                               Name="NumFretsLabel"
+                               Target="{Binding ElementName=NumFretsUpDown}"
+                               ToolTip="{Binding NumFretsToolTip}" />
+                        <xctk:IntegerUpDown AutomationProperties.LabeledBy="{Binding ElementName=NumFretsLabel}"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Margin="5"
+                                            Minimum="0"
+                                            Name="NumFretsUpDown"
+                                            ToolTip="{Binding NumFretsToolTip}"
+                                            Value="{Binding NumFrets}" />
+                        <Label Content="{Binding MaxFretLabel, FallbackValue=MAX FRET}"
+                               Grid.Column="0"
+                               Grid.Row="1"
+                               Margin="5"
+                               Name="MaxFretLabel"
+                               Target="{Binding ElementName=MaxFretUpDown}"
+                               ToolTip="{Binding MaxFretToolTip}" />
+                        <xctk:IntegerUpDown AutomationProperties.LabeledBy="{Binding ElementName=MaxFretLabel}"
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Margin="5"
+                                            Minimum="0"
+                                            Name="MaxFretUpDown"
+                                            ToolTip="{Binding MaxFretToolTip}"
+                                            Value="{Binding MaxFret}" />
+                        <Label Content="{Binding MaxReachLabel, FallbackValue=MAX REACH}"
+                               Grid.Column="0"
+                               Grid.Row="2"
+                               Margin="5"
+                               Name="MaxReachLabel"
+                               Target="{Binding ElementName=MaxReachUpDown}"
+                               ToolTip="{Binding MaxReachToolTip}" />
+                        <xctk:IntegerUpDown AutomationProperties.LabeledBy="{Binding ElementName=MaxReachLabel}"
+                                            Grid.Column="1"
+                                            Grid.Row="2"
+                                            Margin="5"
+                                            Minimum="0"
+                                            Name="MaxReachUpDown"
+                                            ToolTip="{Binding MaxReachToolTip}"
+                                            Value="{Binding MaxReach}" />
+                        <Label Content="{Binding AllowOpenStringsLabel, FallbackValue=ALLOW OPEN STRINGS}"
+                               Grid.Column="0"
+                               Grid.Row="3"
+                               Margin="5"
+                               Name="AllowOpenStringsLabel"
+                               Target="{Binding ElementName=AllowOpenStringsCheckBox}"
+                               ToolTip="{Binding AllowOpenStringsToolTip}" />
+                        <CheckBox AutomationProperties.LabeledBy="{Binding ElementName=AllowOpenStringsLabel}"
+                                  Grid.Column="1"
+                                  Grid.Row="3"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{Binding AllowOpenStrings}"
+                                  Margin="5"
+                                  Name="AllowOpenStringsCheckBox"
+                                  ToolTip="{Binding AllowOpenStringsToolTip}"
+                                  VerticalAlignment="Center" />
+                        <Label Content="{Binding AllowMutedStringsLabel, FallbackValue=ALLOW MUTED STRINGS}"
+                               Grid.Column="0"
+                               Grid.Row="4"
+                               Margin="5"
+                               Name="AllowMutedStringsLabel"
+                               Target="{Binding ElementName=AllowMutedStringsCheckBox}"
+                               ToolTip="{Binding AllowMutedStringsToolTip}" />
+                        <CheckBox AutomationProperties.LabeledBy="{Binding ElementName=AllowMutedStringsLabel}"
+                                  Grid.Column="1"
+                                  Grid.Row="4"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{Binding AllowMutedStrings}"
+                                  Margin="5"
+                                  Name="AllowMutedStringsCheckBox"
+                                  ToolTip="{Binding AllowMutedStringsToolTip}"
+                                  VerticalAlignment="Center" />
+                        <Label Content="{Binding StrictIntervalsLabel, FallbackValue=STRICT INTERVALS}"
+                               Grid.Column="0"
+                               Grid.Row="5"
+                               Margin="5"
+                               Name="StrictIntervalsLabel"
+                               Target="{Binding ElementName=StrictIntervalsCheckBox}"
+                               ToolTip="{Binding StrictIntervalsToolTip}" />
+                        <CheckBox AutomationProperties.LabeledBy="{Binding ElementName=StrictIntervalsLabel}"
+                                  Grid.Column="1"
+                                  Grid.Row="5"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{Binding StrictIntervals}"
+                                  Margin="5"
+                                  Name="StrictIntervalsCheckBox"
+                                  ToolTip="{Binding StrictIntervalsToolTip}"
+                                  VerticalAlignment="Center" />
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="{Binding AppVM.StyleLabel, FallbackValue=STYLE}"
+                          Margin="5">
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Content="{Binding AddTitleLabel, FallbackValue=ADD TITLE}"
+                               Grid.Column="0"
+                               Grid.Row="0"
+                               Margin="5"
+                               Name="AddTitleLabel"
+                               Target="{Binding ElementName=AddTitleCheckBox}"
+                               ToolTip="{Binding AddTitleToolTip}" />
+                        <CheckBox AutomationProperties.LabeledBy="{Binding ElementName=AddTitleLabel}"
+                                  Grid.Column="1"
+                                  Grid.Row="0"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{Binding AddTitle}"
+                                  Margin="5"
+                                  Name="AddTitleCheckBox"
+                                  ToolTip="{Binding AddTitleToolTip}"
+                                  VerticalAlignment="Center" />
+                        <Label Content="{Binding MirrorResultsLabel, FallbackValue=MIRROR RESULTS}"
+                               Grid.Column="0"
+                               Grid.Row="1"
+                               Margin="5"
+                               Name="MirrorResultsLabel"
+                               Target="{Binding ElementName=MirrorResultsCheckBox}"
+                               ToolTip="{Binding MirrorResultsToolTip}" />
+                        <CheckBox AutomationProperties.LabeledBy="{Binding ElementName=MirrorResultsLabel}"
+                                  Grid.Column="1"
+                                  Grid.Row="1"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{Binding MirrorResults}"
+                                  Margin="5"
+                                  Name="MirrorResultsCheckBox"
+                                  ToolTip="{Binding MirrorResultsToolTip}"
+                                  VerticalAlignment="Center" />
+                        <Label Content="{Binding AddRootNotesLabel, FallbackValue=ADD ROOT NOTES}"
+                               Grid.Column="0"
+                               Grid.Row="2"
+                               Margin="5"
+                               Name="AddRootNotesLabel"
+                               Target="{Binding ElementName=AddRootNotesCheckBox}"
+                               ToolTip="{Binding AddRootNotesToolTip}" />
+                        <CheckBox AutomationProperties.LabeledBy="{Binding ElementName=AddRootNotesLabel}"
+                                  Grid.Column="1"
+                                  Grid.Row="2"
+                                  HorizontalAlignment="Center"
+                                  IsChecked="{Binding AddRootNotes}"
+                                  Margin="5"
+                                  Name="AddRootNotesCheckBox"
+                                  ToolTip="{Binding AddRootNotesToolTip}"
+                                  VerticalAlignment="Center" />
+                        <Label Content="{Binding SelectedMarkTextOptionLabel, FallbackValue=MARK TEXT}"
+                               Grid.Column="0"
+                               Grid.Row="3"
+                               Margin="5"
+                               Name="MarkTextOptionLabel"
+                               Target="{Binding ElementName=MarkTextOptionComboBox}"
+                               ToolTip="{Binding SelectedMarkTextOptionToolTip}" />
+                        <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=MarkTextOptionLabel}"
+                                  Grid.Column="1"
+                                  Grid.Row="3"
+                                  ItemsSource="{Binding MarkTextOptions}"
+                                  Name="MarkTextOptionComboBox"
+                                  SelectedIndex="{Binding SelectedMarkTextOptionIndex}"
+                                  Style="{StaticResource CleanComboBox}"
+                                  ToolTip="{Binding SelectedMarkTextOptionToolTip}"
+                                  VerticalAlignment="Center" />
+                        <Label Content="{Binding SelectedFretLabelSideLabel, FallbackValue=FRET LABEL SIDE}"
+                               Grid.Column="0"
+                               Grid.Row="4"
+                               Margin="5"
+                               Name="FretLabelSideLabel"
+                               Target="{Binding ElementName=FretLabelSideComboBox}"
+                               ToolTip="{Binding SelectedFretLabelSideToolTip}" />
+                        <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=FretLabelSideLabel}"
+                                  Grid.Column="1"
+                                  Grid.Row="4"
+                                  ItemsSource="{Binding FretLabelSides}"
+                                  Name="FretLabelSideComboBox"
+                                  SelectedIndex="{Binding SelectedFretLabelSideIndex}"
+                                  Style="{StaticResource CleanComboBox}"
+                                  ToolTip="{Binding SelectedFretLabelSideToolTip}"
+                                  VerticalAlignment="Center" />
+                    </Grid>
+                </GroupBox>
+                <Button Command="{Binding SetAsDefaults, Mode=OneWay}"
+                        Content="{Binding SetAsDefaultsLabel, FallbackValue=SET AS DEFAULTS}"
+                        Margin="5"
+                        Style="{StaticResource CleanButton}"
+                        ToolTip="{Binding SetAsDefaultsToolTip}" />
+                <Button Command="{Binding ResetToDefaults, Mode=OneWay}"
+                        Content="{Binding ResetToDefaultsLabel, FallbackValue=RESET TO DEFAULTS}"
+                        Margin="5"
+                        Style="{StaticResource CleanButton}"
+                        ToolTip="{Binding ResetToDefaultsToolTip}" />
+            </StackPanel>
+        </ScrollViewer>
+        <ListView Grid.Column="1"
+                  Grid.Row="1"
+                  ItemsSource="{Binding Results}"
+                  Name="ResultsListView"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  SelectionMode="Extended">
+            <ListView.InputBindings>
+                <KeyBinding Command="{Binding EditSelected}"
+                            Key="Enter" />
+                <KeyBinding Command="{Binding EditSelected}"
+                            Key="Space" />
+                <KeyBinding Command="{Binding SendSelectedImageToClipboard}"
+                            Key="C"
+                            Modifiers="Ctrl" />
+                <KeyBinding Command="{Binding SendSelectedScaledImageToClipboard}"
+                            Key="C"
+                            Modifiers="Ctrl+Shift" />
+                <KeyBinding Command="{Binding SendSelectedTextToClipboard}"
+                            Key="C"
+                            Modifiers="Ctrl+Shift+Alt" />
+            </ListView.InputBindings>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Margin="5" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Image Height="{Binding TotalHeight}"
+                           Margin="5"
+                           MouseMove="DiagramImage_MouseMove"
+                           PreviewMouseDown="DiagramImage_PreviewMouseDown"
+                           Source="{Binding ImageObject}"
+                           Width="{Binding TotalWidth}">
+                        <Image.InputBindings>
+                            <MouseBinding Command="{Binding ShowEditor}"
+                                          Gesture="LeftDoubleClick" />
+                        </Image.InputBindings>
+                    </Image>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ContextMenu>
+                <ContextMenu Name="ResultsListViewContextMenu">
+                    <MenuItem Command="{Binding EditSelected}"
+                              Header="{Binding EditSelectedLabel, FallbackValue=EDIT...}"
+                              ToolTip="{Binding EditSelectedToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource EditIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Command="{Binding SendSelectedImageToClipboard}"
+                              Header="{Binding SendSelectedImageToClipboardLabel, FallbackValue=COPY IMAGE TO CLIPBOARD}"
+                              ToolTip="{Binding SendSelectedImageToClipboardToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding SendSelectedScaledImageToClipboard}"
+                              Header="{Binding SendSelectedScaledImageToClipboardLabel, FallbackValue=COPY SCALED IMAGE TO CLIPBOARD...}"
+                              ToolTip="{Binding SendSelectedScaledImageToClipboardToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding SendSelectedTextToClipboard}"
+                              Header="{Binding SendSelectedTextToClipboardLabel, FallbackValue=COPY SVG TO CLIPBOARD}"
+                              ToolTip="{Binding SendSelectedTextToClipboardToolTip}">
+                        <MenuItem.Icon>
+                            <local:AutoDisableImage Source="{StaticResource CopyIcon16}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+        <Button AutomationProperties.Name="{Binding SearchAsyncLabel, Converter={StaticResource AltTextToTextConverter}}"
+                Command="{Binding SearchAsync, IsAsync=True, Mode=OneWay}"
+                Grid.Row="2"
+                Margin="5"
+                Style="{StaticResource CleanButtonNoBorder}"
+                ToolTip="{Binding SearchAsyncToolTip}">
+            <StackPanel Orientation="Horizontal">
+                <local:AutoDisableImage Height="16"
+                                        Margin="5"
+                                        Source="{StaticResource SearchIcon16}"
+                                        Width="16" />
+                <AccessText HorizontalAlignment="Center"
+                            Name="SearchAsyncLabel"
+                            Text="{Binding SearchAsyncLabel, FallbackValue=SEARCH}"
+                            VerticalAlignment="Center" />
+            </StackPanel>
+        </Button>
+        <Button AutomationProperties.Name="{Binding SaveSelectedLabel, Converter={StaticResource AltTextToTextConverter}}"
+                Command="{Binding SaveSelected}"
+                Grid.Column="1"
+                Grid.Row="2"
+                Margin="5"
+                Name="SaveSelectedCommand"
+                Style="{StaticResource CleanButtonNoBorder}"
+                ToolTip="{Binding SaveSelectedToolTip}">
+            <StackPanel Orientation="Horizontal">
+                <local:AutoDisableImage Height="16"
+                                        Margin="5"
+                                        Source="{StaticResource AddIcon16}"
+                                        Width="16" />
+                <AccessText HorizontalAlignment="Center"
+                            Name="SaveSelectedLabel"
+                            Text="{Binding SaveSelectedLabel, FallbackValue=SAVE SELECTED}"
+                            VerticalAlignment="Center" />
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

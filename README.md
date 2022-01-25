@@ -2,6 +2,8 @@
 
 # Chordious #
 
+[![CI Build](https://github.com/jonthysell/Chordious/actions/workflows/ci.yml/badge.svg)](https://github.com/jonthysell/Chordious/actions/workflows/ci.yml)
+
 Chordious is a fretboard diagram generator for fretted stringed instruments like the ukulele, mandolin, and guitar.
 
 **Official Website:** http://chordious.com/

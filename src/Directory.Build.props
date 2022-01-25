@@ -1,0 +1,23 @@
+<Project>
+  <PropertyGroup>
+    <Product>Chordious</Product>
+    <Company>Jon Thysell</Company>
+    <Authors>Jon Thysell</Authors>
+    <Copyright>Copyright © 2013-2022 Jon Thysell</Copyright>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/jonthysell/Chordious</RepositoryUrl>
+    <Version>2.9.0</Version>
+    <AssemblyVersion>$(Version).0</AssemblyVersion>
+    <FileVersion>$(AssemblyVersion)</FileVersion>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <DebugType>embedded</DebugType>
+    <RepoRoot>$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)..\'))</RepoRoot>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="$(RepoRoot)\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+</Project>

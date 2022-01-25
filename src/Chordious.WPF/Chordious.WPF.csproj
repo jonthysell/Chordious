@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <StartupObject>Chordious.WPF.Program</StartupObject>
+    <AssemblyName>Chordious.WPF</AssemblyName>
+    <RootNamespace>Chordious.WPF</RootNamespace>
+    <ApplicationIcon>Resources\chordious.ico</ApplicationIcon>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableDefaultApplicationDefinition>false</EnableDefaultApplicationDefinition>
+    <DefineConstants>UPDATES</DefineConstants>
+    <Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RuntimeIdentifier)' == 'osx-x64' Or '$(RuntimeIdentifier)' == 'linux-x64' ">
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\*.png" />
+    <Resource Include="Resources\*.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Chordious.WPF.xml" />
+    <Compile Remove="Resources\Strings.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Chordious.WPF.xml" />
+    <Compile Include="Resources\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetProjects.Extended.Wpf.Toolkit" Version="4.6.97" />
+    <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+    <PackageReference Include="Svg" Version="3.4.0" />
+   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Chordious.Core\Chordious.Core.csproj" />
+    <ProjectReference Include="..\Chordious.Core.ViewModel\Chordious.Core.ViewModel.csproj" />
+  </ItemGroup>
+
+</Project>

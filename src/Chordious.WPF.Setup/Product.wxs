@@ -58,18 +58,19 @@
         </InstallExecuteSequence>
         <WixVariable Id="WixUILicenseRtf"
                      Value="license.rtf" />
-      <Property Id="DISABLEADVTSHORTCUTS" Value="1" />
+        <Property Id="DISABLEADVTSHORTCUTS"
+                  Value="1" />
     </Product>
     <Fragment>
         <Directory Id="TARGETDIR"
                    Name="SourceDir">
             <?if $(var.Platform) = "x86"?>
-              <Directory Id="ProgramFilesFolder">
+            <Directory Id="ProgramFilesFolder">
             <?elseif $(var.Platform) = "x64"?>
-              <Directory Id="ProgramFiles64Folder">
+            <Directory Id="ProgramFiles64Folder">
             <?endif?>
                 <Directory Id="INSTALLFOLDER"
-                           Name="Chordious 2">
+                            Name="Chordious 2">
                     <Component Id="ChordiousWpfApp">
                         <File Id="ChordiousWpfApp"
                               KeyPath="yes"
@@ -86,15 +87,15 @@
                               Source="$(var.SolutionDir)..\README.md" />
                         <File Id="ChordiousWpfLicense"
                               Name="License.txt"
-                              Source="$(var.SolutionDir)\Chordious.WPF\License.txt" />
+                              Source="$(var.SolutionDir)..\scripts\Licenses.txt" />
                         <RemoveFolder Id="ApplicationProgramsFolder"
                                       On="uninstall" />
                     </Component>
                 </Directory>
             <?if $(var.Platform) = "x86"?>
-              </Directory>
+            </Directory>
             <?elseif $(var.Platform) = "x64"?>
-              </Directory>
+            </Directory>
             <?endif?>
             <Directory Id="ProgramMenuFolder" />
         </Directory>

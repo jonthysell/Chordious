@@ -1,5 +1,8 @@
 # Chordious Changelist #
 
+## 2.2.1 ##
+*  Fix update url and default release channel
+
 ## 2.2 ##
 * Added "Strict Intervals" option for Scale Finder
 

@@ -1,5 +1,9 @@
 # Chordious Changelist #
 
+## next ##
+
+* Updated all projects to .NET 6
+
 ## 2.2.1 ##
 *  Fix update url and default release channel
 

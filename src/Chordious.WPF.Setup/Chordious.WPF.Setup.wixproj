@@ -37,7 +37,7 @@
         <SuppressIces>ICE61;</SuppressIces>
     </PropertyGroup>
     <ItemGroup>
-        <Compile Include="Chordious.$(Configuration).$(Platform).wxs">
+        <Compile Include="Generated Files\Chordious.$(Configuration).$(Platform).g.wxs">
             <Visible>false</Visible>
         </Compile>
         <Compile Include="Product.wxs" />
@@ -54,10 +54,6 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="ExcludeExe.xslt" />
-        <None Include="Chordious.Debug.x86.wxs" />
-        <None Include="Chordious.Release.x86.wxs" />
-        <None Include="Chordious.Debug.x64.wxs" />
-        <None Include="Chordious.Release.x64.wxs" />
     </ItemGroup>
     <Import Project="$(WixTargetsPath)" />
     <PropertyGroup>
@@ -68,14 +64,16 @@
         <PropertyGroup>
             <LinkerBaseInputPaths>..\Chordious.WPF\bin\$(Platform)\$(Configuration) (Setup)\</LinkerBaseInputPaths>
             <DefineConstants>PublishPath=..\Chordious.WPF\bin\$(Platform)\$(Configuration) (Setup)\</DefineConstants>
+            <RunWixToolsOutOfProc Condition=" '$(PROCESSOR_ARCHITECTURE)'!='x86' ">true</RunWixToolsOutOfProc>
         </PropertyGroup>
         <HeatDirectory AutoGenerateGuids="true"
                        ComponentGroupName="ChordiousPublishOut"
                        Directory="..\Chordious.WPF\bin\$(Platform)\$(Configuration) (Setup)\"
                        DirectoryRefId="INSTALLFOLDER"
                        GenerateGuidsNow="true"
-                       OutputFile="Chordious.$(Configuration).$(Platform).wxs"
+                       OutputFile="Generated Files\Chordious.$(Configuration).$(Platform).g.wxs"
                        PreprocessorVariable="var.PublishPath"
+                       RunAsSeparateProcess="$(RunWixToolsOutOfProc)"
                        SuppressCom="true"
                        SuppressFragments="true"
                        SuppressRegistry="true"

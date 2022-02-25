@@ -27,7 +27,7 @@
             <ComponentRef Id="ChordiousWpfApp" />
         </Feature>
         <Icon Id="icon.ico"
-              SourceFile="$(var.SolutionDir)\Chordious.WPF\Resources\chordious.ico" />
+              SourceFile="..\Chordious.WPF\Resources\chordious.ico" />
         <Property Id="ARPPRODUCTICON"
                   Value="icon.ico" />
         <Property Id="ARPHELPLINK"
@@ -84,10 +84,10 @@
                         </File>
                         <File Id="ChordiousWpfReadme"
                               Name="Readme.txt"
-                              Source="$(var.SolutionDir)..\README.md" />
+                              Source="..\..\README.md" />
                         <File Id="ChordiousWpfLicense"
                               Name="License.txt"
-                              Source="$(var.SolutionDir)..\scripts\Licenses.txt" />
+                              Source="..\..\scripts\Licenses.txt" />
                         <RemoveFolder Id="ApplicationProgramsFolder"
                                       On="uninstall" />
                     </Component>

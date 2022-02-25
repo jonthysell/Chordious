@@ -54,8 +54,9 @@ namespace Chordious.WPF
 
         public void OnLoaded()
         {
-            Task.Factory.StartNew(async () =>
+            AppVM.AppView.DoOnUIThread(async () =>
             {
+                
                 try
                 {
                     IsIdle = false;
@@ -88,27 +89,24 @@ namespace Chordious.WPF
             // Turn off first-run so it doesn't run next time
             IsFirstRun = false;
 
-            AppVM.AppView.DoOnUIThread(() =>
+            if (UpdateUtils.UpdateEnabled)
             {
-                if (UpdateUtils.UpdateEnabled)
+                Messenger.Default.Send(new ConfirmationMessage(Strings.FirstRunUpdateEnabledPrompt, (enableAutoUpdate) =>
                 {
-                    Messenger.Default.Send(new ConfirmationMessage(Strings.FirstRunUpdateEnabledPrompt, (enableAutoUpdate) =>
+                    try
                     {
-                        try
-                        {
-                            UpdateUtils.CheckUpdateOnStart = enableAutoUpdate;
-                        }
-                        catch (Exception ex)
-                        {
-                            ExceptionUtils.HandleException(ex);
-                        }
-                    }));
-                }
-                else
-                {
-                    Messenger.Default.Send(new ChordiousMessage(Strings.FirstRunMessage));
-                }
-            });
+                        UpdateUtils.CheckUpdateOnStart = enableAutoUpdate;
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionUtils.HandleException(ex);
+                    }
+                }));
+            }
+            else
+            {
+                Messenger.Default.Send(new ChordiousMessage(Strings.FirstRunMessage));
+            }
         }
     }
 }

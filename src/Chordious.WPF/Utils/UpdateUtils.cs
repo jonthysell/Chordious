@@ -4,14 +4,15 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Net;
-using System.Net.Cache;
-using System.Runtime.InteropServices;
+using System.Linq;
+using System.Net.Http;
+using System.Net.NetworkInformation;
+using System.Text.Json;
 using System.Threading.Tasks;
-using System.Xml;
 
 using GalaSoft.MvvmLight.Messaging;
 
+using Chordious.Core;
 using Chordious.Core.ViewModel;
 
 using Chordious.WPF.Resources;
@@ -26,180 +27,6 @@ namespace Chordious.WPF
             {
                 return AppViewModel.Instance;
             }
-        }
-
-        public static bool IsCheckingforUpdate { get; private set; }
-
-        public static int TimeoutMS = 3000;
-
-        public const int MaxTimeoutMS = 100000;
-
-        public static Task UpdateCheckAsync(bool confirmUpdate, bool showUpToDate)
-        {
-            return Task.Factory.StartNew(() =>
-            {
-                UpdateCheck(confirmUpdate, showUpToDate);
-            });
-        }
-
-        public static void UpdateCheck(bool confirmUpdate, bool showUpToDate)
-        {
-            try
-            {
-                IsCheckingforUpdate = true;
-
-                List<UpdateInfo> updateInfos = GetLatestUpdateInfos();
-
-                ReleaseChannel targetReleaseChannel = GetReleaseChannel();
-
-                ulong maxVersion = LongVersion(AppVM.FullVersion);
-
-                UpdateInfo latestVersion = null;
-
-                bool updateAvailable = false;
-                foreach (UpdateInfo updateInfo in updateInfos)
-                {
-                    if (updateInfo.ReleaseChannel <= targetReleaseChannel)
-                    {
-                        ulong installerVersion = LongVersion(updateInfo.Version);
-
-                        if (installerVersion > maxVersion)
-                        {
-                            updateAvailable = true;
-                            latestVersion = updateInfo;
-                            maxVersion = installerVersion;
-                        }
-                    }
-                }
-
-                LastUpdateCheck = DateTime.Now;
-
-                if (updateAvailable)
-                {
-                    if (confirmUpdate)
-                    {
-                        string message = string.Format(Strings.ChordiousUpdateAvailableUpdateNowMessageFormat, latestVersion.Version);
-                        AppVM.AppView.DoOnUIThread(() =>
-                        {
-                            Messenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
-                            {
-                                try
-                                {
-                                    if (confirmed)
-                                    {
-                                        Messenger.Default.Send(new LaunchUrlMessage(latestVersion.Url));
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    ExceptionUtils.HandleException(new UpdateException(ex));
-                                }
-                            }));
-                        });
-                    }
-                    else
-                    {
-                        AppVM.AppView.DoOnUIThread(() =>
-                        {
-                            Messenger.Default.Send(new LaunchUrlMessage(latestVersion.Url));
-                        });
-                    }
-                }
-                else
-                {
-                    if (showUpToDate)
-                    {
-                        AppVM.AppView.DoOnUIThread(() =>
-                        {
-                            Messenger.Default.Send(new ChordiousMessage(Strings.ChordiousUpdateNotAvailableMessage));
-                        });
-                    }
-                }
-            }
-            catch (WebException ex)
-            {
-                if (ex.Status == WebExceptionStatus.Timeout)
-                {
-                    TimeoutMS = (int)Math.Min(TimeoutMS * 1.5, MaxTimeoutMS);
-                }
-
-                if (showUpToDate)
-                {
-                    ExceptionUtils.HandleException(new UpdateException(ex));
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionUtils.HandleException(new UpdateException(ex));
-            }
-            finally
-            {
-                IsCheckingforUpdate = false;
-            }
-        }
-
-        public static List<UpdateInfo> GetLatestUpdateInfos()
-        {
-            if (!IsConnectedToInternet)
-            {
-                throw new UpdateNoInternetException();
-            }
-
-            List<UpdateInfo> updateInfos = new List<UpdateInfo>();
-
-            HttpWebRequest request = WebRequest.CreateHttp(_updateUrl);
-            request.UserAgent = _userAgent;
-            request.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore);
-            request.Timeout = TimeoutMS;
-
-            using (XmlReader reader = XmlReader.Create(request.GetResponse().GetResponseStream()))
-            {
-                while (reader.Read())
-                {
-                    if (reader.IsStartElement())
-                    {
-                        if (reader.Name == "update")
-                        {
-                            string version = reader.GetAttribute("version");
-                            string url = reader.GetAttribute("url");
-                            ReleaseChannel releaseChannel = (ReleaseChannel)Enum.Parse(typeof(ReleaseChannel), reader.GetAttribute("channel"));
-                            updateInfos.Add(new UpdateInfo(version, url, releaseChannel));
-                        }
-                    }
-                }
-            }
-
-            return updateInfos;
-        }
-
-        public static ulong LongVersion(string version)
-        {
-            if (string.IsNullOrWhiteSpace(version))
-            {
-                throw new ArgumentNullException(nameof(version));
-            }
-
-            ulong vers = 0;
-
-            string[] parts = version.Trim().Split('.');
-
-            for (int i = 0; i < parts.Length; i++)
-            {
-                vers |= (ulong.Parse(parts[i]) << ((4 - (i + 1)) * 16));
-            }
-
-            return vers;
-        }
-
-        public static ReleaseChannel GetReleaseChannel()
-        {
-            try
-            {
-                return (ReleaseChannel)Enum.Parse(typeof(ReleaseChannel), AppVM.GetSetting("app.releasechannel"));
-            }
-            catch (Exception) { }
-
-            return ReleaseChannel.Official;
         }
 
         public static bool UpdateEnabled
@@ -236,7 +63,23 @@ namespace Chordious.WPF
         {
             get
             {
-                return NativeMethods.InternetGetConnectedState(out _, 0);
+                return NetworkInterface.GetIsNetworkAvailable();
+            }
+        }
+
+        public static bool IsCheckingforUpdate { get; private set; }
+
+        public static ReleaseChannel ReleaseChannel
+        {
+            get
+            {
+                try
+                {
+                    return (ReleaseChannel)Enum.Parse(typeof(ReleaseChannel), AppVM.GetSetting("app.releasechannel"));
+                }
+                catch (Exception) { }
+
+                return ReleaseChannel.Official;
             }
         }
 
@@ -258,33 +101,145 @@ namespace Chordious.WPF
             }
         }
 
-        private const string _updateUrl = "https://gitcdn.link/cdn/jonthysell/Chordious/main/update.xml";
+        public const int MinTimeoutMS = 3000;
+
+        public const int MaxTimeoutMS = 100000;
+
+        public static async Task UpdateCheckAsync(bool confirmUpdate, bool showUpToDate)
+        {
+            try
+            {
+                IsCheckingforUpdate = true;
+
+                var latestRelease = await GetLatestGitHubReleaseInfoAsync("jonthysell", AppInfo.Product, showUpToDate ? MaxTimeoutMS : MinTimeoutMS);
+
+                if (latestRelease is null)
+                {
+                    if (showUpToDate)
+                    {
+                        Messenger.Default.Send(new ChordiousMessage(Strings.ChordiousUpdateExceptionMessage));
+                    }
+                }
+                else if (latestRelease.LongVersion <= AppInfo.LongVersion)
+                {
+                    if (showUpToDate)
+                    {
+                        Messenger.Default.Send(new ChordiousMessage(Strings.ChordiousUpdateNotAvailableMessage));
+                    }
+                }
+                else
+                {
+                    // Update available
+                    if (confirmUpdate)
+                    {
+                        Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.ChordiousUpdateAvailableUpdateNowMessageFormat, latestRelease.TagName), (result) =>
+                        {
+                            try
+                            {
+                                if (result)
+                                {
+                                    Messenger.Default.Send(new LaunchUrlMessage(latestRelease.HtmlUrl.AbsoluteUri));
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionUtils.HandleException(ex);
+                            }
+
+                        }));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionUtils.HandleException(new UpdateException(ex));
+            }
+            finally
+            {
+                LastUpdateCheck = DateTime.Now;
+                IsCheckingforUpdate = false;
+            }
+        }
+
+        private static async Task<GitHubReleaseInfo> GetLatestGitHubReleaseInfoAsync(string owner, string repo, int timeoutMS = MinTimeoutMS)
+        {
+            var releaseInfos = await GetGitHubReleaseInfosAsync(owner, repo, timeoutMS);
+
+            var includePrereleases = ReleaseChannel == ReleaseChannel.Preview;
+
+            return releaseInfos
+                .Where(info => info.Prerelease == false || includePrereleases)
+                .OrderByDescending(info => info.LongVersion)
+                .ThenBy(info => info.Name)
+                .FirstOrDefault();
+        }
+
+        private static async Task<IList<GitHubReleaseInfo>> GetGitHubReleaseInfosAsync(string owner, string repo, int timeoutMS = MinTimeoutMS)
+        {
+            if (!IsConnectedToInternet)
+            {
+                throw new UpdateNoInternetException();
+            }
+
+            var releaseInfos = new List<GitHubReleaseInfo>();
+
+            try
+            {
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Accept.ParseAdd("application/vnd.github.v3+json");
+                client.DefaultRequestHeaders.UserAgent.ParseAdd(_userAgent);
+                client.Timeout = TimeSpan.FromMilliseconds(timeoutMS);
+
+                using var responseStream = await client.GetStreamAsync($"https://api.github.com/repos/{owner}/{repo}/releases");
+                var jsonDocument = await JsonDocument.ParseAsync(responseStream);
+
+                foreach (var releaseObject in jsonDocument.RootElement.EnumerateArray())
+                {
+                    string name = releaseObject.GetProperty("name").GetString();
+                    string tagName = releaseObject.GetProperty("tag_name").GetString();
+                    string htmlUrl = releaseObject.GetProperty("html_url").GetString();
+                    bool draft = releaseObject.GetProperty("draft").GetBoolean();
+                    bool prerelease = releaseObject.GetProperty("prerelease").GetBoolean();
+
+                    releaseInfos.Add(new GitHubReleaseInfo(name, tagName, htmlUrl, draft, prerelease));
+                }
+            }
+            catch (Exception) { }
+
+            return releaseInfos;
+        }
+
         private const string _userAgent = "Mozilla/5.0";
     }
 
-    public class UpdateInfo
+    public class GitHubReleaseInfo
     {
-        public string Version { get; private set; }
+        public readonly string Name;
+        public readonly string TagName;
+        public readonly Uri HtmlUrl;
+        public readonly bool Draft;
+        public readonly bool Prerelease;
 
-        public string Url { get; private set; }
-
-        public ReleaseChannel ReleaseChannel { get; private set; }
-
-        public UpdateInfo(string version, string url, ReleaseChannel releaseChannel)
+        public ulong LongVersion
         {
-            if (string.IsNullOrWhiteSpace(version))
+            get
             {
-                throw new ArgumentNullException(nameof(version));
+                if (!_longVersion.HasValue && VersionUtils.TryParseLongVersion(TagName, out ulong result))
+                {
+                    _longVersion = result;
+                }
+                return _longVersion.Value;
             }
+        }
+        private ulong? _longVersion;
 
-            if (string.IsNullOrWhiteSpace(url))
-            {
-                throw new ArgumentNullException(nameof(url));
-            }
-
-            Version = version.Trim();
-            Url = url.Trim();
-            ReleaseChannel = releaseChannel;
+        public GitHubReleaseInfo(string name, string tagName, string htmlUrl, bool draft, bool prerelease)
+        {
+            Name = name?.Trim() ?? throw new ArgumentNullException(nameof(name));
+            TagName = tagName?.Trim() ?? throw new ArgumentNullException(nameof(tagName));
+            HtmlUrl = new Uri(htmlUrl);
+            Draft = draft;
+            Prerelease = prerelease;
         }
     }
 
@@ -302,9 +257,9 @@ namespace Chordious.WPF
             get
             {
                 string message = Strings.ChordiousUpdateExceptionMessage;
-                if (InnerException is WebException wex)
+                if (InnerException is HttpRequestException hre)
                 {
-                    message = $"{message} ({wex.Status})";
+                    message = $"{message} ({hre.StatusCode})";
                 }
                 return message;
             }
@@ -325,11 +280,5 @@ namespace Chordious.WPF
         }
 
         public UpdateNoInternetException() : base() { }
-    }
-
-    internal static partial class NativeMethods
-    {
-        [DllImport("wininet.dll")]
-        internal extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
     }
 }

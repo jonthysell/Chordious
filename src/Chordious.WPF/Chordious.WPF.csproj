@@ -38,6 +38,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TrimmerRootAssembly Include="System.ComponentModel.EventBasedAsync" />
+    <TrimmerRootAssembly Include="System.Text.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DotNetProjects.Extended.Wpf.Toolkit" Version="4.6.97" />
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
     <PackageReference Include="Svg" Version="3.4.0" />

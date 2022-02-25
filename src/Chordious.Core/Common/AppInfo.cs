@@ -58,6 +58,19 @@ namespace Chordious.Core
             }
         }
 
+        public static ulong LongVersion
+        {
+            get
+            {
+                if (!_longVersion.HasValue)
+                {
+                    _longVersion = VersionUtils.ParseLongVersion(FullVersion);
+                }
+                return _longVersion.Value;
+            }
+        }
+        private static ulong? _longVersion;
+
         /// <summary>
         /// The product name.
         /// </summary>

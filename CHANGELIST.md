@@ -3,6 +3,7 @@
 ## next ##
 
 * Updated all projects to .NET 6
+* Changed update code to check GitHub releases
 
 ## 2.2.1 ##
 *  Fix update url and default release channel

@@ -50,7 +50,7 @@ SOFTWARE.
 
 Microsoft Public License (Ms-PL)
 
-Copyright (c) 2013-2019 vvvv.org
+Copyright (c) 2013-2022 vvvv.org
 
 This license governs use of the accompanying software. If you use the
 software, you accept this license. If you do not accept the license, do not
@@ -111,11 +111,11 @@ cannot change. To the extent permitted under your local laws, the contributors
 exclude the implied warranties of merchantability, fitness for a particular
 purpose and non-infringement.
 
-# Extended WPF Toolkit #
+# Wpf Extended Toolkit #
 
 Microsoft Public License (Ms-PL)
 
-Copyright (c) -2019 Xceed Software, Inc.
+Copyright (c) 2007-2018 Xceed Software Inc.
 
 This license governs use of the accompanying software. If you use the
 software, you accept this license. If you do not accept the license, do not

@@ -257,12 +257,12 @@ namespace Chordious.WPF
 
         public static ObservableLicense GetSvgNetLicense()
         {
-            return new ObservableLicense("SVG.NET", "Copyright © 2013-2019 vvvv.org", "Microsoft Public License (Ms-PL)", string.Join(Environment.NewLine + Environment.NewLine, _msPlLicense));
+            return new ObservableLicense("SVG.NET", "Copyright © 2013-2022 vvvv.org", "Microsoft Public License (Ms-PL)", string.Join(Environment.NewLine + Environment.NewLine, _msPlLicense));
         }
 
         public static ObservableLicense GetExtendedWPFToolkitLicense()
         {
-            return new ObservableLicense("Extended WPF Toolkit", "Copyright © -2019 Xceed Software, Inc.", "Microsoft Public License (Ms-PL)", string.Join(Environment.NewLine + Environment.NewLine, _msPlLicense));
+            return new ObservableLicense("Wpf Extended Toolkit", "Copyright © 2007-2018 Xceed Software Inc.", "Microsoft Public License (Ms-PL)", string.Join(Environment.NewLine + Environment.NewLine, _msPlLicense));
         }
 
         private static readonly string[] _msPlLicense = {

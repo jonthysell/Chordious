@@ -28,6 +28,6 @@ Chordious proudly depends on the following open-source projects:
 
 * [MVVM Light Toolkit](http://mvvmlight.net) for MVVM infrastructure
 * [SVG.NET](https://github.com/vvvv/SVG) for rendering diagrams
-* [Extended WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit) for additional controls
+* [Wpf Extended Toolkit](https://github.com/dotnetprojects/WpfExtendedToolkit) for additional controls
 
 Copyright (c) 2013-2022 Jon Thysell

@@ -3,6 +3,8 @@
 ## next ##
 
 * Updated all projects to .NET 6
+* Update SVG.NET to v3.4.0
+* Switched from Extended WPF Toolkit v3.8.2 to Wpf Extended Toolkit v5.0.100
 * Changed update code to check GitHub releases
 
 ## 2.2.1 ##

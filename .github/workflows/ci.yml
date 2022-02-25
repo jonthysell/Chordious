@@ -48,7 +48,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        target: [Win32Setup, Win64Setup]
+        target: [Win32.Setup, Win64.Setup]
     steps:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1

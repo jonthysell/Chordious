@@ -1,6 +1,6 @@
 # Chordious Changelist #
 
-## next ##
+## 2.6 ##
 
 * Updated all projects to .NET 6
 * Update SVG.NET to v3.4.0

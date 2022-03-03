@@ -6,7 +6,8 @@
         WindowStartupLocation="CenterScreen"
         x:Class="Chordious.WPF.TextPromptWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=DotNetProjects.Wpf.Extended.Toolkit">
     <Window.InputBindings>
         <KeyBinding Command="{Binding Cancel, Mode=OneWay}"
                     Key="Escape" />
@@ -21,7 +22,15 @@
                  Margin="10,5"
                  MaxLines="1"
                  Name="InputTextBox"
-                 Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" />
+                 Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
+                 Visibility="{Binding AllowText, Converter={StaticResource BoolToVisibilityConverter}}" />
+        <xctk:IntegerUpDown AutomationProperties.LabeledBy="{Binding ElementName=PromptLabel}"
+                            Height="Auto"
+                            Margin="10,5"
+                            Minimum="0"
+                            Name="InputUpDown"
+                            Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
+                            Visibility="{Binding RequireInteger, Converter={StaticResource BoolToVisibilityConverter}}" />
         <StackPanel HorizontalAlignment="Right"
                     Orientation="Horizontal">
             <Button Command="{Binding Accept}"

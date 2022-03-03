@@ -47,15 +47,16 @@ namespace Chordious.Core.ViewModel
     {
         public TextPromptViewModel TextPromptVM { get; private set; }
 
-        public PromptForTextMessage(string prompt, Action<string> callback, bool allowBlank = false) : base()
+        public PromptForTextMessage(string prompt, Action<string> callback, bool allowBlank = false, bool requireInteger = false) : base()
         {
             TextPromptVM = new TextPromptViewModel(prompt, callback)
             {
-                AllowBlank = allowBlank
+                AllowBlank = allowBlank,
+                RequireInteger = requireInteger,
             };
         }
 
-        public PromptForTextMessage(string prompt, string defaultText, Action<string> callback, bool allowBlank = false) : this(prompt, callback, allowBlank)
+        public PromptForTextMessage(string prompt, string defaultText, Action<string> callback, bool allowBlank = false, bool requireInteger = false) : this(prompt, callback, allowBlank, requireInteger)
         {
             TextPromptVM.Text = defaultText;
         }

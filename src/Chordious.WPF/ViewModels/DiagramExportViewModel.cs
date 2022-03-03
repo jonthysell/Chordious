@@ -50,7 +50,10 @@ namespace Chordious.WPF
             }
             set
             {
-                SetSetting("diagramexport.outputpath", value);
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    SetSetting("diagramexport.outputpath", value);
+                }
                 RaisePropertyChanged(nameof(OutputPath));
                 RaisePropertyChanged(nameof(ExampleFilenameFormat));
             }
@@ -87,9 +90,9 @@ namespace Chordious.WPF
                         FilenameFormats.Add(value);
                     }
                     SetSetting("diagramexport.filenameformat", value);
-                    RaisePropertyChanged(nameof(SelectedFilenameFormat));
-                    RaisePropertyChanged(nameof(ExampleFilenameFormat));
                 }
+                RaisePropertyChanged(nameof(SelectedFilenameFormat));
+                RaisePropertyChanged(nameof(ExampleFilenameFormat));
             }
         }
 

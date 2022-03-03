@@ -1,6 +1,6 @@
 # Chordious Changelist #
 
-## next ##
+## 2.6.1 ##
 
 * Fixed issue with exporting scaled images
 * Fixed issue with setting the export output path blank 

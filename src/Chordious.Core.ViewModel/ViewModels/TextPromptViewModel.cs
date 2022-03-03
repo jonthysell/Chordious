@@ -60,6 +60,30 @@ namespace Chordious.Core.ViewModel
         }
         private bool _allowBlank;
 
+        public bool RequireInteger
+        {
+            get
+            {
+                return _requireInteger;
+            }
+            set
+            {
+                _requireInteger = value;
+                RaisePropertyChanged(nameof(RequireInteger));
+                RaisePropertyChanged(nameof(AllowText));
+                RaisePropertyChanged(nameof(Accept));
+            }
+        }
+        private bool _requireInteger;
+
+        public bool AllowText
+        {
+            get
+            {
+                return !_requireInteger;
+            }
+        }
+
         public RelayCommand Accept
         {
             get
@@ -77,7 +101,7 @@ namespace Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return AllowBlank || !string.IsNullOrWhiteSpace(Text);
+                    return (AllowBlank || !string.IsNullOrWhiteSpace(Text)) && (!RequireInteger || int.TryParse(Text, out _));
                 }));
             }
         }

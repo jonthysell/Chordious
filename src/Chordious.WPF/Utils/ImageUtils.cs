@@ -88,6 +88,10 @@ namespace Chordious.WPF
             
             if (scaleFactor != 1.0f)
             {
+                if (doc.Transforms is null)
+                {
+                    doc.Transforms = new Svg.Transforms.SvgTransformCollection();
+                }
                 doc.Transforms.Add(new Svg.Transforms.SvgScale(scaleFactor));
                 doc.Width = new SvgUnit(scaleFactor * width);
                 doc.Height = new SvgUnit(scaleFactor * height);

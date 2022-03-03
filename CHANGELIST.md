@@ -1,5 +1,11 @@
 # Chordious Changelist #
 
+## next ##
+
+* Fixed issue with exporting scaled images
+* Fixed issue with setting the export output path blank 
+* Updated prompts for numbers to use numeric spinners
+
 ## 2.6 ##
 
 * Updated all projects to .NET 6

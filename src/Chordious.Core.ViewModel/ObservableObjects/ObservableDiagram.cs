@@ -739,7 +739,7 @@ namespace Chordious.Core.ViewModel
                             {
                                 ExceptionUtils.HandleException(ex);
                             }
-                        }));
+                        }, false, true));
                     }
                     catch (Exception ex)
                     {
@@ -1166,7 +1166,7 @@ namespace Chordious.Core.ViewModel
                             {
                                 ExceptionUtils.HandleException(ex);
                             }
-                        }));
+                        }, false, true));
                     }
                     catch (Exception ex)
                     {

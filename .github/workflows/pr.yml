@@ -8,6 +8,7 @@ on:
   pull_request:
     branches:
       - main
+      - 2.6-official
 
 jobs:
   pr_build_and_test:

@@ -1,5 +1,10 @@
 # Chordious Changelist #
 
+## 2.6.2 ##
+
+* Reverted SVG.NET to v3.1.1
+* Fixed issue with chord quality abbreviations overlapping the root note in titles
+
 ## 2.6.1 ##
 
 * Fixed issue with exporting scaled images

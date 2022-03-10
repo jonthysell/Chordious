@@ -19,23 +19,23 @@
         <OutputPath>bin\$(Configuration)\$(Platform)\</OutputPath>
         <IntermediateOutputPath>obj\$(Configuration)\$(Platform)\</IntermediateOutputPath>
         <DefineConstants>Debug</DefineConstants>
-        <SuppressIces>ICE61;</SuppressIces>
+        <SuppressIces>ICE61;ICE40;</SuppressIces>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86'">
         <OutputPath>bin\$(Configuration)\$(Platform)\</OutputPath>
         <IntermediateOutputPath>obj\$(Configuration)\$(Platform)\</IntermediateOutputPath>
-        <SuppressIces>ICE61;</SuppressIces>
+        <SuppressIces>ICE61;ICE40;</SuppressIces>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64'">
         <OutputPath>bin\$(Configuration)\$(Platform)\</OutputPath>
         <IntermediateOutputPath>obj\$(Configuration)\$(Platform)\</IntermediateOutputPath>
         <DefineConstants>Debug</DefineConstants>
-        <SuppressIces>ICE61;</SuppressIces>
+        <SuppressIces>ICE61;ICE40;</SuppressIces>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64'">
         <OutputPath>bin\$(Configuration)\$(Platform)\</OutputPath>
         <IntermediateOutputPath>obj\$(Configuration)\$(Platform)\</IntermediateOutputPath>
-        <SuppressIces>ICE61;</SuppressIces>
+        <SuppressIces>ICE61;ICE40;</SuppressIces>
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="Generated Files\Chordious.$(Configuration).$(Platform).g.wxs">

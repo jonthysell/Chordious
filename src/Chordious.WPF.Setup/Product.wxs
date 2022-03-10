@@ -40,6 +40,8 @@
                   Value="Start Chordious" />
         <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX"
                   Value="1" />
+        <Property Id="REINSTALLMODE"
+                  Value="amus"/>
         <CustomAction Directory="INSTALLFOLDER"
                       ExeCommand="[#ChordiousWpfApp]"
                       Id="LaunchApplication"

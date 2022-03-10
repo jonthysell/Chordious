@@ -1,5 +1,9 @@
 # Chordious Changelist #
 
+## 2.6.3 ##
+
+* Republish to address issue where upgrades didn't include the right version of SVG.NET
+
 ## 2.6.2 ##
 
 * Reverted SVG.NET to v3.1.1

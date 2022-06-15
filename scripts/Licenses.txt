@@ -1,4 +1,6 @@
-﻿# Chordious #
+﻿# Licenses #
+
+## Chordious ##
 
 The MIT License (MIT)
 
@@ -22,7 +24,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-# MVVM Light #
+## MVVM Light ##
 
 The MIT License (MIT)
 
@@ -46,7 +48,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-# SVG.NET #
+## SVG.NET ##
 
 Microsoft Public License (Ms-PL)
 
@@ -111,7 +113,7 @@ cannot change. To the extent permitted under your local laws, the contributors
 exclude the implied warranties of merchantability, fitness for a particular
 purpose and non-infringement.
 
-# Wpf Extended Toolkit #
+## Wpf Extended Toolkit ##
 
 Microsoft Public License (Ms-PL)
 

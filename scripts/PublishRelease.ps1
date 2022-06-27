@@ -28,8 +28,6 @@ function Bump-Version {
 
 [string] $RepoRoot = Resolve-Path "$PSScriptRoot\.."
 
-[string] $OutputRoot = "bld"
-
 $StartingLocation = Get-Location
 Set-Location -Path $RepoRoot
 
@@ -38,33 +36,33 @@ try
 {
     [xml]$DirectoryBuildProps = Get-Content $DirectoryBuildPropsFile
 
-    $CurrentVersion = $DirectoryBuildProps.Project.PropertyGroup.Version
+    [string]$CurrentVersion = ([string]$DirectoryBuildProps.Project.PropertyGroup.Version).Trim()
 
     Write-Host "Current version: $CurrentVersion"
 
-    $NewVersion = Bump-Version $CurrentVersion $BumpPart
+    [string]$NewVersion = Bump-Version $CurrentVersion $BumpPart
 
     Write-Host "New version: $NewVersion"
 
     Write-Host "Updating $DirectoryBuildPropsFile with new version..."
-    (Get-Content $DirectoryBuildPropsFile).Replace($CurrentVersion, $NewVersion) | Set-Content $DirectoryBuildPropsFile
+    ((Get-Content $DirectoryBuildPropsFile).Replace($CurrentVersion, $NewVersion)) | Set-Content $DirectoryBuildPropsFile
 
     Write-Host "Updating $AppxManifestFile with new version..."
-    (Get-Content $AppxManifestFile).Replace($CurrentVersion, $NewVersion) | Set-Content $AppxManifestFile -Encoding 'utf8BOM'
+    ((Get-Content $AppxManifestFile).Replace($CurrentVersion, $NewVersion)) | Set-Content $AppxManifestFile -Encoding 'utf8BOM'
 
     Write-Host "Updating $ChangelogFile with new version..."
-    (Get-Content $ChangelogFile).Replace("## next ##", "## v$NewVersion ##") | Set-Content $ChangelogFile
+    ((Get-Content $ChangelogFile).Replace("## next ##", "## v$NewVersion ##")) | Set-Content $ChangelogFile
 
     Write-Host "Updating $UpdateXmlFile with new version..."
-    (Get-Content $UpdateXmlFile).Replace($CurrentVersion, $NewVersion) | Set-Content $UpdateXmlFile
-
-    Write-Host "Creating release commit..."
-    &git commit -a -m "Version v$NewVersion release"
-
-    Write-Host "Tagging release commit..."
-    &git tag v$NewVersion
+    ((Get-Content $UpdateXmlFile).Replace($CurrentVersion, $NewVersion)) | Set-Content $UpdateXmlFile
 
     if (!$Test) {
+        Write-Host "Creating release commit..."
+        &git commit -a -m "Version v$NewVersion release"
+
+        Write-Host "Tagging release commit..."
+        &git tag v$NewVersion
+    
         Write-Host "Pushing release commit..."
         &git push
 

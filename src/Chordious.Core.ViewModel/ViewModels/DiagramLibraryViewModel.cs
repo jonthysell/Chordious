@@ -15,7 +15,7 @@ namespace Chordious.Core.ViewModel
 {
     public class DiagramLibraryViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -23,7 +23,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string Title
+        public static string Title
         {
             get
             {
@@ -80,7 +80,7 @@ namespace Chordious.Core.ViewModel
 
         #region Nodes
 
-        public string NodesLabel
+        public static string NodesLabel
         {
             get
             {
@@ -88,7 +88,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NodesToolTip
+        public static string NodesToolTip
         {
             get
             {
@@ -119,7 +119,7 @@ namespace Chordious.Core.ViewModel
 
         #region CreateNode
 
-        public string CreateNodeLabel
+        public static string CreateNodeLabel
         {
             get
             {
@@ -127,7 +127,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string CreateNodeToolTip
+        public static string CreateNodeToolTip
         {
             get
             {
@@ -182,7 +182,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string EditNodeToolTip
+        public static string EditNodeToolTip
         {
             get
             {
@@ -242,7 +242,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DeleteNodeToolTip
+        public static string DeleteNodeToolTip
         {
             get
             {
@@ -305,7 +305,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string CloneNodeToolTip
+        public static string CloneNodeToolTip
         {
             get
             {
@@ -365,7 +365,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string CopyNodeToolTip
+        public static string CopyNodeToolTip
         {
             get
             {
@@ -417,7 +417,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MergeNodeToolTip
+        public static string MergeNodeToolTip
         {
             get
             {
@@ -469,7 +469,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string EditNodeStyleToolTip
+        public static string EditNodeStyleToolTip
         {
             get
             {

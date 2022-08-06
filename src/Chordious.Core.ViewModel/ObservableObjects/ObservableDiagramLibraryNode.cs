@@ -16,7 +16,7 @@ namespace Chordious.Core.ViewModel
 {
     public class ObservableDiagramLibraryNode : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -49,7 +49,7 @@ namespace Chordious.Core.ViewModel
 
         #region CreateDiagram
 
-        public string CreateDiagramLabel
+        public static string CreateDiagramLabel
         {
             get
             {
@@ -57,7 +57,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string CreateDiagramToolTip
+        public static string CreateDiagramToolTip
         {
             get
             {
@@ -90,7 +90,7 @@ namespace Chordious.Core.ViewModel
 
         #region EditSelected
 
-        public string EditSelectedLabel
+        public static string EditSelectedLabel
         {
             get
             {
@@ -98,7 +98,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string EditSelectedToolTip
+        public static string EditSelectedToolTip
         {
             get
             {
@@ -139,7 +139,7 @@ namespace Chordious.Core.ViewModel
 
         #region SendSelectedToClipboard
 
-        public string SendSelectedImageToClipboardLabel
+        public static string SendSelectedImageToClipboardLabel
         {
             get
             {
@@ -147,7 +147,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SendSelectedImageToClipboardToolTip
+        public static string SendSelectedImageToClipboardToolTip
         {
             get
             {
@@ -183,7 +183,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SendSelectedScaledImageToClipboardLabel
+        public static string SendSelectedScaledImageToClipboardLabel
         {
             get
             {
@@ -191,7 +191,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SendSelectedScaledImageToClipboardToolTip
+        public static string SendSelectedScaledImageToClipboardToolTip
         {
             get
             {
@@ -227,7 +227,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SendSelectedTextToClipboardLabel
+        public static string SendSelectedTextToClipboardLabel
         {
             get
             {
@@ -235,7 +235,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SendSelectedTextToClipboardToolTip
+        public static string SendSelectedTextToClipboardToolTip
         {
             get
             {
@@ -277,7 +277,7 @@ namespace Chordious.Core.ViewModel
 
         #region ResetStylesSelected
 
-        public string ResetStylesSelectedLabel
+        public static string ResetStylesSelectedLabel
         {
             get
             {
@@ -339,7 +339,7 @@ namespace Chordious.Core.ViewModel
 
         #region CloneSelected
 
-        public string CloneSelectedLabel
+        public static string CloneSelectedLabel
         {
             get
             {
@@ -390,7 +390,7 @@ namespace Chordious.Core.ViewModel
 
         #region CopySelected
 
-        public string CopySelectedLabel
+        public static string CopySelectedLabel
         {
             get
             {
@@ -433,7 +433,7 @@ namespace Chordious.Core.ViewModel
 
         #region MoveSelected
 
-        public string MoveSelectedLabel
+        public static string MoveSelectedLabel
         {
             get
             {
@@ -476,7 +476,7 @@ namespace Chordious.Core.ViewModel
 
         #region ExportSelected
 
-        public string ExportSelectedLabel
+        public static string ExportSelectedLabel
         {
             get
             {
@@ -519,7 +519,7 @@ namespace Chordious.Core.ViewModel
 
         #region DeleteSelected
 
-        public string DeleteSelectedLabel
+        public static string DeleteSelectedLabel
         {
             get
             {
@@ -585,7 +585,7 @@ namespace Chordious.Core.ViewModel
 
         #region CopyNode
 
-        public string CopyNodeLabel
+        public static string CopyNodeLabel
         {
             get
             {
@@ -593,7 +593,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string CopyNodeToolTip
+        public static string CopyNodeToolTip
         {
             get
             {
@@ -624,7 +624,7 @@ namespace Chordious.Core.ViewModel
 
         #region MergeNode
 
-        public string MergeNodeLabel
+        public static string MergeNodeLabel
         {
             get
             {
@@ -632,7 +632,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MergeNodeToolTip
+        public static string MergeNodeToolTip
         {
             get
             {
@@ -663,7 +663,7 @@ namespace Chordious.Core.ViewModel
 
         #region EditCollectionStyle
 
-        public string EditCollectionStyleLabel
+        public static string EditCollectionStyleLabel
         {
             get
             {

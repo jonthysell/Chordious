@@ -150,7 +150,7 @@ namespace Chordious.Core
 
             if (obj is not ScaleFinderResult sfr)
             {
-                throw new ArgumentException();
+                throw new ArgumentOutOfRangeException(nameof(obj));
             }
 
             return MarkUtils.Compare(Marks, sfr.Marks, Parent.ScaleFinderOptions.Instrument.NumStrings);

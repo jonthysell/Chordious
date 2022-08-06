@@ -13,7 +13,7 @@ namespace Chordious.Core.ViewModel
 {
     public class DiagramBarreEditorViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {

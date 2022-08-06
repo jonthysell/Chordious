@@ -12,7 +12,7 @@ namespace Chordious.Core.ViewModel
 {
     public class ConfirmationViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -20,7 +20,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string Title
+        public static string Title
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Chordious.Core.ViewModel
 
         public bool DisplayDialog { get; private set; } = true;
 
-        public string YesAndRememberLabel
+        public static string YesAndRememberLabel
         {
             get
             {

@@ -15,7 +15,7 @@ namespace Chordious.Core.ViewModel
 {
     public class OptionsViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -36,7 +36,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string UserConfigPath
+        public static string UserConfigPath
         {
             get
             {
@@ -60,7 +60,7 @@ namespace Chordious.Core.ViewModel
 
         #region Settings
 
-        public string SettingsGroupLabel
+        public static string SettingsGroupLabel
         {
             get
             {
@@ -68,7 +68,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SettingsAdvancedGroupLabel
+        public static string SettingsAdvancedGroupLabel
         {
             get
             {
@@ -76,7 +76,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowAdvancedSettingsLabel
+        public static string ShowAdvancedSettingsLabel
         {
             get
             {
@@ -84,7 +84,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowAdvancedSettingsToolTip
+        public static string ShowAdvancedSettingsToolTip
         {
             get
             {
@@ -140,7 +140,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _showAdvancedSettings;
 
-        public string ResetUserSettingsLabel
+        public static string ResetUserSettingsLabel
         {
             get
             {
@@ -148,7 +148,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ResetUserSettingsToolTip
+        public static string ResetUserSettingsToolTip
         {
             get
             {
@@ -189,7 +189,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _resetUserSettings;
 
-        public string ResetConfirmationsLabel
+        public static string ResetConfirmationsLabel
         {
             get
             {
@@ -197,7 +197,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ResetConfirmationsToolTip
+        public static string ResetConfirmationsToolTip
         {
             get
             {
@@ -242,7 +242,7 @@ namespace Chordious.Core.ViewModel
 
         #region Styles
 
-        public string StylesGroupLabel
+        public static string StylesGroupLabel
         {
             get
             {
@@ -250,7 +250,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string StylesBasicGroupLabel
+        public static string StylesBasicGroupLabel
         {
             get
             {
@@ -258,7 +258,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowStyleEditorLabel
+        public static string ShowStyleEditorLabel
         {
             get
             {
@@ -266,7 +266,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowStyleEditorToolTip
+        public static string ShowStyleEditorToolTip
         {
             get
             {
@@ -287,7 +287,7 @@ namespace Chordious.Core.ViewModel
         }
         private ObservableDiagramStyle _userStyle;
 
-        public string StylesAdvancedGroupLabel
+        public static string StylesAdvancedGroupLabel
         {
             get
             {
@@ -295,7 +295,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowAdvancedStyleLabel
+        public static string ShowAdvancedStyleLabel
         {
             get
             {
@@ -303,7 +303,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowAdvancedStyleToolTip
+        public static string ShowAdvancedStyleToolTip
         {
             get
             {
@@ -359,7 +359,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _showAdvancedStyle;
 
-        public string ResetUserStylesLabel
+        public static string ResetUserStylesLabel
         {
             get
             {
@@ -367,7 +367,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ResetUserStylesToolTip
+        public static string ResetUserStylesToolTip
         {
             get
             {
@@ -412,7 +412,7 @@ namespace Chordious.Core.ViewModel
 
         #region Finders
 
-        public string FindersGroupLabel
+        public static string FindersGroupLabel
         {
             get
             {
@@ -420,7 +420,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FindersManagersGroupLabel
+        public static string FindersManagersGroupLabel
         {
             get
             {
@@ -428,7 +428,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowInstrumentManagerLabel
+        public static string ShowInstrumentManagerLabel
         {
             get
             {
@@ -436,7 +436,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowInstrumentManagerToolTip
+        public static string ShowInstrumentManagerToolTip
         {
             get
             {
@@ -463,7 +463,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _showInstrumentManager;
 
-        public string ShowChordQualityManagerLabel
+        public static string ShowChordQualityManagerLabel
         {
             get
             {
@@ -471,7 +471,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowChordQualityManagerToolTip
+        public static string ShowChordQualityManagerToolTip
         {
             get
             {
@@ -498,7 +498,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _showChordQualityManager;
 
-        public string ShowScaleManagerLabel
+        public static string ShowScaleManagerLabel
         {
             get
             {
@@ -506,7 +506,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowScaleManagerToolTip
+        public static string ShowScaleManagerToolTip
         {
             get
             {
@@ -533,7 +533,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _showScaleManager;
 
-        public string FindersSearchDefaultsGroupLabel
+        public static string FindersSearchDefaultsGroupLabel
         {
             get
             {
@@ -541,7 +541,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ResetChordFinderDefaultsLabel
+        public static string ResetChordFinderDefaultsLabel
         {
             get
             {
@@ -549,7 +549,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ResetChordFinderDefaultsToolTip
+        public static string ResetChordFinderDefaultsToolTip
         {
             get
             {
@@ -590,7 +590,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _resetChordFinderDefaults;
 
-        public string ResetScaleFinderDefaultsLabel
+        public static string ResetScaleFinderDefaultsLabel
         {
             get
             {
@@ -598,7 +598,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ResetScaleFinderDefaultsToolTip
+        public static string ResetScaleFinderDefaultsToolTip
         {
             get
             {
@@ -643,7 +643,7 @@ namespace Chordious.Core.ViewModel
 
         #region Config
 
-        public string ConfigGroupLabel
+        public static string ConfigGroupLabel
         {
             get
             {
@@ -651,7 +651,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ConfigImportExportGroupLabel
+        public static string ConfigImportExportGroupLabel
         {
             get
             {
@@ -659,7 +659,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowConfigImportLabel
+        public static string ShowConfigImportLabel
         {
             get
             {
@@ -667,7 +667,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowConfigImportToolTip
+        public static string ShowConfigImportToolTip
         {
             get
             {
@@ -707,7 +707,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _showConfigImport;
 
-        public string ShowConfigExportLabel
+        public static string ShowConfigExportLabel
         {
             get
             {
@@ -715,7 +715,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowConfigExportToolTip
+        public static string ShowConfigExportToolTip
         {
             get
             {
@@ -742,7 +742,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _showConfigExport;
 
-        public string ConfigLegacyGroupLabel
+        public static string ConfigLegacyGroupLabel
         {
             get
             {
@@ -750,7 +750,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string LegacyImportLabel
+        public static string LegacyImportLabel
         {
             get
             {
@@ -758,7 +758,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string LegacyImportToolTip
+        public static string LegacyImportToolTip
         {
             get
             {

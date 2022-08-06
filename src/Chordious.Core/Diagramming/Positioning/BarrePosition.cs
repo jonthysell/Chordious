@@ -19,7 +19,7 @@ namespace Chordious.Core
             {
                 if (value < 1)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _fret = value;
             }
@@ -36,7 +36,7 @@ namespace Chordious.Core
             {
                 if (value < 1)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _startString = value;
             }
@@ -53,7 +53,7 @@ namespace Chordious.Core
             {
                 if (value < 1)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _endString = value;
             }

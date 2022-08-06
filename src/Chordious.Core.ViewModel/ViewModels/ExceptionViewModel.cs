@@ -12,7 +12,7 @@ namespace Chordious.Core.ViewModel
 {
     public class ExceptionViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -20,7 +20,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string Title
+        public static string Title
         {
             get
             {
@@ -36,7 +36,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DetailsLabel
+        public static string DetailsLabel
         {
             get
             {
@@ -44,7 +44,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DetailsToolTip
+        public static string DetailsToolTip
         {
             get
             {

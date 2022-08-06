@@ -176,6 +176,6 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _deleteNamedInterval;
 
-        public ChordQualityManagerViewModel() : base(AppViewModel.Instance.GetDefaultChordQualities, AppViewModel.Instance.GetUserChordQualities, AppViewModel.Instance.UserConfig.ChordQualities.Remove) { }
+        public ChordQualityManagerViewModel() : base(AppViewModel.GetDefaultChordQualities, AppViewModel.Instance.GetUserChordQualities, AppViewModel.Instance.UserConfig.ChordQualities.Remove) { }
     }
 }

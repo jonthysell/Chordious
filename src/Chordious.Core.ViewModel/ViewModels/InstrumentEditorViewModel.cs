@@ -12,7 +12,7 @@ namespace Chordious.Core.ViewModel
 {
     public class InstrumentEditorViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -28,7 +28,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NameLabel
+        public static string NameLabel
         {
             get
             {
@@ -36,7 +36,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NameToolTip
+        public static string NameToolTip
         {
             get
             {
@@ -59,7 +59,7 @@ namespace Chordious.Core.ViewModel
         }
         private string _name;
 
-        public string NumStringsLabel
+        public static string NumStringsLabel
         {
             get
             {
@@ -67,7 +67,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NumStringsToolTip
+        public static string NumStringsToolTip
         {
             get
             {
@@ -87,7 +87,7 @@ namespace Chordious.Core.ViewModel
                 {
                     if (value < 2)
                     {
-                        throw new ArgumentOutOfRangeException();
+                        throw new ArgumentOutOfRangeException(nameof(value));
                     }
 
                     _numStrings = value;

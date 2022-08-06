@@ -31,7 +31,7 @@ namespace Chordious.Core
             {
                 if (StringUtils.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentNullException();
+                    throw new ArgumentNullException(nameof(value));
                 }
 
                 _name = value.Trim();
@@ -102,7 +102,7 @@ namespace Chordious.Core
 
             if (obj is not DiagramLibraryNode node)
             {
-                throw new ArgumentException();
+                throw new ArgumentOutOfRangeException(nameof(obj));
             }
 
             int comparePaths = Path.CompareTo(node.Path);

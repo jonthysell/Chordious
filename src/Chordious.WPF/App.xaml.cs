@@ -27,7 +27,7 @@ namespace Chordious.WPF
 {
     public partial class App : Application, IAppView
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -134,7 +134,7 @@ namespace Chordious.WPF
             }));
         }
 
-        private string ResetAndBackupUserConfig(string userFile)
+        private static string ResetAndBackupUserConfig(string userFile)
         {
             if (string.IsNullOrWhiteSpace(userFile))
             {

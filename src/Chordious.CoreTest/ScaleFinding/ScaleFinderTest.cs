@@ -191,10 +191,10 @@ namespace Chordious.CoreTest
 
                 if (obj is not IScaleFinderResult sfr)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentOutOfRangeException(nameof(obj));
                 }
 
-                return (Marks.Except(sfr.Marks).Count() == 0 && sfr.Marks.Except(Marks).Count() == 0) ? 0 : -1;
+                return (!Marks.Except(sfr.Marks).Any() && !sfr.Marks.Except(Marks).Any()) ? 0 : -1;
             }
 
             public override bool Equals(object obj)

@@ -12,7 +12,7 @@ namespace Chordious.WPF
 {
     public class DiagramEditorViewModelExtended : DiagramEditorViewModel
     {
-        public string SelectedEditorRenderBackgroundLabel
+        public static string SelectedEditorRenderBackgroundLabel
         {
             get
             {
@@ -20,7 +20,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string SelectedEditorRenderBackgroundToolTip
+        public static string SelectedEditorRenderBackgroundToolTip
         {
             get
             {
@@ -41,7 +41,7 @@ namespace Chordious.WPF
             }
         }
 
-        public ObservableCollection<string> EditorRenderBackgrounds
+        public static ObservableCollection<string> EditorRenderBackgrounds
         {
             get
             {

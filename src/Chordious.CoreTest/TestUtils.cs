@@ -220,7 +220,7 @@ namespace Chordious.CoreTest
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine(string.Format("{0} test cases failed:", failedTestCases.Count));
 
-                sb.Append(failMessages.ToString());
+                sb.Append(failMessages);
 
                 Assert.Fail(sb.ToString());
             }

@@ -864,7 +864,7 @@ namespace Chordious.Core
             return sb.ToString();
         }
 
-        protected string CleanPrefix(string prefix)
+        protected static string CleanPrefix(string prefix)
         {
             if (StringUtils.IsNullOrWhiteSpace(prefix))
             {
@@ -876,7 +876,7 @@ namespace Chordious.Core
             return prefix;
         }
 
-        protected string CleanKey(string key)
+        protected static string CleanKey(string key)
         {
             if (StringUtils.IsNullOrWhiteSpace(key))
             {

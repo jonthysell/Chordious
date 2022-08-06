@@ -12,7 +12,7 @@ namespace Chordious.Core.ViewModel
 {
     public class TextPromptViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -20,7 +20,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string Title
+        public static string Title
         {
             get
             {

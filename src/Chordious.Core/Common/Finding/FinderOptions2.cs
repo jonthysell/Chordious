@@ -29,7 +29,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Settings.Set(Prefix + "numfrets", value);
@@ -51,7 +51,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Settings.Set(Prefix + "maxfret", value);
@@ -68,7 +68,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Settings.Set(Prefix + "maxreach", value);

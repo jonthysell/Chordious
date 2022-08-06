@@ -14,7 +14,7 @@ namespace Chordious.Core.ViewModel
 {
     public class DiagramMarkEditorViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Chordious.Core.ViewModel
 
         #region Properties
 
-        public string PropertiesGroupLabel
+        public static string PropertiesGroupLabel
         {
             get
             {
@@ -40,7 +40,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TextLabel
+        public static string TextLabel
         {
             get
             {
@@ -48,7 +48,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TextToolTip
+        public static string TextToolTip
         {
             get
             {
@@ -78,7 +78,7 @@ namespace Chordious.Core.ViewModel
         }
         private string _text;
 
-        public string SelectedMarkTypeLabel
+        public static string SelectedMarkTypeLabel
         {
             get
             {
@@ -86,7 +86,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedMarkTypeToolTip
+        public static string SelectedMarkTypeToolTip
         {
             get
             {
@@ -115,11 +115,11 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> MarkTypes
+        public static ObservableCollection<string> MarkTypes
         {
             get
             {
-                return Style.MarkTypes;
+                return ObservableDiagramStyle.MarkTypes;
             }
         }
 

@@ -14,7 +14,7 @@ namespace Chordious.Core.ViewModel
 {
     public class DiagramEditorViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Chordious.Core.ViewModel
 
         #region Group Labels
 
-        public string DimensionsGroupLabel
+        public static string DimensionsGroupLabel
         {
             get
             {
@@ -40,7 +40,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DiagramLayoutGroupLabel
+        public static string DiagramLayoutGroupLabel
         {
             get
             {
@@ -48,7 +48,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DiagramBackgroundGroupLabel
+        public static string DiagramBackgroundGroupLabel
         {
             get
             {
@@ -56,7 +56,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DiagramBorderGroupLabel
+        public static string DiagramBorderGroupLabel
         {
             get
             {
@@ -64,7 +64,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridSpacingGroupLabel
+        public static string GridSpacingGroupLabel
         {
             get
             {
@@ -72,7 +72,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridMarginGroupLabel
+        public static string GridMarginGroupLabel
         {
             get
             {
@@ -80,7 +80,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridBackgroundGroupLabel
+        public static string GridBackgroundGroupLabel
         {
             get
             {
@@ -88,7 +88,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridLineGroupLabel
+        public static string GridLineGroupLabel
         {
             get
             {
@@ -96,7 +96,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridNutGroupLabel
+        public static string GridNutGroupLabel
         {
             get
             {
@@ -104,7 +104,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleGroupLabel
+        public static string TitleGroupLabel
         {
             get
             {
@@ -112,7 +112,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleTextGroupLabel
+        public static string TitleTextGroupLabel
         {
             get
             {
@@ -120,7 +120,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleLayoutGroupLabel
+        public static string TitleLayoutGroupLabel
         {
             get
             {
@@ -128,7 +128,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedMarkTypeLabel
+        public static string SelectedMarkTypeLabel
         {
             get
             {
@@ -136,7 +136,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkBackgroundGroupLabel
+        public static string MarkBackgroundGroupLabel
         {
             get
             {
@@ -144,7 +144,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkBorderGroupLabel
+        public static string MarkBorderGroupLabel
         {
             get
             {
@@ -152,7 +152,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkTextGroupLabel
+        public static string MarkTextGroupLabel
         {
             get
             {
@@ -160,7 +160,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelTextGroupLabel
+        public static string FretLabelTextGroupLabel
         {
             get
             {
@@ -168,7 +168,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelLayoutGroupLabel
+        public static string FretLabelLayoutGroupLabel
         {
             get
             {
@@ -176,7 +176,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string BarreStyleGroupLabel
+        public static string BarreStyleGroupLabel
         {
             get
             {
@@ -184,7 +184,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string BarreLayoutGroupLabel
+        public static string BarreLayoutGroupLabel
         {
             get
             {
@@ -194,7 +194,7 @@ namespace Chordious.Core.ViewModel
 
         #endregion
 
-        public string ResetStylesLabel
+        public static string ResetStylesLabel
         {
             get
             {
@@ -202,7 +202,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ResetStylesToolTip
+        public static string ResetStylesToolTip
         {
             get
             {

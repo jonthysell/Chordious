@@ -10,7 +10,7 @@ namespace Chordious.Core.ViewModel
 {
     public class InformationViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {

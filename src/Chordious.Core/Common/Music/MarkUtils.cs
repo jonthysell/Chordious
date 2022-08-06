@@ -162,7 +162,7 @@ namespace Chordious.Core
 
             if (marksA.Length != marksB.Length)
             {
-                throw new ArgumentException();
+                throw new ArgumentOutOfRangeException(nameof(marksB));
             }
 
             MarkAnalysis analysisA = ChordAnalysis(marksA);
@@ -401,12 +401,12 @@ namespace Chordious.Core
             {
                 if (obj is null)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentNullException(nameof(obj));
                 }
 
                 if (obj is not MarkAnalysis ma)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentOutOfRangeException(nameof(obj));
                 }
 
                 // Order by presence of muted strings

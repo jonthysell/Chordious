@@ -29,7 +29,7 @@ namespace Chordious.Core
 
             if (obj is not ReverseChordFinderResult rcfr)
             {
-                throw new ArgumentException();
+                throw new ArgumentOutOfRangeException(nameof(obj));
             }
 
             return RootNote.CompareTo(rcfr.RootNote);

@@ -117,7 +117,7 @@ namespace Chordious.Core
             {
                 if (value < 0 || value > 1.0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Style.MarkStyleSet("mark.opacity", value, MarkType);
@@ -194,7 +194,7 @@ namespace Chordious.Core
             {
                 if (value < 0 || value > 1.0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Style.MarkStyleSet("mark.textsizeratio", value, MarkType);
@@ -271,7 +271,7 @@ namespace Chordious.Core
             {
                 if (value < 0 || value > 1.0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Style.MarkStyleSet("mark.textopacity", value, MarkType);
@@ -324,7 +324,7 @@ namespace Chordious.Core
             {
                 if (value < 0 || value > 1.0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Style.MarkStyleSet("mark.radiusratio", value, MarkType);
@@ -377,7 +377,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Style.MarkStyleSet("mark.borderthickness", value, MarkType);

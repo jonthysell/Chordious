@@ -41,7 +41,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AbbreviationLabel
+        public static string AbbreviationLabel
         {
             get
             {
@@ -49,7 +49,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AbbreviationToolTip
+        public static string AbbreviationToolTip
         {
             get
             {

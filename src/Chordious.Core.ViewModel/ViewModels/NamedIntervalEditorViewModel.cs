@@ -13,7 +13,7 @@ namespace Chordious.Core.ViewModel
 {
     public abstract class NamedIntervalEditorViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -23,7 +23,7 @@ namespace Chordious.Core.ViewModel
 
         public abstract string Title { get; }
 
-        public string NameLabel
+        public static string NameLabel
         {
             get
             {
@@ -48,7 +48,7 @@ namespace Chordious.Core.ViewModel
         }
         private string _name;
 
-        public string IntervalsLabel
+        public static string IntervalsLabel
         {
             get
             {
@@ -60,7 +60,7 @@ namespace Chordious.Core.ViewModel
 
         public ObservableCollection<NamedIntervalValue> Intervals { get; private set; } = null;
 
-        public string ExampleLabel
+        public static string ExampleLabel
         {
             get
             {
@@ -122,7 +122,7 @@ namespace Chordious.Core.ViewModel
         }
         private bool _readOnly;
 
-        public string AddIntervalLabel
+        public static string AddIntervalLabel
         {
             get
             {
@@ -130,7 +130,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AddIntervalToolTip
+        public static string AddIntervalToolTip
         {
             get
             {
@@ -163,7 +163,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _addInterval;
 
-        public string RemoveIntervalLabel
+        public static string RemoveIntervalLabel
         {
             get
             {
@@ -171,7 +171,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string RemoveIntervalToolTip
+        public static string RemoveIntervalToolTip
         {
             get
             {
@@ -318,7 +318,7 @@ namespace Chordious.Core.ViewModel
 
     public class NamedIntervalValue : ObservableObject
     {
-        public string ValueLabel
+        public static string ValueLabel
         {
             get
             {
@@ -326,7 +326,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ValueToolTip
+        public static string ValueToolTip
         {
             get
             {
@@ -344,7 +344,7 @@ namespace Chordious.Core.ViewModel
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _value = value;
                 ValueChanged?.Invoke(this, new EventArgs());

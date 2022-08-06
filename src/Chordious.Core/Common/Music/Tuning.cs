@@ -37,7 +37,7 @@ namespace Chordious.Core
             {
                 if (StringUtils.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentNullException();
+                    throw new ArgumentNullException(nameof(value));
                 }
 
                 if (ReadOnly)
@@ -89,12 +89,12 @@ namespace Chordious.Core
             {
                 if (value is null)
                 {
-                    throw new ArgumentNullException();
+                    throw new ArgumentNullException(nameof(value));
                 }
 
                 if (value.Length != Parent.Instrument.NumStrings)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 if (ReadOnly)
@@ -154,7 +154,7 @@ namespace Chordious.Core
 
                     if (rootNotes.Length != Parent.Instrument.NumStrings)
                     {
-                        throw new ArgumentOutOfRangeException();
+                        throw new ArgumentOutOfRangeException(nameof(parent));
                     }
 
                     for (int i = 0; i < rootNotes.Length; i++)
@@ -177,12 +177,12 @@ namespace Chordious.Core
 
             if (rootNotes is null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(rootNotes));
             }
 
             if (rootNotes.Length != Parent.Instrument.NumStrings)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(nameof(rootNotes));
             }
 
             if (ReadOnly)
@@ -275,7 +275,7 @@ namespace Chordious.Core
 
             if (obj is not Tuning tuning)
             {
-                throw new ArgumentException();
+                throw new ArgumentOutOfRangeException(nameof(obj));
             }
 
             return LongName.CompareTo(tuning.LongName);

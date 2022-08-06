@@ -46,7 +46,7 @@ namespace Chordious.Core.ViewModel
 
         #region Dimensions
 
-        public string TotalWidthLabel
+        public static string TotalWidthLabel
         {
             get
             {
@@ -54,7 +54,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TotalWidthToolTip
+        public static string TotalWidthToolTip
         {
             get
             {
@@ -70,7 +70,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TotalHeightLabel
+        public static string TotalHeightLabel
         {
             get
             {
@@ -78,7 +78,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TotalHeightToolTip
+        public static string TotalHeightToolTip
         {
             get
             {
@@ -94,7 +94,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NumFretsLabel
+        public static string NumFretsLabel
         {
             get
             {
@@ -102,7 +102,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NumFretsToolTip
+        public static string NumFretsToolTip
         {
             get
             {
@@ -131,7 +131,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NumStringsLabel
+        public static string NumStringsLabel
         {
             get
             {
@@ -139,7 +139,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NumStringsToolTip
+        public static string NumStringsToolTip
         {
             get
             {
@@ -172,7 +172,7 @@ namespace Chordious.Core.ViewModel
 
         #region Title
 
-        public string TitleLabel
+        public static string TitleLabel
         {
             get
             {
@@ -180,7 +180,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleToolTip
+        public static string TitleToolTip
         {
             get
             {
@@ -301,7 +301,7 @@ namespace Chordious.Core.ViewModel
 
         #region Marks
 
-        public string AddMarkLabel
+        public static string AddMarkLabel
         {
             get
             {
@@ -309,7 +309,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AddMarkToolTip
+        public static string AddMarkToolTip
         {
             get
             {
@@ -367,7 +367,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string EditMarkLabel
+        public static string EditMarkLabel
         {
             get
             {
@@ -375,7 +375,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string EditMarkToolTip
+        public static string EditMarkToolTip
         {
             get
             {
@@ -428,7 +428,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string RemoveMarkLabel
+        public static string RemoveMarkLabel
         {
             get
             {
@@ -436,7 +436,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string RemoveMarkToolTip
+        public static string RemoveMarkToolTip
         {
             get
             {
@@ -683,7 +683,7 @@ namespace Chordious.Core.ViewModel
 
         #region Barres
 
-        public string AddBarreLabel
+        public static string AddBarreLabel
         {
             get
             {
@@ -691,7 +691,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AddBarreToolTip
+        public static string AddBarreToolTip
         {
             get
             {
@@ -762,7 +762,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string EditBarreLabel
+        public static string EditBarreLabel
         {
             get
             {
@@ -770,7 +770,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string EditBarreToolTip
+        public static string EditBarreToolTip
         {
             get
             {
@@ -823,7 +823,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string RemoveBarreLabel
+        public static string RemoveBarreLabel
         {
             get
             {
@@ -831,7 +831,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string RemoveBarreToolTip
+        public static string RemoveBarreToolTip
         {
             get
             {
@@ -1076,7 +1076,7 @@ namespace Chordious.Core.ViewModel
             }
             set
             {
-                _postEditCallback = value ?? throw new ArgumentNullException();
+                _postEditCallback = value ?? throw new ArgumentNullException(nameof(value));
                 OnPropertyChanged(nameof(PostEditCallback));
             }
         }
@@ -1086,7 +1086,7 @@ namespace Chordious.Core.ViewModel
 
         #region SendToClipboard
 
-        public string SendImageToClipboardLabel
+        public static string SendImageToClipboardLabel
         {
             get
             {
@@ -1094,7 +1094,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SendImageToClipboardToolTip
+        public static string SendImageToClipboardToolTip
         {
             get
             {
@@ -1121,7 +1121,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _sendImageToClipboard;
 
-        public string SendScaledImageToClipboardLabel
+        public static string SendScaledImageToClipboardLabel
         {
             get
             {
@@ -1129,7 +1129,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SendScaledImageToClipboardToolTip
+        public static string SendScaledImageToClipboardToolTip
         {
             get
             {
@@ -1177,7 +1177,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _sendScaledImageToClipboard;
 
-        public string SendTextToClipboardLabel
+        public static string SendTextToClipboardLabel
         {
             get
             {
@@ -1185,7 +1185,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SendTextToClipboardToolTip
+        public static string SendTextToClipboardToolTip
         {
             get
             {
@@ -1271,7 +1271,7 @@ namespace Chordious.Core.ViewModel
             }
             set
             {
-                _diagram = value ?? throw new ArgumentNullException();
+                _diagram = value ?? throw new ArgumentNullException(nameof(value));
                 Refresh();
             }
         }

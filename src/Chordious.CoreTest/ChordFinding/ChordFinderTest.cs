@@ -202,7 +202,7 @@ namespace Chordious.CoreTest
 
                 if (obj is not IChordFinderResult cfr)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentOutOfRangeException(nameof(obj));
                 }
 
                 return Marks.SequenceEqual(cfr.Marks) ? 0 : -1;

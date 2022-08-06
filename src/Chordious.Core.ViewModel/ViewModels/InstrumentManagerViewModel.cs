@@ -14,7 +14,7 @@ namespace Chordious.Core.ViewModel
 {
     public class InstrumentManagerViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -22,7 +22,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string Title
+        public static string Title
         {
             get
             {
@@ -82,7 +82,7 @@ namespace Chordious.Core.ViewModel
         }
         private ObservableInstrument _instrument;
 
-        public string DefaultInstrumentsGroupLabel
+        public static string DefaultInstrumentsGroupLabel
         {
             get
             {
@@ -90,7 +90,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DefaultInstrumentsGroupToolTip
+        public static string DefaultInstrumentsGroupToolTip
         {
             get
             {
@@ -135,7 +135,7 @@ namespace Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableInstrument> _defaultInstruments;
 
-        public string UserInstrumentsGroupLabel
+        public static string UserInstrumentsGroupLabel
         {
             get
             {
@@ -143,7 +143,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string UserInstrumentsGroupToolTip
+        public static string UserInstrumentsGroupToolTip
         {
             get
             {
@@ -188,7 +188,7 @@ namespace Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableInstrument> _userInstruments;
 
-        public string TuningsGroupLabel
+        public static string TuningsGroupLabel
         {
             get
             {
@@ -196,7 +196,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TuningsGroupToolTip
+        public static string TuningsGroupToolTip
         {
             get
             {
@@ -257,7 +257,7 @@ namespace Chordious.Core.ViewModel
 
         #region AddInstrument
 
-        public string AddInstrumentLabel
+        public static string AddInstrumentLabel
         {
             get
             {
@@ -265,7 +265,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AddInstrumentToolTip
+        public static string AddInstrumentToolTip
         {
             get
             {
@@ -320,7 +320,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string EditInstrumentToolTip
+        public static string EditInstrumentToolTip
         {
             get
             {
@@ -378,7 +378,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DeleteInstrumentToolTip
+        public static string DeleteInstrumentToolTip
         {
             get
             {
@@ -426,7 +426,7 @@ namespace Chordious.Core.ViewModel
 
         #region AddTuning
 
-        public string AddTuningLabel
+        public static string AddTuningLabel
         {
             get
             {
@@ -434,7 +434,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AddTuningToolTip
+        public static string AddTuningToolTip
         {
             get
             {
@@ -494,7 +494,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string EditTuningToolTip
+        public static string EditTuningToolTip
         {
             get
             {
@@ -554,7 +554,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DeleteTuningToolTip
+        public static string DeleteTuningToolTip
         {
             get
             {
@@ -615,7 +615,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string CopyTuningToolTip
+        public static string CopyTuningToolTip
         {
             get
             {
@@ -707,13 +707,13 @@ namespace Chordious.Core.ViewModel
 
         public InstrumentManagerViewModel()
         {
-            _defaultInstruments = AppVM.GetDefaultInstruments();
+            _defaultInstruments = AppViewModel.GetDefaultInstruments();
             _userInstruments = AppVM.GetUserInstruments();
         }
 
         internal void Refresh(Instrument selectedInstrument = null, Tuning selectedTuning = null)
         {
-            DefaultInstruments = AppVM.GetDefaultInstruments();
+            DefaultInstruments = AppViewModel.GetDefaultInstruments();
             UserInstruments = AppVM.GetUserInstruments();
 
             if (selectedInstrument is null)

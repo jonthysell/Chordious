@@ -72,7 +72,7 @@ namespace Chordious.Core
                 }
             }
 
-            throw new ArgumentException();
+            throw new ArgumentOutOfRangeException(nameof(note));
         }
 
         public static InternalNote ToInternalNote(Note note)
@@ -110,7 +110,7 @@ namespace Chordious.Core
                     return InternalNote.B;
             }
 
-            throw new ArgumentException();
+            throw new ArgumentOutOfRangeException(nameof(note));
         }
 
         public static Note ToNote(InternalNote note, InternalNoteStringStyle style)
@@ -183,7 +183,7 @@ namespace Chordious.Core
                     return Note.B;
             }
 
-            throw new ArgumentException();
+            throw new ArgumentOutOfRangeException(nameof(note));
         }
 
         public static InternalNote Shift(InternalNote root, int steps)

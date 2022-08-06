@@ -17,7 +17,7 @@ namespace Chordious.WPF
 {
     public class DiagramExportViewModel : DiagramExportViewModelBase
     {
-        public string OutputPathLabel
+        public static string OutputPathLabel
         {
             get
             {
@@ -25,7 +25,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string OutputPathToolTip
+        public static string OutputPathToolTip
         {
             get
             {
@@ -59,7 +59,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string SelectedFilenameFormatLabel
+        public static string SelectedFilenameFormatLabel
         {
             get
             {
@@ -67,7 +67,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string SelectedFilenameFormatToolTip
+        public static string SelectedFilenameFormatToolTip
         {
             get
             {
@@ -104,13 +104,13 @@ namespace Chordious.WPF
             }
             set
             {
-                _filenameFormats = value ?? throw new ArgumentNullException();
+                _filenameFormats = value ?? throw new ArgumentNullException(nameof(value));
                 OnPropertyChanged(nameof(FilenameFormats));
             }
         }
         private ObservableCollection<string> _filenameFormats;
 
-        public string ExampleFilenameFormatLabel
+        public static string ExampleFilenameFormatLabel
         {
             get
             {
@@ -118,7 +118,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string ExampleFilenameFormatToolTip
+        public static string ExampleFilenameFormatToolTip
         {
             get
             {
@@ -134,7 +134,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string SelectedExportFormatLabel
+        public static string SelectedExportFormatLabel
         {
             get
             {
@@ -142,7 +142,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string SelectedExportFormatToolTip
+        public static string SelectedExportFormatToolTip
         {
             get
             {
@@ -193,7 +193,7 @@ namespace Chordious.WPF
         }
         private ObservableCollection<string> _exportFormats;
 
-        public string OverwriteFilesLabel
+        public static string OverwriteFilesLabel
         {
             get
             {
@@ -201,7 +201,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string OverwriteFilesToolTip
+        public static string OverwriteFilesToolTip
         {
             get
             {
@@ -236,7 +236,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string ScaleFactorLabel
+        public static string ScaleFactorLabel
         {
             get
             {
@@ -244,7 +244,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string ScaleFactorToolTip
+        public static string ScaleFactorToolTip
         {
             get
             {
@@ -270,7 +270,7 @@ namespace Chordious.WPF
                 {
                     if (value <= 0.0f || value > MaxScaleFactor)
                     {
-                        throw new ArgumentOutOfRangeException();
+                        throw new ArgumentOutOfRangeException(nameof(value));
                     }
 
                     SetSetting("diagramexport.scalefactor", value);
@@ -288,7 +288,7 @@ namespace Chordious.WPF
 
         public float MaxScaleFactor => ImageUtils.GetMaxScaleFactor(MaxWidth, MaxHeight);
 
-        public string ChooseOutputPathLabel
+        public static string ChooseOutputPathLabel
         {
             get
             {
@@ -296,7 +296,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string ChooseOutputPathToolTip
+        public static string ChooseOutputPathToolTip
         {
             get
             {
@@ -481,7 +481,7 @@ namespace Chordious.WPF
             return collection;
         }
 
-        private ObservableCollection<string> GetExportFormats()
+        private static ObservableCollection<string> GetExportFormats()
         {
             ObservableCollection<string> collection = new ObservableCollection<string>
             {

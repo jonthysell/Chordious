@@ -17,7 +17,7 @@ namespace Chordious.Core.Legacy
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _width = value;
             }
@@ -34,7 +34,7 @@ namespace Chordious.Core.Legacy
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _height = value;
             }
@@ -51,7 +51,7 @@ namespace Chordious.Core.Legacy
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _strokeWidth = value;
             }
@@ -68,7 +68,7 @@ namespace Chordious.Core.Legacy
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _margin = value;
             }
@@ -85,7 +85,7 @@ namespace Chordious.Core.Legacy
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _fontSize = value;
             }
@@ -102,7 +102,7 @@ namespace Chordious.Core.Legacy
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException();
+                    throw new ArgumentNullException(nameof(value));
                 }
                 _fontFamily = value;
             }

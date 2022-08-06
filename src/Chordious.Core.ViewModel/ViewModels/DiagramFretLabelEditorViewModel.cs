@@ -13,7 +13,7 @@ namespace Chordious.Core.ViewModel
 {
     public class DiagramFretLabelEditorViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -31,7 +31,7 @@ namespace Chordious.Core.ViewModel
 
         #region Properties
 
-        public string PropertiesGroupLabel
+        public static string PropertiesGroupLabel
         {
             get
             {
@@ -39,7 +39,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TextLabel
+        public static string TextLabel
         {
             get
             {
@@ -47,7 +47,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TextToolTip
+        public static string TextToolTip
         {
             get
             {

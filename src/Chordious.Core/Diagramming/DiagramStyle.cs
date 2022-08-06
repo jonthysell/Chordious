@@ -48,7 +48,7 @@ namespace Chordious.Core
             {
                 if (value < 2)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("newdiagram.numstrings", value);
@@ -77,7 +77,7 @@ namespace Chordious.Core
             {
                 if (value < 1)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("newdiagram.numfrets", value);
@@ -182,7 +182,7 @@ namespace Chordious.Core
             {
                 if (value < 0 || value > 1.0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("diagram.opacity", value);
@@ -235,7 +235,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("diagram.borderthickness", value);
@@ -268,7 +268,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("grid.margin", value);
@@ -321,7 +321,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("grid.marginleft", value);
@@ -374,7 +374,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("grid.marginright", value);
@@ -427,7 +427,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("grid.margintop", value);
@@ -480,7 +480,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("grid.marginbottom", value);
@@ -509,7 +509,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("grid.fretspacing", value);
@@ -538,7 +538,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("grid.stringspacing", value);
@@ -591,7 +591,7 @@ namespace Chordious.Core
             {
                 if (value < 0 || value > 1.0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("grid.opacity", value);
@@ -644,7 +644,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("grid.linethickness", value);
@@ -697,7 +697,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("grid.nutratio", value);
@@ -730,7 +730,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("title.gridpadding", value);
@@ -759,7 +759,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("title.textsize", value);
@@ -788,7 +788,7 @@ namespace Chordious.Core
             {
                 if (value < 0 || value > 1.0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("title.textmodratio", value);
@@ -961,7 +961,7 @@ namespace Chordious.Core
             {
                 if (value < 0 || value > 1.0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("title.textopacity", value);
@@ -1429,7 +1429,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("barre.arcratio", value);
@@ -1458,7 +1458,7 @@ namespace Chordious.Core
             {
                 if (value < 0 || value > 1.0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("barre.opacity", value);
@@ -1511,7 +1511,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 Set("barre.linethickness", value);
@@ -1646,7 +1646,7 @@ namespace Chordious.Core
             return style;
         }
 
-        private string ToSvgStyle(string key, string svgStyle, string rawValue)
+        private static string ToSvgStyle(string key, string svgStyle, string rawValue)
         {
             string value = rawValue;
 

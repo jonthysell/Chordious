@@ -14,7 +14,7 @@ namespace Chordious.Core.ViewModel
 {
     public class DiagramStyleEditorViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -138,7 +138,7 @@ namespace Chordious.Core.ViewModel
         }
         private bool _diagramStyleChanged = false;
 
-        public string SelectedStyleLabel
+        public static string SelectedStyleLabel
         {
             get
             {
@@ -146,7 +146,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedStyleToolTip
+        public static string SelectedStyleToolTip
         {
             get
             {
@@ -172,7 +172,7 @@ namespace Chordious.Core.ViewModel
             {
                 if (value < 0 || value > Styles.Count)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 _selectedStyleIndex = value;

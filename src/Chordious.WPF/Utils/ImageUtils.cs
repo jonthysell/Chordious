@@ -323,8 +323,8 @@ namespace Chordious.WPF
         {
             BitmapMetadata metadata = null;
 
-            string appName = AppVM.ProgramTitle;
-            string comment = AppVM.Watermark;
+            string appName = AppViewModel.ProgramTitle;
+            string comment = AppViewModel.Watermark;
 
             if (exportFormat == ExportFormat.PNG)
             {

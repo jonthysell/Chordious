@@ -107,7 +107,7 @@ namespace Chordious.Core
             return d;
         }
 
-        private string GetText(InternalNote?[] notes, int str, MarkTextOption markTextOption)
+        private static string GetText(InternalNote?[] notes, int str, MarkTextOption markTextOption)
         {
             if (str < 0 || str >= notes.Length)
             {
@@ -144,7 +144,7 @@ namespace Chordious.Core
 
             if (obj is not ChordFinderResult cfr)
             {
-                throw new ArgumentException();
+                throw new ArgumentOutOfRangeException(nameof(obj));
             }
 
             return MarkUtils.Compare(Marks, cfr.Marks);

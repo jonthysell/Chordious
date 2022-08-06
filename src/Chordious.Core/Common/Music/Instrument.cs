@@ -18,7 +18,7 @@ namespace Chordious.Core
             }
             private set
             {
-                _parent = value ?? throw new ArgumentNullException();
+                _parent = value ?? throw new ArgumentNullException(nameof(value));
             }
         }
         private InstrumentSet _parent;
@@ -41,7 +41,7 @@ namespace Chordious.Core
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException();
+                    throw new ArgumentNullException(nameof(value));
                 }
 
                 if (ReadOnly)
@@ -72,7 +72,7 @@ namespace Chordious.Core
             {
                 if (value < 2)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
                 if (ReadOnly)
@@ -175,7 +175,7 @@ namespace Chordious.Core
 
             if (obj is not Instrument instrument)
             {
-                throw new ArgumentException();
+                throw new ArgumentOutOfRangeException(nameof(obj));
             }
 
             return Name.CompareTo(instrument.Name);

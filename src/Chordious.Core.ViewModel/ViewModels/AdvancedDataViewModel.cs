@@ -15,7 +15,7 @@ namespace Chordious.Core.ViewModel
 {
     public class AdvancedDataViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -47,7 +47,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string KeyHeaderLabel
+        public static string KeyHeaderLabel
         {
             get
             {
@@ -55,7 +55,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ValueHeaderLabel
+        public static string ValueHeaderLabel
         {
             get
             {
@@ -63,7 +63,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string LevelHeaderLabel
+        public static string LevelHeaderLabel
         {
             get
             {

@@ -17,7 +17,7 @@ namespace Chordious.Core.ViewModel
 
     public abstract class NamedIntervalManagerViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -139,7 +139,7 @@ namespace Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableNamedInterval> _userNamedIntervals;
 
-        public string AddNamedIntervalLabel
+        public static string AddNamedIntervalLabel
         {
             get
             {

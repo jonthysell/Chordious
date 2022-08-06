@@ -19,7 +19,7 @@ namespace Chordious.Core.ViewModel
 
         public IAppView AppView { get; private set; }
 
-        public string ProgramTitle
+        public static string ProgramTitle
         {
             get
             {
@@ -27,7 +27,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string Version
+        public static string Version
         {
             get
             {
@@ -35,7 +35,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string Watermark
+        public static string Watermark
         {
             get
             {
@@ -45,7 +45,7 @@ namespace Chordious.Core.ViewModel
 
         #region General Labels
 
-        public string PathLabel
+        public static string PathLabel
         {
             get
             {
@@ -53,7 +53,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NameLabel
+        public static string NameLabel
         {
             get
             {
@@ -61,7 +61,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string CountLabel
+        public static string CountLabel
         {
             get
             {
@@ -69,7 +69,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedLabel
+        public static string SelectedLabel
         {
             get
             {
@@ -77,7 +77,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string YesLabel
+        public static string YesLabel
         {
             get
             {
@@ -85,7 +85,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NoLabel
+        public static string NoLabel
         {
             get
             {
@@ -93,7 +93,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string IncludeLabel
+        public static string IncludeLabel
         {
             get
             {
@@ -101,7 +101,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string OptionsLabel
+        public static string OptionsLabel
         {
             get
             {
@@ -109,7 +109,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string StyleLabel
+        public static string StyleLabel
         {
             get
             {
@@ -117,7 +117,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ApplyLabel
+        public static string ApplyLabel
         {
             get
             {
@@ -125,7 +125,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AcceptLabel
+        public static string AcceptLabel
         {
             get
             {
@@ -133,7 +133,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string CancelLabel
+        public static string CancelLabel
         {
             get
             {
@@ -143,7 +143,7 @@ namespace Chordious.Core.ViewModel
 
         #endregion
 
-        internal ConfigFile DefaultConfig
+        internal static ConfigFile DefaultConfig
         {
             get
             {
@@ -338,7 +338,7 @@ namespace Chordious.Core.ViewModel
             return collection;
         }
 
-        public ObservableCollection<ObservableInstrument> GetDefaultInstruments()
+        public static ObservableCollection<ObservableInstrument> GetDefaultInstruments()
         {
             ObservableCollection<ObservableInstrument> collection = new ObservableCollection<ObservableInstrument>();
 
@@ -401,7 +401,7 @@ namespace Chordious.Core.ViewModel
             return collection;
         }
 
-        public ObservableCollection<ObservableChordQuality> GetDefaultChordQualities()
+        public static ObservableCollection<ObservableChordQuality> GetDefaultChordQualities()
         {
             ObservableCollection<ObservableChordQuality> collection = new ObservableCollection<ObservableChordQuality>();
 
@@ -464,7 +464,7 @@ namespace Chordious.Core.ViewModel
             return collection;
         }
 
-        public ObservableCollection<ObservableScale> GetDefaultScales()
+        public static ObservableCollection<ObservableScale> GetDefaultScales()
         {
             ObservableCollection<ObservableScale> collection = new ObservableCollection<ObservableScale>();
 

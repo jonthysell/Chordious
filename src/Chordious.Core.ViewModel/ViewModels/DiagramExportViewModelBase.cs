@@ -17,7 +17,7 @@ namespace Chordious.Core.ViewModel
 {
     public abstract class DiagramExportViewModelBase : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -25,7 +25,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string Title
+        public static string Title
         {
             get
             {
@@ -58,7 +58,7 @@ namespace Chordious.Core.ViewModel
             {
                 if (value < 0 || value > 1.0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _percentComplete = value;
                 OnPropertyChanged(nameof(PercentComplete));
@@ -86,7 +86,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ExportAsyncLabel
+        public static string ExportAsyncLabel
         {
             get
             {
@@ -94,7 +94,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ExportAsyncToolTip
+        public static string ExportAsyncToolTip
         {
             get
             {

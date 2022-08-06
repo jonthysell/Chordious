@@ -853,7 +853,7 @@ namespace Chordious.Core
             }
         }
 
-        private bool Within(double value, double center, double range)
+        private static bool Within(double value, double center, double range)
         {
             if (range < 0)
             {
@@ -863,7 +863,7 @@ namespace Chordious.Core
             return (value >= (center - range)) && (value <= (center + range));
         }
 
-        private double Remap(double value, double sourceMin, double sourceMax, double destMin, double destMax)
+        private static double Remap(double value, double sourceMin, double sourceMax, double destMin, double destMax)
         {
             if (value <= sourceMin)
             {
@@ -1153,9 +1153,7 @@ namespace Chordious.Core
                     totalHeight / 2.0);
 
                 // Need to swap here since we used Gets instead of Totals above
-                double temp = totalHeight;
-                totalHeight = totalWidth;
-                totalWidth = temp;
+                (totalWidth, totalHeight) = (totalHeight, totalWidth);
             }
 
             return string.Format(CultureInfo.InvariantCulture, SvgConstants.BASE, totalWidth, totalHeight, AppInfo.Watermark, imageText);

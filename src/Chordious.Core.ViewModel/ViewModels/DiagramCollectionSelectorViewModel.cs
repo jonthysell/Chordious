@@ -14,7 +14,7 @@ namespace Chordious.Core.ViewModel
 {
     public class DiagramCollectionSelectorViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -22,7 +22,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string Title
+        public static string Title
         {
             get
             {
@@ -30,7 +30,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string CollectionNameLabel
+        public static string CollectionNameLabel
         {
             get
             {
@@ -38,7 +38,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string CollectionNameToolTip
+        public static string CollectionNameToolTip
         {
             get
             {
@@ -157,7 +157,7 @@ namespace Chordious.Core.ViewModel
             Callback(CollectionName, newCollection);
         }
 
-        private ObservableCollection<string> GetCollectionNames()
+        private static ObservableCollection<string> GetCollectionNames()
         {
             ObservableCollection<string> collection = new ObservableCollection<string>();
 

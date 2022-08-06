@@ -15,7 +15,7 @@ namespace Chordious.Core.Legacy
             }
             set
             {
-                _title = value ?? throw new ArgumentNullException();
+                _title = value ?? throw new ArgumentNullException(nameof(value));
             }
         }
         private string _title;
@@ -58,7 +58,7 @@ namespace Chordious.Core.Legacy
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _numStrings = value;
 
@@ -90,7 +90,7 @@ namespace Chordious.Core.Legacy
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _numFrets = value;
             }
@@ -107,7 +107,7 @@ namespace Chordious.Core.Legacy
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _baseLine = value;
             }
@@ -137,7 +137,7 @@ namespace Chordious.Core.Legacy
             {
                 if (value is null)
                 {
-                    throw new ArgumentNullException();
+                    throw new ArgumentNullException(nameof(value));
                 }
 
                 // Init _marks

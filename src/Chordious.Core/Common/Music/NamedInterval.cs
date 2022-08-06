@@ -20,7 +20,7 @@ namespace Chordious.Core
             }
             protected set
             {
-                _parent = value ?? throw new ArgumentNullException();
+                _parent = value ?? throw new ArgumentNullException(nameof(value));
             }
         }
         private NamedIntervalSet _parent;
@@ -43,7 +43,7 @@ namespace Chordious.Core
             {
                 if (StringUtils.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentNullException();
+                    throw new ArgumentNullException(nameof(value));
                 }
 
                 if (ReadOnly)
@@ -90,7 +90,7 @@ namespace Chordious.Core
                 }
 
                 int[] oldValue = _intervals;
-                _intervals = value ?? throw new ArgumentNullException();
+                _intervals = value ?? throw new ArgumentNullException(nameof(value));
 
                 // Resort with parent
                 if (UpdateParent)
@@ -287,7 +287,7 @@ namespace Chordious.Core
 
             if (obj is not NamedInterval namedInterval)
             {
-                throw new ArgumentException();
+                throw new ArgumentOutOfRangeException(nameof(obj));
             }
 
             return LongName.CompareTo(namedInterval.LongName);

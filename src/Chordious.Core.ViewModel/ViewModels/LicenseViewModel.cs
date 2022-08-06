@@ -13,7 +13,7 @@ namespace Chordious.Core.ViewModel
 {
     public class LicensesViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -21,7 +21,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string Title
+        public static string Title
         {
             get
             {
@@ -65,12 +65,12 @@ namespace Chordious.Core.ViewModel
             };
         }
 
-        private ObservableLicense GetChordiousLicense()
+        private static ObservableLicense GetChordiousLicense()
         {
             return new ObservableLicense(AppInfo.Product, AppInfo.Copyright, AppInfo.MitLicenseName, AppInfo.MitLicenseBody);
         }
 
-        private ObservableLicense GetMvvmLightLicense()
+        private static ObservableLicense GetMvvmLightLicense()
         {
             return new ObservableLicense("MVVM Toolkit", "Copyright © .NET Foundation and Contributors", AppInfo.MitLicenseName, AppInfo.MitLicenseBody);
         }

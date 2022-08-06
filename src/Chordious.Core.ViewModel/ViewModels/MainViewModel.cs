@@ -13,7 +13,7 @@ namespace Chordious.Core.ViewModel
 {
     public class MainViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -21,7 +21,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string Title
+        public static string Title
         {
             get
             {
@@ -29,7 +29,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FullProgramName
+        public static string FullProgramName
         {
             get
             {
@@ -37,7 +37,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string Description
+        public static string Description
         {
             get
             {
@@ -51,7 +51,7 @@ namespace Chordious.Core.ViewModel
 
         #region LaunchWebsite
 
-        public string LaunchWebsiteLabel
+        public static string LaunchWebsiteLabel
         {
             get
             {
@@ -59,7 +59,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string LaunchWebsiteToolTip
+        public static string LaunchWebsiteToolTip
         {
             get
             {
@@ -103,7 +103,7 @@ namespace Chordious.Core.ViewModel
 
         #region ShowLicenses
 
-        public string ShowLicensesLabel
+        public static string ShowLicensesLabel
         {
             get
             {
@@ -111,7 +111,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowLicensesToolTip
+        public static string ShowLicensesToolTip
         {
             get
             {
@@ -142,7 +142,7 @@ namespace Chordious.Core.ViewModel
 
         #region ShowChordFinder
 
-        public string ShowChordFinderLabel
+        public static string ShowChordFinderLabel
         {
             get
             {
@@ -150,7 +150,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowChordFinderToolTip
+        public static string ShowChordFinderToolTip
         {
             get
             {
@@ -181,7 +181,7 @@ namespace Chordious.Core.ViewModel
 
         #region ShowScaleFinder
 
-        public string ShowScaleFinderLabel
+        public static string ShowScaleFinderLabel
         {
             get
             {
@@ -189,7 +189,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowScaleFinderToolTip
+        public static string ShowScaleFinderToolTip
         {
             get
             {
@@ -220,7 +220,7 @@ namespace Chordious.Core.ViewModel
 
         #region Show Diagram Library
 
-        public string ShowDiagramLibraryLabel
+        public static string ShowDiagramLibraryLabel
         {
             get
             {
@@ -228,7 +228,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowDiagramLibraryToolTip
+        public static string ShowDiagramLibraryToolTip
         {
             get
             {
@@ -259,7 +259,7 @@ namespace Chordious.Core.ViewModel
 
         #region Show Instrument Manager
 
-        public string ShowInstrumentManagerLabel
+        public static string ShowInstrumentManagerLabel
         {
             get
             {
@@ -267,7 +267,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowInstrumentManagerToolTip
+        public static string ShowInstrumentManagerToolTip
         {
             get
             {
@@ -298,7 +298,7 @@ namespace Chordious.Core.ViewModel
 
         #region Show Options
 
-        public string ShowOptionsLabel
+        public static string ShowOptionsLabel
         {
             get
             {
@@ -306,7 +306,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowOptionsToolTip
+        public static string ShowOptionsToolTip
         {
             get
             {
@@ -350,7 +350,7 @@ namespace Chordious.Core.ViewModel
 
         #region Show Help
 
-        public string ShowHelpLabel
+        public static string ShowHelpLabel
         {
             get
             {
@@ -358,7 +358,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowHelpToolTip
+        public static string ShowHelpToolTip
         {
             get
             {

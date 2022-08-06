@@ -17,7 +17,7 @@ namespace Chordious.WPF
     {
         #region Backgrounds
 
-        public string SettingsBackgroundGroupLabel
+        public static string SettingsBackgroundGroupLabel
         {
             get
             {
@@ -25,7 +25,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string SelectedRenderBackgroundLabel
+        public static string SelectedRenderBackgroundLabel
         {
             get
             {
@@ -33,7 +33,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string SelectedRenderBackgroundToolTip
+        public static string SelectedRenderBackgroundToolTip
         {
             get
             {
@@ -81,7 +81,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string SelectedEditorRenderBackgroundLabel
+        public static string SelectedEditorRenderBackgroundLabel
         {
             get
             {
@@ -89,7 +89,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string SelectedEditorRenderBackgroundToolTip
+        public static string SelectedEditorRenderBackgroundToolTip
         {
             get
             {
@@ -141,7 +141,7 @@ namespace Chordious.WPF
 
         #region Integrations
 
-        public string SettingsIntegrationGroupLabel
+        public static string SettingsIntegrationGroupLabel
         {
             get
             {
@@ -149,7 +149,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string EnhancedCopyLabel
+        public static string EnhancedCopyLabel
         {
             get
             {
@@ -157,7 +157,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string EnhancedCopyToolTip
+        public static string EnhancedCopyToolTip
         {
             get
             {
@@ -184,7 +184,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string OpenTempFolderLabel
+        public static string OpenTempFolderLabel
         {
             get
             {
@@ -192,7 +192,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string OpenTempFolderToolTip
+        public static string OpenTempFolderToolTip
         {
             get
             {
@@ -224,7 +224,7 @@ namespace Chordious.WPF
 
         #region Updates
 
-        public bool UpdateEnabled
+        public static bool UpdateEnabled
         {
             get
             {
@@ -232,7 +232,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string UpdatesGroupLabel
+        public static string UpdatesGroupLabel
         {
             get
             {
@@ -240,7 +240,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string SelectedReleaseChannelLabel
+        public static string SelectedReleaseChannelLabel
         {
             get
             {
@@ -248,7 +248,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string SelectedReleaseChannelToolTip
+        public static string SelectedReleaseChannelToolTip
         {
             get
             {
@@ -296,7 +296,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string CheckUpdateOnStartLabel
+        public static string CheckUpdateOnStartLabel
         {
             get
             {
@@ -304,7 +304,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string CheckUpdateOnStartToolTip
+        public static string CheckUpdateOnStartToolTip
         {
             get
             {
@@ -331,7 +331,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string LastUpdateCheckLabel
+        public static string LastUpdateCheckLabel
         {
             get
             {
@@ -339,7 +339,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string LastUpdateCheckToolTip
+        public static string LastUpdateCheckToolTip
         {
             get
             {
@@ -347,7 +347,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string LastUpdateCheck
+        public static string LastUpdateCheck
         {
             get
             {
@@ -362,7 +362,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string CheckForUpdatesAsyncLabel
+        public static string CheckForUpdatesAsyncLabel
         {
             get
             {
@@ -370,7 +370,7 @@ namespace Chordious.WPF
             }
         }
 
-        public string CheckForUpdatesAsyncToolTip
+        public static string CheckForUpdatesAsyncToolTip
         {
             get
             {
@@ -396,7 +396,7 @@ namespace Chordious.WPF
                     finally
                     {
                         IsIdle = true;
-                        OnPropertyChanged(nameof(LastUpdateCheck));
+                        OnPropertyChanged(nameof(WPF.OptionsViewModelExtended.LastUpdateCheck));
                     }
                 }, () =>
                 {

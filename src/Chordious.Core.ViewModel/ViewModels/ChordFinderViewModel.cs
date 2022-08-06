@@ -17,7 +17,7 @@ namespace Chordious.Core.ViewModel
 {
     public class ChordFinderViewModel : ObservableObject, IIdle
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -25,7 +25,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string Title
+        public static string Title
         {
             get
             {
@@ -53,7 +53,7 @@ namespace Chordious.Core.ViewModel
 
         #region Instruments
 
-        public string SelectedInstrumentLabel
+        public static string SelectedInstrumentLabel
         {
             get
             {
@@ -61,7 +61,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedInstrumentToolTip
+        public static string SelectedInstrumentToolTip
         {
             get
             {
@@ -125,7 +125,7 @@ namespace Chordious.Core.ViewModel
 
         #region Tunings
 
-        public string SelectedTuningLabel
+        public static string SelectedTuningLabel
         {
             get
             {
@@ -133,7 +133,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedTuningToolTip
+        public static string SelectedTuningToolTip
         {
             get
             {
@@ -187,7 +187,7 @@ namespace Chordious.Core.ViewModel
 
         #endregion
 
-        public string ShowInstrumentManagerLabel
+        public static string ShowInstrumentManagerLabel
         {
             get
             {
@@ -195,7 +195,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowInstrumentManagerToolTip
+        public static string ShowInstrumentManagerToolTip
         {
             get
             {
@@ -227,7 +227,7 @@ namespace Chordious.Core.ViewModel
 
         #region RootNote
 
-        public string SelectedRootNoteLabel
+        public static string SelectedRootNoteLabel
         {
             get
             {
@@ -235,7 +235,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedRootNoteToolTip
+        public static string SelectedRootNoteToolTip
         {
             get
             {
@@ -266,7 +266,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> RootNotes
+        public static ObservableCollection<string> RootNotes
         {
             get
             {
@@ -278,7 +278,7 @@ namespace Chordious.Core.ViewModel
 
         #region ChordQuality
 
-        public string SelectedChordQualityLabel
+        public static string SelectedChordQualityLabel
         {
             get
             {
@@ -286,7 +286,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedChordQualityToolTip
+        public static string SelectedChordQualityToolTip
         {
             get
             {
@@ -338,7 +338,7 @@ namespace Chordious.Core.ViewModel
         }
         private ObservableCollection<ObservableChordQuality> _chordQualities;
 
-        public string ShowChordQualityManagerLabel
+        public static string ShowChordQualityManagerLabel
         {
             get
             {
@@ -346,7 +346,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ShowChordQualityManagerToolTip
+        public static string ShowChordQualityManagerToolTip
         {
             get
             {
@@ -385,7 +385,7 @@ namespace Chordious.Core.ViewModel
 
         #endregion
 
-        public string NumFretsLabel
+        public static string NumFretsLabel
         {
             get
             {
@@ -393,7 +393,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NumFretsToolTip
+        public static string NumFretsToolTip
         {
             get
             {
@@ -425,7 +425,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MaxReachLabel
+        public static string MaxReachLabel
         {
             get
             {
@@ -433,7 +433,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MaxReachToolTip
+        public static string MaxReachToolTip
         {
             get
             {
@@ -465,7 +465,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MaxFretLabel
+        public static string MaxFretLabel
         {
             get
             {
@@ -473,7 +473,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MaxFretToolTip
+        public static string MaxFretToolTip
         {
             get
             {
@@ -504,7 +504,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AllowOpenStringsLabel
+        public static string AllowOpenStringsLabel
         {
             get
             {
@@ -512,7 +512,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AllowOpenStringsToolTip
+        public static string AllowOpenStringsToolTip
         {
             get
             {
@@ -533,7 +533,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AllowMutedStringsLabel
+        public static string AllowMutedStringsLabel
         {
             get
             {
@@ -541,7 +541,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AllowMutedStringsToolTip
+        public static string AllowMutedStringsToolTip
         {
             get
             {
@@ -562,7 +562,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AllowRootlessChordsLabel
+        public static string AllowRootlessChordsLabel
         {
             get
             {
@@ -570,7 +570,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AllowRootlessChordsToolTip
+        public static string AllowRootlessChordsToolTip
         {
             get
             {
@@ -591,7 +591,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AllowPartialChordsLabel
+        public static string AllowPartialChordsLabel
         {
             get
             {
@@ -599,7 +599,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AllowPartialChordsToolTip
+        public static string AllowPartialChordsToolTip
         {
             get
             {
@@ -624,7 +624,7 @@ namespace Chordious.Core.ViewModel
 
         #region Styles
 
-        public string AddTitleLabel
+        public static string AddTitleLabel
         {
             get
             {
@@ -632,7 +632,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AddTitleToolTip
+        public static string AddTitleToolTip
         {
             get
             {
@@ -653,7 +653,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MirrorResultsLabel
+        public static string MirrorResultsLabel
         {
             get
             {
@@ -661,7 +661,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MirrorResultsToolTip
+        public static string MirrorResultsToolTip
         {
             get
             {
@@ -682,7 +682,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedBarreTypeOptionLabel
+        public static string SelectedBarreTypeOptionLabel
         {
             get
             {
@@ -690,7 +690,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedBarreTypeOptionToolTip
+        public static string SelectedBarreTypeOptionToolTip
         {
             get
             {
@@ -711,7 +711,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> BarreTypeOptions
+        public static ObservableCollection<string> BarreTypeOptions
         {
             get
             {
@@ -719,7 +719,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AddRootNotesLabel
+        public static string AddRootNotesLabel
         {
             get
             {
@@ -727,7 +727,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AddRootNotesToolTip
+        public static string AddRootNotesToolTip
         {
             get
             {
@@ -748,7 +748,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedMarkTextOptionLabel
+        public static string SelectedMarkTextOptionLabel
         {
             get
             {
@@ -756,7 +756,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedMarkTextOptionToolTip
+        public static string SelectedMarkTextOptionToolTip
         {
             get
             {
@@ -777,7 +777,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> MarkTextOptions
+        public static ObservableCollection<string> MarkTextOptions
         {
             get
             {
@@ -785,7 +785,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AddBottomMarksLabel
+        public static string AddBottomMarksLabel
         {
             get
             {
@@ -793,7 +793,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string AddBottomMarksToolTip
+        public static string AddBottomMarksToolTip
         {
             get
             {
@@ -827,7 +827,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedBottomMarkTextOptionLabel
+        public static string SelectedBottomMarkTextOptionLabel
         {
             get
             {
@@ -835,7 +835,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedBottomMarkTextOptionToolTip
+        public static string SelectedBottomMarkTextOptionToolTip
         {
             get
             {
@@ -843,7 +843,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> BottomMarkTextOptions
+        public static ObservableCollection<string> BottomMarkTextOptions
         {
             get
             {
@@ -851,7 +851,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedFretLabelSideLabel
+        public static string SelectedFretLabelSideLabel
         {
             get
             {
@@ -859,7 +859,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedFretLabelSideToolTip
+        public static string SelectedFretLabelSideToolTip
         {
             get
             {
@@ -880,7 +880,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> FretLabelSides
+        public static ObservableCollection<string> FretLabelSides
         {
             get
             {
@@ -890,7 +890,7 @@ namespace Chordious.Core.ViewModel
 
         #endregion
 
-        public string SetAsDefaultsLabel
+        public static string SetAsDefaultsLabel
         {
             get
             {
@@ -898,7 +898,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SetAsDefaultsToolTip
+        public static string SetAsDefaultsToolTip
         {
             get
             {
@@ -943,7 +943,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _setAsDefaults;
 
-        public string ResetToDefaultsLabel
+        public static string ResetToDefaultsLabel
         {
             get
             {
@@ -951,7 +951,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ResetToDefaultsToolTip
+        public static string ResetToDefaultsToolTip
         {
             get
             {
@@ -993,7 +993,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _resetToDefaults;
 
-        public string SearchAsyncLabel
+        public static string SearchAsyncLabel
         {
             get
             {
@@ -1001,7 +1001,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SearchAsyncToolTip
+        public static string SearchAsyncToolTip
         {
             get
             {
@@ -1102,7 +1102,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _cancelSearch;
 
-        public string SaveSelectedLabel
+        public static string SaveSelectedLabel
         {
             get
             {
@@ -1110,7 +1110,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SaveSelectedToolTip
+        public static string SaveSelectedToolTip
         {
             get
             {
@@ -1158,7 +1158,7 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _saveSelected;
 
-        public string EditSelectedLabel
+        public static string EditSelectedLabel
         {
             get
             {
@@ -1166,7 +1166,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string EditSelectedToolTip
+        public static string EditSelectedToolTip
         {
             get
             {
@@ -1205,7 +1205,7 @@ namespace Chordious.Core.ViewModel
 
         #region SendToClipboard
 
-        public string SendSelectedImageToClipboardLabel
+        public static string SendSelectedImageToClipboardLabel
         {
             get
             {
@@ -1213,7 +1213,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SendSelectedImageToClipboardToolTip
+        public static string SendSelectedImageToClipboardToolTip
         {
             get
             {
@@ -1249,7 +1249,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SendSelectedScaledImageToClipboardLabel
+        public static string SendSelectedScaledImageToClipboardLabel
         {
             get
             {
@@ -1257,7 +1257,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SendSelectedScaledImageToClipboardToolTip
+        public static string SendSelectedScaledImageToClipboardToolTip
         {
             get
             {
@@ -1293,7 +1293,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SendSelectedTextToClipboardLabel
+        public static string SendSelectedTextToClipboardLabel
         {
             get
             {
@@ -1301,7 +1301,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SendSelectedTextToClipboardToolTip
+        public static string SendSelectedTextToClipboardToolTip
         {
             get
             {
@@ -1501,7 +1501,7 @@ namespace Chordious.Core.ViewModel
                 }
 
                 return results;
-            });
+            }, CancellationToken.None);
         }
 
         private Task<ObservableDiagram> RenderChordAsync(IChordFinderResult result)

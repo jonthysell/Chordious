@@ -175,6 +175,6 @@ namespace Chordious.Core.ViewModel
         }
         private RelayCommand _deleteNamedInterval;
 
-        public ScaleManagerViewModel() : base(AppViewModel.Instance.GetDefaultScales, AppViewModel.Instance.GetUserScales, AppViewModel.Instance.UserConfig.Scales.Remove) { }
+        public ScaleManagerViewModel() : base(AppViewModel.GetDefaultScales, AppViewModel.Instance.GetUserScales, AppViewModel.Instance.UserConfig.Scales.Remove) { }
     }
 }

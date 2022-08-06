@@ -65,7 +65,7 @@ namespace Chordious.Core.ViewModel
 
         #region Diagram
 
-        public string DiagramGroupLabel
+        public static string DiagramGroupLabel
         {
             get
             {
@@ -75,7 +75,7 @@ namespace Chordious.Core.ViewModel
 
         #region Layout
 
-        public string DiagramLayoutGroupLabel
+        public static string DiagramLayoutGroupLabel
         {
             get
             {
@@ -104,7 +104,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedOrientationLabel
+        public static string SelectedOrientationLabel
         {
             get
             {
@@ -112,7 +112,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedOrientationToolTip
+        public static string SelectedOrientationToolTip
         {
             get
             {
@@ -140,7 +140,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> Orientations
+        public static ObservableCollection<string> Orientations
         {
             get
             {
@@ -169,7 +169,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedLabelLayoutModelLabel
+        public static string SelectedLabelLayoutModelLabel
         {
             get
             {
@@ -177,7 +177,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedLabelLayoutModelToolTip
+        public static string SelectedLabelLayoutModelToolTip
         {
             get
             {
@@ -205,7 +205,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> LabelLayoutModels
+        public static ObservableCollection<string> LabelLayoutModels
         {
             get
             {
@@ -217,7 +217,7 @@ namespace Chordious.Core.ViewModel
 
         #region Background
 
-        public string DiagramBackgroundGroupLabel
+        public static string DiagramBackgroundGroupLabel
         {
             get
             {
@@ -246,7 +246,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DiagramColorLabel
+        public static string DiagramColorLabel
         {
             get
             {
@@ -254,7 +254,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DiagramColorToolTip
+        public static string DiagramColorToolTip
         {
             get
             {
@@ -306,7 +306,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DiagramOpacityLabel
+        public static string DiagramOpacityLabel
         {
             get
             {
@@ -314,7 +314,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DiagramOpacityToolTip
+        public static string DiagramOpacityToolTip
         {
             get
             {
@@ -346,7 +346,7 @@ namespace Chordious.Core.ViewModel
 
         #region Border
 
-        public string DiagramBorderGroupLabel
+        public static string DiagramBorderGroupLabel
         {
             get
             {
@@ -375,7 +375,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DiagramBorderColorLabel
+        public static string DiagramBorderColorLabel
         {
             get
             {
@@ -383,7 +383,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DiagramBorderColorToolTip
+        public static string DiagramBorderColorToolTip
         {
             get
             {
@@ -435,7 +435,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DiagramBorderThicknessLabel
+        public static string DiagramBorderThicknessLabel
         {
             get
             {
@@ -443,7 +443,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string DiagramBorderThicknessToolTip
+        public static string DiagramBorderThicknessToolTip
         {
             get
             {
@@ -475,7 +475,7 @@ namespace Chordious.Core.ViewModel
 
         #region NewDiagram
 
-        public string NewDiagramGroupLabel
+        public static string NewDiagramGroupLabel
         {
             get
             {
@@ -504,7 +504,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NewDiagramNumStringsLabel
+        public static string NewDiagramNumStringsLabel
         {
             get
             {
@@ -512,7 +512,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NewDiagramNumStringsToolTip
+        public static string NewDiagramNumStringsToolTip
         {
             get
             {
@@ -561,7 +561,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NewDiagramNumFretsLabel
+        public static string NewDiagramNumFretsLabel
         {
             get
             {
@@ -569,7 +569,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NewDiagramNumFretsToolTip
+        public static string NewDiagramNumFretsToolTip
         {
             get
             {
@@ -603,7 +603,7 @@ namespace Chordious.Core.ViewModel
 
         #region Grid
 
-        public string GridGroupLabel
+        public static string GridGroupLabel
         {
             get
             {
@@ -611,7 +611,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridMarginGroupLabel
+        public static string GridMarginGroupLabel
         {
             get
             {
@@ -640,7 +640,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridMarginLabel
+        public static string GridMarginLabel
         {
             get
             {
@@ -648,7 +648,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridMarginToolTip
+        public static string GridMarginToolTip
         {
             get
             {
@@ -697,7 +697,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridMarginLeftLabel
+        public static string GridMarginLeftLabel
         {
             get
             {
@@ -705,7 +705,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridMarginLeftToolTip
+        public static string GridMarginLeftToolTip
         {
             get
             {
@@ -754,7 +754,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridMarginRightLabel
+        public static string GridMarginRightLabel
         {
             get
             {
@@ -762,7 +762,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridMarginRightToolTip
+        public static string GridMarginRightToolTip
         {
             get
             {
@@ -811,7 +811,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridMarginTopLabel
+        public static string GridMarginTopLabel
         {
             get
             {
@@ -819,7 +819,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridMarginTopToolTip
+        public static string GridMarginTopToolTip
         {
             get
             {
@@ -868,7 +868,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridMarginBottomLabel
+        public static string GridMarginBottomLabel
         {
             get
             {
@@ -876,7 +876,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridMarginBottomToolTip
+        public static string GridMarginBottomToolTip
         {
             get
             {
@@ -904,7 +904,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridSpacingGroupLabel
+        public static string GridSpacingGroupLabel
         {
             get
             {
@@ -933,7 +933,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridFretSpacingLabel
+        public static string GridFretSpacingLabel
         {
             get
             {
@@ -941,7 +941,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridFretSpacingToolTip
+        public static string GridFretSpacingToolTip
         {
             get
             {
@@ -990,7 +990,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridStringSpacingLabel
+        public static string GridStringSpacingLabel
         {
             get
             {
@@ -998,7 +998,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridStringSpacingToolTip
+        public static string GridStringSpacingToolTip
         {
             get
             {
@@ -1026,7 +1026,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridBackgroundGroupLabel
+        public static string GridBackgroundGroupLabel
         {
             get
             {
@@ -1055,7 +1055,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridColorLabel
+        public static string GridColorLabel
         {
             get
             {
@@ -1063,7 +1063,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridColorToolTip
+        public static string GridColorToolTip
         {
             get
             {
@@ -1115,7 +1115,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridOpacityLabel
+        public static string GridOpacityLabel
         {
             get
             {
@@ -1123,7 +1123,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridOpacityToolTip
+        public static string GridOpacityToolTip
         {
             get
             {
@@ -1151,7 +1151,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridLineGroupLabel
+        public static string GridLineGroupLabel
         {
             get
             {
@@ -1180,7 +1180,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridLineColorLabel
+        public static string GridLineColorLabel
         {
             get
             {
@@ -1188,7 +1188,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridLineColorToolTip
+        public static string GridLineColorToolTip
         {
             get
             {
@@ -1240,7 +1240,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridLineThicknessLabel
+        public static string GridLineThicknessLabel
         {
             get
             {
@@ -1248,7 +1248,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridLineThicknessToolTip
+        public static string GridLineThicknessToolTip
         {
             get
             {
@@ -1276,7 +1276,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridNutGroupLabel
+        public static string GridNutGroupLabel
         {
             get
             {
@@ -1305,7 +1305,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridNutVisibleLabel
+        public static string GridNutVisibleLabel
         {
             get
             {
@@ -1313,7 +1313,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridNutVisibleToolTip
+        public static string GridNutVisibleToolTip
         {
             get
             {
@@ -1362,7 +1362,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridNutRatioLabel
+        public static string GridNutRatioLabel
         {
             get
             {
@@ -1370,7 +1370,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string GridNutRatioToolTip
+        public static string GridNutRatioToolTip
         {
             get
             {
@@ -1402,7 +1402,7 @@ namespace Chordious.Core.ViewModel
 
         #region Title
 
-        public string TitleGroupLabel
+        public static string TitleGroupLabel
         {
             get
             {
@@ -1412,7 +1412,7 @@ namespace Chordious.Core.ViewModel
 
         #region Layout
 
-        public string TitleLayoutGroupLabel
+        public static string TitleLayoutGroupLabel
         {
             get
             {
@@ -1441,7 +1441,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleVisibleLabel
+        public static string TitleVisibleLabel
         {
             get
             {
@@ -1449,7 +1449,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleVisibleToolTip
+        public static string TitleVisibleToolTip
         {
             get
             {
@@ -1498,7 +1498,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleGridPaddingLabel
+        public static string TitleGridPaddingLabel
         {
             get
             {
@@ -1506,7 +1506,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleGridPaddingToolTip
+        public static string TitleGridPaddingToolTip
         {
             get
             {
@@ -1555,7 +1555,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedTitleTextAlignmentLabel
+        public static string SelectedTitleTextAlignmentLabel
         {
             get
             {
@@ -1563,7 +1563,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedTitleTextAlignmentToolTip
+        public static string SelectedTitleTextAlignmentToolTip
         {
             get
             {
@@ -1591,7 +1591,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> TitleTextAlignments
+        public static ObservableCollection<string> TitleTextAlignments
         {
             get
             {
@@ -1603,7 +1603,7 @@ namespace Chordious.Core.ViewModel
 
         #region Text
 
-        public string TitleTextGroupLabel
+        public static string TitleTextGroupLabel
         {
             get
             {
@@ -1632,7 +1632,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleFontFamilyLabel
+        public static string TitleFontFamilyLabel
         {
             get
             {
@@ -1640,7 +1640,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleFontFamilyToolTip
+        public static string TitleFontFamilyToolTip
         {
             get
             {
@@ -1693,7 +1693,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleTextSizeLabel
+        public static string TitleTextSizeLabel
         {
             get
             {
@@ -1701,7 +1701,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleTextSizeToolTip
+        public static string TitleTextSizeToolTip
         {
             get
             {
@@ -1750,7 +1750,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleTextSizeModRatioLabel
+        public static string TitleTextSizeModRatioLabel
         {
             get
             {
@@ -1758,7 +1758,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleTextSizeModRatioToolTip
+        public static string TitleTextSizeModRatioToolTip
         {
             get
             {
@@ -1807,7 +1807,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedTitleTextStyleLabel
+        public static string SelectedTitleTextStyleLabel
         {
             get
             {
@@ -1815,7 +1815,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedTitleTextStyleToolTip
+        public static string SelectedTitleTextStyleToolTip
         {
             get
             {
@@ -1843,7 +1843,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> TitleTextStyles
+        public static ObservableCollection<string> TitleTextStyles
         {
             get
             {
@@ -1872,7 +1872,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedTitleLabelStyleLabel
+        public static string SelectedTitleLabelStyleLabel
         {
             get
             {
@@ -1880,7 +1880,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedTitleLabelStyleToolTip
+        public static string SelectedTitleLabelStyleToolTip
         {
             get
             {
@@ -1908,7 +1908,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> TitleLabelStyles
+        public static ObservableCollection<string> TitleLabelStyles
         {
             get
             {
@@ -1937,7 +1937,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleColorLabel
+        public static string TitleColorLabel
         {
             get
             {
@@ -1945,7 +1945,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleColorToolTip
+        public static string TitleColorToolTip
         {
             get
             {
@@ -1997,7 +1997,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleOpacityLabel
+        public static string TitleOpacityLabel
         {
             get
             {
@@ -2005,7 +2005,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string TitleOpacityToolTip
+        public static string TitleOpacityToolTip
         {
             get
             {
@@ -2039,7 +2039,7 @@ namespace Chordious.Core.ViewModel
 
         #region Marks
 
-        public string SelectedMarkTypeLabel
+        public static string SelectedMarkTypeLabel
         {
             get
             {
@@ -2047,7 +2047,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedMarkTypeToolTip
+        public static string SelectedMarkTypeToolTip
         {
             get
             {
@@ -2075,7 +2075,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> MarkTypes
+        public static ObservableCollection<string> MarkTypes
         {
             get
             {
@@ -2083,7 +2083,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarksGroupLabel
+        public static string MarksGroupLabel
         {
             get
             {
@@ -2093,7 +2093,7 @@ namespace Chordious.Core.ViewModel
 
         #region Background
 
-        public string MarkBackgroundGroupLabel
+        public static string MarkBackgroundGroupLabel
         {
             get
             {
@@ -2122,7 +2122,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedMarkShapeLabel
+        public static string SelectedMarkShapeLabel
         {
             get
             {
@@ -2130,7 +2130,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedMarkShapeToolTip
+        public static string SelectedMarkShapeToolTip
         {
             get
             {
@@ -2158,7 +2158,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> MarkShapes
+        public static ObservableCollection<string> MarkShapes
         {
             get
             {
@@ -2187,7 +2187,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkVisibleLabel
+        public static string MarkVisibleLabel
         {
             get
             {
@@ -2195,7 +2195,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkVisibleToolTip
+        public static string MarkVisibleToolTip
         {
             get
             {
@@ -2244,7 +2244,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkColorLabel
+        public static string MarkColorLabel
         {
             get
             {
@@ -2252,7 +2252,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkColorToolTip
+        public static string MarkColorToolTip
         {
             get
             {
@@ -2304,7 +2304,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkOpacityLabel
+        public static string MarkOpacityLabel
         {
             get
             {
@@ -2312,7 +2312,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkOpacityToolTip
+        public static string MarkOpacityToolTip
         {
             get
             {
@@ -2361,7 +2361,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkRadiusRatioLabel
+        public static string MarkRadiusRatioLabel
         {
             get
             {
@@ -2369,7 +2369,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkRadiusRatioToolTip
+        public static string MarkRadiusRatioToolTip
         {
             get
             {
@@ -2401,7 +2401,7 @@ namespace Chordious.Core.ViewModel
 
         #region Border
 
-        public string MarkBorderGroupLabel
+        public static string MarkBorderGroupLabel
         {
             get
             {
@@ -2430,7 +2430,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkBorderColorLabel
+        public static string MarkBorderColorLabel
         {
             get
             {
@@ -2438,7 +2438,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkBorderColorToolTip
+        public static string MarkBorderColorToolTip
         {
             get
             {
@@ -2487,7 +2487,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkBorderThicknessLabel
+        public static string MarkBorderThicknessLabel
         {
             get
             {
@@ -2495,7 +2495,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkBorderThicknessToolTip
+        public static string MarkBorderThicknessToolTip
         {
             get
             {
@@ -2527,7 +2527,7 @@ namespace Chordious.Core.ViewModel
 
         #region Text
 
-        public string MarkTextGroupLabel
+        public static string MarkTextGroupLabel
         {
             get
             {
@@ -2556,7 +2556,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedMarkTextAlignmentLabel
+        public static string SelectedMarkTextAlignmentLabel
         {
             get
             {
@@ -2564,7 +2564,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedMarkTextAlignmentToolTip
+        public static string SelectedMarkTextAlignmentToolTip
         {
             get
             {
@@ -2592,7 +2592,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> MarkTextAlignments
+        public static ObservableCollection<string> MarkTextAlignments
         {
             get
             {
@@ -2621,7 +2621,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkTextVisibleLabel
+        public static string MarkTextVisibleLabel
         {
             get
             {
@@ -2629,7 +2629,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkTextVisibleToolTip
+        public static string MarkTextVisibleToolTip
         {
             get
             {
@@ -2678,7 +2678,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkTextColorLabel
+        public static string MarkTextColorLabel
         {
             get
             {
@@ -2686,7 +2686,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkTextColorToolTip
+        public static string MarkTextColorToolTip
         {
             get
             {
@@ -2738,7 +2738,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkTextOpacityLabel
+        public static string MarkTextOpacityLabel
         {
             get
             {
@@ -2746,7 +2746,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkTextOpacityToolTip
+        public static string MarkTextOpacityToolTip
         {
             get
             {
@@ -2795,7 +2795,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkFontFamilyLabel
+        public static string MarkFontFamilyLabel
         {
             get
             {
@@ -2803,7 +2803,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkFontFamilyToolTip
+        public static string MarkFontFamilyToolTip
         {
             get
             {
@@ -2856,7 +2856,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedMarkTextStyleLabel
+        public static string SelectedMarkTextStyleLabel
         {
             get
             {
@@ -2864,7 +2864,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedMarkTextStyleToolTip
+        public static string SelectedMarkTextStyleToolTip
         {
             get
             {
@@ -2892,7 +2892,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> MarkTextStyles
+        public static ObservableCollection<string> MarkTextStyles
         {
             get
             {
@@ -2921,7 +2921,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkTextSizeRatioLabel
+        public static string MarkTextSizeRatioLabel
         {
             get
             {
@@ -2929,7 +2929,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string MarkTextSizeRatioToolTip
+        public static string MarkTextSizeRatioToolTip
         {
             get
             {
@@ -2963,7 +2963,7 @@ namespace Chordious.Core.ViewModel
 
         #region Fret Labels
 
-        public string FretLabelsGroupLabel
+        public static string FretLabelsGroupLabel
         {
             get
             {
@@ -2973,7 +2973,7 @@ namespace Chordious.Core.ViewModel
 
         #region Layout
 
-        public string FretLabelLayoutGroupLabel
+        public static string FretLabelLayoutGroupLabel
         {
             get
             {
@@ -3002,7 +3002,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedFretLabelTextAlignmentLabel
+        public static string SelectedFretLabelTextAlignmentLabel
         {
             get
             {
@@ -3010,7 +3010,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedFretLabelTextAlignmentToolTip
+        public static string SelectedFretLabelTextAlignmentToolTip
         {
             get
             {
@@ -3038,7 +3038,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> FretLabelTextAlignments
+        public static ObservableCollection<string> FretLabelTextAlignments
         {
             get
             {
@@ -3067,7 +3067,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelTextVisibleLabel
+        public static string FretLabelTextVisibleLabel
         {
             get
             {
@@ -3075,7 +3075,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelTextVisibleToolTip
+        public static string FretLabelTextVisibleToolTip
         {
             get
             {
@@ -3124,7 +3124,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelGridPaddingLabel
+        public static string FretLabelGridPaddingLabel
         {
             get
             {
@@ -3132,7 +3132,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelGridPaddingToolTip
+        public static string FretLabelGridPaddingToolTip
         {
             get
             {
@@ -3164,7 +3164,7 @@ namespace Chordious.Core.ViewModel
 
         #region Text
 
-        public string FretLabelTextGroupLabel
+        public static string FretLabelTextGroupLabel
         {
             get
             {
@@ -3193,7 +3193,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelTextColorLabel
+        public static string FretLabelTextColorLabel
         {
             get
             {
@@ -3201,7 +3201,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelTextColorToolTip
+        public static string FretLabelTextColorToolTip
         {
             get
             {
@@ -3253,7 +3253,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelTextOpacityLabel
+        public static string FretLabelTextOpacityLabel
         {
             get
             {
@@ -3261,7 +3261,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelTextOpacityToolTip
+        public static string FretLabelTextOpacityToolTip
         {
             get
             {
@@ -3310,7 +3310,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelFontFamilyLabel
+        public static string FretLabelFontFamilyLabel
         {
             get
             {
@@ -3318,7 +3318,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelFontFamilyToolTip
+        public static string FretLabelFontFamilyToolTip
         {
             get
             {
@@ -3371,7 +3371,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedFretLabelTextStyleLabel
+        public static string SelectedFretLabelTextStyleLabel
         {
             get
             {
@@ -3379,7 +3379,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedFretLabelTextStyleToolTip
+        public static string SelectedFretLabelTextStyleToolTip
         {
             get
             {
@@ -3407,7 +3407,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> FretLabelTextStyles
+        public static ObservableCollection<string> FretLabelTextStyles
         {
             get
             {
@@ -3436,7 +3436,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelTextSizeRatioLabel
+        public static string FretLabelTextSizeRatioLabel
         {
             get
             {
@@ -3444,7 +3444,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelTextSizeRatioToolTip
+        public static string FretLabelTextSizeRatioToolTip
         {
             get
             {
@@ -3493,7 +3493,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelTextWidthRatioLabel
+        public static string FretLabelTextWidthRatioLabel
         {
             get
             {
@@ -3501,7 +3501,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FretLabelTextWidthRatioToolTip
+        public static string FretLabelTextWidthRatioToolTip
         {
             get
             {
@@ -3535,7 +3535,7 @@ namespace Chordious.Core.ViewModel
 
         #region Barres
 
-        public string BarresGroupLabel
+        public static string BarresGroupLabel
         {
             get
             {
@@ -3545,7 +3545,7 @@ namespace Chordious.Core.ViewModel
 
         #region Layout
 
-        public string BarreLayoutGroupLabel
+        public static string BarreLayoutGroupLabel
         {
             get
             {
@@ -3574,7 +3574,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string BarreVisibleLabel
+        public static string BarreVisibleLabel
         {
             get
             {
@@ -3582,7 +3582,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string BarreVisibleToolTip
+        public static string BarreVisibleToolTip
         {
             get
             {
@@ -3631,7 +3631,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedBarreVerticalAlignmentLabel
+        public static string SelectedBarreVerticalAlignmentLabel
         {
             get
             {
@@ -3639,7 +3639,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedBarreVerticalAlignmentToolTip
+        public static string SelectedBarreVerticalAlignmentToolTip
         {
             get
             {
@@ -3667,7 +3667,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> BarreVerticalAlignments
+        public static ObservableCollection<string> BarreVerticalAlignments
         {
             get
             {
@@ -3696,7 +3696,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedBarreStackLabel
+        public static string SelectedBarreStackLabel
         {
             get
             {
@@ -3704,7 +3704,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedBarreStackToolTip
+        public static string SelectedBarreStackToolTip
         {
             get
             {
@@ -3732,7 +3732,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> BarreStacks
+        public static ObservableCollection<string> BarreStacks
         {
             get
             {
@@ -3744,7 +3744,7 @@ namespace Chordious.Core.ViewModel
 
         #region Style
 
-        public string BarreStyleGroupLabel
+        public static string BarreStyleGroupLabel
         {
             get
             {
@@ -3773,7 +3773,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string BarreArcRatioLabel
+        public static string BarreArcRatioLabel
         {
             get
             {
@@ -3781,7 +3781,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string BarreArcRatioToolTip
+        public static string BarreArcRatioToolTip
         {
             get
             {
@@ -3830,7 +3830,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string BarreOpacityLabel
+        public static string BarreOpacityLabel
         {
             get
             {
@@ -3838,7 +3838,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string BarreOpacityToolTip
+        public static string BarreOpacityToolTip
         {
             get
             {
@@ -3887,7 +3887,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string BarreLineColorLabel
+        public static string BarreLineColorLabel
         {
             get
             {
@@ -3895,7 +3895,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string BarreLineColorToolTip
+        public static string BarreLineColorToolTip
         {
             get
             {
@@ -3944,7 +3944,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string BarreLineThicknessLabel
+        public static string BarreLineThicknessLabel
         {
             get
             {
@@ -3952,7 +3952,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string BarreLineThicknessToolTip
+        public static string BarreLineThicknessToolTip
         {
             get
             {
@@ -4032,7 +4032,7 @@ namespace Chordious.Core.ViewModel
 
         #region Reset
 
-        public string ResetLabel
+        public static string ResetLabel
         {
             get
             {
@@ -4040,7 +4040,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ResetToolTip
+        public static string ResetToolTip
         {
             get
             {
@@ -4094,7 +4094,7 @@ namespace Chordious.Core.ViewModel
             }
             set
             {
-                _postEditCallback = value ?? throw new ArgumentNullException();
+                _postEditCallback = value ?? throw new ArgumentNullException(nameof(value));
                 OnPropertyChanged(nameof(PostEditCallback));
             }
         }
@@ -4108,7 +4108,7 @@ namespace Chordious.Core.ViewModel
             }
             private set
             {
-                _diagramStyle = value ?? throw new ArgumentNullException();
+                _diagramStyle = value ?? throw new ArgumentNullException(nameof(value));
                 MarkStyle = new DiagramMarkStyleWrapper(value);
             }
         }

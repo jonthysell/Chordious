@@ -13,7 +13,7 @@ namespace Chordious.Core.ViewModel
 {
     public class ObservableNote : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -21,7 +21,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedNoteLabel
+        public static string SelectedNoteLabel
         {
             get
             {
@@ -29,7 +29,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string SelectedNoteToolTip
+        public static string SelectedNoteToolTip
         {
             get
             {
@@ -50,7 +50,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public ObservableCollection<string> Notes
+        public static ObservableCollection<string> Notes
         {
             get
             {
@@ -58,7 +58,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string OctaveLabel
+        public static string OctaveLabel
         {
             get
             {
@@ -66,7 +66,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string OctaveToolTip
+        public static string OctaveToolTip
         {
             get
             {

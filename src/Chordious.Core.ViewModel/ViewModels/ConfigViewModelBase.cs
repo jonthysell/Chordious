@@ -12,7 +12,7 @@ namespace Chordious.Core.ViewModel
 {
     public abstract class ConfigViewModelBase : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -36,7 +36,7 @@ namespace Chordious.Core.ViewModel
         }
         private bool _isIdle;
 
-        public string IncludeSettingsLabel
+        public static string IncludeSettingsLabel
         {
             get
             {
@@ -44,7 +44,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string IncludeSettingsToolTip
+        public static string IncludeSettingsToolTip
         {
             get
             {
@@ -66,7 +66,7 @@ namespace Chordious.Core.ViewModel
         }
         private bool _includeSettings;
 
-        public string IncludeStylesLabel
+        public static string IncludeStylesLabel
         {
             get
             {
@@ -74,7 +74,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string IncludeStylesToolTip
+        public static string IncludeStylesToolTip
         {
             get
             {
@@ -96,7 +96,7 @@ namespace Chordious.Core.ViewModel
         }
         private bool _includeStyles;
 
-        public string IncludeInstrumentsLabel
+        public static string IncludeInstrumentsLabel
         {
             get
             {
@@ -104,7 +104,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string IncludeInstrumentsToolTip
+        public static string IncludeInstrumentsToolTip
         {
             get
             {
@@ -126,7 +126,7 @@ namespace Chordious.Core.ViewModel
         }
         private bool _includeInstruments;
 
-        public string IncludeChordQualitiesLabel
+        public static string IncludeChordQualitiesLabel
         {
             get
             {
@@ -134,7 +134,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string IncludeChordQualitiesToolTip
+        public static string IncludeChordQualitiesToolTip
         {
             get
             {
@@ -156,7 +156,7 @@ namespace Chordious.Core.ViewModel
         }
         private bool _includeChordQualities;
 
-        public string IncludeScalesLabel
+        public static string IncludeScalesLabel
         {
             get
             {
@@ -164,7 +164,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string IncludeScalesToolTip
+        public static string IncludeScalesToolTip
         {
             get
             {
@@ -186,7 +186,7 @@ namespace Chordious.Core.ViewModel
         }
         private bool _includeScales;
 
-        public string IncludeLibraryLabel
+        public static string IncludeLibraryLabel
         {
             get
             {
@@ -194,7 +194,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string IncludeLibraryToolTip
+        public static string IncludeLibraryToolTip
         {
             get
             {

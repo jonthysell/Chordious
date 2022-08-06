@@ -29,7 +29,7 @@ namespace Chordious.Core
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _octave = value;
             }

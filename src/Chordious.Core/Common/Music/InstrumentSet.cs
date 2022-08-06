@@ -24,7 +24,7 @@ namespace Chordious.Core
             {
                 if (StringUtils.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentNullException();
+                    throw new ArgumentNullException(nameof(value));
                 }
 
                 if (ReadOnly)

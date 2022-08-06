@@ -13,7 +13,7 @@ namespace Chordious.Core.ViewModel
 {
     public class TuningEditorViewModel : ObservableObject
     {
-        public AppViewModel AppVM
+        public static AppViewModel AppVM
         {
             get
             {
@@ -29,7 +29,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NameLabel
+        public static string NameLabel
         {
             get
             {
@@ -37,7 +37,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string NameToolTip
+        public static string NameToolTip
         {
             get
             {
@@ -60,7 +60,7 @@ namespace Chordious.Core.ViewModel
         }
         private string _name;
 
-        public string RootNotesLabel
+        public static string RootNotesLabel
         {
             get
             {
@@ -68,7 +68,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string RootNotesToolTip
+        public static string RootNotesToolTip
         {
             get
             {

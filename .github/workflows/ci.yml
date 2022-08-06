@@ -21,7 +21,7 @@ defaults:
 jobs:
   ci_build_and_test:
     name: CI Build and Test
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
       matrix:
         configuration: [Debug, Release]

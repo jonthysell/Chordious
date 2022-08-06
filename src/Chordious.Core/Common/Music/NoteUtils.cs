@@ -29,7 +29,7 @@ namespace Chordious.Core
         }
 
         public static bool TryParseNote(string s, out Note note)
-        { 
+        {
             if (!StringUtils.IsNullOrWhiteSpace(s))
             {
                 try
@@ -46,7 +46,7 @@ namespace Chordious.Core
 
         public static string ToString(Note note)
         {
-            return note.ToString().Replace("s","#");
+            return note.ToString().Replace("s", "#");
         }
 
         public static string ToString(InternalNote note, InternalNoteStringStyle style)

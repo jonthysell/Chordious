@@ -111,7 +111,7 @@ namespace Chordious.Core
 
         public bool Overlaps(BarrePosition position)
         {
-            if (null == position)
+            if (position is null)
             {
                 throw new ArgumentNullException(nameof(position));
             }
@@ -168,7 +168,7 @@ namespace Chordious.Core
         public override bool Equals(ElementPosition obj)
         {
             BarrePosition bp = (obj as BarrePosition);
-            return null != bp && bp.Fret == Fret && bp.StartString == StartString && bp.EndString == EndString;
+            return bp is not null && bp.Fret == Fret && bp.StartString == StartString && bp.EndString == EndString;
         }
 
         public override int GetHashCode()

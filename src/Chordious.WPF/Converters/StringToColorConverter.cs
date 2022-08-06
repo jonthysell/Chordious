@@ -18,7 +18,7 @@ namespace Chordious.WPF
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return _converter ?? (_converter = new StringToColorConverter());
+            return _converter ??= new StringToColorConverter();
         }
         private static StringToColorConverter _converter = null;
 
@@ -107,7 +107,7 @@ namespace Chordious.WPF
             return false;
         }
 
-        public static IReadOnlyDictionary<string, Color> NamedColors = new Dictionary<string, Color>
+        public static readonly IReadOnlyDictionary<string, Color> NamedColors = new Dictionary<string, Color>
         {
             { "Aqua", Colors.Aqua },
             { "Black", Colors.Black },

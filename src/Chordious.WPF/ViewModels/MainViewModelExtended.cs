@@ -56,7 +56,7 @@ namespace Chordious.WPF
         {
             AppVM.AppView.DoOnUIThread(async () =>
             {
-                
+
                 try
                 {
                     IsIdle = false;

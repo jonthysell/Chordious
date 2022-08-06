@@ -72,7 +72,7 @@ namespace Chordious.CoreTest
                     string.Join(",", marks),
                     barreTypeOption,
                     rightToLeft,
-                    null == ExpectedResult ? "null" : ExpectedResult.ToString());
+                    ExpectedResult is null ? "null" : ExpectedResult.ToString());
             }
         }
 

@@ -13,7 +13,7 @@ namespace Chordious.WPF
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return _converter ?? (_converter = new IdleBoolToWaitCursorConverter());
+            return _converter ??= new IdleBoolToWaitCursorConverter();
         }
         private static IdleBoolToWaitCursorConverter _converter = null;
 

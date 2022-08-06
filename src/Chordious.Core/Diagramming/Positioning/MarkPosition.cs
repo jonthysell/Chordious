@@ -74,7 +74,7 @@ namespace Chordious.Core
         public override bool Equals(ElementPosition obj)
         {
             MarkPosition mp = (obj as MarkPosition);
-            return null != mp && mp.String == String && mp.Fret == Fret;
+            return mp is not null && mp.String == String && mp.Fret == Fret;
         }
 
         public override int GetHashCode()

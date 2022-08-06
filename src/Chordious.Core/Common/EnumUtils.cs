@@ -209,7 +209,7 @@ namespace Chordious.Core
 
         private static string GetFriendlyValue(object value)
         {
-            if (null == value)
+            if (value is null)
             {
                 throw new ArgumentNullException(nameof(value));
             }

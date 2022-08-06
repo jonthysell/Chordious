@@ -25,7 +25,7 @@ namespace Chordious.WPF
         private static void ChordiousMain(string[] args)
         {
             // Set user file from command-line args
-            if (null != args && args.Length > 0)
+            if (args is not null && args.Length > 0)
             {
                 _userFile = args[0];
             }

@@ -22,12 +22,12 @@ namespace Chordious.Core
 
         public int CompareTo(object obj)
         {
-            if (null == obj)
+            if (obj is null)
             {
                 throw new ArgumentNullException(nameof(obj));
             }
 
-            if (!(obj is ReverseChordFinderResult rcfr))
+            if (obj is not ReverseChordFinderResult rcfr)
             {
                 throw new ArgumentException();
             }

@@ -69,7 +69,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _createDiagram ?? (_createDiagram = new RelayCommand(() =>
+                return _createDiagram ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -81,7 +81,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _createDiagram;
@@ -117,7 +117,7 @@ namespace Chordious.Core.ViewModel
                 }
 
                 // If a single diagram isn't selected, throw an error
-                return _editSelected ?? (_editSelected = new RelayCommand(() =>
+                return _editSelected ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -130,7 +130,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                }));
+                });
             }
         }
         private RelayCommand _editSelected;
@@ -166,7 +166,7 @@ namespace Chordious.Core.ViewModel
                 }
 
                 // If a single diagram isn't selected, throw an error
-                return _sendSelectedToClipboard ?? (_sendSelectedToClipboard = new RelayCommand(() =>
+                return _sendSelectedToClipboard ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -179,7 +179,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                }));
+                });
             }
         }
 
@@ -210,7 +210,7 @@ namespace Chordious.Core.ViewModel
                 }
 
                 // If a single diagram isn't selected, throw an error
-                return _sendSelectedToClipboard ?? (_sendSelectedToClipboard = new RelayCommand(() =>
+                return _sendSelectedToClipboard ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -223,7 +223,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                }));
+                });
             }
         }
 
@@ -254,7 +254,7 @@ namespace Chordious.Core.ViewModel
                 }
 
                 // If a single diagram isn't selected, throw an error
-                return _sendSelectedToClipboard ?? (_sendSelectedToClipboard = new RelayCommand(() =>
+                return _sendSelectedToClipboard ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -267,7 +267,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                }));
+                });
             }
         }
 
@@ -298,7 +298,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _resetStylesSelected ?? (_resetStylesSelected = new RelayCommand(() =>
+                return _resetStylesSelected ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -330,7 +330,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                }));
+                });
             }
         }
         private RelayCommand _resetStylesSelected;
@@ -360,7 +360,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _cloneSelected ?? (_cloneSelected = new RelayCommand(() =>
+                return _cloneSelected ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -381,7 +381,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                }));
+                });
             }
         }
         private RelayCommand _cloneSelected;
@@ -411,7 +411,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _copySelected ?? (_copySelected = new RelayCommand<string>((defaultCollectionName) =>
+                return _copySelected ??= new RelayCommand<string>((defaultCollectionName) =>
                 {
                     try
                     {
@@ -424,7 +424,7 @@ namespace Chordious.Core.ViewModel
                 }, (defaultCollectionName) =>
                 {
                     return SelectedDiagrams.Count > 0;
-                }));
+                });
             }
         }
         private RelayCommand<string> _copySelected;
@@ -454,7 +454,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _moveSelected ?? (_moveSelected = new RelayCommand<string>((defaultCollectionName) =>
+                return _moveSelected ??= new RelayCommand<string>((defaultCollectionName) =>
                 {
                     try
                     {
@@ -467,7 +467,7 @@ namespace Chordious.Core.ViewModel
                 }, (defaultCollectionName) =>
                 {
                     return SelectedDiagrams.Count > 0;
-                }));
+                });
             }
         }
         private RelayCommand<string> _moveSelected;
@@ -497,7 +497,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _exportSelected ?? (_exportSelected = new RelayCommand(() =>
+                return _exportSelected ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -510,7 +510,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                }));
+                });
             }
         }
         private RelayCommand _exportSelected;
@@ -540,7 +540,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _deleteSelected ?? (_deleteSelected = new RelayCommand(() =>
+                return _deleteSelected ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -576,7 +576,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedDiagrams.Count > 0;
-                }));
+                });
             }
         }
         private RelayCommand _deleteSelected;
@@ -605,7 +605,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _copyNode ?? (_copyNode = new RelayCommand<string>((defaultCollectionName) =>
+                return _copyNode ??= new RelayCommand<string>((defaultCollectionName) =>
                 {
                     try
                     {
@@ -615,7 +615,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand<string> _copyNode;
@@ -644,7 +644,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _mergeNode ?? (_mergeNode = new RelayCommand<string>((defaultCollectionName) =>
+                return _mergeNode ??= new RelayCommand<string>((defaultCollectionName) =>
                 {
                     try
                     {
@@ -654,7 +654,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand<string> _mergeNode;
@@ -695,7 +695,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _collection ?? (_collection = Library.Get(Path, Name));
+                return _collection ??= Library.Get(Path, Name);
             }
         }
         private DiagramCollection _collection;
@@ -704,7 +704,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                if (null == _collectionStyle)
+                if (_collectionStyle is null)
                 {
                     _collectionStyle = new ObservableDiagramStyle(Collection.Style)
                     {

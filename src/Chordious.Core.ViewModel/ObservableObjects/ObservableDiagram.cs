@@ -217,7 +217,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _editElement ?? (_editElement = new RelayCommand(() =>
+                return _editElement ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -225,9 +225,9 @@ namespace Chordious.Core.ViewModel
                         BarrePosition bp = BarrePosition;
                         FretLabelPosition flp = FretLabelPosition;
 
-                        bool hasMark = null != mp && Diagram.HasElementAt(mp);
-                        bool hasBarre = null != bp && Diagram.HasElementAt(bp);
-                        bool hasFretLabel = null != flp && Diagram.HasElementAt(flp);
+                        bool hasMark = mp is not null && Diagram.HasElementAt(mp);
+                        bool hasBarre = bp is not null && Diagram.HasElementAt(bp);
+                        bool hasFretLabel = flp is not null && Diagram.HasElementAt(flp);
 
                         if (hasMark)
                         {
@@ -292,7 +292,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return (CanEditMark || CanEditFretLabel || CanEditBarre);
-                }));
+                });
             }
         }
         private RelayCommand _editElement;
@@ -321,7 +321,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _addMark ?? (_addMark = new RelayCommand(() =>
+                return _addMark ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -330,7 +330,7 @@ namespace Chordious.Core.ViewModel
                         StrongReferenceMessenger.Default.Send(new ShowDiagramMarkEditorMessage(dm, true, (changed) =>
                         {
                             try
-                            { 
+                            {
                                 if (changed)
                                 {
                                     Refresh();
@@ -353,7 +353,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanAddMark;
-                }));
+                });
             }
         }
         private RelayCommand _addMark;
@@ -363,7 +363,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 MarkPosition mp = MarkPosition;
-                return (null != mp && Diagram.CanAddNewMarkAt(mp));
+                return (mp is not null && Diagram.CanAddNewMarkAt(mp));
             }
         }
 
@@ -387,7 +387,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _editMark ?? (_editMark = new RelayCommand(() =>
+                return _editMark ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -414,7 +414,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanEditMark;
-                }));
+                });
             }
         }
         private RelayCommand _editMark;
@@ -424,7 +424,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 MarkPosition mp = MarkPosition;
-                return (null != mp && Diagram.ValidPosition(mp) && Diagram.HasElementAt(mp));
+                return (mp is not null && Diagram.ValidPosition(mp) && Diagram.HasElementAt(mp));
             }
         }
 
@@ -448,7 +448,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _removeMark ?? (_removeMark = new RelayCommand(() =>
+                return _removeMark ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -463,7 +463,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanRemoveMark;
-                }));
+                });
             }
         }
         private RelayCommand _removeMark;
@@ -473,7 +473,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 MarkPosition mp = MarkPosition;
-                return (null != mp && Diagram.CanRemoveMarkAt(mp));
+                return (mp is not null && Diagram.CanRemoveMarkAt(mp));
             }
         }
 
@@ -494,7 +494,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 FretLabelPosition flp = FretLabelPosition;
-                return null != flp && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramAddLeftFretLabelLabel : Strings.ObservableDiagramAddRightFretLabelLabel;
+                return flp is not null && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramAddLeftFretLabelLabel : Strings.ObservableDiagramAddRightFretLabelLabel;
             }
         }
 
@@ -503,7 +503,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 FretLabelPosition flp = FretLabelPosition;
-                return null != flp && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramAddLeftFretLabelToolTip : Strings.ObservableDiagramAddRightFretLabelToolTip;
+                return flp is not null && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramAddLeftFretLabelToolTip : Strings.ObservableDiagramAddRightFretLabelToolTip;
             }
         }
 
@@ -511,7 +511,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _addFretLabel ?? (_addFretLabel = new RelayCommand(() =>
+                return _addFretLabel ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -543,7 +543,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanAddFretLabel;
-                }));
+                });
             }
         }
         private RelayCommand _addFretLabel;
@@ -553,7 +553,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 FretLabelPosition flp = FretLabelPosition;
-                return (null != flp && Diagram.CanAddNewFretLabelAt(flp));
+                return (flp is not null && Diagram.CanAddNewFretLabelAt(flp));
             }
         }
 
@@ -562,7 +562,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 FretLabelPosition flp = FretLabelPosition;
-                return null != flp && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramEditLeftFretLabelLabel : Strings.ObservableDiagramEditRightFretLabelLabel;
+                return flp is not null && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramEditLeftFretLabelLabel : Strings.ObservableDiagramEditRightFretLabelLabel;
             }
         }
 
@@ -571,7 +571,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 FretLabelPosition flp = FretLabelPosition;
-                return null != flp && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramEditLeftFretLabelToolTip : Strings.ObservableDiagramEditRightFretLabelToolTip;
+                return flp is not null && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramEditLeftFretLabelToolTip : Strings.ObservableDiagramEditRightFretLabelToolTip;
             }
         }
 
@@ -579,7 +579,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _editFretLabel ?? (_editFretLabel = new RelayCommand(() =>
+                return _editFretLabel ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -606,7 +606,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanEditFretLabel;
-                }));
+                });
             }
         }
         private RelayCommand _editFretLabel;
@@ -616,7 +616,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 FretLabelPosition flp = FretLabelPosition;
-                return (null != flp && Diagram.ValidPosition(flp) && Diagram.HasElementAt(flp));
+                return (flp is not null && Diagram.ValidPosition(flp) && Diagram.HasElementAt(flp));
             }
         }
 
@@ -625,7 +625,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 FretLabelPosition flp = FretLabelPosition;
-                return null != flp && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramRemoveLeftFretLabelLabel : Strings.ObservableDiagramRemoveRightFretLabelLabel;
+                return flp is not null && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramRemoveLeftFretLabelLabel : Strings.ObservableDiagramRemoveRightFretLabelLabel;
             }
         }
 
@@ -634,7 +634,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 FretLabelPosition flp = FretLabelPosition;
-                return null != flp && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramRemoveLeftFretLabelToolTip : Strings.ObservableDiagramRemoveRightFretLabelToolTip;
+                return flp is not null && flp.Side == FretLabelSide.Left ? Strings.ObservableDiagramRemoveLeftFretLabelToolTip : Strings.ObservableDiagramRemoveRightFretLabelToolTip;
             }
         }
 
@@ -642,7 +642,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _removeFretLabel ?? (_removeFretLabel = new RelayCommand(() =>
+                return _removeFretLabel ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -657,7 +657,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanRemoveFretLabel;
-                }));
+                });
             }
         }
         private RelayCommand _removeFretLabel;
@@ -667,7 +667,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 FretLabelPosition flp = FretLabelPosition;
-                return (null != flp && Diagram.CanRemoveFretLabelAt(flp));
+                return (flp is not null && Diagram.CanRemoveFretLabelAt(flp));
             }
         }
 
@@ -703,7 +703,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _addBarre ?? (_addBarre = new RelayCommand(() =>
+                return _addBarre ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -748,7 +748,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanAddBarre;
-                }));
+                });
             }
         }
         private RelayCommand _addBarre;
@@ -758,7 +758,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 BarrePosition bp = BarrePosition;
-                return (null != bp && Diagram.CanAddNewBarreAt(bp));
+                return (bp is not null && Diagram.CanAddNewBarreAt(bp));
             }
         }
 
@@ -782,7 +782,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _editBarre ?? (_editBarre = new RelayCommand(() =>
+                return _editBarre ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -809,7 +809,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanEditBarre;
-                }));
+                });
             }
         }
         private RelayCommand _editBarre;
@@ -819,7 +819,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 BarrePosition bp = BarrePosition;
-                return (null != bp && Diagram.ValidPosition(bp) && Diagram.HasElementAt(bp));
+                return (bp is not null && Diagram.ValidPosition(bp) && Diagram.HasElementAt(bp));
             }
         }
 
@@ -843,7 +843,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _removeBarre ?? (_removeBarre = new RelayCommand(() =>
+                return _removeBarre ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -858,7 +858,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanRemoveBarre;
-                }));
+                });
             }
         }
         private RelayCommand _removeBarre;
@@ -868,7 +868,7 @@ namespace Chordious.Core.ViewModel
             get
             {
                 BarrePosition bp = BarrePosition;
-                return (null != bp && Diagram.CanRemoveBarreAt(bp));
+                return (bp is not null && Diagram.CanRemoveBarreAt(bp));
             }
         }
 
@@ -1028,7 +1028,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _showEditor ?? (_showEditor = new RelayCommand(() =>
+                return _showEditor ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -1048,7 +1048,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _showEditor;
@@ -1106,7 +1106,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _sendImageToClipboard ?? (_sendImageToClipboard = new RelayCommand(() =>
+                return _sendImageToClipboard ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -1116,7 +1116,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _sendImageToClipboard;
@@ -1141,7 +1141,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _sendScaledImageToClipboard ?? (_sendScaledImageToClipboard = new RelayCommand(() =>
+                return _sendScaledImageToClipboard ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -1172,7 +1172,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _sendScaledImageToClipboard;
@@ -1197,7 +1197,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _sendTextToClipboard ?? (_sendTextToClipboard = new RelayCommand(() =>
+                return _sendTextToClipboard ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -1207,7 +1207,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _sendTextToClipboard;
@@ -1218,7 +1218,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _renderImage ?? (_renderImage = new RelayCommand(() =>
+                return _renderImage ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -1228,7 +1228,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _renderImage;

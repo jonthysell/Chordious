@@ -87,7 +87,7 @@ namespace Chordious.Core
             }
             set
             {
-                if (null == value)
+                if (value is null)
                 {
                     throw new ArgumentNullException();
                 }
@@ -135,7 +135,7 @@ namespace Chordious.Core
 
         internal Tuning(TuningSet parent, XmlReader xmlReader) : this(parent)
         {
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }
@@ -175,7 +175,7 @@ namespace Chordious.Core
                 throw new ArgumentNullException(nameof(name));
             }
 
-            if (null == rootNotes)
+            if (rootNotes is null)
             {
                 throw new ArgumentNullException();
             }
@@ -243,7 +243,7 @@ namespace Chordious.Core
 
         public void Write(XmlWriter xmlWriter)
         {
-            if (null == xmlWriter)
+            if (xmlWriter is null)
             {
                 throw new ArgumentNullException(nameof(xmlWriter));
             }
@@ -268,12 +268,12 @@ namespace Chordious.Core
 
         public int CompareTo(object obj)
         {
-            if (null == obj)
+            if (obj is null)
             {
                 throw new ArgumentNullException(nameof(obj));
             }
 
-            if (!(obj is Tuning tuning))
+            if (obj is not Tuning tuning)
             {
                 throw new ArgumentException();
             }

@@ -112,7 +112,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _accept ?? (_accept = new RelayCommand(() =>
+                return _accept ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -128,7 +128,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return IsValid() & !ReadOnly;
-                }));
+                });
             }
         }
         private RelayCommand _accept;
@@ -137,7 +137,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _cancel ?? (_cancel = new RelayCommand(() =>
+                return _cancel ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -147,7 +147,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _cancel;
@@ -174,7 +174,7 @@ namespace Chordious.Core.ViewModel
 
         public static TuningEditorViewModel AddNewTuning(ObservableInstrument instrument)
         {
-            if (null == instrument)
+            if (instrument is null)
             {
                 throw new ArgumentNullException(nameof(instrument));
             }
@@ -204,7 +204,7 @@ namespace Chordious.Core.ViewModel
 
         public static TuningEditorViewModel EditExistingTuning(ObservableTuning tuning)
         {
-            if (null == tuning)
+            if (tuning is null)
             {
                 throw new ArgumentNullException(nameof(tuning));
             }
@@ -234,12 +234,12 @@ namespace Chordious.Core.ViewModel
 
         public static TuningEditorViewModel CopyExistingTuning(ObservableTuning tuning, ObservableInstrument targetInstrument)
         {
-            if (null == tuning)
+            if (tuning is null)
             {
                 throw new ArgumentNullException(nameof(tuning));
             }
 
-            if (null == targetInstrument)
+            if (targetInstrument is null)
             {
                 throw new ArgumentNullException(nameof(targetInstrument));
             }
@@ -250,12 +250,12 @@ namespace Chordious.Core.ViewModel
 
         private static TuningEditorViewModel CopyExistingTuning(Tuning tuning, Instrument targetInstrument)
         {
-            if (null == tuning)
+            if (tuning is null)
             {
                 throw new ArgumentNullException(nameof(tuning));
             }
 
-            if (null == targetInstrument)
+            if (targetInstrument is null)
             {
                 throw new ArgumentNullException(nameof(targetInstrument));
             }

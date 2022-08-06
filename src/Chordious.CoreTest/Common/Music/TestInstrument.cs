@@ -13,7 +13,7 @@ namespace Chordious.CoreTest
         {
             get
             {
-                if (null == _ukulele)
+                if (_ukulele is null)
                 {
                     _ukulele = new TestInstrument(UkuleleInstrumentName, 4);
                     _ukulele.Tunings.Add(UkuleleStandardTuningName,

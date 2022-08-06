@@ -27,7 +27,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return _tempPath ?? (_tempPath = Path.Combine(Path.GetTempPath(), "Chordious"));
+                return _tempPath ??= Path.Combine(Path.GetTempPath(), "Chordious");
             }
         }
         private static string _tempPath;
@@ -63,7 +63,7 @@ namespace Chordious.WPF
 
         public static void DiagramToClipboard(ObservableDiagram diagram, float scaleFactor)
         {
-            if (null == diagram)
+            if (diagram is null)
             {
                 throw new ArgumentNullException(nameof(diagram));
             }
@@ -79,12 +79,12 @@ namespace Chordious.WPF
 
         public static void DiagramToDragDrop(DependencyObject dragSource, ObservableDiagram diagram)
         {
-            if (null == dragSource)
+            if (dragSource is null)
             {
                 throw new ArgumentNullException(nameof(dragSource));
             }
 
-            if (null == diagram)
+            if (diagram is null)
             {
                 throw new ArgumentNullException(nameof(diagram));
             }
@@ -98,12 +98,12 @@ namespace Chordious.WPF
 
         public static void DiagramLibraryNodeToDragDrop(DependencyObject dragSource, ObservableDiagramLibraryNode diagramLibraryNode, bool useSelectedDiagrams)
         {
-            if (null == dragSource)
+            if (dragSource is null)
             {
                 throw new ArgumentNullException(nameof(dragSource));
             }
 
-            if (null == diagramLibraryNode)
+            if (diagramLibraryNode is null)
             {
                 throw new ArgumentNullException(nameof(diagramLibraryNode));
             }
@@ -143,7 +143,7 @@ namespace Chordious.WPF
 
         public static void DragDropToDiagramLibraryNode(IDataObject data, ObservableDiagramLibraryNode destinationNode, DiagramLibraryNodeDragDropAction dragDropAction)
         {
-            if (null == data)
+            if (data is null)
             {
                 throw new ArgumentNullException(nameof(data));
             }

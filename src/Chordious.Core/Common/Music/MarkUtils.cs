@@ -43,12 +43,12 @@ namespace Chordious.Core
 
         public static bool ValidateChord(int[] chordMarks, IChordFinderOptions chordFinderOptions)
         {
-            if (null == chordMarks)
+            if (chordMarks is null)
             {
                 throw new ArgumentNullException(nameof(chordMarks));
             }
 
-            if (null == chordFinderOptions)
+            if (chordFinderOptions is null)
             {
                 throw new ArgumentNullException(nameof(chordFinderOptions));
             }
@@ -64,12 +64,12 @@ namespace Chordious.Core
 
         public static bool ValidateScale(IEnumerable<MarkPosition> scaleMarks, IScaleFinderOptions scaleFinderOptions)
         {
-            if (null == scaleMarks)
+            if (scaleMarks is null)
             {
                 throw new ArgumentNullException(nameof(scaleMarks));
             }
 
-            if (null == scaleFinderOptions)
+            if (scaleFinderOptions is null)
             {
                 throw new ArgumentNullException(nameof(scaleFinderOptions));
             }
@@ -150,12 +150,12 @@ namespace Chordious.Core
 
         public static int Compare(int[] marksA, int[] marksB)
         {
-            if (null == marksA)
+            if (marksA is null)
             {
                 throw new ArgumentNullException(nameof(marksA));
             }
 
-            if (null == marksB)
+            if (marksB is null)
             {
                 throw new ArgumentNullException(nameof(marksB));
             }
@@ -173,12 +173,12 @@ namespace Chordious.Core
 
         public static int Compare(IEnumerable<MarkPosition> marksA, IEnumerable<MarkPosition> marksB, int numStrings)
         {
-            if (null == marksA)
+            if (marksA is null)
             {
                 throw new ArgumentNullException(nameof(marksA));
             }
 
-            if (null == marksB)
+            if (marksB is null)
             {
                 throw new ArgumentNullException(nameof(marksB));
             }
@@ -196,7 +196,7 @@ namespace Chordious.Core
 
         public static int[] AbsoluteToRelativeMarks(int[] absoluteMarks, out int baseLine, int numFrets)
         {
-            if (null == absoluteMarks)
+            if (absoluteMarks is null)
             {
                 throw new ArgumentNullException(nameof(absoluteMarks));
             }
@@ -226,12 +226,12 @@ namespace Chordious.Core
 
         public static InternalNote?[] GetInternalNotes(int[] marks, ITuning tuning)
         {
-            if (null == marks || marks.Length == 0)
+            if (marks is null || marks.Length == 0)
             {
                 throw new ArgumentNullException(nameof(marks));
             }
 
-            if (null == tuning)
+            if (tuning is null)
             {
                 throw new ArgumentNullException(nameof(tuning));
             }
@@ -248,7 +248,7 @@ namespace Chordious.Core
 
         public static IEnumerable<MarkPosition> AbsoluteToRelativeMarks(IEnumerable<MarkPosition> absoluteMarks, out int baseLine, int numFrets, int numStrings)
         {
-            if (null == absoluteMarks)
+            if (absoluteMarks is null)
             {
                 throw new ArgumentNullException(nameof(absoluteMarks));
             }
@@ -281,7 +281,7 @@ namespace Chordious.Core
 
         protected static MarkAnalysis ChordAnalysis(int[] marks)
         {
-            if (null == marks)
+            if (marks is null)
             {
                 throw new ArgumentNullException(nameof(marks));
             }
@@ -322,7 +322,7 @@ namespace Chordious.Core
 
         protected static MarkAnalysis ScaleAnalysis(IEnumerable<MarkPosition> marks, int numStrings)
         {
-            if (null == marks)
+            if (marks is null)
             {
                 throw new ArgumentNullException(nameof(marks));
             }
@@ -399,12 +399,12 @@ namespace Chordious.Core
 
             public int CompareTo(object obj)
             {
-                if (null == obj)
+                if (obj is null)
                 {
                     throw new ArgumentException();
                 }
 
-                if (!(obj is MarkAnalysis ma))
+                if (obj is not MarkAnalysis ma)
                 {
                     throw new ArgumentException();
                 }

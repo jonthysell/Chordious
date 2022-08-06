@@ -90,7 +90,7 @@ namespace Chordious.Core
 
         public void CopyFrom(ScaleSet scaleSet)
         {
-            if (null == scaleSet)
+            if (scaleSet is null)
             {
                 throw new ArgumentNullException(nameof(scaleSet));
             }
@@ -118,7 +118,7 @@ namespace Chordious.Core
 
         public override void Read(XmlReader xmlReader)
         {
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }
@@ -138,7 +138,7 @@ namespace Chordious.Core
 
         public override void Write(XmlWriter xmlWriter)
         {
-            if (null == xmlWriter)
+            if (xmlWriter is null)
             {
                 throw new ArgumentNullException(nameof(xmlWriter));
             }

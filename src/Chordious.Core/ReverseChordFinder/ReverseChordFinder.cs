@@ -22,7 +22,7 @@ namespace Chordious.Core
 
         public static async Task<ReverseChordFinderResultSet> FindChordsAsync(IReverseChordFinderOptions reverseChordFinderOptions, CancellationToken cancelToken)
         {
-            if (null == reverseChordFinderOptions)
+            if (reverseChordFinderOptions is null)
             {
                 throw new ArgumentNullException(nameof(reverseChordFinderOptions));
             }

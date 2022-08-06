@@ -99,7 +99,7 @@ namespace Chordious.Core
             // Add barre
             BarrePosition bp = MarkUtils.AutoBarrePosition(marks, chordFinderStyle.BarreTypeOption, chordFinderStyle.MirrorResults);
 
-            if (null != bp)
+            if (bp is not null)
             {
                 d.NewBarre(bp);
             }
@@ -137,12 +137,12 @@ namespace Chordious.Core
 
         public int CompareTo(object obj)
         {
-            if (null == obj)
+            if (obj is null)
             {
                 throw new ArgumentNullException(nameof(obj));
             }
 
-            if (!(obj is ChordFinderResult cfr))
+            if (obj is not ChordFinderResult cfr)
             {
                 throw new ArgumentException();
             }

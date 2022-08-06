@@ -59,7 +59,7 @@ namespace Chordious.Core
 
         public void Read(XmlReader xmlReader)
         {
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }
@@ -78,7 +78,7 @@ namespace Chordious.Core
 
         public void Write(XmlWriter xmlWriter)
         {
-            if (null == xmlWriter)
+            if (xmlWriter is null)
             {
                 throw new ArgumentNullException(nameof(xmlWriter));
             }
@@ -95,12 +95,12 @@ namespace Chordious.Core
 
         public int CompareTo(object obj)
         {
-            if (null == obj)
+            if (obj is null)
             {
                 throw new ArgumentNullException(nameof(obj));
             }
 
-            if (!(obj is DiagramLibraryNode node))
+            if (obj is not DiagramLibraryNode node)
             {
                 throw new ArgumentException();
             }

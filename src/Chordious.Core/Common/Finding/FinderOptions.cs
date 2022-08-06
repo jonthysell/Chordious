@@ -91,7 +91,7 @@ namespace Chordious.Core
 
             string level = InstrumentTuningLevel;
 
-            if (null != _cachedInstrument)
+            if (_cachedInstrument is not null)
             {
                 if (_cachedInstrument.Name == name && _cachedInstrument.Level == level)
                 {
@@ -102,7 +102,7 @@ namespace Chordious.Core
             }
 
             InstrumentSet instruments = _configFile.Instruments;
-            while (null != instruments)
+            while (instruments is not null)
             {
                 if (instruments.Level == level)
                 {
@@ -123,7 +123,7 @@ namespace Chordious.Core
         {
             string longName = Settings[Prefix + "tuning"];
 
-            if (null != _cachedInstrument && null != _cachedTuning)
+            if (_cachedInstrument is not null && _cachedTuning is not null)
             {
                 string level = InstrumentTuningLevel;
                 if (_cachedInstrument.Level == level && _cachedTuning.LongName == longName && _cachedTuning.Level == level)
@@ -133,7 +133,7 @@ namespace Chordious.Core
                 _cachedTuning = null;
             }
 
-            if (null != Instrument && Instrument.Tunings.TryGet(longName, out ITuning t))
+            if (Instrument is not null && Instrument.Tunings.TryGet(longName, out ITuning t))
             {
                 _cachedTuning = t;
             }
@@ -143,12 +143,12 @@ namespace Chordious.Core
 
         public void SetTarget(IInstrument instrument, ITuning tuning)
         {
-            if (null == instrument)
+            if (instrument is null)
             {
                 throw new ArgumentNullException(nameof(instrument));
             }
 
-            if (null == tuning)
+            if (tuning is null)
             {
                 throw new ArgumentNullException(nameof(tuning));
             }

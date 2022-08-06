@@ -18,7 +18,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return _vm ?? (_vm = DataContext as DiagramEditorViewModel);
+                return _vm ??= DataContext as DiagramEditorViewModel;
             }
         }
         private DiagramEditorViewModel _vm;
@@ -41,7 +41,7 @@ namespace Chordious.WPF
         private bool UpdateCursorPosition()
         {
             ObservableDiagram od = VM.ObservableDiagram;
-            if (null != od)
+            if (od is not null)
             {
                 Point p = MouseUtils.CorrectGetPosition(DiagramImage);
                 od.CursorX = p.X;

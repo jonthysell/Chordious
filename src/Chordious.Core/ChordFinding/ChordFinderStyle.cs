@@ -45,7 +45,7 @@ namespace Chordious.Core
         {
             string level = "ChordFinderStyle";
 
-            if (null != chordiousSettings)
+            if (chordiousSettings is not null)
             {
                 Settings = chordiousSettings;
             }
@@ -54,7 +54,7 @@ namespace Chordious.Core
                 Settings = new ChordiousSettings(_configFile.ChordiousSettings, level);
             }
 
-            if (null != diagramStyle)
+            if (diagramStyle is not null)
             {
                 Style = diagramStyle;
             }

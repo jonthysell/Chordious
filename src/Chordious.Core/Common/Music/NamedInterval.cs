@@ -119,7 +119,7 @@ namespace Chordious.Core
 
         protected bool ReadBase(XmlReader xmlReader, string localName)
         {
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }
@@ -138,13 +138,13 @@ namespace Chordious.Core
 
                 return true;
             }
-            
+
             return false;
         }
 
         protected void WriteBase(XmlWriter xmlWriter, string localName)
         {
-            if (null == xmlWriter)
+            if (xmlWriter is null)
             {
                 throw new ArgumentNullException(nameof(xmlWriter));
             }
@@ -213,7 +213,7 @@ namespace Chordious.Core
 
         public static InternalNote[] GetNotes(InternalNote root, int[] intervals)
         {
-            if (null == intervals || intervals.Length == 0)
+            if (intervals is null || intervals.Length == 0)
             {
                 throw new ArgumentNullException(nameof(intervals));
             }
@@ -263,7 +263,7 @@ namespace Chordious.Core
         {
             string intervals = "";
 
-            if (null != Intervals)
+            if (Intervals is not null)
             {
                 for (int i = 0; i < Intervals.Length; i++)
                 {
@@ -280,12 +280,12 @@ namespace Chordious.Core
 
         public int CompareTo(object obj)
         {
-            if (null == obj)
+            if (obj is null)
             {
                 throw new ArgumentNullException(nameof(obj));
             }
 
-            if (!(obj is NamedInterval namedInterval))
+            if (obj is not NamedInterval namedInterval)
             {
                 throw new ArgumentException();
             }

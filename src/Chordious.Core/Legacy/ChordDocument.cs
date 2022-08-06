@@ -10,12 +10,12 @@ namespace Chordious.Core.Legacy
     {
         public static DiagramCollection Load(DiagramStyle parentStyle, Stream inputStream)
         {
-            if (null == parentStyle)
+            if (parentStyle is null)
             {
                 throw new ArgumentNullException(nameof(parentStyle));
             }
 
-            if (null == inputStream)
+            if (inputStream is null)
             {
                 throw new ArgumentNullException(nameof(inputStream));
             }
@@ -57,17 +57,17 @@ namespace Chordious.Core.Legacy
 
         internal static Diagram GetDiagram(Chord chord, ChordOptions chordOptions, DiagramStyle parentStyle)
         {
-            if (null == chord)
+            if (chord is null)
             {
                 throw new ArgumentNullException(nameof(chord));
             }
 
-            if (null == chordOptions)
+            if (chordOptions is null)
             {
                 throw new ArgumentNullException(nameof(chordOptions));
             }
 
-            if (null == parentStyle)
+            if (parentStyle is null)
             {
                 throw new ArgumentNullException(nameof(parentStyle));
             }
@@ -203,7 +203,7 @@ namespace Chordious.Core.Legacy
 
             if (chord.Barre == -1)
             {
-                if (chordOptions.FullBarres && null != bp)
+                if (chordOptions.FullBarres && bp is not null)
                 {
                     bp = new BarrePosition(bp.Fret, 1, chord.NumStrings);
                 }
@@ -214,7 +214,7 @@ namespace Chordious.Core.Legacy
             }
             else if (chord.Barre > 0)
             {
-                if (null != bp)
+                if (bp is not null)
                 {
                     if (chordOptions.FullBarres)
                     {
@@ -227,18 +227,18 @@ namespace Chordious.Core.Legacy
                 }
             }
 
-            if (chordOptions.FullBarres && null != bp)
+            if (chordOptions.FullBarres && bp is not null)
             {
                 bp = new BarrePosition(bp.Fret, 1, chord.NumStrings);
             }
 
-            if (null != bp)
+            if (bp is not null)
             {
                 if (chordOptions.BarreType == BarreType.Straight)
                 {
                     DiagramBarre straightBarre = diagram.NewBarre(bp);
                     straightBarre.Style.BarreArcRatio = 0;
-                
+
                 }
                 else if (chordOptions.BarreType == BarreType.Arc)
                 {

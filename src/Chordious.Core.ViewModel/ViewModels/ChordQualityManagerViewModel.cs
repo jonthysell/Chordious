@@ -64,7 +64,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _addNamedInterval ?? (_addNamedInterval = new RelayCommand(() =>
+                return _addNamedInterval ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -85,7 +85,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _addNamedInterval;
@@ -102,7 +102,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _editNamedInterval ?? (_editNamedInterval = new RelayCommand(() =>
+                return _editNamedInterval ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -127,7 +127,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NamedIntervalIsSelected;
-                }));
+                });
             }
         }
         private RelayCommand _editNamedInterval;
@@ -144,7 +144,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _deleteNamedInterval ?? (_deleteNamedInterval = new RelayCommand(() =>
+                return _deleteNamedInterval ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -171,7 +171,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NamedIntervalIsSelected && !SelectedNamedInterval.ReadOnly;
-                }));
+                });
             }
         }
         private RelayCommand _deleteNamedInterval;

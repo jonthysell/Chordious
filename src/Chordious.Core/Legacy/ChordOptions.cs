@@ -117,7 +117,7 @@ namespace Chordious.Core.Legacy
 
         public bool FullBarres { get; set; }
 
-        public ChordOptions() : this(DefaultWidth, DefaultHeight, DefaultStrokeWidth, DefaultMargin, DefaultFontSize, DefaultFontFamily, DefaultFontStyle, DefaultBarreType, DefaultOpenStringType, DefaultFullBarres) {}
+        public ChordOptions() : this(DefaultWidth, DefaultHeight, DefaultStrokeWidth, DefaultMargin, DefaultFontSize, DefaultFontFamily, DefaultFontStyle, DefaultBarreType, DefaultOpenStringType, DefaultFullBarres) { }
 
         public ChordOptions(double width, double height, double strokeWidth, double margin, double fontSize, string fontFamily, FontStyle fontStyle, BarreType barreType, OpenStringType openStringType, bool fullBarres)
         {
@@ -160,7 +160,7 @@ namespace Chordious.Core.Legacy
 
         public void CopyTo(ChordOptions co)
         {
-            if (null == co)
+            if (co is null)
             {
                 throw new ArgumentNullException(nameof(co));
             }

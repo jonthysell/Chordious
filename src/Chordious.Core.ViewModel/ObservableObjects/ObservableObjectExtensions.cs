@@ -18,7 +18,7 @@ namespace Chordious.Core.ViewModel
 
             foreach (PropertyInfo propertyInfo in typeInfo.GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
-                onPropertyChangedMethod.Invoke(observableObject, new object[] { propertyInfo.Name } );
+                onPropertyChangedMethod.Invoke(observableObject, new object[] { propertyInfo.Name });
             }
         }
     }

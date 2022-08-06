@@ -44,7 +44,7 @@ namespace Chordious.Core
         {
             ChordiousSettings cs = new ChordiousSettings(Level);
 
-            if (null != Parent)
+            if (Parent is not null)
             {
                 cs.Parent = Parent;
             }

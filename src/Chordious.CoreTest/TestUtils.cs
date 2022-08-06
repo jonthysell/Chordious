@@ -31,12 +31,12 @@ namespace Chordious.CoreTest
 
         public static void AreEqual<T>(IEnumerable<T> expected, IEnumerable<T> actual, bool allowExtras = false) where T : class
         {
-            if ((null == expected) != (null == actual))
+            if ((expected is null) != (actual is null))
             {
                 Assert.AreEqual(expected, actual);
             }
 
-            if (null != expected && null != actual)
+            if (expected is not null && actual is not null)
             {
                 Queue<T> expectedList = new Queue<T>(expected);
                 List<T> actualList = new List<T>(actual);
@@ -58,7 +58,7 @@ namespace Chordious.CoreTest
                         }
                     }
 
-                    if (null != foundActualItem)
+                    if (foundActualItem is not null)
                     {
                         actualList.Remove(foundActualItem);
                     }
@@ -118,7 +118,7 @@ namespace Chordious.CoreTest
             return array;
         }
 
-        public static IEnumerable<T> Parse<T>(string s, Func<string,T> parser, char delimiter = ',')
+        public static IEnumerable<T> Parse<T>(string s, Func<string, T> parser, char delimiter = ',')
         {
             if (string.IsNullOrWhiteSpace(s))
             {
@@ -140,7 +140,7 @@ namespace Chordious.CoreTest
 
         public static string ToString<T>(IEnumerable<T> items, char delimiter = ',')
         {
-            if (null == items)
+            if (items is null)
             {
                 return "null";
             }

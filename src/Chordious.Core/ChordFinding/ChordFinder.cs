@@ -21,7 +21,7 @@ namespace Chordious.Core
 
         public static async Task<ChordFinderResultSet> FindChordsAsync(IChordFinderOptions chordFinderOptions, CancellationToken cancelToken)
         {
-            if (null == chordFinderOptions)
+            if (chordFinderOptions is null)
             {
                 throw new ArgumentNullException(nameof(chordFinderOptions));
             }
@@ -62,7 +62,7 @@ namespace Chordious.Core
                 bool[] hasNotes = new bool[targetNotes.Length];
 
                 // Walk back up the tree to set the marks on the result and flag each target note
-                while (null != nn)
+                while (nn is not null)
                 {
                     marks[str] = nn.Fret;
 
@@ -161,9 +161,9 @@ namespace Chordious.Core
                 Parent = parent;
             }
 
-            public NoteNode() : this(-1, null, null) {}
+            public NoteNode() : this(-1, null, null) { }
 
-            public NoteNode(NoteNode parent) : this(-1, null, parent) {}
+            public NoteNode(NoteNode parent) : this(-1, null, parent) { }
         }
     }
 }

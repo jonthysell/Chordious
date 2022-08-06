@@ -188,7 +188,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return _exportFormats ?? (_exportFormats = GetExportFormats());
+                return _exportFormats ??= GetExportFormats();
             }
         }
         private ObservableCollection<string> _exportFormats;
@@ -308,7 +308,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return _chooseOutputPath ?? (_chooseOutputPath = new RelayCommand(() =>
+                return _chooseOutputPath ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -321,7 +321,7 @@ namespace Chordious.WPF
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _chooseOutputPath;
@@ -368,7 +368,7 @@ namespace Chordious.WPF
                     {
                         i++; // step forward to look at the next character
                         char nextChar = SelectedFilenameFormat[i];
-                        switch(nextChar)
+                        switch (nextChar)
                         {
                             case 't':
                                 filePath += FolderUtils.CleanTitle(DiagramsToExport[diagramIndex].Title);
@@ -502,5 +502,5 @@ namespace Chordious.WPF
                                                              "%c\\%1.%x",
                                                              "%c\\diagram (%1 of %#).%x"
                                                          };
-    }   
+    }
 }

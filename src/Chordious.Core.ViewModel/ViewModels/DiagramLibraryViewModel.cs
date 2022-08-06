@@ -37,7 +37,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return (null != SelectedNode);
+                return (SelectedNode is not null);
             }
         }
 
@@ -50,7 +50,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 // Make sure to deselect diagrams when selecting a new library node
-                if (null != SelectedNode)
+                if (SelectedNode is not null)
                 {
                     SelectedNode.SelectedDiagrams.Clear();
                 }
@@ -100,7 +100,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                if (_firstLoad || null == _nodes)
+                if (_firstLoad || _nodes is null)
                 {
                     ObservableCollection<ObservableDiagramLibraryNode> collection = new ObservableCollection<ObservableDiagramLibraryNode>();
                     GetNodes(collection, PathUtils.PathRoot);
@@ -139,7 +139,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _createNode ?? (_createNode = new RelayCommand(() =>
+                return _createNode ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -160,7 +160,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _createNode;
@@ -194,7 +194,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _editNode ?? (_editNode = new RelayCommand(() =>
+                return _editNode ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -220,7 +220,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NodeIsSelected;
-                }));
+                });
             }
         }
         private RelayCommand _editNode;
@@ -254,7 +254,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _deleteNode ?? (_deleteNode = new RelayCommand(() =>
+                return _deleteNode ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -283,7 +283,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NodeIsSelected;
-                }));
+                });
             }
         }
         private RelayCommand _deleteNode;
@@ -317,7 +317,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _cloneNode ?? (_cloneNode = new RelayCommand(() =>
+                return _cloneNode ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -343,7 +343,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NodeIsSelected;
-                }));
+                });
             }
         }
         private RelayCommand _cloneNode;
@@ -382,7 +382,7 @@ namespace Chordious.Core.ViewModel
                     return SelectedNode.CopyNode;
                 }
 
-                return _copyNode ?? (_copyNode = new RelayCommand<string>((s) =>
+                return _copyNode ??= new RelayCommand<string>((s) =>
                 {
                     try
                     {
@@ -395,7 +395,7 @@ namespace Chordious.Core.ViewModel
                 }, (s) =>
                 {
                     return NodeIsSelected;
-                }));
+                });
             }
         }
         private RelayCommand<string> _copyNode;
@@ -434,7 +434,7 @@ namespace Chordious.Core.ViewModel
                     return SelectedNode.MergeNode;
                 }
 
-                return _mergeNode ?? (_mergeNode = new RelayCommand<string>((s) =>
+                return _mergeNode ??= new RelayCommand<string>((s) =>
                 {
                     try
                     {
@@ -447,7 +447,7 @@ namespace Chordious.Core.ViewModel
                 }, (s) =>
                 {
                     return NodeIsSelected;
-                }));
+                });
             }
         }
         private RelayCommand<string> _mergeNode;
@@ -486,7 +486,7 @@ namespace Chordious.Core.ViewModel
                     return SelectedNode.EditCollectionStyle;
                 }
 
-                return _editNodeStyle ?? (_editNodeStyle = new RelayCommand(() =>
+                return _editNodeStyle ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -499,7 +499,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return NodeIsSelected;
-                }));
+                });
             }
         }
         private RelayCommand _editNodeStyle;
@@ -512,7 +512,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _close ?? (_close = new RelayCommand(() =>
+                return _close ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -522,7 +522,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _close;

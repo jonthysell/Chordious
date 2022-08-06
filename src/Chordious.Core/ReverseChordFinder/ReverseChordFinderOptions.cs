@@ -22,7 +22,7 @@ namespace Chordious.Core
 
         public ReverseChordFinderOptions(ConfigFile configFile, ChordiousSettings chordiousSettings = null) : base(configFile, "reversechord")
         {
-            if (null != chordiousSettings)
+            if (chordiousSettings is not null)
             {
                 Settings = chordiousSettings;
             }
@@ -40,7 +40,7 @@ namespace Chordious.Core
 
             for (int i = 0; i < marks.Length; i++)
             {
-                marks[i] = (null != _cachedMarks && i < _cachedMarks.Length) ? _cachedMarks[i] : -1;
+                marks[i] = (_cachedMarks is not null && i < _cachedMarks.Length) ? _cachedMarks[i] : -1;
             }
 
             _cachedMarks = marks;

@@ -1542,7 +1542,7 @@ namespace Chordious.Core
         {
             DiagramStyle ds = new DiagramStyle(Level);
 
-            if (null != Parent)
+            if (Parent is not null)
             {
                 ds.Parent = Parent;
             }
@@ -1608,7 +1608,7 @@ namespace Chordious.Core
 
         public string GetSvgStyle(string[][] styleMap, string prefix = "")
         {
-            if (null == styleMap)
+            if (styleMap is null)
             {
                 throw new ArgumentNullException(nameof(styleMap));
             }

@@ -25,7 +25,7 @@ namespace Chordious.Core
         {
             get
             {
-                return null != Type.GetType("Mono.Runtime");
+                return Type.GetType("Mono.Runtime") is not null;
             }
         }
 

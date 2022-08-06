@@ -40,7 +40,7 @@ namespace Chordious.Core
         public override bool Equals(ElementPosition obj)
         {
             FretLabelPosition flp = (obj as FretLabelPosition);
-            return null != flp && flp.Side == Side && flp.Fret == Fret;
+            return flp is not null && flp.Side == Side && flp.Fret == Fret;
         }
 
         public override int GetHashCode()

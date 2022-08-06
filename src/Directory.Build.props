@@ -10,6 +10,7 @@
     <Version>2.6.3</Version>
     <AssemblyVersion>$(Version).0</AssemblyVersion>
     <FileVersion>$(AssemblyVersion)</FileVersion>
+    <NeutralLanguage>en</NeutralLanguage>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
     <RepoRoot>$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)..\'))</RepoRoot>
   </PropertyGroup>

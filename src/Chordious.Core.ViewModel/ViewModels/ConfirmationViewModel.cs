@@ -53,7 +53,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _acceptAndRemember ?? (_acceptAndRemember = new RelayCommand(() =>
+                return _acceptAndRemember ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -67,7 +67,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return ShowAcceptAndRemember;
-                }));
+                });
             }
         }
         private RelayCommand _acceptAndRemember;
@@ -76,7 +76,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _accept ?? (_accept = new RelayCommand(() =>
+                return _accept ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -87,7 +87,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _accept;
@@ -96,7 +96,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _reject ?? (_reject = new RelayCommand(() =>
+                return _reject ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -107,7 +107,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _reject;
@@ -150,7 +150,7 @@ namespace Chordious.Core.ViewModel
             {
                 AppVM.Settings.Set(_rememberAnswerKey, Result == ConfirmationResult.AcceptAndRemember);
             }
-            
+
             Callback(Result == ConfirmationResult.Accept || Result == ConfirmationResult.AcceptAndRemember);
         }
     }

@@ -396,7 +396,7 @@ namespace Chordious.Core
 
         public void ForEachMarkType(Action action)
         {
-            if (null == action)
+            if (action is null)
             {
                 throw new ArgumentNullException(nameof(action));
             }

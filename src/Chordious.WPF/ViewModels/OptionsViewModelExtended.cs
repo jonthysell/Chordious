@@ -57,7 +57,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return _renderBackgrounds ?? (_renderBackgrounds = ImageUtils.GetBackgrounds());
+                return _renderBackgrounds ??= ImageUtils.GetBackgrounds();
             }
         }
         private ObservableCollection<string> _renderBackgrounds;
@@ -113,7 +113,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return _editorRenderBackgrounds ?? (_editorRenderBackgrounds = ImageUtils.GetBackgrounds());
+                return _editorRenderBackgrounds ??= ImageUtils.GetBackgrounds();
             }
         }
         private ObservableCollection<string> _editorRenderBackgrounds;
@@ -204,7 +204,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return _openTempFolder ?? (_openTempFolder = new RelayCommand(() =>
+                return _openTempFolder ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -215,7 +215,7 @@ namespace Chordious.WPF
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _openTempFolder;
@@ -272,7 +272,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return _releaseChannels ?? (_releaseChannels = GetReleaseChannels());
+                return _releaseChannels ??= GetReleaseChannels();
             }
         }
         private ObservableCollection<string> _releaseChannels;
@@ -382,7 +382,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return _checkForUpdatesAsync ?? (_checkForUpdatesAsync = new RelayCommand(async () =>
+                return _checkForUpdatesAsync ??= new RelayCommand(async () =>
                 {
                     try
                     {
@@ -401,7 +401,7 @@ namespace Chordious.WPF
                 }, () =>
                 {
                     return UpdateUtils.UpdateEnabled;
-                }));
+                });
             }
         }
         private RelayCommand _checkForUpdatesAsync;

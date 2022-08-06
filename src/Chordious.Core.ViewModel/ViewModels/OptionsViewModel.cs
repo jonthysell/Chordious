@@ -96,7 +96,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _showAdvancedSettings ?? (_showAdvancedSettings = new RelayCommand(() =>
+                return _showAdvancedSettings ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -135,7 +135,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _showAdvancedSettings;
@@ -160,7 +160,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _resetUserSettings ?? (_resetUserSettings = new RelayCommand(() =>
+                return _resetUserSettings ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -184,7 +184,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _resetUserSettings;
@@ -209,7 +209,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _resetConfirmations ?? (_resetConfirmations = new RelayCommand(() =>
+                return _resetConfirmations ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -233,7 +233,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _resetConfirmations;
@@ -278,7 +278,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                if (null == _userStyle)
+                if (_userStyle is null)
                 {
                     _userStyle = new ObservableDiagramStyle(StyleBuffer.Parent);
                 }
@@ -315,7 +315,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _showAdvancedStyle ?? (_showAdvancedStyle = new RelayCommand(() =>
+                return _showAdvancedStyle ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -354,7 +354,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _showAdvancedStyle;
@@ -379,7 +379,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _resetUserStyles ?? (_resetUserStyles = new RelayCommand(() =>
+                return _resetUserStyles ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -403,7 +403,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _resetUserStyles;
@@ -448,7 +448,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _showInstrumentManager ?? (_showInstrumentManager = new RelayCommand(() =>
+                return _showInstrumentManager ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -458,7 +458,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _showInstrumentManager;
@@ -483,7 +483,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _showChordQualityManager ?? (_showChordQualityManager = new RelayCommand(() =>
+                return _showChordQualityManager ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -493,7 +493,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _showChordQualityManager;
@@ -518,7 +518,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _showScaleManager ?? (_showScaleManager = new RelayCommand(() =>
+                return _showScaleManager ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -528,7 +528,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _showScaleManager;
@@ -561,7 +561,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _resetChordFinderDefaults ?? (_resetChordFinderDefaults = new RelayCommand(() =>
+                return _resetChordFinderDefaults ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -585,7 +585,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _resetChordFinderDefaults;
@@ -610,7 +610,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _resetScaleFinderDefaults ?? (_resetScaleFinderDefaults = new RelayCommand(() =>
+                return _resetScaleFinderDefaults ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -634,7 +634,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _resetScaleFinderDefaults;
@@ -679,7 +679,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _showConfigImport ?? (_showConfigImport = new RelayCommand(() =>
+                return _showConfigImport ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -687,7 +687,7 @@ namespace Chordious.Core.ViewModel
                         {
                             try
                             {
-                                if (null != inputStream)
+                                if (inputStream is not null)
                                 {
                                     StrongReferenceMessenger.Default.Send(new ShowConfigImportMessage(inputStream));
                                 }
@@ -696,13 +696,13 @@ namespace Chordious.Core.ViewModel
                             {
                                 ExceptionUtils.HandleException(ex);
                             }
-                        }));                        
+                        }));
                     }
                     catch (Exception ex)
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _showConfigImport;
@@ -727,7 +727,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _showConfigExport ?? (_showConfigExport = new RelayCommand(() =>
+                return _showConfigExport ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -737,7 +737,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _showConfigExport;
@@ -770,7 +770,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _legacyImport ?? (_legacyImport = new RelayCommand(() =>
+                return _legacyImport ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -806,7 +806,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _legacyImport;
@@ -817,7 +817,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _apply ?? (_apply = new RelayCommand(() =>
+                return _apply ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -830,7 +830,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return Dirty && AdvancedSettingsClean && AdvancedStyleClean;
-                }));
+                });
             }
         }
         private RelayCommand _apply;
@@ -839,7 +839,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _accept ?? (_accept = new RelayCommand(() =>
+                return _accept ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -853,7 +853,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return AdvancedSettingsClean && AdvancedStyleClean;
-                }));
+                });
             }
         }
         private RelayCommand _accept;
@@ -862,7 +862,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _cancel ?? (_cancel = new RelayCommand(() =>
+                return _cancel ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -873,7 +873,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _cancel;

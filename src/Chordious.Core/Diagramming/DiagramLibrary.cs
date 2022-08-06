@@ -345,7 +345,7 @@ namespace Chordious.Core
                 string nodePath = node.Path;
                 if (nodePath == path)
                 {
-                    collections.Add(new KeyValuePair<string,DiagramCollection>(node.Name, node.DiagramCollection));
+                    collections.Add(new KeyValuePair<string, DiagramCollection>(node.Name, node.DiagramCollection));
                 }
             }
             return collections;
@@ -353,7 +353,7 @@ namespace Chordious.Core
 
         public void CopyFrom(DiagramLibrary diagramLibrary)
         {
-            if (null == diagramLibrary)
+            if (diagramLibrary is null)
             {
                 throw new ArgumentNullException(nameof(diagramLibrary));
             }
@@ -372,7 +372,7 @@ namespace Chordious.Core
 
         public void Read(XmlReader xmlReader)
         {
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }
@@ -400,7 +400,7 @@ namespace Chordious.Core
 
         public void Write(XmlWriter xmlWriter)
         {
-            if (null == xmlWriter)
+            if (xmlWriter is null)
             {
                 throw new ArgumentNullException(nameof(xmlWriter));
             }
@@ -438,7 +438,7 @@ namespace Chordious.Core
 
         private void AddNode(DiagramLibraryNode node)
         {
-            if (null == node)
+            if (node is null)
             {
                 throw new ArgumentNullException(nameof(node));
             }

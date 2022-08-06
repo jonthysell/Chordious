@@ -38,7 +38,7 @@ namespace Chordious.Core
         {
             get
             {
-                return Settings.GetEnum<MarkTextOption>(Prefix + "marktextoption");               
+                return Settings.GetEnum<MarkTextOption>(Prefix + "marktextoption");
             }
             set
             {

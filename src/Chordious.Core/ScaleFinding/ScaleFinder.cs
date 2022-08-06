@@ -22,7 +22,7 @@ namespace Chordious.Core
 
         public static async Task<ScaleFinderResultSet> FindScalesAsync(IScaleFinderOptions scaleFinderOptions, CancellationToken cancelToken)
         {
-            if (null == scaleFinderOptions)
+            if (scaleFinderOptions is null)
             {
                 throw new ArgumentNullException(nameof(scaleFinderOptions));
             }
@@ -80,7 +80,7 @@ namespace Chordious.Core
                 NoteNode nn = noteNode;
 
                 // Walk back up the tree to set the marks on the result and flag each target note
-                while (null != nn)
+                while (nn is not null)
                 {
                     if (nn.Fret >= 0)
                     {
@@ -97,7 +97,7 @@ namespace Chordious.Core
                 // Look at all the notes on the string
                 int startingFret = scaleFinderOptions.AllowOpenStrings ? 0 : 1;
 
-                if (null != noteNode && noteNode.String == str)
+                if (noteNode is not null && noteNode.String == str)
                 {
                     startingFret = noteNode.Fret + 1;
                 }

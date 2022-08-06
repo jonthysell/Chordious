@@ -37,7 +37,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return (null != SelectedNamedInterval);
+                return (SelectedNamedInterval is not null);
             }
         }
 
@@ -191,7 +191,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _close ?? (_close = new RelayCommand(() =>
+                return _close ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -201,7 +201,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _close;
@@ -211,7 +211,7 @@ namespace Chordious.Core.ViewModel
 
         protected DeleteNamedInterval _deleteUserNamedInterval;
 
-        public NamedIntervalManagerViewModel(GetNamedIntervals getDefaultNamedIntervals, GetNamedIntervals getUserNamedIntervals, DeleteNamedInterval deleteUserNamedInterval): base()
+        public NamedIntervalManagerViewModel(GetNamedIntervals getDefaultNamedIntervals, GetNamedIntervals getUserNamedIntervals, DeleteNamedInterval deleteUserNamedInterval) : base()
         {
             _getDefaultNamedIntervals = getDefaultNamedIntervals;
             _getUserNamedIntervals = getUserNamedIntervals;
@@ -226,7 +226,7 @@ namespace Chordious.Core.ViewModel
             DefaultNamedIntervals = new ObservableCollection<ObservableNamedInterval>(_getDefaultNamedIntervals());
             UserNamedIntervals = new ObservableCollection<ObservableNamedInterval>(_getUserNamedIntervals());
 
-            if (null == selectedNamedInterval)
+            if (selectedNamedInterval is null)
             {
                 SelectedNamedInterval = null;
             }

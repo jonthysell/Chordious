@@ -9,7 +9,7 @@ namespace Chordious.Core
     {
         public static string Clean(string path)
         {
-            if (null == path)
+            if (path is null)
             {
                 path = "";
             }
@@ -39,8 +39,8 @@ namespace Chordious.Core
             return string.Join(PathSeperator, path1, path2);
         }
 
-        public static string PathSeperator = "/";
+        public static readonly string PathSeperator = "/";
 
-        public static string PathRoot = "/";
+        public static readonly string PathRoot = "/";
     }
 }

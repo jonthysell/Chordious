@@ -57,7 +57,7 @@ namespace Chordious.Core.ViewModel
                 string lastValue = _collectionName;
                 try
                 {
-                    if (null != value)
+                    if (value is not null)
                     {
                         _collectionName = value.Trim();
                         CollectionNames.SortedInsert(CollectionName);
@@ -78,7 +78,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _existingCollections ?? (_existingCollections = GetCollectionNames());
+                return _existingCollections ??= GetCollectionNames();
             }
         }
         private ObservableCollection<string> _existingCollections;
@@ -87,7 +87,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _accept ?? (_accept = new RelayCommand(() =>
+                return _accept ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -101,7 +101,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return !string.IsNullOrWhiteSpace(CollectionName);
-                }));
+                });
             }
         }
         private RelayCommand _accept;
@@ -110,7 +110,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _cancel ?? (_cancel = new RelayCommand(() =>
+                return _cancel ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -120,7 +120,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _cancel;

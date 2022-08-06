@@ -29,11 +29,11 @@ namespace Chordious.Core.ViewModel
             {
                 string title = Strings.AdvancedDataEditorTitle;
 
-                if (null != LocalBuffer.Parent as ChordiousSettings)
+                if (null != (LocalBuffer.Parent as ChordiousSettings))
                 {
                     title = Strings.AdvancedSettingsEditorTitle;
                 }
-                else if (null != LocalBuffer.Parent as DiagramStyle)
+                else if (null != (LocalBuffer.Parent as DiagramStyle))
                 {
                     title = Strings.AdvancedStyleEditorTitle;
                 }
@@ -90,7 +90,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _apply ?? (_apply = new RelayCommand(() =>
+                return _apply ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -103,7 +103,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return Dirty;
-                }));
+                });
             }
         }
         private RelayCommand _apply;
@@ -112,7 +112,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _accept ?? (_accept = new RelayCommand(() =>
+                return _accept ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -123,7 +123,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _accept;
@@ -132,7 +132,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _cancel ?? (_cancel = new RelayCommand(() =>
+                return _cancel ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -143,7 +143,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _cancel;
@@ -202,7 +202,7 @@ namespace Chordious.Core.ViewModel
 
         internal AdvancedDataViewModel(InheritableDictionary inheritableDictionary, string filter)
         {
-            if (null == inheritableDictionary)
+            if (inheritableDictionary is null)
             {
                 throw new ArgumentNullException(nameof(inheritableDictionary));
             }
@@ -211,11 +211,11 @@ namespace Chordious.Core.ViewModel
 
             Filter = string.IsNullOrEmpty(filter) ? "" : filter;
 
-            if (null != (inheritableDictionary as ChordiousSettings))
+            if (inheritableDictionary is ChordiousSettings)
             {
                 LocalBuffer = new ChordiousSettings(inheritableDictionary as ChordiousSettings, "Changed");
             }
-            else if (null != (inheritableDictionary as DiagramStyle))
+            else if (inheritableDictionary is DiagramStyle)
             {
                 LocalBuffer = new DiagramStyle(inheritableDictionary as DiagramStyle, "Changed");
             }

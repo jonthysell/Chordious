@@ -62,7 +62,7 @@ namespace Chordious.Core.ViewModel
         {
             ObservableCollection<ObservableNote> collection = new ObservableCollection<ObservableNote>();
 
-            foreach(FullNote note in Tuning.RootNotes)
+            foreach (FullNote note in Tuning.RootNotes)
             {
                 collection.Add(new ObservableNote(note));
             }
@@ -72,7 +72,7 @@ namespace Chordious.Core.ViewModel
 
         public override string ToString()
         {
-            if (null != Tuning)
+            if (Tuning is not null)
             {
                 return Tuning.ToString();
             }

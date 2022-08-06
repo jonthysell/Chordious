@@ -10,7 +10,7 @@ namespace Chordious.Core
     {
         internal Scale(ScaleSet parent, string name, int[] intervals) : base(parent)
         {
-            if (null == parent)
+            if (parent is null)
             {
                 throw new ArgumentNullException(nameof(parent));
             }
@@ -23,12 +23,12 @@ namespace Chordious.Core
 
         internal Scale(ScaleSet parent, XmlReader xmlReader) : base(parent)
         {
-            if (null == parent)
+            if (parent is null)
             {
                 throw new ArgumentNullException(nameof(parent));
             }
 
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }
@@ -43,7 +43,7 @@ namespace Chordious.Core
 
         public void Write(XmlWriter xmlWriter)
         {
-            if (null == xmlWriter)
+            if (xmlWriter is null)
             {
                 throw new ArgumentNullException(nameof(xmlWriter));
             }

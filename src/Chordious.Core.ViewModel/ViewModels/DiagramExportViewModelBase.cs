@@ -106,7 +106,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _exportAsync ?? (_exportAsync = new RelayCommand(async () =>
+                return _exportAsync ??= new RelayCommand(async () =>
                 {
                     _exportAsyncCancellationTokenSource = new CancellationTokenSource();
                     bool cancelled = false;
@@ -159,7 +159,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanExport();
-                }));
+                });
             }
         }
         private RelayCommand _exportAsync;
@@ -172,11 +172,11 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _cancelOrClose ?? (_cancelOrClose = new RelayCommand(() =>
+                return _cancelOrClose ??= new RelayCommand(() =>
                 {
                     try
                     {
-                        if (null != _exportAsyncCancellationTokenSource)
+                        if (_exportAsyncCancellationTokenSource is not null)
                         {
                             _exportAsyncCancellationTokenSource.Cancel();
                         }
@@ -189,7 +189,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _cancelOrClose;
@@ -242,7 +242,7 @@ namespace Chordious.Core.ViewModel
 
         protected bool CanExport()
         {
-            return (null != DiagramsToExport && DiagramsToExport.Count > 0) && IsIdle;
+            return (DiagramsToExport is not null && DiagramsToExport.Count > 0) && IsIdle;
         }
 
         private void OnExportStart()

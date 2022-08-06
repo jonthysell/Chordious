@@ -34,7 +34,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _apply ?? (_apply = new RelayCommand(() =>
+                return _apply ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -47,7 +47,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return Dirty;
-                }));
+                });
             }
         }
         private RelayCommand _apply;
@@ -56,7 +56,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _accept ?? (_accept = new RelayCommand(() =>
+                return _accept ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -67,7 +67,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _accept;
@@ -76,7 +76,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _cancel ?? (_cancel = new RelayCommand(() =>
+                return _cancel ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -87,7 +87,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _cancel;
@@ -188,7 +188,7 @@ namespace Chordious.Core.ViewModel
 
         public DiagramStyleEditorViewModel(ObservableDiagramStyle diagramStyle)
         {
-            if (null == diagramStyle)
+            if (diagramStyle is null)
             {
                 throw new ArgumentNullException(nameof(diagramStyle));
             }
@@ -202,7 +202,7 @@ namespace Chordious.Core.ViewModel
             // Recursively parents up the tree
             DiagramStyle style = diagramStyle.Style.Parent;
 
-            while (null != style)
+            while (style is not null)
             {
                 ObservableDiagramStyle parentStyle = new ObservableDiagramStyle(style);
                 _originalStyles.Insert(0, parentStyle);

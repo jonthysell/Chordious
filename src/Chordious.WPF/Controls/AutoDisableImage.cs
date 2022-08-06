@@ -16,7 +16,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return _originalImageSource ?? (_originalImageSource = Source);
+                return _originalImageSource ??= Source;
             }
         }
         private ImageSource _originalImageSource;
@@ -25,7 +25,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return _disabledImageSource ?? (_disabledImageSource = GetDisabledImage(OriginalImageSource));
+                return _disabledImageSource ??= GetDisabledImage(OriginalImageSource);
             }
         }
         private ImageSource _disabledImageSource;
@@ -37,7 +37,7 @@ namespace Chordious.WPF
 
         public static void LoadImage(ImageSource imageSource)
         {
-            if (null == imageSource)
+            if (imageSource is null)
             {
                 throw new ArgumentNullException(nameof(imageSource));
             }
@@ -47,12 +47,12 @@ namespace Chordious.WPF
 
         protected static AutoDisableImage GetImageWithSource(DependencyObject source)
         {
-            if (!(source is AutoDisableImage image))
+            if (source is not AutoDisableImage image)
             {
                 return null;
             }
 
-            if (null == image.Source)
+            if (image.Source is null)
             {
                 return null;
             }
@@ -63,7 +63,7 @@ namespace Chordious.WPF
         protected static void OnAutoDisableImageIsEnabledPropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs args)
         {
             AutoDisableImage image = GetImageWithSource(source);
-            if (null != image)
+            if (image is not null)
             {
                 bool isEnabled = Convert.ToBoolean(args.NewValue);
 
@@ -88,6 +88,6 @@ namespace Chordious.WPF
             return disabledImage;
         }
 
-        protected static Dictionary<ImageSource, ImageSource> _cachedDisabledImages = new Dictionary<ImageSource, ImageSource>();
+        protected static readonly Dictionary<ImageSource, ImageSource> _cachedDisabledImages = new Dictionary<ImageSource, ImageSource>();
     }
 }

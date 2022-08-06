@@ -63,7 +63,7 @@ namespace Chordious.Core.Legacy
                 _numStrings = value;
 
                 // Init _marks
-                if (null == _marks)
+                if (_marks is null)
                 {
                     _marks = new int[_numStrings];
                 }
@@ -135,13 +135,13 @@ namespace Chordious.Core.Legacy
             }
             set
             {
-                if (null == value)
+                if (value is null)
                 {
                     throw new ArgumentNullException();
                 }
 
                 // Init _marks
-                if (null == _marks)
+                if (_marks is null)
                 {
                     _marks = new int[_numStrings];
                 }
@@ -197,7 +197,7 @@ namespace Chordious.Core.Legacy
 
         public void CopyTo(Chord c)
         {
-            if (null == c)
+            if (c is null)
             {
                 throw new ArgumentNullException(nameof(c));
             }
@@ -226,7 +226,7 @@ namespace Chordious.Core.Legacy
 
             for (int i = 0; i < Marks.Length; i++)
             {
-                s+= ";" + Marks[i];
+                s += ";" + Marks[i];
             }
 
             return s;

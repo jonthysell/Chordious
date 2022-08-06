@@ -183,7 +183,7 @@ namespace Chordious.Core.ViewModel
             {
                 return Strings.DiagramStyleLabelLayoutModelToolTip;
             }
-        } 
+        }
 
         public int SelectedLabelLayoutModelIndex
         {
@@ -272,7 +272,7 @@ namespace Chordious.Core.ViewModel
             {
                 try
                 {
-                    if (null != value)
+                    if (value is not null)
                     {
                         Style.DiagramColor = value;
                         OnPropertyChanged(nameof(DiagramColor));
@@ -401,7 +401,7 @@ namespace Chordious.Core.ViewModel
             {
                 try
                 {
-                    if (null != value)
+                    if (value is not null)
                     {
                         Style.DiagramBorderColor = value;
                         OnPropertyChanged(nameof(DiagramBorderColor));
@@ -1081,7 +1081,7 @@ namespace Chordious.Core.ViewModel
             {
                 try
                 {
-                    if (null != value)
+                    if (value is not null)
                     {
                         Style.GridColor = value;
                         OnPropertyChanged(nameof(GridColor));
@@ -1206,7 +1206,7 @@ namespace Chordious.Core.ViewModel
             {
                 try
                 {
-                    if (null != value)
+                    if (value is not null)
                     {
                         Style.GridLineColor = value;
                         OnPropertyChanged(nameof(GridLineColor));
@@ -1658,7 +1658,7 @@ namespace Chordious.Core.ViewModel
             {
                 try
                 {
-                    if (null != value)
+                    if (value is not null)
                     {
                         Style.TitleFontFamily = value;
                         FontFamilies.SortedInsert(TitleFontFamily);
@@ -1963,7 +1963,7 @@ namespace Chordious.Core.ViewModel
             {
                 try
                 {
-                    if (null != value)
+                    if (value is not null)
                     {
                         Style.TitleColor = value;
                         OnPropertyChanged(nameof(TitleColor));
@@ -2270,7 +2270,7 @@ namespace Chordious.Core.ViewModel
             {
                 try
                 {
-                    if (null != value)
+                    if (value is not null)
                     {
                         MarkStyle.MarkColor = value;
                         OnPropertyChanged(nameof(MarkColor));
@@ -2704,7 +2704,7 @@ namespace Chordious.Core.ViewModel
             {
                 try
                 {
-                    if (null != value)
+                    if (value is not null)
                     {
                         MarkStyle.MarkTextColor = value;
                         OnPropertyChanged(nameof(MarkTextColor));
@@ -2821,7 +2821,7 @@ namespace Chordious.Core.ViewModel
             {
                 try
                 {
-                    if (null != value)
+                    if (value is not null)
                     {
                         MarkStyle.MarkFontFamily = value;
                         FontFamilies.SortedInsert(MarkFontFamily);
@@ -3219,7 +3219,7 @@ namespace Chordious.Core.ViewModel
             {
                 try
                 {
-                    if (null != value)
+                    if (value is not null)
                     {
                         Style.FretLabelTextColor = value;
                         OnPropertyChanged(nameof(FretLabelTextColor));
@@ -3336,7 +3336,7 @@ namespace Chordious.Core.ViewModel
             {
                 try
                 {
-                    if (null != value)
+                    if (value is not null)
                     {
                         Style.FretLabelFontFamily = value;
                         FontFamilies.SortedInsert(FretLabelFontFamily);
@@ -3990,7 +3990,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _fontFamiles ?? (_fontFamiles = new ObservableCollection<string>(ObservableEnums.FontFamilies));
+                return _fontFamiles ??= new ObservableCollection<string>(ObservableEnums.FontFamilies);
             }
         }
         private ObservableCollection<string> _fontFamiles;
@@ -4003,7 +4003,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _showEditor ?? (_showEditor = new RelayCommand(() =>
+                return _showEditor ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -4023,7 +4023,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _showEditor;
@@ -4052,7 +4052,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _reset ?? (_reset = new RelayCommand(() =>
+                return _reset ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -4079,7 +4079,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return LocalCount > 0;
-                }));
+                });
             }
         }
         private RelayCommand _reset;
@@ -4120,7 +4120,7 @@ namespace Chordious.Core.ViewModel
         {
             Style = diagramStyle ?? throw new ArgumentNullException(nameof(diagramStyle));
 
-            if (null != diagramMarkStyle)
+            if (diagramMarkStyle is not null)
             {
                 if (diagramMarkStyle.Style != diagramStyle)
                 {

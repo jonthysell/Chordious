@@ -11,7 +11,7 @@ namespace Chordious.Core.ViewModel
     {
         public static void SortedInsert(this ObservableCollection<string> sortedCollection, string value)
         {
-            if (null == sortedCollection)
+            if (sortedCollection is null)
             {
                 throw new ArgumentNullException(nameof(sortedCollection));
             }
@@ -42,14 +42,14 @@ namespace Chordious.Core.ViewModel
             }
 
         }
-        public static void SortedInsert<T>(this ObservableCollection<T> sortedCollection, T value) where T: IComparable<T>
+        public static void SortedInsert<T>(this ObservableCollection<T> sortedCollection, T value) where T : IComparable<T>
         {
-            if (null == sortedCollection)
+            if (sortedCollection is null)
             {
                 throw new ArgumentNullException(nameof(sortedCollection));
             }
 
-            if (null == value)
+            if (value is null)
             {
                 throw new ArgumentNullException(nameof(value));
             }

@@ -128,7 +128,7 @@ namespace Chordious.Core
 
         protected void Add(NamedInterval namedInterval)
         {
-            if (null == namedInterval)
+            if (namedInterval is null)
             {
                 throw new ArgumentNullException(nameof(namedInterval));
             }
@@ -146,7 +146,7 @@ namespace Chordious.Core
 
         public bool Remove(NamedInterval namedInterval)
         {
-            if (null == namedInterval)
+            if (namedInterval is null)
             {
                 throw new ArgumentNullException(nameof(namedInterval));
             }
@@ -169,12 +169,12 @@ namespace Chordious.Core
                 }
                 catch (Exception ex)
                 {
-                    if (null != rollback)
+                    if (rollback is not null)
                     {
                         rollback();
 
                         // Re-add since remove succeeded but re-add failed
-                        if (null != (ex as NamedIntervalAlreadyExistsException))
+                        if (ex is NamedIntervalAlreadyExistsException)
                         {
                             Add(namedInterval);
                         }
@@ -215,11 +215,11 @@ namespace Chordious.Core
         {
             get
             {
-                if (null != (NamedIntervalSet as ChordQualitySet))
+                if (NamedIntervalSet is ChordQualitySet)
                 {
                     return string.Format(Strings.ChordQualityNotFoundExceptionMessage, LongName);
                 }
-                else if (null != (NamedIntervalSet as ScaleSet))
+                else if (NamedIntervalSet is ScaleSet)
                 {
                     return string.Format(Strings.ScaleNotFoundExceptionMessage, LongName);
                 }
@@ -237,11 +237,11 @@ namespace Chordious.Core
         {
             get
             {
-                if (null != (NamedIntervalSet as ChordQualitySet))
+                if (NamedIntervalSet is ChordQualitySet)
                 {
                     return string.Format(Strings.ChordQualityAlreadyExistsExceptionMessage, LongName);
                 }
-                else if ((null != NamedIntervalSet as ScaleSet))
+                else if (NamedIntervalSet is ScaleSet)
                 {
                     return string.Format(Strings.ScaleAlreadyExistsExceptionMessage, LongName);
                 }

@@ -63,7 +63,7 @@ namespace Chordious.Core
 
         public override sealed void Read(XmlReader xmlReader)
         {
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }
@@ -93,7 +93,7 @@ namespace Chordious.Core
 
         public override void Write(XmlWriter xmlWriter)
         {
-            if (null == xmlWriter)
+            if (xmlWriter is null)
             {
                 throw new ArgumentNullException(nameof(xmlWriter));
             }

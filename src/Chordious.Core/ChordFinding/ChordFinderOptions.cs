@@ -54,7 +54,7 @@ namespace Chordious.Core
 
         public ChordFinderOptions(ConfigFile configFile, ChordiousSettings chordiousSettings = null) : base(configFile, "chord")
         {
-            if (null != chordiousSettings)
+            if (chordiousSettings is not null)
             {
                 Settings = chordiousSettings;
             }
@@ -73,7 +73,7 @@ namespace Chordious.Core
 
             string level = ChordQualityLevel;
 
-            if (null != _cachedChordQuality)
+            if (_cachedChordQuality is not null)
             {
                 if (_cachedChordQuality.LongName == longName && _cachedChordQuality.Level == level)
                 {
@@ -83,7 +83,7 @@ namespace Chordious.Core
             }
 
             ChordQualitySet qualities = _configFile.ChordQualities;
-            while (null != qualities)
+            while (qualities is not null)
             {
                 if (qualities.Level == level)
                 {
@@ -102,7 +102,7 @@ namespace Chordious.Core
 
         public void SetTarget(Note rootNote, IChordQuality chordQuality)
         {
-            if (null == chordQuality)
+            if (chordQuality is null)
             {
                 throw new ArgumentNullException(nameof(chordQuality));
             }

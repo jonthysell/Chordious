@@ -9,6 +9,6 @@ namespace Chordious.Core.ViewModel
     {
         public static bool TryParseRGB(string s, out byte r, out byte g, out byte b) => Core.ColorUtils.TryParseRGB(s, out r, out g, out b);
 
-        public static IReadOnlyList<string> NamedColors = Core.ColorUtils.NamedColors;
+        public static readonly IReadOnlyList<string> NamedColors = Core.ColorUtils.NamedColors;
     }
 }

@@ -85,7 +85,7 @@ namespace Chordious.WPF
                     }
                 });
             }
-            
+
             if (scaleFactor != 1.0f)
             {
                 if (doc.Transforms is null)
@@ -107,7 +107,7 @@ namespace Chordious.WPF
 
         public static Bitmap AddBackground(Bitmap source, Background background)
         {
-            if (null == source)
+            if (source is null)
             {
                 throw new ArgumentNullException(nameof(source));
             }
@@ -202,14 +202,10 @@ namespace Chordious.WPF
             using (Graphics g = Graphics.FromImage(image))
             {
                 IntPtr hdc = g.GetHdc();
-                using (Metafile metafile = new Metafile(stream, hdc))
-                {
-                    g.ReleaseHdc();
-                    using (Graphics g2 = Graphics.FromImage(metafile))
-                    {
-                        g2.DrawImage(image, 0, 0);
-                    }
-                }
+                using Metafile metafile = new Metafile(stream, hdc);
+                g.ReleaseHdc();
+                using Graphics g2 = Graphics.FromImage(metafile);
+                g2.DrawImage(image, 0, 0);
             }
 
             return stream;
@@ -227,7 +223,7 @@ namespace Chordious.WPF
             {
                 BitmapEncoder encoder = new PngBitmapEncoder();
 
-                BitmapImage bmpImage =  BitmapToBitmapImage(image, ImageFormat.Png);
+                BitmapImage bmpImage = BitmapToBitmapImage(image, ImageFormat.Png);
                 BitmapMetadata frameMetadata = GetExportMetadata(ExportFormat.PNG);
 
                 BitmapFrame frame = BitmapFrame.Create(bmpImage, null, frameMetadata, null);
@@ -243,7 +239,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return _transparent16 ?? (_transparent16 = new Bitmap(Application.GetResourceStream(new Uri("pack://application:,,,/Resources/transparent16.png")).Stream));
+                return _transparent16 ??= new Bitmap(Application.GetResourceStream(new Uri("pack://application:,,,/Resources/transparent16.png")).Stream);
             }
         }
         private static Bitmap _transparent16;
@@ -286,42 +282,40 @@ namespace Chordious.WPF
                 Directory.CreateDirectory(directoryPath);
             }
 
-            using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            using FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+            if (exportFormat == ExportFormat.SVG)
             {
-                if (exportFormat == ExportFormat.SVG)
+                StreamWriter sw = new StreamWriter(fs);
+                sw.Write(svgText);
+                sw.Flush();
+            }
+            else
+            {
+                BitmapEncoder encoder = null;
+
+                Background background = Background.None;
+
+                if (exportFormat == ExportFormat.PNG)
                 {
-                    StreamWriter sw = new StreamWriter(fs);
-                    sw.Write(svgText);
-                    sw.Flush();
+                    encoder = new PngBitmapEncoder();
                 }
-                else
+                else if (exportFormat == ExportFormat.GIF)
                 {
-                    BitmapEncoder encoder = null;
-
-                    Background background = Background.None;
-
-                    if (exportFormat == ExportFormat.PNG)
-                    {
-                        encoder = new PngBitmapEncoder();
-                    }
-                    else if (exportFormat == ExportFormat.GIF)
-                    {
-                        encoder = new GifBitmapEncoder();
-                    }
-                    else if (exportFormat == ExportFormat.JPG)
-                    {
-                        encoder = new JpegBitmapEncoder();
-                        background = Background.White;
-                    }
-
-                    BitmapImage bmpImage = SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, background, scaleFactor);
-                    BitmapMetadata frameMetadata = GetExportMetadata(exportFormat);
-
-                    BitmapFrame frame = BitmapFrame.Create(bmpImage, null, frameMetadata, null);
-
-                    encoder.Frames.Add(frame);
-                    encoder.Save(fs);
+                    encoder = new GifBitmapEncoder();
                 }
+                else if (exportFormat == ExportFormat.JPG)
+                {
+                    encoder = new JpegBitmapEncoder();
+                    background = Background.White;
+                }
+
+                BitmapImage bmpImage = SvgTextToBitmapImage(svgText, width, height, ImageFormat.Png, background, scaleFactor);
+                BitmapMetadata frameMetadata = GetExportMetadata(exportFormat);
+
+                BitmapFrame frame = BitmapFrame.Create(bmpImage, null, frameMetadata, null);
+
+                encoder.Frames.Add(frame);
+                encoder.Save(fs);
             }
         }
 
@@ -359,12 +353,12 @@ namespace Chordious.WPF
 
         private static void AddMetaData(BitmapMetadata metadata, string[] tags, string value)
         {
-            if (null == metadata)
+            if (metadata is null)
             {
                 throw new ArgumentNullException(nameof(metadata));
             }
-           
-            if (null == tags)
+
+            if (tags is null)
             {
                 throw new ArgumentNullException(nameof(tags));
             }

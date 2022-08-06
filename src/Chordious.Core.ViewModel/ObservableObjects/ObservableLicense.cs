@@ -26,7 +26,7 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string ProductName { get; private set;}
+        public string ProductName { get; private set; }
 
         public string Copyright { get; private set; }
 

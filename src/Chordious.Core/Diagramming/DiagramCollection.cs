@@ -24,7 +24,7 @@ namespace Chordious.Core
 
         public DiagramCollection(DiagramStyle parentStyle)
         {
-            if (null == parentStyle)
+            if (parentStyle is null)
             {
                 throw new ArgumentNullException(nameof(parentStyle));
             }
@@ -41,7 +41,7 @@ namespace Chordious.Core
 
         public void Add(Diagram diagram)
         {
-            if (null == diagram)
+            if (diagram is null)
             {
                 throw new ArgumentNullException(nameof(diagram));
             }
@@ -52,7 +52,7 @@ namespace Chordious.Core
 
         public void Add(DiagramCollection diagramCollection)
         {
-            if (null == diagramCollection)
+            if (diagramCollection is null)
             {
                 throw new ArgumentNullException(nameof(diagramCollection));
             }
@@ -67,7 +67,7 @@ namespace Chordious.Core
 
         public void Remove(Diagram diagram)
         {
-            if (null == diagram)
+            if (diagram is null)
             {
                 throw new ArgumentNullException(nameof(diagram));
             }
@@ -77,12 +77,12 @@ namespace Chordious.Core
 
         public void Replace(Diagram oldDiagram, Diagram newDiagram)
         {
-            if (null == oldDiagram)
+            if (oldDiagram is null)
             {
                 throw new ArgumentNullException(nameof(oldDiagram));
             }
 
-            if (null == newDiagram)
+            if (newDiagram is null)
             {
                 throw new ArgumentNullException(nameof(newDiagram));
             }
@@ -96,7 +96,7 @@ namespace Chordious.Core
 
         public bool Contains(Diagram diagram)
         {
-            if (null == diagram)
+            if (diagram is null)
             {
                 throw new ArgumentNullException(nameof(diagram));
             }
@@ -134,7 +134,7 @@ namespace Chordious.Core
 
         public void Read(XmlReader xmlReader)
         {
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }
@@ -145,7 +145,7 @@ namespace Chordious.Core
                 {
                     if (xmlReader.IsStartElement())
                     {
-                        switch(xmlReader.Name)
+                        switch (xmlReader.Name)
                         {
                             case "diagram":
                                 Diagram diagram = new Diagram(Style, xmlReader.ReadSubtree());
@@ -162,7 +162,7 @@ namespace Chordious.Core
 
         public void Write(XmlWriter xmlWriter)
         {
-            if (null == xmlWriter)
+            if (xmlWriter is null)
             {
                 throw new ArgumentNullException(nameof(xmlWriter));
             }

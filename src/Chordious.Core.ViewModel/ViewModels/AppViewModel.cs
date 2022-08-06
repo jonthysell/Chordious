@@ -100,7 +100,7 @@ namespace Chordious.Core.ViewModel
                 return Strings.IncludeLabel;
             }
         }
-        
+
         public string OptionsLabel
         {
             get
@@ -208,7 +208,7 @@ namespace Chordious.Core.ViewModel
 
         public static void Init(Assembly assembly, IAppView appView, string userConfigPath = "")
         {
-            if (null != Instance)
+            if (Instance is not null)
             {
                 throw new NotSupportedException();
             }
@@ -256,10 +256,8 @@ namespace Chordious.Core.ViewModel
 
         public void SaveUserConfig()
         {
-            using (Stream outputStream = AppView.GetUserConfigStreamToWrite())
-            {
-                UserConfig.SaveFile(outputStream);
-            }
+            using Stream outputStream = AppView.GetUserConfigStreamToWrite();
+            UserConfig.SaveFile(outputStream);
         }
 
         public void ResetUserConfig()
@@ -270,9 +268,9 @@ namespace Chordious.Core.ViewModel
 
         public void TryHandleFailedUserConfigLoad()
         {
-            if (null != _userConfigLoadException)
+            if (_userConfigLoadException is not null)
             {
-                if (null != _userConfigLoadExceptionCallback)
+                if (_userConfigLoadExceptionCallback is not null)
                 {
                     AppView.DoOnUIThread(() =>
                     {

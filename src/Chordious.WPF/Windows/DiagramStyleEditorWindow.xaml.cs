@@ -21,7 +21,7 @@ namespace Chordious.WPF
         {
             if (sender is UIElement uiElement)
             {
-                if (!(e.Source is ComboBox))
+                if (e.Source is not ComboBox)
                 {
                     uiElement.Focus();
                 }

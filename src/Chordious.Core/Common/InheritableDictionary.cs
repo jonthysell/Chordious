@@ -117,7 +117,7 @@ namespace Chordious.Core
 
         public void Read(XmlReader xmlReader, string localName)
         {
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }
@@ -149,7 +149,7 @@ namespace Chordious.Core
 
         public void Write(XmlWriter xmlWriter, string localName, string filter = "")
         {
-            if (null == xmlWriter)
+            if (xmlWriter is null)
             {
                 throw new ArgumentNullException(nameof(xmlWriter));
             }
@@ -191,8 +191,8 @@ namespace Chordious.Core
             {
                 _localDictionary.Remove(key);
             }
-            
-            if (null != Parent && !Parent.ReadOnly && recursive) // Recursively check parent
+
+            if (Parent is not null && !Parent.ReadOnly && recursive) // Recursively check parent
             {
                 Parent.Clear(key, recursive);
             }
@@ -227,7 +227,7 @@ namespace Chordious.Core
                 _localDictionary.Remove(key);
             }
 
-            if (null != Parent && recursive) // Recursively check parent
+            if (Parent is not null && recursive) // Recursively check parent
             {
                 Parent.ClearByPrefix(prefix, recursive);
             }
@@ -260,7 +260,7 @@ namespace Chordious.Core
                 throw new ArgumentNullException(nameof(key));
             }
 
-            if (null == value)
+            if (value is null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
@@ -326,7 +326,7 @@ namespace Chordious.Core
                 result = _localDictionary[key];
                 return true;
             }
-            else if (null != Parent && recursive) // Recursively check parent
+            else if (Parent is not null && recursive) // Recursively check parent
             {
                 return Parent.TryGet(key, out result, recursive);
             }
@@ -349,7 +349,7 @@ namespace Chordious.Core
                 result = _localDictionary[key];
                 return true;
             }
-            else if (null != Parent && recursive) // Recursively check parent
+            else if (Parent is not null && recursive) // Recursively check parent
             {
                 return Parent.TryGet(key, out result, recursive);
             }
@@ -626,7 +626,7 @@ namespace Chordious.Core
                 level = Level;
                 return true;
             }
-            else if (null != Parent)
+            else if (Parent is not null)
             {
                 return Parent.TryGetLevel(key, out level);
             }
@@ -652,7 +652,7 @@ namespace Chordious.Core
 
         public void SetParent()
         {
-            if (null == Parent)
+            if (Parent is null)
             {
                 throw new ParentNotFoundException();
             }
@@ -672,7 +672,7 @@ namespace Chordious.Core
 
             key = CleanKey(key);
 
-            if (null == Parent)
+            if (Parent is null)
             {
                 throw new ParentNotFoundException();
             }
@@ -682,7 +682,7 @@ namespace Chordious.Core
 
         public void CopyFrom(InheritableDictionary source)
         {
-            if (null == source)
+            if (source is null)
             {
                 throw new ArgumentNullException(nameof(source));
             }
@@ -706,7 +706,7 @@ namespace Chordious.Core
             {
                 return true;
             }
-            else if (null != Parent && recursive)
+            else if (Parent is not null && recursive)
             {
                 return Parent.HasKey(key, recursive);
             }
@@ -748,7 +748,7 @@ namespace Chordious.Core
                     }
                 }
                 pointer = pointer.Parent;
-            } while (null != pointer);
+            } while (pointer is not null);
         }
 
         public bool IsLocalGet(string key)
@@ -787,7 +787,7 @@ namespace Chordious.Core
                 throw new ArgumentNullException(nameof(key));
             }
 
-            if (TryGet(key, out string result) && null != Parent && Parent.TryGet(key, out string parentResult))
+            if (TryGet(key, out string result) && Parent is not null && Parent.TryGet(key, out string parentResult))
             {
                 return result == parentResult;
             }
@@ -839,8 +839,8 @@ namespace Chordious.Core
             sb.Append(Level);
 
             bool hasItems = false;
-            
-            if (null != Parent)
+
+            if (Parent is not null)
             {
                 sb.AppendFormat(": {0}", Parent.Level);
                 hasItems = true;
@@ -915,7 +915,7 @@ namespace Chordious.Core
 
             bool hasItems = false;
 
-            if (null != Parent)
+            if (Parent is not null)
             {
                 sb.Append(Parent.FriendlyLevel);
                 hasItems = true;

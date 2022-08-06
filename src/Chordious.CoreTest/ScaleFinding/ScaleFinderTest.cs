@@ -32,7 +32,7 @@ namespace Chordious.CoreTest
         private class FindScalesTestCase : ITestCase
         {
             public TestScaleFinderOptions scaleFinderOptions;
-            
+
             public bool AllowExtras { get; set; }
 
             public IEnumerable<IScaleFinderResult> ExpectedResult;
@@ -135,7 +135,7 @@ namespace Chordious.CoreTest
                         scale = TestScale.MajorScale;
                         break;
                 }
-                
+
                 Note rootNote = (Note)Enum.Parse(typeof(Note), vals[3]);
 
                 int numFrets = int.Parse(vals[4]);
@@ -150,9 +150,9 @@ namespace Chordious.CoreTest
             public override string ToString()
             {
                 return string.Join(";",
-                    null == Instrument ? "null" : Instrument.Name,
-                    null == Tuning ? "null" : Tuning.Name,
-                    null == Scale ? "null" : Scale.Name,
+                    Instrument is null ? "null" : Instrument.Name,
+                    Tuning is null ? "null" : Tuning.Name,
+                    Scale is null ? "null" : Scale.Name,
                     RootNote,
                     NumFrets,
                     MaxFret,
@@ -184,12 +184,12 @@ namespace Chordious.CoreTest
 
             public int CompareTo(object obj)
             {
-                if (null == obj)
+                if (obj is null)
                 {
                     throw new ArgumentNullException(nameof(obj));
                 }
 
-                if (!(obj is IScaleFinderResult sfr))
+                if (obj is not IScaleFinderResult sfr)
                 {
                     throw new ArgumentException();
                 }
@@ -219,7 +219,7 @@ namespace Chordious.CoreTest
             {
                 get
                 {
-                    return _majorScale ?? (_majorScale = new TestScale(MajorScaleName, new int[] { 0, 2, 4, 5, 7, 9, 11, 12 }));
+                    return _majorScale ??= new TestScale(MajorScaleName, new int[] { 0, 2, 4, 5, 7, 9, 11, 12 });
                 }
             }
             private static TestScale _majorScale = null;

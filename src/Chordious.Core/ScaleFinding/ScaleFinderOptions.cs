@@ -42,7 +42,7 @@ namespace Chordious.Core
 
         public ScaleFinderOptions(ConfigFile configFile, ChordiousSettings chordiousSettings = null) : base(configFile, "scale")
         {
-            if (null != chordiousSettings)
+            if (chordiousSettings is not null)
             {
                 Settings = chordiousSettings;
             }
@@ -60,7 +60,7 @@ namespace Chordious.Core
 
             string level = ScaleLevel;
 
-            if (null != _cachedScale)
+            if (_cachedScale is not null)
             {
                 if (_cachedScale.LongName == longName && _cachedScale.Level == level)
                 {
@@ -69,7 +69,7 @@ namespace Chordious.Core
             }
 
             ScaleSet scales = _configFile.Scales;
-            while (null != scales)
+            while (scales is not null)
             {
                 if (scales.Level == level)
                 {
@@ -88,7 +88,7 @@ namespace Chordious.Core
 
         public void SetTarget(Note rootNote, IScale scale)
         {
-            if (null == scale)
+            if (scale is null)
             {
                 throw new ArgumentNullException(nameof(scale));
             }

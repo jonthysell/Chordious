@@ -90,7 +90,7 @@ namespace Chordious.WPF
 
             foreach (char oldValue in oldValues)
             {
-                source = source.Replace(oldValue.ToString(), (null == newValue) ? "" : newValue.ToString());
+                source = source.Replace(oldValue.ToString(), (newValue is null) ? "" : newValue.ToString());
             }
 
             return source;

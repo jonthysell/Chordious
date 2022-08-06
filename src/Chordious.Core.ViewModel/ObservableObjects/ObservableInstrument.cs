@@ -65,7 +65,7 @@ namespace Chordious.Core.ViewModel
 
         public override string ToString()
         {
-            if (null != Instrument)
+            if (Instrument is not null)
             {
                 return Instrument.ToString();
             }

@@ -12,7 +12,7 @@ namespace Chordious.WPF
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return _converter ?? (_converter = new AltTextToTextConverter());
+            return _converter ??= new AltTextToTextConverter();
         }
         private static AltTextToTextConverter _converter = null;
 

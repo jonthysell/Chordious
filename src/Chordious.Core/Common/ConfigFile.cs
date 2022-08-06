@@ -14,7 +14,7 @@ namespace Chordious.Core
         {
             get
             {
-                if (null == _defaultConfig)
+                if (_defaultConfig is null)
                 {
                     _defaultConfig = new ConfigFile(DefaultLevelKey);
                     _defaultConfig.LoadFile(typeof(ConfigFile).GetTypeInfo().Assembly.GetManifestResourceStream("Chordious.Core.Chordious.Core.xml"));
@@ -116,41 +116,39 @@ namespace Chordious.Core
 
         public void LoadFile(Stream inputStream, ConfigParts configParts)
         {
-            if (null == inputStream)
+            if (inputStream is null)
             {
                 throw new ArgumentNullException(nameof(inputStream));
             }
 
-            using (XmlReader reader = XmlReader.Create(inputStream))
+            using XmlReader reader = XmlReader.Create(inputStream);
+            while (reader.Read())
             {
-                while (reader.Read())
+                if (reader.IsStartElement())
                 {
-                    if (reader.IsStartElement())
+                    if (reader.Name == "settings" && ((configParts & ConfigParts.Settings) == ConfigParts.Settings))
                     {
-                        if (reader.Name == "settings" && ((configParts & ConfigParts.Settings) == ConfigParts.Settings))
-                        {
-                            ChordiousSettings.Read(reader.ReadSubtree());
-                        }
-                        else if (reader.Name == "styles" && ((configParts & ConfigParts.Styles) == ConfigParts.Styles))
-                        {
-                            DiagramStyle.Read(reader.ReadSubtree());
-                        }
-                        else if (reader.Name == "instruments" && ((configParts & ConfigParts.Instruments) == ConfigParts.Instruments))
-                        {
-                            Instruments.Read(reader.ReadSubtree());
-                        }
-                        else if (reader.Name == "qualities" && ((configParts & ConfigParts.Qualities) == ConfigParts.Qualities))
-                        {
-                            ChordQualities.Read(reader.ReadSubtree());
-                        }
-                        else if (reader.Name == "scales" && ((configParts & ConfigParts.Scales) == ConfigParts.Scales))
-                        {
-                            Scales.Read(reader.ReadSubtree());
-                        }
-                        else if (reader.Name == "library" && ((configParts & ConfigParts.Library) == ConfigParts.Library))
-                        {
-                            DiagramLibrary.Read(reader.ReadSubtree());
-                        }
+                        ChordiousSettings.Read(reader.ReadSubtree());
+                    }
+                    else if (reader.Name == "styles" && ((configParts & ConfigParts.Styles) == ConfigParts.Styles))
+                    {
+                        DiagramStyle.Read(reader.ReadSubtree());
+                    }
+                    else if (reader.Name == "instruments" && ((configParts & ConfigParts.Instruments) == ConfigParts.Instruments))
+                    {
+                        Instruments.Read(reader.ReadSubtree());
+                    }
+                    else if (reader.Name == "qualities" && ((configParts & ConfigParts.Qualities) == ConfigParts.Qualities))
+                    {
+                        ChordQualities.Read(reader.ReadSubtree());
+                    }
+                    else if (reader.Name == "scales" && ((configParts & ConfigParts.Scales) == ConfigParts.Scales))
+                    {
+                        Scales.Read(reader.ReadSubtree());
+                    }
+                    else if (reader.Name == "library" && ((configParts & ConfigParts.Library) == ConfigParts.Library))
+                    {
+                        DiagramLibrary.Read(reader.ReadSubtree());
                     }
                 }
             }
@@ -163,7 +161,7 @@ namespace Chordious.Core
 
         public void SaveFile(Stream outputStream, ConfigParts configParts)
         {
-            if (null == outputStream)
+            if (outputStream is null)
             {
                 throw new ArgumentNullException(nameof(outputStream));
             }
@@ -173,57 +171,55 @@ namespace Chordious.Core
                 Indent = true
             };
 
-            using (XmlWriter writer = XmlWriter.Create(outputStream, settings))
+            using XmlWriter writer = XmlWriter.Create(outputStream, settings);
+            writer.WriteStartElement("chordious");
+
+            writer.WriteAttributeString("version", AppInfo.ProgramTitle);
+            writer.WriteAttributeString("date", DateTime.UtcNow.ToString());
+
+            if ((configParts & ConfigParts.Settings) == ConfigParts.Settings)
             {
-                writer.WriteStartElement("chordious");
-
-                writer.WriteAttributeString("version", AppInfo.ProgramTitle);
-                writer.WriteAttributeString("date", DateTime.UtcNow.ToString());
-
-                if ((configParts & ConfigParts.Settings) == ConfigParts.Settings)
-                {
-                    writer.WriteStartElement("settings");
-                    ChordiousSettings.Write(writer);
-                    writer.WriteEndElement();
-                }
-
-                if ((configParts & ConfigParts.Styles) == ConfigParts.Styles)
-                {
-                    writer.WriteStartElement("styles");
-                    DiagramStyle.Write(writer);
-                    writer.WriteEndElement();
-                }
-
-                if ((configParts & ConfigParts.Instruments) == ConfigParts.Instruments)
-                {
-                    writer.WriteStartElement("instruments");
-                    Instruments.Write(writer);
-                    writer.WriteEndElement();
-                }
-
-                if ((configParts & ConfigParts.Qualities) == ConfigParts.Qualities)
-                {
-                    writer.WriteStartElement("qualities");
-                    ChordQualities.Write(writer);
-                    writer.WriteEndElement();
-                }
-
-                if ((configParts & ConfigParts.Scales) == ConfigParts.Scales)
-                {
-                    writer.WriteStartElement("scales");
-                    Scales.Write(writer);
-                    writer.WriteEndElement();
-                }
-
-                if ((configParts & ConfigParts.Library) == ConfigParts.Library)
-                {
-                    writer.WriteStartElement("library");
-                    DiagramLibrary.Write(writer);
-                    writer.WriteEndElement();
-                }
-
+                writer.WriteStartElement("settings");
+                ChordiousSettings.Write(writer);
                 writer.WriteEndElement();
             }
+
+            if ((configParts & ConfigParts.Styles) == ConfigParts.Styles)
+            {
+                writer.WriteStartElement("styles");
+                DiagramStyle.Write(writer);
+                writer.WriteEndElement();
+            }
+
+            if ((configParts & ConfigParts.Instruments) == ConfigParts.Instruments)
+            {
+                writer.WriteStartElement("instruments");
+                Instruments.Write(writer);
+                writer.WriteEndElement();
+            }
+
+            if ((configParts & ConfigParts.Qualities) == ConfigParts.Qualities)
+            {
+                writer.WriteStartElement("qualities");
+                ChordQualities.Write(writer);
+                writer.WriteEndElement();
+            }
+
+            if ((configParts & ConfigParts.Scales) == ConfigParts.Scales)
+            {
+                writer.WriteStartElement("scales");
+                Scales.Write(writer);
+                writer.WriteEndElement();
+            }
+
+            if ((configParts & ConfigParts.Library) == ConfigParts.Library)
+            {
+                writer.WriteStartElement("library");
+                DiagramLibrary.Write(writer);
+                writer.WriteEndElement();
+            }
+
+            writer.WriteEndElement();
         }
 
         public void ImportConfig(ConfigFile configFile)
@@ -233,7 +229,7 @@ namespace Chordious.Core
 
         public void ImportConfig(ConfigFile configFile, ConfigParts configParts)
         {
-            if (null == configFile)
+            if (configFile is null)
             {
                 throw new ArgumentNullException(nameof(configFile));
             }

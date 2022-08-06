@@ -127,7 +127,7 @@ namespace Chordious.Core
             return false;
         }
 
-        public static string[] NamedColors = new string[]
+        public static readonly string[] NamedColors = new string[]
         {
             "Aqua",
             "Black",

@@ -142,7 +142,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _addInterval ?? (_addInterval = new RelayCommand(() =>
+                return _addInterval ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -157,8 +157,8 @@ namespace Chordious.Core.ViewModel
                     }
                 }, () =>
                 {
-                    return  !ReadOnly;
-                }));
+                    return !ReadOnly;
+                });
             }
         }
         private RelayCommand _addInterval;
@@ -183,11 +183,11 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _removeInterval ?? (_removeInterval = new RelayCommand(() =>
+                return _removeInterval ??= new RelayCommand(() =>
                 {
                     try
                     {
-                        NamedIntervalValue niValue = Intervals[Intervals.Count - 1];
+                        NamedIntervalValue niValue = Intervals[^1];
                         niValue.ValueChanged -= IntervalValueChanged;
                         Intervals.Remove(niValue);
                         RemoveInterval.NotifyCanExecuteChanged();
@@ -201,7 +201,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return Intervals.Count > 0 && !ReadOnly;
-                }));
+                });
             }
         }
         private RelayCommand _removeInterval;
@@ -210,7 +210,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _accept ?? (_accept = new RelayCommand(() =>
+                return _accept ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -224,7 +224,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return IsValid() && !ReadOnly;
-                }));
+                });
             }
         }
         private RelayCommand _accept;
@@ -233,7 +233,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _cancel ?? (_cancel = new RelayCommand(() =>
+                return _cancel ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -243,7 +243,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _cancel;
@@ -264,7 +264,7 @@ namespace Chordious.Core.ViewModel
 
         public NamedIntervalEditorViewModel(string name, int[] intervals, bool readOnly) : this(false, readOnly)
         {
-            if (null == intervals)
+            if (intervals is null)
             {
                 throw new ArgumentNullException(nameof(intervals));
             }
@@ -303,7 +303,7 @@ namespace Chordious.Core.ViewModel
 
         protected bool IsValid()
         {
-            return !string.IsNullOrWhiteSpace(Name) && (null != Intervals && Intervals.Count > 0);
+            return !string.IsNullOrWhiteSpace(Name) && (Intervals is not null && Intervals.Count > 0);
         }
 
         protected abstract void OnAccept();

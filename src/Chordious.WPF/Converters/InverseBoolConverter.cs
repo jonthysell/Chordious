@@ -12,7 +12,7 @@ namespace Chordious.WPF
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return _converter ?? (_converter = new InverseBoolConverter());
+            return _converter ??= new InverseBoolConverter();
         }
         private static InverseBoolConverter _converter = null;
 

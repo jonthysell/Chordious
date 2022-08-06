@@ -110,7 +110,7 @@ namespace Chordious.Core
 
         private void Add(ITuning tuning)
         {
-            if (null == tuning)
+            if (tuning is null)
             {
                 throw new ArgumentNullException(nameof(tuning));
             }
@@ -128,7 +128,7 @@ namespace Chordious.Core
 
         public bool Remove(ITuning tuning)
         {
-            if (null == tuning)
+            if (tuning is null)
             {
                 throw new ArgumentNullException(nameof(tuning));
             }
@@ -151,12 +151,12 @@ namespace Chordious.Core
                 }
                 catch (Exception ex)
                 {
-                    if (null != rollback)
+                    if (rollback is not null)
                     {
                         rollback();
 
                         // Re-add since remove succeeded but re-add failed
-                        if (null != (ex as TuningAlreadyExistsException))
+                        if (ex is TuningAlreadyExistsException)
                         {
                             Add(tuning);
                         }
@@ -201,7 +201,7 @@ namespace Chordious.Core
 
         public void CopyFrom(ITuningSet tuningSet)
         {
-            if (null == tuningSet)
+            if (tuningSet is null)
             {
                 throw new ArgumentNullException(nameof(tuningSet));
             }
@@ -225,7 +225,7 @@ namespace Chordious.Core
 
         public void Read(XmlReader xmlReader)
         {
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }

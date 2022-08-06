@@ -66,7 +66,7 @@ namespace Chordious.Core.ViewModel
 
         public override string ToString()
         {
-            if (null != NamedInterval)
+            if (NamedInterval is not null)
             {
                 return NamedInterval.ToString();
             }

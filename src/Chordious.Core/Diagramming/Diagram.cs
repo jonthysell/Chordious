@@ -68,7 +68,7 @@ namespace Chordious.Core
             }
             set
             {
-                Resize(value, NumFrets);             
+                Resize(value, NumFrets);
             }
         }
         private int _numStrings;
@@ -92,7 +92,7 @@ namespace Chordious.Core
 
         public Diagram(DiagramStyle parentStyle)
         {
-            if (null == parentStyle)
+            if (parentStyle is null)
             {
                 throw new ArgumentNullException(nameof(parentStyle));
             }
@@ -115,7 +115,7 @@ namespace Chordious.Core
 
         public Diagram(DiagramStyle parentStyle, XmlReader xmlReader) : this(parentStyle)
         {
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }
@@ -125,7 +125,7 @@ namespace Chordious.Core
 
         public void Read(XmlReader xmlReader)
         {
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }
@@ -143,7 +143,7 @@ namespace Chordious.Core
                     {
                         if (xmlReader.IsStartElement())
                         {
-                            switch(xmlReader.Name)
+                            switch (xmlReader.Name)
                             {
                                 case "mark":
                                     NewMark(xmlReader.ReadSubtree());
@@ -166,7 +166,7 @@ namespace Chordious.Core
 
         public void Write(XmlWriter xmlWriter)
         {
-            if (null == xmlWriter)
+            if (xmlWriter is null)
             {
                 throw new ArgumentNullException(nameof(xmlWriter));
             }
@@ -341,7 +341,7 @@ namespace Chordious.Core
 
         public bool ValidPosition(ElementPosition position)
         {
-            if (null == position)
+            if (position is null)
             {
                 throw new ArgumentNullException(nameof(position));
             }
@@ -372,7 +372,7 @@ namespace Chordious.Core
 
         public DiagramElement ElementAt(ElementPosition position)
         {
-            if (null == position)
+            if (position is null)
             {
                 throw new ArgumentNullException(nameof(position));
             }
@@ -413,12 +413,12 @@ namespace Chordious.Core
 
         public bool CanPositionElementAt(DiagramElement element, ElementPosition position)
         {
-            if (null == element)
+            if (element is null)
             {
                 throw new ArgumentNullException(nameof(element));
             }
 
-            if (null == position)
+            if (position is null)
             {
                 throw new ArgumentNullException(nameof(position));
             }
@@ -528,7 +528,7 @@ namespace Chordious.Core
 
         public bool CanAddNewMarkAt(MarkPosition position)
         {
-            if (null == position)
+            if (position is null)
             {
                 throw new ArgumentNullException(nameof(position));
             }
@@ -557,7 +557,7 @@ namespace Chordious.Core
 
         public bool CanRemoveMarkAt(MarkPosition position)
         {
-            if (null == position)
+            if (position is null)
             {
                 throw new ArgumentNullException(nameof(position));
             }
@@ -572,7 +572,7 @@ namespace Chordious.Core
 
         public bool CanAddNewFretLabelAt(FretLabelPosition position)
         {
-            if (null == position)
+            if (position is null)
             {
                 throw new ArgumentNullException(nameof(position));
             }
@@ -601,7 +601,7 @@ namespace Chordious.Core
 
         public bool CanRemoveFretLabelAt(FretLabelPosition position)
         {
-            if (null == position)
+            if (position is null)
             {
                 throw new ArgumentNullException(nameof(position));
             }
@@ -616,7 +616,7 @@ namespace Chordious.Core
 
         public bool CanAddNewBarreAt(BarrePosition position)
         {
-            if (null == position)
+            if (position is null)
             {
                 throw new ArgumentNullException(nameof(position));
             }
@@ -652,7 +652,7 @@ namespace Chordious.Core
 
         public bool CanRemoveBarreAt(BarrePosition position)
         {
-            if (null == position)
+            if (position is null)
             {
                 throw new ArgumentNullException(nameof(position));
             }
@@ -755,7 +755,7 @@ namespace Chordious.Core
                         fls = FretLabelSide.Right;
                     }
 
-                    if (null != fls)
+                    if (fls is not null)
                     {
                         FretLabelPosition flp = new FretLabelPosition(fls.Value, fret);
                         if (ValidPosition(flp))

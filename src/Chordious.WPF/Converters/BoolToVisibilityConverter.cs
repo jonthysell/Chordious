@@ -13,7 +13,7 @@ namespace Chordious.WPF
     {
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return _converter ?? (_converter = new BoolToVisibilityConverter());
+            return _converter ??= new BoolToVisibilityConverter();
         }
         private static BoolToVisibilityConverter _converter = null;
 

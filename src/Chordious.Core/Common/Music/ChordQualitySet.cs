@@ -42,7 +42,7 @@ namespace Chordious.Core
             chordQuality = null;
             return false;
         }
-        
+
         public ChordQuality Add(string name, string abbreviation, int[] intervals)
         {
             if (ReadOnly)
@@ -90,7 +90,7 @@ namespace Chordious.Core
 
         public void CopyFrom(ChordQualitySet chordQualitySet)
         {
-            if (null == chordQualitySet)
+            if (chordQualitySet is null)
             {
                 throw new ArgumentNullException(nameof(chordQualitySet));
             }
@@ -118,7 +118,7 @@ namespace Chordious.Core
 
         public override void Read(XmlReader xmlReader)
         {
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }
@@ -138,7 +138,7 @@ namespace Chordious.Core
 
         public override void Write(XmlWriter xmlWriter)
         {
-            if (null == xmlWriter)
+            if (xmlWriter is null)
             {
                 throw new ArgumentNullException(nameof(xmlWriter));
             }

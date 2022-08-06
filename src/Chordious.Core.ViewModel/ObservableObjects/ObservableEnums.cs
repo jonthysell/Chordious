@@ -36,7 +36,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _fontFamilies ?? (_fontFamilies = GetFontFamilies());
+                return _fontFamilies ??= GetFontFamilies();
             }
         }
         private static ObservableCollection<string> _fontFamilies;

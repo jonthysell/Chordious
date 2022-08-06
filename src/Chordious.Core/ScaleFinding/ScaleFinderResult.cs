@@ -21,7 +21,7 @@ namespace Chordious.Core
 
         internal ScaleFinderResult(ScaleFinderResultSet parent, IEnumerable<MarkPosition> marks)
         {
-            if (null == marks)
+            if (marks is null)
             {
                 throw new ArgumentNullException(nameof(marks));
             }
@@ -42,7 +42,7 @@ namespace Chordious.Core
 
         public bool IsRoot(MarkPosition mark)
         {
-            if (null == mark)
+            if (mark is null)
             {
                 throw new ArgumentOutOfRangeException(nameof(mark));
             }
@@ -143,12 +143,12 @@ namespace Chordious.Core
 
         public int CompareTo(object obj)
         {
-            if (null == obj)
+            if (obj is null)
             {
                 throw new ArgumentNullException(nameof(obj));
             }
 
-            if (!(obj is ScaleFinderResult sfr))
+            if (obj is not ScaleFinderResult sfr)
             {
                 throw new ArgumentException();
             }

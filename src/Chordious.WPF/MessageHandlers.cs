@@ -60,7 +60,7 @@ namespace Chordious.WPF
             StrongReferenceMessenger.Default.Register<PromptForConfigOutputStreamMessage>(recipient, (recipient, message) => PromptForConfigOutputStream(message));
 
             StrongReferenceMessenger.Default.Register<ShowDiagramCollectionSelectorMessage>(recipient, (recipient, message) => ShowDiagramCollectionSelector(message));
-            
+
             StrongReferenceMessenger.Default.Register<PromptForLegacyImportMessage>(recipient, (recipient, message) => PromptForLegacyImport(message));
         }
 
@@ -94,7 +94,7 @@ namespace Chordious.WPF
 
             StrongReferenceMessenger.Default.Unregister<ShowScaleManagerMessage>(recipient);
             StrongReferenceMessenger.Default.Unregister<ShowScaleEditorMessage>(recipient);
-            
+
             StrongReferenceMessenger.Default.Unregister<ShowOptionsMessage>(recipient);
 
             StrongReferenceMessenger.Default.Unregister<ShowLicensesMessage>(recipient);

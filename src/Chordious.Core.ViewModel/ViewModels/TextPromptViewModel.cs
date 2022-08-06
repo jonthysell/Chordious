@@ -88,7 +88,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _accept ?? (_accept = new RelayCommand(() =>
+                return _accept ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -102,7 +102,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return (AllowBlank || !string.IsNullOrWhiteSpace(Text)) && (!RequireInteger || int.TryParse(Text, out _));
-                }));
+                });
             }
         }
         private RelayCommand _accept;
@@ -111,7 +111,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _cancel ?? (_cancel = new RelayCommand(() =>
+                return _cancel ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -121,7 +121,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _cancel;

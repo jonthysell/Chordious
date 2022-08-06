@@ -83,10 +83,10 @@ namespace Chordious.Core.ViewModel
                     SelectedTuning = null;
                     Tunings = null;
 
-                    if (null != value)
+                    if (value is not null)
                     {
                         Tunings = SelectedInstrument.GetTunings();
-                        if (null != Tunings && Tunings.Count > 0)
+                        if (Tunings is not null && Tunings.Count > 0)
                         {
                             SelectedTuning = Tunings[0];
                             Options.SetTarget(SelectedInstrument.Instrument, SelectedTuning.Tuning);
@@ -152,7 +152,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     _tuning = value;
-                    if (null != value)
+                    if (value is not null)
                     {
                         Options.SetTarget(SelectedInstrument.Instrument, SelectedTuning.Tuning);
                     }
@@ -207,7 +207,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _showInstrumentManager ?? (_showInstrumentManager = new RelayCommand(() =>
+                return _showInstrumentManager ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -220,7 +220,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _showInstrumentManager;
@@ -305,7 +305,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     _chordQuality = value;
-                    if (null != value)
+                    if (value is not null)
                     {
                         Options.SetTarget(Options.RootNote, SelectedChordQuality.ChordQuality);
                     }
@@ -358,7 +358,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _showChordQualityManager ?? (_showChordQualityManager = new RelayCommand(() =>
+                return _showChordQualityManager ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -378,7 +378,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _showChordQualityManager;
@@ -910,7 +910,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _setAsDefaults ?? (_setAsDefaults = new RelayCommand(() =>
+                return _setAsDefaults ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -938,7 +938,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanSearch();
-                }));
+                });
             }
         }
         private RelayCommand _setAsDefaults;
@@ -963,7 +963,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _resetToDefaults ?? (_resetToDefaults = new RelayCommand(() =>
+                return _resetToDefaults ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -988,7 +988,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _resetToDefaults;
@@ -1013,7 +1013,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _searchAsync ?? (_searchAsync = new RelayCommand(async () =>
+                return _searchAsync ??= new RelayCommand(async () =>
                 {
                     _searchAsyncCancellationTokenSource = new CancellationTokenSource();
 
@@ -1023,7 +1023,7 @@ namespace Chordious.Core.ViewModel
 
                         int numStrings = SelectedInstrument.NumStrings;
                         int numUniqueNotes = SelectedChordQuality.ChordQuality.GetUniqueNotes(NoteUtils.ToInternalNote(Options.RootNote)).Length;
-                        
+
                         if (numUniqueNotes > numStrings)
                         {
                             int numUniqueNotesNoRoot = SelectedChordQuality.ChordQuality.GetUniqueNotes(NoteUtils.ToInternalNote(Options.RootNote), false).Length;
@@ -1044,7 +1044,7 @@ namespace Chordious.Core.ViewModel
 
                         ChordFinderResultSet results = await FindChordsAsync(_searchAsyncCancellationTokenSource.Token);
 
-                        if (null != results)
+                        if (results is not null)
                         {
                             if (results.Count == 0 && !_searchAsyncCancellationTokenSource.IsCancellationRequested)
                             {
@@ -1076,7 +1076,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return CanSearch();
-                }));
+                });
             }
         }
         private RelayCommand _searchAsync;
@@ -1087,7 +1087,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _cancelSearch ?? (_cancelSearch = new RelayCommand(() =>
+                return _cancelSearch ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -1097,7 +1097,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _cancelSearch;
@@ -1122,7 +1122,7 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _saveSelected ?? (_saveSelected = new RelayCommand(() =>
+                return _saveSelected ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -1153,7 +1153,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedResults.Count > 0;
-                }));
+                });
             }
         }
         private RelayCommand _saveSelected;
@@ -1185,7 +1185,7 @@ namespace Chordious.Core.ViewModel
                 }
 
                 // If a single result isn't selected, throw an error
-                return _editSelected ?? (_editSelected = new RelayCommand(() =>
+                return _editSelected ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -1198,7 +1198,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedResults.Count > 0;
-                }));
+                });
             }
         }
         private RelayCommand _editSelected;
@@ -1232,7 +1232,7 @@ namespace Chordious.Core.ViewModel
                 }
 
                 // If a single result isn't selected, throw an error
-                return _sendSelectedToClipboard ?? (_sendSelectedToClipboard = new RelayCommand(() =>
+                return _sendSelectedToClipboard ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -1245,7 +1245,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedResults.Count > 0;
-                }));
+                });
             }
         }
 
@@ -1276,7 +1276,7 @@ namespace Chordious.Core.ViewModel
                 }
 
                 // If a single diagram isn't selected, throw an error
-                return _sendSelectedToClipboard ?? (_sendSelectedToClipboard = new RelayCommand(() =>
+                return _sendSelectedToClipboard ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -1289,7 +1289,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedResults.Count > 0;
-                }));
+                });
             }
         }
 
@@ -1320,7 +1320,7 @@ namespace Chordious.Core.ViewModel
                 }
 
                 // If a single result isn't selected, throw an error
-                return _sendSelectedToClipboard ?? (_sendSelectedToClipboard = new RelayCommand(() =>
+                return _sendSelectedToClipboard ??= new RelayCommand(() =>
                 {
                     try
                     {
@@ -1333,7 +1333,7 @@ namespace Chordious.Core.ViewModel
                 }, () =>
                 {
                     return SelectedResults.Count > 0;
-                }));
+                });
             }
         }
 
@@ -1347,11 +1347,11 @@ namespace Chordious.Core.ViewModel
         {
             get
             {
-                return _cancelOrClose ?? (_cancelOrClose = new RelayCommand(() =>
+                return _cancelOrClose ??= new RelayCommand(() =>
                 {
                     try
                     {
-                        if (null != _searchAsyncCancellationTokenSource)
+                        if (_searchAsyncCancellationTokenSource is not null)
                         {
                             _searchAsyncCancellationTokenSource.Cancel();
                         }
@@ -1364,7 +1364,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ExceptionUtils.HandleException(ex);
                     }
-                }));
+                });
             }
         }
         private RelayCommand _cancelOrClose;
@@ -1411,7 +1411,7 @@ namespace Chordious.Core.ViewModel
             Instruments = AppVM.GetInstruments();
             SelectedInstrument = null;
 
-            if (null != selectedInstrument && null != Instruments)
+            if (selectedInstrument is not null && Instruments is not null)
             {
                 foreach (ObservableInstrument oi in Instruments)
                 {
@@ -1423,12 +1423,12 @@ namespace Chordious.Core.ViewModel
                 }
             }
 
-            if (null != SelectedInstrument)
+            if (SelectedInstrument is not null)
             {
                 Tunings = SelectedInstrument.GetTunings();
                 SelectedTuning = null;
 
-                if (null != selectedTuning && null != Tunings)
+                if (selectedTuning is not null && Tunings is not null)
                 {
                     foreach (ObservableTuning ot in Tunings)
                     {
@@ -1447,7 +1447,7 @@ namespace Chordious.Core.ViewModel
             ChordQualities = AppVM.GetChordQualities();
             SelectedChordQuality = null;
 
-            if (null != selectedChordQuality && null != ChordQualities)
+            if (selectedChordQuality is not null && ChordQualities is not null)
             {
                 foreach (ObservableChordQuality ocq in ChordQualities)
                 {
@@ -1499,13 +1499,13 @@ namespace Chordious.Core.ViewModel
                 {
                     ExceptionUtils.HandleException(ex);
                 }
-                
+
                 return results;
             });
         }
 
         private Task<ObservableDiagram> RenderChordAsync(IChordFinderResult result)
-        {            
+        {
             return Task<ObservableDiagram>.Factory.StartNew(() =>
             {
                 ObservableDiagram od = null;
@@ -1533,7 +1533,7 @@ namespace Chordious.Core.ViewModel
 
         private bool CanSearch()
         {
-            return IsIdle && (null != SelectedInstrument) && (null != SelectedTuning) && (null != SelectedChordQuality);
+            return IsIdle && (SelectedInstrument is not null) && (SelectedTuning is not null) && (SelectedChordQuality is not null);
         }
     }
 }

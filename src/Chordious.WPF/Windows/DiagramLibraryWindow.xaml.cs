@@ -18,7 +18,7 @@ namespace Chordious.WPF
         {
             get
             {
-                return _vm ?? (_vm = DataContext as DiagramLibraryViewModel);
+                return _vm ??= DataContext as DiagramLibraryViewModel;
             }
         }
         private DiagramLibraryViewModel _vm;
@@ -35,7 +35,7 @@ namespace Chordious.WPF
         {
             ObservableDiagramLibraryNode selectedNode = VM.SelectedNode;
 
-            if (null != selectedNode)
+            if (selectedNode is not null)
             {
                 foreach (object item in e.AddedItems)
                 {

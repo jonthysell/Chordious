@@ -160,7 +160,7 @@ namespace Chordious.WPF
             foreach (object obj in Resources.Values)
             {
                 ImageSource imageSource = (obj as ImageSource);
-                if (null != imageSource)
+                if (imageSource is not null)
                 {
                     AutoDisableImage.LoadImage(imageSource);
                 }
@@ -193,7 +193,7 @@ namespace Chordious.WPF
         {
             get
             {
-                if (null == _standardColors)
+                if (_standardColors is null)
                 {
                     _standardColors = new ObservableCollection<ColorItem>();
                     foreach (var kvp in StringToColorConverter.NamedColors)

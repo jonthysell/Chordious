@@ -125,7 +125,7 @@ namespace Chordious.Core
             instrument = null;
             return false;
         }
-        
+
         public Instrument Add(string name, int numStrings)
         {
             if (ReadOnly)
@@ -140,7 +140,7 @@ namespace Chordious.Core
 
         private void Add(Instrument instrument)
         {
-            if (null == instrument)
+            if (instrument is null)
             {
                 throw new ArgumentNullException(nameof(instrument));
             }
@@ -165,7 +165,7 @@ namespace Chordious.Core
 
         internal void Resort(Instrument instrument)
         {
-            if (null == instrument)
+            if (instrument is null)
             {
                 throw new ArgumentNullException(nameof(instrument));
             }
@@ -216,7 +216,7 @@ namespace Chordious.Core
 
         public void CopyFrom(InstrumentSet instrumentSet)
         {
-            if (null == instrumentSet)
+            if (instrumentSet is null)
             {
                 throw new ArgumentNullException(nameof(instrumentSet));
             }
@@ -238,7 +238,7 @@ namespace Chordious.Core
 
         public void Read(XmlReader xmlReader)
         {
-            if (null == xmlReader)
+            if (xmlReader is null)
             {
                 throw new ArgumentNullException(nameof(xmlReader));
             }
@@ -262,7 +262,7 @@ namespace Chordious.Core
 
         public void Write(XmlWriter xmlWriter)
         {
-            if (null == xmlWriter)
+            if (xmlWriter is null)
             {
                 throw new ArgumentNullException(nameof(xmlWriter));
             }

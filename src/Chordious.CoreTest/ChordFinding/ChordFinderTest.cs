@@ -32,7 +32,7 @@ namespace Chordious.CoreTest
         private class FindChordsTestCase : ITestCase
         {
             public TestChordFinderOptions chordFinderOptions;
-            
+
             public bool AllowExtras { get; set; }
 
             public IEnumerable<IChordFinderResult> ExpectedResult;
@@ -142,7 +142,7 @@ namespace Chordious.CoreTest
                         chordQuality = TestChordQuality.DominantNinthChord;
                         break;
                 }
-                
+
                 Note rootNote = (Note)Enum.Parse(typeof(Note), vals[3]);
 
                 int numFrets = int.Parse(vals[4]);
@@ -159,9 +159,9 @@ namespace Chordious.CoreTest
             public override string ToString()
             {
                 return string.Join(";",
-                    null == Instrument ? "null" : Instrument.Name,
-                    null == Tuning ? "null" : Tuning.Name,
-                    null == ChordQuality ? "null" : ChordQuality.Name,
+                    Instrument is null ? "null" : Instrument.Name,
+                    Tuning is null ? "null" : Tuning.Name,
+                    ChordQuality is null ? "null" : ChordQuality.Name,
                     RootNote,
                     NumFrets,
                     MaxFret,
@@ -195,12 +195,12 @@ namespace Chordious.CoreTest
 
             public int CompareTo(object obj)
             {
-                if (null == obj)
+                if (obj is null)
                 {
                     throw new ArgumentNullException(nameof(obj));
                 }
 
-                if (!(obj is IChordFinderResult cfr))
+                if (obj is not IChordFinderResult cfr)
                 {
                     throw new ArgumentException();
                 }
@@ -230,7 +230,7 @@ namespace Chordious.CoreTest
             {
                 get
                 {
-                    return _majorChord ?? (_majorChord = new TestChordQuality(MajorChordQualityName, "", new int[] { 0, 4, 7 }));
+                    return _majorChord ??= new TestChordQuality(MajorChordQualityName, "", new int[] { 0, 4, 7 });
                 }
             }
             private static TestChordQuality _majorChord = null;
@@ -239,7 +239,7 @@ namespace Chordious.CoreTest
             {
                 get
                 {
-                    return _dominantSeventhChord ?? (_dominantSeventhChord = new TestChordQuality(Dominant7thChordQualityName, "7", new int[] { 0, 4, 7, 10 }));
+                    return _dominantSeventhChord ??= new TestChordQuality(Dominant7thChordQualityName, "7", new int[] { 0, 4, 7, 10 });
                 }
             }
             private static TestChordQuality _dominantSeventhChord = null;
@@ -248,7 +248,7 @@ namespace Chordious.CoreTest
             {
                 get
                 {
-                    return _dominantNinthChord ?? (_dominantNinthChord = new TestChordQuality(Dominant9thChordQualityName, "9", new int[] { 0, 4, 7, 10, 14 }));
+                    return _dominantNinthChord ??= new TestChordQuality(Dominant9thChordQualityName, "9", new int[] { 0, 4, 7, 10, 14 });
                 }
             }
             private static TestChordQuality _dominantNinthChord = null;

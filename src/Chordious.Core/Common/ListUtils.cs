@@ -10,12 +10,12 @@ namespace Chordious.Core
     {
         public static bool SortedInsert<T>(List<T> sortedList, T value) where T : IComparable
         {
-            if (null == sortedList)
+            if (sortedList is null)
             {
                 throw new ArgumentNullException(nameof(sortedList));
             }
 
-            if (null == value)
+            if (value is null)
             {
                 throw new ArgumentNullException(nameof(value));
             }

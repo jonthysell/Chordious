@@ -1,5 +1,9 @@
 # Chordious Changelist #
 
+## next ##
+
+* Update version string to always display Major.Minor.Build
+
 ## 2.6.3 ##
 
 * Republish to address issue where upgrades didn't include the right version of SVG.NET

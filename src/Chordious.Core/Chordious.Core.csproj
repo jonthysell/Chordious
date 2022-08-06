@@ -20,4 +20,8 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="Chordious.CoreTest" />
+  </ItemGroup>
+
 </Project>

@@ -26,11 +26,11 @@ namespace Chordious.Core.ViewModel
             }
         }
 
-        public string FullVersion
+        public string Version
         {
             get
             {
-                return AppInfo.FullVersion;
+                return AppInfo.Version;
             }
         }
 

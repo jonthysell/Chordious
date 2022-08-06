@@ -30,41 +30,28 @@ namespace Chordious.Core
         }
 
         /// <summary>
-        /// Short version string {Major}.{Minor} or {Major}.{Minor}.{Build} if {Build} > 0.
+        /// Version string {Major}.{Minor}.{Build}.
         /// </summary>
         public static string Version
         {
             get
             {
-                if (null == _version)
+                if (_version is null)
                 {
-                    Version vers = Assembly.GetName().Version;
-                    _version = vers is null ? "0" : (vers.Build == 0 ? $"{vers.Major}.{vers.Minor}" : $"{vers.Major}.{vers.Minor}.{vers.Build}");
+                    Version? vers = Assembly.GetName().Version;
+                    _version = vers is null ? "0.0.0" : $"{vers.Major}.{vers.Minor}.{vers.Build}";
                 }
                 return _version;
             }
         }
-
         private static string _version = null;
-
-        /// <summary>
-        /// Full version string {Major}.{Minor}.{Build}.{Revision}.
-        /// </summary>
-        public static string FullVersion
-        {
-            get
-            {
-                return Assembly.GetName().Version.ToString();
-            }
-        }
-
         public static ulong LongVersion
         {
             get
             {
                 if (!_longVersion.HasValue)
                 {
-                    _longVersion = VersionUtils.ParseLongVersion(FullVersion);
+                    _longVersion = VersionUtils.ParseLongVersion(Version);
                 }
                 return _longVersion.Value;
             }

@@ -2,6 +2,7 @@
 
 ## next ##
 
+* Fixed issue with chord quality abbreviations not scaling properly on high DPI screens
 * Update version string to always display Major.Minor.Build
 * Updated WinStore TargetPlatformVersion to 10.0.19041.0
 * Migrated from deprecated MVVM Light Toolkit to new MVVM Toolkit

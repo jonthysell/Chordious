@@ -79,7 +79,7 @@ namespace Chordious.WPF
             {
                 doc.ApplyRecursive((element) =>
                 {
-                    if (element is SvgText text)
+                    if (element is SvgTextBase text)
                     {
                         text.FontSize = new SvgUnit(text.FontSize.Type, text.FontSize.Value * textScaleFactor);
                     }

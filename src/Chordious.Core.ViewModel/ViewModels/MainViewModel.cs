@@ -3,15 +3,15 @@
 
 using System;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -75,13 +75,13 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.MainLaunchWebsitePromptMessage, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.MainLaunchWebsitePromptMessage, (confirmed) =>
                         {
                             try
                             {
                                 if (confirmed)
                                 {
-                                    Messenger.Default.Send(new LaunchUrlMessage(AppInfo.Website));
+                                    StrongReferenceMessenger.Default.Send(new LaunchUrlMessage(AppInfo.Website));
                                 }
                             }
                             catch (Exception ex)
@@ -127,7 +127,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowLicensesMessage());
+                        StrongReferenceMessenger.Default.Send(new ShowLicensesMessage());
                     }
                     catch (Exception ex)
                     {
@@ -166,7 +166,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowChordFinderMessage());
+                        StrongReferenceMessenger.Default.Send(new ShowChordFinderMessage());
                     }
                     catch (Exception ex)
                     {
@@ -205,7 +205,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowScaleFinderMessage());
+                        StrongReferenceMessenger.Default.Send(new ShowScaleFinderMessage());
                     }
                     catch (Exception ex)
                     {
@@ -244,7 +244,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowDiagramLibraryMessage());
+                        StrongReferenceMessenger.Default.Send(new ShowDiagramLibraryMessage());
                     }
                     catch (Exception ex)
                     {
@@ -283,7 +283,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowInstrumentManagerMessage());
+                        StrongReferenceMessenger.Default.Send(new ShowInstrumentManagerMessage());
                     }
                     catch (Exception ex)
                     {
@@ -322,7 +322,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowOptionsMessage((itemsChanged) =>
+                        StrongReferenceMessenger.Default.Send(new ShowOptionsMessage((itemsChanged) =>
                         {
                             try
                             {
@@ -374,13 +374,13 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.MainShowHelpPromptMessage, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.MainShowHelpPromptMessage, (confirmed) =>
                         {
                             try
                             {
                                 if (confirmed)
                                 {
-                                    Messenger.Default.Send(new LaunchUrlMessage("http://chordious.com/help/"));
+                                    StrongReferenceMessenger.Default.Send(new LaunchUrlMessage("http://chordious.com/help/"));
                                 }
                             }
                             catch (Exception ex)

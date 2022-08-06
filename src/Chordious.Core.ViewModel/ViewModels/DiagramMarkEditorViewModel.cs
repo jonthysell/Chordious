@@ -5,14 +5,14 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class DiagramMarkEditorViewModel : ViewModelBase
+    public class DiagramMarkEditorViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -68,7 +68,7 @@ namespace Chordious.Core.ViewModel
                 {
                     _text = value;
                     Dirty = true;
-                    RaisePropertyChanged(nameof(Text));
+                    OnPropertyChanged(nameof(Text));
                 }
                 catch (Exception ex)
                 {
@@ -106,7 +106,7 @@ namespace Chordious.Core.ViewModel
                 {
                     Style.MarkStyle.MarkType = (DiagramMarkType)(value);
                     Dirty = true;
-                    RaisePropertyChanged(nameof(SelectedMarkTypeIndex));
+                    OnPropertyChanged(nameof(SelectedMarkTypeIndex));
                 }
                 catch (Exception ex)
                 {
@@ -198,7 +198,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _applyChangesOnClose = value;
-                RaisePropertyChanged(nameof(ApplyChangesOnClose));
+                OnPropertyChanged(nameof(ApplyChangesOnClose));
             }
         }
         private bool _applyChangesOnClose = false;
@@ -212,9 +212,9 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _dirty = value;
-                RaisePropertyChanged(nameof(Dirty));
-                RaisePropertyChanged(nameof(Title));
-                Apply.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(Dirty));
+                OnPropertyChanged(nameof(Title));
+                Apply.NotifyCanExecuteChanged();
             }
         }
         private bool _dirty = false;
@@ -228,7 +228,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _diagramStyleChanged = value;
-                RaisePropertyChanged(nameof(DiagramStyleChanged));
+                OnPropertyChanged(nameof(DiagramStyleChanged));
             }
         }
         private bool _diagramStyleChanged = false;

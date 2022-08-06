@@ -3,9 +3,9 @@
 
 using System;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.Legacy;
 
@@ -13,7 +13,7 @@ using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class OptionsViewModel : ViewModelBase
+    public class OptionsViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -53,7 +53,7 @@ namespace Chordious.Core.ViewModel
             protected set
             {
                 _isIdle = value;
-                RaisePropertyChanged(nameof(IsIdle));
+                OnPropertyChanged(nameof(IsIdle));
             }
         }
         private bool _isIdle;
@@ -100,13 +100,13 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsShowAdvancedSettingsPromptMessage, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.OptionsShowAdvancedSettingsPromptMessage, (confirmed) =>
                         {
                             try
                             {
                                 if (confirmed)
                                 {
-                                    Messenger.Default.Send(new ShowAdvancedDataMessage(SettingsBuffer, "", (itemsChanged) =>
+                                    StrongReferenceMessenger.Default.Send(new ShowAdvancedDataMessage(SettingsBuffer, "", (itemsChanged) =>
                                     {
                                         try
                                         {
@@ -164,7 +164,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetUserSettingsPromptMessage, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetUserSettingsPromptMessage, (confirmed) =>
                         {
                             try
                             {
@@ -213,7 +213,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetConfirmationsPromptMessage, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetConfirmationsPromptMessage, (confirmed) =>
                         {
                             try
                             {
@@ -319,13 +319,13 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsShowAdvancedStylePromptMessage, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.OptionsShowAdvancedStylePromptMessage, (confirmed) =>
                         {
                             try
                             {
                                 if (confirmed)
                                 {
-                                    Messenger.Default.Send(new ShowAdvancedDataMessage(StyleBuffer, "", (itemsChanged) =>
+                                    StrongReferenceMessenger.Default.Send(new ShowAdvancedDataMessage(StyleBuffer, "", (itemsChanged) =>
                                     {
                                         try
                                         {
@@ -383,7 +383,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetUserStylesPromptMessage, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetUserStylesPromptMessage, (confirmed) =>
                         {
                             try
                             {
@@ -452,7 +452,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowInstrumentManagerMessage());
+                        StrongReferenceMessenger.Default.Send(new ShowInstrumentManagerMessage());
                     }
                     catch (Exception ex)
                     {
@@ -487,7 +487,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowChordQualityManagerMessage());
+                        StrongReferenceMessenger.Default.Send(new ShowChordQualityManagerMessage());
                     }
                     catch (Exception ex)
                     {
@@ -522,7 +522,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowScaleManagerMessage());
+                        StrongReferenceMessenger.Default.Send(new ShowScaleManagerMessage());
                     }
                     catch (Exception ex)
                     {
@@ -565,7 +565,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetChordFinderDefaultsPromptMessage, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetChordFinderDefaultsPromptMessage, (confirmed) =>
                         {
                             try
                             {
@@ -614,7 +614,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetScaleFinderDefaultsPromptMessage, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.OptionsResetScaleFinderDefaultsPromptMessage, (confirmed) =>
                         {
                             try
                             {
@@ -683,13 +683,13 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new PromptForConfigInputStreamMessage((inputStream) =>
+                        StrongReferenceMessenger.Default.Send(new PromptForConfigInputStreamMessage((inputStream) =>
                         {
                             try
                             {
                                 if (null != inputStream)
                                 {
-                                    Messenger.Default.Send(new ShowConfigImportMessage(inputStream));
+                                    StrongReferenceMessenger.Default.Send(new ShowConfigImportMessage(inputStream));
                                 }
                             }
                             catch (Exception ex)
@@ -731,7 +731,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowConfigExportMessage());
+                        StrongReferenceMessenger.Default.Send(new ShowConfigExportMessage());
                     }
                     catch (Exception ex)
                     {
@@ -775,12 +775,12 @@ namespace Chordious.Core.ViewModel
                     try
                     {
                         DiagramLibrary library = AppVM.UserConfig.DiagramLibrary;
-                        Messenger.Default.Send(new PromptForLegacyImportMessage((fileName, inputStream) =>
+                        StrongReferenceMessenger.Default.Send(new PromptForLegacyImportMessage((fileName, inputStream) =>
                         {
                             try
                             {
                                 string proposedName = string.IsNullOrWhiteSpace(fileName) ? library.GetNewCollectionName() : fileName.Trim();
-                                Messenger.Default.Send(new PromptForTextMessage(Strings.OptionsLegacyImportNewCollectionPrompt, proposedName, (name) =>
+                                StrongReferenceMessenger.Default.Send(new PromptForTextMessage(Strings.OptionsLegacyImportNewCollectionPrompt, proposedName, (name) =>
                                 {
                                     try
                                     {
@@ -889,7 +889,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _applyChangesOnClose = value;
-                RaisePropertyChanged(nameof(ApplyChangesOnClose));
+                OnPropertyChanged(nameof(ApplyChangesOnClose));
             }
         }
         private bool _applyChangesOnClose = false;
@@ -903,9 +903,9 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _dirty = value;
-                RaisePropertyChanged(nameof(Dirty));
-                RaisePropertyChanged(nameof(Title));
-                Apply.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(Dirty));
+                OnPropertyChanged(nameof(Title));
+                Apply.NotifyCanExecuteChanged();
             }
         }
         private bool _dirty = false;
@@ -919,7 +919,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _itemsChanged = value;
-                RaisePropertyChanged(nameof(ItemsChanged));
+                OnPropertyChanged(nameof(ItemsChanged));
             }
         }
         private bool _itemsChanged = false;
@@ -933,9 +933,9 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _advancedSettingsClean = value;
-                RaisePropertyChanged(nameof(AdvancedSettingsClean));
-                Accept.RaiseCanExecuteChanged();
-                Apply.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(AdvancedSettingsClean));
+                Accept.NotifyCanExecuteChanged();
+                Apply.NotifyCanExecuteChanged();
             }
         }
         private bool _advancedSettingsClean;
@@ -949,9 +949,9 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _advancedStyleClean = value;
-                RaisePropertyChanged(nameof(AdvancedStyleClean));
-                Accept.RaiseCanExecuteChanged();
-                Apply.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(AdvancedStyleClean));
+                Accept.NotifyCanExecuteChanged();
+                Apply.NotifyCanExecuteChanged();
             }
         }
         private bool _advancedStyleClean;

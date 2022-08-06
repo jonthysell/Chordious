@@ -4,15 +4,15 @@
 using System;
 using System.ComponentModel;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class DiagramEditorViewModel : ViewModelBase
+    public class DiagramEditorViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -216,14 +216,14 @@ namespace Chordious.Core.ViewModel
             {
                 return _resetStyles ?? (_resetStyles = new RelayCommand(() =>
                 {
-                    Messenger.Default.Send(new ConfirmationMessage(Strings.DiagramEditorResetStylesPrompt, (confirmed) =>
+                    StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.DiagramEditorResetStylesPrompt, (confirmed) =>
                     {
                         try
                         {
                             if (confirmed)
                             {
                                 ObservableDiagram.ResetStyles();
-                                ResetStyles.RaiseCanExecuteChanged();
+                                ResetStyles.NotifyCanExecuteChanged();
                             }
                         }
                         catch (Exception ex)
@@ -313,7 +313,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _applyChangesOnClose = value;
-                RaisePropertyChanged(nameof(ApplyChangesOnClose));
+                OnPropertyChanged(nameof(ApplyChangesOnClose));
             }
         }
         private bool _applyChangesOnClose = false;
@@ -327,9 +327,9 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _dirty = value;
-                RaisePropertyChanged(nameof(Dirty));
-                RaisePropertyChanged(nameof(Title));
-                Apply.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(Dirty));
+                OnPropertyChanged(nameof(Title));
+                Apply.NotifyCanExecuteChanged();
             }
         }
         private bool _dirty = false;
@@ -343,7 +343,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _diagramChanged = value;
-                RaisePropertyChanged(nameof(DiagramChanged));
+                OnPropertyChanged(nameof(DiagramChanged));
             }
         }
         private bool _diagramChanged = false;
@@ -385,7 +385,7 @@ namespace Chordious.Core.ViewModel
                 Dirty = true;
                 if (e.PropertyName == nameof(Style))
                 {
-                    RaisePropertyChanged(nameof(Style));
+                    OnPropertyChanged(nameof(Style));
                 }
             }
         }
@@ -395,7 +395,7 @@ namespace Chordious.Core.ViewModel
             if (e.PropertyName == "LocalCount")
             {
                 Dirty = true;
-                ResetStyles.RaiseCanExecuteChanged();
+                ResetStyles.NotifyCanExecuteChanged();
             }
         }
 

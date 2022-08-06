@@ -5,14 +5,14 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class DiagramStyleEditorViewModel : ViewModelBase
+    public class DiagramStyleEditorViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -103,7 +103,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _applyChangesOnClose = value;
-                RaisePropertyChanged(nameof(ApplyChangesOnClose));
+                OnPropertyChanged(nameof(ApplyChangesOnClose));
             }
         }
         private bool _applyChangesOnClose = false;
@@ -117,9 +117,9 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _dirty = value;
-                RaisePropertyChanged(nameof(Dirty));
-                RaisePropertyChanged(nameof(Title));
-                Apply.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(Dirty));
+                OnPropertyChanged(nameof(Title));
+                Apply.NotifyCanExecuteChanged();
             }
         }
         private bool _dirty = false;
@@ -133,7 +133,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _diagramStyleChanged = value;
-                RaisePropertyChanged(nameof(DiagramStyleChanged));
+                OnPropertyChanged(nameof(DiagramStyleChanged));
             }
         }
         private bool _diagramStyleChanged = false;
@@ -176,8 +176,8 @@ namespace Chordious.Core.ViewModel
                 }
 
                 _selectedStyleIndex = value;
-                RaisePropertyChanged(nameof(SelectedStyleIndex));
-                RaisePropertyChanged(nameof(Style));
+                OnPropertyChanged(nameof(SelectedStyleIndex));
+                OnPropertyChanged(nameof(Style));
             }
         }
         private int _selectedStyleIndex;

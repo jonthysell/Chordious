@@ -7,15 +7,15 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public abstract class DiagramExportViewModelBase : ViewModelBase
+    public abstract class DiagramExportViewModelBase : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -42,8 +42,8 @@ namespace Chordious.Core.ViewModel
             protected set
             {
                 _isIdle = value;
-                RaisePropertyChanged(nameof(IsIdle));
-                ExportAsync.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(IsIdle));
+                ExportAsync.NotifyCanExecuteChanged();
             }
         }
         private bool _isIdle = true;
@@ -61,7 +61,7 @@ namespace Chordious.Core.ViewModel
                     throw new ArgumentOutOfRangeException();
                 }
                 _percentComplete = value;
-                RaisePropertyChanged(nameof(PercentComplete));
+                OnPropertyChanged(nameof(PercentComplete));
             }
         }
         private double _percentComplete = 0.0;
@@ -131,11 +131,11 @@ namespace Chordious.Core.ViewModel
 
                         if (cancelled)
                         {
-                            Messenger.Default.Send(new ChordiousMessage(Strings.DiagramExportCancelledMessage));
+                            StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.DiagramExportCancelledMessage));
                         }
                         else
                         {
-                            Messenger.Default.Send(new ConfirmationMessage(Strings.DiagramExportCloseAfterCompletePrompt, (confirm) =>
+                            StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.DiagramExportCloseAfterCompletePrompt, (confirm) =>
                             {
                                 if (confirm)
                                 {

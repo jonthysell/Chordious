@@ -3,12 +3,12 @@
 
 using System;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Chordious.Core.ViewModel
 {
-    public class InformationViewModel : ViewModelBase
+    public class InformationViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {

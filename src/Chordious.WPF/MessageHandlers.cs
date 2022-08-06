@@ -7,7 +7,7 @@ using System.IO;
 
 using Microsoft.Win32;
 
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel;
 
@@ -17,101 +17,101 @@ namespace Chordious.WPF
     {
         public static void RegisterMessageHandlers(object recipient)
         {
-            Messenger.Default.Register<ChordiousMessage>(recipient, (message) => ShowNotification(message));
-            Messenger.Default.Register<ExceptionMessage>(recipient, (message) => ShowException(message));
-            Messenger.Default.Register<ConfirmationMessage>(recipient, (message) => ConfirmAction(message));
-            Messenger.Default.Register<PromptForTextMessage>(recipient, (message) => PromptForText(message));
+            StrongReferenceMessenger.Default.Register<ChordiousMessage>(recipient, (recipient, message) => ShowNotification(message));
+            StrongReferenceMessenger.Default.Register<ExceptionMessage>(recipient, (recipient, message) => ShowException(message));
+            StrongReferenceMessenger.Default.Register<ConfirmationMessage>(recipient, (recipient, message) => ConfirmAction(message));
+            StrongReferenceMessenger.Default.Register<PromptForTextMessage>(recipient, (recipient, message) => PromptForText(message));
 
-            Messenger.Default.Register<LaunchUrlMessage>(recipient, (message) => LaunchUrl(message));
+            StrongReferenceMessenger.Default.Register<LaunchUrlMessage>(recipient, (recipient, message) => LaunchUrl(message));
 
-            Messenger.Default.Register<ShowChordFinderMessage>(recipient, (message) => ShowChordFinder(message));
-            Messenger.Default.Register<ShowScaleFinderMessage>(recipient, (message) => ShowScaleFinder(message));
+            StrongReferenceMessenger.Default.Register<ShowChordFinderMessage>(recipient, (recipient, message) => ShowChordFinder(message));
+            StrongReferenceMessenger.Default.Register<ShowScaleFinderMessage>(recipient, (recipient, message) => ShowScaleFinder(message));
 
-            Messenger.Default.Register<ShowDiagramLibraryMessage>(recipient, (message) => ShowDiagramLibrary(message));
+            StrongReferenceMessenger.Default.Register<ShowDiagramLibraryMessage>(recipient, (recipient, message) => ShowDiagramLibrary(message));
 
-            Messenger.Default.Register<ShowDiagramEditorMessage>(recipient, (message) => ShowDiagramEditor(message));
-            Messenger.Default.Register<ShowDiagramMarkEditorMessage>(recipient, (message) => ShowDiagramMarkEditor(message));
-            Messenger.Default.Register<ShowDiagramFretLabelEditorMessage>(recipient, (message) => ShowDiagramFretLabelEditor(message));
-            Messenger.Default.Register<ShowDiagramBarreEditorMessage>(recipient, (message) => ShowDiagramBarreEditor(message));
-            Messenger.Default.Register<ShowDiagramStyleEditorMessage>(recipient, (message) => ShowDiagramStyleEditor(message));
+            StrongReferenceMessenger.Default.Register<ShowDiagramEditorMessage>(recipient, (recipient, message) => ShowDiagramEditor(message));
+            StrongReferenceMessenger.Default.Register<ShowDiagramMarkEditorMessage>(recipient, (recipient, message) => ShowDiagramMarkEditor(message));
+            StrongReferenceMessenger.Default.Register<ShowDiagramFretLabelEditorMessage>(recipient, (recipient, message) => ShowDiagramFretLabelEditor(message));
+            StrongReferenceMessenger.Default.Register<ShowDiagramBarreEditorMessage>(recipient, (recipient, message) => ShowDiagramBarreEditor(message));
+            StrongReferenceMessenger.Default.Register<ShowDiagramStyleEditorMessage>(recipient, (recipient, message) => ShowDiagramStyleEditor(message));
 
-            Messenger.Default.Register<ShowInstrumentManagerMessage>(recipient, (message) => ShowInstrumentManager(message));
-            Messenger.Default.Register<ShowInstrumentEditorMessage>(recipient, (message) => ShowInstrumentEditor(message));
-            Messenger.Default.Register<ShowTuningEditorMessage>(recipient, (message) => ShowTuningEditor(message));
+            StrongReferenceMessenger.Default.Register<ShowInstrumentManagerMessage>(recipient, (recipient, message) => ShowInstrumentManager(message));
+            StrongReferenceMessenger.Default.Register<ShowInstrumentEditorMessage>(recipient, (recipient, message) => ShowInstrumentEditor(message));
+            StrongReferenceMessenger.Default.Register<ShowTuningEditorMessage>(recipient, (recipient, message) => ShowTuningEditor(message));
 
-            Messenger.Default.Register<ShowChordQualityManagerMessage>(recipient, (message) => ShowChordQualityManager(message));
-            Messenger.Default.Register<ShowChordQualityEditorMessage>(recipient, (message) => ShowChordQualityEditor(message));
+            StrongReferenceMessenger.Default.Register<ShowChordQualityManagerMessage>(recipient, (recipient, message) => ShowChordQualityManager(message));
+            StrongReferenceMessenger.Default.Register<ShowChordQualityEditorMessage>(recipient, (recipient, message) => ShowChordQualityEditor(message));
 
-            Messenger.Default.Register<ShowScaleManagerMessage>(recipient, (message) => ShowScaleManager(message));
-            Messenger.Default.Register<ShowScaleEditorMessage>(recipient, (message) => ShowScaleEditor(message));
+            StrongReferenceMessenger.Default.Register<ShowScaleManagerMessage>(recipient, (recipient, message) => ShowScaleManager(message));
+            StrongReferenceMessenger.Default.Register<ShowScaleEditorMessage>(recipient, (recipient, message) => ShowScaleEditor(message));
 
-            Messenger.Default.Register<ShowOptionsMessage>(recipient, (message) => ShowOptions(message));
+            StrongReferenceMessenger.Default.Register<ShowOptionsMessage>(recipient, (recipient, message) => ShowOptions(message));
 
-            Messenger.Default.Register<ShowLicensesMessage>(recipient, (message) => ShowLicense(message));
+            StrongReferenceMessenger.Default.Register<ShowLicensesMessage>(recipient, (recipient, message) => ShowLicense(message));
 
-            Messenger.Default.Register<ShowAdvancedDataMessage>(recipient, (message) => ShowAdvancedData(message));
+            StrongReferenceMessenger.Default.Register<ShowAdvancedDataMessage>(recipient, (recipient, message) => ShowAdvancedData(message));
 
-            Messenger.Default.Register<ShowDiagramExportMessage>(recipient, (message) => ShowDiagramExport(message));
+            StrongReferenceMessenger.Default.Register<ShowDiagramExportMessage>(recipient, (recipient, message) => ShowDiagramExport(message));
 
-            Messenger.Default.Register<ShowConfigImportMessage>(recipient, (message) => ShowConfigImport(message));
-            Messenger.Default.Register<PromptForConfigInputStreamMessage>(recipient, (message) => PromptForConfigInputStream(message));
+            StrongReferenceMessenger.Default.Register<ShowConfigImportMessage>(recipient, (recipient, message) => ShowConfigImport(message));
+            StrongReferenceMessenger.Default.Register<PromptForConfigInputStreamMessage>(recipient, (recipient, message) => PromptForConfigInputStream(message));
 
-            Messenger.Default.Register<ShowConfigExportMessage>(recipient, (message) => ShowConfigExport(message));
-            Messenger.Default.Register<PromptForConfigOutputStreamMessage>(recipient, (message) => PromptForConfigOutputStream(message));
+            StrongReferenceMessenger.Default.Register<ShowConfigExportMessage>(recipient, (recipient, message) => ShowConfigExport(message));
+            StrongReferenceMessenger.Default.Register<PromptForConfigOutputStreamMessage>(recipient, (recipient, message) => PromptForConfigOutputStream(message));
 
-            Messenger.Default.Register<ShowDiagramCollectionSelectorMessage>(recipient, (message) => ShowDiagramCollectionSelector(message));
+            StrongReferenceMessenger.Default.Register<ShowDiagramCollectionSelectorMessage>(recipient, (recipient, message) => ShowDiagramCollectionSelector(message));
             
-            Messenger.Default.Register<PromptForLegacyImportMessage>(recipient, (message) => PromptForLegacyImport(message));
+            StrongReferenceMessenger.Default.Register<PromptForLegacyImportMessage>(recipient, (recipient, message) => PromptForLegacyImport(message));
         }
 
         public static void UnregisterMessageHandlers(object recipient)
         {
-            Messenger.Default.Unregister<ChordiousMessage>(recipient);
-            Messenger.Default.Unregister<ExceptionMessage>(recipient);
-            Messenger.Default.Unregister<ConfirmationMessage>(recipient);
-            Messenger.Default.Unregister<PromptForTextMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ChordiousMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ExceptionMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ConfirmationMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<PromptForTextMessage>(recipient);
 
-            Messenger.Default.Unregister<LaunchUrlMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<LaunchUrlMessage>(recipient);
 
-            Messenger.Default.Unregister<ShowChordFinderMessage>(recipient);
-            Messenger.Default.Unregister<ShowScaleFinderMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowChordFinderMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowScaleFinderMessage>(recipient);
 
-            Messenger.Default.Unregister<ShowDiagramLibraryMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowDiagramLibraryMessage>(recipient);
 
-            Messenger.Default.Unregister<ShowDiagramEditorMessage>(recipient);
-            Messenger.Default.Unregister<ShowDiagramMarkEditorMessage>(recipient);
-            Messenger.Default.Unregister<ShowDiagramFretLabelEditorMessage>(recipient);
-            Messenger.Default.Unregister<ShowDiagramBarreEditorMessage>(recipient);
-            Messenger.Default.Unregister<ShowDiagramStyleEditorMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowDiagramEditorMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowDiagramMarkEditorMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowDiagramFretLabelEditorMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowDiagramBarreEditorMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowDiagramStyleEditorMessage>(recipient);
 
-            Messenger.Default.Unregister<ShowInstrumentManagerMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowInstrumentManagerMessage>(recipient);
 
-            Messenger.Default.Unregister<ShowInstrumentEditorMessage>(recipient);
-            Messenger.Default.Unregister<ShowTuningEditorMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowInstrumentEditorMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowTuningEditorMessage>(recipient);
 
-            Messenger.Default.Unregister<ShowChordQualityManagerMessage>(recipient);
-            Messenger.Default.Unregister<ShowChordQualityEditorMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowChordQualityManagerMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowChordQualityEditorMessage>(recipient);
 
-            Messenger.Default.Unregister<ShowScaleManagerMessage>(recipient);
-            Messenger.Default.Unregister<ShowScaleEditorMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowScaleManagerMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowScaleEditorMessage>(recipient);
             
-            Messenger.Default.Unregister<ShowOptionsMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowOptionsMessage>(recipient);
 
-            Messenger.Default.Unregister<ShowLicensesMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowLicensesMessage>(recipient);
 
-            Messenger.Default.Unregister<ShowAdvancedDataMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowAdvancedDataMessage>(recipient);
 
-            Messenger.Default.Unregister<ShowDiagramExportMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowDiagramExportMessage>(recipient);
 
-            Messenger.Default.Unregister<ShowConfigImportMessage>(recipient);
-            Messenger.Default.Unregister<PromptForConfigInputStreamMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowConfigImportMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<PromptForConfigInputStreamMessage>(recipient);
 
-            Messenger.Default.Unregister<ShowConfigExportMessage>(recipient);
-            Messenger.Default.Unregister<PromptForConfigOutputStreamMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowConfigExportMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<PromptForConfigOutputStreamMessage>(recipient);
 
-            Messenger.Default.Unregister<ShowDiagramCollectionSelectorMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<ShowDiagramCollectionSelectorMessage>(recipient);
 
-            Messenger.Default.Unregister<PromptForLegacyImportMessage>(recipient);
+            StrongReferenceMessenger.Default.Unregister<PromptForLegacyImportMessage>(recipient);
         }
 
         private static void ShowNotification(ChordiousMessage message)

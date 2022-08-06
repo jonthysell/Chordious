@@ -5,9 +5,9 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
@@ -94,8 +94,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.OrientationIsLocal = value;
-                    RaisePropertyChanged(nameof(OrientationIsLocal));
-                    RaisePropertyChanged(nameof(SelectedOrientationIndex));
+                    OnPropertyChanged(nameof(OrientationIsLocal));
+                    OnPropertyChanged(nameof(SelectedOrientationIndex));
                 }
                 catch (Exception ex)
                 {
@@ -131,7 +131,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.Orientation = (DiagramOrientation)(value);
-                    RaisePropertyChanged(nameof(SelectedOrientationIndex));
+                    OnPropertyChanged(nameof(SelectedOrientationIndex));
                 }
                 catch (Exception ex)
                 {
@@ -159,8 +159,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.LabelLayoutModelIsLocal = value;
-                    RaisePropertyChanged(nameof(LabelLayoutModelIsLocal));
-                    RaisePropertyChanged(nameof(SelectedLabelLayoutModelIndex));
+                    OnPropertyChanged(nameof(LabelLayoutModelIsLocal));
+                    OnPropertyChanged(nameof(SelectedLabelLayoutModelIndex));
                 }
                 catch (Exception ex)
                 {
@@ -196,7 +196,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.LabelLayoutModel = (DiagramLabelLayoutModel)(value);
-                    RaisePropertyChanged(nameof(SelectedLabelLayoutModelIndex));
+                    OnPropertyChanged(nameof(SelectedLabelLayoutModelIndex));
                 }
                 catch (Exception ex)
                 {
@@ -236,8 +236,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.DiagramColorIsLocal = value;
-                    RaisePropertyChanged(nameof(DiagramColorIsLocal));
-                    RaisePropertyChanged(nameof(DiagramColor));
+                    OnPropertyChanged(nameof(DiagramColorIsLocal));
+                    OnPropertyChanged(nameof(DiagramColor));
                 }
                 catch (Exception ex)
                 {
@@ -275,7 +275,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.DiagramColor = value;
-                        RaisePropertyChanged(nameof(DiagramColor));
+                        OnPropertyChanged(nameof(DiagramColor));
                     }
                 }
                 catch (Exception ex)
@@ -296,8 +296,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.DiagramOpacityIsLocal = value;
-                    RaisePropertyChanged(nameof(DiagramOpacityIsLocal));
-                    RaisePropertyChanged(nameof(DiagramOpacity));
+                    OnPropertyChanged(nameof(DiagramOpacityIsLocal));
+                    OnPropertyChanged(nameof(DiagramOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -333,7 +333,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.DiagramOpacity = value;
-                    RaisePropertyChanged(nameof(DiagramOpacity));
+                    OnPropertyChanged(nameof(DiagramOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -365,8 +365,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.DiagramBorderColorIsLocal = value;
-                    RaisePropertyChanged(nameof(DiagramBorderColorIsLocal));
-                    RaisePropertyChanged(nameof(DiagramBorderColor));
+                    OnPropertyChanged(nameof(DiagramBorderColorIsLocal));
+                    OnPropertyChanged(nameof(DiagramBorderColor));
                 }
                 catch (Exception ex)
                 {
@@ -404,7 +404,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.DiagramBorderColor = value;
-                        RaisePropertyChanged(nameof(DiagramBorderColor));
+                        OnPropertyChanged(nameof(DiagramBorderColor));
                     }
                 }
                 catch (Exception ex)
@@ -425,8 +425,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.DiagramBorderThicknessIsLocal = value;
-                    RaisePropertyChanged(nameof(DiagramBorderThicknessIsLocal));
-                    RaisePropertyChanged(nameof(DiagramBorderThickness));
+                    OnPropertyChanged(nameof(DiagramBorderThicknessIsLocal));
+                    OnPropertyChanged(nameof(DiagramBorderThickness));
                 }
                 catch (Exception ex)
                 {
@@ -462,7 +462,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.DiagramBorderThickness = value;
-                    RaisePropertyChanged(nameof(DiagramBorderThickness));
+                    OnPropertyChanged(nameof(DiagramBorderThickness));
                 }
                 catch (Exception ex)
                 {
@@ -494,8 +494,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.NewDiagramNumStringsIsLocal = value;
-                    RaisePropertyChanged(nameof(NewDiagramNumStringsIsLocal));
-                    RaisePropertyChanged(nameof(NewDiagramNumStrings));
+                    OnPropertyChanged(nameof(NewDiagramNumStringsIsLocal));
+                    OnPropertyChanged(nameof(NewDiagramNumStrings));
                 }
                 catch (Exception ex)
                 {
@@ -531,7 +531,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.NewDiagramNumStrings = value;
-                    RaisePropertyChanged(nameof(NewDiagramNumStrings));
+                    OnPropertyChanged(nameof(NewDiagramNumStrings));
                 }
                 catch (Exception ex)
                 {
@@ -551,8 +551,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.NewDiagramNumFretsIsLocal = value;
-                    RaisePropertyChanged(nameof(NewDiagramNumFretsIsLocal));
-                    RaisePropertyChanged(nameof(NewDiagramNumFrets));
+                    OnPropertyChanged(nameof(NewDiagramNumFretsIsLocal));
+                    OnPropertyChanged(nameof(NewDiagramNumFrets));
                 }
                 catch (Exception ex)
                 {
@@ -588,7 +588,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.NewDiagramNumFrets = value;
-                    RaisePropertyChanged(nameof(NewDiagramNumFrets));
+                    OnPropertyChanged(nameof(NewDiagramNumFrets));
                 }
                 catch (Exception ex)
                 {
@@ -630,8 +630,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginIsLocal = value;
-                    RaisePropertyChanged(nameof(GridMarginIsLocal));
-                    RaisePropertyChanged(nameof(GridMargin));
+                    OnPropertyChanged(nameof(GridMarginIsLocal));
+                    OnPropertyChanged(nameof(GridMargin));
                 }
                 catch (Exception ex)
                 {
@@ -667,7 +667,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMargin = value;
-                    RaisePropertyChanged(nameof(GridMargin));
+                    OnPropertyChanged(nameof(GridMargin));
                 }
                 catch (Exception ex)
                 {
@@ -687,8 +687,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginLeftIsLocal = value;
-                    RaisePropertyChanged(nameof(GridMarginLeftIsLocal));
-                    RaisePropertyChanged(nameof(GridMarginLeft));
+                    OnPropertyChanged(nameof(GridMarginLeftIsLocal));
+                    OnPropertyChanged(nameof(GridMarginLeft));
                 }
                 catch (Exception ex)
                 {
@@ -724,7 +724,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginLeft = value;
-                    RaisePropertyChanged(nameof(GridMarginLeft));
+                    OnPropertyChanged(nameof(GridMarginLeft));
                 }
                 catch (Exception ex)
                 {
@@ -744,8 +744,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginRightIsLocal = value;
-                    RaisePropertyChanged(nameof(GridMarginRightIsLocal));
-                    RaisePropertyChanged(nameof(GridMarginRight));
+                    OnPropertyChanged(nameof(GridMarginRightIsLocal));
+                    OnPropertyChanged(nameof(GridMarginRight));
                 }
                 catch (Exception ex)
                 {
@@ -781,7 +781,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginRight = value;
-                    RaisePropertyChanged(nameof(GridMarginRight));
+                    OnPropertyChanged(nameof(GridMarginRight));
                 }
                 catch (Exception ex)
                 {
@@ -801,8 +801,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginTopIsLocal = value;
-                    RaisePropertyChanged(nameof(GridMarginTopIsLocal));
-                    RaisePropertyChanged(nameof(GridMarginTop));
+                    OnPropertyChanged(nameof(GridMarginTopIsLocal));
+                    OnPropertyChanged(nameof(GridMarginTop));
                 }
                 catch (Exception ex)
                 {
@@ -838,7 +838,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginTop = value;
-                    RaisePropertyChanged(nameof(GridMarginTop));
+                    OnPropertyChanged(nameof(GridMarginTop));
                 }
                 catch (Exception ex)
                 {
@@ -858,8 +858,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginBottomIsLocal = value;
-                    RaisePropertyChanged(nameof(GridMarginBottomIsLocal));
-                    RaisePropertyChanged(nameof(GridMarginBottom));
+                    OnPropertyChanged(nameof(GridMarginBottomIsLocal));
+                    OnPropertyChanged(nameof(GridMarginBottom));
                 }
                 catch (Exception ex)
                 {
@@ -895,7 +895,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridMarginBottom = value;
-                    RaisePropertyChanged(nameof(GridMarginBottom));
+                    OnPropertyChanged(nameof(GridMarginBottom));
                 }
                 catch (Exception ex)
                 {
@@ -923,8 +923,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridFretSpacingIsLocal = value;
-                    RaisePropertyChanged(nameof(GridFretSpacingIsLocal));
-                    RaisePropertyChanged(nameof(GridFretSpacing));
+                    OnPropertyChanged(nameof(GridFretSpacingIsLocal));
+                    OnPropertyChanged(nameof(GridFretSpacing));
                 }
                 catch (Exception ex)
                 {
@@ -960,7 +960,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridFretSpacing = value;
-                    RaisePropertyChanged(nameof(GridFretSpacing));
+                    OnPropertyChanged(nameof(GridFretSpacing));
                 }
                 catch (Exception ex)
                 {
@@ -980,8 +980,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridStringSpacingIsLocal = value;
-                    RaisePropertyChanged(nameof(GridStringSpacingIsLocal));
-                    RaisePropertyChanged(nameof(GridStringSpacing));
+                    OnPropertyChanged(nameof(GridStringSpacingIsLocal));
+                    OnPropertyChanged(nameof(GridStringSpacing));
                 }
                 catch (Exception ex)
                 {
@@ -1017,7 +1017,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridStringSpacing = value;
-                    RaisePropertyChanged(nameof(GridStringSpacing));
+                    OnPropertyChanged(nameof(GridStringSpacing));
                 }
                 catch (Exception ex)
                 {
@@ -1045,8 +1045,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridColorIsLocal = value;
-                    RaisePropertyChanged(nameof(GridColorIsLocal));
-                    RaisePropertyChanged(nameof(GridColor));
+                    OnPropertyChanged(nameof(GridColorIsLocal));
+                    OnPropertyChanged(nameof(GridColor));
                 }
                 catch (Exception ex)
                 {
@@ -1084,7 +1084,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.GridColor = value;
-                        RaisePropertyChanged(nameof(GridColor));
+                        OnPropertyChanged(nameof(GridColor));
                     }
                 }
                 catch (Exception ex)
@@ -1105,8 +1105,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridOpacityIsLocal = value;
-                    RaisePropertyChanged(nameof(GridOpacityIsLocal));
-                    RaisePropertyChanged(nameof(GridOpacity));
+                    OnPropertyChanged(nameof(GridOpacityIsLocal));
+                    OnPropertyChanged(nameof(GridOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -1142,7 +1142,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridOpacity = value;
-                    RaisePropertyChanged(nameof(GridOpacity));
+                    OnPropertyChanged(nameof(GridOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -1170,8 +1170,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridLineColorIsLocal = value;
-                    RaisePropertyChanged(nameof(GridLineColorIsLocal));
-                    RaisePropertyChanged(nameof(GridLineColor));
+                    OnPropertyChanged(nameof(GridLineColorIsLocal));
+                    OnPropertyChanged(nameof(GridLineColor));
                 }
                 catch (Exception ex)
                 {
@@ -1209,7 +1209,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.GridLineColor = value;
-                        RaisePropertyChanged(nameof(GridLineColor));
+                        OnPropertyChanged(nameof(GridLineColor));
                     }
                 }
                 catch (Exception ex)
@@ -1230,8 +1230,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridLineThicknessIsLocal = value;
-                    RaisePropertyChanged(nameof(GridLineThicknessIsLocal));
-                    RaisePropertyChanged(nameof(GridLineThickness));
+                    OnPropertyChanged(nameof(GridLineThicknessIsLocal));
+                    OnPropertyChanged(nameof(GridLineThickness));
                 }
                 catch (Exception ex)
                 {
@@ -1267,7 +1267,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridLineThickness = value;
-                    RaisePropertyChanged(nameof(GridLineThickness));
+                    OnPropertyChanged(nameof(GridLineThickness));
                 }
                 catch (Exception ex)
                 {
@@ -1295,8 +1295,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridNutVisibleIsLocal = value;
-                    RaisePropertyChanged(nameof(GridNutVisibleIsLocal));
-                    RaisePropertyChanged(nameof(GridNutVisible));
+                    OnPropertyChanged(nameof(GridNutVisibleIsLocal));
+                    OnPropertyChanged(nameof(GridNutVisible));
                 }
                 catch (Exception ex)
                 {
@@ -1332,7 +1332,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridNutVisible = value;
-                    RaisePropertyChanged(nameof(GridNutVisible));
+                    OnPropertyChanged(nameof(GridNutVisible));
                 }
                 catch (Exception ex)
                 {
@@ -1352,8 +1352,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridNutRatioIsLocal = value;
-                    RaisePropertyChanged(nameof(GridNutRatioIsLocal));
-                    RaisePropertyChanged(nameof(GridNutRatio));
+                    OnPropertyChanged(nameof(GridNutRatioIsLocal));
+                    OnPropertyChanged(nameof(GridNutRatio));
                 }
                 catch (Exception ex)
                 {
@@ -1389,7 +1389,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.GridNutRatio = value;
-                    RaisePropertyChanged(nameof(GridNutRatio));
+                    OnPropertyChanged(nameof(GridNutRatio));
                 }
                 catch (Exception ex)
                 {
@@ -1431,8 +1431,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleVisibleIsLocal = value;
-                    RaisePropertyChanged(nameof(TitleVisibleIsLocal));
-                    RaisePropertyChanged(nameof(TitleVisible));
+                    OnPropertyChanged(nameof(TitleVisibleIsLocal));
+                    OnPropertyChanged(nameof(TitleVisible));
                 }
                 catch (Exception ex)
                 {
@@ -1468,7 +1468,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleVisible = value;
-                    RaisePropertyChanged(nameof(TitleVisible));
+                    OnPropertyChanged(nameof(TitleVisible));
                 }
                 catch (Exception ex)
                 {
@@ -1488,8 +1488,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleGridPaddingIsLocal = value;
-                    RaisePropertyChanged(nameof(TitleGridPaddingIsLocal));
-                    RaisePropertyChanged(nameof(TitleGridPadding));
+                    OnPropertyChanged(nameof(TitleGridPaddingIsLocal));
+                    OnPropertyChanged(nameof(TitleGridPadding));
                 }
                 catch (Exception ex)
                 {
@@ -1525,7 +1525,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleGridPadding = value;
-                    RaisePropertyChanged(nameof(TitleGridPadding));
+                    OnPropertyChanged(nameof(TitleGridPadding));
                 }
                 catch (Exception ex)
                 {
@@ -1545,8 +1545,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextAlignmentIsLocal = value;
-                    RaisePropertyChanged(nameof(TitleTextAlignmentIsLocal));
-                    RaisePropertyChanged(nameof(SelectedTitleTextAlignmentIndex));
+                    OnPropertyChanged(nameof(TitleTextAlignmentIsLocal));
+                    OnPropertyChanged(nameof(SelectedTitleTextAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -1582,7 +1582,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextAlignment = (DiagramHorizontalAlignment)(value);
-                    RaisePropertyChanged(nameof(SelectedTitleTextAlignmentIndex));
+                    OnPropertyChanged(nameof(SelectedTitleTextAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -1622,8 +1622,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleFontFamilyIsLocal = value;
-                    RaisePropertyChanged(nameof(TitleFontFamilyIsLocal));
-                    RaisePropertyChanged(nameof(TitleFontFamily));
+                    OnPropertyChanged(nameof(TitleFontFamilyIsLocal));
+                    OnPropertyChanged(nameof(TitleFontFamily));
                 }
                 catch (Exception ex)
                 {
@@ -1662,7 +1662,7 @@ namespace Chordious.Core.ViewModel
                     {
                         Style.TitleFontFamily = value;
                         FontFamilies.SortedInsert(TitleFontFamily);
-                        RaisePropertyChanged(nameof(TitleFontFamily));
+                        OnPropertyChanged(nameof(TitleFontFamily));
                     }
                 }
                 catch (Exception ex)
@@ -1683,8 +1683,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextSizeIsLocal = value;
-                    RaisePropertyChanged(nameof(TitleTextSizeIsLocal));
-                    RaisePropertyChanged(nameof(TitleTextSize));
+                    OnPropertyChanged(nameof(TitleTextSizeIsLocal));
+                    OnPropertyChanged(nameof(TitleTextSize));
                 }
                 catch (Exception ex)
                 {
@@ -1720,7 +1720,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextSize = value;
-                    RaisePropertyChanged(nameof(TitleTextSize));
+                    OnPropertyChanged(nameof(TitleTextSize));
                 }
                 catch (Exception ex)
                 {
@@ -1740,8 +1740,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextSizeModRatioIsLocal = value;
-                    RaisePropertyChanged(nameof(TitleTextSizeModRatioIsLocal));
-                    RaisePropertyChanged(nameof(TitleTextSizeModRatio));
+                    OnPropertyChanged(nameof(TitleTextSizeModRatioIsLocal));
+                    OnPropertyChanged(nameof(TitleTextSizeModRatio));
                 }
                 catch (Exception ex)
                 {
@@ -1777,7 +1777,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextSizeModRatio = value;
-                    RaisePropertyChanged(nameof(TitleTextSizeModRatio));
+                    OnPropertyChanged(nameof(TitleTextSizeModRatio));
                 }
                 catch (Exception ex)
                 {
@@ -1797,8 +1797,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextStyleIsLocal = value;
-                    RaisePropertyChanged(nameof(TitleTextStyleIsLocal));
-                    RaisePropertyChanged(nameof(SelectedTitleTextStyleIndex));
+                    OnPropertyChanged(nameof(TitleTextStyleIsLocal));
+                    OnPropertyChanged(nameof(SelectedTitleTextStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -1834,7 +1834,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleTextStyle = (DiagramTextStyle)(value);
-                    RaisePropertyChanged(nameof(SelectedTitleTextStyleIndex));
+                    OnPropertyChanged(nameof(SelectedTitleTextStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -1862,8 +1862,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleLabelStyleIsLocal = value;
-                    RaisePropertyChanged(nameof(TitleLabelStyleIsLocal));
-                    RaisePropertyChanged(nameof(SelectedTitleLabelStyleIndex));
+                    OnPropertyChanged(nameof(TitleLabelStyleIsLocal));
+                    OnPropertyChanged(nameof(SelectedTitleLabelStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -1899,7 +1899,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleLabelStyle = (DiagramLabelStyle)(value);
-                    RaisePropertyChanged(nameof(SelectedTitleLabelStyleIndex));
+                    OnPropertyChanged(nameof(SelectedTitleLabelStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -1927,8 +1927,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleColorIsLocal = value;
-                    RaisePropertyChanged(nameof(TitleColorIsLocal));
-                    RaisePropertyChanged(nameof(TitleColor));
+                    OnPropertyChanged(nameof(TitleColorIsLocal));
+                    OnPropertyChanged(nameof(TitleColor));
                 }
                 catch (Exception ex)
                 {
@@ -1966,7 +1966,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.TitleColor = value;
-                        RaisePropertyChanged(nameof(TitleColor));
+                        OnPropertyChanged(nameof(TitleColor));
                     }
                 }
                 catch (Exception ex)
@@ -1987,8 +1987,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleOpacityIsLocal = value;
-                    RaisePropertyChanged(nameof(TitleOpacityIsLocal));
-                    RaisePropertyChanged(nameof(TitleOpacity));
+                    OnPropertyChanged(nameof(TitleOpacityIsLocal));
+                    OnPropertyChanged(nameof(TitleOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -2024,7 +2024,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.TitleOpacity = value;
-                    RaisePropertyChanged(nameof(TitleOpacity));
+                    OnPropertyChanged(nameof(TitleOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -2066,7 +2066,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkType = (DiagramMarkType)(value);
-                    RaisePropertyChanged(nameof(SelectedMarkTypeIndex));
+                    OnPropertyChanged(nameof(SelectedMarkTypeIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2112,8 +2112,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkShapeIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkShapeIsLocal));
-                    RaisePropertyChanged(nameof(SelectedMarkShapeIndex));
+                    OnPropertyChanged(nameof(MarkShapeIsLocal));
+                    OnPropertyChanged(nameof(SelectedMarkShapeIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2149,7 +2149,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkShape = (DiagramMarkShape)(value);
-                    RaisePropertyChanged(nameof(SelectedMarkShapeIndex));
+                    OnPropertyChanged(nameof(SelectedMarkShapeIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2177,8 +2177,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkVisibleIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkVisibleIsLocal));
-                    RaisePropertyChanged(nameof(MarkVisible));
+                    OnPropertyChanged(nameof(MarkVisibleIsLocal));
+                    OnPropertyChanged(nameof(MarkVisible));
                 }
                 catch (Exception ex)
                 {
@@ -2214,7 +2214,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkVisible = value;
-                    RaisePropertyChanged(nameof(MarkVisible));
+                    OnPropertyChanged(nameof(MarkVisible));
                 }
                 catch (Exception ex)
                 {
@@ -2234,8 +2234,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkColorIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkColorIsLocal));
-                    RaisePropertyChanged(nameof(MarkColor));
+                    OnPropertyChanged(nameof(MarkColorIsLocal));
+                    OnPropertyChanged(nameof(MarkColor));
                 }
                 catch (Exception ex)
                 {
@@ -2273,7 +2273,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         MarkStyle.MarkColor = value;
-                        RaisePropertyChanged(nameof(MarkColor));
+                        OnPropertyChanged(nameof(MarkColor));
                     }
                 }
                 catch (Exception ex)
@@ -2294,8 +2294,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkOpacityIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkOpacityIsLocal));
-                    RaisePropertyChanged(nameof(MarkOpacity));
+                    OnPropertyChanged(nameof(MarkOpacityIsLocal));
+                    OnPropertyChanged(nameof(MarkOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -2331,7 +2331,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkOpacity = value;
-                    RaisePropertyChanged(nameof(MarkOpacity));
+                    OnPropertyChanged(nameof(MarkOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -2351,8 +2351,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkRadiusRatioIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkRadiusRatioIsLocal));
-                    RaisePropertyChanged(nameof(MarkRadiusRatio));
+                    OnPropertyChanged(nameof(MarkRadiusRatioIsLocal));
+                    OnPropertyChanged(nameof(MarkRadiusRatio));
                 }
                 catch (Exception ex)
                 {
@@ -2388,7 +2388,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkRadiusRatio = value;
-                    RaisePropertyChanged(nameof(MarkRadiusRatio));
+                    OnPropertyChanged(nameof(MarkRadiusRatio));
                 }
                 catch (Exception ex)
                 {
@@ -2420,8 +2420,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkBorderColorIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkBorderColorIsLocal));
-                    RaisePropertyChanged(nameof(MarkBorderColor));
+                    OnPropertyChanged(nameof(MarkBorderColorIsLocal));
+                    OnPropertyChanged(nameof(MarkBorderColor));
                 }
                 catch (Exception ex)
                 {
@@ -2457,7 +2457,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkBorderColor = value;
-                    RaisePropertyChanged(nameof(MarkBorderColor));
+                    OnPropertyChanged(nameof(MarkBorderColor));
                 }
                 catch (Exception ex)
                 {
@@ -2477,8 +2477,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkBorderThicknessIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkBorderThicknessIsLocal));
-                    RaisePropertyChanged(nameof(MarkBorderThickness));
+                    OnPropertyChanged(nameof(MarkBorderThicknessIsLocal));
+                    OnPropertyChanged(nameof(MarkBorderThickness));
                 }
                 catch (Exception ex)
                 {
@@ -2514,7 +2514,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkBorderThickness = value;
-                    RaisePropertyChanged(nameof(MarkBorderThickness));
+                    OnPropertyChanged(nameof(MarkBorderThickness));
                 }
                 catch (Exception ex)
                 {
@@ -2546,8 +2546,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextAlignmentIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkTextAlignmentIsLocal));
-                    RaisePropertyChanged(nameof(SelectedMarkTextAlignmentIndex));
+                    OnPropertyChanged(nameof(MarkTextAlignmentIsLocal));
+                    OnPropertyChanged(nameof(SelectedMarkTextAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2583,7 +2583,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextAlignment = (DiagramHorizontalAlignment)(value);
-                    RaisePropertyChanged(nameof(SelectedMarkTextAlignmentIndex));
+                    OnPropertyChanged(nameof(SelectedMarkTextAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2611,8 +2611,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextVisibleIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkTextVisibleIsLocal));
-                    RaisePropertyChanged(nameof(MarkTextVisible));
+                    OnPropertyChanged(nameof(MarkTextVisibleIsLocal));
+                    OnPropertyChanged(nameof(MarkTextVisible));
                 }
                 catch (Exception ex)
                 {
@@ -2648,7 +2648,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextVisible = value;
-                    RaisePropertyChanged(nameof(MarkTextVisible));
+                    OnPropertyChanged(nameof(MarkTextVisible));
                 }
                 catch (Exception ex)
                 {
@@ -2668,8 +2668,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextColorIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkTextColorIsLocal));
-                    RaisePropertyChanged(nameof(MarkTextColor));
+                    OnPropertyChanged(nameof(MarkTextColorIsLocal));
+                    OnPropertyChanged(nameof(MarkTextColor));
                 }
                 catch (Exception ex)
                 {
@@ -2707,7 +2707,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         MarkStyle.MarkTextColor = value;
-                        RaisePropertyChanged(nameof(MarkTextColor));
+                        OnPropertyChanged(nameof(MarkTextColor));
                     }
                 }
                 catch (Exception ex)
@@ -2728,8 +2728,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextOpacityIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkTextOpacityIsLocal));
-                    RaisePropertyChanged(nameof(MarkTextOpacity));
+                    OnPropertyChanged(nameof(MarkTextOpacityIsLocal));
+                    OnPropertyChanged(nameof(MarkTextOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -2765,7 +2765,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextOpacity = value;
-                    RaisePropertyChanged(nameof(MarkTextOpacity));
+                    OnPropertyChanged(nameof(MarkTextOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -2785,8 +2785,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkFontFamilyIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkFontFamilyIsLocal));
-                    RaisePropertyChanged(nameof(MarkFontFamily));
+                    OnPropertyChanged(nameof(MarkFontFamilyIsLocal));
+                    OnPropertyChanged(nameof(MarkFontFamily));
                 }
                 catch (Exception ex)
                 {
@@ -2825,7 +2825,7 @@ namespace Chordious.Core.ViewModel
                     {
                         MarkStyle.MarkFontFamily = value;
                         FontFamilies.SortedInsert(MarkFontFamily);
-                        RaisePropertyChanged(nameof(MarkFontFamily));
+                        OnPropertyChanged(nameof(MarkFontFamily));
                     }
                 }
                 catch (Exception ex)
@@ -2846,8 +2846,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextStyleIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkTextStyleIsLocal));
-                    RaisePropertyChanged(nameof(SelectedMarkTextStyleIndex));
+                    OnPropertyChanged(nameof(MarkTextStyleIsLocal));
+                    OnPropertyChanged(nameof(SelectedMarkTextStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2883,7 +2883,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextStyle = (DiagramTextStyle)(value);
-                    RaisePropertyChanged(nameof(SelectedMarkTextStyleIndex));
+                    OnPropertyChanged(nameof(SelectedMarkTextStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -2911,8 +2911,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextSizeRatioIsLocal = value;
-                    RaisePropertyChanged(nameof(MarkTextSizeRatioIsLocal));
-                    RaisePropertyChanged(nameof(MarkTextSizeRatio));
+                    OnPropertyChanged(nameof(MarkTextSizeRatioIsLocal));
+                    OnPropertyChanged(nameof(MarkTextSizeRatio));
                 }
                 catch (Exception ex)
                 {
@@ -2948,7 +2948,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     MarkStyle.MarkTextSizeRatio = value;
-                    RaisePropertyChanged(nameof(MarkTextSizeRatio));
+                    OnPropertyChanged(nameof(MarkTextSizeRatio));
                 }
                 catch (Exception ex)
                 {
@@ -2992,8 +2992,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextAlignmentIsLocal = value;
-                    RaisePropertyChanged(nameof(FretLabelTextAlignmentIsLocal));
-                    RaisePropertyChanged(nameof(SelectedFretLabelTextAlignmentIndex));
+                    OnPropertyChanged(nameof(FretLabelTextAlignmentIsLocal));
+                    OnPropertyChanged(nameof(SelectedFretLabelTextAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3029,7 +3029,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextAlignment = (DiagramHorizontalAlignment)(value);
-                    RaisePropertyChanged(nameof(SelectedFretLabelTextAlignmentIndex));
+                    OnPropertyChanged(nameof(SelectedFretLabelTextAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3057,8 +3057,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextVisibleIsLocal = value;
-                    RaisePropertyChanged(nameof(FretLabelTextVisibleIsLocal));
-                    RaisePropertyChanged(nameof(FretLabelTextVisible));
+                    OnPropertyChanged(nameof(FretLabelTextVisibleIsLocal));
+                    OnPropertyChanged(nameof(FretLabelTextVisible));
                 }
                 catch (Exception ex)
                 {
@@ -3094,7 +3094,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextVisible = value;
-                    RaisePropertyChanged(nameof(FretLabelTextVisible));
+                    OnPropertyChanged(nameof(FretLabelTextVisible));
                 }
                 catch (Exception ex)
                 {
@@ -3114,8 +3114,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelGridPaddingIsLocal = value;
-                    RaisePropertyChanged(nameof(FretLabelGridPaddingIsLocal));
-                    RaisePropertyChanged(nameof(FretLabelGridPadding));
+                    OnPropertyChanged(nameof(FretLabelGridPaddingIsLocal));
+                    OnPropertyChanged(nameof(FretLabelGridPadding));
                 }
                 catch (Exception ex)
                 {
@@ -3151,7 +3151,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelGridPadding = value;
-                    RaisePropertyChanged(nameof(FretLabelGridPadding));
+                    OnPropertyChanged(nameof(FretLabelGridPadding));
                 }
                 catch (Exception ex)
                 {
@@ -3183,8 +3183,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextColorIsLocal = value;
-                    RaisePropertyChanged(nameof(FretLabelTextColorIsLocal));
-                    RaisePropertyChanged(nameof(FretLabelTextColor));
+                    OnPropertyChanged(nameof(FretLabelTextColorIsLocal));
+                    OnPropertyChanged(nameof(FretLabelTextColor));
                 }
                 catch (Exception ex)
                 {
@@ -3222,7 +3222,7 @@ namespace Chordious.Core.ViewModel
                     if (null != value)
                     {
                         Style.FretLabelTextColor = value;
-                        RaisePropertyChanged(nameof(FretLabelTextColor));
+                        OnPropertyChanged(nameof(FretLabelTextColor));
                     }
                 }
                 catch (Exception ex)
@@ -3243,8 +3243,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextOpacityIsLocal = value;
-                    RaisePropertyChanged(nameof(FretLabelTextOpacityIsLocal));
-                    RaisePropertyChanged(nameof(FretLabelTextOpacity));
+                    OnPropertyChanged(nameof(FretLabelTextOpacityIsLocal));
+                    OnPropertyChanged(nameof(FretLabelTextOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -3280,7 +3280,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextOpacity = value;
-                    RaisePropertyChanged(nameof(FretLabelTextOpacity));
+                    OnPropertyChanged(nameof(FretLabelTextOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -3300,8 +3300,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelFontFamilyIsLocal = value;
-                    RaisePropertyChanged(nameof(FretLabelFontFamilyIsLocal));
-                    RaisePropertyChanged(nameof(FretLabelFontFamily));
+                    OnPropertyChanged(nameof(FretLabelFontFamilyIsLocal));
+                    OnPropertyChanged(nameof(FretLabelFontFamily));
                 }
                 catch (Exception ex)
                 {
@@ -3340,7 +3340,7 @@ namespace Chordious.Core.ViewModel
                     {
                         Style.FretLabelFontFamily = value;
                         FontFamilies.SortedInsert(FretLabelFontFamily);
-                        RaisePropertyChanged(nameof(FretLabelFontFamily));
+                        OnPropertyChanged(nameof(FretLabelFontFamily));
                     }
                 }
                 catch (Exception ex)
@@ -3361,8 +3361,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextStyleIsLocal = value;
-                    RaisePropertyChanged(nameof(FretLabelTextStyleIsLocal));
-                    RaisePropertyChanged(nameof(SelectedFretLabelTextStyleIndex));
+                    OnPropertyChanged(nameof(FretLabelTextStyleIsLocal));
+                    OnPropertyChanged(nameof(SelectedFretLabelTextStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3398,7 +3398,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextStyle = (DiagramTextStyle)(value);
-                    RaisePropertyChanged(nameof(SelectedFretLabelTextStyleIndex));
+                    OnPropertyChanged(nameof(SelectedFretLabelTextStyleIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3426,8 +3426,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextSizeRatioIsLocal = value;
-                    RaisePropertyChanged(nameof(FretLabelTextSizeRatioIsLocal));
-                    RaisePropertyChanged(nameof(FretLabelTextSizeRatio));
+                    OnPropertyChanged(nameof(FretLabelTextSizeRatioIsLocal));
+                    OnPropertyChanged(nameof(FretLabelTextSizeRatio));
                 }
                 catch (Exception ex)
                 {
@@ -3463,7 +3463,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextSizeRatio = value;
-                    RaisePropertyChanged(nameof(FretLabelTextSizeRatio));
+                    OnPropertyChanged(nameof(FretLabelTextSizeRatio));
                 }
                 catch (Exception ex)
                 {
@@ -3483,8 +3483,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextWidthRatioIsLocal = value;
-                    RaisePropertyChanged(nameof(FretLabelTextWidthRatioIsLocal));
-                    RaisePropertyChanged(nameof(FretLabelTextWidthRatio));
+                    OnPropertyChanged(nameof(FretLabelTextWidthRatioIsLocal));
+                    OnPropertyChanged(nameof(FretLabelTextWidthRatio));
                 }
                 catch (Exception ex)
                 {
@@ -3520,7 +3520,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.FretLabelTextWidthRatio = value;
-                    RaisePropertyChanged(nameof(FretLabelTextWidthRatio));
+                    OnPropertyChanged(nameof(FretLabelTextWidthRatio));
                 }
                 catch (Exception ex)
                 {
@@ -3564,8 +3564,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreVisibleIsLocal = value;
-                    RaisePropertyChanged(nameof(BarreVisibleIsLocal));
-                    RaisePropertyChanged(nameof(BarreVisible));
+                    OnPropertyChanged(nameof(BarreVisibleIsLocal));
+                    OnPropertyChanged(nameof(BarreVisible));
                 }
                 catch (Exception ex)
                 {
@@ -3601,7 +3601,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreVisible = value;
-                    RaisePropertyChanged(nameof(BarreVisible));
+                    OnPropertyChanged(nameof(BarreVisible));
                 }
                 catch (Exception ex)
                 {
@@ -3621,8 +3621,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreVerticalAlignmentIsLocal = value;
-                    RaisePropertyChanged(nameof(BarreVerticalAlignmentIsLocal));
-                    RaisePropertyChanged(nameof(SelectedBarreVerticalAlignmentIndex));
+                    OnPropertyChanged(nameof(BarreVerticalAlignmentIsLocal));
+                    OnPropertyChanged(nameof(SelectedBarreVerticalAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3658,7 +3658,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreVerticalAlignment = (DiagramVerticalAlignment)(value);
-                    RaisePropertyChanged(nameof(SelectedBarreVerticalAlignmentIndex));
+                    OnPropertyChanged(nameof(SelectedBarreVerticalAlignmentIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3686,8 +3686,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreStackIsLocal = value;
-                    RaisePropertyChanged(nameof(BarreStackIsLocal));
-                    RaisePropertyChanged(nameof(SelectedBarreStackIndex));
+                    OnPropertyChanged(nameof(BarreStackIsLocal));
+                    OnPropertyChanged(nameof(SelectedBarreStackIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3723,7 +3723,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreStack = (DiagramBarreStack)(value);
-                    RaisePropertyChanged(nameof(SelectedBarreStackIndex));
+                    OnPropertyChanged(nameof(SelectedBarreStackIndex));
                 }
                 catch (Exception ex)
                 {
@@ -3763,8 +3763,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreArcRatioIsLocal = value;
-                    RaisePropertyChanged(nameof(BarreArcRatioIsLocal));
-                    RaisePropertyChanged(nameof(BarreArcRatio));
+                    OnPropertyChanged(nameof(BarreArcRatioIsLocal));
+                    OnPropertyChanged(nameof(BarreArcRatio));
                 }
                 catch (Exception ex)
                 {
@@ -3800,7 +3800,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreArcRatio = value;
-                    RaisePropertyChanged(nameof(BarreArcRatio));
+                    OnPropertyChanged(nameof(BarreArcRatio));
                 }
                 catch (Exception ex)
                 {
@@ -3820,8 +3820,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreOpacityIsLocal = value;
-                    RaisePropertyChanged(nameof(BarreOpacityIsLocal));
-                    RaisePropertyChanged(nameof(BarreOpacity));
+                    OnPropertyChanged(nameof(BarreOpacityIsLocal));
+                    OnPropertyChanged(nameof(BarreOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -3857,7 +3857,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreOpacity = value;
-                    RaisePropertyChanged(nameof(BarreOpacity));
+                    OnPropertyChanged(nameof(BarreOpacity));
                 }
                 catch (Exception ex)
                 {
@@ -3877,8 +3877,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreLineColorIsLocal = value;
-                    RaisePropertyChanged(nameof(BarreLineColorIsLocal));
-                    RaisePropertyChanged(nameof(BarreLineColor));
+                    OnPropertyChanged(nameof(BarreLineColorIsLocal));
+                    OnPropertyChanged(nameof(BarreLineColor));
                 }
                 catch (Exception ex)
                 {
@@ -3914,7 +3914,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreLineColor = value;
-                    RaisePropertyChanged(nameof(BarreLineColor));
+                    OnPropertyChanged(nameof(BarreLineColor));
                 }
                 catch (Exception ex)
                 {
@@ -3934,8 +3934,8 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreLineThicknessIsLocal = value;
-                    RaisePropertyChanged(nameof(BarreLineThicknessIsLocal));
-                    RaisePropertyChanged(nameof(BarreLineThickness));
+                    OnPropertyChanged(nameof(BarreLineThicknessIsLocal));
+                    OnPropertyChanged(nameof(BarreLineThickness));
                 }
                 catch (Exception ex)
                 {
@@ -3971,7 +3971,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Style.BarreLineThickness = value;
-                    RaisePropertyChanged(nameof(BarreLineThickness));
+                    OnPropertyChanged(nameof(BarreLineThickness));
                 }
                 catch (Exception ex)
                 {
@@ -4007,7 +4007,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowDiagramStyleEditorMessage(this, (changed) =>
+                        StrongReferenceMessenger.Default.Send(new ShowDiagramStyleEditorMessage(this, (changed) =>
                         {
                             try
                             {
@@ -4056,14 +4056,14 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.DiagramStyleResetPrompt, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.DiagramStyleResetPrompt, (confirmed) =>
                         {
                             try
                             {
                                 if (confirmed)
                                 {
                                     Style.Clear();
-                                    this.RaiseAllPropertiesChanged();
+                                    this.OnAllPropertiesChanged();
                                 }
                             }
                             catch (Exception ex)
@@ -4095,7 +4095,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _postEditCallback = value ?? throw new ArgumentNullException();
-                RaisePropertyChanged(nameof(PostEditCallback));
+                OnPropertyChanged(nameof(PostEditCallback));
             }
         }
         private Action<bool> _postEditCallback;
@@ -4146,45 +4146,45 @@ namespace Chordious.Core.ViewModel
         {
             if (e.PropertyName != nameof(Summary))
             {
-                RaisePropertyChanged(nameof(Summary));
+                OnPropertyChanged(nameof(Summary));
                 if (e.PropertyName != nameof(Reset) && e.PropertyName != nameof(LocalCount))
                 {
-                    RaisePropertyChanged(nameof(LocalCount));
-                    Reset.RaiseCanExecuteChanged();
+                    OnPropertyChanged(nameof(LocalCount));
+                    Reset.NotifyCanExecuteChanged();
                 }
             }
         }
 
         private void MarkStyle_MarkTypeChanged(object sender, EventArgs e)
         {
-            RaisePropertyChanged(nameof(MarkShapeIsLocal));
-            RaisePropertyChanged(nameof(SelectedMarkShapeIndex));
-            RaisePropertyChanged(nameof(MarkVisibleIsLocal));
-            RaisePropertyChanged(nameof(MarkVisible));
-            RaisePropertyChanged(nameof(MarkColorIsLocal));
-            RaisePropertyChanged(nameof(MarkColor));
-            RaisePropertyChanged(nameof(MarkOpacityIsLocal));
-            RaisePropertyChanged(nameof(MarkOpacity));
-            RaisePropertyChanged(nameof(MarkRadiusRatioIsLocal));
-            RaisePropertyChanged(nameof(MarkRadiusRatio));
-            RaisePropertyChanged(nameof(MarkBorderColorIsLocal));
-            RaisePropertyChanged(nameof(MarkBorderColor));
-            RaisePropertyChanged(nameof(MarkBorderThicknessIsLocal));
-            RaisePropertyChanged(nameof(MarkBorderThickness));
-            RaisePropertyChanged(nameof(MarkTextAlignmentIsLocal));
-            RaisePropertyChanged(nameof(SelectedMarkTextAlignmentIndex));
-            RaisePropertyChanged(nameof(MarkTextVisibleIsLocal));
-            RaisePropertyChanged(nameof(MarkTextVisible));
-            RaisePropertyChanged(nameof(MarkTextColorIsLocal));
-            RaisePropertyChanged(nameof(MarkTextColor));
-            RaisePropertyChanged(nameof(MarkTextOpacityIsLocal));
-            RaisePropertyChanged(nameof(MarkTextOpacity));
-            RaisePropertyChanged(nameof(MarkFontFamilyIsLocal));
-            RaisePropertyChanged(nameof(MarkFontFamily));
-            RaisePropertyChanged(nameof(MarkTextStyleIsLocal));
-            RaisePropertyChanged(nameof(SelectedMarkTextStyleIndex));
-            RaisePropertyChanged(nameof(MarkTextSizeRatioIsLocal));
-            RaisePropertyChanged(nameof(MarkTextSizeRatio));
+            OnPropertyChanged(nameof(MarkShapeIsLocal));
+            OnPropertyChanged(nameof(SelectedMarkShapeIndex));
+            OnPropertyChanged(nameof(MarkVisibleIsLocal));
+            OnPropertyChanged(nameof(MarkVisible));
+            OnPropertyChanged(nameof(MarkColorIsLocal));
+            OnPropertyChanged(nameof(MarkColor));
+            OnPropertyChanged(nameof(MarkOpacityIsLocal));
+            OnPropertyChanged(nameof(MarkOpacity));
+            OnPropertyChanged(nameof(MarkRadiusRatioIsLocal));
+            OnPropertyChanged(nameof(MarkRadiusRatio));
+            OnPropertyChanged(nameof(MarkBorderColorIsLocal));
+            OnPropertyChanged(nameof(MarkBorderColor));
+            OnPropertyChanged(nameof(MarkBorderThicknessIsLocal));
+            OnPropertyChanged(nameof(MarkBorderThickness));
+            OnPropertyChanged(nameof(MarkTextAlignmentIsLocal));
+            OnPropertyChanged(nameof(SelectedMarkTextAlignmentIndex));
+            OnPropertyChanged(nameof(MarkTextVisibleIsLocal));
+            OnPropertyChanged(nameof(MarkTextVisible));
+            OnPropertyChanged(nameof(MarkTextColorIsLocal));
+            OnPropertyChanged(nameof(MarkTextColor));
+            OnPropertyChanged(nameof(MarkTextOpacityIsLocal));
+            OnPropertyChanged(nameof(MarkTextOpacity));
+            OnPropertyChanged(nameof(MarkFontFamilyIsLocal));
+            OnPropertyChanged(nameof(MarkFontFamily));
+            OnPropertyChanged(nameof(MarkTextStyleIsLocal));
+            OnPropertyChanged(nameof(SelectedMarkTextStyleIndex));
+            OnPropertyChanged(nameof(MarkTextSizeRatioIsLocal));
+            OnPropertyChanged(nameof(MarkTextSizeRatio));
         }
 
         public override string ToString()

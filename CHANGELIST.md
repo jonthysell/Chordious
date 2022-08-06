@@ -4,6 +4,7 @@
 
 * Update version string to always display Major.Minor.Build
 * Updated WinStore TargetPlatformVersion to 10.0.19041.0
+* Migrated from deprecated MVVM Light Toolkit to new MVVM Toolkit
 
 ## 2.6.3 ##
 

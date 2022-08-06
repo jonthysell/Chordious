@@ -3,14 +3,14 @@
 
 using System;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public abstract class ConfigViewModelBase : ViewModelBase
+    public abstract class ConfigViewModelBase : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -31,7 +31,7 @@ namespace Chordious.Core.ViewModel
             protected set
             {
                 _isIdle = value;
-                RaisePropertyChanged(nameof(IsIdle));
+                OnPropertyChanged(nameof(IsIdle));
             }
         }
         private bool _isIdle;
@@ -61,7 +61,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _includeSettings = value;
-                RaisePropertyChanged(nameof(IncludeSettings));
+                OnPropertyChanged(nameof(IncludeSettings));
             }
         }
         private bool _includeSettings;
@@ -91,7 +91,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _includeStyles = value;
-                RaisePropertyChanged(nameof(IncludeStyles));
+                OnPropertyChanged(nameof(IncludeStyles));
             }
         }
         private bool _includeStyles;
@@ -121,7 +121,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _includeInstruments = value;
-                RaisePropertyChanged(nameof(IncludeInstruments));
+                OnPropertyChanged(nameof(IncludeInstruments));
             }
         }
         private bool _includeInstruments;
@@ -151,7 +151,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _includeChordQualities = value;
-                RaisePropertyChanged(nameof(IncludeChordQualities));
+                OnPropertyChanged(nameof(IncludeChordQualities));
             }
         }
         private bool _includeChordQualities;
@@ -181,7 +181,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _includeScales = value;
-                RaisePropertyChanged(nameof(IncludeScales));
+                OnPropertyChanged(nameof(IncludeScales));
             }
         }
         private bool _includeScales;
@@ -211,7 +211,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _includeLibrary = value;
-                RaisePropertyChanged(nameof(IncludeLibrary));
+                OnPropertyChanged(nameof(IncludeLibrary));
             }
         }
         private bool _includeLibrary;

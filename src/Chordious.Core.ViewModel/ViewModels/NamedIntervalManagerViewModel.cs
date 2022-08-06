@@ -5,8 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel.Resources;
 
@@ -15,7 +15,7 @@ namespace Chordious.Core.ViewModel
     public delegate IEnumerable<ObservableNamedInterval> GetNamedIntervals();
     public delegate bool DeleteNamedInterval(NamedInterval namedInterval);
 
-    public abstract class NamedIntervalManagerViewModel : ViewModelBase
+    public abstract class NamedIntervalManagerViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -50,17 +50,17 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _namedInterval = value;
-                RaisePropertyChanged(nameof(SelectedNamedInterval));
-                RaisePropertyChanged(nameof(NamedIntervalIsSelected));
-                EditNamedInterval.RaiseCanExecuteChanged();
-                RaisePropertyChanged(nameof(EditNamedIntervalLabel));
-                RaisePropertyChanged(nameof(EditNamedIntervalToolTip));
-                DeleteNamedInterval.RaiseCanExecuteChanged();
-                RaisePropertyChanged(nameof(DeleteNamedIntervalLabel));
-                RaisePropertyChanged(nameof(DeleteNamedIntervalToolTip));
-                AddNamedInterval.RaiseCanExecuteChanged();
-                RaisePropertyChanged(nameof(AddNamedIntervalLabel));
-                RaisePropertyChanged(nameof(AddNamedIntervalToolTip));
+                OnPropertyChanged(nameof(SelectedNamedInterval));
+                OnPropertyChanged(nameof(NamedIntervalIsSelected));
+                EditNamedInterval.NotifyCanExecuteChanged();
+                OnPropertyChanged(nameof(EditNamedIntervalLabel));
+                OnPropertyChanged(nameof(EditNamedIntervalToolTip));
+                DeleteNamedInterval.NotifyCanExecuteChanged();
+                OnPropertyChanged(nameof(DeleteNamedIntervalLabel));
+                OnPropertyChanged(nameof(DeleteNamedIntervalToolTip));
+                AddNamedInterval.NotifyCanExecuteChanged();
+                OnPropertyChanged(nameof(AddNamedIntervalLabel));
+                OnPropertyChanged(nameof(AddNamedIntervalToolTip));
             }
         }
         private ObservableNamedInterval _namedInterval = null;
@@ -83,7 +83,7 @@ namespace Chordious.Core.ViewModel
                     SelectedNamedInterval = DefaultNamedIntervals[_selectedDefaultNamedIntervalIndex];
                     SelectedUserNamedIntervalIndex = -1; // Unselect user named interval
                 }
-                RaisePropertyChanged(nameof(SelectedDefaultNamedIntervalIndex));
+                OnPropertyChanged(nameof(SelectedDefaultNamedIntervalIndex));
             }
         }
         private int _selectedDefaultNamedIntervalIndex = -1;
@@ -97,7 +97,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _defaultNamedIntervals = value;
-                RaisePropertyChanged(nameof(DefaultNamedIntervals));
+                OnPropertyChanged(nameof(DefaultNamedIntervals));
             }
         }
         private ObservableCollection<ObservableNamedInterval> _defaultNamedIntervals;
@@ -120,7 +120,7 @@ namespace Chordious.Core.ViewModel
                     SelectedNamedInterval = UserNamedIntervals[_selectedUserNamedIntervalIndex];
                     SelectedDefaultNamedIntervalIndex = -1; // Unselect default named interval
                 }
-                RaisePropertyChanged(nameof(SelectedUserNamedIntervalIndex));
+                OnPropertyChanged(nameof(SelectedUserNamedIntervalIndex));
             }
         }
         private int _selectedUserNamedIntervalIndex = -1;
@@ -134,7 +134,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _userNamedIntervals = value;
-                RaisePropertyChanged(nameof(UserNamedIntervals));
+                OnPropertyChanged(nameof(UserNamedIntervals));
             }
         }
         private ObservableCollection<ObservableNamedInterval> _userNamedIntervals;

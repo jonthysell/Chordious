@@ -14,8 +14,9 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Xceed.Wpf.Toolkit;
 
@@ -117,7 +118,7 @@ namespace Chordious.WPF
         public void HandleUserConfigLoadException(Exception ex)
         {
             string userFile = UserConfigPath;
-            Messenger.Default.Send(new ConfirmationMessage(Strings.ResetAndBackupUserConfigConfirmationMessage, (confirmed) =>
+            StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.ResetAndBackupUserConfigConfirmationMessage, (confirmed) =>
             {
                 if (!confirmed) // No, exit app
                 {

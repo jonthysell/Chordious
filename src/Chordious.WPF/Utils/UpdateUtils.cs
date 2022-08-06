@@ -10,7 +10,7 @@ using System.Net.NetworkInformation;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core;
 using Chordious.Core.ViewModel;
@@ -117,14 +117,14 @@ namespace Chordious.WPF
                 {
                     if (showUpToDate)
                     {
-                        Messenger.Default.Send(new ChordiousMessage(Strings.ChordiousUpdateExceptionMessage));
+                        StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.ChordiousUpdateExceptionMessage));
                     }
                 }
                 else if (latestRelease.LongVersion <= AppInfo.LongVersion)
                 {
                     if (showUpToDate)
                     {
-                        Messenger.Default.Send(new ChordiousMessage(Strings.ChordiousUpdateNotAvailableMessage));
+                        StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.ChordiousUpdateNotAvailableMessage));
                     }
                 }
                 else
@@ -132,13 +132,13 @@ namespace Chordious.WPF
                     // Update available
                     if (confirmUpdate)
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.ChordiousUpdateAvailableUpdateNowMessageFormat, latestRelease.TagName), (result) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(string.Format(Strings.ChordiousUpdateAvailableUpdateNowMessageFormat, latestRelease.TagName), (result) =>
                         {
                             try
                             {
                                 if (result)
                                 {
-                                    Messenger.Default.Send(new LaunchUrlMessage(latestRelease.HtmlUrl.AbsoluteUri));
+                                    StrongReferenceMessenger.Default.Send(new LaunchUrlMessage(latestRelease.HtmlUrl.AbsoluteUri));
                                 }
                             }
                             catch (Exception ex)

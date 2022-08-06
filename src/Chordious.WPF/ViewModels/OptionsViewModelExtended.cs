@@ -4,8 +4,8 @@
 using System;
 using System.Collections.ObjectModel;
 
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel;
 
@@ -77,7 +77,7 @@ namespace Chordious.WPF
             set
             {
                 SetSetting("app.renderbackground", value);
-                RaisePropertyChanged(nameof(SelectedRenderBackgroundIndex));
+                OnPropertyChanged(nameof(SelectedRenderBackgroundIndex));
             }
         }
 
@@ -133,7 +133,7 @@ namespace Chordious.WPF
             set
             {
                 SetSetting("diagrameditor.renderbackground", value);
-                RaisePropertyChanged(nameof(SelectedEditorRenderBackgroundIndex));
+                OnPropertyChanged(nameof(SelectedEditorRenderBackgroundIndex));
             }
         }
 
@@ -180,7 +180,7 @@ namespace Chordious.WPF
             set
             {
                 SetSetting("integration.enhancedcopy", value);
-                RaisePropertyChanged(nameof(EnhancedCopy));
+                OnPropertyChanged(nameof(EnhancedCopy));
             }
         }
 
@@ -209,7 +209,7 @@ namespace Chordious.WPF
                     try
                     {
                         string path = IntegrationUtils.GetTempPathAndCreateIfNecessary();
-                        Messenger.Default.Send(new LaunchUrlMessage(path));
+                        StrongReferenceMessenger.Default.Send(new LaunchUrlMessage(path));
                     }
                     catch (Exception ex)
                     {
@@ -292,7 +292,7 @@ namespace Chordious.WPF
             set
             {
                 SetSetting("app.releasechannel", value);
-                RaisePropertyChanged(nameof(SelectedReleaseChannelIndex));
+                OnPropertyChanged(nameof(SelectedReleaseChannelIndex));
             }
         }
 
@@ -327,7 +327,7 @@ namespace Chordious.WPF
             set
             {
                 SetSetting("app.checkupdateonstart", value);
-                RaisePropertyChanged(nameof(CheckUpdateOnStart));
+                OnPropertyChanged(nameof(CheckUpdateOnStart));
             }
         }
 
@@ -396,7 +396,7 @@ namespace Chordious.WPF
                     finally
                     {
                         IsIdle = true;
-                        RaisePropertyChanged(nameof(LastUpdateCheck));
+                        OnPropertyChanged(nameof(LastUpdateCheck));
                     }
                 }, () =>
                 {
@@ -427,12 +427,12 @@ namespace Chordious.WPF
         public override void RefreshProperties()
         {
             base.RefreshProperties();
-            RaisePropertyChanged(nameof(SelectedRenderBackgroundIndex));
-            RaisePropertyChanged(nameof(SelectedEditorRenderBackgroundIndex));
-            RaisePropertyChanged(nameof(SelectedReleaseChannelIndex));
-            RaisePropertyChanged(nameof(EnhancedCopy));
-            RaisePropertyChanged(nameof(CheckUpdateOnStart));
-            RaisePropertyChanged(nameof(LastUpdateCheck));
+            OnPropertyChanged(nameof(SelectedRenderBackgroundIndex));
+            OnPropertyChanged(nameof(SelectedEditorRenderBackgroundIndex));
+            OnPropertyChanged(nameof(SelectedReleaseChannelIndex));
+            OnPropertyChanged(nameof(EnhancedCopy));
+            OnPropertyChanged(nameof(CheckUpdateOnStart));
+            OnPropertyChanged(nameof(LastUpdateCheck));
         }
     }
 }

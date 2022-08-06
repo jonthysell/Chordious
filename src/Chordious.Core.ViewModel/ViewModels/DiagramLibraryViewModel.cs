@@ -5,15 +5,15 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class DiagramLibraryViewModel : ViewModelBase
+    public class DiagramLibraryViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -56,22 +56,22 @@ namespace Chordious.Core.ViewModel
                 }
 
                 _selectedNode = value;
-                RaisePropertyChanged(nameof(SelectedNode));
-                RaisePropertyChanged(nameof(NodeIsSelected));
-                CreateNode.RaiseCanExecuteChanged();
-                RaisePropertyChanged(nameof(CreateNodeLabel));
-                EditNode.RaiseCanExecuteChanged();
-                RaisePropertyChanged(nameof(EditNodeLabel));
-                DeleteNode.RaiseCanExecuteChanged();
-                RaisePropertyChanged(nameof(DeleteNodeLabel));
-                CloneNode.RaiseCanExecuteChanged();
-                RaisePropertyChanged(nameof(CloneNodeLabel));
-                RaisePropertyChanged(nameof(CopyNode));
-                RaisePropertyChanged(nameof(CopyNodeLabel));
-                RaisePropertyChanged(nameof(MergeNode));
-                RaisePropertyChanged(nameof(MergeNodeLabel));
-                RaisePropertyChanged(nameof(EditNodeStyle));
-                RaisePropertyChanged(nameof(EditNodeStyleLabel));
+                OnPropertyChanged(nameof(SelectedNode));
+                OnPropertyChanged(nameof(NodeIsSelected));
+                CreateNode.NotifyCanExecuteChanged();
+                OnPropertyChanged(nameof(CreateNodeLabel));
+                EditNode.NotifyCanExecuteChanged();
+                OnPropertyChanged(nameof(EditNodeLabel));
+                DeleteNode.NotifyCanExecuteChanged();
+                OnPropertyChanged(nameof(DeleteNodeLabel));
+                CloneNode.NotifyCanExecuteChanged();
+                OnPropertyChanged(nameof(CloneNodeLabel));
+                OnPropertyChanged(nameof(CopyNode));
+                OnPropertyChanged(nameof(CopyNodeLabel));
+                OnPropertyChanged(nameof(MergeNode));
+                OnPropertyChanged(nameof(MergeNodeLabel));
+                OnPropertyChanged(nameof(EditNodeStyle));
+                OnPropertyChanged(nameof(EditNodeStyleLabel));
             }
         }
         private ObservableDiagramLibraryNode _selectedNode;
@@ -143,7 +143,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new PromptForTextMessage(Strings.DiagramLibraryCreateNodePrompt, Library.GetNewCollectionName(), (name) =>
+                        StrongReferenceMessenger.Default.Send(new PromptForTextMessage(Strings.DiagramLibraryCreateNodePrompt, Library.GetNewCollectionName(), (name) =>
                         {
                             try
                             {
@@ -200,7 +200,7 @@ namespace Chordious.Core.ViewModel
                     {
                         string path = SelectedNode.Path;
                         string oldName = SelectedNode.Name;
-                        Messenger.Default.Send(new PromptForTextMessage(string.Format(Strings.DiagramLibraryRenameCollectionPromptFormat, oldName), oldName, (newName) =>
+                        StrongReferenceMessenger.Default.Send(new PromptForTextMessage(string.Format(Strings.DiagramLibraryRenameCollectionPromptFormat, oldName), oldName, (newName) =>
                         {
                             try
                             {
@@ -260,7 +260,7 @@ namespace Chordious.Core.ViewModel
                     {
                         string path = SelectedNode.Path;
                         string name = SelectedNode.Name;
-                        Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.DiagramLibraryDeleteNodePromptFormat, name), (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(string.Format(Strings.DiagramLibraryDeleteNodePromptFormat, name), (confirmed) =>
                         {
                             try
                             {
@@ -323,7 +323,7 @@ namespace Chordious.Core.ViewModel
                     {
                         string path = SelectedNode.Path;
                         string oldName = SelectedNode.Name;
-                        Messenger.Default.Send(new PromptForTextMessage(string.Format(Strings.DiagramLibraryCloneNodePromptFormat, oldName), Library.GetNewCollectionName(path, oldName), (newName) =>
+                        StrongReferenceMessenger.Default.Send(new PromptForTextMessage(string.Format(Strings.DiagramLibraryCloneNodePromptFormat, oldName), Library.GetNewCollectionName(path, oldName), (newName) =>
                         {
                             try
                             {
@@ -386,7 +386,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibrarySelectNodeFirstMessage));
+                        StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.DiagramLibrarySelectNodeFirstMessage));
                     }
                     catch (Exception ex)
                     {
@@ -438,7 +438,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibrarySelectNodeFirstMessage));
+                        StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.DiagramLibrarySelectNodeFirstMessage));
                     }
                     catch (Exception ex)
                     {
@@ -490,7 +490,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibrarySelectNodeFirstMessage));
+                        StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.DiagramLibrarySelectNodeFirstMessage));
                     }
                     catch (Exception ex)
                     {
@@ -550,7 +550,7 @@ namespace Chordious.Core.ViewModel
         private void ReloadNodes()
         {
             _firstLoad = true;
-            RaisePropertyChanged(nameof(Nodes));
+            OnPropertyChanged(nameof(Nodes));
         }
 
         private void RedrawNodes(bool reloadFirst)

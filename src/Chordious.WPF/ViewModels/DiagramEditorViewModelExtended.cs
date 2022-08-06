@@ -37,7 +37,7 @@ namespace Chordious.WPF
             set
             {
                 EditorRenderBackground = (Background)(value);
-                RaisePropertyChanged(nameof(SelectedEditorRenderBackgroundIndex));
+                OnPropertyChanged(nameof(SelectedEditorRenderBackgroundIndex));
             }
         }
 
@@ -64,7 +64,7 @@ namespace Chordious.WPF
             set
             {
                 AppVM.SetSetting("diagrameditor.renderbackground", value);
-                RaisePropertyChanged(nameof(EditorRenderBackground));
+                OnPropertyChanged(nameof(EditorRenderBackground));
                 ObservableDiagram.Refresh();
             }
         }

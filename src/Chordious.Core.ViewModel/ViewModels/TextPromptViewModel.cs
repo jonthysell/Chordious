@@ -3,14 +3,14 @@
 
 using System;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class TextPromptViewModel : ViewModelBase
+    public class TextPromptViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -39,8 +39,8 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _text = value;
-                RaisePropertyChanged(nameof(Text));
-                Accept.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(Text));
+                Accept.NotifyCanExecuteChanged();
             }
         }
         private string _text;
@@ -54,8 +54,8 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _allowBlank = value;
-                RaisePropertyChanged(nameof(AllowBlank));
-                RaisePropertyChanged(nameof(Accept));
+                OnPropertyChanged(nameof(AllowBlank));
+                OnPropertyChanged(nameof(Accept));
             }
         }
         private bool _allowBlank;
@@ -69,9 +69,9 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _requireInteger = value;
-                RaisePropertyChanged(nameof(RequireInteger));
-                RaisePropertyChanged(nameof(AllowText));
-                RaisePropertyChanged(nameof(Accept));
+                OnPropertyChanged(nameof(RequireInteger));
+                OnPropertyChanged(nameof(AllowText));
+                OnPropertyChanged(nameof(Accept));
             }
         }
         private bool _requireInteger;

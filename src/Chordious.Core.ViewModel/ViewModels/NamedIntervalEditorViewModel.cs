@@ -4,14 +4,14 @@
 using System;
 using System.Collections.ObjectModel;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public abstract class NamedIntervalEditorViewModel : ViewModelBase
+    public abstract class NamedIntervalEditorViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -42,8 +42,8 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _name = value;
-                RaisePropertyChanged(nameof(Name));
-                Accept.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(Name));
+                Accept.NotifyCanExecuteChanged();
             }
         }
         private string _name;
@@ -101,8 +101,8 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _isNew = value;
-                RaisePropertyChanged(nameof(IsNew));
-                RaisePropertyChanged(nameof(Title));
+                OnPropertyChanged(nameof(IsNew));
+                OnPropertyChanged(nameof(Title));
             }
         }
         private bool _isNew;
@@ -116,8 +116,8 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _readOnly = value;
-                RaisePropertyChanged(nameof(ReadOnly));
-                RaisePropertyChanged(nameof(Title));
+                OnPropertyChanged(nameof(ReadOnly));
+                OnPropertyChanged(nameof(Title));
             }
         }
         private bool _readOnly;
@@ -147,9 +147,9 @@ namespace Chordious.Core.ViewModel
                     try
                     {
                         Intervals.Add(CreateNamedIntervalValue());
-                        RemoveInterval.RaiseCanExecuteChanged();
-                        RaisePropertyChanged(nameof(Example));
-                        Accept.RaiseCanExecuteChanged();
+                        RemoveInterval.NotifyCanExecuteChanged();
+                        OnPropertyChanged(nameof(Example));
+                        Accept.NotifyCanExecuteChanged();
                     }
                     catch (Exception ex)
                     {
@@ -190,9 +190,9 @@ namespace Chordious.Core.ViewModel
                         NamedIntervalValue niValue = Intervals[Intervals.Count - 1];
                         niValue.ValueChanged -= IntervalValueChanged;
                         Intervals.Remove(niValue);
-                        RemoveInterval.RaiseCanExecuteChanged();
-                        RaisePropertyChanged(nameof(Example));
-                        Accept.RaiseCanExecuteChanged();
+                        RemoveInterval.NotifyCanExecuteChanged();
+                        OnPropertyChanged(nameof(Example));
+                        Accept.NotifyCanExecuteChanged();
                     }
                     catch (Exception ex)
                     {
@@ -286,7 +286,7 @@ namespace Chordious.Core.ViewModel
 
         protected void IntervalValueChanged(object sender, EventArgs e)
         {
-            RaisePropertyChanged(nameof(Example));
+            OnPropertyChanged(nameof(Example));
         }
 
         protected int[] GetIntervalArray()
@@ -359,7 +359,7 @@ namespace Chordious.Core.ViewModel
             Value = value;
             ValueChanged += (sender, e) =>
             {
-                RaisePropertyChanged(nameof(Value));
+                OnPropertyChanged(nameof(Value));
             };
         }
 

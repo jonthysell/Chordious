@@ -3,8 +3,8 @@
 
 using System;
 
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
@@ -68,7 +68,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowScaleEditorMessage((name, intervals) =>
+                        StrongReferenceMessenger.Default.Send(new ShowScaleEditorMessage((name, intervals) =>
                         {
                             try
                             {
@@ -106,7 +106,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowScaleEditorMessage(SelectedNamedInterval.Name, SelectedNamedInterval.Intervals, SelectedNamedInterval.ReadOnly, (name, intervals) =>
+                        StrongReferenceMessenger.Default.Send(new ShowScaleEditorMessage(SelectedNamedInterval.Name, SelectedNamedInterval.Intervals, SelectedNamedInterval.ReadOnly, (name, intervals) =>
                         {
                             try
                             {
@@ -147,7 +147,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.ScaleManagerDeleteNamedIntervalPromptFormat, SelectedNamedInterval.LongName), (confirm) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(string.Format(Strings.ScaleManagerDeleteNamedIntervalPromptFormat, SelectedNamedInterval.LongName), (confirm) =>
                         {
                             try
                             {

@@ -3,8 +3,8 @@
 
 using System;
 
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
@@ -68,7 +68,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowChordQualityEditorMessage((name, abbreviation, intervals) =>
+                        StrongReferenceMessenger.Default.Send(new ShowChordQualityEditorMessage((name, abbreviation, intervals) =>
                         {
                             try
                             {
@@ -106,7 +106,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowChordQualityEditorMessage(SelectedNamedInterval.Name, ((ChordQuality)(SelectedNamedInterval.NamedInterval)).Abbreviation, SelectedNamedInterval.Intervals, SelectedNamedInterval.ReadOnly, (name, abbreviation, intervals) =>
+                        StrongReferenceMessenger.Default.Send(new ShowChordQualityEditorMessage(SelectedNamedInterval.Name, ((ChordQuality)(SelectedNamedInterval.NamedInterval)).Abbreviation, SelectedNamedInterval.Intervals, SelectedNamedInterval.ReadOnly, (name, abbreviation, intervals) =>
                         {
                             try
                             {
@@ -148,7 +148,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.ChordQualityManagerDeleteNamedIntervalPromptFormat, SelectedNamedInterval.LongName), (confirm) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(string.Format(Strings.ChordQualityManagerDeleteNamedIntervalPromptFormat, SelectedNamedInterval.LongName), (confirm) =>
                         {
                             try
                             {

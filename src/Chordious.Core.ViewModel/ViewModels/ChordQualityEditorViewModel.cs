@@ -66,8 +66,8 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _abbreviation = value;
-                RaisePropertyChanged(nameof(Abbreviation));
-                Accept.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(Abbreviation));
+                Accept.NotifyCanExecuteChanged();
             }
         }
         private string _abbreviation;

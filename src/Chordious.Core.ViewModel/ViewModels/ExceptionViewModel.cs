@@ -3,14 +3,14 @@
 
 using System;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class ExceptionViewModel : ViewModelBase
+    public class ExceptionViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {

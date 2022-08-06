@@ -7,15 +7,15 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class ScaleFinderViewModel : ViewModelBase, IIdle
+    public class ScaleFinderViewModel : ObservableObject, IIdle
     {
         public AppViewModel AppVM
         {
@@ -42,9 +42,9 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _isIdle = value;
-                RaisePropertyChanged(nameof(IsIdle));
-                SearchAsync.RaiseCanExecuteChanged();
-                SetAsDefaults.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(IsIdle));
+                SearchAsync.NotifyCanExecuteChanged();
+                SetAsDefaults.NotifyCanExecuteChanged();
             }
         }
         private bool _isIdle = true;
@@ -99,9 +99,9 @@ namespace Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged(nameof(SelectedInstrument));
-                    SearchAsync.RaiseCanExecuteChanged();
-                    SetAsDefaults.RaiseCanExecuteChanged();
+                    OnPropertyChanged(nameof(SelectedInstrument));
+                    SearchAsync.NotifyCanExecuteChanged();
+                    SetAsDefaults.NotifyCanExecuteChanged();
                 }
             }
         }
@@ -116,7 +116,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _instruments = value;
-                RaisePropertyChanged(nameof(Instruments));
+                OnPropertyChanged(nameof(Instruments));
             }
         }
         private ObservableCollection<ObservableInstrument> _instruments;
@@ -163,9 +163,9 @@ namespace Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged(nameof(SelectedTuning));
-                    SearchAsync.RaiseCanExecuteChanged();
-                    SetAsDefaults.RaiseCanExecuteChanged();
+                    OnPropertyChanged(nameof(SelectedTuning));
+                    SearchAsync.NotifyCanExecuteChanged();
+                    SetAsDefaults.NotifyCanExecuteChanged();
                 }
             }
         }
@@ -180,7 +180,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _tunings = value;
-                RaisePropertyChanged(nameof(Tunings));
+                OnPropertyChanged(nameof(Tunings));
             }
         }
         private ObservableCollection<ObservableTuning> _tunings;
@@ -211,7 +211,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowInstrumentManagerMessage(() =>
+                        StrongReferenceMessenger.Default.Send(new ShowInstrumentManagerMessage(() =>
                         {
                             try
                             {
@@ -268,7 +268,7 @@ namespace Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged(nameof(SelectedRootNote));
+                    OnPropertyChanged(nameof(SelectedRootNote));
                 }
             }
         }
@@ -323,9 +323,9 @@ namespace Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged(nameof(SelectedScale));
-                    SearchAsync.RaiseCanExecuteChanged();
-                    SetAsDefaults.RaiseCanExecuteChanged();
+                    OnPropertyChanged(nameof(SelectedScale));
+                    SearchAsync.NotifyCanExecuteChanged();
+                    SetAsDefaults.NotifyCanExecuteChanged();
                 }
             }
         }
@@ -340,7 +340,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _scales = value;
-                RaisePropertyChanged(nameof(Scales));
+                OnPropertyChanged(nameof(Scales));
             }
         }
         private ObservableCollection<ObservableScale> _scales;
@@ -369,7 +369,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowScaleManagerMessage(() =>
+                        StrongReferenceMessenger.Default.Send(new ShowScaleManagerMessage(() =>
                         {
                             try
                             {
@@ -426,8 +426,8 @@ namespace Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged(nameof(NumFrets));
-                    RaisePropertyChanged(nameof(MaxReach));
+                    OnPropertyChanged(nameof(NumFrets));
+                    OnPropertyChanged(nameof(MaxReach));
                 }
             }
         }
@@ -466,8 +466,8 @@ namespace Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged(nameof(MaxReach));
-                    RaisePropertyChanged(nameof(NumFrets));
+                    OnPropertyChanged(nameof(MaxReach));
+                    OnPropertyChanged(nameof(NumFrets));
                 }
             }
         }
@@ -506,7 +506,7 @@ namespace Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged(nameof(MaxFret));
+                    OnPropertyChanged(nameof(MaxFret));
                 }
             }
         }
@@ -536,7 +536,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 Options.AllowOpenStrings = value;
-                RaisePropertyChanged(nameof(AllowOpenStrings));
+                OnPropertyChanged(nameof(AllowOpenStrings));
             }
         }
 
@@ -565,7 +565,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 Options.AllowMutedStrings = value;
-                RaisePropertyChanged(nameof(AllowMutedStrings));
+                OnPropertyChanged(nameof(AllowMutedStrings));
             }
         }
 
@@ -594,7 +594,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 Options.StrictIntervals = value;
-                RaisePropertyChanged(nameof(StrictIntervals));
+                OnPropertyChanged(nameof(StrictIntervals));
             }
         }
 
@@ -627,7 +627,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 Style.AddTitle = value;
-                RaisePropertyChanged(nameof(AddTitle));
+                OnPropertyChanged(nameof(AddTitle));
             }
         }
 
@@ -656,7 +656,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 Style.MirrorResults = value;
-                RaisePropertyChanged(nameof(MirrorResults));
+                OnPropertyChanged(nameof(MirrorResults));
             }
         }
 
@@ -685,7 +685,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 Style.AddRootNotes = value;
-                RaisePropertyChanged(nameof(AddRootNotes));
+                OnPropertyChanged(nameof(AddRootNotes));
             }
         }
 
@@ -714,7 +714,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 Style.MarkTextOption = (MarkTextOption)(value);
-                RaisePropertyChanged(nameof(SelectedMarkTextOptionIndex));
+                OnPropertyChanged(nameof(SelectedMarkTextOptionIndex));
             }
         }
 
@@ -751,7 +751,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 Style.FretLabelSide = (FretLabelSide)(value);
-                RaisePropertyChanged(nameof(SelectedFretLabelSideIndex));
+                OnPropertyChanged(nameof(SelectedFretLabelSideIndex));
             }
         }
 
@@ -789,7 +789,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.FinderOptionsSetAsDefaultsPromptMessage, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.FinderOptionsSetAsDefaultsPromptMessage, (confirmed) =>
                         {
                             try
                             {
@@ -842,7 +842,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.FinderOptionsResetToDefaultsPromptMessage, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.FinderOptionsResetToDefaultsPromptMessage, (confirmed) =>
                         {
                             try
                             {
@@ -904,7 +904,7 @@ namespace Chordious.Core.ViewModel
                         {
                             if (results.Count == 0 && !_searchAsyncCancellationTokenSource.IsCancellationRequested)
                             {
-                                Messenger.Default.Send(new ChordiousMessage(Strings.ScaleFinderNoResultsMessage));
+                                StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.ScaleFinderNoResultsMessage));
                             }
                             else
                             {
@@ -982,7 +982,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowDiagramCollectionSelectorMessage((name, newCollection) =>
+                        StrongReferenceMessenger.Default.Send(new ShowDiagramCollectionSelectorMessage((name, newCollection) =>
                         {
                             try
                             {
@@ -1045,7 +1045,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ChordiousMessage(Strings.FinderOnlyOneResultCanBeEditedMessage));
+                        StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.FinderOnlyOneResultCanBeEditedMessage));
                     }
                     catch (Exception ex)
                     {
@@ -1092,7 +1092,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ChordiousMessage(Strings.FinderOnlyOneResultCanBeCopiedToClipboardMessage));
+                        StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.FinderOnlyOneResultCanBeCopiedToClipboardMessage));
                     }
                     catch (Exception ex)
                     {
@@ -1136,7 +1136,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ChordiousMessage(Strings.FinderOnlyOneResultCanBeCopiedToClipboardMessage));
+                        StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.FinderOnlyOneResultCanBeCopiedToClipboardMessage));
                     }
                     catch (Exception ex)
                     {
@@ -1180,7 +1180,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ChordiousMessage(Strings.FinderOnlyOneResultCanBeCopiedToClipboardMessage));
+                        StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.FinderOnlyOneResultCanBeCopiedToClipboardMessage));
                     }
                     catch (Exception ex)
                     {
@@ -1253,13 +1253,13 @@ namespace Chordious.Core.ViewModel
 
         private void SelectedResults_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            SaveSelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(EditSelected));
-            _editSelected?.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(SendSelectedImageToClipboard));
-            RaisePropertyChanged(nameof(SendSelectedScaledImageToClipboard));
-            RaisePropertyChanged(nameof(SendSelectedTextToClipboard));
-            _sendSelectedToClipboard?.RaiseCanExecuteChanged();
+            SaveSelected.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(EditSelected));
+            _editSelected?.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(SendSelectedImageToClipboard));
+            OnPropertyChanged(nameof(SendSelectedScaledImageToClipboard));
+            OnPropertyChanged(nameof(SendSelectedTextToClipboard));
+            _sendSelectedToClipboard?.NotifyCanExecuteChanged();
         }
 
         private void RefreshInstruments(IInstrument selectedInstrument = null, ITuning selectedTuning = null)
@@ -1321,17 +1321,17 @@ namespace Chordious.Core.ViewModel
             RefreshInstruments(Options.Instrument, Options.Tuning);
             RefreshScales(Options.Scale);
 
-            RaisePropertyChanged(nameof(SelectedRootNote));
-            RaisePropertyChanged(nameof(NumFrets));
-            RaisePropertyChanged(nameof(MaxReach));
-            RaisePropertyChanged(nameof(MaxFret));
-            RaisePropertyChanged(nameof(AllowOpenStrings));
-            RaisePropertyChanged(nameof(AllowMutedStrings));
-            RaisePropertyChanged(nameof(AddTitle));
-            RaisePropertyChanged(nameof(MirrorResults));
-            RaisePropertyChanged(nameof(AddRootNotes));
-            RaisePropertyChanged(nameof(SelectedMarkTextOptionIndex));
-            RaisePropertyChanged(nameof(SelectedFretLabelSideIndex));
+            OnPropertyChanged(nameof(SelectedRootNote));
+            OnPropertyChanged(nameof(NumFrets));
+            OnPropertyChanged(nameof(MaxReach));
+            OnPropertyChanged(nameof(MaxFret));
+            OnPropertyChanged(nameof(AllowOpenStrings));
+            OnPropertyChanged(nameof(AllowMutedStrings));
+            OnPropertyChanged(nameof(AddTitle));
+            OnPropertyChanged(nameof(MirrorResults));
+            OnPropertyChanged(nameof(AddRootNotes));
+            OnPropertyChanged(nameof(SelectedMarkTextOptionIndex));
+            OnPropertyChanged(nameof(SelectedFretLabelSideIndex));
         }
 
         private Task<ScaleFinderResultSet> FindScalesAsync(CancellationToken cancelToken)

@@ -3,8 +3,8 @@
 
 using System;
 
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
@@ -31,7 +31,7 @@ namespace Chordious.Core.ViewModel
                         IsIdle = false;
                         if (IncludeLibrary && !IncludeStyles)
                         {
-                            Messenger.Default.Send(new ConfirmationMessage(Strings.ConfigExportLibraryWithoutStylesPromptMessage, (confirmed) =>
+                            StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.ConfigExportLibraryWithoutStylesPromptMessage, (confirmed) =>
                             {
                                 try
                                 {
@@ -72,7 +72,7 @@ namespace Chordious.Core.ViewModel
         private void PromptForExport()
         {
             ConfigParts configParts = GetConfigParts();
-            Messenger.Default.Send(new PromptForConfigOutputStreamMessage((outputStream) =>
+            StrongReferenceMessenger.Default.Send(new PromptForConfigOutputStreamMessage((outputStream) =>
             {
                 try
                 {

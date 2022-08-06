@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class AdvancedDataViewModel : ViewModelBase
+    public class AdvancedDataViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -165,7 +165,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _applyChangesOnClose = value;
-                RaisePropertyChanged(nameof(ApplyChangesOnClose));
+                OnPropertyChanged(nameof(ApplyChangesOnClose));
             }
         }
         private bool _applyChangesOnClose = false;
@@ -179,9 +179,9 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _dirty = value;
-                RaisePropertyChanged(nameof(Dirty));
-                RaisePropertyChanged(nameof(Title));
-                Apply.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(Dirty));
+                OnPropertyChanged(nameof(Title));
+                Apply.NotifyCanExecuteChanged();
             }
         }
         private bool _dirty = false;
@@ -195,7 +195,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _itemsChanged = value;
-                RaisePropertyChanged(nameof(ItemsChanged));
+                OnPropertyChanged(nameof(ItemsChanged));
             }
         }
         private bool _itemsChanged = false;
@@ -272,7 +272,7 @@ namespace Chordious.Core.ViewModel
             LocalBuffer.Clear();
             Dirty = false;
             ItemsChanged = true;
-            RaisePropertyChanged(nameof(Items));
+            OnPropertyChanged(nameof(Items));
         }
 
         private void ApplyClears()
@@ -307,8 +307,8 @@ namespace Chordious.Core.ViewModel
                 {
                     AdvancedDataVM.Set(Key, value);
                 }
-                RaisePropertyChanged(nameof(Value));
-                RaisePropertyChanged(nameof(Level));
+                OnPropertyChanged(nameof(Value));
+                OnPropertyChanged(nameof(Level));
             }
         }
 

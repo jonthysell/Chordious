@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
 
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel;
 
@@ -54,8 +54,8 @@ namespace Chordious.WPF
                 {
                     SetSetting("diagramexport.outputpath", value);
                 }
-                RaisePropertyChanged(nameof(OutputPath));
-                RaisePropertyChanged(nameof(ExampleFilenameFormat));
+                OnPropertyChanged(nameof(OutputPath));
+                OnPropertyChanged(nameof(ExampleFilenameFormat));
             }
         }
 
@@ -91,8 +91,8 @@ namespace Chordious.WPF
                     }
                     SetSetting("diagramexport.filenameformat", value);
                 }
-                RaisePropertyChanged(nameof(SelectedFilenameFormat));
-                RaisePropertyChanged(nameof(ExampleFilenameFormat));
+                OnPropertyChanged(nameof(SelectedFilenameFormat));
+                OnPropertyChanged(nameof(ExampleFilenameFormat));
             }
         }
 
@@ -105,7 +105,7 @@ namespace Chordious.WPF
             set
             {
                 _filenameFormats = value ?? throw new ArgumentNullException();
-                RaisePropertyChanged(nameof(FilenameFormats));
+                OnPropertyChanged(nameof(FilenameFormats));
             }
         }
         private ObservableCollection<string> _filenameFormats;
@@ -177,10 +177,10 @@ namespace Chordious.WPF
             set
             {
                 SetSetting("diagramexport.exportformat", value);
-                RaisePropertyChanged(nameof(ExportFormat));
-                RaisePropertyChanged(nameof(SelectedExportFormatIndex));
-                RaisePropertyChanged(nameof(ExampleFilenameFormat));
-                RaisePropertyChanged(nameof(CanScale));
+                OnPropertyChanged(nameof(ExportFormat));
+                OnPropertyChanged(nameof(SelectedExportFormatIndex));
+                OnPropertyChanged(nameof(ExampleFilenameFormat));
+                OnPropertyChanged(nameof(CanScale));
             }
         }
 
@@ -224,7 +224,7 @@ namespace Chordious.WPF
             set
             {
                 SetSetting("diagramexport.overwritefiles", value);
-                RaisePropertyChanged(nameof(OverwriteFiles));
+                OnPropertyChanged(nameof(OverwriteFiles));
             }
         }
 
@@ -281,7 +281,7 @@ namespace Chordious.WPF
                 }
                 finally
                 {
-                    RaisePropertyChanged(nameof(ScaleFactor));
+                    OnPropertyChanged(nameof(ScaleFactor));
                 }
             }
         }

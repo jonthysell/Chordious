@@ -4,15 +4,15 @@
 using System;
 using System.Collections.ObjectModel;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class InstrumentManagerViewModel : ViewModelBase
+    public class InstrumentManagerViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -70,13 +70,13 @@ namespace Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged(nameof(SelectedInstrument));
-                    RaisePropertyChanged(nameof(InstrumentIsSelected));
-                    EditInstrument.RaiseCanExecuteChanged();
-                    RaisePropertyChanged(nameof(EditInstrumentLabel));
-                    DeleteInstrument.RaiseCanExecuteChanged();
-                    RaisePropertyChanged(nameof(DeleteInstrumentLabel));
-                    AddTuning.RaiseCanExecuteChanged();
+                    OnPropertyChanged(nameof(SelectedInstrument));
+                    OnPropertyChanged(nameof(InstrumentIsSelected));
+                    EditInstrument.NotifyCanExecuteChanged();
+                    OnPropertyChanged(nameof(EditInstrumentLabel));
+                    DeleteInstrument.NotifyCanExecuteChanged();
+                    OnPropertyChanged(nameof(DeleteInstrumentLabel));
+                    AddTuning.NotifyCanExecuteChanged();
                 }
             }
         }
@@ -116,7 +116,7 @@ namespace Chordious.Core.ViewModel
                     SelectedInstrument = DefaultInstruments[_selectedDefaultInstrumentIndex];
                     SelectedUserInstrumentIndex = -1; // Unselect user instrument
                 }
-                RaisePropertyChanged(nameof(SelectedDefaultInstrumentIndex));
+                OnPropertyChanged(nameof(SelectedDefaultInstrumentIndex));
             }
         }
         private int _selectedDefaultInstrumentIndex = -1;
@@ -130,7 +130,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _defaultInstruments = value;
-                RaisePropertyChanged(nameof(DefaultInstruments));
+                OnPropertyChanged(nameof(DefaultInstruments));
             }
         }
         private ObservableCollection<ObservableInstrument> _defaultInstruments;
@@ -169,7 +169,7 @@ namespace Chordious.Core.ViewModel
                     SelectedInstrument = UserInstruments[_selectedUserInstrumentIndex];
                     SelectedDefaultInstrumentIndex = -1; // Unselect default instrument
                 }
-                RaisePropertyChanged(nameof(SelectedUserInstrumentIndex));
+                OnPropertyChanged(nameof(SelectedUserInstrumentIndex));
             }
         }
         private int _selectedUserInstrumentIndex = -1;
@@ -183,7 +183,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _userInstruments = value;
-                RaisePropertyChanged(nameof(UserInstruments));
+                OnPropertyChanged(nameof(UserInstruments));
             }
         }
         private ObservableCollection<ObservableInstrument> _userInstruments;
@@ -230,12 +230,12 @@ namespace Chordious.Core.ViewModel
                 }
                 finally
                 {
-                    RaisePropertyChanged(nameof(SelectedTuning));
-                    RaisePropertyChanged(nameof(TuningIsSelected));
-                    EditTuning.RaiseCanExecuteChanged();
-                    RaisePropertyChanged(nameof(EditTuningLabel));
-                    DeleteTuning.RaiseCanExecuteChanged();
-                    RaisePropertyChanged(nameof(DeleteTuningLabel));
+                    OnPropertyChanged(nameof(SelectedTuning));
+                    OnPropertyChanged(nameof(TuningIsSelected));
+                    EditTuning.NotifyCanExecuteChanged();
+                    OnPropertyChanged(nameof(EditTuningLabel));
+                    DeleteTuning.NotifyCanExecuteChanged();
+                    OnPropertyChanged(nameof(DeleteTuningLabel));
                 }
             }
         }
@@ -250,7 +250,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _tunings = value;
-                RaisePropertyChanged(nameof(Tunings));
+                OnPropertyChanged(nameof(Tunings));
             }
         }
         private ObservableCollection<ObservableTuning> _tunings;
@@ -281,7 +281,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowInstrumentEditorMessage((name, numStrings) =>
+                        StrongReferenceMessenger.Default.Send(new ShowInstrumentEditorMessage((name, numStrings) =>
                         {
                             try
                             {
@@ -336,7 +336,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowInstrumentEditorMessage(SelectedInstrument.Name, SelectedInstrument.NumStrings, SelectedInstrument.ReadOnly, (name, numStrings) =>
+                        StrongReferenceMessenger.Default.Send(new ShowInstrumentEditorMessage(SelectedInstrument.Name, SelectedInstrument.NumStrings, SelectedInstrument.ReadOnly, (name, numStrings) =>
                         {
                             try
                             {
@@ -394,7 +394,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.InstrumentManagerDeleteInstrumentPromptFormat, SelectedInstrument.Name), (confirm) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(string.Format(Strings.InstrumentManagerDeleteInstrumentPromptFormat, SelectedInstrument.Name), (confirm) =>
                         {
                             try
                             {
@@ -450,7 +450,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowTuningEditorMessage(SelectedInstrument, (accepted) =>
+                        StrongReferenceMessenger.Default.Send(new ShowTuningEditorMessage(SelectedInstrument, (accepted) =>
                         {
                             try
                             {
@@ -510,7 +510,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowTuningEditorMessage(SelectedTuning, (accepted) =>
+                        StrongReferenceMessenger.Default.Send(new ShowTuningEditorMessage(SelectedTuning, (accepted) =>
                         {
                             try
                             {
@@ -570,7 +570,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.InstrumentManagerDeleteTuningPromptFormat, SelectedTuning.Name), (confirm) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(string.Format(Strings.InstrumentManagerDeleteTuningPromptFormat, SelectedTuning.Name), (confirm) =>
                         {
                             try
                             {
@@ -655,7 +655,7 @@ namespace Chordious.Core.ViewModel
                             targetInstrument = userInstrument;
                         }
 
-                        Messenger.Default.Send(new ShowTuningEditorMessage(SelectedTuning, targetInstrument, (accepted) =>
+                        StrongReferenceMessenger.Default.Send(new ShowTuningEditorMessage(SelectedTuning, targetInstrument, (accepted) =>
                         {
                             try
                             {

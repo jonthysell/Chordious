@@ -5,14 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class DiagramCollectionSelectorViewModel : ViewModelBase
+    public class DiagramCollectionSelectorViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -68,8 +68,8 @@ namespace Chordious.Core.ViewModel
                     _collectionName = lastValue;
                     ExceptionUtils.HandleException(ex);
                 }
-                RaisePropertyChanged(nameof(CollectionName));
-                Accept.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(CollectionName));
+                Accept.NotifyCanExecuteChanged();
             }
         }
         private string _collectionName;

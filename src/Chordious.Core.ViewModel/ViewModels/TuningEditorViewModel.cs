@@ -4,14 +4,14 @@
 using System;
 using System.Collections.ObjectModel;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class TuningEditorViewModel : ViewModelBase
+    public class TuningEditorViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -54,8 +54,8 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _name = value;
-                RaisePropertyChanged(nameof(Name));
-                Accept.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(Name));
+                Accept.NotifyCanExecuteChanged();
             }
         }
         private string _name;
@@ -87,8 +87,8 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _isNew = value;
-                RaisePropertyChanged(nameof(IsNew));
-                RaisePropertyChanged(nameof(Title));
+                OnPropertyChanged(nameof(IsNew));
+                OnPropertyChanged(nameof(Title));
             }
         }
         private bool _isNew;
@@ -102,8 +102,8 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _readOnly = value;
-                RaisePropertyChanged(nameof(ReadOnly));
-                RaisePropertyChanged(nameof(Title));
+                OnPropertyChanged(nameof(ReadOnly));
+                OnPropertyChanged(nameof(Title));
             }
         }
         private bool _readOnly;

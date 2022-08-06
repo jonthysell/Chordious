@@ -4,7 +4,7 @@
 using System;
 using System.Threading.Tasks;
 
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel;
 
@@ -23,7 +23,7 @@ namespace Chordious.WPF
             private set
             {
                 _isIdle = value;
-                RaisePropertyChanged(nameof(IsIdle));
+                OnPropertyChanged(nameof(IsIdle));
             }
         }
         private bool _isIdle;
@@ -43,7 +43,7 @@ namespace Chordious.WPF
             set
             {
                 AppVM.SetSetting("app.firstrun", value);
-                RaisePropertyChanged(nameof(IsFirstRun));
+                OnPropertyChanged(nameof(IsFirstRun));
             }
         }
 
@@ -91,7 +91,7 @@ namespace Chordious.WPF
 
             if (UpdateUtils.UpdateEnabled)
             {
-                Messenger.Default.Send(new ConfirmationMessage(Strings.FirstRunUpdateEnabledPrompt, (enableAutoUpdate) =>
+                StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.FirstRunUpdateEnabledPrompt, (enableAutoUpdate) =>
                 {
                     try
                     {
@@ -105,7 +105,7 @@ namespace Chordious.WPF
             }
             else
             {
-                Messenger.Default.Send(new ChordiousMessage(Strings.FirstRunMessage));
+                StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.FirstRunMessage));
             }
         }
     }

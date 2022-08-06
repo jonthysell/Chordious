@@ -5,17 +5,17 @@ using System;
 using System.Collections.ObjectModel;
 using System.IO;
 
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class ChordiousMessage : MessageBase
+    public class ChordiousMessage
     {
         public InformationViewModel InformationVM { get; private set; }
 
-        public ChordiousMessage(string message, string title, Action callback = null) : base()
+        public ChordiousMessage(string message, string title, Action callback = null)
         {
             InformationVM = new InformationViewModel(message, title, callback);
         }
@@ -28,11 +28,11 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public class ConfirmationMessage : MessageBase
+    public class ConfirmationMessage
     {
         public ConfirmationViewModel ConfirmationVM { get; private set; }
 
-        public ConfirmationMessage(string message, Action<bool> callback, string rememberAnswerKey = null) : base()
+        public ConfirmationMessage(string message, Action<bool> callback, string rememberAnswerKey = null)
         {
             ConfirmationVM = new ConfirmationViewModel(message, callback, rememberAnswerKey);
         }
@@ -43,11 +43,11 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public class PromptForTextMessage : MessageBase
+    public class PromptForTextMessage
     {
         public TextPromptViewModel TextPromptVM { get; private set; }
 
-        public PromptForTextMessage(string prompt, Action<string> callback, bool allowBlank = false, bool requireInteger = false) : base()
+        public PromptForTextMessage(string prompt, Action<string> callback, bool allowBlank = false, bool requireInteger = false)
         {
             TextPromptVM = new TextPromptViewModel(prompt, callback)
             {
@@ -62,27 +62,27 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public class ExceptionMessage : MessageBase
+    public class ExceptionMessage
     {
         public ExceptionViewModel ExceptionVM { get; private set; }
 
-        public ExceptionMessage(Exception exception) : base()
+        public ExceptionMessage(Exception exception)
         {
             ExceptionVM = new ExceptionViewModel(exception);
         }
     }
 
-    public class LaunchUrlMessage : MessageBase
+    public class LaunchUrlMessage
     {
         public string Url { get; private set; }
 
-        public LaunchUrlMessage(string url) : base()
+        public LaunchUrlMessage(string url)
         {
             Url = url;
         }
     }
 
-    public abstract class SaveUserConfigAfterHandlingMessageBase : MessageBase
+    public abstract class SaveUserConfigAfterHandlingMessageBase
     {
         protected Action Callback;
 
@@ -125,7 +125,7 @@ namespace Chordious.Core.ViewModel
                 if (!ChordFinderVM.Options.UsingDefaultTarget)
                 {
                     string message = string.Format(Strings.FinderOptionsSaveTargetOnClosePromptMessageFormat, ChordFinderVM.Options.Instrument.Name, ChordFinderVM.Options.Tuning.LongName);
-                    Messenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
+                    StrongReferenceMessenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
                     {
                         try
                         {
@@ -178,7 +178,7 @@ namespace Chordious.Core.ViewModel
                 if (!ScaleFinderVM.Options.UsingDefaultTarget)
                 {
                     string message = string.Format(Strings.FinderOptionsSaveTargetOnClosePromptMessageFormat, ScaleFinderVM.Options.Instrument.Name, ScaleFinderVM.Options.Tuning.LongName);
-                    Messenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
+                    StrongReferenceMessenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
                     {
                         try
                         {
@@ -234,11 +234,11 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public class ShowInstrumentEditorMessage : MessageBase
+    public class ShowInstrumentEditorMessage
     {
         public InstrumentEditorViewModel InstrumentEditorVM { get; private set; }
 
-        public ShowInstrumentEditorMessage(Action<string, int> callback) : base()
+        public ShowInstrumentEditorMessage(Action<string, int> callback)
         {
             InstrumentEditorVM = new InstrumentEditorViewModel(callback)
             {
@@ -246,32 +246,32 @@ namespace Chordious.Core.ViewModel
             };
         }
 
-        public ShowInstrumentEditorMessage(string name, int numStrings, bool readOnly, Action<string, int> callback) : base()
+        public ShowInstrumentEditorMessage(string name, int numStrings, bool readOnly, Action<string, int> callback)
         {
             InstrumentEditorVM = new InstrumentEditorViewModel(name, numStrings, readOnly, callback);
         }
     }
 
-    public class ShowTuningEditorMessage : MessageBase
+    public class ShowTuningEditorMessage
     {
         public TuningEditorViewModel TuningEditorVM { get; private set; }
 
         private readonly Action<bool> Callback;
 
-        public ShowTuningEditorMessage(ObservableInstrument instrument, Action<bool> callback = null) : base()
+        public ShowTuningEditorMessage(ObservableInstrument instrument, Action<bool> callback = null)
         {
             TuningEditorVM = TuningEditorViewModel.AddNewTuning(instrument);
             TuningEditorVM.Name = (instrument.Instrument.Tunings as TuningSet)?.GetNewTuningName() ?? "";
             Callback = callback;
         }
 
-        public ShowTuningEditorMessage(ObservableTuning tuning, Action<bool> callback = null) : base()
+        public ShowTuningEditorMessage(ObservableTuning tuning, Action<bool> callback = null)
         {
             TuningEditorVM = TuningEditorViewModel.EditExistingTuning(tuning);
             Callback = callback;
         }
 
-        public ShowTuningEditorMessage(ObservableTuning tuning, ObservableInstrument targetInstrument, Action<bool> callback = null) : base()
+        public ShowTuningEditorMessage(ObservableTuning tuning, ObservableInstrument targetInstrument, Action<bool> callback = null)
         {
             TuningEditorVM = TuningEditorViewModel.CopyExistingTuning(tuning, targetInstrument);
             TuningEditorVM.Name = (targetInstrument.Instrument.Tunings as TuningSet)?.GetNewTuningName(tuning.Name) ?? "";
@@ -294,11 +294,11 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public class ShowChordQualityEditorMessage : MessageBase
+    public class ShowChordQualityEditorMessage
     {
         public ChordQualityEditorViewModel ChordQualityEditorVM { get; private set; }
 
-        public ShowChordQualityEditorMessage(Action<string, string, int[]> callback) : base()
+        public ShowChordQualityEditorMessage(Action<string, string, int[]> callback)
         {
             ChordQualityEditorVM = new ChordQualityEditorViewModel(callback)
             {
@@ -306,7 +306,7 @@ namespace Chordious.Core.ViewModel
             };
         }
 
-        public ShowChordQualityEditorMessage(string name, string abbreviation, int[] intervals, bool readOnly, Action<string, string, int[]> callback) : base()
+        public ShowChordQualityEditorMessage(string name, string abbreviation, int[] intervals, bool readOnly, Action<string, string, int[]> callback)
         {
             ChordQualityEditorVM = new ChordQualityEditorViewModel(name, abbreviation, intervals, readOnly, callback);
         }
@@ -322,11 +322,11 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public class ShowScaleEditorMessage : MessageBase
+    public class ShowScaleEditorMessage
     {
         public ScaleEditorViewModel ScaleEditorVM { get; private set; }
 
-        public ShowScaleEditorMessage(Action<string, int[]> callback) : base()
+        public ShowScaleEditorMessage(Action<string, int[]> callback)
         {
             ScaleEditorVM = new ScaleEditorViewModel(callback)
             {
@@ -334,13 +334,13 @@ namespace Chordious.Core.ViewModel
             };
         }
 
-        public ShowScaleEditorMessage(string name, int[] intervals, bool readOnly, Action<string, int[]> callback) : base()
+        public ShowScaleEditorMessage(string name, int[] intervals, bool readOnly, Action<string, int[]> callback)
         {
             ScaleEditorVM = new ScaleEditorViewModel(name, intervals, readOnly, callback);
         }
     }
 
-    public class ShowDiagramEditorMessage : MessageBase
+    public class ShowDiagramEditorMessage
     {
         public DiagramEditorViewModel DiagramEditorVM { get; set; }
 
@@ -350,7 +350,7 @@ namespace Chordious.Core.ViewModel
 
         private readonly Action<bool> Callback;
 
-        public ShowDiagramEditorMessage(ObservableDiagram diagram, bool isNew, Action<bool> callback = null) : base()
+        public ShowDiagramEditorMessage(ObservableDiagram diagram, bool isNew, Action<bool> callback = null)
         {
             Diagram = diagram;
             IsNew = isNew;
@@ -375,13 +375,13 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public class ShowDiagramMarkEditorMessage : MessageBase
+    public class ShowDiagramMarkEditorMessage
     {
         public DiagramMarkEditorViewModel DiagramMarkEditorVM { get; private set; }
 
         private readonly Action<bool> Callback;
 
-        public ShowDiagramMarkEditorMessage(DiagramMark diagramMark, bool isNew, Action<bool> callback = null) : base()
+        public ShowDiagramMarkEditorMessage(DiagramMark diagramMark, bool isNew, Action<bool> callback = null)
         {
             DiagramMarkEditorVM = new DiagramMarkEditorViewModel(diagramMark, isNew);
             Callback = callback;
@@ -405,13 +405,13 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public class ShowDiagramFretLabelEditorMessage : MessageBase
+    public class ShowDiagramFretLabelEditorMessage
     {
         public DiagramFretLabelEditorViewModel DiagramFretLabelEditorVM { get; private set; }
 
         private readonly Action<bool> Callback;
 
-        public ShowDiagramFretLabelEditorMessage(DiagramFretLabel diagramFretLabel, bool isNew, Action<bool> callback = null) : base()
+        public ShowDiagramFretLabelEditorMessage(DiagramFretLabel diagramFretLabel, bool isNew, Action<bool> callback = null)
         {
             DiagramFretLabelEditorVM = new DiagramFretLabelEditorViewModel(diagramFretLabel, isNew);
             Callback = callback;
@@ -435,13 +435,13 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public class ShowDiagramBarreEditorMessage : MessageBase
+    public class ShowDiagramBarreEditorMessage
     {
         public DiagramBarreEditorViewModel DiagramBarreEditorVM { get; private set; }
 
         private readonly Action<bool> Callback;
 
-        public ShowDiagramBarreEditorMessage(DiagramBarre diagrmBarre, bool isNew, Action<bool> callback = null) : base()
+        public ShowDiagramBarreEditorMessage(DiagramBarre diagrmBarre, bool isNew, Action<bool> callback = null)
         {
             DiagramBarreEditorVM = new DiagramBarreEditorViewModel(diagrmBarre, isNew);
             Callback = callback;
@@ -465,13 +465,13 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public class ShowDiagramStyleEditorMessage : MessageBase
+    public class ShowDiagramStyleEditorMessage
     {
         public DiagramStyleEditorViewModel DiagramStyleEditorVM { get; private set; }
 
         private readonly Action<bool> Callback;
 
-        public ShowDiagramStyleEditorMessage(ObservableDiagramStyle diagramStyle, Action<bool> callback = null) : base()
+        public ShowDiagramStyleEditorMessage(ObservableDiagramStyle diagramStyle, Action<bool> callback = null)
         {
             DiagramStyleEditorVM = new DiagramStyleEditorViewModel(diagramStyle);
             Callback = callback;
@@ -495,13 +495,13 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public class ShowOptionsMessage : MessageBase
+    public class ShowOptionsMessage
     {
         public OptionsViewModel OptionsVM { get; set; }
 
         private readonly Action<bool> Callback;
 
-        public ShowOptionsMessage(Action<bool> callback = null) : base()
+        public ShowOptionsMessage(Action<bool> callback = null)
         {
             Callback = callback;
         }
@@ -524,11 +524,11 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public class ShowLicensesMessage : MessageBase
+    public class ShowLicensesMessage
     {
         public LicensesViewModel LicensesVM { get; private set; }
 
-        public ShowLicensesMessage(Action callback = null) : base()
+        public ShowLicensesMessage(Action callback = null)
         {
             LicensesVM = new LicensesViewModel(callback);
         }
@@ -539,13 +539,13 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public class ShowAdvancedDataMessage : MessageBase
+    public class ShowAdvancedDataMessage
     {
         public AdvancedDataViewModel AdvancedDataVM { get; private set; }
 
         private readonly Action<bool> Callback;
 
-        public ShowAdvancedDataMessage(InheritableDictionary inheritableDictionary, string filter, Action<bool> callback) : base()
+        public ShowAdvancedDataMessage(InheritableDictionary inheritableDictionary, string filter, Action<bool> callback)
         {
             AdvancedDataVM = new AdvancedDataViewModel(inheritableDictionary, filter);
             Callback = callback;
@@ -619,11 +619,11 @@ namespace Chordious.Core.ViewModel
         }
     }
 
-    public abstract class PromptForStreamMessage : MessageBase
+    public abstract class PromptForStreamMessage
     {
         private readonly Action<Stream> Callback;
 
-        public PromptForStreamMessage(Action<Stream> callback) : base()
+        public PromptForStreamMessage(Action<Stream> callback)
         {
             Callback = callback ?? throw new ArgumentNullException(nameof(callback));
         }
@@ -644,21 +644,21 @@ namespace Chordious.Core.ViewModel
         public PromptForConfigInputStreamMessage(Action<Stream> callback) : base(callback) { }
     }
 
-    public class ShowDiagramCollectionSelectorMessage : MessageBase
+    public class ShowDiagramCollectionSelectorMessage
     {
         public DiagramCollectionSelectorViewModel DiagramCollectionSelectorVM { get; private set; }
 
-        public ShowDiagramCollectionSelectorMessage(Action<string, bool> callback, string defaultCollectionName = null) : base()
+        public ShowDiagramCollectionSelectorMessage(Action<string, bool> callback, string defaultCollectionName = null)
         {
             DiagramCollectionSelectorVM = new DiagramCollectionSelectorViewModel(callback, defaultCollectionName);
         }
     }
 
-    public class PromptForLegacyImportMessage : MessageBase
+    public class PromptForLegacyImportMessage
     {
         private readonly Action<string, Stream> Callback;
 
-        public PromptForLegacyImportMessage(Action<string, Stream> callback) : base()
+        public PromptForLegacyImportMessage(Action<string, Stream> callback)
         {
             Callback = callback ?? throw new ArgumentNullException(nameof(callback));
         }

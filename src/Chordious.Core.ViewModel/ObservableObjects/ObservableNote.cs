@@ -4,7 +4,8 @@
 using System;
 using System.Collections.ObjectModel;
 
-using GalaSoft.MvvmLight;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel.Resources;
 
@@ -45,7 +46,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 FullNote.Note = (Core.Note)(value);
-                RaisePropertyChanged(nameof(SelectedNoteIndex));
+                OnPropertyChanged(nameof(SelectedNoteIndex));
             }
         }
 
@@ -82,7 +83,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 FullNote.Octave = value;
-                RaisePropertyChanged(nameof(Octave));
+                OnPropertyChanged(nameof(Octave));
             }
         }
 

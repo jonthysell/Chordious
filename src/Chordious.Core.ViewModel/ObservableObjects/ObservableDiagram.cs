@@ -4,9 +4,9 @@
 using System;
 using System.ComponentModel;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
@@ -39,7 +39,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _imageObject = value;
-                RaisePropertyChanged(nameof(ImageObject));
+                OnPropertyChanged(nameof(ImageObject));
             }
         }
         private object _imageObject;
@@ -121,7 +121,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Diagram.NumFrets = value;
-                    RaisePropertyChanged(nameof(NumFrets));
+                    OnPropertyChanged(nameof(NumFrets));
                     Refresh();
                 }
                 catch (Exception ex)
@@ -158,7 +158,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Diagram.NumStrings = value;
-                    RaisePropertyChanged(nameof(NumStrings));
+                    OnPropertyChanged(nameof(NumStrings));
                     Refresh();
                 }
                 catch (Exception ex)
@@ -199,7 +199,7 @@ namespace Chordious.Core.ViewModel
                 try
                 {
                     Diagram.Title = value;
-                    RaisePropertyChanged(nameof(Title));
+                    OnPropertyChanged(nameof(Title));
                     Refresh();
                 }
                 catch (Exception ex)
@@ -232,7 +232,7 @@ namespace Chordious.Core.ViewModel
                         if (hasMark)
                         {
                             DiagramMark dm = (DiagramMark)Diagram.ElementAt(mp);
-                            Messenger.Default.Send(new ShowDiagramMarkEditorMessage(dm, false, (changed) =>
+                            StrongReferenceMessenger.Default.Send(new ShowDiagramMarkEditorMessage(dm, false, (changed) =>
                             {
                                 try
                                 {
@@ -250,7 +250,7 @@ namespace Chordious.Core.ViewModel
                         else if (hasBarre)
                         {
                             DiagramBarre db = (DiagramBarre)Diagram.ElementAt(bp);
-                            Messenger.Default.Send(new ShowDiagramBarreEditorMessage(db, false, (changed) =>
+                            StrongReferenceMessenger.Default.Send(new ShowDiagramBarreEditorMessage(db, false, (changed) =>
                             {
                                 try
                                 {
@@ -268,7 +268,7 @@ namespace Chordious.Core.ViewModel
                         else if (hasFretLabel)
                         {
                             DiagramFretLabel dfl = (DiagramFretLabel)Diagram.ElementAt(flp);
-                            Messenger.Default.Send(new ShowDiagramFretLabelEditorMessage(dfl, false, (changed) =>
+                            StrongReferenceMessenger.Default.Send(new ShowDiagramFretLabelEditorMessage(dfl, false, (changed) =>
                             {
                                 try
                                 {
@@ -327,7 +327,7 @@ namespace Chordious.Core.ViewModel
                     {
                         MarkPosition mp = MarkPosition;
                         DiagramMark dm = Diagram.NewMark(mp);
-                        Messenger.Default.Send(new ShowDiagramMarkEditorMessage(dm, true, (changed) =>
+                        StrongReferenceMessenger.Default.Send(new ShowDiagramMarkEditorMessage(dm, true, (changed) =>
                         {
                             try
                             { 
@@ -392,7 +392,7 @@ namespace Chordious.Core.ViewModel
                     try
                     {
                         DiagramMark dm = (DiagramMark)Diagram.ElementAt(MarkPosition);
-                        Messenger.Default.Send(new ShowDiagramMarkEditorMessage(dm, false, (changed) =>
+                        StrongReferenceMessenger.Default.Send(new ShowDiagramMarkEditorMessage(dm, false, (changed) =>
                         {
                             try
                             {
@@ -517,7 +517,7 @@ namespace Chordious.Core.ViewModel
                     {
                         FretLabelPosition flp = FretLabelPosition;
                         DiagramFretLabel dfl = Diagram.NewFretLabel(flp, "");
-                        Messenger.Default.Send(new ShowDiagramFretLabelEditorMessage(dfl, true, (changed) =>
+                        StrongReferenceMessenger.Default.Send(new ShowDiagramFretLabelEditorMessage(dfl, true, (changed) =>
                         {
                             try
                             {
@@ -584,7 +584,7 @@ namespace Chordious.Core.ViewModel
                     try
                     {
                         DiagramFretLabel dfl = (DiagramFretLabel)Diagram.ElementAt(FretLabelPosition);
-                        Messenger.Default.Send(new ShowDiagramFretLabelEditorMessage(dfl, false, (changed) =>
+                        StrongReferenceMessenger.Default.Send(new ShowDiagramFretLabelEditorMessage(dfl, false, (changed) =>
                         {
                             try
                             {
@@ -708,7 +708,7 @@ namespace Chordious.Core.ViewModel
                     try
                     {
                         BarrePosition bp = BarrePosition;
-                        Messenger.Default.Send(new PromptForTextMessage(string.Format(Strings.ObservableDiagramAddBarrePromptFormat, 2, bp.Width), bp.Width.ToString(), (widthText) =>
+                        StrongReferenceMessenger.Default.Send(new PromptForTextMessage(string.Format(Strings.ObservableDiagramAddBarrePromptFormat, 2, bp.Width), bp.Width.ToString(), (widthText) =>
                         {
                             try
                             {
@@ -716,7 +716,7 @@ namespace Chordious.Core.ViewModel
                                 bp = new BarrePosition(bp.Fret, bp.StartString, bp.StartString + width - 1);
 
                                 DiagramBarre db = Diagram.NewBarre(bp);
-                                Messenger.Default.Send(new ShowDiagramBarreEditorMessage(db, true, (changed) =>
+                                StrongReferenceMessenger.Default.Send(new ShowDiagramBarreEditorMessage(db, true, (changed) =>
                                 {
                                     try
                                     {
@@ -787,7 +787,7 @@ namespace Chordious.Core.ViewModel
                     try
                     {
                         DiagramBarre db = (DiagramBarre)Diagram.ElementAt(BarrePosition);
-                        Messenger.Default.Send(new ShowDiagramBarreEditorMessage(db, false, (changed) =>
+                        StrongReferenceMessenger.Default.Send(new ShowDiagramBarreEditorMessage(db, false, (changed) =>
                         {
                             try
                             {
@@ -893,7 +893,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _cursorX = value;
-                RaisePropertyChanged(nameof(CursorX));
+                OnPropertyChanged(nameof(CursorX));
                 RefreshCursor();
             }
         }
@@ -908,7 +908,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _cursorY = value;
-                RaisePropertyChanged(nameof(CursorY));
+                OnPropertyChanged(nameof(CursorY));
                 RefreshCursor();
             }
         }
@@ -934,43 +934,43 @@ namespace Chordious.Core.ViewModel
 
         private void RefreshCursor()
         {
-            RaisePropertyChanged(nameof(CursorInGrid));
-            RaisePropertyChanged(nameof(ValidCommandsAtCursor));
+            OnPropertyChanged(nameof(CursorInGrid));
+            OnPropertyChanged(nameof(ValidCommandsAtCursor));
 
-            EditElement.RaiseCanExecuteChanged();
+            EditElement.NotifyCanExecuteChanged();
 
-            AddMark.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(CanAddMark));
+            AddMark.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(CanAddMark));
 
-            EditMark.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(CanEditMark));
+            EditMark.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(CanEditMark));
 
-            RemoveMark.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(CanRemoveMark));
+            RemoveMark.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(CanRemoveMark));
 
-            AddFretLabel.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(CanAddFretLabel));
-            RaisePropertyChanged(nameof(AddFretLabelLabel));
-            RaisePropertyChanged(nameof(AddFretLabelToolTip));
+            AddFretLabel.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(CanAddFretLabel));
+            OnPropertyChanged(nameof(AddFretLabelLabel));
+            OnPropertyChanged(nameof(AddFretLabelToolTip));
 
-            EditFretLabel.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(CanEditFretLabel));
-            RaisePropertyChanged(nameof(EditFretLabelLabel));
-            RaisePropertyChanged(nameof(EditFretLabelToolTip));
+            EditFretLabel.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(CanEditFretLabel));
+            OnPropertyChanged(nameof(EditFretLabelLabel));
+            OnPropertyChanged(nameof(EditFretLabelToolTip));
 
-            RemoveFretLabel.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(CanRemoveFretLabel));
-            RaisePropertyChanged(nameof(RemoveFretLabelLabel));
-            RaisePropertyChanged(nameof(RemoveFretLabelToolTip));
+            RemoveFretLabel.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(CanRemoveFretLabel));
+            OnPropertyChanged(nameof(RemoveFretLabelLabel));
+            OnPropertyChanged(nameof(RemoveFretLabelToolTip));
 
-            AddBarre.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(CanAddBarre));
+            AddBarre.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(CanAddBarre));
 
-            EditBarre.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(CanEditBarre));
+            EditBarre.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(CanEditBarre));
 
-            RemoveBarre.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(CanRemoveBarre));
+            RemoveBarre.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(CanRemoveBarre));
         }
 
         public static bool IsCursorProperty(string property)
@@ -1032,7 +1032,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowDiagramEditorMessage(this, false, (changed) =>
+                        StrongReferenceMessenger.Default.Send(new ShowDiagramEditorMessage(this, false, (changed) =>
                         {
                             try
                             {
@@ -1062,7 +1062,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _isEditMode = value;
-                RaisePropertyChanged(nameof(IsEditMode));
+                OnPropertyChanged(nameof(IsEditMode));
                 Refresh();
             }
         }
@@ -1077,7 +1077,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _postEditCallback = value ?? throw new ArgumentNullException();
-                RaisePropertyChanged(nameof(PostEditCallback));
+                OnPropertyChanged(nameof(PostEditCallback));
             }
         }
         private Action<bool> _postEditCallback;
@@ -1148,7 +1148,7 @@ namespace Chordious.Core.ViewModel
                         float scaleFactor = AppVM.Settings.GetFloat("observablediagram.sendscaledimagetoclipboard.scalefactor", 1.0f);
                         string defaultValue = ((int)(Math.Round(scaleFactor * 100))).ToString();
 
-                        Messenger.Default.Send(new PromptForTextMessage(Strings.ObservableDiagramSendScaledImageToClipboardScalePercentagePrompt, defaultValue, (percentText) =>
+                        StrongReferenceMessenger.Default.Send(new PromptForTextMessage(Strings.ObservableDiagramSendScaledImageToClipboardScalePercentagePrompt, defaultValue, (percentText) =>
                         {
                             try
                             {
@@ -1242,7 +1242,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _autoRender = value;
-                RaisePropertyChanged(nameof(AutoRender));
+                OnPropertyChanged(nameof(AutoRender));
             }
         }
         private bool _autoRender;
@@ -1256,7 +1256,7 @@ namespace Chordious.Core.ViewModel
             set
             {
                 _name = value;
-                RaisePropertyChanged(nameof(Name));
+                OnPropertyChanged(nameof(Name));
             }
         }
         private string _name;
@@ -1300,15 +1300,15 @@ namespace Chordious.Core.ViewModel
         public void ResetStyles()
         {
             Diagram.ClearStyles();
-            RaisePropertyChanged(nameof(Style));
+            OnPropertyChanged(nameof(Style));
             Refresh();
         }
 
         public void Refresh()
         {
-            RaisePropertyChanged(nameof(SvgText));
-            RaisePropertyChanged(nameof(TotalHeight));
-            RaisePropertyChanged(nameof(TotalWidth));
+            OnPropertyChanged(nameof(SvgText));
+            OnPropertyChanged(nameof(TotalHeight));
+            OnPropertyChanged(nameof(TotalWidth));
 
             if (AutoRender)
             {

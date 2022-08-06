@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
@@ -75,7 +75,7 @@ namespace Chordious.Core.ViewModel
                     {
                         ObservableDiagram od = CreateObservableDiagram();
 
-                        Messenger.Default.Send(new ShowDiagramEditorMessage(od, true, od.PostEditCallback));
+                        StrongReferenceMessenger.Default.Send(new ShowDiagramEditorMessage(od, true, od.PostEditCallback));
                     }
                     catch (Exception ex)
                     {
@@ -121,7 +121,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeEditedMessage));
+                        StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeEditedMessage));
                     }
                     catch (Exception ex)
                     {
@@ -170,7 +170,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeCopiedToClipboardMessage));
+                        StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeCopiedToClipboardMessage));
                     }
                     catch (Exception ex)
                     {
@@ -214,7 +214,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeCopiedToClipboardMessage));
+                        StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeCopiedToClipboardMessage));
                     }
                     catch (Exception ex)
                     {
@@ -258,7 +258,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeCopiedToClipboardMessage));
+                        StrongReferenceMessenger.Default.Send(new ChordiousMessage(Strings.DiagramLibraryOnlyOneDiagramCanBeCopiedToClipboardMessage));
                     }
                     catch (Exception ex)
                     {
@@ -305,7 +305,7 @@ namespace Chordious.Core.ViewModel
                         int count = SelectedDiagrams.Count;
                         string message = string.Format(count < 2 ? Strings.ObservableDiagramLibraryNodeResetStylesSelectedPromptSingleFormat : Strings.ObservableDiagramLibraryNodeResetStylesSelectedPromptPluralFormat, count);
 
-                        Messenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
                         {
                             try
                             {
@@ -501,7 +501,7 @@ namespace Chordious.Core.ViewModel
                 {
                     try
                     {
-                        Messenger.Default.Send(new ShowDiagramExportMessage(SelectedDiagrams, Name));
+                        StrongReferenceMessenger.Default.Send(new ShowDiagramExportMessage(SelectedDiagrams, Name));
                     }
                     catch (Exception ex)
                     {
@@ -547,7 +547,7 @@ namespace Chordious.Core.ViewModel
                         int count = SelectedDiagrams.Count;
                         string message = string.Format(count < 2 ? Strings.DiagramLibraryDeleteSelectedDiagramsPromptSingleFormat : Strings.DiagramLibraryDeleteSelectedDiagramsPromptPluralFormat, count);
 
-                        Messenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(message, (confirmed) =>
                         {
                             try
                             {
@@ -757,7 +757,7 @@ namespace Chordious.Core.ViewModel
             {
                 Diagrams.Clear();
                 _firstLoad = true;
-                RaisePropertyChanged(nameof(Diagrams));
+                OnPropertyChanged(nameof(Diagrams));
             }
         }
 
@@ -837,7 +837,7 @@ namespace Chordious.Core.ViewModel
             else
             {
                 // Prompt for a target
-                Messenger.Default.Send(new ShowDiagramCollectionSelectorMessage(performCopy));
+                StrongReferenceMessenger.Default.Send(new ShowDiagramCollectionSelectorMessage(performCopy));
             }
         }
 
@@ -874,7 +874,7 @@ namespace Chordious.Core.ViewModel
             else
             {
                 // Prompt for a target
-                Messenger.Default.Send(new ShowDiagramCollectionSelectorMessage(performMove));
+                StrongReferenceMessenger.Default.Send(new ShowDiagramCollectionSelectorMessage(performMove));
             }
         }
 
@@ -882,7 +882,7 @@ namespace Chordious.Core.ViewModel
         {
             if (Collection.Count == 0)
             {
-                Messenger.Default.Send(new ConfirmationMessage(string.Format(Strings.ObservableDiagramLibraryNodeDeleteEmptyPromptFormat, Name), (confirmed) =>
+                StrongReferenceMessenger.Default.Send(new ConfirmationMessage(string.Format(Strings.ObservableDiagramLibraryNodeDeleteEmptyPromptFormat, Name), (confirmed) =>
                 {
                     try
                     {
@@ -903,24 +903,24 @@ namespace Chordious.Core.ViewModel
 
         private void UpdateCommands()
         {
-            RaisePropertyChanged(nameof(EditSelected));
-            _editSelected?.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(SendSelectedImageToClipboard));
-            RaisePropertyChanged(nameof(SendSelectedScaledImageToClipboard));
-            RaisePropertyChanged(nameof(SendSelectedTextToClipboard));
-            _sendSelectedToClipboard?.RaiseCanExecuteChanged();
-            CloneSelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(CloneSelectedToolTip));
-            CopySelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(CopySelectedToolTip));
-            MoveSelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(MoveSelectedToolTip));
-            ExportSelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(ExportSelectedToolTip));
-            DeleteSelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(DeleteSelectedToolTip));
-            ResetStylesSelected.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(ResetStylesSelectedToolTip));
+            OnPropertyChanged(nameof(EditSelected));
+            _editSelected?.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(SendSelectedImageToClipboard));
+            OnPropertyChanged(nameof(SendSelectedScaledImageToClipboard));
+            OnPropertyChanged(nameof(SendSelectedTextToClipboard));
+            _sendSelectedToClipboard?.NotifyCanExecuteChanged();
+            CloneSelected.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(CloneSelectedToolTip));
+            CopySelected.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(CopySelectedToolTip));
+            MoveSelected.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(MoveSelectedToolTip));
+            ExportSelected.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(ExportSelectedToolTip));
+            DeleteSelected.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(DeleteSelectedToolTip));
+            ResetStylesSelected.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(ResetStylesSelectedToolTip));
         }
 
         public override string ToString()

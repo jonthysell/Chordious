@@ -4,14 +4,14 @@
 using System;
 using System.Collections.ObjectModel;
 
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class LicensesViewModel : ViewModelBase
+    public class LicensesViewModel : ObservableObject
     {
         public AppViewModel AppVM
         {
@@ -72,7 +72,7 @@ namespace Chordious.Core.ViewModel
 
         private ObservableLicense GetMvvmLightLicense()
         {
-            return new ObservableLicense("MVVM Light", "Copyright © 2009-2018 Laurent Bugnion", AppInfo.MitLicenseName, AppInfo.MitLicenseBody);
+            return new ObservableLicense("MVVM Toolkit", "Copyright © .NET Foundation and Contributors", AppInfo.MitLicenseName, AppInfo.MitLicenseBody);
         }
 
         public void ProcessClose()

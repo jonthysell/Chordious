@@ -3,7 +3,7 @@
 
 using System;
 
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace Chordious.Core.ViewModel
 {
@@ -21,7 +21,7 @@ namespace Chordious.Core.ViewModel
         {
             AppVM.AppView.DoOnUIThread(() =>
             {
-                Messenger.Default.Send(new ExceptionMessage(exception));
+                StrongReferenceMessenger.Default.Send(new ExceptionMessage(exception));
             });
         }
     }

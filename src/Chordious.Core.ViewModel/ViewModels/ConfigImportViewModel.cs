@@ -4,8 +4,8 @@
 using System;
 using System.IO;
 
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Chordious.Core.ViewModel.Resources;
 
@@ -30,7 +30,7 @@ namespace Chordious.Core.ViewModel
                     try
                     {
                         IsIdle = false;
-                        Messenger.Default.Send(new ConfirmationMessage(Strings.ConfigImportOverwritePromptMessage, (confirmed) =>
+                        StrongReferenceMessenger.Default.Send(new ConfirmationMessage(Strings.ConfigImportOverwritePromptMessage, (confirmed) =>
                         {
                             try
                             {

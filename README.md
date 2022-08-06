@@ -26,7 +26,7 @@ Chordious is open-source under the MIT license.
 
 Chordious proudly depends on the following open-source projects:
 
-* [MVVM Light Toolkit](http://mvvmlight.net) for MVVM infrastructure
+* [MVVM Toolkit](https://github.com/CommunityToolkit/dotnet) for MVVM infrastructure
 * [SVG.NET](https://github.com/vvvv/SVG) for rendering diagrams
 * [Wpf Extended Toolkit](https://github.com/dotnetprojects/WpfExtendedToolkit) for additional controls
 

@@ -6,13 +6,14 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
 
-using GalaSoft.MvvmLight;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using Chordious.Core.ViewModel.Resources;
 
 namespace Chordious.Core.ViewModel
 {
-    public class AppViewModel : ViewModelBase
+    public class AppViewModel : ObservableObject
     {
         public static AppViewModel Instance { get; private set; }
 
@@ -161,7 +162,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _appConfigLoaded = value;
-                RaisePropertyChanged(nameof(AppConfigLoaded));
+                OnPropertyChanged(nameof(AppConfigLoaded));
             }
         }
         private bool _appConfigLoaded = false;
@@ -177,7 +178,7 @@ namespace Chordious.Core.ViewModel
             private set
             {
                 _userConfigLoaded = value;
-                RaisePropertyChanged(nameof(UserConfigLoaded));
+                OnPropertyChanged(nameof(UserConfigLoaded));
             }
         }
         private bool _userConfigLoaded = false;

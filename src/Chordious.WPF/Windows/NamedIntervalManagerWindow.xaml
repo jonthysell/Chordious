@@ -117,7 +117,7 @@
                    HorizontalAlignment="Center">
             <StackPanel FlowDirection="LeftToRight"
                         Orientation="Horizontal">
-                <Button AutomationProperties.Name="{Binding AddNamedInterval}"
+                <Button AutomationProperties.Name="{Binding AddNamedIntervalLabel}"
                         Command="{Binding AddNamedInterval}"
                         Margin="5"
                         Style="{StaticResource CleanButtonNoBorder}"
@@ -127,7 +127,7 @@
                                             Source="{StaticResource AddIcon16}"
                                             Width="16" />
                 </Button>
-                <Button AutomationProperties.Name="{Binding EditNamedInterval}"
+                <Button AutomationProperties.Name="{Binding EditNamedIntervalLabel}"
                         Command="{Binding EditNamedInterval}"
                         Margin="5"
                         Style="{StaticResource CleanButtonNoBorder}"
@@ -137,7 +137,7 @@
                                             Source="{StaticResource EditIcon16}"
                                             Width="16" />
                 </Button>
-                <Button AutomationProperties.Name="{Binding DeleteNamedInterval}"
+                <Button AutomationProperties.Name="{Binding DeleteNamedIntervalLabel}"
                         Command="{Binding DeleteNamedInterval}"
                         Margin="5"
                         Style="{StaticResource CleanButtonNoBorder}"

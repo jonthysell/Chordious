@@ -38,7 +38,7 @@ namespace Chordious.Core
             {
                 if (_version is null)
                 {
-                    Version? vers = Assembly.GetName().Version;
+                    Version vers = Assembly.GetName().Version;
                     _version = vers is null ? "0.0.0" : $"{vers.Major}.{vers.Minor}.{vers.Build}";
                 }
                 return _version;

@@ -11,8 +11,15 @@
     <AssemblyVersion>$(Version).0</AssemblyVersion>
     <FileVersion>$(AssemblyVersion)</FileVersion>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
-    <DebugType>embedded</DebugType>
     <RepoRoot>$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)..\'))</RepoRoot>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(PublishSingleFile)' == 'true' ">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RestoreForWinStore)' == 'true' ">
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
   </PropertyGroup>
   
   <ItemGroup>

@@ -5,6 +5,8 @@ env:
   ScriptDir: ./scripts
   SrcDir: ./src
   Product: Chordious
+  BinDir: ./src/Chordious.Core/bin
+  SolutionFile: ./src/Chordious.sln
 
 on:
   push:
@@ -17,9 +19,37 @@ defaults:
     shell: pwsh
 
 jobs:
+  ci_build_and_test:
+    name: CI Build and Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+    steps:
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Build Solution
+      run: dotnet build --configuration ${{ matrix.configuration }} ${{ env.SolutionFile }}
+
+    - name: Test Solution
+      run: dotnet test --configuration ${{ matrix.configuration }} --no-build ${{ env.SolutionFile }}
+
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name:  ${{ matrix.configuration }}Binaries
+        path: ${{ env.BinDir }}/${{ matrix.configuration }}/net6.0
+
   ci_build_windows:
     name: CI Windows Build
     runs-on: windows-latest
+    needs: ci_build_and_test
     strategy:
       matrix:
         target: [Unpacked, Win32, Win64]
@@ -35,9 +65,6 @@ jobs:
     - name: Build ${{ matrix.target }}
       run: ${{ env.ScriptDir }}/Build${{ matrix.target }}.ps1
 
-    - name: Run Tests
-      run: ${{ env.ScriptDir }}/RunTests.ps1 -TestArgs "-c Release"
-
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -47,6 +74,7 @@ jobs:
   ci_build_windows_setup:
     name: CI Windows Setup Build
     runs-on: windows-latest
+    needs: ci_build_and_test
     strategy:
       matrix:
         target: [Win32.Setup, Win64.Setup]
@@ -71,9 +99,51 @@ jobs:
         name: ${{ env.Product }}.${{ matrix.target }}
         path: ${{ env.BuildDir }}/${{ env.Product }}.${{ matrix.target }}/${{ env.Product }}.${{ matrix.target }}.msi
     
+  ci_build_windows_winstore:
+    name: CI Windows WinStore Build
+    runs-on: windows-latest
+    needs: ci_build_and_test
+    env:
+      CertFile: src\Chordious.WinStore\Chordious.WinStore_TemporaryKey.pfx
+    strategy:
+      matrix:
+        target: [WinStore]
+    steps:
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Create Code Signing Certificate
+      run: |
+        Set-Content -Path cert.txt -Value '${{ secrets.WINSTORE_PFX }}'
+        certutil -decode cert.txt ${{ env.CertFile }}
+        Remove-Item cert.txt
+
+    - name: Build ${{ matrix.target }}
+      run: ${{ env.ScriptDir }}/Build${{ matrix.target }}.ps1
+    
+    - name: Cleanup Code Signing Certificate
+      if: always()
+      run: |
+        Remove-Item ${{ env.CertFile }}
+
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ env.Product }}.${{ matrix.target }}
+        path: ${{ env.BuildDir }}/${{ env.Product }}.${{ matrix.target }}
+    
   # ci_build_linux:
   #   name: CI Linux Build
   #   runs-on: ubuntu-latest
+  #   needs: ci_build_and_test
   #   strategy:
   #     matrix:
   #       target: [Linux]
@@ -89,9 +159,6 @@ jobs:
   #   - name: Build ${{ matrix.target }}
   #     run: ${{ env.ScriptDir }}/Build${{ matrix.target }}.ps1
 
-  #   - name: Run Tests
-  #     run: ${{ env.ScriptDir }}/RunTests.ps1 -TestArgs "-c Release"
-
   #   - name: Upload Build Artifacts
   #     uses: actions/upload-artifact@v2
   #     with:
@@ -101,6 +168,7 @@ jobs:
   # ci_build_macos:
   #   name: CI MacOS Build
   #   runs-on: macOS-latest
+  #   needs: ci_build_and_test
   #   strategy:
   #     matrix:
   #       target: [MacOS]
@@ -115,9 +183,6 @@ jobs:
 
   #   - name: Build ${{ matrix.target }}
   #     run: ${{ env.ScriptDir }}/Build${{ matrix.target }}.ps1
-
-  #   - name: Run Tests
-  #     run: ${{ env.ScriptDir }}/RunTests.ps1 -TestArgs "-c Release"
 
   #   - name: Upload Build Artifacts
   #     uses: actions/upload-artifact@v2

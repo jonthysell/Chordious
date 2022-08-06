@@ -12,6 +12,7 @@
     <EnableDefaultApplicationDefinition>false</EnableDefaultApplicationDefinition>
     <DefineConstants>UPDATES</DefineConstants>
     <Configurations>Debug;Release</Configurations>
+    <Platforms>AnyCPU;x86;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RuntimeIdentifier)' == 'osx-x64' Or '$(RuntimeIdentifier)' == 'linux-x64' ">

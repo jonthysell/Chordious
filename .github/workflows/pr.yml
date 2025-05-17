@@ -19,12 +19,12 @@ jobs:
         configuration: [Debug, Release]
     steps:
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '6.0.x'
 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Build Solution
       run: dotnet build --configuration ${{ matrix.configuration }} ${{ env.SolutionFile }}
@@ -33,7 +33,7 @@ jobs:
       run: dotnet test --configuration ${{ matrix.configuration }} --no-build ${{ env.SolutionFile }}
 
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name:  ${{ matrix.configuration }}Binaries
         path: ${{ env.BinDir }}/${{ matrix.configuration }}/net6.0

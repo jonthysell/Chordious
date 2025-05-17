@@ -27,12 +27,12 @@ jobs:
         configuration: [Debug, Release]
     steps:
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '6.0.x'
 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Build Solution
       run: dotnet build --configuration ${{ matrix.configuration }} ${{ env.SolutionFile }}
@@ -41,7 +41,7 @@ jobs:
       run: dotnet test --configuration ${{ matrix.configuration }} --no-build ${{ env.SolutionFile }}
 
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name:  ${{ matrix.configuration }}Binaries
         path: ${{ env.BinDir }}/${{ matrix.configuration }}/net6.0
@@ -55,18 +55,18 @@ jobs:
         target: [Unpacked, Win32, Win64]
     steps:
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '6.0.x'
 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Build ${{ matrix.target }}
       run: ${{ env.ScriptDir }}/Build${{ matrix.target }}.ps1
 
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.Product }}.${{ matrix.target }}
         path: ${{ env.BuildDir }}/${{ env.Product }}.${{ matrix.target }}.zip
@@ -80,7 +80,7 @@ jobs:
         target: [Win32.Setup, Win64.Setup]
     steps:
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '6.0.x'
 
@@ -88,13 +88,13 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Build ${{ matrix.target }}
       run: ${{ env.ScriptDir }}/Build${{ matrix.target }}.ps1
 
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.Product }}.${{ matrix.target }}
         path: ${{ env.BuildDir }}/${{ env.Product }}.${{ matrix.target }}/${{ env.Product }}.${{ matrix.target }}.msi
@@ -110,7 +110,7 @@ jobs:
         target: [WinStore]
     steps:
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '6.0.x'
 
@@ -118,7 +118,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Create Code Signing Certificate
       run: |
@@ -135,7 +135,7 @@ jobs:
         Remove-Item ${{ env.CertFile }}
 
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.Product }}.${{ matrix.target }}
         path: ${{ env.BuildDir }}/${{ env.Product }}.${{ matrix.target }}
@@ -149,18 +149,18 @@ jobs:
   #       target: [Linux]
   #   steps:
   #   - name: Setup .NET
-  #     uses: actions/setup-dotnet@v1
+  #     uses: actions/setup-dotnet@v4
   #     with:
   #       dotnet-version: '6.0.x'
 
   #   - name: Checkout
-  #     uses: actions/checkout@v2
+  #     uses: actions/checkout@v4
 
   #   - name: Build ${{ matrix.target }}
   #     run: ${{ env.ScriptDir }}/Build${{ matrix.target }}.ps1
 
   #   - name: Upload Build Artifacts
-  #     uses: actions/upload-artifact@v2
+  #     uses: actions/upload-artifact@v4
   #     with:
   #       name: ${{ env.Product }}.${{ matrix.target }}
   #       path: ${{ env.BuildDir }}/${{ env.Product }}.${{ matrix.target }}.tar.gz
@@ -174,18 +174,18 @@ jobs:
   #       target: [MacOS]
   #   steps:
   #   - name: Setup .NET
-  #     uses: actions/setup-dotnet@v1
+  #     uses: actions/setup-dotnet@v4
   #     with:
   #       dotnet-version: '6.0.x'
 
   #   - name: Checkout
-  #     uses: actions/checkout@v2
+  #     uses: actions/checkout@v4
 
   #   - name: Build ${{ matrix.target }}
   #     run: ${{ env.ScriptDir }}/Build${{ matrix.target }}.ps1
 
   #   - name: Upload Build Artifacts
-  #     uses: actions/upload-artifact@v2
+  #     uses: actions/upload-artifact@v4
   #     with:
   #       name: ${{ env.Product }}.${{ matrix.target }}
   #       path: ${{ env.BuildDir }}/${{ env.Product }}.${{ matrix.target }}.tar.gz

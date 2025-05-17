@@ -3,6 +3,12 @@
 ## next ##
 
 * Updated all projects to .NET 8
+* Updated CommunityToolkit.Mvvm to v8.4.0
+* Updated DotNetProjects.Extended.Wpf.Toolkit to 5.0.124
+* Updated Microsoft.NET.Test.Sdk to v17.13.0
+* Updated MSTest.TestAdapter to v3.8.3
+* Updated MSTest.TestFramework to v3.8.3
+* Updated coverlet.collector to v6.0.4
 
 ## v2.6.4 ##
 

@@ -1,7 +1,8 @@
 # Chordious Changelist #
 
-## next ##
+## v2.7.0 ##
 
+* First 2.7 preview release
 * Updated all projects to .NET 8
 * Updated CommunityToolkit.Mvvm to v8.4.0
 * Updated DotNetProjects.Extended.Wpf.Toolkit to 5.0.124

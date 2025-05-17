@@ -30,4 +30,4 @@ Chordious proudly depends on the following open-source projects:
 * [SVG.NET](https://github.com/vvvv/SVG) for rendering diagrams
 * [Wpf Extended Toolkit](https://github.com/dotnetprojects/WpfExtendedToolkit) for additional controls
 
-Copyright (c) 2013-2022 Jon Thysell
+Copyright (c) 2013-2025 Jon Thysell

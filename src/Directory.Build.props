@@ -3,7 +3,7 @@
     <Product>Chordious</Product>
     <Company>Jon Thysell</Company>
     <Authors>Jon Thysell</Authors>
-    <Copyright>Copyright © 2013-2022 Jon Thysell</Copyright>
+    <Copyright>Copyright © 2013-2025 Jon Thysell</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <RepositoryUrl>https://github.com/jonthysell/Chordious</RepositoryUrl>
     <TargetFramework>net8.0</TargetFramework>

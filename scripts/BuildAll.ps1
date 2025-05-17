@@ -2,6 +2,9 @@ param()
 
 & "$PSScriptRoot\BuildUnpacked.ps1"
 & "$PSScriptRoot\BuildWin32.ps1"
+& "$PSScriptRoot\BuildWin32.Setup.ps1"
 & "$PSScriptRoot\BuildWin64.ps1"
-& "$PSScriptRoot\BuildMacOS.ps1"
-& "$PSScriptRoot\BuildLinux.ps1"
+& "$PSScriptRoot\BuildWin64.Setup.ps1"
+& "$PSScriptRoot\BuildWinStore.ps1"
+# & "$PSScriptRoot\BuildMacOS.ps1"
+# & "$PSScriptRoot\BuildLinux.ps1"

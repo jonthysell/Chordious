@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <StartupObject>Chordious.WPF.Program</StartupObject>
     <AssemblyName>Chordious.WPF</AssemblyName>
     <RootNamespace>Chordious.WPF</RootNamespace>

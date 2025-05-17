@@ -1,5 +1,9 @@
 # Chordious Changelist #
 
+## next ##
+
+* Updated all projects to .NET 8
+
 ## v2.6.4 ##
 
 * Fixed issue with chord quality abbreviations not scaling properly on high DPI screens

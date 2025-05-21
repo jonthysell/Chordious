@@ -4,7 +4,7 @@ env:
   BuildDir: ./bld
   ScriptDir: ./scripts
   Product: Chordious
-  Prerelease: false
+  Prerelease: true
 
 on:
   push:

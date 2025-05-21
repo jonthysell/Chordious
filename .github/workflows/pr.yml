@@ -9,6 +9,7 @@ on:
     branches:
       - main
       - 2.6-official
+      - 2.8-official
 
 jobs:
   pr_build_and_test:

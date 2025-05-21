@@ -1,62 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build"
-         ToolsVersion="4.0"
-         xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project>
+    <Import Project="Sdk.props"
+            Sdk="WixToolset.Sdk"
+            Version="6.0.0" />
     <PropertyGroup>
-        <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == ''">x86</Platform>
-        <ProductVersion>3.9</ProductVersion>
-        <ProjectGuid>c01e6ef5-8807-4207-b9f6-677a60f47718</ProjectGuid>
-        <SchemaVersion>2.0</SchemaVersion>
-        <OutputName Condition=" '$(Platform)' == 'x86'">Chordious.WinX86.Setup</OutputName>
-        <OutputName Condition=" '$(Platform)' == 'x64'">Chordious.WinX64.Setup</OutputName>
-        <OutputType>Package</OutputType>
-        <DefineSolutionProperties>false</DefineSolutionProperties>
-        <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != ''">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
-        <WixTargetsPath Condition=" '$(WixTargetsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86'">
+        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+        <OutputName Condition="'$(Platform)' == 'x86'">Chordious.WinX86.Setup</OutputName>
+        <OutputName Condition="'$(Platform)' == 'x64'">Chordious.WinX64.Setup</OutputName>
+        <OutputName Condition="'$(Platform)' == 'ARM64'">Chordious.WinArm64.Setup</OutputName>
+        <OutputName Condition="'$(OutputName)' == ''">Chordious.Setup</OutputName>
         <OutputPath>bin\$(Configuration)\$(Platform)\</OutputPath>
         <IntermediateOutputPath>obj\$(Configuration)\$(Platform)\</IntermediateOutputPath>
+        <SuppressIces>ICE61;</SuppressIces>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <DefineConstants>Debug</DefineConstants>
-        <SuppressIces>ICE61;ICE40;</SuppressIces>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86'">
-        <OutputPath>bin\$(Configuration)\$(Platform)\</OutputPath>
-        <IntermediateOutputPath>obj\$(Configuration)\$(Platform)\</IntermediateOutputPath>
-        <SuppressIces>ICE61;ICE40;</SuppressIces>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64'">
-        <OutputPath>bin\$(Configuration)\$(Platform)\</OutputPath>
-        <IntermediateOutputPath>obj\$(Configuration)\$(Platform)\</IntermediateOutputPath>
-        <DefineConstants>Debug</DefineConstants>
-        <SuppressIces>ICE61;ICE40;</SuppressIces>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64'">
-        <OutputPath>bin\$(Configuration)\$(Platform)\</OutputPath>
-        <IntermediateOutputPath>obj\$(Configuration)\$(Platform)\</IntermediateOutputPath>
-        <SuppressIces>ICE61;ICE40;</SuppressIces>
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="Generated Files\Chordious.$(Configuration).$(Platform).g.wxs">
             <Visible>false</Visible>
         </Compile>
         <Compile Include="Product.wxs" />
-    </ItemGroup>
-    <ItemGroup>
-        <WixExtension Include="WixUIExtension">
-            <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
-            <Name>WixUIExtension</Name>
-        </WixExtension>
-        <WixExtension Include="WixUtilExtension">
-            <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
-            <Name>WixUtilExtension</Name>
-        </WixExtension>
-    </ItemGroup>
-    <ItemGroup>
         <None Include="ExcludeExe.xslt" />
     </ItemGroup>
-    <Import Project="$(WixTargetsPath)" />
+    <ItemGroup>
+        <PackageReference Include="WixToolset.UI.wixext"
+                          Version="6.0.0" />
+        <PackageReference Include="WixToolset.Util.wixext"
+                          Version="6.0.0" />
+        <PackageReference Include="WixToolset.Heat"
+                          Version="6.0.0" />
+    </ItemGroup>
+    <Import Project="Sdk.targets"
+            Sdk="WixToolset.Sdk"
+            Version="6.0.0" />
     <PropertyGroup>
         <PostBuildEvent />
     </PropertyGroup>
@@ -65,7 +41,7 @@
         <PropertyGroup>
             <LinkerBaseInputPaths>..\Chordious.WPF\bin\$(Platform)\$(Configuration) (Setup)\</LinkerBaseInputPaths>
             <DefineConstants>PublishPath=..\Chordious.WPF\bin\$(Platform)\$(Configuration) (Setup)\</DefineConstants>
-            <RunWixToolsOutOfProc Condition=" '$(PROCESSOR_ARCHITECTURE)'!='x86' ">true</RunWixToolsOutOfProc>
+            <RunWixToolsOutOfProc Condition="'$(PROCESSOR_ARCHITECTURE)'!='x86'">true</RunWixToolsOutOfProc>
         </PropertyGroup>
         <HeatDirectory AutoGenerateGuids="true"
                        ComponentGroupName="ChordiousPublishOut"
@@ -74,7 +50,6 @@
                        GenerateGuidsNow="true"
                        OutputFile="Generated Files\Chordious.$(Configuration).$(Platform).g.wxs"
                        PreprocessorVariable="var.PublishPath"
-                       RunAsSeparateProcess="$(RunWixToolsOutOfProc)"
                        SuppressCom="true"
                        SuppressFragments="true"
                        SuppressRegistry="true"

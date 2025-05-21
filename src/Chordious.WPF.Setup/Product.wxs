@@ -1,25 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
-     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-    <Product Id="*"
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+    <Package InstallerVersion="500"
              Language="1033"
              Manufacturer="Jon Thysell"
              Name="Chordious"
              UpgradeCode="a49f8d4a-4e86-490d-8b31-282e26ad5ccf"
              Version="!(bind.FileVersion.ChordiousWpfApp)">
-        <Package Compressed="yes"
-                 InstallScope="perMachine"
-                 InstallerVersion="200"
-                 Languages="1033" />
         <MajorUpgrade AllowSameVersionUpgrades="yes"
-                      DowngradeErrorMessage="A newer version of Chordious is already installed." />
-        <?if $(var.Configuration) = "Release"?>
+                      DowngradeErrorMessage="A newer version of Chordious is already installed." /><?if $(var.Configuration) = "Release"?>
         <MediaTemplate CompressionLevel="high"
-                       EmbedCab="yes" />
-        <?elseif $(var.Configuration) = "Debug"?>
+                       EmbedCab="yes" /><?elseif $(var.Configuration) = "Debug"?>
         <MediaTemplate CompressionLevel="none"
-                       EmbedCab="yes" />
-        <?endif?>
+                       EmbedCab="yes" /><?endif?>
         <Feature Id="ChordiousWpfFeature"
                  Level="1"
                  Title="Chordious">
@@ -40,66 +32,62 @@
                   Value="Start Chordious" />
         <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX"
                   Value="1" />
-        <Property Id="REINSTALLMODE"
-                  Value="amus"/>
         <CustomAction Directory="INSTALLFOLDER"
                       ExeCommand="[#ChordiousWpfApp]"
                       Id="LaunchApplication"
                       Impersonate="yes"
                       Return="asyncNoWait" />
         <UI>
-            <UIRef Id="WixUI_Minimal" />
-            <Publish Control="Finish"
+            <ui:WixUI Id="WixUI_Minimal" />
+            <Publish Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed"
+                     Control="Finish"
                      Dialog="ExitDialog"
                      Event="DoAction"
-                     Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+                     Value="LaunchApplication" />
         </UI>
         <InstallExecuteSequence>
             <Custom Action="LaunchApplication"
-                    After="InstallFinalize">UILevel = 3 and NOT Installed</Custom>
+                    After="InstallFinalize"
+                    Condition="UILevel = 3 and NOT Installed" />
         </InstallExecuteSequence>
         <WixVariable Id="WixUILicenseRtf"
                      Value="license.rtf" />
         <Property Id="DISABLEADVTSHORTCUTS"
                   Value="1" />
-    </Product>
+    </Package>
     <Fragment>
-        <Directory Id="TARGETDIR"
-                   Name="SourceDir">
-            <?if $(var.Platform) = "x86"?>
-            <Directory Id="ProgramFilesFolder">
-            <?elseif $(var.Platform) = "x64"?>
-            <Directory Id="ProgramFiles64Folder">
-            <?endif?>
-                <Directory Id="INSTALLFOLDER"
-                            Name="Chordious 2">
-                    <Component Id="ChordiousWpfApp">
-                        <File Id="ChordiousWpfApp"
-                              KeyPath="yes"
-                              Source="$(var.PublishPath)\Chordious.WPF.exe">
-                            <Shortcut Advertise="yes"
-                                      Description="Fretboard diagram generator."
-                                      Directory="ProgramMenuFolder"
-                                      Id="ChordiousWpfAppShortcut"
-                                      Name="Chordious"
-                                      WorkingDirectory="INSTALLFOLDER" />
-                        </File>
-                        <File Id="ChordiousWpfReadme"
-                              Name="Readme.txt"
-                              Source="..\..\README.md" />
-                        <File Id="ChordiousWpfLicense"
-                              Name="License.txt"
-                              Source="..\..\scripts\Licenses.txt" />
-                        <RemoveFolder Id="ApplicationProgramsFolder"
-                                      On="uninstall" />
-                    </Component>
-                </Directory>
-            <?if $(var.Platform) = "x86"?>
+        <?if $(var.Platform) = "x86"?>
+        <StandardDirectory Id="ProgramFilesFolder">
+        <?else?>
+        <StandardDirectory Id="ProgramFiles64Folder">
+        <?endif?>
+            <Directory Id="INSTALLFOLDER"
+                        Name="Chordious 2">
+                <Component Id="ChordiousWpfApp">
+                    <File Id="ChordiousWpfApp"
+                            KeyPath="yes"
+                            Source="$(var.PublishPath)\Chordious.WPF.exe">
+                        <Shortcut Advertise="yes"
+                                    Description="Fretboard diagram generator."
+                                    Directory="ProgramMenuFolder"
+                                    Id="ChordiousWpfAppShortcut"
+                                    Name="Chordious"
+                                    WorkingDirectory="INSTALLFOLDER" />
+                    </File>
+                    <File Id="ChordiousWpfReadme"
+                            Source="..\..\README.md" />
+                    <File Id="ChordiousWpfLicense"
+                            Name="License.txt"
+                            Source="..\..\scripts\Licenses.txt" />
+                    <RemoveFolder Id="ApplicationProgramsFolder"
+                                    On="uninstall" />
+                </Component>
             </Directory>
-            <?elseif $(var.Platform) = "x64"?>
-            </Directory>
-            <?endif?>
-            <Directory Id="ProgramMenuFolder" />
-        </Directory>
+        <?if $(var.Platform) = "x86"?>
+        </StandardDirectory>
+        <?else?>
+        </StandardDirectory>
+        <?endif?>
+        <StandardDirectory Id="ProgramMenuFolder" />
     </Fragment>
 </Wix>

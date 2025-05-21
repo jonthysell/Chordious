@@ -1,5 +1,9 @@
 # Chordious Changelist #
 
+## next ##
+
+* Added native ARM64 build for Windows
+
 ## v2.7.0 ##
 
 * First 2.7 preview release

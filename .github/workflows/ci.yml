@@ -52,7 +52,7 @@ jobs:
     needs: ci_build_and_test
     strategy:
       matrix:
-        target: [Unpacked, WinX86, WinX64]
+        target: [Unpacked, WinX86, WinX64, WinArm64]
     steps:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
@@ -77,15 +77,12 @@ jobs:
     needs: ci_build_and_test
     strategy:
       matrix:
-        target: [WinX86.Setup, WinX64.Setup]
+        target: [WinX86.Setup, WinX64.Setup, WinArm64.Setup]
     steps:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
-
-    - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.1
 
     - name: Checkout
       uses: actions/checkout@v4
@@ -113,9 +110,6 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
-
-    - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.1
 
     - name: Checkout
       uses: actions/checkout@v4

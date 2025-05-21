@@ -1,6 +1,6 @@
 # Chordious Changelist #
 
-## next ##
+## v2.8.0 ##
 
 * Updated all projects to .NET 8
 * Added native ARM64 build for Windows
